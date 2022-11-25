@@ -1,2 +1,2 @@
 # nori-wynn
-wynn related function of nori bot
+wynn related functions of nori bot
