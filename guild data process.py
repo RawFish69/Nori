@@ -103,7 +103,7 @@ def guilds(ctx):
     display += f' Level: {guild_level}\n'
     display += f' War count: {war_count}\n'
     display += f' Members: {member_count}\n'
-    display += f' XP contribution top 10: \n'
+    display += f' XP contribution: \n'
     for member in xp_ranking:
         if place <= show_top:
             xp_value = xp_ranking.get(member)
