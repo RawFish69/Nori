@@ -97,3 +97,28 @@ def guild_data(prefix):
     war = war_count[val]
     member = member_count[val]
     return guild_name, guild_prefix, names, ranks, xp, joined, level, created, war, member, owner
+
+
+def xp_list(ctx):
+    user_prefix = ctx
+    data = guild_data(user_prefix)
+    guild_members = data[2]
+    xp_contribution = data[4]
+    guild_contribution = {}
+    for i in range(len(guild_members)):
+        guild_contribution.update({guild_members[i]: xp_contribution[i]})
+    sorted_contribution = sorted(guild_contribution.items(), key=lambda x: x[1], reverse=True)
+    xp_ranking = dict(sorted_contribution)
+    show_top = 40
+    place = 1
+    display = '```'
+    display += f' Guild XP contribution: \n'
+    display += f' #| Player               | XP\n'
+    for member in xp_ranking:
+        if place <= show_top:
+            xp_value = xp_ranking.get(member)
+            display += '{0:2d}| {1:20s} | {2:d} xp\n'.format(place, member, xp_value)
+            place += 1
+    display += '```'
+    return display
+
