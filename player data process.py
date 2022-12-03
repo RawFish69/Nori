@@ -99,10 +99,11 @@ def player_stats(ign):
     display += f'Nether PvP: {pvp_kills} Kills & {pvp_deaths} Deaths\n'
     display += f'Deaths: {val_list[6]}\n'
     display += f'Raid Data: \n'
-    display += f'The Canyon Colossus: {TCC_runs} Clears\n'
-    display += f'Orphion\'s Nexus of Light: {NOL_runs} Clears\n'
-    display += f'The Nameless Anomaly: {TNA_runs} Clears\n'
-    display += f'Nest of the Grootslangs: {NOG_runs} Clears\n'
+    display += '|           Raid           | Total Clears\n'
+    display += f'|The Canyon Colossus       | {TCC_runs}\n'
+    display += f'|Orphion\'s Nexus of Light  | {NOL_runs}\n'
+    display += f'|The Nameless Anomaly      | {TNA_runs}\n'
+    display += f'|Nest of the Grootslangs   | {NOG_runs}\n'
     display += '```'
     print(display)
     return display
