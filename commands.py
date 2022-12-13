@@ -1,3 +1,24 @@
+class serverView(miru.View):
+    @miru.button(emoji='⬇', style=hikari.ButtonStyle.PRIMARY)
+    async def button_server(self, button: miru.Button, ctx: miru.Context):
+        serverList = get_server()
+        response = '```'
+        response += '|All Online Servers:\n'
+        response += '|------------------------------|\n'
+        response += '| Server       |       Players |\n'
+        for server in serverList.items():
+            world_ID = server[0]
+            player_count = server[1]
+            if player_count >= 50:
+                response += '| {0:12s} | {1:10d}/50 | [FULL]\n'.format(world_ID, player_count)
+            else:
+                response += '| {0:12s} | {1:10d}/50 |\n'.format(world_ID, player_count)
+        response += '|------------------------------|\n'
+        response += '|Full worlds need champion rank|\n'
+        response += '```'
+        await ctx.edit_response(response)
+
+
 @bot.command
 @lightbulb.command('wc', 'List of online servers')
 @lightbulb.implements(lightbulb.SlashCommand)
