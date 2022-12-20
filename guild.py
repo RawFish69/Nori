@@ -49,12 +49,14 @@ def get_guild(name):
     member_ranks = []
     xp_contributed = []
     joined_date = []
+    member_uuid = []
     for player in member_stats:
         player_name = player.get('name')
         member_names.append(player_name)
         player_guild_rank = player.get('rank')
         member_ranks.append(player_guild_rank)
         player_uuid = player.get('uuid')
+        member_uuid.append(player_uuid)
         player_xp = player.get('contributed')
         xp_contributed.append(player_xp)
         player_joined = player.get('joinedFriendly')
@@ -66,7 +68,7 @@ def get_guild(name):
             owner_id = index
         else:
             index += 1
-    return member_names, member_ranks, xp_contributed, joined_date, owner_id
+    return member_names, member_ranks, xp_contributed, joined_date, owner_id, member_uuid
 
 
 def guild_data(prefix):
@@ -92,33 +94,24 @@ def guild_data(prefix):
     xp = guild[2]
     joined = guild[3]
     owner = guild[4]
+    uuid_list = guild[5]
     level = guild_level[val]
     created = guild_created[val]
     war = war_count[val]
     member = member_count[val]
-    return guild_name, guild_prefix, names, ranks, xp, joined, level, created, war, member, owner
-
-
-def xp_list(ctx):
-    user_prefix = ctx
-    data = guild_data(user_prefix)
-    guild_members = data[2]
-    xp_contribution = data[4]
-    guild_contribution = {}
-    for i in range(len(guild_members)):
-        guild_contribution.update({guild_members[i]: xp_contribution[i]})
-    sorted_contribution = sorted(guild_contribution.items(), key=lambda x: x[1], reverse=True)
-    xp_ranking = dict(sorted_contribution)
-    show_top = 40
-    place = 1
-    display = '```'
-    display += f' Guild XP contribution: \n'
-    display += f' #| Player               | XP\n'
-    for member in xp_ranking:
-        if place <= show_top:
-            xp_value = xp_ranking.get(member)
-            display += '{0:2d}| {1:20s} | {2:d} xp\n'.format(place, member, xp_value)
-            place += 1
-    display += '```'
-    return display
-
+    online_players = []
+    online_ranks = []
+    online_servers = []
+    for i in range(len(names)):
+        player = get_online(uuid_list[i])
+        ign = player[2]
+        status = player[0]
+        world = player[1]
+        if status == True:
+            online_players.append(ign)
+            online_servers.append(world)
+            online_ranks.append(ranks[i])
+    print(online_players)
+    print(online_ranks)
+    print(online_servers)
+    return guild_name, guild_prefix, names, ranks, xp, joined, level, created, war, member, owner, online_players, online_ranks, online_servers
