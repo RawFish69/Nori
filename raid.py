@@ -1,3 +1,33 @@
+# Sample code for leaderboard display
+@bot.command
+@lightbulb.command('lb', 'Leaderboard')
+@lightbulb.implements(lightbulb.SlashCommandGroup)
+async def leaderboard(ctx):
+    pass
+
+@leaderboard.child()
+@lightbulb.option('guild', 'Prefix of the guild')
+@lightbulb.command('tna', 'The Nameless Anomaly')
+@lightbulb.implements(lightbulb.SlashSubCommand)
+async def TNA_lb(ctx):
+    await ctx.respond('Processing leaderboard data...')
+    guild_name = ctx.options.guild
+    TNA_ranking = TNA_leaderboard(guild_name)
+    names = []
+    places_show = 20
+    for player in TNA_ranking.keys():
+        names.append(player)
+    display = '```'
+    display += f'TNA Leaderboard in [{guild_name}]\n'
+    display += f' #| Player               | Clears\n'
+    for index in range(places_show):
+        name = names[index]
+        clears = TNA_ranking.get(name)
+        display += '{0:2d}| {1:20s} | {2:d}\n'.format(index + 1, name, clears)
+    display += '```'
+    await ctx.edit_last_response(display)
+
+
 def raid_stats(ign):
     stat_request = requests.get(f'https://api.wynncraft.com/v2/player/{ign}/stats')
     stat = stat_request.json()
