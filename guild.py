@@ -1,3 +1,47 @@
+@bot.command
+@lightbulb.option('name', 'Guild Prefix')
+@lightbulb.command('guild', 'Search a Guild\'s Stats')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def guild(ctx):
+    await ctx.respond('Processing guild data...')
+    # view = guildView(timeout=60)
+    user_prefix = ctx.options.name
+    data = guild_data(user_prefix)
+    guild_name = data[0]
+    guild_prefix = data[1]
+    guild_members = data[2]
+    member_names = []
+    for name in guild_members:
+        member_names.append(name)
+
+    guild_player_ranks = data[3]
+    joined_date = data[5]
+    guild_level = data[6]
+    guild_created = data[7]
+    created_time = datetime.strptime(guild_created, '%Y-%m-%dT%H:%M:%S.%f%z')
+    created_date = created_time.date()
+    war_count = data[8]
+    member_count = data[9]
+    online_members = data[11]
+    online_ranks = data[12]
+    online_servers = data[13]
+    display = '```'
+    display += f' {guild_name} | [{guild_prefix}]\n' + f' Owner: {guild_members[0]}\n'
+    display += f' Created on {created_date}\n'
+    display += f' Level: {guild_level}\n'
+    display += f' War count: {war_count}\n'
+    display += f' Members: {member_count}\n'
+    display += f' Online Players: {len(online_members)}\n'
+    display += f'WC  | Player           | Rank\n'
+    for i in range(len(online_members)):
+        display += '{0:4s}| {1:16s} | {2:s}\n'.format(online_servers[i], online_members[i], online_ranks[i])
+    display += '```'
+    print(display)
+    await ctx.edit_last_response(display)
+    # msg = await ctx.edit_last_response(f"{display}", components=view.build())
+    # view.start(msg)
+    # await view.wait()
+
 def guild_leaderboard():
     timeframe = 'alltime'
     guild_lb = requests.get(
