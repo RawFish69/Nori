@@ -1,3 +1,23 @@
+class prof_view(miru.View):
+    @miru.select(
+        placeholder="Choose any profession to view ranking",
+        options=[
+            # Specific profession selection
+        ]
+    )
+    async def show_prof_rank(self, select: miru.Select, ctx: miru.Context):
+        # Specific profession display
+        
+@bot.command
+@lightbulb.command('prof', 'Profession Leaderboard')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def prof_lb(ctx):
+    display = prof_view(timeout=120)
+    message = await ctx.respond('Select a profession', components=display.build())
+    message = await message
+    display.start(message)
+    await display.wait()
+
 def profession_leaderboard(prof):
     profession = prof
     server = requests.get(f'https://api.wynncraft.com/v2/leaderboards/player/solo/{profession}')
