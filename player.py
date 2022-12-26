@@ -109,3 +109,18 @@ def player_stats(ign):
     display += '```'
     print(display)
     return display
+
+def get_online(ign):
+    server_data = get_server()
+    servers = server_data.keys()
+    online_status = False
+    online_server = 'Null'
+    for world in servers:
+        player_list = server_data.get(world)
+        if ign in player_list:
+            print(f'{ign} is on {world}')
+            online_status = True
+            online_server = world
+        else:
+            pass
+    return online_status, online_server
