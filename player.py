@@ -75,12 +75,12 @@ def player_stats(ign):
     online_status = get_online(ign)[0]
     online_server = get_online(ign)[1]
     display = '```'
+    display += 'Overall Statistics:\n'
     if online_status == True:
         display += f'{ign} is on {online_server}\n'
     else:
         display += f'{ign} is offline\n'
     display += f'Guild: {player_guild} | {rank_in_guild}\n'
-    display += 'Overall Statistics:\n'
     stat_list = []
     val_list = []
     for stat in overall_stats.keys():
