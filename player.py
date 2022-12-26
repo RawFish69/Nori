@@ -70,8 +70,8 @@ def player_stats(ign):
     guild_info = data[5]
     overall_stats = data[6]
     profession = data[7].values()
-    online_status = get_online(ign)
-    online_server = get_online(ign)
+    online_status = get_online(ign)[0]
+    online_server = get_online(ign)[1]
     display = '```'
     display += 'Player Statistics:\n'
     if online_status == True:
