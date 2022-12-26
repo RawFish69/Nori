@@ -9,12 +9,14 @@ def player_stats(ign):
     player_data = data_raw[4][0]
     for i in player_data.values():
         data.append(i)
-
     name = data[0]
     uuid = data[1]
     rank = data[2]
     join_info = data[3]
     game_info = data[4]
+    guild_info = data[5]
+    player_guild = guild_info.get('name')
+    rank_in_guild = guild_info.get('rank')
     characters_full = []
     each_class = game_info.values()
     char_raw = []
@@ -68,14 +70,14 @@ def player_stats(ign):
     guild_info = data[5]
     overall_stats = data[6]
     profession = data[7].values()
-    location = join_info.get('location')
-    online_status = location.get('online')
-    online_server = location.get('server')
+    online_status = get_online(ign)
+    online_server = get_online(ign)
     display = '```'
     if online_status == True:
         display += f'{ign} is on {online_server}\n'
     else:
         display += f'{ign} is offline\n'
+    display += f'Guild: {player_guild} | {rank_in_guild}\n'
     display += 'Overall Statistics:\n'
     stat_list = []
     val_list = []
@@ -107,19 +109,3 @@ def player_stats(ign):
     display += '```'
     print(display)
     return display
-
-def get_online(ign):
-    server_data = get_server()
-    servers = server_data.keys()
-    online_status = False
-    online_server = 'Null'
-    for world in servers:
-        player_list = server_data.get(world)
-        if ign in player_list:
-            print(f'{ign} is on {world}')
-            online_status = True
-            online_server = world
-        else:
-            online_status = False
-            online_server = 'None'
-    return online_status, online_server
