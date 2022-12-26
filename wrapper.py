@@ -21,18 +21,14 @@ def get_guild(name):
 def get_server():
     servers = requests.get('https://api.wynncraft.com/public_api.php?action=onlinePlayers')
     server_data = servers.json()
-    server_list = []
-    player_list = []
+    online_servers = []
+    online_data = {}
     for world in server_data:
-        if 'WC' in world:
-            server_list.append(world)
-    for val in server_data.values():
-        if 'timestamp' in val:
+        if 'timestamp' in server_data.values():
             pass
-        else:
-            player_list.append(val)
-    online_servers = {}
-    for i in range(len(server_list)):
-        players_on = len(player_list[i])
-        online_servers.update({server_list[i]: players_on})
-    return online_servers
+        elif 'WC' in world:
+            online_servers.append(world)
+    for server in online_servers:
+        server_players = server_data.get(server)
+        online_data.update({server: server_players})
+    return online_data
