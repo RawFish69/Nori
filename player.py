@@ -13,6 +13,8 @@ def player_stats(ign):
     uuid = data[1]
     rank = data[2]
     join_info = data[3]
+    playtime = join_info.get('playtime')
+    hours_played = int(playtime / 12.7686)
     game_info = data[4]
     guild_info = data[5]
     player_guild = guild_info.get('name')
@@ -73,12 +75,12 @@ def player_stats(ign):
     online_status = get_online(ign)[0]
     online_server = get_online(ign)[1]
     display = '```'
-    display += 'Player Statistics:\n'
     if online_status == True:
         display += f'{ign} is on {online_server}\n'
     else:
         display += f'{ign} is offline\n'
     display += f'Guild: {player_guild} | {rank_in_guild}\n'
+    display += 'Overall Statistics:\n'
     stat_list = []
     val_list = []
     for stat in overall_stats.keys():
@@ -92,7 +94,7 @@ def player_stats(ign):
             stat_list.append(stat)
     for val in overall_stats.values():
         val_list.append(val)
-    print(val_list)
+    display += f'Playtime: {hours_played} hours\n'
     display += f'Blocks Walked: {val_list[0]}\n'
     display += f'Mobs Killed: {val_list[2]}\n'
     display += f'Logins: {val_list[5]}\n'
@@ -109,6 +111,7 @@ def player_stats(ign):
     display += '```'
     print(display)
     return display
+
 
 def get_online(ign):
     server_data = get_server()
