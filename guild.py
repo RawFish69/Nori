@@ -6,14 +6,12 @@ async def guild(ctx):
     await ctx.respond('Processing guild data...')
     # view = guildView(timeout=60)
     user_prefix = ctx.options.name
-    data = guild_data(user_prefix)
     guild_name = data[0]
     guild_prefix = data[1]
     guild_members = data[2]
     member_names = []
     for name in guild_members:
         member_names.append(name)
-
     guild_player_ranks = data[3]
     joined_date = data[5]
     guild_level = data[6]
@@ -22,19 +20,39 @@ async def guild(ctx):
     created_date = created_time.date()
     war_count = data[8]
     member_count = data[9]
+    owner_id = data[10]
     online_members = data[11]
     online_ranks = data[12]
+    display_rank = []
+    for rank in online_ranks:
+        if rank == 'RECRUIT':
+            display_rank.append('-')
+        elif rank == 'RECRUITER':
+            display_rank.append('*')
+        elif rank == 'CAPTAIN':
+            display_rank.append('**')
+        elif rank == 'STRATEGIST':
+            display_rank.append('***')
+        elif rank == 'CHIEF':
+            display_rank.append('****')
+        elif rank == 'OWNER':
+            display_rank.append('*****')
     online_servers = data[13]
     display = '```'
-    display += f' {guild_name} | [{guild_prefix}]\n' + f' Owner: {guild_members[0]}\n'
+    display += f' {guild_name} | [{guild_prefix}]\n' + f' Owner: {guild_members[owner_id]}\n'
     display += f' Created on {created_date}\n'
     display += f' Level: {guild_level}\n'
     display += f' War count: {war_count}\n'
     display += f' Members: {member_count}\n'
-    display += f' Online Players: {len(online_members)}\n'
+    # for member in xp_ranking:
+    #     if place <= show_top:
+    #         xp_value = xp_ranking.get(member)
+    #         display += f' {place}. {member} -> {xp_value} xp\n'
+    #         place += 1
+    display += f' Online Players: {len(online_members)} \n'
     display += f'WC  | Player           | Rank\n'
     for i in range(len(online_members)):
-        display += '{0:4s}| {1:16s} | {2:s}\n'.format(online_servers[i], online_members[i], online_ranks[i])
+        display += '{0:4s}| {1:16s} | {2:s}\n'.format(online_servers[i], online_members[i], display_rank[i])
     display += '```'
     print(display)
     await ctx.edit_last_response(display)
@@ -146,18 +164,17 @@ def guild_data(prefix):
     online_players = []
     online_ranks = []
     online_servers = []
-    for i in range(len(names)):
-        player = get_online(uuid_list[i])
-        ign = player[2]
-        status = player[0]
-        world = player[1]
-        if status == True:
-            online_players.append(ign)
-            online_servers.append(world)
-            online_ranks.append(ranks[i])
-    print(online_players)
-    print(online_ranks)
-    print(online_servers)
+    server_data = get_server()
+    worlds = server_data.keys()
+    for server in worlds:
+        players_on = server_data.get(server)
+        for i in range(len(names)):
+            player = names[i]
+            if player in players_on:
+                print(f'{player} is on {server}')
+                online_players.append(player)
+                online_servers.append(server)
+                online_ranks.append(ranks[i])
     return guild_name, guild_prefix, names, ranks, xp, joined, level, created, war, member, owner, online_players, online_ranks, online_servers
 
 def xp_list(ctx):
