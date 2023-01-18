@@ -35,7 +35,7 @@
          "link": "https://hppeng-wynn.github.io/builder?v=1#8_0cD0Pf0FT0Qx0TQ0K00x40og0QV0o191B0o1G1g1006CO11unfI1000FU10006C102J6I1B1B050505050stx7-F1gF2",
          "tag": "freedom, archer, boltslinger, duat"
       },
-       {
+      {
          "name": "Bolt gma ignis dual",
          "link": "https://hppeng-wynn.github.io/builder?v=1#8_0XL08F0uX0QW0uP0K20K40OP0Qe1z05141m0y1g1000361001Z61000361001Z6100nZ60z0z0+0+0+0+0-t-dVzWw2",
          "tag": "gma, ignis, boltslinger, archer, no crafted, tankofpacer"
@@ -64,6 +64,11 @@
          "name": "Battle paladin RotS",
          "link": "https://hppeng-wynn.github.io/builder?v=1#8_0cD0u80uj0FP0050050K40OH0uE1G1113180+1g000010009I0z0z0+0+0+0+0-ltuAFDIDi1",
          "tag": "rhythm of the seasons, paladin, warrior, no crafted, no mythic, tankofpacer"
+      },
+      {
+         "name": "Nychthemeron Freedom",
+         "link": "https://hppeng-wynn.github.io/builder?v=1#8_0uB0Pf0FT0Qx0TQ0K00x40OH0QV1B1G1B0e161g1006CO11unfI1000FU10006C102J6I1B1B050505050stx7-F1gF2",
+         "tag": "freedom, archer, boltslinger, duat"
       }
    ]
 }
