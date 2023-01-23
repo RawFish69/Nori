@@ -1,3 +1,3 @@
 # nori-wynn
-Functions of nori bot <br/>
+Plugins of nori bot, include multiple functions <br/>
 Main codes are in nori-bot repository
