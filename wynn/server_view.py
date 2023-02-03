@@ -8,7 +8,7 @@ class serverView(miru.View):
         response += '| Server       |       Players |\n'
         for server in serverList.items():
             world_ID = server[0]
-            player_count = server[1]
+            player_count = len(server[1])
             if player_count >= 50:
                 response += '| {0:12s} | {1:10d}/50 | [FULL]\n'.format(world_ID, player_count)
             else:
@@ -34,7 +34,7 @@ async def server_list(ctx):
     for server in serverList.items():
         if index <= show_servers:
             world_ID = server[0]
-            player_count = server[1]
+            player_count = len(server[1])
             if player_count >= 50:
                 response += '| {0:12s} | {1:10d}/50 | [FULL]\n'.format(world_ID, player_count)
                 index += 1
