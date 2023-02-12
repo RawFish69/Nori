@@ -48,3 +48,18 @@ async def server_list(ctx):
     display = await display
     view.start(display)
     await view.wait()
+
+    
+def get_online(ign):
+    server_data = get_server()
+    servers = server_data.keys()
+    online_status = False
+    online_server = 'Null'
+    for world in servers:
+        player_list = server_data.get(world)
+        if ign in player_list:
+            online_status = True
+            online_server = world
+        else:
+            pass
+    return online_status, online_server
