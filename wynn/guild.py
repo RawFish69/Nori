@@ -68,6 +68,7 @@ async def guild(ctx):
     # await view.wait()
 
 
+
 def guild_leaderboard():
     timeframe = 'alltime'
     guild_lb = requests.get(
@@ -114,7 +115,7 @@ def get_guild(name):
     guild_name = stats[0]
     guild_prefix = stats[1]
     member_stats = stats[2]
-    guild_level = stats[3]
+    guild_level = stats[4]
     guild_created = stats[5]
     member_names = []
     member_ranks = []
@@ -142,21 +143,11 @@ def get_guild(name):
     return member_names, member_ranks, xp_contributed, joined_date, owner_id, member_uuid, guild_level, guild_created, guild_prefix
 
 
-
 def guild_data(prefix):
-    leaderboard = guild_leaderboard()
-    full_name_list = leaderboard[0]
-    prefix_list = leaderboard[1]
-    guild_level = leaderboard[2]
-    guild_created = leaderboard[3]
-    war_count = leaderboard[4]
-    member_count = leaderboard[5]
     index = 0
     val = 0
     found = False
-    found_result = False
-    guild = ''
-    guild_name = ''
+    guild_name = guild_find(prefix)
     guild_prefix = ''
     names = []
     ranks = []
@@ -170,64 +161,22 @@ def guild_data(prefix):
     online_players = []
     online_ranks = []
     online_servers = []
-    for name in prefix_list:
-        if prefix.lower() == name.lower():
-            val = index
-            found = True
-        else:
-            index += 1
-    if found == False:
-        index = 0
-        for name in full_name_list:
-            if prefix.lower() == name.lower():
-                val = index
-                found = True
-                found_result = True
-            else:
-                index += 1
-    if found == False and found_result == False:
-        try:
-            guild_stats = get_guild(prefix)
-            print(guild_stats)
-            guild_name = prefix
-            guild_prefix = guild_stats[8]
-            names = guild_stats[0]
-            ranks = guild_stats[1]
-            xp = guild_stats[2]
-            joined = guild_stats[3]
-            owner = guild_stats[4]
-            level = guild_stats[6]
-            created = guild_stats[7]
-            war = 'null'
-            member = len(names)
-            server_data = get_server()
-            worlds = server_data.keys()
-            for server in worlds:
-                players_on = server_data.get(server)
-                for i in range(len(names)):
-                    player = names[i]
-                    if player in players_on:
-                        print(f'{player} is on {server}')
-                        online_players.append(player)
-                        online_servers.append(server)
-                        online_ranks.append(ranks[i])
-        except IndexError:
-            empty = ['','','','','','','','','','','','']
-            return empty
-    elif found == True:
-        guild_name = full_name_list[val]
-        guild_prefix = prefix_list[val]
-        guild = get_guild(guild_name)
-        names = guild[0]
-        ranks = guild[1]
-        xp = guild[2]
-        joined = guild[3]
-        owner = guild[4]
-        uuid_list = guild[5]
-        level = guild_level[val]
-        created = guild_created[val]
+    if guild_name != "NOT_FOUND":
+        pass
+    else:
+        guild_name = prefix
+    try:
+        guild_stats = get_guild(guild_name)
+        guild_prefix = guild_stats[8]
+        names = guild_stats[0]
+        ranks = guild_stats[1]
+        xp = guild_stats[2]
+        joined = guild_stats[3]
+        owner = guild_stats[4]
+        level = guild_stats[6]
+        created = guild_stats[7]
         war = 'null'
-        member = member_count[val]
+        member = len(names)
         server_data = get_server()
         worlds = server_data.keys()
         for server in worlds:
@@ -239,29 +188,19 @@ def guild_data(prefix):
                     online_players.append(player)
                     online_servers.append(server)
                     online_ranks.append(ranks[i])
+    except IndexError:
+        empty = ['', '', [], '', [], '', '', '', '', '', '', '']
+        return empty
     return guild_name, guild_prefix, names, ranks, xp, joined, level, created, war, member, owner, online_players, online_ranks, online_servers
 
 
-def xp_list(ctx):
-    user_prefix = ctx
-    data = guild_data(user_prefix)
-    guild_members = data[2]
-    xp_contribution = data[4]
-    guild_contribution = {}
-    for i in range(len(guild_members)):
-        guild_contribution.update({guild_members[i]: xp_contribution[i]})
-    sorted_contribution = sorted(guild_contribution.items(), key=lambda x: x[1], reverse=True)
-    xp_ranking = dict(sorted_contribution)
-    show_top = 40
-    place = 1
-    display = '```json\n'
-    display += f' Guild XP contribution: \n'
-    display += f' #| Player               | XP\n'
-    for member in xp_ranking:
-        if place <= show_top:
-            xp_value = xp_ranking.get(member)
-            display += '{0:2d}| {1:20s} | {2:d} xp\n'.format(place, member, xp_value)
-            place += 1
-    display += '```'
-    return display
+def guild_find(prefix):
+    guild_name = "NOT_FOUND"
+    with open('/app/bot/gulids.json', 'r') as file:
+        data = json.load(file).get('guild_list')
+        for guild in data:
+            if prefix == guild.get("prefix"):
+                guild_name = guild.get("name")
+    return guild_name
+
 
