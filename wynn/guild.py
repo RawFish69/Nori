@@ -204,3 +204,56 @@ def guild_find(prefix):
     return guild_name
 
 
+def xp_list(ctx):
+    user_prefix = ctx
+    data = guild_data(user_prefix)
+    guild_members = data[2]
+    xp_contribution = data[4]
+    guild_contribution = {}
+    for i in range(len(guild_members)):
+        guild_contribution.update({guild_members[i]: xp_contribution[i]})
+    sorted_contribution = sorted(guild_contribution.items(), key=lambda x: x[1], reverse=True)
+    xp_ranking = dict(sorted_contribution)
+    show_top = 40
+    place = 1
+    display = '```json\n'
+    display += f' Guild XP contribution: \n'
+    display += f' #| Player               | XP\n'
+    for member in xp_ranking:
+        if place <= show_top:
+            xp_value = xp_ranking.get(member)
+            display += '{0:2d}| {1:20s} | {2:d} xp\n'.format(place, member, xp_value)
+            place += 1
+    display += '```'
+    return display
+
+
+def get_online(ign):
+    server_data = get_server()
+    servers = server_data.keys()
+    online_status = False
+    online_server = 'Null'
+    for world in servers:
+        player_list = server_data.get(world)
+        if ign in player_list:
+            online_status = True
+            online_server = world
+        else:
+            pass
+    return online_status, online_server
+
+
+def get_server():
+    servers = requests.get('https://api.wynncraft.com/public_api.php?action=onlinePlayers')
+    server_data = servers.json()
+    online_servers = []
+    online_data = {}
+    for world in server_data:
+        if 'timestamp' in server_data.values():
+            pass
+        elif 'WC' in world:
+            online_servers.append(world)
+    for server in online_servers:
+        server_players = server_data.get(server)
+        online_data.update({server: server_players})
+    return online_data
