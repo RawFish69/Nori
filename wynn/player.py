@@ -127,3 +127,18 @@ def get_online(ign):
         else:
             pass
     return online_status, online_server
+
+def get_server():
+    servers = requests.get('https://api.wynncraft.com/public_api.php?action=onlinePlayers')
+    server_data = servers.json()
+    online_servers = []
+    online_data = {}
+    for world in server_data:
+        if 'timestamp' in server_data.values():
+            pass
+        elif 'WC' in world:
+            online_servers.append(world)
+    for server in online_servers:
+        server_players = server_data.get(server)
+        online_data.update({server: server_players})
+    return online_data
