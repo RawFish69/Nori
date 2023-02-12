@@ -1,5 +1,16 @@
 import requests
 
+def item_update():
+    category = 'all'
+    request_data = requests.get(f'https://api.wynncraft.com/public_api.php?action=itemDB&category={category}')
+    item_data = request_data.json()
+    items = json.dumps(item_data, indent=3)
+    with open('/app/bot/wynn_items.json', 'w') as file:
+        file.write(items)
+    msg = 'Successfully updated local database with Wynncraft API endpoint.'
+    print(msg)
+    return msg
+
 def player_stats(ign):
     player_stat_raw = requests.get(f'https://api.wynncraft.com/v2/player/{ign}/stats')
     request_data = player_stat_raw.json()
