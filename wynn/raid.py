@@ -1,31 +1,123 @@
-# Sample code for leaderboard display
-@bot.command
-@lightbulb.command('lb', 'Leaderboard')
-@lightbulb.implements(lightbulb.SlashCommandGroup)
-async def leaderboard(ctx):
-    pass
+class raidView(miru.View):
+    @miru.button(label='TNA', style=hikari.ButtonStyle.PRIMARY)
+    async def button_next(self, button: miru.Button, ctx: miru.Context):
+        guild_name = guild_temporary
+        await ctx.edit_response(f'Processing TNA Leaderboard for [{guild_name}]...')
+        TNA_ranking = TNA_leaderboard(guild_name)
+        names = []
+        places_show = 1
+        for player in TNA_ranking.keys():
+            names.append(player)
+        if len(names) >= 20:
+            places_show = 20
+        else:
+            places_show = len(names)
+        display = '```json\n'
+        display += ' Wynncraft Raid\n'
+        display += ' The Nameless Anomaly [Lv. 103+]\n'
+        display += f' TNA Leaderboard in [{guild_name}]\n'
+        display += f' #| Player               | Clears\n'
+        for index in range(places_show):
+            name = names[index]
+            clears = TNA_ranking.get(name)
+            display += '{0:2d}| {1:20s} | {2:d}\n'.format(index + 1, name, clears)
+        display += '```'
+        await ctx.edit_response(display)
 
-@leaderboard.child()
-@lightbulb.option('guild', 'Prefix of the guild')
-@lightbulb.command('tna', 'The Nameless Anomaly')
-@lightbulb.implements(lightbulb.SlashSubCommand)
-async def TNA_lb(ctx):
-    await ctx.respond('Processing leaderboard data...')
-    guild_name = ctx.options.guild
-    TNA_ranking = TNA_leaderboard(guild_name)
-    names = []
-    places_show = 20
-    for player in TNA_ranking.keys():
-        names.append(player)
-    display = '```'
-    display += f'TNA Leaderboard in [{guild_name}]\n'
-    display += f' #| Player               | Clears\n'
-    for index in range(places_show):
-        name = names[index]
-        clears = TNA_ranking.get(name)
-        display += '{0:2d}| {1:20s} | {2:d}\n'.format(index + 1, name, clears)
-    display += '```'
-    await ctx.edit_last_response(display)
+    @miru.button(label='TCC', style=hikari.ButtonStyle.PRIMARY)
+    async def button_tcc(self, button: miru.Button, ctx: miru.Context):
+        guild_name = guild_temporary
+        await ctx.edit_response(f'Processing TCC Leaderboard for [{guild_name}]')
+        TCC_ranking = TCC_leaderboard(guild_name)
+        names = []
+        places_show = 1
+        for player in TCC_ranking.keys():
+            names.append(player)
+        if len(names) >= 20:
+            places_show = 20
+        else:
+            places_show = len(names)
+        display = '```json\n'
+        display += ' Wynncraft Raid\n'
+        display += ' The Canyon Colossus [Lv. 95+]\n'
+        display += f' TCC Leaderboard in [{guild_name}]\n'
+        display += f' #| Player               | Clears\n'
+        for index in range(places_show):
+            name = names[index]
+            clears = TCC_ranking.get(name)
+            display += '{0:2d}| {1:20s} | {2:d}\n'.format(index + 1, name, clears)
+        display += '```'
+        await ctx.edit_response(display)
+
+    @miru.button(label='NoL', style=hikari.ButtonStyle.PRIMARY)
+    async def button_nol(self, button: miru.Button, ctx: miru.Context):
+        guild_name = guild_temporary
+        await ctx.edit_response(f'Processing NoL Leaderboard for [{guild_name}]')
+        NOL_ranking = NOL_leaderboard(guild_name)
+        names = []
+        places_show = 1
+        for player in NOL_ranking.keys():
+            names.append(player)
+        if len(names) >= 20:
+            places_show = 20
+        else:
+            places_show = len(names)
+        display = '```json\n'
+        display += ' Wynncraft Raid\n'
+        display += ' Nexus of Light [Lv. 80+]\n'
+        display += f' NOL Leaderboard in [{guild_name}]\n'
+        display += f' #| Player               | Clears\n'
+        for index in range(places_show):
+            name = names[index]
+            clears = NOL_ranking.get(name)
+            display += '{0:2d}| {1:20s} | {2:d}\n'.format(index + 1, name, clears)
+        display += '```'
+        await ctx.edit_response(display)
+
+    @miru.button(label='NoG', style=hikari.ButtonStyle.PRIMARY)
+    async def button_NOG(self, button: miru.Button, ctx: miru.Context):
+        guild_name = guild_temporary
+        await ctx.edit_response(f'Processing NoG Leaderboard for [{guild_name}]')
+        NOG_ranking = NOG_leaderboard(guild_name)
+        names = []
+        places_show = 1
+        for player in NOG_ranking.keys():
+            names.append(player)
+        if len(names) >= 20:
+            places_show = 20
+        else:
+            places_show = len(names)
+        display = '```json\n'
+        display += ' Wynncraft Raid\n'
+        display += ' Nest of the Grootslang [Lv. 54+]\n'
+        display += f' NOG Leaderboard in [{guild_name}]\n'
+        display += f' #| Player               | Clears\n'
+        for index in range(places_show):
+            name = names[index]
+            clears = NOG_ranking.get(name)
+            display += '{0:2d}| {1:20s} | {2:d}\n'.format(index + 1, name, clears)
+        display += '```'
+        await ctx.edit_response(display)
+
+    @miru.button(label='xp', style=hikari.ButtonStyle.SUCCESS, row=2)
+    async def button_xp(self, button: miru.Button, ctx: miru.Context):
+        guild_name = guild_temporary
+        display = xp_list(guild_name)
+        await ctx.edit_response(display)
+
+    @miru.button(label='menu', style=hikari.ButtonStyle.SUCCESS, row=2)
+    async def button_back(self, button: miru.Button, ctx: miru.Context):
+        guild_name = guild_temporary
+        msg = '```json\n'
+        msg += 'Wynncraft Raid Report [beta]\n'
+        msg += 'Information:\n'
+        msg += '1. TNA - The Nameless Anomaly\n'
+        msg += '2. TCC - The Canyon Colossus\n'
+        msg += '3. NoL - Nexus of Light\n'
+        msg += '4. NoG - Nest of the Grootslangs\n'
+        msg += f"Select a leaderboard for guild [{guild_name}]```"
+        await ctx.edit_response(msg)
+
 
 
 def raid_stats(ign):
