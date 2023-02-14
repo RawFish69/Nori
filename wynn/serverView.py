@@ -1,5 +1,3 @@
-
-
 class serverView(miru.View):
     @miru.button(emoji='⬇', style=hikari.ButtonStyle.PRIMARY)
     async def button_server(self, button: miru.Button, ctx: miru.Context):
