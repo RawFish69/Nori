@@ -4,7 +4,7 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 
 ## Supported Features
 
-### Wynncraft
+### Wynn
 - Player Stats
 - Guild Stats 
 - Raid Leaderboard 
