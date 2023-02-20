@@ -17,6 +17,8 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 - Forgery mythic probability graph
 
 ### Others
+- AI response
+- AI image generation
 - Weather status
 - Flight status
 - And more!
