@@ -1,5 +1,4 @@
 # Sample code of how nori handles user message prompt and respond
-
 import requests
 
 
