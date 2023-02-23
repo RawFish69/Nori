@@ -23,7 +23,14 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 - Flight status
 - And more!
 
-More features are planned and still work in progress.
+## Planned Features
+
+- In chat file management, file format conversion, etc
+- Play music in voice channel
+- In chat game, TBD
+- Pattern recognition for image, audio, and potentially video
+- Tracker for multiple purposes.
+- And more...
 
 ## Repository Information
 
