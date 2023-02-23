@@ -3,22 +3,22 @@ class serverView(miru.View):
     async def button_server(self, button: miru.Button, ctx: miru.Context):
         serverList = get_server()
         serverTime = get_uptime()
-        index = 0
         response = '```json\n'
-        response += '|All Online Servers:\n'
-        response += '|------------------------------|\n'
-        response += '| Server |   Players | Uptime  |\n'
-        for server in serverList.items():
+        response += 'All Online Servers:\n'
+        response += '+--------+----------+----------+------------+\n'
+        response += '| Server | Players  | Uptime   | Soul Point |\n'
+        response += '+--------+----------+----------+------------+\n'
+        for server in sorted(serverList.items(), key=lambda x: serverTime[x[0]][0]):
             world_ID = server[0]
             player_count = len(server[1])
-            uptime = serverTime.get(world_ID)
+            uptime, soul_timer = serverTime.get(world_ID)
             if player_count >= 50:
-                response += '| {0:6s} | {1:6d}/50 | {2} | [Full]\n'.format(world_ID, player_count, uptime)
-                index += 1
+                response += '| {:<6s} | {:>5d}/50 | {:>8} | {:>10} | [Full]\n'.format(world_ID, player_count, uptime,
+                                                                                      soul_timer)
             else:
-                response += '| {0:6s} | {1:6d}/50 | {2} |\n'.format(world_ID, player_count, uptime)
-                index += 1
-        response += '|------------------------------|\n'
+                response += '| {:<6s} | {:>5d}/50 | {:>8} | {:>10} |\n'.format(world_ID, player_count, uptime,
+                                                                               soul_timer)
+        response += '+--------+----------+----------+------------+\n'
         response += '```'
         await ctx.edit_response(response)
 
@@ -27,27 +27,28 @@ class serverView(miru.View):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def server_list(ctx):
     view = serverView(timeout=60)
+    index = 0
+    showed_servers = 20
     serverList = get_server()
     serverTime = get_uptime()
-    index = 0
-    show_servers = 10
     response = '```json\n'
-    response += '|Online Servers:\n'
-    response += '|------------------------------|\n'
-    response += '| Server |   Players | Uptime  |\n'
-    for server in serverList.items():
-        if index <= show_servers:
+    response += 'Online Servers:\n'
+    response += '+--------+----------+----------+------------+\n'
+    response += '| Server | Players  | Uptime   | Soul Point |\n'
+    response += '+--------+----------+----------+------------+\n'
+    for server in sorted(serverList.items(), key=lambda x: serverTime[x[0]][0]):
+        if index <= showed_servers:
             world_ID = server[0]
             player_count = len(server[1])
-            uptime = serverTime.get(world_ID)
+            uptime, soul_timer = serverTime.get(world_ID)
             if player_count >= 50:
-                response += '| {0:6s} | {1:6d}/50 | {2} | [Full]\n'.format(world_ID, player_count, uptime)
+                response += '| {:<6s} | {:>5d}/50 | {:>8} | {:>10} | [Full]\n'.format(world_ID, player_count, uptime,
+                                                                                      soul_timer)
                 index += 1
             else:
-                response += '| {0:6s} | {1:6d}/50 | {2} |\n'.format(world_ID, player_count, uptime)
+                response += '| {:<6s} | {:>5d}/50 | {:>8} | {:>10} |\n'.format(world_ID, player_count, uptime, soul_timer)
                 index += 1
-    response += '|------------------------------|\n'
-    response += '|Click for Full list of servers|\n'
+    response += '+--------+----------+----------+------------+\n'
     response += '```'
     display = await ctx.respond(f'{response}', components=view.build())
     display = await display
@@ -96,7 +97,11 @@ def get_uptime():
         up = int(info.get('firstSeen') / 1000)
         now = int(time.time())
         uptime_s = now - up
+        print(uptime_s)
         uptime = str(timedelta(seconds=uptime_s))
-        world_uptime.update({world: uptime})
+        soul_point = 1200 - (uptime_s - 1200) % 1200
+        soul_timer = str(timedelta(seconds=soul_point))
+        print(soul_timer)
+        world_uptime.update({world: (uptime, soul_timer)})
     return world_uptime
 
