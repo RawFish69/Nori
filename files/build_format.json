@@ -1,0 +1,14 @@
+{
+   "Builds": [
+      {
+         "name": "Name of the build",
+         "link": "builder link",
+         "tag": "all lower case, separate with comma"
+      },
+      {
+         "name": "Example",
+         "link": "https://hppeng-wynn.github.io",
+         "tag": "abc, 123"
+      }
+   ]
+}
