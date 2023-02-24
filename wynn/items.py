@@ -66,6 +66,8 @@ def item_roll(name):
                 pass
             elif stat in base_def:
                 pass
+            elif value == -1:
+                pass
             elif value != 0 or result.get('identified') == True:
                 if int(value) > 0:
                     positive_roll = round(random.uniform(0.3, 1.3), 2)
