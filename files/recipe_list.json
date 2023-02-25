@@ -8,7 +8,42 @@
       {
          "type": "Leggings",
          "link": "https://hppeng-wynn.github.io/crafter/#19F9F9fAM8r9t9i91",
-         "tag": "war, tier stack, war"
+         "tag": "war, tier stack"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#18z8q8z8q8z8q9j91",
+         "tag": "war, main percent, spell percent"
+      },
+      {
+         "type": "Dagger",
+         "link": "https://hppeng-wynn.github.io/crafter/#1AD6YAD6262AY9S92",
+         "tag": "agi sp, agi req, int req, spell percent, mana regen"
+      },
+      {
+         "type": "Chestplate",
+         "link": "https://hppeng-wynn.github.io/crafter/#17s7s7s7s7sAY9d91",
+         "tag": "gxp, dex req"
+      },
+      {  "type": "Boots",
+         "link": "https://hppeng-wynn.github.io/crafter/#1969C9F7j7j7j9a91",
+         "tag": "gxp, dex req"
+      },
+      {  "type": "Bracelet",
+         "link": "https://hppeng-wynn.github.io/crafter/#1AEAEAEAE9c9c9c91",
+         "tag": "gxp, agi req"
+      },
+      {  "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#19-9-9-9-9-9-9f91",
+         "tag": "walkspeed"
+      },
+      {  "type": "Spear",
+         "link": "https://hppeng-wynn.github.io/crafter/#16I6I7X7X62AY9p91",
+         "tag":  "int req, spell raw, cidol, mana regen"
+      }, 
+      {  "type": "Potion",
+      "link": "https://hppeng-wynn.github.io/crafter/#1797979799j9j1g91",
+      "tag":  "cxp, loot bonus, leveling"
       }
    ]
 }
