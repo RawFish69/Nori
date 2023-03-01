@@ -99,6 +99,51 @@
          "type": "Wand",
          "link": "https://hppeng-wynn.github.io/crafter/#19L9k9f9L9f9f9l91",
          "tag": "woodworking, mana regen, no reqs, 1 dura, offhand"
+      },
+      {
+         "type": "Wand",
+         "link": "https://hppeng-wynn.github.io/crafter/#1A5A5929292929q91",
+         "tag": "woodworking, walkspeed, no reqs, offhand"
+      },
+      {
+         "type": "Dagger",
+         "link": "https://hppeng-wynn.github.io/crafter/#1AYAY929292929e91",
+         "tag": "weaponsmithing, walkspeed, no reqs, offhand"
+      },
+      {
+         "type": "Ring",
+         "link": "https://hppeng-wynn.github.io/crafter/#14+4+4+4+4+4+9m51",
+         "tag": "jeweling, gxp, no reqs, negative health"
+      },
+      {
+         "type": "Ring",
+         "link": "https://hppeng-wynn.github.io/crafter/#1Ab4zAbAS9C9c9m91",
+         "tag": "jeweling, health, def sp, no reqs"
+      },
+      {
+         "type": "Ring",
+         "link": "https://hppeng-wynn.github.io/crafter/#19i9S9i9S9i9c9m91",
+         "tag": "jeweling, spell percent, dex req, int req, dex sp"
+      },
+      {
+         "type": "Ring",
+         "link": "https://hppeng-wynn.github.io/crafter/#18O8O8O8O8O8O9m91",
+         "tag": "jeweling, loot quality"
+      },
+      {
+         "type": "Ring",
+         "link": "https://hppeng-wynn.github.io/crafter/#1619k9HAc7J4N9m91",
+         "tag": "jeweling, str req, dex req, int req, def req, agi req, tier stack, mana regen"
+      },
+      {
+         "type": "Chestplate",
+         "link": "https://hppeng-wynn.github.io/crafter/#17z7z627zAYAY9d91",
+         "tag": "armoring, gxp, no reqs"
+      },
+      {
+         "type": "Chestplate",
+         "link": "https://hppeng-wynn.github.io/crafter/#167968w9F9T8w9g91",
+         "tag": "armoring, mana regen, walkspeed, agi reqs, int reqs"
       }
    ]
 }
