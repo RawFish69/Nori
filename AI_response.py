@@ -1,6 +1,8 @@
 # Sample code of how nori handles user message prompt and respond
 import requests
 
+
+# For model gpt-3.5 or above
 @bot.listen()
 async def AI_response(event: hikari.MessageCreateEvent):
     response_permission = False
