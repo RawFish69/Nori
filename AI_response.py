@@ -11,7 +11,8 @@ async def on_message_response(event: hikari.MessageCreateEvent):
     if event.is_bot or not event.content:
         return
     if response_permission == True:
-        endpoint = "https://api.openai.com/v1/chat/completions"
+        gpt_endpoint = "https://api.openai.com/v1/chat/completions"
+        endpoint = "https://api.openai.com/v1/completions"
         # API key
         api_key = AI_API_KEY
         # Input data
@@ -26,7 +27,7 @@ async def on_message_response(event: hikari.MessageCreateEvent):
             data = {
                 "model": engine,
                 "messages": [
-                    {"role": "system", "content": "General behavior"},
+                    {"role": "system", "content": "Behavior of AI"},
                     {"role": "assistant", "content": "Sample"},
                     {"role": "user", "content": f"{prompt}"},
                 ],
@@ -35,7 +36,7 @@ async def on_message_response(event: hikari.MessageCreateEvent):
                 "top_p": 1,
             }
             # Send request
-            response = requests.post(endpoint, headers=headers, json=data)
+            response = requests.post(gpt_endpoint, headers=headers, json=data)
             # Extract response text
             result = response.json()
             generated_text = result["choices"][0]["message"]["content"]
