@@ -144,6 +144,57 @@
          "type": "Chestplate",
          "link": "https://hppeng-wynn.github.io/crafter/#167968w9F9T8w9g91",
          "tag": "armoring, mana regen, walkspeed, agi reqs, int reqs"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#17z717z717z719j51",
+         "tag": "alchemy, gxp"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#1505050507Y7Y9j51",
+         "tag": "alchemy, gspeed"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#17g7g7gB57gB59f41",
+         "tag": "cooking, gxp, negative gspeed"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#15151515151519f41",
+         "tag": "cooking, gspeed"
+      },
+      {
+         "type": "Scroll",
+         "link": "https://hppeng-wynn.github.io/crafter/#14m7Z4m7Z4m719o51",
+         "tag": "scribing, gxp, walkspeed"
+      },
+      {
+         "type": "Scroll",
+         "link": "https://hppeng-wynn.github.io/crafter/#1A371A3716u719o51",
+         "tag": "scribing, gspeed"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#13Y3Y3Y3Y3Y3Y9f51",
+         "tag": "cooking, loot quality, item farming"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#18080808080809f11",
+         "tag": "cooking, loot bonus, item farming"
+      },
+      {
+         "type": "Scroll",
+         "link": "https://hppeng-wynn.github.io/crafter/#14c4c4c4c4c4c9o51",
+         "tag": "scribing, loot bonus, cxp, item farming"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#1797Y797Y79799j51",
+         "tag": "alchemy, cxp, loot bonus, item farming"
       }
+      
    ]
 }
