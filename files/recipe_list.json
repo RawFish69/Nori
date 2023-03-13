@@ -42,8 +42,8 @@
          "tag":  "weaponsmithing, int req, spell raw, cidol, mana regen"
       }, 
       {  "type": "Potion",
-      "link": "https://hppeng-wynn.github.io/crafter/#1797979799j9j1g91",
-      "tag":  "alchemy, cxp, loot bonus, leveling"
+         "link": "https://hppeng-wynn.github.io/crafter/#1797979799j9j1g91",
+         "tag":  "alchemy, cxp, loot bonus, leveling"
       },
       {
          "type": "Spear",
@@ -194,6 +194,76 @@
          "type": "Potion",
          "link": "https://hppeng-wynn.github.io/crafter/#1797Y797Y79799j51",
          "tag": "alchemy, cxp, loot bonus, item farming"
+      },
+      {
+         "type": "Bracelet",
+         "link": "https://hppeng-wynn.github.io/crafter/#18j8j8j8j9C9C9Q11",
+         "tag": "jeweling, loot bonus, cxp, negative walkspeed, 1 dura"
+      },
+      {
+         "type": "Boots",
+         "link": "https://hppeng-wynn.github.io/crafter/#19C965+9u5+5+9O11",
+         "tag": "tailoring, loot bonus, loot quality, 1 dura"
+      },
+      {
+         "type": "Helmet",
+         "link": "https://hppeng-wynn.github.io/crafter/#177777777AYAY9r11",
+         "tag": "armoring, loot bonus, cxp, 1 dura, gamble"
+      },
+      {
+         "type": "Relik",
+         "link": "https://hppeng-wynn.github.io/crafter/#166666666A5A59k51",
+         "tag": "woodworking, health regen percent, offhand"
+      },
+      {
+         "type": "Helmet",
+         "link": "https://hppeng-wynn.github.io/crafter/#19Q9Q9Q9QAYAY9r11",
+         "tag": "armoring, loot bonus, cxp, 1 dura, negative raw health regen, walkspeed"
+      },
+      {
+         "type": "Relik",
+         "link": "https://hppeng-wynn.github.io/crafter/#18o9u9B7e8o9u9k91",
+         "tag": "woodworking, mana regen, int req, water damage"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#16n6n6n6n6u6u9j51",
+         "tag": "alchemy, war, water damage"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#15T5T5T5T5T5T8351",
+         "tag": "alchemy, cxp, leveling"
+      },
+      {
+         "type": "Scroll",
+         "link": "https://hppeng-wynn.github.io/crafter/#15T5T5T5T5T5T8F51",
+         "tag": "scribing, cxp, leveling"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#10808080808084551",
+         "tag": "cooking, cxp, leveling"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#10I0I0I0I0I0I6v41",
+         "tag": "cooking, cxp, leveling"
+      },
+      {
+         "type": "Bracelet",
+         "link": "https://hppeng-wynn.github.io/crafter/#1Ac6FAS6FAbAb9c91",
+         "tag": "jeweling, tier stack, str req, dex req, agi req, mana steal, def sp"
+      },
+      {
+         "type": "Bracelet",
+         "link": "https://hppeng-wynn.github.io/crafter/#19U9U9U9U9c9c9c91",
+         "tag": "jeweling, walkspeed, agi req"
+      },
+      {
+         "type": "Bracelet",
+         "link": "https://hppeng-wynn.github.io/crafter/#15m5m5m5m9C9C9m91",
+         "tag": "jeweling, walkspeed, no reqs"
       }
       
    ]
