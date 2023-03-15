@@ -146,9 +146,14 @@
          "tag": "acrobat, acrocat, cata, assassin, crafted, rawfish"
       },
       {
-         "name": "Fallen Monk Hero",
+         "name": "Fallen Monk Hero (tomes needed)",
          "link": "https://hppeng-wynn.github.io/builder?v=2#8_0ZP07Y0D40Qq0nu0nu0wr0Ji0Qi1Q1V01-j2C1g0000103tlU150z0+0+0+0+0oz+wX-lJ2",
          "tag": "fallen monk, hero, warrior, no crafted, badlife"
+      }
+      {
+         "name": "Fallen Monk Convergence (tomes needed)",
+         "link": "https://hppeng-wynn.github.io/builder?v=2#8_0XL0PY0Jo0tZ0050K20K4CR-19i9S9C9c4+9i9n910ux160I1i1B061g1000361000361000361000361001Z61B1B0+0+0+0+0sjNhFS-jn0",
+         "tag": "fallen monk, convergence, warrior, hyedam"
       }
    ]
 }
