@@ -264,7 +264,78 @@
          "type": "Bracelet",
          "link": "https://hppeng-wynn.github.io/crafter/#15m5m5m5m9C9C9m91",
          "tag": "jeweling, walkspeed, no reqs"
+      },
+      {
+         "type": "Bracelet",
+         "link": "https://hppeng-wynn.github.io/crafter/#19X9k9HAS9X9k9c91",
+         "tag": "jeweling, mana regen, negative spell percent, int sp, no reqs"
+      },
+      {
+         "type": "Bracelet",
+         "link": "https://hppeng-wynn.github.io/crafter/#17I7I7I7I7I7I9c91",
+         "tag": "jeweling, water damage, negative melee percent, int req"
+      },
+      {
+         "type": "Relik",
+         "link": "https://hppeng-wynn.github.io/crafter/#1A5A56v6v6O6v9k91",
+         "tag": "woodworking, spell percent, int req"
+      },
+      {
+         "type": "Scroll",
+         "link": "https://hppeng-wynn.github.io/crafter/#11+1+1+1+1+1+9o51",
+         "tag": "scribing, loot quality, item farming"
+      },
+      {
+         "type": "Scroll",
+         "link": "https://hppeng-wynn.github.io/crafter/#19r9D9r7Z6u7Z9o51",
+         "tag": "scribing, war, earth damage, thunder damage, water damage, fire damage, air damage, rainbow damage"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#1A1A1A17Y6u9Y9j51",
+         "tag": "alchemy, war, earth damage, thunder damage, water damage, fire damage, air damage, rainbow damage"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#14E4E4E4E4E4E9f11",
+         "tag": "cooking, war, earth damage, thunder damage, water damage, fire damage, air damage, rainbow damage"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#15f5f5f5f5f5f9f11",
+         "tag": "cooking, war, spell damage percent, health regen raw"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#15858585858589f11",
+         "tag": "cooking, war, health, negative health regen raw"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#198989898AYAY9f11",
+         "tag": "cooking, war, mana regen"
+      },
+      {
+         "type": "Food",
+         "link": "https://hppeng-wynn.github.io/crafter/#16C6C6C6C6C6C9f11",
+         "tag": "cooking, war, mana regen, negative cxp"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#19I9I9I956u9Y9j91",
+         "tag": "alchemy, war, health"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#16V6V6V6V6u6u9j51",
+         "tag": "alchemy, war, health"
+      },
+      {
+         "type": "Potion",
+         "link": "https://hppeng-wynn.github.io/crafter/#1747474746u6u9j51",
+         "tag": "alchemy, war, dex sp, melee raw"
       }
+      
       
    ]
 }
