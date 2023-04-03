@@ -15,6 +15,7 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 - Guild HQ stats calculation
 - Guild XP contributed
 - Forgery mythic probability graph
+- Item changelog
 
 ### Others
 - AI response
