@@ -43,7 +43,7 @@
       {
          "name": "Sharp gma ignis dual",
          "link": "https://hppeng-wynn.github.io/builder?v=1#8_0XL08F0uX0QW0WA0K20K40OP0Qe1z04141m0x1g1000361001Z61000361001Z6102HZI0z0z0+0+0+0+0-tlzsRb2r6",
-         "tag": "gma, ignis, sharpshotter,archer, no crafted, tankofpacer, outdated link"
+         "tag": "gma, ignis, sharpshooter, archer, no crafted, tankofpacer, outdated link"
       },
       {
          "name": "Hybrid weathered",
@@ -73,7 +73,7 @@
       {
          "name": "Tstack Epoch Pandemonium",
          "link": "https://hppeng-wynn.github.io/builder?v=1#8_CR-1AY967G9F8rAs9g910F+0PW0VN0W7CR-19i9kASAc7JAS9m910Wf0uH0uz0p1M0j0+1B1g00001006FO15150+0+0+0+0mVhUocJ9jy0",
-         "tag": "tstack, archer, boltslinger, greed,  epoch, pandemonium, crafted item, birdmade, outdated link"
+         "tag": "tstack, archer, boltslinger, greed, epoch, pandemonium, crafted item, birdmade, outdated link"
       },
       {
          "name": "Combat Warp Pandemonium",
@@ -164,6 +164,16 @@
          "name": "Olympic Fast Hybrid (tomes needed)",
          "link": "https://hppeng-wynn.github.io/builder?v=2#8_0VI0000PW0Qt0050050NH0Ji0Qs161E010e221g00001007lU150z0+0+0+0+0p-pVoDcT30",
          "tag": "ritualist, olympic, shaman, no crafted, badlife"
+      },
+      {
+         "name": "Arbalest Uproot Gun",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0uB0DP0uX0Qt0vI0vI0Fl0Ji0231f140408161g00001001Z60z0z0+0+0+0+0--Rw-jU9",
+         "tag": "summoner, no crafted, shaman, badlife"
+      },
+      {
+         "name": "Absolution Fanatic Acolyte",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au0Pf0uj0QW0050K00x40OH0QI1G0+141p0+1g000000z0z0+0+0+0+0-j-jL-Hy52",
+         "tag": "acolyte, absolution, no crafted, shaman, badlife"
       }
    ]
 }
