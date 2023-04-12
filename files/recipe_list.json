@@ -459,6 +459,11 @@
          "type": "Bracelet",
          "link": "https://hppeng-wynn.github.io/crafter/#17I7I7I7I7I7I9c91",
          "tag": "jeweling, water damage, negative melee percent, 120 int req"
+      },
+      {
+         "type": "Helmet",
+         "link": "https://hppeng-wynn.github.io/crafter/#1AiAiAi3MAYAY9r91",
+         "tag": "armoring, mana regen, earth, water, rage, str req, int req"
       }
 
 
