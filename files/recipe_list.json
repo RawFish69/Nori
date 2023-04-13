@@ -71,9 +71,19 @@
          "tag": "woodworking, loot bonus, walkspeed, negative hpr raw"
       },
       {
+         "type": "Relik",
+         "link": "https://hppeng-wynn.github.io/crafter/#167677t7t7t7t4Q91",
+         "tag": "woodworking, cxp, spell raw, leveling 45, no reqs"
+      },
+      {
+         "type": "Relik",
+         "link": "https://hppeng-wynn.github.io/crafter/#17t7t7t7t7t7t7E91",
+         "tag": "woodworking, cxp, spell raw, leveling 79, no reqs"
+      },
+      {
          "type": "Dagger",
          "link": "https://hppeng-wynn.github.io/crafter/#1AD6YAD6262AY9S92",
-         "tag": "weaponsmithing, agi sp, 70 agi req, 51 int req, spell percent, mana regen"
+         "tag": "weaponsmithing, agi sp, 72 agi req, 53 int req, spell percent, mana regen"
       },
       {  
          "type": "Spear",
@@ -116,6 +126,26 @@
          "tag": "weaponsmithing, loot bonus, walkspeed, negative hpr raw"
       },
       {
+         "type": "Spear",
+         "link": "https://hppeng-wynn.github.io/crafter/#167677t7t7t7t4Z91",
+         "tag": "weaponsmithing, cxp, spell raw, leveling 45, no reqs"
+      },
+      {
+         "type": "Spear",
+         "link": "https://hppeng-wynn.github.io/crafter/#17t7t7t7t7t7t7Q91",
+         "tag": "weaponsmithing, cxp, spell raw, leveling 79, no reqs"
+      },
+      {
+         "type": "Leggings",
+         "link": "https://hppeng-wynn.github.io/crafter/#18h8h8h8h8h8h9i11",
+         "tag": "tailoring, soul point regen"
+      },
+      {
+         "type": "Leggings",
+         "link": "https://hppeng-wynn.github.io/crafter/#19F9F9fAM9w9t9i91",
+         "tag": "tailoring, tier stack 2, 106 str req"
+      },
+      {
          "type": "Leggings",
          "link": "https://hppeng-wynn.github.io/crafter/#196AM73966O9t9i91",
          "tag": "tailoring, war, tier stack 3, 108 str req"
@@ -127,8 +157,8 @@
       },
       {
          "type": "Leggings",
-         "link": "https://hppeng-wynn.github.io/crafter/#19f739fAM6O9t9i91",
-         "tag": "tailoring, war, tier stack 4, 66 str req"
+         "link": "https://hppeng-wynn.github.io/crafter/#1AM96963P9F8r9i91",
+         "tag": "tailoring, tier stack 3, 63 str req, 112 dex req"
       },
       {
          "type": "Leggings",
@@ -139,6 +169,11 @@
          "type": "Leggings",
          "link": "https://hppeng-wynn.github.io/crafter/#1679w9fAM8r9t9i91",
          "tag": "tailoring, war, tier stack 3, 124 str req, 65 dex req"
+      },
+      {
+         "type": "Leggings",
+         "link": "https://hppeng-wynn.github.io/crafter/#19f739fAM6O9t9i91",
+         "tag": "tailoring, war, tier stack 4, 66 str req"
       },
       {  
          "type": "Boots",
@@ -192,8 +227,13 @@
       },
       {
          "type": "Chestplate",
+         "link": "https://hppeng-wynn.github.io/crafter/#18h8h8h8h8h8h9d11",
+         "tag": "armoring, soul point regen"
+      },
+      {
+         "type": "Chestplate",
          "link": "https://hppeng-wynn.github.io/crafter/#17s7s7s7s7sAY9d91",
-         "tag": "armoring, 18-25 gxp, 81 dex req, low dura"
+         "tag": "armoring, 18-28 gxp, 84 dex req, low dura"
       },
       {
          "type": "Chestplate",
@@ -243,7 +283,7 @@
       {  
          "type": "Potion",
          "link": "https://hppeng-wynn.github.io/crafter/#1797979799j9j1g91",
-         "tag":  "alchemy, cxp, loot bonus, leveling"
+         "tag":  "alchemy, cxp, loot bonus, leveling 19"
       },
       {
          "type": "Potion",
@@ -268,7 +308,7 @@
       {
          "type": "Potion",
          "link": "https://hppeng-wynn.github.io/crafter/#15T5T5T5T5T5T8311",
-         "tag": "alchemy, cxp, leveling"
+         "tag": "alchemy, cxp, leveling 83"
       },
       {
          "type": "Potion",
@@ -318,12 +358,12 @@
       {
          "type": "Food",
          "link": "https://hppeng-wynn.github.io/crafter/#10808080808084551",
-         "tag": "cooking, cxp, leveling"
+         "tag": "cooking, cxp, leveling 47"
       },
       {
          "type": "Food",
          "link": "https://hppeng-wynn.github.io/crafter/#10I0I0I0I0I0I6v41",
-         "tag": "cooking, cxp, leveling"
+         "tag": "cooking, cxp, leveling 77"
       },
       {
          "type": "Food",
@@ -368,7 +408,7 @@
       {
          "type": "Scroll",
          "link": "https://hppeng-wynn.github.io/crafter/#15T5T5T5T5T5T8F11",
-         "tag": "scribing, cxp, leveling"
+         "tag": "scribing, cxp, leveling 83"
       },
       {
          "type": "Scroll",
@@ -379,6 +419,21 @@
          "type": "Scroll",
          "link": "https://hppeng-wynn.github.io/crafter/#19r9D9r7Z6u7Z9o51",
          "tag": "scribing, war, earth damage, thunder damage, water damage, fire damage, air damage, rainbow damage"
+      },
+      {
+         "type": "Necklace",
+         "link": "https://hppeng-wynn.github.io/crafter/#12d2d2d2d2d2d0S91",
+         "tag": "jeweling, cxp, stealing, leveling 3, no reqs"
+      },
+      {
+         "type": "Bracelet",
+         "link": "https://hppeng-wynn.github.io/crafter/#14p4p4p4p4p4p3s91",
+         "tag": "jeweling, cxp, stealing, leveling 43, no reqs"
+      },
+      {
+         "type": "Bracelet",
+         "link": "https://hppeng-wynn.github.io/crafter/#14p8j4p8j9c9c7d91",
+         "tag": "jeweling, cxp, leveling 83, no reqs"
       },
       {  
          "type": "Bracelet",
@@ -432,13 +487,18 @@
       },
       {
          "type": "Bracelet",
-         "link": "https://hppeng-wynn.github.io/crafter/#18j8j8j8j9C9C9Q11",
-         "tag": "jeweling, loot bonus, cxp, negative walkspeed, 1 dura"
+         "link": "https://hppeng-wynn.github.io/crafter/#1Ac6FAS6FAbAb9c91",
+         "tag": "jeweling, tier stack 1, 40 str req, 40 dex req, 40 agi req, mana steal, def sp"
+      },
+      {
+         "type": "Ring",
+         "link": "https://hppeng-wynn.github.io/crafter/#17JAc619k9H6F9m91",
+         "tag": "jeweling, 16 str req, 16 dex req, 16 def req, 16 agi req, tier stack 1, mana regen, mana steal"
       },
       {
          "type": "Bracelet",
-         "link": "https://hppeng-wynn.github.io/crafter/#1Ac6FAS6FAbAb9c91",
-         "tag": "jeweling, tier stack 1, 40 str req, 40 dex req, 40 agi req, mana steal, def sp"
+         "link": "https://hppeng-wynn.github.io/crafter/#18j8j8j8j9C9C9Q11",
+         "tag": "jeweling, loot bonus, cxp, negative walkspeed, 1 dura"
       },
       {
          "type": "Bracelet",
@@ -451,6 +511,11 @@
          "tag": "jeweling, walkspeed, no reqs"
       },
       {
+         "type": "Ring",
+         "link": "https://hppeng-wynn.github.io/crafter/#18j9k9f7J9f7J9m91",
+         "tag": "jeweling, walkspeed, no reqs, negative loot bonus"
+      },
+      {
          "type": "Bracelet",
          "link": "https://hppeng-wynn.github.io/crafter/#19X9k9HAS9X9k9c91",
          "tag": "jeweling, mana regen, negative spell percent, int sp, no reqs"
@@ -459,11 +524,6 @@
          "type": "Bracelet",
          "link": "https://hppeng-wynn.github.io/crafter/#17I7I7I7I7I7I9c91",
          "tag": "jeweling, water damage, negative melee percent, 120 int req"
-      },
-      {
-         "type": "Helmet",
-         "link": "https://hppeng-wynn.github.io/crafter/#1AiAiAi3MAYAY9r91",
-         "tag": "armoring, mana regen, earth, water, rage, str req, int req"
       }
 
 
@@ -472,3 +532,4 @@
       
    ]
 }
+
