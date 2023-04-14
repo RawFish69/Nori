@@ -127,7 +127,7 @@
       },
       {
          "name": "Riftwalker Warp no-crafted",
-         "link": "https://hppeng-wynn.github.io/builder?v=2#8_0Au01+0r507W0K20OW0K40OM0R10C0e1k0e2M1g10006C00010036C15150E0E0+0+0q-VhhCMtg0",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au09-0uj0wh0K20Fx0K40OH0R10e0t140f2M1g10006C0001007lU151B0E0E0+0+0p-VxBJtM2",
          "tag": "mage, riftwalker, warp, rawfish"
       },
       {
@@ -184,6 +184,11 @@
          "name": "Rage GMA Eleventh Hour",
          "link": "https://hppeng-wynn.github.io/builder/?v=3#8_CR-1AiAiAi3MAYAY9r910xO0uX0Qz0050050K40BR0Qe1z1Q0z0U111g0000100nZ610100+0+0+0+0-tdNzhJPXQ",
          "tag": "archer, sharpshooter, grandmother, rage, crafted, thequeenofdemons"
+      },
+      {
+         "name": "Riftwalker Warp TWA",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au01+0r507W0K20OW0wr0OM0R1060f1k062M1g10006C0001007lU1A1B0E0E0+0+0q-VxBJtM2",
+         "tag": "mage, riftwalker, warp, mana"
       }
    ]
 }
