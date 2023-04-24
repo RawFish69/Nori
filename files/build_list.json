@@ -191,9 +191,14 @@
          "tag": "mage, riftwalker, warp, mana"
       },
       {
-         "name": "TNA Alkatraz (Tierstack)",
+         "name": "TNA Alkatraz",
          "link": "https://hppeng-wynn.github.io/builder?v=3#8_CR-1AY96679F8rAs9g910xOCR-19F9F9fAM9w9t9i910QzCR-17JAc619k9H6F9m91CR-18j9k9f7J9f7J9m910K40uH0QJ2M1G-w0K061g10003610003610003610003601616030303030l-+uzUDl1",
-         "tag": "warrior, fallen, raid, alka, alkatraz, tstack, rawfish, dps"
+         "tag": "warrior, fallen, raid, alka, alkatraz, tierstack, rawfish, dps"
+      },
+      {
+         "name": "LI Alkatraz",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_CR-1AY96679F8rAs9g910xOCR-19F9F9fAM9w9t9i910QzCR-17JAc619k9H6F9m91CR-18j9k9f7J9f7J9m910K40uH0QJ2M1G-w0K061g10003610003610003610003601616030303030l-+uzUDl1",
+         "tag": "warrior, fallen, li, alka, alkatraz, tierstack, rawfish, dps, legendary island"
       }
    ]
 }
