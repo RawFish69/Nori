@@ -154,8 +154,8 @@
     },
     "Warp (combat)": {
       "walk speed": "32.5",
-      "health regen raw": "25",
-      "mana regen": "27.5",
+      "health regen raw": "27.5",
+      "mana regen": "25",
       "1st spell cost": "5",
       "air damage": "5",
       "2nd spell cost": "2.5"
