@@ -1,243 +1,243 @@
 {
   "Data": {
     "Apocalypse": {
-      "life steal": "60",
-      "health regen %": "30",
-      "exploding": "10"
+      "life steal": "60.0",
+      "health regen %": "30.0",
+      "exploding": "10.0"
     },
     "Hero": {
-      "walk speed": "80",
-      "health regen %": "20"
+      "walk speed": "80.0",
+      "health regen %": "20.0"
     },
     "Guardian": {
-      "health": "65",
-      "health regen raw": "35"
+      "health": "65.0",
+      "health regen raw": "35.0"
     },
     "Alkatraz": {
-      "earth damage": "50",
+      "earth damage": "50.0",
       "main attack damage %": "47.5",
       "exploding": "2.5"
     },
     "Idol (Combat)": {
       "spell damage": "52.5",
       "mana regen": "32.5",
-      "2nd spell cost": "10",
-      "reflection": "5"
+      "2nd spell cost": "10.0",
+      "reflection": "5.0"
     },
     "Idol (Lootrun)": {
-      "2nd spell cost": "60",
+      "2nd spell cost": "60.0",
       "mana regen": "27.5",
       "spell damage raw": "7.5",
-      "reflection": "5"
+      "reflection": "5.0"
     },
     "Thrundacrack": {
-      "3rd spell cost": "55",
-      "thunder damage": "25",
-      "water damage": "15",
+      "3rd spell cost": "55.0",
+      "thunder damage": "25.0",
+      "water damage": "15.0",
       "health regen %": "2.5",
       "walk speed": "2.5"
     },
     "Collapse (melee)": {
-      "main attack damage %": "80",
-      "mana steal": "20"
+      "main attack damage %": "80.0",
+      "mana steal": "20.0"
     },
     "Collapse (spell)": {
-      "mana steal": "80",
-      "main attack damage %": "20"
+      "mana steal": "80.0",
+      "main attack damage %": "20.0"
     },
     "Convergence": {
-      "3rd spell cost": "70",
-      "health regen %": "20",
+      "3rd spell cost": "70.0",
+      "health regen %": "20.0",
       "earth damage": "7.5",
       "thunder damage": "2.5"
     },
     "Az (Levelling)": {
-      "1st spell cost": "75",
-      "xp bonus": "20",
+      "1st spell cost": "75.0",
+      "xp bonus": "20.0",
       "fire damage": "2.5",
       "water damage": "2.5"
     },
     "Az (Endgame)": {
-      "1st spell cost": "80",
-      "fire OR water damage": "20"
+      "1st spell cost": "80.0",
+      "fire OR water damage": "20.0"
     },
     "Freedom": {
-      "mana regen": "60",
+      "mana regen": "60.0",
       "health": "27.5",
       "walk speed": "7.5",
-      "spell damage raw": "5"
+      "spell damage raw": "5.0"
     },
     "Grandmother": {
-      "health regen raw": "50",
-      "spell damage %": "35",
-      "health regen %": "15"
+      "health regen raw": "50.0",
+      "spell damage %": "35.0",
+      "health regen %": "15.0"
     },
     "Ignis": {
-      "health regen raw": "40",
-      "health": "24",
-      "health regen %": "24",
-      "4th spell cost": "10",
-      "fire damage": "2"
+      "health regen raw": "40.0",
+      "health": "24.0",
+      "health regen %": "24.0",
+      "4th spell cost": "10.0",
+      "fire damage": "2.0"
     },
     "Divzer": {
-      "mana steal": "60",
-      "life steal": "30",
-      "spell damage raw": "10"
+      "mana steal": "60.0",
+      "life steal": "30.0",
+      "spell damage raw": "10.0"
     },
     "Spring": {
-      "mana regen": "79",
-      "water damage": "20",
-      "thunder damage": "1"
+      "mana regen": "79.0",
+      "water damage": "20.0",
+      "thunder damage": "1.0"
     },
     "Stratiformis": {
-      "walk speed": "65",
-      "health": "30",
-      "spell damage %": "5"
+      "walk speed": "65.0",
+      "health": "30.0",
+      "spell damage %": "5.0"
     },
     "Epoch": {
-      "main attack damage raw": "60",
-      "life steal": "35",
-      "walk speed": "5"
+      "main attack damage raw": "60.0",
+      "life steal": "35.0",
+      "walk speed": "5.0"
     },
     "Pure": {
-      "spell damage %": "30",
-      "mana steal": "60",
-      "xp bonus": "10"
+      "spell damage %": "30.0",
+      "mana steal": "60.0",
+      "xp bonus": "10.0"
     },
     "Lament": {
-      "water damage": "60",
-      "mana steal": "25",
-      "1st spell cost": "15"
+      "water damage": "60.0",
+      "mana steal": "25.0",
+      "1st spell cost": "15.0"
     },
     "Gaia (melee)": {
-      "main attack damage raw": "80",
-      "main attack damage %": "15",
-      "poison": "5"
+      "main attack damage raw": "80.0",
+      "main attack damage %": "15.0",
+      "poison": "5.0"
     },
     "Gaia (spell)": {
-      "spell damage raw": "45",
-      "4th spell cost": "40",
+      "spell damage raw": "45.0",
+      "4th spell cost": "40.0",
       "main attack damage raw": "7.5",
       "poison": "7.5"
     },
     "Monster": {
-      "health": "40",
-      "mana steal": "20",
-      "fire damage": "20",
-      "heal": "10",
-      "life steal": "10"
+      "health": "40.0",
+      "mana steal": "20.0",
+      "fire damage": "20.0",
+      "heal": "10.0",
+      "life steal": "10.0"
     },
     "Singularity (spell)": {
-      "spell damage raw": "55",
-      "walk speed": "35",
+      "spell damage raw": "55.0",
+      "walk speed": "35.0",
       "spell damage %": "7.5",
-      "health regen raw": "35"
+      "health regen raw": "35.0"
     },
     "Singularity (hybrid)": {
-      "main attack damage raw": "10",
-      "spell damage raw": "30",
-      "walk speed": "25",
-      "main attack damage %": "35"
+      "main attack damage raw": "10.0",
+      "spell damage raw": "30.0",
+      "walk speed": "25.0",
+      "main attack damage %": "35.0"
     },
     "Fatal": {
-      "spell damage %": "50",
+      "spell damage %": "50.0",
       "1st spell cost": "27.5",
-      "2nd spell cost": "20",
+      "2nd spell cost": "20.0",
       "walk speed": "2.5"
     },
     "Warp": {
       "walk speed": "32.5",
       "2nd spell cost": "27.5",
-      "health regen raw": "25",
-      "mana regen": "5",
-      "health regen %": "5"
+      "health regen raw": "25.0",
+      "mana regen": "10.0",
+      "health regen %": "5.0"
     },
     "Warp (combat)": {
       "walk speed": "32.5",
       "health regen raw": "27.5",
-      "mana regen": "25",
-      "1st spell cost": "5",
-      "air damage": "5",
+      "mana regen": "25.0",
+      "1st spell cost": "5.0",
+      "air damage": "5.0",
       "2nd spell cost": "2.5"
     },
     "Quetz": {
-      "spell damage raw": "50",
-      "life steal": "30",
-      "walk speed": "15",
-      "jump height": "5"
+      "spell damage raw": "50.0",
+      "life steal": "30.0",
+      "walk speed": "15.0",
+      "jump height": "5.0"
     },
     "Aftershock": {
       "health": "72.5",
-      "earth damage": "20",
+      "earth damage": "20.0",
       "4th spell cost": "7.5"
     },
     "Olympic": {
-      "jump height": "45",
-      "walk speed": "25",
-      "air damage": "15",
-      "1st spell cost": "10",
-      "2nd spell cost": "5"
+      "jump height": "45.0",
+      "walk speed": "25.0",
+      "air damage": "15.0",
+      "1st spell cost": "10.0",
+      "2nd spell cost": "5.0"
     },
     "Hadal": {
-      "spell damage %": "35",
-      "3rd spell cost": "30",
-      "mana regen": "25",
-      "4th spell cost": "10"
+      "spell damage %": "35.0",
+      "3rd spell cost": "30.0",
+      "mana regen": "25.0",
+      "4th spell cost": "10.0"
     },
     "Sunstar": {
-      "main attack damage": "50",
-      "thunder damage": "25",
-      "life steal": "15",
-      "water damage": "0"
+      "main attack damage": "50.0",
+      "thunder damage": "25.0",
+      "life steal": "15.0",
+      "water damage": "0.0"
     },
     "Toxoplasmosis": {
-      "poison": "75",
-      "loot bonus": "15",
-      "mana steal": "5",
-      "life steal": "5"
+      "poison": "75.0",
+      "loot bonus": "15.0",
+      "mana steal": "5.0",
+      "life steal": "5.0"
     },
     "Fantasia": {
-      "3rd spell cost": "30",
-      "mana regen": "25",
-      "spell damage %": "20",
-      "mana steal": "15",
-      "4th spell cost": "10"
+      "3rd spell cost": "30.0",
+      "mana regen": "25.0",
+      "spell damage %": "20.0",
+      "mana steal": "15.0",
+      "4th spell cost": "10.0"
     },
     "Absolution": {
       "water damage": "42.5",
-      "mana regen": "25",
-      "health": "20",
+      "mana regen": "25.0",
+      "health": "20.0",
       "1st spell cost": "7.5",
-      "fire damage": "5"
+      "fire damage": "5.0"
     },
     "Immolation": {
-      "fire damage": "25",
-      "air damage": "25",
-      "health": "20",
+      "fire damage": "25.0",
+      "air damage": "25.0",
+      "health": "20.0",
       "3rd spell cost": "17.5",
       "health regen %": "12.5"
     },
     "Archangel (Levelling)": {
-      "walk speed": "40",
-      "health": "30",
-      "health regen raw": "20",
-      "health regen %": "10"
+      "walk speed": "40.0",
+      "health": "30.0",
+      "health regen raw": "20.0",
+      "health regen %": "10.0"
     },
     "Archangel (Offhand)": {
-      "walk speed": "80",
+      "walk speed": "80.0",
       "health regen raw": "12.5",
-      "health regen %": "5",
+      "health regen %": "5.0",
       "health": "2.5"
     },
     "Nullification": {
-      "life steal": "45",
-      "mana steal": "40",
-      "reflection": "5",
-      "elemental defences": "2"
+      "life steal": "45.0",
+      "mana steal": "40.0",
+      "reflection": "5.0",
+      "elemental defences": "2.0"
     },
     "Cataclysm": {
-      "health": "80",
-      "thunder damage": "20"
+      "health": "80.0",
+      "thunder damage": "20.0"
     },
     "Grimtrap": {
       "life steal": "45",
