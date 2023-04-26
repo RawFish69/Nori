@@ -158,7 +158,8 @@
       "mana regen": "25.0",
       "1st spell cost": "5.0",
       "air damage": "5.0",
-      "2nd spell cost": "2.5"
+      "2nd spell cost": "2.5",
+      "health regen": "2.0"
     },
     "Quetz": {
       "spell damage raw": "50.0",
