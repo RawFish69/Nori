@@ -1,9 +1,9 @@
 {
   "Data": {
     "Apocalypse": {
-      "life steal": "60.0",
-      "health regen %": "30.0",
-      "exploding": "10.0"
+      "life steal": "80.0",
+      "health regen %": "15.0",
+      "exploding": "5.0"
     },
     "Hero": {
       "walk speed": "80.0",
@@ -47,9 +47,9 @@
     },
     "Convergence": {
       "3rd spell cost": "70.0",
-      "health regen %": "20.0",
-      "earth damage": "7.5",
-      "thunder damage": "2.5"
+      "health regen %": "12.5",
+      "earth damage": "12.5",
+      "thunder damage": "5.0"
     },
     "Az (Levelling)": {
       "1st spell cost": "75.0",
@@ -205,11 +205,11 @@
       "4th spell cost": "10.0"
     },
     "Absolution": {
-      "water damage": "42.5",
-      "mana regen": "25.0",
-      "health": "20.0",
-      "1st spell cost": "7.5",
-      "fire damage": "5.0"
+      "water damage": "50.0",
+      "health": "22.0",
+      "mana regen": "17.0",
+      "1st spell cost": "10.0",
+      "fire damage": "1.0"
     },
     "Immolation": {
       "fire damage": "25.0",
@@ -293,8 +293,8 @@
       "walk speed": "5.0"
     },
     "Resurgence": {
-      "mana regen": "50.0",
-      "health regen raw": "25.0",
+      "mana regen": "40.0",
+      "health regen raw": "30.0",
       "spell damage %": "20.0",
       "walk speed": "5.0"
     },
@@ -358,9 +358,9 @@
       "walk speed": "2.5"
     },
     "Warchief (thunder)": {
-      "thunder damage": "40.0",
-      "main attack damage %": "30.0",
-      "main attack damage raw": "22.5",
+      "thunder damage": "47.5",
+      "main attack damage %": "25.0",
+      "main attack damage raw": "20.0",
       "exploding": "5.0",
       "walk speed": "2.5"
     },
