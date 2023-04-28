@@ -9,9 +9,13 @@
       "walk speed": "80.0",
       "health regen %": "20.0"
     },
-    "Guardian": {
-      "health": "65.0",
-      "health regen raw": "35.0"
+    "Guardian (War)": {
+      "health": "90.0",
+      "health regen raw": "10.0"
+    },
+    "Guardian (Combat)": {
+      "health regen raw": "65.0",
+      "health": "35.0"
     },
     "Alkatraz": {
       "earth damage": "50.0",
@@ -80,9 +84,9 @@
       "fire damage": "2.0"
     },
     "Divzer": {
-      "mana steal": "60.0",
-      "life steal": "30.0",
-      "spell damage raw": "10.0"
+      "mana steal": "65.0",
+      "life steal": "17.5",
+      "spell damage raw": "17.5"
     },
     "Spring": {
       "mana regen": "79.0",
@@ -114,12 +118,6 @@
       "main attack damage %": "15.0",
       "poison": "5.0"
     },
-    "Gaia (spell)": {
-      "spell damage raw": "45.0",
-      "4th spell cost": "40.0",
-      "main attack damage raw": "7.5",
-      "poison": "7.5"
-    },
     "Monster": {
       "health": "40.0",
       "mana steal": "20.0",
@@ -145,6 +143,11 @@
       "2nd spell cost": "20.0",
       "walk speed": "2.5"
     },
+    "Fatal (Arcanist)": {
+      "spell damage %": "70.0",
+      "2nd spell cost": "20.0",
+      "walk speed": "10.0"
+    },
     "Warp": {
       "walk speed": "32.5",
       "2nd spell cost": "27.5",
@@ -153,19 +156,18 @@
       "health regen %": "5.0"
     },
     "Warp (combat)": {
-      "walk speed": "32.5",
-      "health regen raw": "27.5",
-      "mana regen": "25.0",
-      "1st spell cost": "5.0",
-      "air damage": "5.0",
-      "2nd spell cost": "2.5",
-      "health regen": "2.0"
+      "health regen raw": "35.0",
+      "walk speed": "35.0",
+      "mana regen": "20.0",
+      "health regen": "3.0",
+      "air damage": "3.0",
+      "2nd spell cost": "2.0",
+      "1st spell cost": "2.0"
     },
     "Quetz": {
       "spell damage raw": "50.0",
       "life steal": "30.0",
-      "walk speed": "15.0",
-      "jump height": "5.0"
+      "walk speed": "20.0"
     },
     "Aftershock": {
       "health": "72.5",
@@ -246,12 +248,6 @@
       "4th spell cost": "22.5",
       "poison": "7.5"
     },
-    "Grimtrap (Cherry bomb)": {
-      "4th spell cost": "50.0",
-      "mana steal": "30.0",
-      "life steal": "17.5",
-      "poison": "2.5"
-    },
     "Weathered": {
       "air damage": "45.0",
       "walk speed": "35.0",
@@ -277,11 +273,6 @@
       "mana steal": "15.0",
       "exploding": "7.5",
       "2nd spell cost": "7.5"
-    },
-    "Oblivion (melee)": {
-      "exploding": "40.0",
-      "mana steal": "35.0",
-      "mana regen": "25.0"
     },
     "Discoverer": {
       "loot bonus": "99.0",
@@ -380,5 +371,70 @@
       "health": "7.5",
       "walk speed": "5.0"
     }
+  },
+  "unid": {
+    "Apocalypse": "0.75",
+    "Hero": "7.5",
+    "Guardian (War)": "11",
+    "Guardian (Combat)": "11",
+    "Alkatraz": "7",
+    "Idol (Combat)": "30",
+    "Idol (Lootrun)": "30",
+    "Thrundacrack": "3",
+    "Collapse (melee)": "2.5",
+    "Collapse (spell)": "2.5",
+    "Convergence": "8.5",
+    "Az (Levelling)": "2",
+    "Az (Endgame)": "2",
+    "Freedom": "8",
+    "Grandmother": "7",
+    "Ignis": "8",
+    "Divzer": "11",
+    "Spring": "3",
+    "Stratiformis": "17.5",
+    "Epoch": "22",
+    "Pure": "3.5",
+    "Lament": "4.5",
+    "Gaia (melee)": "1",
+    "Monster": "6.5",
+    "Singularity (spell)": "3.5",
+    "Singularity (hybrid)": "3.5",
+    "Fatal": "3",
+    "Fatal (Arcanist)": "3",
+    "Warp": "20",
+    "Warp (combat)": "20",
+    "Quetz": "5.5",
+    "Aftershock": "5.5",
+    "Olympic": "5",
+    "Hadal": "2",
+    "Sunstar": "1",
+    "Toxoplasmosis": "7.5",
+    "Fantasia": "1.5",
+    "Absolution": "14",
+    "Immolation": "2.5",
+    "Archangel (Levelling)": "3.5",
+    "Archangel (Offhand)": "",
+    "Nullification": "4",
+    "Cataclysm": "22",
+    "Grimtrap": "3",
+    "Weathered": "8",
+    "Inferno": "3.5",
+    "Nirvana": "14",
+    "Oblivion": "10",
+    "Discoverer": "18",
+    "Crusade Sabatons": "6",
+    "Resurgence": "1",
+    "Galleon": "0.75",
+    "Boreal": "0.75",
+    "Slayer (spell)": "0.75",
+    "Slayer (Hybrid)": "0.75",
+    "Moontower": "3.5",
+    "Dawnbreak (melee)": "0.3",
+    "Dawnbreak (spell)": "0.3",
+    "Stardew": "1",
+    "Warchief (earth)": "1",
+    "Warchief (thunder)": "1",
+    "Revenant (melee)": "0.75",
+    "Revenant (spell)": "0.75"
   }
 }
