@@ -164,7 +164,7 @@
       "2nd spell cost": "2.0",
       "1st spell cost": "2.0"
     },
-    "Quetz": {
+    "Quetzalcoatl": {
       "spell damage raw": "50.0",
       "life steal": "30.0",
       "walk speed": "20.0"
@@ -403,7 +403,7 @@
     "Fatal (Arcanist)": "3",
     "Warp": "20",
     "Warp (combat)": "20",
-    "Quetz": "5.5",
+    "Quetzalcoatl": "5.5",
     "Aftershock": "5.5",
     "Olympic": "5",
     "Hadal": "2",
@@ -438,6 +438,6 @@
     "Revenant (spell)": "0.75"
   },
   "date": {
-    "Last update": "2023-04-28 15:49:09"
+    "Last update": "2023-04-28 22:51:56"
   }
 }
