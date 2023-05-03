@@ -579,6 +579,11 @@
          "type": "Ring",
          "link": "https://hppeng-wynn.github.io/crafter/#1BRBRBR7I9c9c9m91",
          "tag": "jeweling, 30 int req, 54 def req, 42 agi req, water damage, fire damage, agi sp, war"
+      },
+      {
+         "type": "Ring",
+         "link": "https://hppeng-wynn.github.io/crafter/#19H7J9i9k9i9k9m91"
+         "tag": "jeweling, no reqs, mana regen, main percent, negative spell percent"
       }
       
 
