@@ -40,7 +40,7 @@ The main part of the code is in a private repository that is synced with the hos
 
 ## Server Information
 
-Nori is currently in my personal server and in WIM's discord server. Feel free to check it out.
+Nori is currently in my personal server: https://discord.gg/tU7eaKAWb2, Feel free to check it out.
 
 ## Library
 
