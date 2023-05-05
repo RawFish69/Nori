@@ -113,7 +113,7 @@
       "mana steal": "25.0",
       "1st spell cost": "15.0"
     },
-    "Gaia (melee)": {
+    "Gaia": {
       "main attack damage raw": "80.0",
       "main attack damage %": "15.0",
       "poison": "5.0"
@@ -395,16 +395,16 @@
     "Epoch": "22",
     "Pure": "3.5",
     "Lament": "4.5",
-    "Gaia (melee)": "1",
+    "Gaia": "1",
     "Monster": "6.5",
     "Singularity (spell)": "3.5",
     "Singularity (hybrid)": "3.5",
     "Fatal": "3",
     "Fatal (Arcanist)": "3",
-    "Warp": "20",
-    "Warp (combat)": "20",
+    "Warp": "21",
+    "Warp (combat)": "21",
     "Quetzalcoatl": "5.5",
-    "Aftershock": "5.5",
+    "Aftershock": "5",
     "Olympic": "5",
     "Hadal": "3",
     "Sunstar": "1",
@@ -420,7 +420,7 @@
     "Weathered": "8",
     "Inferno": "3.5",
     "Nirvana": "14",
-    "Oblivion": "14",
+    "Oblivion": "15",
     "Discoverer": "18",
     "Crusade Sabatons": "6",
     "Resurgence": "2",
@@ -438,6 +438,6 @@
     "Revenant (spell)": "0.75"
   },
   "date": {
-    "Last update": "2023-04-29 21:00:50"
+    "Last update": "2023-05-05 09:06:21"
   }
 }
