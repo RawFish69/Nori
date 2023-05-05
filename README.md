@@ -35,7 +35,7 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 
 
 ## Planned Features
-- Memory for AI chat, supporting continous conversation
+- Memory for AI chat, support continous conversation
 - Decode specific strings & conversion (UTF-8)
 - In chat file management, file format conversion, etc
 - Play music in voice channel
