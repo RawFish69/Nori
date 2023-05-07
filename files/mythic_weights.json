@@ -191,7 +191,7 @@
       "main attack damage": "50.0",
       "thunder damage": "25.0",
       "life steal": "15.0",
-      "water damage": "0.0"
+      "water damage": "10.0"
     },
     "Toxoplasmosis": {
       "poison": "75.0",
@@ -438,6 +438,6 @@
     "Revenant (spell)": "0.75"
   },
   "date": {
-    "Last update": "2023-05-05 09:06:21"
+    "Last update": "2023-05-07 13:43:52"
   }
 }
