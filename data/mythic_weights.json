@@ -189,7 +189,7 @@
       "spellCostPct4": "10.0"
     },
     "Sunstar": {
-      "mainAttackDamageBonus": "50.0",
+      "mainAttackDamageBonusRaw": "50.0",
       "thunderDamageBonus": "25.0",
       "lifeSteal": "15.0",
       "waterDamageBonus": "10.0"
@@ -524,6 +524,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-05-09 03:47:22"
+    "Last update": "2023-05-09 03:53:58"
   }
 }
