@@ -176,7 +176,7 @@
       "spellCostPct4": "7.5"
     },
     "Olympic": {
-      "jump height": "45.0",
+      "jumpHeight": "45.0",
       "speed": "25.0",
       "airDamageBonus": "15.0",
       "spellCostRaw1": "10.0",
