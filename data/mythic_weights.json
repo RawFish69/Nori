@@ -70,7 +70,7 @@
       "manaRegen": "60.0",
       "healthBonus": "27.5",
       "speed": "7.5",
-      "spellDamageBonus raw": "5.0"
+      "spellDamageBonusRaw": "5.0"
     },
     "Grandmother": {
       "healthRegenRaw": "50.0",
@@ -87,7 +87,7 @@
     "Divzer": {
       "manaSteal": "65.0",
       "lifeSteal": "20.0",
-      "spellDamageBonus raw": "15.0"
+      "spellDamageBonusRaw": "15.0"
     },
     "Spring": {
       "manaRegen": "79.0",
@@ -127,14 +127,14 @@
       "lifeSteal": "10.0"
     },
     "Singularity (spell)": {
-      "spellDamageBonus raw": "55.0",
+      "spellDamageBonusRaw": "55.0",
       "speed": "35.0",
       "spellDamageBonus": "7.5",
       "healthRegenRaw": "35.0"
     },
     "Singularity (hybrid)": {
       "mainAttackDamageBonusRaw": "10.0",
-      "spellDamageBonus raw": "30.0",
+      "spellDamageBonusRaw": "30.0",
       "speed": "25.0",
       "mainAttackDamageBonus": "35.0"
     },
@@ -524,6 +524,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-05-09 02:27:22"
+    "Last update": "2023-05-09 03:47:22"
   }
 }
