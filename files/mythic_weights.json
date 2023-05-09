@@ -63,7 +63,8 @@
     },
     "Az (Endgame)": {
       "spellCostPct1": "80.0",
-      "fire OR waterDamageBonus": "20.0"
+      "fireDamageBonus": "10.0",
+      "waterDamageBonus": "10.0"
     },
     "Freedom": {
       "manaRegen": "60.0",
@@ -236,7 +237,7 @@
       "lifeSteal": "45.0",
       "manaSteal": "40.0",
       "reflection": "5.0",
-      "elemental defences": "2.0"
+      "bonusWaterDefence": "2.0"
     },
     "Cataclysm": {
       "healthBonus": "80.0",
@@ -523,6 +524,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-05-08 21:42:30"
+    "Last update": "2023-05-08 21:45:59"
   }
 }
