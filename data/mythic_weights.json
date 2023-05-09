@@ -160,7 +160,7 @@
       "healthRegenRaw": "35.0",
       "speed": "35.0",
       "manaRegen": "20.0",
-      "health regen": "3.0",
+      "healthRegen": "3.0",
       "airDamageBonus": "3.0",
       "spellCostRaw2": "2.0",
       "spellCostRaw1": "2.0"
@@ -524,6 +524,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-05-08 21:45:59"
+    "Last update": "2023-05-09 02:27:22"
   }
 }
