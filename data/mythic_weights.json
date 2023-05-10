@@ -13,7 +13,7 @@
       "healthBonus": "90.0",
       "healthRegenRaw": "10.0"
     },
-    "Guardian (Combat)": {
+    "Guardian": {
       "healthRegenRaw": "65.0",
       "healthBonus": "35.0"
     },
@@ -22,7 +22,7 @@
       "mainAttackDamageBonus": "47.5",
       "exploding": "2.5"
     },
-    "Idol (Combat)": {
+    "Idol": {
       "spellDamageBonus": "52.5",
       "manaRegen": "32.5",
       "spellCostRaw2": "10.0",
@@ -41,7 +41,7 @@
       "healthRegen": "2.5",
       "speed": "2.5"
     },
-    "Collapse (melee)": {
+    "Collapse": {
       "mainAttackDamageBonus": "80.0",
       "manaSteal": "20.0"
     },
@@ -61,7 +61,7 @@
       "fireDamageBonus": "2.5",
       "waterDamageBonus": "2.5"
     },
-    "Az (Endgame)": {
+    "Az": {
       "spellCostPct1": "80.0",
       "fireDamageBonus": "10.0",
       "waterDamageBonus": "10.0"
@@ -126,7 +126,7 @@
       "spellCostRaw1": "10.0",
       "lifeSteal": "10.0"
     },
-    "Singularity (spell)": {
+    "Singularity": {
       "spellDamageBonusRaw": "55.0",
       "speed": "35.0",
       "spellDamageBonus": "7.5",
@@ -227,7 +227,7 @@
       "healthRegenRaw": "20.0",
       "healthRegen": "10.0"
     },
-    "Archangel (Offhand)": {
+    "Archangel": {
       "speed": "80.0",
       "healthRegenRaw": "12.5",
       "healthRegen": "5.0",
@@ -304,7 +304,7 @@
       "manaRegen": "15.0",
       "speed": "5.0"
     },
-    "Slayer (spell)": {
+    "Slayer": {
       "spellCostPct3": "65.0",
       "healthRegenRaw": "17.5",
       "speed": "12.5",
@@ -322,7 +322,7 @@
       "bonusAirDefense": "2.5",
       "bonusWaterDefense": "2.5"
     },
-    "Dawnbreak (melee)": {
+    "Dawnbreak": {
       "mainAttackDamageBonusRaw": "80.0",
       "lifeSteal": "10.0",
       "thunderDamageBonus": "5.0",
@@ -342,7 +342,7 @@
       "thunderDamageBonus": "12.5",
       "waterDamageBonus": "12.5"
     },
-    "Warchief (earth)": {
+    "Warchief": {
       "mainAttackDamageBonus": "37.5",
       "earthDamageBonus": "35.0",
       "mainAttackDamageBonusRaw": "20.0",
@@ -356,7 +356,7 @@
       "exploding": "5.0",
       "speed": "2.5"
     },
-    "Revenant (melee)": {
+    "Revenant": {
       "mainAttackDamageBonusRaw": "35.0",
       "earthDamageBonus": "15.0",
       "airDamageBonus": "15.0",
@@ -377,16 +377,16 @@
     "Apocalypse": "0.75",
     "Hero": "7.5",
     "Guardian (War)": "12",
-    "Guardian (Combat)": "12",
+    "Guardian": "12",
     "Alkatraz": "7",
-    "Idol (Combat)": "29",
+    "Idol": "29",
     "Idol (Lootrun)": "29",
     "Thrundacrack": "3",
-    "Collapse (melee)": "2.5",
+    "Collapse": "2.5",
     "Collapse (spell)": "2.5",
     "Convergence": "10",
     "Az (Levelling)": "2",
-    "Az (Endgame)": "2",
+    "Az": "2",
     "Freedom": "8",
     "Grandmother": "7",
     "Ignis": "8",
@@ -398,7 +398,7 @@
     "Lament": "4.5",
     "Gaia": "1",
     "Monster": "6.5",
-    "Singularity (spell)": "3.5",
+    "Singularity": "3.5",
     "Singularity (hybrid)": "3.5",
     "Fatal": "3",
     "Fatal (Arcanist)": "3",
@@ -414,7 +414,7 @@
     "Absolution": "14",
     "Immolation": "2.5",
     "Archangel (Levelling)": "3.5",
-    "Archangel (Offhand)": "3.5",
+    "Archangel": "3.5",
     "Nullification": "4",
     "Cataclysm": "22",
     "Grimtrap": "3",
@@ -427,15 +427,15 @@
     "Resurgence": "2",
     "Galleon": "0.75",
     "Boreal": "0.75",
-    "Slayer (spell)": "0.75",
+    "Slayer": "0.75",
     "Slayer (Hybrid)": "0.75",
     "Moontower": "4",
-    "Dawnbreak (melee)": "0.3",
+    "Dawnbreak": "0.3",
     "Dawnbreak (spell)": "0.3",
     "Stardew": "1.5",
-    "Warchief (earth)": "1",
+    "Warchief": "1",
     "Warchief (thunder)": "1",
-    "Revenant (melee)": "0.75",
+    "Revenant": "0.75",
     "Revenant (spell)": "0.75"
   },
   "order": [
@@ -524,6 +524,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-05-09 03:53:58"
+    "Last update": "2023-05-10 14:07:20"
   }
 }
