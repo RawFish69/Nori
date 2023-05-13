@@ -31,7 +31,7 @@
     "Idol (Lootrun)": {
       "spellCostRaw2": "60.0",
       "manaRegen": "27.5",
-      "spellDamageBonus raw": "7.5",
+      "spellDamageBonusRaw": "7.5",
       "reflection": "5.0"
     },
     "Thrundacrack": {
@@ -166,7 +166,7 @@
       "spellCostRaw1": "2.0"
     },
     "Quetzalcoatl": {
-      "spellDamageBonus raw": "50.0",
+      "spellDamageBonusRaw": "50.0",
       "lifeSteal": "30.0",
       "speed": "20.0"
     },
@@ -270,7 +270,7 @@
     },
     "Oblivion": {
       "manaRegen": "37.5",
-      "spellDamageBonus raw": "32.5",
+      "spellDamageBonusRaw": "32.5",
       "manaSteal": "15.0",
       "exploding": "7.5",
       "spellCostRaw2": "7.5"
@@ -337,7 +337,7 @@
     },
     "Stardew": {
       "manaSteal": "35.0",
-      "spellDamageBonus raw": "25.0",
+      "spellDamageBonusRaw": "25.0",
       "manaRegen": "15.0",
       "thunderDamageBonus": "12.5",
       "waterDamageBonus": "12.5"
@@ -524,6 +524,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-05-10 14:07:20"
+    "Last update": "2023-05-12 23:15:02"
   }
 }
