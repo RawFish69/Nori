@@ -96,7 +96,7 @@
     },
     "Stratiformis": {
       "speed": "65.0",
-      "health": "30.0",
+      "healthBonus": "30.0",
       "spellDamageBonus": "5.0"
     },
     "Epoch": {
@@ -231,7 +231,7 @@
       "speed": "80.0",
       "healthRegenRaw": "12.5",
       "healthRegen": "5.0",
-      "health": "2.5"
+      "healthBonus": "2.5"
     },
     "Nullification": {
       "lifeSteal": "45.0",
@@ -524,6 +524,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-05-12 23:15:02"
+    "Last update": "2023-05-14 10:12:50"
   }
 }
