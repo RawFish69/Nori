@@ -23,7 +23,7 @@
       "exploding": "2.5"
     },
     "Idol": {
-      "spellDamageBonus": "52.5",
+      "spellDamageBonusRaw": "52.5",
       "manaRegen": "32.5",
       "spellCostRaw2": "10.0",
       "reflection": "5.0"
