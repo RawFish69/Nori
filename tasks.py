@@ -23,20 +23,3 @@ async def todo_list(ctx):
 async def start_scan(event: hikari.StartingEvent):
     asyncio.create_task(todo())
 
-async def todo():
-    global cycle_count
-    interval = 60
-    print(f"Bot deployed in {mode} mode, begin scan cycle with {interval} seconds intervals.")
-    while True:
-        current_time = datetime.now()
-        for id in all_tasks.copy():
-            time = all_tasks[id]["time"]
-            if time <= current_time:
-                task = all_tasks[id]["task"]
-                channel = all_tasks[id]["channel"]
-                username = all_tasks[id]["user_name"]
-                await bot.rest.create_message(channel=channel, content=f"\n{username.mention} **{task}**", user_mentions=True)
-                del all_tasks[id]
-                print(f"Execute Task {task} Successfully.")
-        await asyncio.sleep(interval)
-        cycle_count += 1
