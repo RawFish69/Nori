@@ -22,63 +22,13 @@ class serverView(miru.View):
         response += '```'
         await ctx.edit_response(response)
 
-@bot.command
-@lightbulb.command('uptime', 'List of online servers')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def server_list(ctx):
-    view = serverView(timeout=60)
-    index = 0
-    showed_servers = 20
-    serverList = get_server()
-    serverTime = get_uptime()
-    response = '```json\n'
-    response += 'Online Servers:\n'
-    response += '+--------+----------+----------+------------+\n'
-    response += '| Server | Players  | Uptime   | Soul Point |\n'
-    response += '+--------+----------+----------+------------+\n'
-    for server in sorted(serverList.items(), key=lambda x: serverTime[x[0]][0]):
-        if index <= showed_servers:
-            world_ID = server[0]
-            player_count = len(server[1])
-            uptime, soul_timer = serverTime.get(world_ID)
-            if player_count >= 50:
-                response += '| {:<6s} | {:>5d}/50 | {:>8} | {:>10} | [Full]\n'.format(world_ID, player_count, uptime,
-                                                                                      soul_timer)
-                index += 1
-            else:
-                response += '| {:<6s} | {:>5d}/50 | {:>8} | {:>10} |\n'.format(world_ID, player_count, uptime, soul_timer)
-                index += 1
-    response += '+--------+----------+----------+------------+\n'
-    response += '```'
-    display = await ctx.respond(f'{response}', components=view.build())
-    display = await display
-    view.start(display)
-    await view.wait()
-
-
-def get_server():
-    servers = requests.get('https://api.wynncraft.com/public_api.php?action=onlinePlayers')
-    server_data = servers.json()
-    online_servers = []
-    online_data = {}
-    for world in server_data:
-        if 'timestamp' in server_data.values():
-            pass
-        elif 'WC' in world:
-            online_servers.append(world)
-    for server in online_servers:
-        server_players = server_data.get(server)
-        online_data.update({server: server_players})
-    return online_data
-
-    
 def get_online(ign):
     server_data = get_server()
     servers = server_data.keys()
     online_status = False
     online_server = 'Null'
     for world in servers:
-        player_list = server_data.get(world)
+        player_list = server_data[world]
         if ign in player_list:
             online_status = True
             online_server = world
@@ -89,19 +39,17 @@ def get_online(ign):
 
 def get_uptime():
     servers = requests.get('https://athena.wynntils.com/cache/get/serverList')
-    data = servers.json().get('servers')
+    data = servers.json()['servers']
     dataView = json.dumps(data, indent=3)
     world_uptime = {}
     for world in data:
-        info = data.get(world)
-        up = int(info.get('firstSeen') / 1000)
+        info = data[world]
+        up = int(info['firstSeen'] / 1000)
         now = int(time.time())
         uptime_s = now - up
-        print(uptime_s)
         uptime = str(timedelta(seconds=uptime_s))
         soul_point = 1200 - (uptime_s - 1200) % 1200
         soul_timer = str(timedelta(seconds=soul_point))
-        print(soul_timer)
         world_uptime.update({world: (uptime, soul_timer)})
     return world_uptime
 
