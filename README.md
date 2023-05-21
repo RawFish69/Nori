@@ -14,6 +14,7 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 - Bot status & Server whitelist
 - Check latency with url
 - Customized timer
+- Text to Image
 - Server management (Owner only)
 - And more!
 
