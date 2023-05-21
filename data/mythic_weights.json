@@ -237,7 +237,7 @@
       "lifeSteal": "45.0",
       "manaSteal": "40.0",
       "reflection": "5.0",
-      "bonusWaterDefence": "2.0"
+      "bonusWaterDefense": "2.0"
     },
     "Cataclysm": {
       "healthBonus": "80.0",
