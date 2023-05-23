@@ -8,7 +8,7 @@
     "Hero": {
       "speed": "80.0",
       "healthRegen": "18.0",
-      "mainAttackDamageBonusRaw": "2.0"
+      "mainAttackDamageBonus": "2.0"
     },
     "Guardian (War)": {
       "healthBonus": "90.0",
