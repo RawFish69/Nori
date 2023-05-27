@@ -9,7 +9,7 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 - AI image generation
 - Task manager, in chat TO-DO List (Owner only)
 - Weather status
-- Flight status
+- Flight traffic status
 - Menu page
 - Bot status & Server whitelist
 - Check latency with url
