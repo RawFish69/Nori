@@ -10,7 +10,7 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 logger = logging.getLogger(__name__)
-API_KEY = "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"
+API_KEY = ""
 
 
 class GPTRequest:
