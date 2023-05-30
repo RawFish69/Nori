@@ -16,9 +16,9 @@ class WynncraftGuildScraper:
     def scrape_guilds(self):
         response = requests.get(self.guild_list_api_url)
         guild_list = response.json()['guilds']
-
-        # Iterate over the guilds
-        for guild in guild_list:
+        total_guilds = len(guild_list)
+        print(f"Total guilds: {total_guilds}")
+        for i, guild in enumerate(guild_list):
             guild_api_url = f'https://api.wynncraft.com/public_api.php?action=guildStats&command={guild}'
             response = requests.get(guild_api_url)
             guild_info = response.json()
@@ -26,9 +26,15 @@ class WynncraftGuildScraper:
                 'name': guild,
                 'prefix': guild_info['prefix']
             })
-            print(guild, guild_info['prefix'])
+            print(f"{guild} [{guild_info['prefix']}] - {i+1}/{total_guilds}")
+            if (i+1) % 100 == 0:
+                self.update_json_file()
             time.sleep(1)
-        with open('guilds.json', 'w') as file:
+        self.update_json_file()
+        print("All guilds fetched successfully")
+
+    def update_json_file(self):
+        with open('guild_prefixes.json', 'w') as file:
             json.dump({'guild_list': self.guild_prefixes}, file)
 
 
