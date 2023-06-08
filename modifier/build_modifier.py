@@ -2,7 +2,7 @@
 Name: Build modifier
 Author: RawFish
 Github: https://github.com/RawFish69
-Description: To modifiy build database for Nori
+Description: To modify build database for Nori
 """
 
 import json
