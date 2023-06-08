@@ -92,13 +92,13 @@
       },
       {
          "name": "Sharp gma ignis dual",
-         "link": "https://hppeng-wynn.github.io/builder?v=1#8_0XL08F0uX0QW0WA0K20K40OP0Qe1z04141m0x1g1000361001Z61000361001Z6102HZI0z0z0+0+0+0+0-tlzsRb2r6",
-         "tag": "gma, ignis, sharpshooter, archer, no crafted, tankofpacer, outdated link"
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0XL08F0uX0QW0WA0K20tz0Ji0Qe1z00141a0w1g1000361001Z61000361001Z6102HZI0z0z0+0+0+0+0-tdzsRdY2o0",
+         "tag": "gma, ignis, sharpshooter, archer, no crafted, tankofpacer"
       },
       {
          "name": "Hybrid weathered",
-         "link": "https://hppeng-wynn.github.io/builder?v=1#8_09V09-0JL0K50vI0050K40OT0Q+180E0x1G241g00001000FU0W0W0J0B070D0l-xVs67d1",
-         "tag": "weathered, hybrid, assassin, no crafted, tankofpacer, outdated link"
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0qn0Pf0r50Qr0050uP0K40OH0Q+0e0e1Q1Q221g00001000FU15150+0+0+0+0llN7-cNDZ",
+         "tag": "weathered, hybrid, assassin, no crafted, tankofpacer"
       },
       {
          "name": "Ts flameshots hilt (tomes needed)",
@@ -112,8 +112,18 @@
       },
       {
          "name": "Battle paladin RotS",
-         "link": "https://hppeng-wynn.github.io/builder?v=1#8_0cD0u80uj0FP0050050K40OH0uE1G1113180+1g000010009I0z0z0+0+0+0+0-ltuAFDIDi1",
-         "tag": "rhythm of the seasons, paladin, warrior, no crafted, no mythic, tankofpacer, outdated link"
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0cD0u80uj0FP0050050K40OH0uE1G1113180+1g000010009I0z0z0+0+0+0+0-jtuBdCf6i1",
+         "tag": "rhythm of the seasons, paladin, warrior, no crafted, no mythic, tankofpacer"
+      },
+      {
+         "name": "dps The Nothing",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0cD0K70r50Qx0K00K20x40OH0CD0o110o0y0o1g000000z0z0+0+0+0+0--Zdxiiof5",
+         "tag": "the nothing, lightbender, mega, no crafted, tankofpacer"
+      },
+      {
+         "name": "Shadestepper Weathered",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0uC0l-0jn0Qt0nu0K20K40BR0Q+16+d140o221g103niU1007ZU1007cU1007ZU1007lU15150+0+0+0+0ol-R-ON23",
+         "tag": "weathered, shadestepper, assassin, no crafted, tankofpacer"
       },
       {
          "name": "Nychthemeron Freedom",
