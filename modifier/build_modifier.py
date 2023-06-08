@@ -1,8 +1,8 @@
 """
-Project Name: Nori
+Name: Build modifier
 Author: RawFish
 Github: https://github.com/RawFish69
-Description: Build manager for Nori
+Description: To modifiy build database for Nori
 """
 
 import json
