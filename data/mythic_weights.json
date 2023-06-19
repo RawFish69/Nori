@@ -371,17 +371,17 @@
     "Guardian (War)": "9.5",
     "Guardian": "9.5",
     "Alkatraz": "7",
-    "Idol": "29",
-    "Idol (Lootrun)": "29",
-    "Thrundacrack": "3",
+    "Idol": "30",
+    "Idol (Lootrun)": "30",
+    "Thrundacrack": "2.5",
     "Collapse": "2.5",
     "Collapse (spell)": "2.5",
-    "Convergence": "9",
+    "Convergence": "8.5",
     "Az": "2",
     "Freedom": "8",
     "Grandmother": "7",
     "Ignis": "8",
-    "Divzer": "9.5",
+    "Divzer": "9",
     "Spring": "3",
     "Stratiformis": "16",
     "Epoch": "22",
@@ -416,7 +416,7 @@
     "Crusade Sabatons": "6.5",
     "Resurgence": "2",
     "Galleon": "0.75",
-    "Boreal": "1",
+    "Boreal": "0.75",
     "Slayer": "0.75",
     "Slayer (Hybrid)": "0.75",
     "Moontower": "3.5",
@@ -514,6 +514,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-05-23 13:15:29"
+    "Last update": "2023-06-19 11:57:18"
   }
 }
