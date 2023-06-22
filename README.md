@@ -45,7 +45,7 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 
 ## Repository Information
 
-The main part of the code is in a private repository that is synced with the host server. The public Nori repository is where most data is stored.
+Main code (bot structure & logic) is in a private repository that is synced with the host server. The public Nori repository (this one) has some of the functions and the database.
 
 ## Server & Bot Invite
 
