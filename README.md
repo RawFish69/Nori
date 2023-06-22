@@ -59,4 +59,4 @@ The bot uses Hikari, a static-typed microframework for Discord. Hikari is a ligh
 
 ## Issues
 
-Please contact me on Discord `RawFish#5055` for any issues or questions.
+Please contact me on Discord `RawFish69` or join my [discord server](https://discord.gg/tU7eaKAWb2) for any issues or questions.
