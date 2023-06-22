@@ -49,9 +49,9 @@ The main part of the code is in a private repository that is synced with the hos
 
 ## Server & Bot Invite
 
-- Nori is currently in my personal server: https://discord.gg/tU7eaKAWb2, Feel free to check it out.
-- Bot invite link: https://discord.com/api/oauth2/authorize?client_id=873677970928193568&permissions=311385246784&scope=bot
-- Forum post: https://forums.wynncraft.com/threads/nori-wynn-utility-bot-on-discord.308524/
+- Nori is currently on [App Directory](https://discord.com/application-directory/873677970928193568)
+- Or use [Bot invite link](https://discord.com/api/oauth2/authorize?client_id=873677970928193568&permissions=311385246784&scope=bot)
+- More info regarding wynn features: [Forum post](https://forums.wynncraft.com/threads/nori-wynn-utility-bot-on-discord.308524/)
 
 ## Library
 
