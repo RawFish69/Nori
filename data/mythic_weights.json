@@ -7,12 +7,12 @@
     },
     "Hero": {
       "speed": "80.0",
-      "healthRegen": "18.0",
-      "mainAttackDamageBonus": "2.0"
+      "healthRegen": "19.0",
+      "mainAttackDamageBonus": "1.0"
     },
     "Guardian (War)": {
-      "healthBonus": "90.0",
-      "healthRegenRaw": "10.0"
+      "healthBonus": "98.0",
+      "healthRegenRaw": "2.0"
     },
     "Guardian": {
       "healthRegenRaw": "65.0",
@@ -30,17 +30,17 @@
       "reflection": "2.5"
     },
     "Idol (Lootrun)": {
-      "spellCostRaw2": "70.0",
+      "spellCostRaw2": "72.5",
       "manaRegen": "15.0",
-      "spellDamageBonusRaw": "12.5",
+      "spellDamageBonusRaw": "10.0",
       "reflection": "2.5"
     },
     "Thrundacrack": {
-      "spellCostRaw3": "55.0",
-      "thunderDamageBonus": "25.0",
-      "waterDamageBonus": "15.0",
-      "healthRegen": "2.5",
-      "speed": "2.5"
+      "spellCostRaw3": "45.0",
+      "thunderDamageBonus": "27.5",
+      "waterDamageBonus": "22.5",
+      "healthRegen": "4.0",
+      "speed": "1.0"
     },
     "Collapse": {
       "mainAttackDamageBonus": "80.0",
@@ -57,9 +57,10 @@
       "thunderDamageBonus": "5.0"
     },
     "Az": {
-      "spellCostPct1": "80.0",
+      "spellCostPct1": "70.0",
       "fireDamageBonus": "10.0",
-      "waterDamageBonus": "10.0"
+      "waterDamageBonus": "10.0",
+      "xpBonus": "10.0"
     },
     "Freedom": {
       "manaRegen": "60.0",
@@ -74,16 +75,16 @@
       "speed": "2.5"
     },
     "Ignis": {
-      "healthRegenRaw": "45.0",
+      "healthRegenRaw": "40.0",
       "healthRegen": "25.0",
       "healthBonus": "20.0",
-      "spellCostPct4": "5.0",
+      "spellCostPct4": "10.0",
       "fireDamageBonus": "5.0"
     },
     "Divzer": {
-      "manaSteal": "65.0",
+      "manaSteal": "70.0",
       "lifeSteal": "20.0",
-      "spellDamageBonusRaw": "15.0"
+      "spellDamageBonusRaw": "10.0"
     },
     "Spring": {
       "manaRegen": "79.0",
@@ -102,14 +103,14 @@
       "speed": "5.0"
     },
     "Pure": {
-      "spellDamageBonus": "60.0",
-      "manaSteal": "20.0",
-      "xpBonus": "20.0"
+      "spellDamageBonus": "65.0",
+      "manaSteal": "22.5",
+      "xpBonus": "12.5"
     },
     "Lament": {
-      "waterDamageBonus": "60.0",
-      "manaSteal": "25.0",
-      "spellCostPct1": "15.0"
+      "waterDamageBonus": "70.0",
+      "manaSteal": "17.5",
+      "spellCostPct1": "12.5"
     },
     "Gaia": {
       "mainAttackDamageBonusRaw": "70.0",
@@ -117,23 +118,19 @@
       "poison": "5.0"
     },
     "Monster": {
-      "healthBonus": "40.0",
-      "manaSteal": "20.0",
-      "fireDamageBonus": "20.0",
-      "spellCostRaw1": "10.0",
-      "lifeSteal": "10.0"
+      "healthBonus": "37.5",
+      "manaSteal": "30.0",
+      "spellCostRaw1": "17.5",
+      "lifeSteal": "10.0",
+      "fireDamageBonus": "7.5"
     },
     "Singularity": {
-      "spellDamageBonusRaw": "55.0",
-      "speed": "35.0",
-      "spellDamageBonus": "7.5",
-      "healthRegenRaw": "35.0"
-    },
-    "Singularity (hybrid)": {
-      "mainAttackDamageBonusRaw": "10.0",
-      "spellDamageBonusRaw": "30.0",
+      "spellDamageBonusRaw": "40.0",
       "speed": "25.0",
-      "mainAttackDamageBonus": "35.0"
+      "healthRegenRaw": "15.0",
+      "spellDamageBonus": "10.0",
+      "mainAttackBonusRaw": "7.5",
+      "mainAttackBonus": "2.5"
     },
     "Fatal": {
       "spellDamageBonus": "50.0",
@@ -142,9 +139,9 @@
       "speed": "2.5"
     },
     "Fatal (Arcanist)": {
-      "spellDamageBonus": "70.0",
-      "spellCostPct2": "20.0",
-      "speed": "10.0"
+      "spellDamageBonus": "65.0",
+      "speed": "20.0",
+      "spellCostPct1": "15.0"
     },
     "Warp": {
       "spellCostRaw2": "35.0",
@@ -154,23 +151,23 @@
       "healthRegen": "2.5"
     },
     "Warp (combat)": {
-      "healthRegenRaw": "35.0",
-      "speed": "35.0",
-      "manaRegen": "20.0",
-      "healthRegen": "3.0",
-      "airDamageBonus": "3.0",
-      "spellCostRaw2": "2.0",
-      "spellCostRaw1": "2.0"
+      "speed": "32.5",
+      "healthRegenRaw": "28.0",
+      "manaRegen": "25.0",
+      "spellCostRaw1": "5.0",
+      "airDamageBonus": "5.0",
+      "spellCostRaw2": "2.5",
+      "healthRegen": "2.0"
     },
     "Quetzalcoatl": {
-      "spellDamageBonusRaw": "50.0",
+      "spellDamageBonusRaw": "55.0",
       "lifeSteal": "30.0",
-      "speed": "20.0"
+      "speed": "15.0"
     },
     "Aftershock": {
       "healthBonus": "75.0",
-      "earthDamageBonus": "24.0",
-      "spellCostPct4": "1.0"
+      "earthDamageBonus": "25.0",
+      "spellCostPct4": "5.0"
     },
     "Olympic": {
       "jumpHeight": "45.0",
@@ -205,9 +202,9 @@
     },
     "Absolution": {
       "waterDamageBonus": "50.0",
-      "healthBonus": "22.0",
-      "manaRegen": "17.0",
-      "spellCostRaw1": "10.0",
+      "healthBonus": "22.5",
+      "manaRegen": "17.5",
+      "spellCostRaw1": "9.0",
       "fireDamageBonus": "1.0"
     },
     "Immolation": {
@@ -390,7 +387,6 @@
     "Gaia": "1",
     "Monster": "7.5",
     "Singularity": "3.5",
-    "Singularity (hybrid)": "3.5",
     "Fatal": "3",
     "Fatal (Arcanist)": "3",
     "Warp": "22",
@@ -514,6 +510,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-06-19 11:57:18"
+    "Last update": "2023-06-30 08:59:04"
   }
 }
