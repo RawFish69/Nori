@@ -268,8 +268,8 @@
       "exploding": "5.0"
     },
     "Discoverer": {
-      "lootBonus": "99.0",
-      "xpBonus": "1.0"
+      "lootBonus": "99.9",
+      "xpBonus": "0.1"
     },
     "Crusade Sabatons": {
       "healthBonus": "85.0",
@@ -278,17 +278,18 @@
     },
     "Resurgence": {
       "manaRegen": "40.0",
-      "healthRegenRaw": "30.0",
+      "healthRegenRaw": "35.0",
       "spellDamageBonus": "20.0",
       "speed": "5.0"
     },
     "Galleon": {
-      "manaSteal": "50.0",
-      "earthDamageBonus": "17.5",
-      "waterDamageBonus": "17.5",
-      "poison": "5.0",
-      "mainAttackDamageBonus": "5.0",
-      "lootBonus": "5.0"
+      "manaSteal": "42.5",
+      "earthDamageBonus": "22.5",
+      "waterDamageBonus": "20.0",
+      "lootBonus": "5.0",
+      "emeraldStealing": "5.0",
+      "mainAttackDamageBonus": "2.5",
+      "poison": "2.5"
     },
     "Boreal": {
       "healthRegen": "50.0",
@@ -296,18 +297,19 @@
       "manaRegen": "15.0",
       "speed": "5.0"
     },
-    "Slayer": {
-      "spellCostPct3": "65.0",
-      "healthRegenRaw": "17.5",
-      "speed": "12.5",
-      "emeraldStealing": "5.0"
+    "Slayer (spell)": {
+      "spellCostPct3": "47.5",
+      "speed": "25.0",
+      "healthRegenRaw": "20.0",
+      "mainAttackDamageBonusRaw": "5.0",
+      "emeraldStealing": "2.5"
     },
-    "Slayer (Hybrid)": {
-      "spellCostPct3": "37.5",
-      "mainAttackDamageBonusRaw": "32.5",
-      "healthRegenRaw": "15.0",
-      "speed": "10.0",
-      "emeraldStealing": "5.0"
+    "Slayer (melee)": {
+      "mainAttackDamageBonusRaw": "37.5",
+      "speed": "25.0",
+      "healthRegenRaw": "20.0",
+      "spellCostPct3": "15.0",
+      "emeraldStealing": "2.5"
     },
     "Moontower": {
       "speed": "95.0",
@@ -329,11 +331,12 @@
       "mainAttackDamageBonusRaw": "2.5"
     },
     "Stardew": {
-      "manaSteal": "35.0",
       "spellDamageBonusRaw": "25.0",
-      "manaRegen": "15.0",
-      "thunderDamageBonus": "12.5",
-      "waterDamageBonus": "12.5"
+      "manaRegen": "22.5",
+      "manaSteal": "20.0",
+      "waterDamageBonus": "16.0",
+      "thunderDamageBonus": "15.5",
+      "reflection": "1.0"
     },
     "Warchief": {
       "mainAttackDamageBonus": "37.5",
@@ -417,8 +420,8 @@
     "Resurgence": "2",
     "Galleon": "0.75",
     "Boreal": "0.75",
-    "Slayer": "0.75",
-    "Slayer (Hybrid)": "0.75",
+    "Slayer (spell)": "0.75",
+    "Slayer (melee)": "0.75",
     "Moontower": "3.5",
     "Dawnbreak": "0.3",
     "Dawnbreak (spell)": "0.3",
@@ -514,6 +517,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-07-01 23:46:04"
+    "Last update": "2023-07-02 00:26:58"
   }
 }
