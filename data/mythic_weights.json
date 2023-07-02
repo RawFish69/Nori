@@ -129,8 +129,8 @@
       "speed": "25.0",
       "healthRegenRaw": "15.0",
       "spellDamageBonus": "10.0",
-      "mainAttackBonusRaw": "7.5",
-      "mainAttackBonus": "2.5"
+      "mainAttackDamageBonusRaw": "7.5",
+      "mainAttackDamageBonus": "2.5"
     },
     "Fatal": {
       "spellDamageBonus": "50.0",
@@ -170,11 +170,11 @@
       "spellCostPct4": "5.0"
     },
     "Olympic": {
-      "jumpHeight": "45.0",
-      "speed": "25.0",
-      "airDamageBonus": "15.0",
+      "jumpHeight": "40.0",
+      "speed": "35.0",
+      "airDamageBonus": "12.5",
       "spellCostRaw1": "10.0",
-      "spellCostRaw2": "5.0"
+      "spellCostRaw2": "2.5"
     },
     "Hadal": {
       "spellDamageBonus": "50.0",
@@ -183,10 +183,9 @@
       "spellCostPct4": "10.0"
     },
     "Sunstar": {
-      "mainAttackDamageBonusRaw": "50.0",
-      "thunderDamageBonus": "25.0",
-      "lifeSteal": "15.0",
-      "waterDamageBonus": "10.0"
+      "mainAttackDamageBonusRaw": "60.0",
+      "lifeSteal": "30.0",
+      "thunderDamageBonus": "10.0"
     },
     "Toxoplasmosis": {
       "poison": "85.0",
@@ -194,11 +193,13 @@
       "speed": "2.5"
     },
     "Fantasia": {
-      "spellCostPct3": "30.0",
-      "manaRegen": "25.0",
-      "spellDamageBonus": "20.0",
-      "manaSteal": "15.0",
-      "spellCostPct4": "10.0"
+      "spellCostPct3": "27.5",
+      "spellDamageBonus": "22.5",
+      "manaRegen": "20.0",
+      "spellCostPct1": "15.0",
+      "spellCostPct4": "8.0",
+      "manaSteal": "6.0",
+      "spellCostPct2": "1.0"
     },
     "Absolution": {
       "waterDamageBonus": "50.0",
@@ -208,41 +209,42 @@
       "fireDamageBonus": "1.0"
     },
     "Immolation": {
-      "fireDamageBonus": "25.0",
-      "airDamageBonus": "25.0",
-      "healthBonus": "20.0",
-      "spellCostPct3": "17.5",
-      "healthRegen": "12.5"
+      "fireDamageBonus": "30.0",
+      "airDamageBonus": "30.0",
+      "healthBonus": "30.0",
+      "spellCostPct3": "7.5",
+      "healthRegen": "2.5"
     },
     "Archangel": {
-      "speed": "80.0",
-      "healthRegenRaw": "12.5",
-      "healthRegen": "5.0",
-      "healthBonus": "2.5"
+      "speed": "70.0",
+      "healthRegenRaw": "10.0",
+      "healthRegen": "10.0",
+      "healthBonus": "10.0"
     },
     "Nullification": {
-      "lifeSteal": "45.0",
-      "manaSteal": "45.0",
-      "bonusEarthDefense": "2.0",
-      "bonusThunderDefense": "2.0",
-      "bonusWaterDefense": "2.0",
-      "bonusFireDefense": "2.0",
-      "bonusAirDefense": "2.0"
+      "lifeSteal": "65.0",
+      "manaSteal": "34.0",
+      "bonusEarthDefense": "0.2",
+      "bonusThunderDefense": "0.2",
+      "bonusWaterDefense": "0.2",
+      "bonusFireDefense": "0.2",
+      "bonusAirDefense": "0.2"
     },
     "Cataclysm": {
       "healthBonus": "80.0",
-      "thunderDamageBonus": "20.0"
+      "thunderDamageBonus": "19.0",
+      "emeraldStealing": "1.0"
     },
     "Grimtrap": {
-      "lifeSteal": "45",
+      "spellCostRaw4": "50",
       "manaSteal": "25",
-      "spellCostRaw4": "25",
-      "poison": "5"
+      "lifeSteal": "24",
+      "poison": "1"
     },
     "Weathered": {
-      "airDamageBonus": "45.0",
-      "speed": "35.0",
-      "manaSteal": "20.0"
+      "speed": "40.0",
+      "manaSteal": "35.0",
+      "airDamageBonus": "25.0"
     },
     "Inferno": {
       "mainAttackDamageBonusRaw": "35.0",
@@ -261,8 +263,9 @@
     "Oblivion": {
       "manaRegen": "35.0",
       "spellCostRaw2": "25.0",
-      "spellDamageBonusRaw": "25.0",
-      "manaSteal": "15.0"
+      "spellDamageBonusRaw": "20.0",
+      "manaSteal": "15.0",
+      "exploding": "5.0"
     },
     "Discoverer": {
       "lootBonus": "99.0",
@@ -312,17 +315,18 @@
       "bonusWaterDefense": "2.5"
     },
     "Dawnbreak": {
-      "mainAttackDamageBonusRaw": "80.0",
+      "mainAttackDamageBonusRaw": "70.0",
+      "manaSteal": "15.0",
       "lifeSteal": "10.0",
-      "thunderDamageBonus": "5.0",
-      "fireDamageBonus": "5.0"
+      "thunderDamageBonus": "2.5",
+      "fireDamageBonus": "2.5"
     },
     "Dawnbreak (spell)": {
-      "manaSteal": "40.0",
-      "lifeSteal": "22.5",
-      "fireDamageBonus": "0.2",
-      "thunderDamageBonus": "0.2",
-      "mainAttackDamageBonusRaw": "7.5"
+      "manaSteal": "42.5",
+      "lifeSteal": "30.0",
+      "fireDamageBonus": "12.5",
+      "thunderDamageBonus": "12.5",
+      "mainAttackDamageBonusRaw": "2.5"
     },
     "Stardew": {
       "manaSteal": "35.0",
@@ -347,11 +351,11 @@
     },
     "Revenant": {
       "mainAttackDamageBonusRaw": "35.0",
-      "earthDamageBonus": "15.0",
-      "airDamageBonus": "15.0",
+      "speed": "15.0",
       "healthBonus": "15.0",
-      "mainAttackDamageBonus": "12.5",
-      "speed": "7.5"
+      "mainAttackDamageBonus": "15.0",
+      "airDamageBonus": "12.5",
+      "earthDamageBonus": "5.0"
     },
     "Revenant (spell)": {
       "spellCostPct4": "45.0",
@@ -510,6 +514,6 @@
     "spellCostPct4"
   ],
   "date": {
-    "Last update": "2023-06-30 08:59:04"
+    "Last update": "2023-07-01 23:46:04"
   }
 }
