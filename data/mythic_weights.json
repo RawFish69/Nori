@@ -297,7 +297,7 @@
       "manaRegen": "15.0",
       "speed": "5.0"
     },
-    "Slayer (spell)": {
+    "Slayer": {
       "spellCostPct3": "47.5",
       "speed": "25.0",
       "healthRegenRaw": "20.0",
@@ -420,7 +420,7 @@
     "Resurgence": "2",
     "Galleon": "0.75",
     "Boreal": "0.75",
-    "Slayer (spell)": "0.75",
+    "Slayer": "0.75",
     "Slayer (melee)": "0.75",
     "Moontower": "3.5",
     "Dawnbreak": "0.5",
