@@ -1,14 +1,18 @@
-import json
 import csv
+import json
+import requests
 from datetime import datetime
+import time
 
 
-def weight_file_generate():
+def file_generate():
     with open('Mythic Items - stats.csv') as stats_file:
         stats_reader = csv.reader(stats_file)
         stats = {}
+
         next(stats_reader)
         for row in stats_reader:
+
             stats[row[0]] = {
                 'stat_1': row[1],
                 'stat_2': row[2],
@@ -45,7 +49,7 @@ def weight_file_generate():
                 'unid': row[1],
             }
     stat_order = tils_stat_order()
-    items = {"Data": {}, "unid": {}, "order": stat_order, "date": {}}
+    items = {"Data": {}, "unid": {}, "order": stat_order, "latest": {}}
     for item_name in stats:
         items["Data"][item_name] = {}
         items["unid"][item_name] = {}
@@ -56,7 +60,9 @@ def weight_file_generate():
             items["unid"].update({item_name: price[1]})
     current_time = datetime.now()
     current_datetime = current_time.strftime("%Y-%m-%d %H:%M:%S")
-    items["date"].update({"Last update": current_datetime})
+    now = int(time.time())
+    items["latest"].update({"Date": current_datetime})
+    items["latest"].update({"Timestamp": now})
     items_json = json.dumps(items, indent=2)
 
     with open('mythic_weights.json', 'w') as outfile:
@@ -153,5 +159,6 @@ def tils_stat_order():
                     ]
     return stat_order
 
+file_generate()
 
-weight_file_generate()
+
