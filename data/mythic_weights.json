@@ -385,17 +385,17 @@
     "Freedom": "8",
     "Grandmother": "7",
     "Ignis": "8",
-    "Divzer": "9",
+    "Divzer": "8.5",
     "Spring": "3",
-    "Stratiformis": "20",
+    "Stratiformis": "16",
     "Epoch": "22",
     "Pure": "4",
     "Lament": "4",
     "Gaia": "1",
     "Monster": "7.5",
     "Singularity": "3.5",
-    "Fatal": "4",
-    "Fatal (Arcanist)": "4",
+    "Fatal": "4.5",
+    "Fatal (Arcanist)": "4.5",
     "Warp": "24",
     "Warp (combat)": "24",
     "Quetzalcoatl": "6",
@@ -517,7 +517,7 @@
     "spellCostPct4"
   ],
   "latest": {
-    "Date": "2023-07-04 23:07:37",
-    "Timestamp": 1688530057
+    "Date": "2023-07-05 07:48:28",
+    "Timestamp": 1688561308
   }
 }
