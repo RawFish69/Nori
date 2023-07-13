@@ -1,6 +1,16 @@
 {
    "Builds": [
       {
+         "name": "Crusade Fatal Arcanist (Madness)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0Pf0r50QW0Xr0uP0Wf0OH0QY1G270y1a0l1g000010036C17150E0E0I0H0ql-p+EzR",
+         "tag": "mage, arcanist, fatal, crabs, pande, lootrun, rawfish"
+      },
+      {
+         "name": "Crusade Fatal Arcanist (Entropy)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0Pf0r50QW0uP0uP0wr0OH0QY1G270o1a0o1g000010036C17150E0E0I0H0ql-p+EzR",
+         "tag": "mage, arcanist, fatal, crabs, entropy, lootrun, rawfish"
+      },
+      {
          "name": "Rage GMA Eleventh Hour",
          "link": "https://hppeng-wynn.github.io/builder/?v=3#8_CR-1AiAiAi3MAYAY9r910xO0uX0Qz0050050K40BR0Qe1z1Q0z0U111g0000100nZ610100+0+0+0+0-tdNzhJPXQ",
          "tag": "archer, sharpshooter, grandmother, rage, crafted, thequeenofdemons"
