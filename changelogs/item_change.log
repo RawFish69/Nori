@@ -1,0 +1,802 @@
+Item changelog - Updated from API
+3840 total items scanned
+New Items: 36, Items Removed: 0, Items changed: 222
+Item Changes: 
+Plague Staff:
+poison: 1800 -> 3250
+
+Stinger:
+poison: 2000 -> 9000
+
+Abyssal Walkers:
+poison: 480 -> 1180
+
+Ace of Spades:
+material: None -> 256:0
+
+Acid:
+poison: 550 -> 2300
+
+Aldorei's Tear:
+poison: 480 -> 1800
+
+Alkahest:
+poison: 3500 -> 8700
+
+Arakadicus' Maw:
+poison: 1350 -> 8000
+
+Arakadicus' Leg:
+poison: 465 -> 1585
+
+Ardiente:
+poison: 500 -> 3500
+
+Asbestos:
+poison: 385 -> 777
+
+Atomizer:
+poison: 600 -> 3425
+
+Bakteri:
+poison: 680 -> 2060
+
+Bismuthinite:
+poison: 1825 -> 4775
+
+Black Arrow:
+poison: 2000 -> 7280
+
+Black Abyss:
+poison: 1414 -> 6363
+
+Blightsaber:
+poison: 800 -> 5650
+
+Blues Whistle:
+poison: 1500 -> 7650
+
+Brackenwall:
+poison: 360 -> 1680
+
+Broken Balance:
+mainAttackDamageBonus: 95 -> 108
+spellDamageBonus: 95 -> 108
+
+Caffeine:
+material: None -> 259:2
+
+Cardiac Arrest:
+poison: 1000 -> 4000
+
+Caterpillar:
+poison: 3500 -> 7750
+
+Chakram:
+poison: 350 -> 1650
+
+Charon's Left Arm:
+material: None -> 359:0
+
+Clearwater:
+poison: -200 -> -1585
+
+Cluster:
+poison: 800 -> 6450
+
+Cnidocyte:
+poison: 450 -> 1890
+
+Conference Call:
+poison: 1111 -> 5400
+
+Conrupt:
+poison: 600 -> 4000
+
+Corrupted Nii Shako:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> armor
+
+Bane:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> armor
+
+Corrupted Witherhead's Bow:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> weapon
+
+Demonio:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> weapon
+
+Depth:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> weapon
+
+Nightmare:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> weapon
+
+Sorrow:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> armor
+
+Destructor:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> weapon
+
+Void:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> armor
+
+Corruption Seal:
+poison: 675 -> 3500
+
+Wall Breaker:
+category: {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'} -> weapon
+
+Cursed Spike:
+poison: 2000 -> 4000
+
+Widow:
+poison: 2400 -> 5175
+
+Closure:
+poison: 1500 -> 6250
+
+Dust Skaters:
+poison: 800 -> 3200
+
+Tophet:
+poison: 666 -> 3333
+
+Dying Lobelia:
+poison: 1150 -> 2560
+
+Forest Aconite:
+poison: 3300 -> 14500
+
+The Evolved:
+poison: 3500 -> 19000
+
+Writhing Growth:
+poison: 998 -> 5698
+
+Spiderweb String:
+material: None -> 261:0
+
+Ancient Waters:
+waterDamage: 130-148 -> 152-170
+level: 26 -> 29
+
+Blazing Ruin:
+fireDamage: 215-300 -> 240-320
+level: 27 -> 30
+lifeSteal: -25 -> -30
+
+Darting Blur:
+health: 70 -> 90
+level: 24 -> 27
+mainAttackAirDamageBonusRaw: 24 -> 29
+
+Body Axe:
+health: 150 -> 1585
+level: 23 -> 26
+mainAttackDamageBonus: 22 -> 26
+mainAttackDamageBonusRaw: 44 -> 52
+speed: -17 -> -18
+
+Law of the Jungle:
+health: -70 -> -80
+level: 27 -> 30
+lifeSteal: 17 -> 19
+
+Life Charge:
+health: 65 -> 80
+level: 27 -> 30
+healthRegenRaw: 6 -> 7
+
+Scorch Breath:
+fireDamage: 30-48 -> 32-54
+level: 26 -> 29
+healthRegenRaw: -9 -> -10
+lifeSteal: 35 -> 40
+
+Power Scale:
+earthDefense: 4 -> 5
+thunderDefense: 4 -> 5
+waterDefense: 4 -> 5
+fireDefense: 4 -> 5
+airDefense: 4 -> 5
+level: 25 -> 28
+lifeSteal: -13 -> -16
+
+Wind Spine:
+airDamage: 0-26 -> 0-28
+level: 22 -> 25
+
+Spirit Calling:
+level: 25 -> 28
+
+Rock Head:
+health: 120 -> 150
+earthDefense: 5 -> 7
+level: 23 -> 26
+
+Butterfly:
+health: 70 -> 90
+level: 24 -> 27
+
+Garoth's Hope:
+health: 160 -> 185
+level: 26 -> 29
+
+Brise:
+health: 135 -> 170
+level: 24 -> 27
+
+Gold Digger:
+health: 120 -> 145
+level: 25 -> 28
+
+Mud:
+health: 280 -> 350
+level: 28 -> 31
+
+Vitre:
+level: 26 -> 29
+
+Abolition:
+fireDamage: 50-110 -> 40-100
+level: 32 -> 29
+lifeSteal: 38 -> 30
+
+Black Ripper:
+health: 250 -> 215
+level: 30 -> 27
+mainAttackDamageBonusRaw: 43 -> 38
+
+Boundary:
+material: None -> 273:7
+dropMeta: 15 -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+category: 15 -> weapon
+
+Dead Samurai's Plate:
+health: 150 -> 115
+level: 27 -> 24
+
+Hymn of the Dead:
+airDamage: 15-20 -> 12-18
+level: 31 -> 28
+
+Death's Reach:
+damage: 42-55 -> 34-50
+earthDamage: 44-55 -> 38-50
+
+Putrid:
+earthDamage: 16-22 -> 15-20
+waterDamage: 14-18 -> 12-16
+level: 28 -> 25
+healthBonus: 150 -> 130
+
+Damnation:
+damage: 70-100 -> 60-83
+level: 31 -> 28
+mainAttackDamageBonusRaw: 70 -> 60
+
+Cathedral:
+damage: 14-24 -> 10-19
+airDamage: 22-32 -> 18-27
+level: 30 -> 27
+bonusEarthDefense: 15 -> 0
+bonusThunderDefense: 15 -> 0
+bonusWaterDefense: 15 -> 0
+bonusFireDefense: 15 -> 0
+bonusAirDefense: 0 -> 10
+dropMeta: 0 -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+category: 0 -> weapon
+
+Sanies:
+damage: 20-42 -> 16-37
+waterDamage: 20-42 -> 16-37
+level: 31 -> 28
+
+Styx's Grab:
+damage: 15-25 -> 14-22
+waterDamage: 20-25 -> 18-22
+level: 29 -> 26
+lifeSteal: 24 -> 20
+
+Piranha:
+dropType: dungeon -> never
+
+Dart Frog's Skin:
+poison: 3000 -> 5250
+
+Deathsplinter:
+poison: 1420 -> 6350
+
+Dirge:
+poison: 485 -> 1750
+
+Drumstick:
+material: None -> 280:0
+
+Eitr:
+poison: 415 -> 1035
+
+Ekeloch:
+poison: 455 -> 1055
+
+Ensa's Failure:
+poison: 450 -> 1200
+
+Fierte:
+addedLore: Only the most honourable warriors of Gavel's army are presented the trident shaped spear, forged from the rarest metal from the molten heights. -> Only the most honourable warriors of Gavel's army are presented the fearsome, fiery spear forged from the rarest metals of the Molten Heights.
+
+Fissure:
+majorIds: 18 -> ['TEMBLOR']
+mainAttackDamageBonus: 0 -> 18
+mainAttackDamageBonusRaw: -9 -> 0
+spellDamageBonus: 0 -> -9
+attackSpeedBonus: -10 -> 0
+speed: 26 -> -10
+exploding: 0 -> 26
+gatherSpeed: 11 -> 0
+earthDamageBonus: 0 -> 11
+waterDamageBonus: 25 -> 0
+fireDamageBonus: -10 -> 25
+airDamageBonus: 0 -> -10
+bonusFireDefense: -12 -> 0
+bonusAirDefense: weapon -> -12
+
+Fluffy Spear:
+material: None -> 256:0
+
+Gert Knife:
+material: None -> 359:0
+poison: 800 -> 4000
+
+Gert Bow:
+material: None -> 261:0
+
+Gert Super Special Magic Ultistick:
+material: None -> 280:0
+
+Green Helmet:
+poison: 200 -> 1450
+
+Chaos-Woven Greaves:
+poison: 2250 -> 7250
+
+Contrast:
+poison: 750 -> 1850
+
+Coral Ring:
+poison: -365 -> -1000
+
+Harsh Noise:
+sockets: 0 -> 1
+
+Hesperium:
+poison: 600 -> 2120
+
+Hollow Branch:
+poison: 560 -> 2400
+
+Ice Sickle:
+category: {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'} -> weapon
+
+Impact Winter:
+poison: 270 -> 1350
+
+Incinerator:
+poison: 500 -> 1800
+
+Infected Band:
+poison: 220 -> 210
+
+Ionian:
+poison: 488 -> 1760
+
+Irradiation:
+poison: 487 -> 1759
+
+Ivory:
+poison: -1000 -> -4000
+
+Jade Talon:
+material: None -> 359:0
+
+King of Hearts:
+poison: -25000 -> -50000
+
+Krolton's Cruelty:
+poison: 500 -> 825
+
+Laoc Alcher:
+poison: 665 -> 1845
+
+Leggings of Desolation:
+poison: 800 -> 3400
+
+Lethality:
+poison: 575 -> 1425
+
+Lichenwal:
+poison: 245 -> 2500
+
+Cataclysm:
+damage: 40-140 -> 30-120
+thunderDamage: 45-305 -> 45-295
+
+Gaia:
+poison: 2500 -> 12000
+
+Galleon:
+poison: 4231 -> 12500
+
+Hero:
+dexterityPoints: 0 -> 20
+
+Grimtrap:
+poison: 2000 -> 10000
+
+Nullification:
+poison: -7000 -> -10000
+
+Toxoplasmosis:
+poison: 10000 -> 32000
+
+Warp:
+airDamage: 190-220 -> 160-190
+
+Marsh Waders:
+poison: 788 -> 3045
+
+Mercury Bomb:
+poison: 1530 -> 2400
+
+Mind Rot:
+poison: 420 -> 1260
+
+Mycelium Plating:
+poison: 720 -> 4000
+
+Abyssal Amulet:
+poison: 450 -> 400
+
+Amulet of Rejuvenation:
+poison: -20000 -> -100000
+
+Digested Corpse:
+poison: 480 -> 1180
+
+Waist Apron:
+quest: Infested Plants -> Infested Plants֎
+
+Cancer:
+poison: 4000 -> 10000
+
+Nether's Scar:
+poison: 525 -> 3325
+
+Neutrino:
+poison: -3000 -> -7500
+
+Nighthawk:
+health: 4000 -> 3000
+spellDamageBonusRaw: 175 -> 192
+healthBonus: -1000 -> 0
+spellCostRaw1: 0 -> -3
+spellCostRaw3: 0 -> 1
+attackSpeedBonus: 0 -> -1
+
+Nightshade:
+poison: 400 -> 850
+
+Overgrown:
+poison: 650 -> 6500
+
+Pandemic:
+poison: 575 -> 2020
+
+Pass Band:
+poison: 475 -> 815
+
+Phoenix Wing:
+poison: -2000 -> -8000
+
+Physalis:
+poison: 577 -> 3425
+
+Pin:
+material: None -> 359:0
+
+Planet Healer:
+poison: 865 -> 2850
+
+Poison Ivy:
+poison: 2000 -> 7550
+
+Poison Touch:
+poison: 2000 -> 7175
+
+Quinque:
+poison: 2000 -> 9000
+
+Compliance:
+category: {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'} -> accessory
+
+Abrasion:
+category: {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'} -> accessory
+
+Dispersion:
+poison: 808 -> 2500
+category: {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'} -> accessory
+
+Recalcitrance:
+category: {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'} -> accessory
+
+Obstinance:
+category: {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'} -> accessory
+
+Succession:
+category: {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'} -> accessory
+
+Homeorhesis:
+addedLore: None -> Stability is not necessarily found in stasis, but predictability.
+category: {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'} -> accessory
+
+Eyes on All:
+addedLore: None -> A presence of despair watches over the swamp as the Decay spreads.
+category: {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'} -> accessory
+
+Breakthrough:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> accessory
+
+Detachment:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> accessory
+
+Ingress:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> accessory
+
+Exhibition:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> accessory
+
+Forbearance:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> accessory
+
+Aleph Null:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> armor
+
+Continuum:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> weapon
+
+Infinitesimal:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> weapon
+
+Divergence:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> weapon
+
+Nonexistence:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> armor
+
+Fractal:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> weapon
+
+Recursion:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> weapon
+
+Athanasia:
+category: {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'} -> accessory
+
+Simulacrum:
+category: {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'} -> accessory
+
+Cacophony:
+category: {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'} -> accessory
+
+Metamorphosis:
+category: {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'} -> accessory
+
+Provenance:
+category: {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'} -> accessory
+
+Reckoning:
+category: {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'} -> accessory
+
+Veneration:
+category: {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'} -> accessory
+
+Ragon's Bracelet:
+health: 0 -> 1
+earthDefense: 0 -> 1
+thunderDefense: 0 -> 1
+waterDefense: 0 -> 1
+fireDefense: 0 -> 1
+airDefense: 0 -> 1
+level: 10 -> 11
+healthBonus: 13 -> 15
+
+Return to Ether:
+poison: -4143 -> -6987
+
+Ricin:
+material: None -> 359:0
+poison: 1930 -> 3750
+
+Rotten Wood:
+poison: 1462 -> 2825
+
+Rot of Dernel:
+poison: 2645 -> 9000
+
+Rust:
+poison: 665 -> 2230
+
+Rusted Root:
+poison: 900 -> 1850
+
+Heart Piercer:
+poison: 350 -> 1950
+
+Splinter:
+material: None -> 359:0
+
+Poinsettia:
+poison: 1000 -> 2425
+
+Fuunyet:
+poison: 1150 -> 2750
+
+Puncturing Dirk:
+material: None -> 359:0
+
+Boomslang:
+poison: 300 -> 500
+
+Antivenom:
+poison: -200 -> -250
+
+Creepvine:
+poison: 220 -> 265
+
+Short Cutter:
+material: None -> 359:0
+
+Silver Short Spear:
+material: None -> 256:0
+
+Scum:
+poison: 250 -> 350
+
+Quicksilver:
+poison: 375 -> 575
+
+Coal Duster:
+poison: 3500 -> 5400
+
+Filter Mask:
+poison: -375 -> -2950
+
+Voidstone Elrik:
+material: None -> 273:7
+
+Voidstone Esbald:
+material: None -> 359:0
+
+Voidstone Lensing:
+material: None -> 261:0
+
+Voidstone Recteps:
+material: None -> 280:0
+
+Saundersi Signet:
+poison: 758 -> 1800
+
+Schist:
+poison: 120 -> 480
+
+Scorpio:
+poison: 1800 -> 3900
+
+Sequencer:
+mainAttackDamageBonusRaw: 165 -> 130
+spellDamageBonusRaw: 125 -> 100
+healthRegenRaw: 100 -> 75
+
+Sequoia:
+poison: 3130 -> 15750
+
+Sight of the Druid:
+poison: 805 -> 3150
+
+Silkworm:
+poison: 260 -> 1150
+
+Sinister:
+poison: 350 -> 650
+
+Sleeping Beast:
+poison: 1730 -> 6600
+
+Spiritshock:
+poison: 1200 -> 4550
+
+Spleen Splitter:
+poison: 3600 -> 13750
+
+Swamp Clay:
+poison: 350 -> 1800
+
+Talcum:
+poison: 280 -> 1240
+
+Terra's Mold:
+poison: 1500 -> 4000
+
+The Eviscerator:
+poison: 350 -> 1625
+
+The Specialist:
+material: None -> 359:0
+
+Toxin:
+poison: 500 -> 2250
+
+Trace:
+material: None -> 259:19
+
+Uranium Aegis:
+poison: 900 -> 4000
+
+Venomsoul:
+poison: 525 -> 1450
+
+Verdigris Sabatons:
+poison: 550 -> 1700
+
+Vinecrawlers:
+poison: 425 -> 1425
+
+War Pike:
+material: None -> 256:0
+
+Wasteland Azalea:
+poison: 500 -> 3375
+
+Wiggling Villager:
+material: None -> 280:0
+
+Items Added:
+- Elemental Training Bow
+- Elemental Training Dagger
+- Elemental Training Spear
+- Elemental Training Relik
+- Elemental Training Wand
+- Apex
+- Anti-Causality
+- Azeotrope
+- Fluffwind
+- Briars' Embrace
+- Cinnamon
+- Cytotoxic Striders
+- Empyreal Emberplate
+- Gnossis
+- Keeper of Souls
+- Gravitron
+- Marionette
+- Lazuli
+- Payment Day
+- Pyrrhic Respite
+- Resplendence
+- Third Wish
+- Sourscratch
+- Valence
+- Veritas
+- Ysengrim
+- Tachyon
+- Harmstick
+- Overreach
+- Apex Predator
+- Atavistic
+- Extinction
+- Symbiont
+- Roiling Ruckus
+- Zeer ID Test
+- Zeer ID Test2
+Removed Items:
+
+Log Update Date: 2023-07-12 23:09:04
