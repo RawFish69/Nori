@@ -11,6 +11,11 @@
          "tag": "mage, arcanist, fatal, crabs, entropy, lootrun, rawfish"
       },
       {
+         "name": "Stratiformis (RawFish)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0K70uj0xP0nu0K20K40OH0Rb0e0t160y2C1g10009I1000FU10009I1007lU1007lU1B1B0H0J0H0H0s-pn-ZJxu0",
+         "tag": "strati, archer, boltslinger, combat, rawfish"
+      },
+      {
          "name": "Rage GMA Eleventh Hour",
          "link": "https://hppeng-wynn.github.io/builder/?v=3#8_CR-1AiAiAi3MAYAY9r910xO0uX0Qz0050050K40BR0Qe1z1Q0z0U111g0000100nZ610100+0+0+0+0-tdNzhJPXQ",
          "tag": "archer, sharpshooter, grandmother, rage, crafted, thequeenofdemons"
@@ -34,6 +39,11 @@
          "name": "LI Alkatraz",
          "link": "https://hppeng-wynn.github.io/builder?v=3#8_CR-1AY96679F8rAs9g910xOCR-1AM96967-9F8r9i910Qz0A5CR-18j9k9f7J9f7J9m910K40OO0QJ2M1a-y0K-y1g100036100036100036100036015150D0D0E0E0i-sM+vhv1",
          "tag": "warrior, fallen, li, alka, alkatraz, tierstack, rawfish, dps"
+      },
+      {
+         "name": "Bolt Ignis",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0K70x70xP0050K20K40OH0Qg0o0o141z0o1g10009I1000CO01000CO1006CO1B1B0H0J0H0H0s-pn-ZJxu0",
+         "tag": "archer, boltslinger, combat, ignis, rawfish"
       },
       {
          "name": "Fallen Monk Generalist Hero",
@@ -79,11 +89,6 @@
          "name": "Divzer crafted OUTDATED",
          "link": "https://hppeng-wynn.github.io/builder/#8_CR-1AY8v8v6c6Y6c9g91CR-1AY8v8v6c6Y6c9d91CR-196679FAF8wAF9Z91CR-196679FAF8wAF9O91CR-19i9S9S9S9c9c9W910OS00W0Ji0QS0Y2X17-PtQ1g000010036C0c0c0+0+0+0+0d-l9mlVR14",
          "tag": "divzer, archer, full crafted, j1ng"
-      },
-      {
-         "name": "Stratiformis (RawFish)",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0K70uj0xP0nu0K20K40OH0Rb0e0t160y2C1g10009I1000FU10009I1007lU1007lU1B1B0H0J0H0H0s-pn-ZJxu0",
-         "tag": "strati, archer, boltslinger, combat, rawfish"
       },
       {
          "name": "Lament",
