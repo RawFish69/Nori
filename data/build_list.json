@@ -26,6 +26,11 @@
          "tag": "warrior, semi-tank, idol, rawfish"
       },
       {
+         "name": "Warp Arcanist",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au01+0r507W0K20K00wr0OM0R10C0f1k062M1g10006C0001007lU1A1B0E0E0+0+0q-VxBJtM2",
+         "tag": "mage, arcanist, warp, combat"
+      },
+      {
          "name": "Riftwalker Warp TWA",
          "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au01+0r507W0K20K00wr0OM0R10C0f1k062M1g10006C0001007lU1A1B0E0E0+0+0q-VxBJtM2",
          "tag": "mage, riftwalker, warp, mana"
@@ -69,11 +74,6 @@
          "name": "ETW Idol",
          "link": "https://hppeng-wynn.github.io/builder?v=3#8_01dCR-1968v8vAiAi979d91CR-1969C9F977j7j9i91CR-1969C9F977j7j9a91CR-19C8v9i4+9i9i9m91CR-19C8v9i4+9i9i9m91CR-19C8v9i4+9i9i9c91CR-19C8v9i4+9i9i9n910Qf0m1U2R00001g10009I10039I1004fI10039I1004fI0z0z0+0+0+0+0--+rJxbjC0",
          "tag": "warrior, fallen, idol, spellspam, rawfish, dps, raid"
-      },
-      {
-         "name": "Lootrun Warp (LQ & LB)",
-         "link": "https://hppeng-wynn.github.io/builder?v=3#8_CR-19F968w9F9T8w9g910QUCR-19F965+9F5+5+9Z910QjCR-18O8O8O8O8O8O9m910nuCR-18O8O8O8O8O8O9c910Ji0R1-s0L1y-O2W1g00001007lU0z0z0+0+0+0+0--ZdcUNjM",
-         "tag": "mage, lr, warp, fast, rawfish, lament, loot, OUTDATED"
       },
       {
          "name": "Crafted Water Archer",
@@ -204,11 +204,6 @@
          "name": "1000 Cuts Nirvana (Shadestepper)",
          "link": "https://hppeng-wynn.github.io/builder/#8_0VR0Pf0uj0Qx0DU0K20K40OH0Qm0e132M0v0+1g00001004fI0z0z0+0+0+0+0--ZttUt31",
          "tag": "assassin, shadestepper, nirvana, nightcloak, thequeenofdemons"
-      },
-      {
-         "name": "Riftwalker Warp Violet-Shift",
-         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au09-0uj0wh0K20Fx0K40OH0R10e0t140f2M1g10006C0001007lU151B0E0E0+0+0p-VxBJtM2",
-         "tag": "mage, riftwalker, warp, rawfish"
       },
       {
          "name": "Weathered Acrobat",
