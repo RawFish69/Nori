@@ -7,13 +7,13 @@
       },
       {
          "name": "Crusade Fatal Arcanist (Entropy)",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0Pf0r50QW0uP0uP0wr0OH0QY1G270o1a0o1g000010036C17150E0E0I0H0ql-p+EzR",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0Pf0r50QW0uP0uP0wr0OH0QY1G270o1a0o1g000010036C17150E0E0I0H0qlNxppzR",
          "tag": "mage, arcanist, fatal, crabs, entropy, lootrun, rawfish"
       },
       {
-         "name": "Stratiformis (RawFish)",
+         "name": "Stratiformis Boltslinger",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0K70uj0xP0nu0K20K40OH0Rb0e0t160y2C1g10009I1000FU10009I1007lU1007lU1B1B0H0J0H0H0s-pn-ZJxu0",
-         "tag": "strati, archer, boltslinger, combat, rawfish"
+         "tag": "strati, archer, bolt, boltslinger, combat, rawfish"
       },
       {
          "name": "Rage GMA Eleventh Hour",
@@ -37,7 +37,7 @@
       },
       {
          "name": "TNA Alkatraz",
-         "link": "https://hppeng-wynn.github.io/builder?v=3#8_CR-1AY96679F8rAs9g910xOCR-19F9F9fAM9w9t9i910QzCR-17JAc619k9H6F9m91CR-18j9k9f7J9f7J9m910K40uH0QJ2M1G-w0K061g10003610003610003610003601616030303030l-+uzUDl1",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_CR-1AY96679F8rAs9g910xOCR-19F9F9fAM9w9t9i910QzCR-17JAc619k9H6F9m91CR-18j9k9f7J9f7J9m910K40uH0QJ2M1V-w0K061g10003610003610003610003601616030303030l-+uzXhvD",
          "tag": "warrior, fallen, raid, alka, alkatraz, tierstack, rawfish, dps"
       },
       {
@@ -49,6 +49,26 @@
          "name": "Bolt Ignis",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0K70x70xP0050K20K40OH0Qg0o0o141z0o1g10009I1000CO01000CO1006CO1B1B0H0J0H0H0s-pn-ZJxu0",
          "tag": "archer, boltslinger, combat, ignis, rawfish"
+      },
+      {
+         "name": "Classic ETA Epoch",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VI0KF0PW0Qz0Jf0x200W0OO0uz1a1a-Y-Y1J1g000010036C0z0z0+0+0+0+0--lYdvg7N3",
+         "tag": "archer, sharpshooter, epoch, tierstack, ts, eta, ender"
+      },
+      {
+         "name": "ETA Riftbender Morrowind",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_06W0u80jn0v+0uA0050wr0Ji0SQ1616-E041h1g00001007lU0z0z0+0+0+0+0-zZddJhSk5",
+         "tag": "budget, mage, lightbender, no crafted, entropy, no mythic, low mana, jello"
+      },
+      {
+         "name": "Warp Cancel-HPR",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_02709-0Jo0QjCR-18n8n8n8n8n8n9W91CR-18n8n8n8n8n8n9W91CR-18n8n8n8n8n8n9Q910Ji0R10s-v1f-O2W1g1000FU01000FU1007iU1007lU1B1B070707070ellwpv7-4",
+         "tag": "mage, arcanist, manastorm, yuki"
+      },
+      {
+         "name": "Crabs Idol",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_01d0Pf0r50QW0050050x40OH0Qf1G0e2R1a0e1g10009I10009I10009I10009I1006660z0z0+0+0+0+0-jdNniCJxE1",
+         "tag": "idol, battlemonk, lootrun, rainbow, discombobulate, ender"
       },
       {
          "name": "Fallen Monk Generalist Hero",
@@ -78,7 +98,7 @@
       {
          "name": "Crafted Water Archer",
          "link": "https://hppeng-wynn.github.io/builder#7_0Au01+0r507W0K20OK0K40OMCR-16Y789N78A57B9b920a0e1m0y1G1g010009I10009I01004fIWZEEEEj-l1-+jbY",
-         "tag": "crafted water bow, archer, boltslinger, rawfish, outdated link"
+         "tag": "cspring, archer, boltslinger, rawfish, outdated link"
       },
       {
          "name": "Royal Hydrangea",
@@ -254,16 +274,6 @@
          "name": "Crabs Absolution",
          "link": "https://hppeng-wynn.github.io/builder?v=3#8_0tX0K70r50QW0K00K20T40OH0QI1G0e141p0o1g000000z0z0+0+0+0+0---vF-mE2",
          "tag": "acolyte, healing, no crafted, shaman, rawfish"
-      },
-      {
-         "name": "Classic ETA Epoch",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VI0KF0PW0Qz0Jf0x200W0OO0uz1a1a-Y-Y1J1g000010036C0z0z0+0+0+0+0--lYdvg7N3",
-         "tag": "archer, sharpshooter, epoch, tierstack, ts, eta, ender"
-      },
-      {
-         "name": "ETA Riftbender Morrowind",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_06W0u80jn0v+0uA0050wr0Ji0SQ1616-E041h1g00001007lU0z0z0+0+0+0+0-zZddJhSk5",
-         "tag": "budget, mage, lightbender, no crafted, entropy, no mythic, low mana, jello"
       }
    ]
 }
