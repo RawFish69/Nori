@@ -21,6 +21,11 @@
          "tag": "archer, sharpshooter, grandmother, rage, crafted, thequeenofdemons"
       },
       {
+         "name": "Water Archer (Cspring)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r50xP0K20OK0K40OHCR-16v8v9B9N6v8v9b920y0q1u0e0o1g010009I10009I01004fI0W0Z0E0E0E0E0j-pn-ZpmT0",
+         "tag": "archer, boltslinger, no-mythic, cspring, crafted, rawfish"
+      },
+      {
          "name": "Resurgence Idol",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0K70r50Qr0OK0K20K40OH0Qf160e2I1S0e1g00010039I1004fI18180H0I0I0E0o--hOsKbv3",
          "tag": "warrior, semi-tank, idol, rawfish"
@@ -66,6 +71,11 @@
          "tag": "mage, arcanist, manastorm, yuki"
       },
       {
+         "name": "Warp Combat alternative",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_02509-0Jo0Qj0x30K20T40Ji0R10++c1k-O2W1g1000FU01000FU1007iU1007lU1B1B070505050qllwpv7-4",
+         "tag": "mage, arcanist, manastorm, no-crafted, yuki"
+      },
+      {
          "name": "Crabs Idol",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_01d0Pf0r50QW0050050x40OH0Qf1G0e2R1a0e1g10009I10009I10009I10009I1006660z0z0+0+0+0+0-jdNniCJxE1",
          "tag": "idol, battlemonk, lootrun, rainbow, discombobulate, ender"
@@ -94,11 +104,6 @@
          "name": "ETW Idol",
          "link": "https://hppeng-wynn.github.io/builder?v=3#8_01dCR-1968v8vAiAi979d91CR-1969C9F977j7j9i91CR-1969C9F977j7j9a91CR-19C8v9i4+9i9i9m91CR-19C8v9i4+9i9i9m91CR-19C8v9i4+9i9i9c91CR-19C8v9i4+9i9i9n910Qf0m1U2R00001g10009I10039I1004fI10039I1004fI0z0z0+0+0+0+0--+rJxbjC0",
          "tag": "warrior, fallen, idol, spellspam, rawfish, dps, raid"
-      },
-      {
-         "name": "Crafted Water Archer",
-         "link": "https://hppeng-wynn.github.io/builder#7_0Au01+0r507W0K20OK0K40OMCR-16Y789N78A57B9b920a0e1m0y1G1g010009I10009I01004fIWZEEEEj-l1-+jbY",
-         "tag": "cspring, archer, boltslinger, rawfish, outdated link"
       },
       {
          "name": "Royal Hydrangea",
