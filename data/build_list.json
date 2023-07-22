@@ -111,16 +111,6 @@
          "tag": "shaman, budget build, no crafted, glass, me1tryllis"
       },
       {
-         "name": "Divzer crafted OUTDATED",
-         "link": "https://hppeng-wynn.github.io/builder/#8_CR-1AY8v8v6c6Y6c9g91CR-1AY8v8v6c6Y6c9d91CR-196679FAF8wAF9Z91CR-196679FAF8wAF9O91CR-19i9S9S9S9c9c9W910OS00W0Ji0QS0Y2X17-PtQ1g000010036C0c0c0+0+0+0+0d-l9mlVR14",
-         "tag": "divzer, archer, full crafted, j1ng"
-      },
-      {
-         "name": "Lament",
-         "link": "https://hppeng-wynn.github.io/builder?v=1#8_0Au0K70r50n6CR-1Ab6QAb6Q9C8v9m91CR-1Ab6QAb6Q9C8v9m910wr0OH0Qk0P0f22220w1g10009I10009I10009I10009I1004fI0W0W0E0E0E0E0qtMphfswh",
-         "tag": "war lament, mage, lightbender, rawfish, outdated link"
-      },
-      {
          "name": "Monster",
          "link": "https://hppeng-wynn.github.io/builder?v=1#8_07R0K70uj0n60050K20wr0OH0Qn0Z0u182M0+1g10009I10009I10009I10009I1004fI0W0W0E0E0E0E0qtMphfswh",
          "tag": "monster, mage, lightbender, no crafted, outdated link"
@@ -279,6 +269,21 @@
          "name": "Crabs Absolution",
          "link": "https://hppeng-wynn.github.io/builder?v=3#8_0tX0K70r50QW0K00K20T40OH0QI1G0e141p0o1g000000z0z0+0+0+0+0---vF-mE2",
          "tag": "acolyte, healing, no crafted, shaman, rawfish"
+      },
+      {
+         "name": "Statue Monster",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07R0K70uj0n60050K20wr0OH0Qn0Z0u182M0+1g10009I10009I10009I10009I1004fI0W0W0E0E0E0E0qzZddJhSk5",
+         "tag": "monster, mage, lightbender, no crafted, jello"
+      },
+      {
+         "name": "Monster Warp Dual Wield",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07R0Pf0D40wh0050050K40OH0Qn0e0g0e2M221g00001006CO0z0z0+0+0+0+0-zZdcjPbJB",
+         "tag": "mage, riftbender, lootrun, rainbow, ender"
+      },
+      {
+         "name": "Combat Guardian",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0K70r50xP0050K20K40OH0Qb0o0o1D220o1g00001004fI18180H0I0I0E0o-+hSsCH+0",
+         "tag": "warrior, battle monk, paladin, guard"
       }
    ]
 }
