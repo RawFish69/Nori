@@ -1,229 +1,229 @@
 {
   "Data": {
     "Apocalypse": {
-      "lifeSteal": "80",
-      "healthRegen": "15",
-      "exploding": "5"
+      "lifeSteal": "80.0",
+      "healthRegen": "15.0",
+      "exploding": "5.0"
     },
     "Hero": {
-      "speed": "80",
-      "healthRegen": "19",
-      "mainAttackDamageBonus": "1"
+      "speed": "80.0",
+      "healthRegen": "19.0",
+      "mainAttackDamageBonus": "1.0"
     },
     "Guardian (War)": {
-      "healthBonus": "98",
-      "healthRegenRaw": "2"
+      "healthBonus": "98.0",
+      "healthRegenRaw": "2.0"
     },
     "Guardian": {
-      "healthRegenRaw": "65",
-      "healthBonus": "35"
+      "healthRegenRaw": "65.0",
+      "healthBonus": "35.0"
     },
     "Alkatraz": {
       "earthDamageBonus": "47.5",
       "mainAttackDamageBonus": "42.5",
-      "exploding": "10"
+      "exploding": "10.0"
     },
     "Idol": {
-      "spellCostRaw2": "40",
-      "spellDamageBonusRaw": "35",
+      "spellCostRaw2": "40.0",
+      "spellDamageBonusRaw": "35.0",
       "manaRegen": "22.5",
       "reflection": "2.5"
     },
     "Idol (Lootrun)": {
       "spellCostRaw2": "72.5",
-      "manaRegen": "15",
-      "spellDamageBonusRaw": "10",
+      "manaRegen": "15.0",
+      "spellDamageBonusRaw": "10.0",
       "reflection": "2.5"
     },
     "Thrundacrack": {
-      "spellCostRaw3": "45",
+      "spellCostRaw3": "45.0",
       "thunderDamageBonus": "27.5",
       "waterDamageBonus": "22.5",
-      "healthRegen": "4",
-      "speed": "1"
+      "healthRegen": "4.0",
+      "speed": "1.0"
     },
     "Collapse": {
-      "mainAttackDamageBonus": "80",
-      "manaSteal": "20"
+      "mainAttackDamageBonus": "80.0",
+      "manaSteal": "20.0"
     },
     "Collapse (spell)": {
-      "manaSteal": "80",
-      "mainAttackDamageBonus": "20"
+      "manaSteal": "80.0",
+      "mainAttackDamageBonus": "20.0"
     },
     "Convergence": {
-      "spellCostPct3": "70",
+      "spellCostPct3": "70.0",
       "healthRegen": "12.5",
       "earthDamageBonus": "12.5",
-      "thunderDamageBonus": "5"
+      "thunderDamageBonus": "5.0"
     },
     "Az": {
-      "spellCostPct1": "70",
-      "fireDamageBonus": "10",
-      "waterDamageBonus": "10",
-      "xpBonus": "10"
+      "spellCostPct1": "70.0",
+      "fireDamageBonus": "10.0",
+      "waterDamageBonus": "10.0",
+      "xpBonus": "10.0"
     },
     "Freedom": {
-      "manaRegen": "60",
-      "healthBonus": "20",
-      "speed": "10",
-      "spellDamageBonusRaw": "10"
+      "manaRegen": "60.0",
+      "healthBonus": "20.0",
+      "speed": "10.0",
+      "spellDamageBonusRaw": "10.0"
     },
     "Grandmother": {
-      "healthRegenRaw": "50",
-      "spellDamageBonus": "35",
+      "healthRegenRaw": "50.0",
+      "spellDamageBonus": "35.0",
       "healthRegen": "12.5",
       "speed": "2.5"
     },
     "Ignis": {
-      "healthRegenRaw": "40",
-      "healthRegen": "25",
-      "healthBonus": "20",
-      "spellCostPct4": "10",
-      "fireDamageBonus": "5"
+      "healthRegenRaw": "40.0",
+      "healthRegen": "25.0",
+      "healthBonus": "20.0",
+      "spellCostPct4": "10.0",
+      "fireDamageBonus": "5.0"
     },
     "Divzer": {
-      "manaSteal": "70",
-      "lifeSteal": "20",
-      "spellDamageBonusRaw": "10"
+      "manaSteal": "70.0",
+      "lifeSteal": "20.0",
+      "spellDamageBonusRaw": "10.0"
     },
     "Spring": {
-      "manaRegen": "79",
-      "waterDamageBonus": "20",
-      "thunderDamageBonus": "1"
+      "manaRegen": "79.0",
+      "waterDamageBonus": "20.0",
+      "thunderDamageBonus": "1.0"
     },
     "Stratiformis": {
-      "speed": "80",
-      "healthBonus": "18",
-      "spellDamageBonus": "2"
+      "speed": "80.0",
+      "healthBonus": "18.0",
+      "spellDamageBonus": "2.0"
     },
     "Epoch": {
-      "mainAttackDamageBonusRaw": "65",
-      "lifeSteal": "20",
-      "spellDamageBonus": "10",
-      "speed": "5"
+      "mainAttackDamageBonusRaw": "65.0",
+      "lifeSteal": "20.0",
+      "spellDamageBonus": "10.0",
+      "speed": "5.0"
     },
     "Pure": {
-      "spellDamageBonus": "65",
+      "spellDamageBonus": "65.0",
       "manaSteal": "22.5",
       "xpBonus": "12.5"
     },
     "Lament": {
-      "waterDamageBonus": "70",
+      "waterDamageBonus": "70.0",
       "manaSteal": "17.5",
       "spellCostPct1": "12.5"
     },
     "Gaia": {
-      "mainAttackDamageBonusRaw": "70",
-      "mainAttackDamageBonus": "25",
-      "poison": "5"
+      "mainAttackDamageBonusRaw": "70.0",
+      "mainAttackDamageBonus": "25.0",
+      "poison": "5.0"
     },
     "Monster": {
       "healthBonus": "37.5",
-      "manaSteal": "30",
+      "manaSteal": "30.0",
       "spellCostRaw1": "17.5",
-      "lifeSteal": "10",
+      "lifeSteal": "10.0",
       "fireDamageBonus": "7.5"
     },
     "Singularity": {
-      "spellDamageBonusRaw": "40",
-      "speed": "25",
-      "healthRegenRaw": "15",
-      "spellDamageBonus": "10",
+      "spellDamageBonusRaw": "40.0",
+      "speed": "25.0",
+      "healthRegenRaw": "15.0",
+      "spellDamageBonus": "10.0",
       "mainAttackDamageBonusRaw": "7.5",
       "mainAttackDamageBonus": "2.5"
     },
     "Fatal": {
-      "spellDamageBonus": "50",
+      "spellDamageBonus": "50.0",
       "spellCostPct1": "27.5",
-      "spellCostPct2": "20",
+      "spellCostPct2": "20.0",
       "speed": "2.5"
     },
     "Fatal (Arcanist)": {
-      "spellDamageBonus": "65",
-      "speed": "20",
-      "spellCostPct1": "15"
+      "spellDamageBonus": "65.0",
+      "speed": "20.0",
+      "spellCostPct2": "15.0"
     },
     "Warp": {
       "speed": "32.5",
-      "healthRegenRaw": "28",
-      "manaRegen": "25",
-      "spellCostRaw1": "5",
-      "airDamageBonus": "5",
+      "healthRegenRaw": "28.0",
+      "manaRegen": "25.0",
+      "spellCostRaw1": "5.0",
+      "airDamageBonus": "5.0",
       "spellCostRaw2": "2.5",
-      "healthRegen": "2"
+      "healthRegen": "2.0"
     },
     "Warp (Lootrun)": {
-      "spellCostRaw2": "35",
-      "healthRegenRaw": "30",
-      "speed": "20",
+      "spellCostRaw2": "35.0",
+      "healthRegenRaw": "30.0",
+      "speed": "20.0",
       "manaRegen": "12.5",
       "healthRegen": "2.5"
     },
     "Quetzalcoatl": {
-      "spellDamageBonusRaw": "55",
-      "lifeSteal": "30",
-      "speed": "15"
+      "spellDamageBonusRaw": "55.0",
+      "lifeSteal": "30.0",
+      "speed": "15.0"
     },
     "Aftershock": {
-      "healthBonus": "75",
-      "earthDamageBonus": "25",
-      "spellCostPct4": "5"
+      "healthBonus": "75.0",
+      "earthDamageBonus": "25.0",
+      "spellCostPct4": "5.0"
     },
     "Olympic": {
-      "jumpHeight": "40",
-      "speed": "35",
+      "jumpHeight": "40.0",
+      "speed": "35.0",
       "airDamageBonus": "12.5",
-      "spellCostRaw1": "10",
+      "spellCostRaw1": "10.0",
       "spellCostRaw2": "2.5"
     },
     "Hadal": {
-      "spellDamageBonus": "50",
-      "spellCostPct3": "20",
-      "manaRegen": "20",
-      "spellCostPct4": "10"
+      "spellDamageBonus": "50.0",
+      "spellCostPct3": "20.0",
+      "manaRegen": "20.0",
+      "spellCostPct4": "10.0"
     },
     "Sunstar": {
-      "mainAttackDamageBonusRaw": "60",
-      "lifeSteal": "30",
-      "thunderDamageBonus": "10"
+      "mainAttackDamageBonusRaw": "60.0",
+      "lifeSteal": "30.0",
+      "thunderDamageBonus": "10.0"
     },
     "Toxoplasmosis": {
-      "poison": "85",
+      "poison": "85.0",
       "lootBonus": "12.5",
       "speed": "2.5"
     },
     "Fantasia": {
       "spellCostPct3": "27.5",
       "spellDamageBonus": "22.5",
-      "manaRegen": "20",
-      "spellCostPct1": "15",
-      "spellCostPct4": "8",
-      "manaSteal": "6",
-      "spellCostPct2": "1"
+      "manaRegen": "20.0",
+      "spellCostPct1": "15.0",
+      "spellCostPct4": "8.0",
+      "manaSteal": "6.0",
+      "spellCostPct2": "1.0"
     },
     "Absolution": {
-      "waterDamageBonus": "50",
+      "waterDamageBonus": "50.0",
       "healthBonus": "22.5",
       "manaRegen": "17.5",
-      "spellCostRaw1": "9",
-      "fireDamageBonus": "1"
+      "spellCostRaw1": "9.0",
+      "fireDamageBonus": "1.0"
     },
     "Immolation": {
-      "fireDamageBonus": "30",
-      "airDamageBonus": "30",
-      "healthBonus": "30",
+      "fireDamageBonus": "30.0",
+      "airDamageBonus": "30.0",
+      "healthBonus": "30.0",
       "spellCostPct3": "7.5",
       "healthRegen": "2.5"
     },
     "Archangel": {
-      "speed": "70",
-      "healthRegenRaw": "10",
-      "healthRegen": "10",
-      "healthBonus": "10"
+      "speed": "70.0",
+      "healthRegenRaw": "10.0",
+      "healthRegen": "10.0",
+      "healthBonus": "10.0"
     },
     "Nullification": {
-      "lifeSteal": "65",
-      "manaSteal": "34",
+      "lifeSteal": "65.0",
+      "manaSteal": "34.0",
       "bonusEarthDefense": "0.2",
       "bonusThunderDefense": "0.2",
       "bonusWaterDefense": "0.2",
@@ -231,9 +231,9 @@
       "bonusAirDefense": "0.2"
     },
     "Cataclysm": {
-      "healthBonus": "80",
-      "thunderDamageBonus": "19",
-      "emeraldStealing": "1"
+      "healthBonus": "80.0",
+      "thunderDamageBonus": "19.0",
+      "emeraldStealing": "1.0"
     },
     "Grimtrap": {
       "spellCostRaw4": "50",
@@ -242,15 +242,15 @@
       "poison": "1"
     },
     "Weathered": {
-      "speed": "40",
-      "manaSteal": "35",
-      "airDamageBonus": "25"
+      "speed": "40.0",
+      "manaSteal": "35.0",
+      "airDamageBonus": "25.0"
     },
     "Inferno": {
-      "mainAttackDamageBonusRaw": "35",
-      "fireDamageBonus": "25",
-      "healthBonus": "25",
-      "mainAttackDamageBonus": "10",
+      "mainAttackDamageBonusRaw": "35.0",
+      "fireDamageBonus": "25.0",
+      "healthBonus": "25.0",
+      "mainAttackDamageBonus": "10.0",
       "healthRegen": "2.5",
       "speed": "2.5"
     },
@@ -261,144 +261,144 @@
       "manaSteal": "17.5"
     },
     "Oblivion": {
-      "manaRegen": "35",
-      "spellCostRaw2": "25",
-      "spellDamageBonusRaw": "20",
-      "manaSteal": "15",
-      "exploding": "5"
+      "manaRegen": "35.0",
+      "spellCostRaw2": "25.0",
+      "spellDamageBonusRaw": "20.0",
+      "manaSteal": "15.0",
+      "exploding": "5.0"
     },
     "Discoverer": {
       "lootBonus": "99.9",
       "xpBonus": "0.1"
     },
     "Crusade Sabatons": {
-      "healthBonus": "85",
-      "healthRegen": "10",
-      "speed": "5"
+      "healthBonus": "85.0",
+      "healthRegen": "10.0",
+      "speed": "5.0"
     },
     "Resurgence": {
-      "manaRegen": "40",
-      "healthRegenRaw": "35",
-      "spellDamageBonus": "20",
-      "speed": "5"
+      "manaRegen": "40.0",
+      "healthRegenRaw": "35.0",
+      "spellDamageBonus": "20.0",
+      "speed": "5.0"
     },
     "Galleon": {
       "manaSteal": "42.5",
       "earthDamageBonus": "22.5",
-      "waterDamageBonus": "20",
-      "lootBonus": "5",
-      "emeraldStealing": "5",
+      "waterDamageBonus": "20.0",
+      "lootBonus": "5.0",
+      "emeraldStealing": "5.0",
       "mainAttackDamageBonus": "2.5",
       "poison": "2.5"
     },
     "Boreal": {
-      "healthRegen": "50",
-      "healthRegenRaw": "30",
-      "manaRegen": "15",
-      "speed": "5"
+      "healthRegen": "50.0",
+      "healthRegenRaw": "30.0",
+      "manaRegen": "15.0",
+      "speed": "5.0"
     },
     "Slayer": {
       "spellCostPct3": "47.5",
-      "speed": "25",
-      "healthRegenRaw": "20",
-      "mainAttackDamageBonusRaw": "5",
+      "speed": "25.0",
+      "healthRegenRaw": "20.0",
+      "mainAttackDamageBonusRaw": "5.0",
       "emeraldStealing": "2.5"
     },
     "Slayer (melee)": {
       "mainAttackDamageBonusRaw": "37.5",
-      "speed": "25",
-      "healthRegenRaw": "20",
-      "spellCostPct3": "15",
+      "speed": "25.0",
+      "healthRegenRaw": "20.0",
+      "spellCostPct3": "15.0",
       "emeraldStealing": "2.5"
     },
     "Moontower": {
-      "speed": "95",
+      "speed": "95.0",
       "bonusAirDefense": "2.5",
       "bonusWaterDefense": "2.5"
     },
     "Dawnbreak": {
-      "mainAttackDamageBonusRaw": "70",
-      "manaSteal": "15",
-      "lifeSteal": "10",
+      "mainAttackDamageBonusRaw": "70.0",
+      "manaSteal": "15.0",
+      "lifeSteal": "10.0",
       "thunderDamageBonus": "2.5",
       "fireDamageBonus": "2.5"
     },
     "Dawnbreak (spell)": {
       "manaSteal": "42.5",
-      "lifeSteal": "30",
+      "lifeSteal": "30.0",
       "fireDamageBonus": "12.5",
       "thunderDamageBonus": "12.5",
       "mainAttackDamageBonusRaw": "2.5"
     },
     "Stardew": {
-      "spellDamageBonusRaw": "25",
+      "spellDamageBonusRaw": "25.0",
       "manaRegen": "22.5",
-      "manaSteal": "20",
-      "waterDamageBonus": "16",
+      "manaSteal": "20.0",
+      "waterDamageBonus": "16.0",
       "thunderDamageBonus": "15.5",
-      "reflection": "1"
+      "reflection": "1.0"
     },
     "Warchief": {
       "mainAttackDamageBonus": "37.5",
-      "earthDamageBonus": "35",
-      "mainAttackDamageBonusRaw": "20",
-      "exploding": "5",
+      "earthDamageBonus": "35.0",
+      "mainAttackDamageBonusRaw": "20.0",
+      "exploding": "5.0",
       "speed": "2.5"
     },
     "Warchief (thunder)": {
       "thunderDamageBonus": "47.5",
-      "mainAttackDamageBonus": "25",
-      "mainAttackDamageBonusRaw": "20",
-      "exploding": "5",
+      "mainAttackDamageBonus": "25.0",
+      "mainAttackDamageBonusRaw": "20.0",
+      "exploding": "5.0",
       "speed": "2.5"
     },
     "Revenant": {
-      "mainAttackDamageBonusRaw": "35",
-      "speed": "15",
-      "healthBonus": "15",
-      "mainAttackDamageBonus": "15",
+      "mainAttackDamageBonusRaw": "35.0",
+      "speed": "15.0",
+      "healthBonus": "15.0",
+      "mainAttackDamageBonus": "15.0",
       "airDamageBonus": "12.5",
-      "earthDamageBonus": "5"
+      "earthDamageBonus": "5.0"
     },
     "Revenant (spell)": {
-      "spellCostPct4": "45",
+      "spellCostPct4": "45.0",
       "manaSteal": "22.5",
-      "earthDamageBonus": "10",
-      "airDamageBonus": "10",
+      "earthDamageBonus": "10.0",
+      "airDamageBonus": "10.0",
       "healthBonus": "7.5",
-      "speed": "5"
+      "speed": "5.0"
     }
   },
   "unid": {
     "Apocalypse": "0.75",
-    "Hero": "9",
-    "Guardian (War)": "8.5",
-    "Guardian": "8.5",
+    "Hero": "8",
+    "Guardian (War)": "3.5",
+    "Guardian": "3.5",
     "Alkatraz": "3",
-    "Idol": "30",
-    "Idol (Lootrun)": "30",
+    "Idol": "33",
+    "Idol (Lootrun)": "33",
     "Thrundacrack": "1.5",
     "Collapse": "2",
     "Collapse (spell)": "2",
-    "Convergence": "4.5",
+    "Convergence": "2",
     "Az": "2",
-    "Freedom": "8",
+    "Freedom": "6",
     "Grandmother": "3",
     "Ignis": "6.5",
     "Divzer": "3",
     "Spring": "1.5",
     "Stratiformis": "10",
-    "Epoch": "15",
+    "Epoch": "14",
     "Pure": "4",
-    "Lament": "4",
+    "Lament": "3.5",
     "Gaia": "1",
-    "Monster": "4",
-    "Singularity": "3.5",
-    "Fatal": "4",
-    "Fatal (Arcanist)": "4",
-    "Warp": "9",
-    "Warp (Lootrun)": "9",
-    "Quetzalcoatl": "3",
+    "Monster": "7.5",
+    "Singularity": "2",
+    "Fatal": "6",
+    "Fatal (Arcanist)": "6",
+    "Warp": "10.5",
+    "Warp (Lootrun)": "10.5",
+    "Quetzalcoatl": "2.5",
     "Aftershock": "5",
     "Olympic": "6",
     "Hadal": "2.5",
@@ -406,17 +406,17 @@
     "Toxoplasmosis": "4",
     "Fantasia": "2",
     "Absolution": "9",
-    "Immolation": "1.5",
-    "Archangel": "3.5",
-    "Nullification": "4",
-    "Cataclysm": "13",
-    "Grimtrap": "2",
-    "Weathered": "7",
-    "Inferno": "3",
+    "Immolation": "0.5",
+    "Archangel": "1.5",
+    "Nullification": "3.5",
+    "Cataclysm": "15",
+    "Grimtrap": "1",
+    "Weathered": "4.5",
+    "Inferno": "1.5",
     "Nirvana": "8",
     "Oblivion": "5.5",
-    "Discoverer": "13",
-    "Crusade Sabatons": "6",
+    "Discoverer": "7",
+    "Crusade Sabatons": "10",
     "Resurgence": "2",
     "Galleon": "0.75",
     "Boreal": "0.75",
@@ -517,7 +517,7 @@
     "spellCostPct4"
   ],
   "latest": {
-    "Date": "2023-07-17 23:29:02",
-    "Timestamp": 1689654542
+    "Date": "2023-07-23 00:56:04",
+    "Timestamp": 1690091764
   }
 }
