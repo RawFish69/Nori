@@ -187,7 +187,7 @@
       },
       {
          "name": "Riftwalker Fatal",
-         "link": "https://hppeng-wynn.github.io/builder?v=2#8_0Au01+0uj0tv0GQ0vH0K40OH0QY0Z271k0Z0+1g10006C00010036C15150E0E0+0+0q-VhhCMtg0",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VR0u70uj0xP0050uP0K40OH0QY0Z27110Z0+1g0010006C10006C10036C15150E0E0E0E0q-VxDzrM0",
          "tag": "mage, riftwalker, fatal, no-crafted, rawfish"
       },
       {
@@ -279,6 +279,21 @@
          "name": "Combat Guardian",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0K70r50xP0050K20K40OH0Qb0o0o1D220o1g00001004fI18180H0I0I0E0o-+hSsCH+0",
          "tag": "warrior, battle monk, paladin, guard"
+      },
+      {
+         "name": "Rainbow Manna Acrobat",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0Pf0x70tv0TQ0K00x40OH09e1B1B160o0o1g10009I10009I001004fI0z0z0+0+0+0+0-l7zgnlzW3",
+         "tag": "assassin, acrobat, no mythic, no crafted, jello"
+      },
+      {
+         "name": "Fallen Convergence",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0u70r50tZ0K20WA0ZR0Ji0ux1B18141B081g1000361001f61001f61001i61001Z60c0c050505050izc--BR6A",
+         "tag": "warrior, corrupt, raid, conv, convergence, no craft, yuki"
+      },
+      {
+         "name": "Rainbow Arcanist Cascade",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0u80FT0xP0vI0K00TN0OH07f0y0r0i0i0s1g00001004cI0z0z0+0+0+0+0-lNv7PF-g",
+         "tag": "mage, arcanist, no mythic, no crafted, jello"
       }
    ]
 }
