@@ -78,7 +78,7 @@
       {
          "name": "Crabs Idol",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_01d0Pf0r50QW0050050x40OH0Qf1G0e2R1a0e1g10009I10009I10009I10009I1006660z0z0+0+0+0+0-jdNniCJxE1",
-         "tag": "idol, battlemonk, lootrun, rainbow, discombobulate, ender"
+         "tag": "warrior, idol, battlemonk, lootrun, rainbow, discombobulate, ender"
       },
       {
          "name": "Fallen Monk Generalist Hero",
@@ -109,11 +109,6 @@
          "name": "Royal Hydrangea",
          "link": "https://hppeng-wynn.github.io/builder/#8_0cD0u80x70nB0x30K00T40OH0BH0y0y1G0o1Q1g000001B1B0J0J05050sz-fhVq03",
          "tag": "shaman, budget build, no crafted, glass, me1tryllis"
-      },
-      {
-         "name": "Monster",
-         "link": "https://hppeng-wynn.github.io/builder?v=1#8_07R0K70uj0n60050K20wr0OH0Qn0Z0u182M0+1g10009I10009I10009I10009I1004fI0W0W0E0E0E0E0qtMphfswh",
-         "tag": "monster, mage, lightbender, no crafted, outdated link"
       },
       {
          "name": "165k Freedom",
@@ -164,11 +159,6 @@
          "name": "Nychthemeron Freedom",
          "link": "https://hppeng-wynn.github.io/builder?v=1#8_0uB0Pf0FT0Qx0TQ0K00x40OH0QV1B1G1B0e161g1006CO11unfI1000FU10006C102J6I1B1B050505050stx7-F1gF2",
          "tag": "freedom, archer, boltslinger, duat, outdated link"
-      },
-      {
-         "name": "Tstack Epoch Pandemonium",
-         "link": "https://hppeng-wynn.github.io/builder?v=1#8_CR-1AY967G9F8rAs9g910F+0PW0VN0W7CR-19i9kASAc7JAS9m910Wf0uH0uz0p1M0j0+1B1g00001006FO15150+0+0+0+0mVhUocJ9jy0",
-         "tag": "tstack, archer, boltslinger, greed, epoch, pandemonium, crafted item, birdmade, outdated link"
       },
       {
          "name": "Combat Warp Pandemonium",
@@ -273,7 +263,7 @@
       {
          "name": "Statue Monster",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_07R0K70uj0n60050K20wr0OH0Qn0Z0u182M0+1g10009I10009I10009I10009I1004fI0W0W0E0E0E0E0qzZddJhSk5",
-         "tag": "monster, mage, lightbender, no crafted, jello"
+         "tag": "monster, mage, lightbender, no crafted, rawfish"
       },
       {
          "name": "Monster Warp Dual Wield",
