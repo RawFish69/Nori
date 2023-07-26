@@ -102,7 +102,7 @@
       },
       {
          "name": "ETW Divzer",
-         "link": "https://hppeng-wynn.github.io/builder?v=3#8_CR-1969F9F946c6Y9g92CR-1969F9F946c6Y9d92CR-1969F9F947C8w9i92CR-1969F9F947C8w9a920OSCR-19S9S9S9i9c9c9m910K4CR-19S9S9S9i9c9c9n910QS0h2g0++ytX1g000010036C0W0Y0+0+0+0+0o-l1-UjL51",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_CR-1969F9F946c949g92CR-1969F9F946c949d92CR-18v8v94947C8w9i92CR-18v8v94947C8w9a920OS0K00T40KG0QS142O0q+utT1g000010036C0W0Y0E0E0E0E0o-pn-ZrUu0",
          "tag": "archer, boltslinger, etw, divzer, rawfish, crafted, dps"
       },
       {
@@ -287,13 +287,18 @@
       },
       {
          "name": "Fallen Convergence",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0u70r50tZ0K20WA0ZR0Ji0ux1B18141B081g1000361001f61001f61001i61001Z60c0c050505050izc--BR6A",
-         "tag": "warrior, corrupt, raid, conv, convergence, no craft, yuki"
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0u70r50tZ0K20WA0ZR0Ji0ux1G13141B081g1000361001f61001f61001i61001Z60c0c050505050izc--BR6A",
+         "tag": "warrior, corrupt, rots, raid, conv, convergence, no-crafted, yuki"
       },
       {
          "name": "Rainbow Arcanist Cascade",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0u80FT0xP0vI0K00TN0OH07f0y0r0i0i0s1g00001004cI0z0z0+0+0+0+0-lNv7PF-g",
          "tag": "mage, arcanist, no mythic, no crafted, jello"
-      }
+      },
+      {
+         "name": "ETA Tstack Aftershock",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0u80FT0xP0vI0K00TN0OH07f0y0r0i0i0s1g00001004cI0z0z0+0+0+0+0-lNv7PF-g",
+         "tag": "shaman, tier stack, ashock, no-crafted, blu"
+      },
    ]
 }
