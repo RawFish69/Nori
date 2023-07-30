@@ -542,6 +542,11 @@
       },
       {
          "type": "Ring",
+         "link": "https://hppeng-wynn.github.io/crafter/#19HAc7JBn9i9k9m91",
+         "tag": "jeweling, 50 str req, 40 dex req, 40 def req, 40 agi req, tier stack 1, mana regen"
+      },
+      {
+         "type": "Ring",
          "link": "https://hppeng-wynn.github.io/crafter/#19H7J9H7JAc9k9m91",
          "tag": "jeweling, no reqs, tier drop 3, main percent"
       },
