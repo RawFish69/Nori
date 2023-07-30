@@ -126,24 +126,9 @@
          "tag": "gma, ignis, boltslinger, archer, no crafted, tankofpacer, outdated link"
       },
       {
-         "name": "Sharp gma ignis dual",
-         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0XL08F0uX0QW0WA0K20tz0Ji0Qe1z00141a0w1g1000361001Z61000361001Z6102HZI0z0z0+0+0+0+0-tdzsRdY2o0",
-         "tag": "gma, ignis, sharpshooter, archer, no crafted, tankofpacer"
-      },
-      {
          "name": "Hybrid weathered",
          "link": "https://hppeng-wynn.github.io/builder?v=3#8_0qn0Pf0r50Qr0050uP0K40OH0Q+0e0e1Q1Q221g00001000FU15150+0+0+0+0llN7-cNDZ",
          "tag": "weathered, hybrid, assassin, no crafted, tankofpacer"
-      },
-      {
-         "name": "Ts flameshots hilt (tomes needed)",
-         "link": "https://hppeng-wynn.github.io/builder?v=1#8_0Ba0ZS0pB0VN0Jf0BK0BI0uH0Gc120+00270t1g1004fI00000z0z0+0+0+0+0-jdxDzCnn0",
-         "tag": "flameshot, assassin, no crafted, tier stack, tankofpacer, outdated link"
-      },
-      {
-         "name": "Hm wallbreaker (tomes needed)",
-         "link": "https://hppeng-wynn.github.io/builder?v=1#8_0D80000JL0640A50OG0OC0Ji0AE200t001G0o1g100036010000C1000361000360z0z0+0+0+0+0-lV-7zEO3",
-         "tag": "wallbreaker, assassin, no mythic, no crafted, heavy melee, tankofpacer, outdated link"
       },
       {
          "name": "Battle paladin RotS",
@@ -299,6 +284,16 @@
          "name": "ETA Tstack Aftershock",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VI0KF0D40Qz0JfCR-1AcAbAb6F6F7J9m910OC0OO0QK1+1a-Y-y1S1g1000361000361000361000361031ZO0z0z0+0+0+0+0-l-dRNDR1",
          "tag": "shaman, tier stack, ashock, no-crafted, blu"
+      },
+      {
+         "name": "Idol (charge kick)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_01d01+0r50QW0t80t80K40BR0Qf1G0c2R1a0E1g10009I1004cI1004cI1004iI1004fI0c0c050505050izVzHxtGP1",
+         "tag": "warrior, corrupt, rots, raid, lr, Idol, no craft, yuki"
+      },
+      {
+         "name": "Crabs Convergence",
+         "link": "https://wynnbuilder.github.io/builder?v=4#8_0tX0Pf0x70QW0uP0K00vJ0OH0ux1G0h111a0j1f10003610003601000361001Z61B1B050505050ojNNVqVPZ1",
+         "tag": "warrior, fallen monk, corrupt, rots, raid, lr, conv, convergence, no-crafted, Kotoko"
       }
    ]
 }
