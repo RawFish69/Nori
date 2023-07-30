@@ -1,0 +1,38 @@
+{
+   "Loot": {
+      "SE": {
+         "Shiny": {
+            "Item": "Gaia",
+            "Tracker": "Mobs Killed"
+         },
+         "Mythic": [
+            "Dawnbreak",
+            "Lament",
+            "Singularity",
+            "Convergence",
+            "Fatal",
+            "Hadal"
+         ],
+         "Fabled": [],
+         "Legendary": [],
+         "Rare": [],
+         "Tome": []
+      },
+      "Corkus": {
+         "Shiny": {
+            "Item": "Crusade Sabatons",
+            "Tracker": "Raids"
+         },
+         "Mythic": [
+            "Revenant",
+            "Collapse",
+            "Discoverer"
+         ],
+         "Fabled": [],
+         "Legendary": [],
+         "Rare": [],
+         "Tome": []
+      }
+   },
+   "Timestamp": 1690567200
+}
