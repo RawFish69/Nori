@@ -283,7 +283,12 @@
       {
          "name": "ETA Tstack Aftershock",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VI0KF0D40Qz0JfCR-1AcAbAb6F6F7J9m910OC0OO0QK1+1a-Y-y1S1g1000361000361000361000361031ZO0z0z0+0+0+0+0-l-dRNDR1",
-         "tag": "shaman, tier stack, ashock, no-crafted, blu"
+         "tag": "shaman, tier stack, ashock, one-crafted, blu"
+      },
+      {
+         "name": "Tstack Aftershock (No-Crafted)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0u30KF0PW0Qz0Jf0Nm0OC0uH0QK1+1Q-Y-s1G1g0000100nZ60z0z0+0+0+0+0-jFFtsPs3",
+         "tag": "shaman, tier stack, ashock, no-crafted, Ewadert"
       },
       {
          "name": "Idol (charge kick)",
@@ -294,6 +299,11 @@
          "name": "Crabs Convergence",
          "link": "https://wynnbuilder.github.io/builder?v=4#8_0tX0Pf0x70QW0uP0K00vJ0OH0ux1G0h111a0j1f10003610003601000361001Z61B1B050505050ojNNVqVPZ1",
          "tag": "warrior, fallen monk, corrupt, rots, raid, lr, conv, convergence, no-crafted, Kotoko"
+      },
+      {
+         "name": "ETW Grimtrap",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0KA0uX0Rl0WA0WA0vF0Ji0QZ1u0y1G00001g1000361000361000361000361001Z60z0z0+0+0+0+0-lFJlAsh63",
+         "tag": "assassin, grimtrap, arcobat, no crafted, ender"
       }
    ]
 }
