@@ -2,16 +2,16 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Gaia",
+            "Item": "Divzer",
             "Tracker": "Mobs Killed"
          },
          "Mythic": [
-            "Dawnbreak",
-            "Lament",
-            "Singularity",
-            "Convergence",
-            "Fatal",
-            "Hadal"
+            "Oblivion",
+            "Guardian",
+            "Stratiformis",
+            "Olympic",
+            "Discoverer",
+            "Dawnbreak"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -20,13 +20,13 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Crusade Sabatons",
-            "Tracker": "Raids"
+            "Item": "Moontower",
+            "Tracker": "Dungeons Won"
          },
          "Mythic": [
-            "Revenant",
-            "Collapse",
-            "Discoverer"
+            "Crusade Sabatons",
+            "Apocalypse",
+            "Thrundacrack"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -34,5 +34,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1690567200
+   "Timestamp": 1691172000
 }
