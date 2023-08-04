@@ -122,8 +122,8 @@
       },
       {
          "name": "Bolt gma ignis dual",
-         "link": "https://hppeng-wynn.github.io/builder?v=1#8_0XL08F0uX0QW0uP0K20K40OP0Qe1z05141m0y1g1000361001Z61000361001Z6100nZ60z0z0+0+0+0+0-t-dVzWw2",
-         "tag": "gma, ignis, boltslinger, archer, no crafted, tankofpacer, outdated link"
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0XL08F0uX0QW0uP0K20K40OP0Qe1z05141m0y1g1000361001Z61000361001Z6100nZ60z0z0+0+0+0+0---iViklG0",
+         "tag": "grandmother, ignis, boltslinger, archer, no crafted, tankofpacer"
       },
       {
          "name": "Hybrid weathered",
@@ -304,6 +304,16 @@
          "name": "ETW Grimtrap",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0KA0uX0Rl0WA0WA0vF0Ji0QZ1u0y1G00001g1000361000361000361000361001Z60z0z0+0+0+0+0-lFJlAsh63",
          "tag": "assassin, grimtrap, arcobat, no crafted, ender"
+      },
+      {
+         "name": "Idol (hpr)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_01d0F+0r50Qr0t80t80K40OH0Qf1G0m2R1Q0d1g10009I119Z6I1004cI1004iI1004fI0c0c050505050izVzHxtGP1",
+         "tag": "warrior, fallen, rots, raid, idol, yuki"
+      },
+      {
+         "name": "EWA spring",
+         "link": "https://hppeng-wynn.github.io/builder/?v=4#8_0250px0r507W0TQ0OK0OJ0Ji0Qv1G+E27061D1g10009I10009I10009I10009I1004fI1B1B050505050f-BpzvLxX2",
+         "tag": "archer, boltslinger, spring, trift, no-crafted, pudding"
       }
    ]
 }
