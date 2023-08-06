@@ -66,11 +66,6 @@
          "tag": "archer, sharpshooter, epoch, tierstack, ts, eta, ender"
       },
       {
-         "name": "ETA Riftbender Morrowind",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_06W0u80jn0v+0uA0050wr0Ji0SQ1616-E041h1g00001007lU0z0z0+0+0+0+0-zZddJhSk5",
-         "tag": "budget, mage, lightbender, no crafted, entropy, no mythic, low mana, jello"
-      },
-      {
          "name": "Warp Cancel-HPR",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_02709-0Jo0QjCR-18n8n8n8n8n8n9W91CR-18n8n8n8n8n8n9W91CR-18n8n8n8n8n8n9Q910Ji0R10s-v1f-O2W1g1000FU01000FU1007iU1007lU1B1B070707070ellwpv7-4",
          "tag": "mage, arcanist, manastorm, yuki"
@@ -87,7 +82,7 @@
       },
       {
          "name": "Fallen Monk Generalist Hero",
-         "link": "https://hppeng-wynn.github.io/builder?v=3#8_06W05W0D40Qt0050vI0vK0Ji0Qi1u1a-G082C1g001000FU1004lU103tlU0z0z0+0+0+0+0--6l-Vs3",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_06W05W0D40Qt0050vI0vK0Ji0Qi1u1a-G0V2C1g001000FU1004lU103tlU0z0z0+0+0+0+0--k-xCx0B",
          "tag": "warrior, fallen, hero, hppeng"
       },
       {
@@ -217,7 +212,7 @@
       },
       {
          "name": "Fallen Monk Hero (tomes needed)",
-         "link": "https://hppeng-wynn.github.io/builder?v=2#8_0ZP07Y0D40Qq0nu0nu0wr0Ji0Qi1Q1V01-j2C1g0000103tlU150z0+0+0+0+0oz+wX-lJ2",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0ZP07Y0D40Qq0nu0nu0wr0Ji0Qi1Q1V01-j2C1g0000103tlU150z0+0+0+0+0oz+r3-xk0",
          "tag": "fallen monk, hero, warrior, no crafted, badlife"
       },
       {
@@ -266,19 +261,9 @@
          "tag": "warrior, battle monk, paladin, guard"
       },
       {
-         "name": "Rainbow Manna Acrobat",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0Pf0x70tv0TQ0K00x40OH09e1B1B160o0o1g10009I10009I001004fI0z0z0+0+0+0+0-l7zgnlzW3",
-         "tag": "assassin, acrobat, no mythic, no crafted, jello"
-      },
-      {
          "name": "Fallen Convergence",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0u70r50tZ0K20WA0ZR0Ji0ux1G13141B081g1000361001f61001f61001i61001Z60c0c050505050izc--BR6A",
          "tag": "warrior, corrupt, rots, raid, conv, convergence, no-crafted, yuki"
-      },
-      {
-         "name": "Rainbow Arcanist Cascade",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0u80FT0xP0vI0K00TN0OH07f0y0r0i0i0s1g00001004cI0z0z0+0+0+0+0-lNv7PF-g",
-         "tag": "mage, arcanist, no mythic, no crafted, jello"
       },
       {
          "name": "ETA Tstack Aftershock",
@@ -314,6 +299,31 @@
          "name": "EWA spring",
          "link": "https://hppeng-wynn.github.io/builder/?v=4#8_0250px0r507W0TQ0OK0OJ0Ji0Qv1G+E27061D1g10009I10009I10009I10009I1004fI1B1B050505050f-BpzvLxX2",
          "tag": "archer, boltslinger, spring, trift, no-crafted, pudding"
+      },
+      {
+         "name": "ETA Bash scream Hero",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_09V0KA0uR0Qt0OW0nS0vJ0Ji0Qi1S0H16-x2C1g00001034c60z0z0+0+0+0+0-ltuZPcPus0",
+         "tag": "warrior, battle monk, discombobulate, no crafted, ender"
+      },
+      {
+         "name": "Rainbow Grimtrap",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0Pf0uX0tZ0050WA0x40OH0QZ1u0y0y0y0e1g1000361000361000361000361001Z60z0z0+0+0+0+0-lFJlAsh63",
+         "tag": "assassin, grimtrap, arcobat, no crafted, tome needed,  ender"
+      },
+      {
+         "name": "Rainbow Nirvana",
+         "link": "https://wynnbuilder.github.io/builder?v=4#8_0xi0u70r50Qx0t80t80x40OH0Qm0U112M0U0U1g00001004fI0z0z0+0+0+0+0-jdvM5-Lp3",
+         "tag": "assassin, nirvana, acrobat, no crafted, badlife"
+      },
+      {
+         "name": "Guardian (Quad Major IDs)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0pc0xo0uF0Qr0OQ0OQ0Jg0na0Qb000K1f250L1g00001006CO0z0z0+0+0+0+0-j7RlVChI1",
+         "tag": "warrior, guardian, paladin, no crafted, rally, badlife"
+      },
+      {
+         "name": "ETA Thrundacrack",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_06W07Y0PW0Qq0nu0nu0wr0Ji0Qw162C-E-i1B1g0000101Z6C0z0z0707070+0-zch7+-M6",
+         "tag": "warrior, thrundacrack, tcrack, fallen, monk, fallenmonk, fallen monk, no crafted, badlife"
       }
    ]
 }
