@@ -26,6 +26,16 @@
          "tag": "archer, boltslinger, no-mythic, cspring, crafted, rawfish"
       },
       {
+         "name": "TWA eathered Acrobat",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r50nB0OW0K20K40OH0Q+0P181k0P221g10006C0001007lU15150E0E0+0+0ql7tp+svP",
+         "tag": "assassin, weathered, acro, rawfish"
+      },
+      {
+         "name": "Trickobat Weathered",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0ZP01+0r50nB0nu0K20K40OH0Q+0d0U1k0P221g01000FU1000FU1000FU1007lU0c1B0I0E0+0+0qldxawAnQQ ",
+         "tag": "trickster, acrobat, weathered, weath, rawfish"
+      },
+      {
          "name": "Resurgence Idol",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0K70r50Qr0OK0K20K40OH0Qf160e2I1S0e1g00010039I1004fI18180H0I0I0E0o--hOsKbv3",
          "tag": "warrior, semi-tank, idol, rawfish"
@@ -194,11 +204,6 @@
          "name": "1000 Cuts Nirvana (Shadestepper)",
          "link": "https://hppeng-wynn.github.io/builder/#8_0VR0Pf0uj0Qx0DU0K20K40OH0Qm0e132M0v0+1g00001004fI0z0z0+0+0+0+0--ZttUt31",
          "tag": "assassin, shadestepper, nirvana, nightcloak, thequeenofdemons"
-      },
-      {
-         "name": "Weathered Acrobat",
-         "link": "https://hppeng-wynn.github.io/builder?v=2#8_0Au0K70uj0nB0OW0K20K40OH0Q+0Z0t140y221g10006C0001007lU15150E0E0+0+0ql7tp+sv9",
-         "tag": "assassin, weathered, acro, rawfish"
       },
       {
          "name": "morph the nothing",
