@@ -18,12 +18,12 @@
       {
          "name": "Stratiformis Sharpshooter (Classic)",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r507W0nu0K20K40OH0Rb0l0e1k0P2C1g10009I1000FU10009I1000FU1007lU1B1B0H0J0H0H0slVC-ueJZh",
-         "tag": "strati, archer, sharp, sharpshooter, aqua, capri, spell-spam, rawfish"
+         "tag": "strati, archer, sharp, sharpshooter, aqua, capri, spellspam, rawfish"
       },
       {
          "name": "Stratiformis Sharpshooter (Variant)",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r507W0nu0K20K40OH0Rb0l0e1k0P2C1g10009I1000FU10009I1000FU1007lU1B1B0H0J0H0H0slVC-ueJZh",
-         "tag": "strati, archer, sharp, sharpshooter, anxio, steamjet, spell-spam, rawfish"
+         "tag": "strati, archer, sharp, sharpshooter, anxio, steamjet, spellspam, rawfish"
       },
       {
          "name": "Rage GMA Eleventh Hour",
@@ -374,6 +374,11 @@
          "name": "Quetz Arcanist",
          "link": "https://hppeng-wynn.github.io/builder/#8_07F0Pf0r50Qt0K20K00x40OH0uy1616140e161g100036100036100036100036103tlU1B1B0J0505050-l-p+EzR",
          "tag": "mage, arcanist, quetzalcoatl, no-crafted, me1tryllis"
+      },
+      {
+         "name": "LR Thrundacrack",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0VR0u70uS0tv0050050TN0Ji0Qw0j2C110e021g010006C10006C10009I102J6I1B1B050505050-z+rZ+3RS0",
+         "tag": "warrior, corrupted, lootrun, tcrack, no-crafted, pudding"
       }
    ]
 }
