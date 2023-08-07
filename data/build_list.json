@@ -76,8 +76,13 @@
          "tag": "shaman, tier stack, crafted, ashock, bmade, rawfish"
       },
       {
-         "name": "Battle Monk Thrundacrack",
+         "name": "Fallen Thrundacrack",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VR0Pf0r50xP0K20K00x40OH0Qw0l2C140e0e1g010006C10009I01006660z0z0+0+0+0+0-ldNHLcwt9",
+         "tag": "warrior, fallen, tcrack, flying kick, spellspam, lootrun, dps, rawfish"
+      },
+      {
+         "name": "Battle Monk Thrundacrack",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VR0Pf0uj0tv0uP0K00x40OH0Qw0e2C160e0+1g010006C10009I01006660z0z0+0+0+0+0-ldNHLcwt9",
          "tag": "warrior, battlemonk, tcrack, dps, rawfish"
       },
       {
@@ -376,7 +381,7 @@
          "tag": "mage, arcanist, quetzalcoatl, no-crafted, me1tryllis"
       },
       {
-         "name": "Fallen Thrundacrack",
+         "name": "TWF Thrundacrack",
          "link": "https://hppeng-wynn.github.io/builder/#8_0VR0u70uS0tv0050050TN0Ji0Qw0j2C110e021g010006C10006C10009I102J6I1B1B050505050-z+rZ+3RS0",
          "tag": "warrior, corrupted, lootrun, tcrack, no-crafted, pudding"
       },
