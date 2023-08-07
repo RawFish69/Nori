@@ -13,7 +13,17 @@
       {
          "name": "Stratiformis Boltslinger",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0K70uj0xP0nu0K20K40OH0Rb0e0t160y2C1g10009I1000FU10009I1007lU1007lU1B1B0H0J0H0H0s-pn-ZJxu0",
-         "tag": "strati, archer, bolt, boltslinger, combat, rawfish"
+         "tag": "strati, archer, bolt, boltslinger, rainbow, rawfish"
+      },
+      {
+         "name": "Stratiformis Sharpshooter (Classic)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r507W0nu0K20K40OH0Rb0l0e1k0P2C1g10009I1000FU10009I1000FU1007lU1B1B0H0J0H0H0slVC-ueJZh",
+         "tag": "strati, archer, sharp, sharpshooter, aqua, capri, spell-spam, rawfish"
+      },
+      {
+         "name": "Stratiformis Sharpshooter (Variant)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r507W0nu0K20K40OH0Rb0l0e1k0P2C1g10009I1000FU10009I1000FU1007lU1B1B0H0J0H0H0slVC-ueJZh",
+         "tag": "strati, archer, sharp, sharpshooter, anxio, steamjet, spell-spam, rawfish"
       },
       {
          "name": "Rage GMA Eleventh Hour",
@@ -46,11 +56,6 @@
          "tag": "mage, arcanist, warp, combat"
       },
       {
-         "name": "Riftwalker Warp TWA",
-         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au01+0r507W0K20K00wr0OM0R10C0f1k062M1g10006C0001007lU1A1B0E0E0+0+0q-VxBJtM2",
-         "tag": "mage, riftwalker, warp, mana"
-      },
-      {
          "name": "TNA Alkatraz",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_CR-1AY96679F8rAs9g910xOCR-19F9F9fAM9w9t9i910QzCR-17JAc619k9H6F9m91CR-18j9k9f7J9f7J9m910K40uH0QJ2M1V-w0K061g10003610003610003610003601616030303030l-+uzXhvD",
          "tag": "warrior, fallen, raid, alka, alkatraz, tierstack, rawfish, dps"
@@ -62,7 +67,7 @@
       },
       {
          "name": "ETA Tstack Sunstar",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uZ0U20PW0Qq0K00Jf00W0OO0Qu161p00001B1g000010036C1B1B0J0505050pl--T5FT",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uZ0U20PW0Qq0K00Jf00W0OO0Qu161p00001B1g000010036C1B1B0J0505050pl--j2Fp1",
          "tag": "shaman, summoner, ritualist, tstack, sunstar, melee, rawfish"
       },
       {
@@ -74,6 +79,11 @@
          "name": "Bolt Ignis",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0K70x70xP0050K20K40OH0Qg0o0o141z0o1g10009I1000CO01000CO1006CO1B1B0H0J0H0H0s-pn-ZJxu0",
          "tag": "archer, boltslinger, combat, ignis, rawfish"
+      },
+      {
+         "name": "Riftwalker Warp TWA",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au01+0r507W0K20K00wr0OM0R10C0f1k062M1g10006C0001007lU1A1B0E0E0+0+0q-VxBJtM2",
+         "tag": "mage, riftwalker, warp, mana"
       },
       {
          "name": "Classic ETA Epoch",
