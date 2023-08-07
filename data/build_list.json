@@ -136,13 +136,23 @@
          "tag": "grandmother, ignis, boltslinger, archer, no crafted, tankofpacer"
       },
       {
+         "name": "Trapper gma ignis dual for lr and TNA",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0XL08F0uX0QW0WA0K20tz0OP0Qe1z00141m0w1g1000361001Z61000361001Z6102HZI0z0z0+0+0+0+0-l7Mt5JbNn1",
+         "tag": "grandmother, ignis, trapper, archer, no crafted, tankofpacer"
+      },
+      {
+         "name": "Bolt freedom for lr",
+         "link": "https://hppeng-wynn.github.io/builder/?v=3#8_0cD0Pf0uR0xP0TQ0K20x40OH0QV0y0o140o1Q1g000000z0z0+0+0+0+0--Zv+n7as1",
+         "tag": "Freedom, boltslinger, archer, no crafted, tankofpacer"
+      },
+      {
          "name": "Hybrid weathered",
-         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0qn0Pf0r50Qr0050uP0K40OH0Q+0e0e1Q1Q221g00001000FU15150+0+0+0+0llN7-cNDZ",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0qn0Pf0r50Qr0050uP0K40OH0Q+0e0e1Q1Q221g00001000FU15150+0+0+0+0lldB+RMdK",
          "tag": "weathered, hybrid, assassin, no crafted, tankofpacer"
       },
       {
          "name": "Battle paladin RotS",
-         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0cD0u80uj0FP0050050K40OH0uE1G1113180+1g000010009I0z0z0+0+0+0+0-jtuBdCf6i1",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0Pf0x70FP0WA0K20K40OH0uE1G0o14180o1g000010009I0z0z0+0+0+0+0-ltuBdXIbD",
          "tag": "rhythm of the seasons, paladin, warrior, no crafted, no mythic, tankofpacer"
       },
       {
@@ -154,6 +164,11 @@
          "name": "Shadestepper Weathered",
          "link": "https://hppeng-wynn.github.io/builder?v=3#8_0uC0l-0jn0Qt0nu0K20K40BR0Q+16+d140o221g103niU1007ZU1007cU1007ZU1007lU15150+0+0+0+0ol-R-ON23",
          "tag": "weathered, shadestepper, assassin, no crafted, tankofpacer"
+      },
+      {
+         "name": "Shadestepper Grimtrap (tomes needed)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uC0000uX0Qt0vI0K20K40BR0QZ1u+f140o161g00001001Z60z0z0+0+0+0+0--Bjtlws0",
+         "tag": "grimtrap, shadestepper, assassin, no crafted, tankofpacer"
       },
       {
          "name": "Nychthemeron Freedom",
