@@ -11,6 +11,11 @@
          "tag": "mage, arcanist, fatal, crabs, entropy, lootrun, rawfish"
       },
       {
+         "name": "Slayer Fatal Riftwalker (Entropy)",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VR0Pf0uj0Qq0uP0050wr0Ji0QY0e270y0e0+1g010006C10006C10009I10036C1717050I050H0-l-RwkMs5",
+         "tag": "mage, riftwalker, fatal, slayer, entropy, lootrun, rawfish"
+      },
+      {
          "name": "Stratiformis Boltslinger",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0K70uj0xP0nu0K20K40OH0Rb0e0t160y2C1g10009I1000FU10009I1007lU1007lU1B1B0H0J0H0H0s-pn-ZJxu0",
          "tag": "strati, archer, bolt, boltslinger, rainbow, rawfish"
@@ -211,7 +216,7 @@
          "tag": "acrobat, cataclysm, assassin, no-crafted, acrocat, rawfish"
       },
       {
-         "name": "Riftwalker Fatal",
+         "name": "Riftwalker Fatal (Budget)",
          "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VR0u70uj0xP0050uP0K40OH0QY0Z27110Z0+1g0010006C10006C10036C15150E0E0E0E0q-VxDzrM0",
          "tag": "mage, riftwalker, fatal, no-crafted, rawfish"
       },
