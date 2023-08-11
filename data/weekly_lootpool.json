@@ -2,15 +2,15 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Divzer",
+            "Item": "Olympic",
             "Tracker": "Mobs Killed"
          },
          "Mythic": [
+            "Ignis",
             "Oblivion",
-            "Guardian",
+            "Collapse",
+            "Hadal",
             "Stratiformis",
-            "Olympic",
-            "Discoverer",
             "Dawnbreak"
          ],
          "Fabled": [],
@@ -20,13 +20,13 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Moontower",
+            "Item": "Immolation",
             "Tracker": "Dungeons Won"
          },
          "Mythic": [
-            "Crusade Sabatons",
-            "Apocalypse",
-            "Thrundacrack"
+            "Alkatraz",
+            "Divzer",
+            "Dawnbreak"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -34,5 +34,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1691172000
+   "Timestamp": 1691776800
 }
