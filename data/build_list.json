@@ -97,8 +97,13 @@
       },
       {
          "name": "Bolt Ignis",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0K70x70xP0050K20K40OH0Qg0o0o141z0o1g10009I1000CO01000CO1006CO1B1B0H0J0H0H0s-pn-ZJxu0",
-         "tag": "archer, boltslinger, combat, ignis, rawfish"
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0K70x70xP0050K20K40OH0Qg0o0o141z0o1g10009I1000CO01000CO1006CO1B1B0H0J0H0H0s-tu+ZJxu0",
+         "tag": "archer, boltslinger, tank, ignis, rawfish"
+      },
+      {
+         "name": "Sharpshooter Ignis",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0Pf0x70xP0050050K40OH0Qg0o0o111z161g10009I1000CO01000CO1006CO1B190H0H0H0H0-l7-7dTAN1",
+         "tag": "archer, sharpshooter, tank, ignis, rawfish"
       },
       {
          "name": "Riftwalker Warp TWA",
