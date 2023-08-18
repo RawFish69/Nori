@@ -2,15 +2,16 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Olympic",
-            "Tracker": "Mobs Killed"
+            "Item": "Sunstar",
+            "Tracker": "Dungeons Won"
          },
          "Mythic": [
-            "Ignis",
-            "Oblivion",
-            "Collapse",
-            "Hadal",
-            "Stratiformis"
+            "Quetzalcoatl",
+            "Slayer",
+            "Stratiformis",
+            "Gaia",
+            "Thrundacrack",
+            "Crusade Sabatons"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -19,13 +20,13 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Immolation",
-            "Tracker": "Dungeons Won"
+            "Item": "Quetzalcoatl",
+            "Tracker": "Raids"
          },
          "Mythic": [
-            "Alkatraz",
-            "Divzer",
-            "Dawnbreak"
+            "Epoch",
+            "Hadal",
+            "Slayer"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -33,5 +34,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1691776800
+   "Timestamp": 1692381600
 }
