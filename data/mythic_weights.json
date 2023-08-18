@@ -165,7 +165,7 @@
       "speed": "15.0"
     },
     "Aftershock": {
-      "healthBonus": "75.0",
+      "healthBonus": "70.0",
       "earthDamageBonus": "25.0",
       "spellCostPct4": "5.0"
     },
