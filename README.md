@@ -5,17 +5,18 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 ## Supported Features
 
 ### General purpose
-- AI response
+- AI response (conversation with memory)
 - AI image generation
 - Task manager, in chat TO-DO List (Owner only)
 - Weather status
 - Flight traffic status
 - Menu page
-- Bot status & Server whitelist
+- Bot status & Server list
 - Check latency with url
 - Customized timer
 - Text to Image
 - Server management (Owner only)
+- Log & Scan System (Owner only)
 - And more!
 
 ### Wynn related
@@ -33,12 +34,13 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 - Guild Level xp requirement graph
 - Forgery mythic probability graph
 - Item changelog
+- Weekly Lootpool
 
 
 ## Planned Features
-- Memory for AI chat, support continous conversation
+- ~~Memory for AI chat, support continous conversation~~ Completed
 - ~~Decode specific strings & conversion (UTF-8)~~ Completed
-- In chat file management, file format conversion, etc
+- In chat file management, file format conversion, etc (WIP)
 - Play music in voice channel
 - Pattern recognition for image, audio, and potentially video
 - And more...
