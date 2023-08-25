@@ -2,16 +2,16 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Sunstar",
-            "Tracker": "Dungeons Won"
+            "Item": "Stardew",
+            "Tracker": "Raids"
          },
          "Mythic": [
-            "Quetzalcoatl",
-            "Slayer",
-            "Stratiformis",
-            "Gaia",
-            "Thrundacrack",
-            "Crusade Sabatons"
+            "Alkatraz",
+            "Fatal",
+            "Absolution",
+            "Convergence",
+            "Moontower",
+            "Idol"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -20,13 +20,13 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Quetzalcoatl",
-            "Tracker": "Raids"
+            "Item": "Olympic",
+            "Tracker": "Wars"
          },
          "Mythic": [
-            "Epoch",
-            "Hadal",
-            "Slayer"
+            "Monster",
+            "Sunstar",
+            "Alkatraz"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -34,5 +34,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1692381600
+   "Timestamp": 1692986400
 }
