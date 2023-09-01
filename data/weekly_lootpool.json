@@ -2,15 +2,14 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Stardew",
-            "Tracker": "Raids"
+            "Item": "Hadal",
+            "Tracker": "Mob kills"
          },
          "Mythic": [
-            "Alkatraz",
-            "Fatal",
+            "Obilvion",
             "Absolution",
-            "Convergence",
-            "Moontower",
+            "Hero",
+            "Nullification",
             "Idol"
          ],
          "Fabled": [],
@@ -20,13 +19,13 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Olympic",
-            "Tracker": "Wars"
+            "Item": "Fantasia",
+            "Tracker": "Dungeons"
          },
          "Mythic": [
-            "Monster",
-            "Sunstar",
-            "Alkatraz"
+            "Crusade Sabatons",
+            "Nirvana",
+            "Ignis"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -34,5 +33,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1692986400
+   "Timestamp": 1693591200
 }
