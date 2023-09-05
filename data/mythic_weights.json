@@ -24,16 +24,10 @@
       "exploding": "10.0"
     },
     "Idol": {
-      "spellCostRaw2": "40.0",
-      "spellDamageBonusRaw": "35.0",
-      "manaRegen": "22.5",
-      "reflection": "2.5"
-    },
-    "Idol (Lootrun)": {
-      "spellCostRaw2": "72.5",
+      "spellCostRaw2": "55.0",
+      "spellDamageBonusRaw": "25.0",
       "manaRegen": "15.0",
-      "spellDamageBonusRaw": "10.0",
-      "reflection": "2.5"
+      "reflection": "5.0"
     },
     "Thrundacrack": {
       "spellCostRaw3": "45.0",
@@ -376,7 +370,6 @@
     "Guardian": "1.75",
     "Alkatraz": "1",
     "Idol": "8",
-    "Idol (Lootrun)": "8",
     "Thrundacrack": "0.75",
     "Collapse": "0.5",
     "Collapse (spell)": "0.5",
@@ -517,7 +510,7 @@
     "spellCostPct4"
   ],
   "latest": {
-    "Date": "2023-09-01 19:34:26",
-    "Timestamp": 1693614866
+    "Date": "2023-09-05 13:53:14",
+    "Timestamp": 1693939994
   }
 }
