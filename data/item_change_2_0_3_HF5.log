@@ -1,0 +1,1774 @@
+Item changelog - Updated from API
+3840 total items scanned
+New Items: 0, Items Removed: 0, Items changed: 576
+Item Changes: 
+Back-up Plan:
+dropMeta: {'coordinates': '-711,58,-657', 'name': 'Tribal Sanctuary', 'type': 'altar'} -> {'coordinates': '-911,73,-1068', 'name': 'Altar of Sanctification', 'type': 'altar'}
+
+Quick-Strike Leggings:
+dropMeta: {'coordinates': '-711,58,-657', 'name': 'Tribal Sanctuary', 'type': 'altar'} -> {'coordinates': '-911,73,-1068', 'name': 'Altar of Sanctification', 'type': 'altar'}
+
+Helm Splitter:
+dropMeta: {'coordinates': '-711,58,-657', 'name': 'Tribal Sanctuary', 'type': 'altar'} -> {'coordinates': '-911,73,-1068', 'name': 'Altar of Sanctification', 'type': 'altar'}
+
+Kahontsi Ohstyen:
+dropMeta: {'coordinates': '-911,73,-1068', 'name': 'Altar of Sanctification', 'type': 'altar'} -> {'coordinates': '-711,58,-657', 'name': 'Tribal Sanctuary', 'type': 'altar'}
+
+Ohonte Kerhite:
+dropMeta: {'coordinates': '-911,73,-1068', 'name': 'Altar of Sanctification', 'type': 'altar'} -> {'coordinates': '-711,58,-657', 'name': 'Tribal Sanctuary', 'type': 'altar'}
+
+Onenya Hronkas:
+dropMeta: {'coordinates': '-911,73,-1068', 'name': 'Altar of Sanctification', 'type': 'altar'} -> {'coordinates': '-711,58,-657', 'name': 'Tribal Sanctuary', 'type': 'altar'}
+
+Chandelle:
+sockets: 0 -> 1
+
+Arakadicus' Body:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Spider Bracelet:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Silkwrap:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Spider's Eye Pendant:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Spiderweb String:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Webstring:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Ancient Waters:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Blazing Ruin:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Body Axe:
+health: 1585 -> 185
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Darting Blur:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Enflame:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Life Charge:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Power Scale:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Rock Head:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Law of the Jungle:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Scorch Breath:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Spirit Calling:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Wind Spine:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeon'}
+
+Fangs:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Hourglass:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Abdomen:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Iklaj:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Maul:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Spinneret:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Cephalothorax:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Spider Ring:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Sting:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Stingy:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Web Spitter:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Web Plate:
+dropMeta: {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'} -> {'coordinates': '-157,54,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Brise:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeonMerchant'}
+
+Butterfly:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeonMerchant'}
+
+Field:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeonMerchant'}
+
+Mud:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeonMerchant'}
+
+Gold Digger:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeonMerchant'}
+
+Garoth's Hope:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeonMerchant'}
+
+Vitre:
+dropMeta: {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'} -> {'coordinates': '-254,80,-1046', 'name': 'Timelost Sanctum', 'type': 'dungeonMerchant'}
+
+Boreal-Patterned Aegis:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Ambertoise Shell:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Abyss-Imbued Leggings:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Bottled Thunderstorm:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Anima-Infused Helmet:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Beetle Aegis:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Breezehands:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Chaos-Woven Greaves:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Cinderchain:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Clockwork:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Coral Ring:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Contrast:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Elysium-Engraved Aegis:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Hephaestus-Forged Greaves:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Elder Oak Roots:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Dupliblaze:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Gaea-Hewn Boots:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Gale's Freedom:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Golemlus Core:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Flashstep:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Hephaestus-Forged Sabatons:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Infused Hive Bow:
+dropMeta: weapon -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Humbark Moccasins:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Infused Hive Relik:
+dropMeta: weapon -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Infused Hive Spear:
+dropMeta: weapon -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Infused Hive Wand:
+dropMeta: weapon -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Infused Hive Dagger:
+dropMeta: weapon -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Lightning Flash:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Insulated Plate Mail:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Intensity:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Obsidian-Framed Helmet:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Mantlewalkers:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Moon Pool Circlet:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Pride of the Aerie:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Prowess:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Soulflare:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Silt of the Seafloor:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Sparkweaver:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Sparkling Visor:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Subur Clip:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Thunderous Step:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Stillwater Blue:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Trench Scourer:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Turbine Greaves:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Static-charged Leggings:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Vortex Bracer:
+dropMeta: accessory -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Twilight-Gilded Cloak:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Whitecap Crown:
+dropMeta: armor -> {'coordinates': '373,64,-5497', 'name': 'The Qira Hive', 'type': 'quest'}
+
+Bronze Basic Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Bronze Basic Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Fiber Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Fiber Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Bronze Basic Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Fusion Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Fiber Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Fusion Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Hydro Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Fusion Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Hydro Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Solar Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Hydro Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Solar Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Static Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Solar Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Steam Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Static Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Static Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Steam Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Diamond Steam Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Fiber Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Fiber Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Fiber Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Fusion Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Hydro Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Fusion Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Hydro Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Fusion Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Solar Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Solar Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Hydro Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Static Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Solar Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Static Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Steam Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Steam Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Steam Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Gold Static Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Fiber Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Legendary Medallion:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Fiber Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Fiber Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Fusion Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Fusion Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Fusion Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Hydro Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Hydro Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Hydro Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Solar Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Static Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Solar Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Static Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Solar Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Static Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Steam Necklace:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Steam Bracelet:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Silver Steam Ring:
+dropMeta: accessory -> {'coordinates': '-1113,65,-2426', 'name': 'Legendary Island', 'type': 'challenge'}
+
+Apex:
+dropMeta: armor -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Anti-Causality:
+dropMeta: armor -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Briars' Embrace:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Azeotrope:
+dropMeta: accessory -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Cinnamon:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Cytotoxic Striders:
+dropMeta: armor -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Empyreal Emberplate:
+dropMeta: armor -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Gnossis:
+dropMeta: armor -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Keeper of Souls:
+dropMeta: armor -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Fluffwind:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Gravitron:
+dropMeta: accessory -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Lazuli:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Payment Day:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Marionette:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Resplendence:
+dropMeta: accessory -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Sourscratch:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Pyrrhic Respite:
+dropMeta: armor -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Valence:
+dropMeta: accessory -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Tachyon:
+dropMeta: armor -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Third Wish:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Veritas:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+Ysengrim:
+dropMeta: weapon -> {'coordinates': '99999,99999,99999', 'name': 'Lootrun Rewards', 'type': 'lootrun'}
+
+The Siren's Call:
+material: Untradable -> None
+armorType: None -> Iron
+armorColor: Iron -> 160,101,64
+dropType: 160,101,64 -> NEVER
+addedLore: NEVER -> “I have hope in me the likes of which you could never imagine, and despair the likes of which you shall never fathom. If I cannot satisfy the one, then I will indulge the other.”
+sockets: “I have hope in me the likes of which you could never imagine, and despair the likes of which you shall never fathom. If I cannot satisfy the one, then I will indulge the other.” -> 2
+health: 2 -> 1445
+earthDefense: 1445 -> 0
+thunderDefense: 0 -> -75
+waterDefense: -75 -> 0
+fireDefense: 0 -> -75
+airDefense: -75 -> 0
+level: 0 -> 73
+quest: 73 -> Hollow Serenity
+classRequirement: Hollow Serenity -> None
+strength: None -> 20
+dexterity: 20 -> 0
+agility: 0 -> 30
+strengthPoints: 30 -> 5
+dexterityPoints: 5 -> 0
+defensePoints: 0 -> -3
+agilityPoints: -3 -> 5
+mainAttackDamageBonus: 5 -> 0
+mainAttackDamageBonusRaw: 0 -> 176
+spellDamageBonus: 176 -> 0
+spellDamageBonusRaw: 0 -> 135
+spellElementalDamageBonusRaw: 135 -> 0
+lifeSteal: 0 -> -153
+manaRegen: -153 -> 0
+spellCostRaw4: 0 -> -5
+thorns: -5 -> 0
+speed: 0 -> 15
+exploding: 15 -> 0
+soulPoints: 0 -> -27
+sprint: -27 -> 0
+earthDamageBonus: 0 -> 17
+thunderDamageBonus: 17 -> 0
+category: 0 -> armor
+
+Compliance:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Abrasion:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Recalcitrance:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Dispersion:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Obstinance:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Apex Predator:
+dropMeta: accessory -> {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'}
+
+Succession:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Extinction:
+dropMeta: accessory -> {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'}
+
+Atavistic:
+dropMeta: accessory -> {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'}
+
+Homeorhesis:
+dropMeta: accessory -> {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'}
+
+Symbiont:
+dropMeta: accessory -> {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'}
+
+Breakthrough:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Exhibition:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Forbearance:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Eyes on All:
+dropMeta: accessory -> {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'}
+
+Ingress:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Detachment:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Aleph Null:
+dropMeta: armor -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Divergence:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Fractal:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Continuum:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Infinitesimal:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Nonexistence:
+dropMeta: armor -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Simulacrum:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Athanasia:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Metamorphosis:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Provenance:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Cacophony:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Recursion:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Reckoning:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Veneration:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Cloudwalkers:
+dropMeta: armor -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Earth Drift:
+dropMeta: weapon -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Ahms' Remains:
+dropMeta: armor -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Ciel:
+dropMeta: weapon -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Fallbreakers:
+dropMeta: armor -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Highrise:
+dropMeta: weapon -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Restorator:
+dropMeta: weapon -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Island Sniper:
+dropMeta: weapon -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Skyfloat:
+dropMeta: armor -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Shard of Sky:
+dropMeta: weapon -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Stalactite:
+dropMeta: armor -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Vagabond's Disgrace:
+dropMeta: weapon -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Stormcloud:
+dropMeta: weapon -> {'coordinates': '1017,113,-4551', 'name': 'Ahmsord', 'type': 'merchant'}
+
+Clawctus:
+dropMeta: weapon -> {'coordinates': '855,67,-1956', 'name': 'Almuj', 'type': 'merchant'}
+
+Crocodile:
+dropMeta: armor -> {'coordinates': '855,67,-1956', 'name': 'Almuj', 'type': 'merchant'}
+
+Drought Savior:
+dropMeta: weapon -> {'coordinates': '855,67,-1956', 'name': 'Almuj', 'type': 'merchant'}
+
+Hood of the Resistance:
+dropMeta: armor -> {'coordinates': '855,67,-1956', 'name': 'Almuj', 'type': 'merchant'}
+
+Spider Silk Carduroys:
+dropMeta: armor -> {'coordinates': '855,67,-1956', 'name': 'Almuj', 'type': 'merchant'}
+
+Drywind:
+dropMeta: weapon -> {'coordinates': '855,67,-1956', 'name': 'Almuj', 'type': 'merchant'}
+
+Venom:
+dropMeta: weapon -> {'coordinates': '855,67,-1956', 'name': 'Almuj', 'type': 'merchant'}
+
+Vagabond:
+dropMeta: armor -> {'coordinates': '855,67,-1956', 'name': 'Almuj', 'type': 'merchant'}
+
+Blade of Instinct:
+dropMeta: weapon -> {'coordinates': '717,69,-2076', 'name': 'Bremminglar', 'type': 'merchant'}
+
+Pursuit:
+dropMeta: weapon -> {'coordinates': '717,69,-2076', 'name': 'Bremminglar', 'type': 'merchant'}
+
+Bountiful:
+dropMeta: weapon -> {'coordinates': '717,69,-2076', 'name': 'Bremminglar', 'type': 'merchant'}
+
+Golem Gauntlet:
+dropMeta: accessory -> {'coordinates': '-1484,43,-4725', 'name': 'Bucie', 'type': 'merchant'}
+
+Savannah Wind:
+dropMeta: weapon -> {'coordinates': '717,69,-2076', 'name': 'Bremminglar', 'type': 'merchant'}
+
+Stainless Steel:
+dropMeta: accessory -> {'coordinates': '-1484,43,-4725', 'name': 'Bucie', 'type': 'merchant'}
+
+Horseshoe:
+dropMeta: accessory -> {'coordinates': '-1484,43,-4725', 'name': 'Bucie', 'type': 'merchant'}
+
+Smithy:
+dropMeta: accessory -> {'coordinates': '-1484,43,-4725', 'name': 'Bucie', 'type': 'merchant'}
+
+Pewter Ring:
+dropMeta: accessory -> {'coordinates': '-1484,43,-4725', 'name': 'Bucie', 'type': 'merchant'}
+
+Acevro:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Ascension:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Calor:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Cinfras Souvenir T-Shirt:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Cold Snap:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Courser:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Crying Heart:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Charger:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Enerxia:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Forge's Shock:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Heart Piercer:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Diabloviento:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Howler:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Heavy Aegis:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Letum:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Ivoire:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Miotal:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Magic Cloak:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Rocher:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Router:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Searing Soles:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Regar:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Stone Crunch:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Sleek:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Silencer:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Torch:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Solum:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Tragedy:
+dropMeta: weapon -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Carbon Weave:
+dropMeta: armor -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Vis:
+dropMeta: armor -> {'coordinates': '-458,47,-4939', 'name': 'Cinfras', 'type': 'merchant'}
+
+Corkian War Pick:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Cranial Panel:
+dropMeta: armor -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Corkian Jet Boots:
+dropMeta: armor -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Gear Grinder:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Genetor:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Hydrocharger:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Latency:
+dropMeta: armor -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Info Visor:
+dropMeta: armor -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Metal Body Suit:
+dropMeta: armor -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Composite Shooter:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Siliquartz Blend:
+dropMeta: armor -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Solar Sword:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Thermals:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Windmill:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+The Airway:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+The Modulator:
+dropMeta: armor -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Skyline Cries:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Shortout:
+dropMeta: weapon -> {'coordinates': '-1614,68,-2923', 'name': 'Corkus', 'type': 'merchant'}
+
+Armored Culottes:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Black Wand:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Almuj Turban:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Gavel Imported Bow:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Guard Spear:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Fruma Imported Boots:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Mail of the Berserker:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Merchant Sandals:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Jeweled Vestments:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Messenger Cap:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Nemract Waders:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Nesaak Snowshoes:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Puncturing Dirk:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Pike of Fury:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Refined Longbow:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Ragni Fatigues:
+dropMeta: armor -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Reinforced Composite Bow:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Scout Dagger:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Spiritual Siphoner:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Staff of Wisdom:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+The Magician:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Tromsian Survival Knife:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Windcatcher Totem:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+The Naturalist:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+War Spear:
+dropMeta: weapon -> {'coordinates': '433,69,-1580', 'name': 'Detlas', 'type': 'merchant'}
+
+Dujgon Warrior Chestplate:
+dropMeta: armor -> {'coordinates': '991,38,-3455', 'name': 'Dujgon Nation', 'type': 'merchant'}
+
+Dujgon Warrior Hammer:
+dropMeta: weapon -> {'coordinates': '991,38,-3455', 'name': 'Dujgon Nation', 'type': 'merchant'}
+
+Rusher:
+dropMeta: armor -> {'coordinates': '991,38,-3455', 'name': 'Dujgon Nation', 'type': 'merchant'}
+
+Greysmith:
+dropMeta: armor -> {'coordinates': '991,38,-3455', 'name': 'Dujgon Nation', 'type': 'merchant'}
+
+Viking Breath:
+dropMeta: weapon -> {'coordinates': '991,38,-3455', 'name': 'Dujgon Nation', 'type': 'merchant'}
+
+Boomslang:
+dropMeta: accessory -> {'coordinates': '-1051,51,-5003', 'name': 'Efilim', 'type': 'merchant'}
+
+Cattail:
+dropMeta: accessory -> {'coordinates': '-1051,51,-5003', 'name': 'Efilim', 'type': 'merchant'}
+
+Glimmer:
+dropMeta: accessory -> {'coordinates': '-1051,51,-5003', 'name': 'Efilim', 'type': 'merchant'}
+
+Antivenom:
+dropMeta: accessory -> {'coordinates': '-1051,51,-5003', 'name': 'Efilim', 'type': 'merchant'}
+
+Purity:
+dropMeta: accessory -> {'coordinates': '-1051,51,-5003', 'name': 'Efilim', 'type': 'merchant'}
+
+Growth:
+dropMeta: accessory -> {'coordinates': '-1051,51,-5003', 'name': 'Efilim', 'type': 'merchant'}
+
+Affluence:
+dropMeta: accessory -> {'coordinates': '933,117,-5494', 'name': 'Eltom', 'type': 'merchant'}
+
+Diamond Cuff:
+dropMeta: accessory -> {'coordinates': '933,117,-5494', 'name': 'Eltom', 'type': 'merchant'}
+
+Creepvine:
+dropMeta: accessory -> {'coordinates': '-1051,51,-5003', 'name': 'Efilim', 'type': 'merchant'}
+
+Silversplint:
+dropMeta: accessory -> {'coordinates': '933,117,-5494', 'name': 'Eltom', 'type': 'merchant'}
+
+Value:
+dropMeta: accessory -> {'coordinates': '933,117,-5494', 'name': 'Eltom', 'type': 'merchant'}
+
+Emerald Pendant:
+dropMeta: accessory -> {'coordinates': '933,117,-5494', 'name': 'Eltom', 'type': 'merchant'}
+
+Jewelled Broach:
+dropMeta: accessory -> {'coordinates': '933,117,-5494', 'name': 'Eltom', 'type': 'merchant'}
+
+Barkgraft:
+dropMeta: weapon -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Lookout:
+dropMeta: armor -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Decay Burner:
+dropMeta: weapon -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Grave Digger:
+dropMeta: weapon -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Lycanthropy:
+dropMeta: weapon -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Kerasot Spreader:
+dropMeta: weapon -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Searchlight:
+dropMeta: weapon -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+The Silent:
+dropMeta: armor -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Stringhollow:
+dropMeta: weapon -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Vampire Blocker:
+dropMeta: armor -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Werepelt:
+dropMeta: armor -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Wildfire:
+dropMeta: armor -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Wolf Tagger:
+dropMeta: weapon -> {'coordinates': '-1022,49,-5305', 'name': 'Gelibord', 'type': 'merchant'}
+
+Orc Slasher:
+dropMeta: weapon -> {'coordinates': '-1997,81,-528', 'name': 'LLevigar', 'type': 'merchant'}
+
+Quartz Driller:
+dropMeta: weapon -> {'coordinates': '-1997,81,-528', 'name': 'LLevigar', 'type': 'merchant'}
+
+Destrortur:
+dropMeta: accessory -> {'coordinates': '-601,65,-5443', 'name': 'Lexdale', 'type': 'merchant'}
+
+Deark:
+dropMeta: accessory -> {'coordinates': '-601,65,-5443', 'name': 'Lexdale', 'type': 'merchant'}
+
+Famine:
+dropMeta: accessory -> {'coordinates': '-601,65,-5443', 'name': 'Lexdale', 'type': 'merchant'}
+
+Diminished:
+dropMeta: accessory -> {'coordinates': '-601,65,-5443', 'name': 'Lexdale', 'type': 'merchant'}
+
+Fanatic:
+dropMeta: accessory -> {'coordinates': '-601,65,-5443', 'name': 'Lexdale', 'type': 'merchant'}
+
+Recovery:
+dropMeta: accessory -> {'coordinates': '-601,65,-5443', 'name': 'Lexdale', 'type': 'merchant'}
+
+Scum:
+dropMeta: accessory -> {'coordinates': '-601,65,-5443', 'name': 'Lexdale', 'type': 'merchant'}
+
+Arcanic:
+dropMeta: armor -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Cracheur:
+dropMeta: weapon -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Fisher's Mail:
+dropMeta: armor -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Foundation:
+dropMeta: armor -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Frankenstein:
+dropMeta: weapon -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Memorial:
+dropMeta: armor -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Frog:
+dropMeta: weapon -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Remembrance:
+dropMeta: weapon -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+The Fallen:
+dropMeta: weapon -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Swamp Treads:
+dropMeta: armor -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Shajone:
+dropMeta: armor -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+White Ghost:
+dropMeta: weapon -> {'coordinates': '111,44,-2199', 'name': 'Nemract', 'type': 'merchant'}
+
+Celsius:
+dropMeta: weapon -> {'coordinates': '112,78,-773', 'name': 'Nesaak', 'type': 'merchant'}
+
+Bob's Sacrifice:
+dropMeta: armor -> {'coordinates': '112,78,-773', 'name': 'Nesaak', 'type': 'merchant'}
+
+Current:
+dropMeta: weapon -> {'coordinates': '112,78,-773', 'name': 'Nesaak', 'type': 'merchant'}
+
+Frozen Earth:
+dropMeta: weapon -> {'coordinates': '112,78,-773', 'name': 'Nesaak', 'type': 'merchant'}
+
+Homemade Fur Coat:
+dropMeta: armor -> {'coordinates': '112,78,-773', 'name': 'Nesaak', 'type': 'merchant'}
+
+Nilrem's Curse:
+dropMeta: armor -> {'coordinates': '112,78,-773', 'name': 'Nesaak', 'type': 'merchant'}
+
+Reciprocator:
+dropMeta: weapon -> {'coordinates': '112,78,-773', 'name': 'Nesaak', 'type': 'merchant'}
+
+Woljawh:
+dropMeta: armor -> {'coordinates': '112,78,-773', 'name': 'Nesaak', 'type': 'merchant'}
+
+Summer:
+dropMeta: weapon -> {'coordinates': '112,78,-773', 'name': 'Nesaak', 'type': 'merchant'}
+
+Flaming War Spear:
+dropMeta: weapon -> {'coordinates': '793,59,-3350', 'name': 'Nodguj Nation', 'type': 'merchant'}
+
+Vine:
+dropMeta: accessory -> {'coordinates': '-156,72,-1630', 'name': 'Alkin Village', 'type': 'merchant'}
+
+Seedling:
+dropMeta: accessory -> {'coordinates': '-156,72,-1630', 'name': 'Alkin Village', 'type': 'merchant'}
+
+Tree Bracelet:
+dropMeta: accessory -> {'coordinates': '-156,72,-1630', 'name': 'Alkin Village', 'type': 'merchant'}
+
+Nodguj Warrior Chestplate:
+dropMeta: armor -> {'coordinates': '793,59,-3350', 'name': 'Nodguj Nation', 'type': 'merchant'}
+
+Shield:
+dropMeta: armor -> {'coordinates': '793,59,-3350', 'name': 'Nodguj Nation', 'type': 'merchant'}
+
+Nodguj Warrior Sword:
+dropMeta: weapon -> {'coordinates': '793,59,-3350', 'name': 'Nodguj Nation', 'type': 'merchant'}
+
+Strategist:
+dropMeta: armor -> {'coordinates': '793,59,-3350', 'name': 'Nodguj Nation', 'type': 'merchant'}
+
+Chasseur:
+dropMeta: weapon -> {'coordinates': '-1746,66,-5512', 'name': 'Olux', 'type': 'merchant'}
+
+Longtail Boots:
+dropMeta: armor -> {'coordinates': '-1746,66,-5512', 'name': 'Olux', 'type': 'merchant'}
+
+Stagnant:
+dropMeta: armor -> {'coordinates': '-1746,66,-5512', 'name': 'Olux', 'type': 'merchant'}
+
+Vine Machete:
+dropMeta: weapon -> {'coordinates': '-1746,66,-5512', 'name': 'Olux', 'type': 'merchant'}
+
+Rotten Swamp:
+dropMeta: weapon -> {'coordinates': '-1746,66,-5512', 'name': 'Olux', 'type': 'merchant'}
+
+Waxed Overalls:
+dropMeta: armor -> {'coordinates': '-1746,66,-5512', 'name': 'Olux', 'type': 'merchant'}
+
+Battle Leggings:
+dropMeta: armor -> {'coordinates': '-881,67,-1575', 'name': 'Ragni', 'type': 'merchant'}
+
+Plains Runner:
+dropMeta: armor -> {'coordinates': '-881,67,-1575', 'name': 'Ragni', 'type': 'merchant'}
+
+Solidified Chestplate:
+dropMeta: armor -> {'coordinates': '-881,67,-1575', 'name': 'Ragni', 'type': 'merchant'}
+
+Coolant:
+dropMeta: accessory -> {'coordinates': '-1663,49,-2352', 'name': 'Relos', 'type': 'merchant'}
+
+Doodad:
+dropMeta: accessory -> {'coordinates': '-1663,49,-2352', 'name': 'Relos', 'type': 'merchant'}
+
+Corkuff:
+dropMeta: accessory -> {'coordinates': '-1663,49,-2352', 'name': 'Relos', 'type': 'merchant'}
+
+Microchip:
+dropMeta: accessory -> {'coordinates': '-1663,49,-2352', 'name': 'Relos', 'type': 'merchant'}
+
+Wristviewer:
+dropMeta: accessory -> {'coordinates': '-1663,49,-2352', 'name': 'Relos', 'type': 'merchant'}
+
+Ashen Helm:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Quicksilver:
+dropMeta: accessory -> {'coordinates': '-1663,49,-2352', 'name': 'Relos', 'type': 'merchant'}
+
+Bane of War:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Darkiron Aegis:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Diamond Blade:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Comrade:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Fulminate Staff:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Eradian Full Helm:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Icejewel:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Low World Greaves:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Mercurial Chestplate:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Mountain's Song:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Magma Flinger:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Odin:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Ornamental Plate:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Ramhoof:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Rodoroc's Guard:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Steamstone:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Stricken Bolt:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Sekaisin:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Vulcamail Leggings:
+dropMeta: armor -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Siege Ram:
+dropMeta: weapon -> {'coordinates': '1122,13,-5189', 'name': 'Rodoroc', 'type': 'merchant'}
+
+Broken Sandust:
+dropMeta: accessory -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Cracked Stonehall:
+dropMeta: accessory -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Chipped Glitz:
+dropMeta: accessory -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Dulled Amethyst Ring:
+dropMeta: accessory -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Diluted Vitriol:
+dropMeta: accessory -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Assassin's Hood:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Copper Plate:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Coalwalkers:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced DuskShield:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Gypsum:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Hilltop:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Icarus:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Oxford:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Panorama:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Meditation Robe:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Pickpockets:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Salience:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Phosphene:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Skeleton Boots:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Umbrella Hat:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Enhanced Zeal:
+dropMeta: armor -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Misshapen Libella:
+dropMeta: accessory -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Sticky Decoder Ring:
+dropMeta: accessory -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Archpriest:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Cursed Bow:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Echolocation:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Flare Blitz:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Dark Needle:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded HellRaiser:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Long Bow:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Lullaby:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Melange:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Phoenix:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Radiance:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Scalpel:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Steel Buster:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Whisper:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Upgraded Vartija:
+dropMeta: weapon -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Used Wolf Paw:
+dropMeta: accessory -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Backstaff:
+dropMeta: weapon -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Weighted Nimble Fingers:
+dropMeta: accessory -> {'coordinates': '1233,31,-1295', 'name': 'Rymek', 'type': 'merchant'}
+
+Diving Boots I:
+dropMeta: armor -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Diving Boots II:
+dropMeta: armor -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Diving Boots III:
+dropMeta: armor -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Fishing Hook:
+dropMeta: weapon -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Harpoon:
+dropMeta: weapon -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Eel Spear:
+dropMeta: weapon -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Mage-Crafted Staff:
+dropMeta: weapon -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Portable Buoys:
+dropMeta: armor -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Sea Legs:
+dropMeta: armor -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Selchar's Famous Breeches:
+dropMeta: armor -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Seafarer's Coat:
+dropMeta: armor -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+The Crow's Nest:
+dropMeta: armor -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+The Saltwater Rune:
+dropMeta: weapon -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Tricorne:
+dropMeta: armor -> {'coordinates': '99,70,-3193', 'name': 'Selchar', 'type': 'merchant'}
+
+Advancement:
+dropMeta: armor -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Dilation:
+dropMeta: armor -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Diminution:
+dropMeta: armor -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Hourslip:
+dropMeta: armor -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Intuition:
+dropMeta: accessory -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Longevity:
+dropMeta: accessory -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Practice:
+dropMeta: accessory -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Reversion:
+dropMeta: armor -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Seal Breaker:
+dropMeta: armor -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Tempo Ticker:
+dropMeta: weapon -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Secondsaver:
+dropMeta: armor -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Slainte:
+dropMeta: accessory -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Tempo Tanto:
+dropMeta: weapon -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Tempo Totem:
+dropMeta: weapon -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Tempo Trident:
+dropMeta: weapon -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Tempo Trebuchet:
+dropMeta: weapon -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Timelocked Breath:
+dropMeta: accessory -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Timelocked Coal:
+dropMeta: accessory -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Timelocked Dew:
+dropMeta: accessory -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Timelocked Stone:
+dropMeta: accessory -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Timelocked Spark:
+dropMeta: accessory -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Trouble Tamer:
+dropMeta: armor -> {'coordinates': '-299,49,-1159', 'name': 'Tempo Town', 'type': 'merchant'}
+
+Brass Choker:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Brass Leg Plates:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Double-Edge:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Crook's March:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Dragonspit:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Dragon Horned Helmet:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Dragulj Boots:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Earthlink:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Ehoole Drakeskin:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Flexing Chain:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Fire Pearl:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Forge Stoker:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Formation:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Ironbody:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Metal Breaker:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Mining Fever:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Jewel Cutter:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Mithril Mantle:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Plate Shock:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Rask:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Ring of Power:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Rough Diamond:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Ring of Wisdom:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Legionnaire Greaves:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Legionnaire Helm:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Legionnaire Leggings:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Legionnaire Plate:
+dropMeta: armor -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Shale Edge:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Steady Grip:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Sterk:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Silver Bay:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Sterling Silver:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Tankard Basher:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Banner:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Crest:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Ironstaff:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Brand:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Siege Bow:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Stonesinger:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Warhammer:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Thanos Warsword:
+dropMeta: weapon -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Canyon Strider:
+dropMeta: armor -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Coal Duster:
+dropMeta: armor -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Filter Mask:
+dropMeta: armor -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Tight Clamp:
+dropMeta: accessory -> {'coordinates': '167,10,-5241', 'name': 'Thanos', 'type': 'merchant'}
+
+Fir Needle:
+dropMeta: weapon -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Firestarter:
+dropMeta: weapon -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Pine Bow:
+dropMeta: weapon -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Shine Lamp:
+dropMeta: weapon -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Plated Mining Helm:
+dropMeta: armor -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Surefooter:
+dropMeta: armor -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Windwhistle:
+dropMeta: weapon -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Wood Hammer:
+dropMeta: weapon -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Wooly Long Johns:
+dropMeta: armor -> {'coordinates': '795,82,-5086', 'name': 'Thesead', 'type': 'merchant'}
+
+Battle Staff:
+dropMeta: weapon -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Defender:
+dropMeta: weapon -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Battalion:
+dropMeta: armor -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Dinosaur:
+dropMeta: armor -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Dual:
+dropMeta: weapon -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Hurricane:
+dropMeta: armor -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Medecin:
+dropMeta: weapon -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Moonlight:
+dropMeta: weapon -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Strikedown:
+dropMeta: weapon -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+The Judge:
+dropMeta: armor -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Warlord:
+dropMeta: weapon -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Wardrummer:
+dropMeta: weapon -> {'coordinates': '-805,70,-920', 'name': 'Troms', 'type': 'merchant'}
+
+Zhight Beaded Broach:
+dropMeta: accessory -> {'coordinates': '-533,39,-2747', 'name': 'Zhight Island', 'type': 'merchant'}
+
+Zhight Powwow Bangle:
+dropMeta: accessory -> {'coordinates': '-533,39,-2747', 'name': 'Zhight Island', 'type': 'merchant'}
+
+Zhight Shiny Ring:
+dropMeta: accessory -> {'coordinates': '-533,39,-2747', 'name': 'Zhight Island', 'type': 'merchant'}
+
+Zhight Coral Band:
+dropMeta: accessory -> {'coordinates': '-533,39,-2747', 'name': 'Zhight Island', 'type': 'merchant'}
+
+Zhight Souvenir Coin:
+dropMeta: accessory -> {'coordinates': '-533,39,-2747', 'name': 'Zhight Island', 'type': 'merchant'}
+
+Zhight Weird Magic Necklace:
+dropMeta: accessory -> {'coordinates': '-533,39,-2747', 'name': 'Zhight Island', 'type': 'merchant'}
+
+Barbaric Amulet:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Agile Loop:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Chaotic Amulet:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Dark Band:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Droughted Amulet:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Energy Loop:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Force Loop:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Mask of Courage:
+dropMeta: armor -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Guardian Loop:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Magical Loop:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Mask of Enlightement:
+dropMeta: armor -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Mask of Hate:
+dropMeta: armor -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Mask of Rage:
+dropMeta: armor -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Scalding Band:
+dropMeta: accessory -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Mask of Fear:
+dropMeta: armor -> {'coordinates': '-688,64,-749', 'name': 'Iboju Village', 'type': 'merchant'}
+
+Items Added:
+Removed Items:
+
+Log Update Date: 2023-09-07 17:13:32
