@@ -2,15 +2,16 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Grimtrap",
-            "Tracker": "Mob kills"
+            "Item": "Gaia",
+            "Tracker": "Dungeons"
          },
          "Mythic": [
-            "Weathered",
-            "Hero",
-            "Pure",
-            "Archangel",
-            "Convergence"
+            "Slayer",
+            "Boreal",
+            "Discoverer",
+            "Gaia",
+            "Toxoplasmosis",
+            "Fatal"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -19,13 +20,13 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Divzer",
-            "Tracker": "Dungeons"
+            "Item": "Crusade Sabatons",
+            "Tracker": "Raids"
          },
          "Mythic": [
-            "Immolation",
-            "Boreal",
-            "Oblivion"
+            "Gaia",
+            "Resurgence",
+            "Divzer"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -33,5 +34,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1694196000
+   "Timestamp": 1694800800
 }
