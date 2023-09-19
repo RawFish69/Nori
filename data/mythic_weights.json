@@ -387,8 +387,8 @@
     "Gaia": "0.5",
     "Monster": "2",
     "Singularity": "2",
-    "Fatal": "0.75",
-    "Fatal (Arcanist)": "0.75",
+    "Fatal": "1",
+    "Fatal (Arcanist)": "1",
     "Warp": "12",
     "Warp (Lootrun)": "12",
     "Quetzalcoatl": "1",
@@ -396,7 +396,7 @@
     "Olympic": "3",
     "Hadal": "0.5",
     "Sunstar": "0.75",
-    "Toxoplasmosis": "2.5",
+    "Toxoplasmosis": "2",
     "Fantasia": "1",
     "Absolution": "1.5",
     "Immolation": "0.5",
@@ -408,9 +408,9 @@
     "Inferno": "1.5",
     "Nirvana": "6",
     "Oblivion": "0.75",
-    "Discoverer": "3.75",
+    "Discoverer": "2.75",
     "Crusade Sabatons": "4",
-    "Resurgence": "4",
+    "Resurgence": "2",
     "Galleon": "0.5",
     "Boreal": "1.5",
     "Slayer": "1.25",
@@ -510,7 +510,7 @@
     "spellCostPct4"
   ],
   "latest": {
-    "Date": "2023-09-13 13:16:22",
-    "Timestamp": 1694628982
+    "Date": "2023-09-19 13:05:54",
+    "Timestamp": 1695146754
   }
 }
