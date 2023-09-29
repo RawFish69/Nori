@@ -2,15 +2,15 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Archangel",
-            "Tracker": "Mobs"
+            "Item": "Idol",
+            "Tracker": "Wars"
          },
          "Mythic": [
-            "Singularity",
-            "Aftershock",
-            "Stratiformis",
-            "Oblivion",
-            "Revenant"
+            "Dawnbreak",
+            "Toxoplasmosis",
+            "Immolation",
+            "Moontower",
+            "Convergence"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -19,13 +19,13 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Toxoplasmosis",
-            "Tracker": "Dungeons"
+            "Item": "Freedom",
+            "Tracker": "Mobs"
          },
          "Mythic": [
-            "Fatal",
-            "Nullification",
-            "Thrundacrack"
+            "Discoverer",
+            "Immolation",
+            "Monster"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -33,5 +33,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1695405600
+   "Timestamp": 1696010400
 }
