@@ -10,7 +10,9 @@
             "Toxoplasmosis",
             "Immolation",
             "Moontower",
-            "Convergence"
+            "Convergence",
+            "Corkian Insulator",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -23,9 +25,47 @@
             "Tracker": "Mobs"
          },
          "Mythic": [
-            "Discoverer",
+            "Discorverer",
             "Immolation",
-            "Monster"
+            "Monster",
+            "Corkian Simulator"
+         ],
+         "Fabled": [],
+         "Legendary": [],
+         "Rare": [],
+         "Unique": []
+      },
+      "Sky": {
+         "Shiny": {
+            "Item": "Inferno",
+            "Tracker": "Chests"
+         },
+         "Mythic": [
+            "Pure",
+            "Thrundacrack",
+            "Ignis",
+            "Fatal",
+            "Dawnbreak",
+            "Corkian Insulator",
+            "Corkian Simulator"
+         ],
+         "Fabled": [],
+         "Legendary": [],
+         "Rare": [],
+         "Unique": []
+      },
+      "Molten": {
+         "Shiny": {
+            "Item": "Nullification",
+            "Tracker": "Mobs"
+         },
+         "Mythic": [
+            "Convergence",
+            "Stratiformis",
+            "Freedom",
+            "Hero",
+            "Singularity",
+            "Apocalypse"
          ],
          "Fabled": [],
          "Legendary": [],
