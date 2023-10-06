@@ -2,17 +2,16 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Idol",
-            "Tracker": "Wars"
+            "Item": "Ignis",
+            "Tracker": "Raids"
          },
          "Mythic": [
-            "Dawnbreak",
-            "Toxoplasmosis",
-            "Immolation",
-            "Moontower",
-            "Convergence",
-            "Corkian Insulator",
-            "Corkian Simulator"
+            "Fatal",
+            "Thrundacrack",
+            "Monster",
+            "Pure",
+            "Hadal",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -21,14 +20,16 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Freedom",
-            "Tracker": "Mobs"
+            "Item": "Gaia",
+            "Tracker": "Players killed"
          },
          "Mythic": [
-            "Discoverer",
-            "Immolation",
-            "Monster",
-            "Corkian Simulator"
+            "Stratiformis",
+            "Idol",
+            "Nirvana",
+            "Hero",
+            "Collapse",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -37,17 +38,16 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Inferno",
+            "Item": "Lament",
             "Tracker": "Chests"
          },
          "Mythic": [
-            "Pure",
-            "Thrundacrack",
-            "Ignis",
             "Fatal",
-            "Dawnbreak",
-            "Corkian Insulator",
-            "Corkian Simulator"
+            "Sunster",
+            "Idol",
+            "Guardian",
+            "Immolation",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -56,16 +56,18 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Nullification",
+            "Item": "Oblivion",
             "Tracker": "Mobs"
          },
          "Mythic": [
-            "Convergence",
-            "Stratiformis",
-            "Freedom",
-            "Hero",
-            "Singularity",
-            "Apocalypse"
+            "Slayer",
+            "Sunster",
+            "Galleon",
+            "Crusade Sabatons",
+            "Alkatraz",
+            "Revenamt",
+            "Corkian Insulator",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -73,5 +75,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1696010400
+   "Timestamp": 1696615200
 }
