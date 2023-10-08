@@ -448,7 +448,12 @@
       {
          "name": "ETA Quetzalcoatl",
          "link": "https://wynnbuilder.github.io/builder?v=4#8_06W07Y0LM0Qq0vI0vI0wr0Ji0uy161V-I-q161g0000100nZ60z0z0+0+0+0+0-llwpppl1",
-         "tag": "mage, arcanist, meteor cost, non-crafted, ender"
+         "tag": "mage, arcanist, meteor cost, no-crafted, ender"
+      },
+      {
+         "name": "divzer_dps",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uB0DP0Je0Lg0OS0K20ON0KG0QS1M2Q14+Psy1g1003CC10006C10006C10006C10036C1B1B050505050elFyUiVmAN",
+         "tag": "archer, sharpshooter, etw, divzer, no-crafted, dps, yuki"
       }
    ]
 }
