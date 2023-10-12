@@ -22,13 +22,8 @@
       },
       {
          "type": "Wand",
-         "link": "https://hppeng-wynn.github.io/crafter/#19L9k9L9k9f7B9l91",
+         "link": "https://hppeng-wynn.github.io/crafter/#19L9k7T9NBm7T9l91",
          "tag": "woodworking, mana regen, no reqs, offhand"
-      },
-      {
-         "type": "Wand",
-         "link": "https://hppeng-wynn.github.io/crafter/#19L9k9f9L9f9f9l91",
-         "tag": "woodworking, mana regen, no reqs, 1 dura, offhand"
       },
       {
          "type": "Wand",
@@ -37,7 +32,7 @@
       },
       {
          "type": "Relik",
-         "link": "https://hppeng-wynn.github.io/crafter/#166666666A5A59k51",
+         "link": "https://hppeng-wynn.github.io/crafter/#166669B66669u9k51",
          "tag": "woodworking, hpr percent, offhand"
       },
       {
@@ -48,12 +43,12 @@
       {
          "type": "Relik",
          "link": "https://hppeng-wynn.github.io/crafter/#18o9u9B7e8o9u9k91",
-         "tag": "woodworking, mana regen, 56 int req, water damage, cabsol"
+         "tag": "woodworking, mana regen, 56 int req, healing efficiency, cabsol"
       },
       {
          "type": "Relik",
          "link": "https://hppeng-wynn.github.io/crafter/#18o9u9B8o8o7e9k91",
-         "tag": "woodworking, mana regen, 60 int req, water damage, cabsol"
+         "tag": "woodworking, mana regen, 60 int req, healing efficiency, cabsol"
       },
       {
          "type": "Relik",
@@ -69,6 +64,11 @@
          "type": "Relik",
          "link": "https://hppeng-wynn.github.io/crafter/#1A5A59Q9Q9Q9Q9k91",
          "tag": "woodworking, loot bonus, walkspeed, negative hpr raw"
+      },
+      {
+         "type": "Relik",
+         "link": "https://hppeng-wynn.github.io/crafter/#1C68v9BC6C68v9k91",
+         "tag": "woodworking, loot bonus, loot quality, negative health"
       },
       {
          "type": "Relik",
@@ -102,13 +102,8 @@
       },
       {
          "type": "Spear",
-         "link": "https://hppeng-wynn.github.io/crafter/#19f9L9f9L629t9Y91",
+         "link": "https://hppeng-wynn.github.io/crafter/#19f9L7T9t7TBm9Y91",
          "tag": "weaponsmithing, mana regen, no reqs, offhand"
-      },
-      {
-         "type": "Spear",
-         "link": "https://hppeng-wynn.github.io/crafter/#19f9L9f9L059t9Y91",
-         "tag": "weaponsmithing, mana regen, no reqs, 1 dura, offhand"
       },
       {
          "type": "Dagger",
@@ -124,6 +119,11 @@
          "type": "Spear",
          "link": "https://hppeng-wynn.github.io/crafter/#1AY9Q9Q9Q9Q9Q9p91",
          "tag": "weaponsmithing, loot bonus, walkspeed, negative hpr raw"
+      },
+      {
+         "type": "Spear",
+         "link": "https://hppeng-wynn.github.io/crafter/#18p678vC6C6C69p91",
+         "tag": "weaponsmithing, loot bonus, loot quality, negative health"
       },
       {
          "type": "Spear",
