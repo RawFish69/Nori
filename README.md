@@ -1,12 +1,13 @@
 # Nori
-
-Nori is a chat bot project currently running on Discord and Kook 24/7. It uses the `SlashCommand` prefix format, for example: `/help`.
+- Database Repository of Project Nori
+- Nori is a chatbot project operating on Discord and Kook 24/7. It uses the `SlashCommand` prefix format, for example: `/help`.
 
 ## Supported Features
 
 ### General purpose
 - AI response (conversation with memory)
 - AI image generation
+- Database Query and Caching (Owner only)
 - Task manager, in chat TO-DO List (Owner only)
 - Weather status
 - Flight traffic status
@@ -19,30 +20,35 @@ Nori is a chat bot project currently running on Discord and Kook 24/7. It uses t
 - Log & Scan System (Owner only)
 - And more!
 
-### Wynn related
+### Game related (Wynn)
 - Player Stats
 - Guild Stats
 - Raid Leaderboard 
 - Item Search/reroll
 - Item Price-check
 - Item scale/weigh
-- Class build search 
+- Item changelog
+- Ingredient search
+- Class build search
+- Recipe search
 - Profession Leaderboard
 - Server uptime & soul point timer
-- Guild HQ stats calculation
+- Guild Tower Stats
 - Guild XP contributed
 - Guild Level xp requirement graph
 - Forgery mythic probability graph
-- Item changelog
 - Weekly Lootpool
 
+### Computation related
+- Work in progress
 
 ## Planned Features
-- ~~Memory for AI chat, support continous conversation~~ Completed
+- ~~Memory for AI chat, support continuous conversation~~ Completed
 - ~~Decode specific strings & conversion (UTF-8)~~ Completed
-- In chat file management, file format conversion, etc (WIP)
-- Play music in voice channel
-- Pattern recognition for image, audio, and potentially video
+- ~~In chat file management, file format conversion~~ File export completed 
+- Image detection and text extraction
+- Support games such as Destiny 2 API Endpoints
+- ~~Automate tasks in the background~~ Now able to process up to 20 hours
 - And more...
 
 ## Repository Information
