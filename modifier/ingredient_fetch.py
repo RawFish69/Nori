@@ -8,10 +8,40 @@ import requests
 import json
 import time
 from datetime import datetime
+import asyncio
 
 BASE_URL = "https://api.wynncraft.com/v2/ingredient/"
 
+async def task_update_ingredients():
+    """Bulk Update"""
+    request_data = requests.get('https://api.wynncraft.com/v2/ingredient/list')
+    ingredient_list = request_data.json()['data']
+    all_ingredients = []
+    total_ingredients = len(ingredient_list)
+    rate_limit = 2
+    duration_s = 4 * rate_limit
+    current_time = time.time()
+    duration = str(duration_s) + "s"
+    tier_count = 0
+    await asyncio.sleep(1)
+    print(f"Estimated duration: `{duration}`\nExpected to complete by <t:{int(current_time + duration_s)}:T>") # Discord timestamp format
+    print(f"Start processing ingredients, total: {total_ingredients}")
+    for i in range(4):
+        try:
+            request_ingredient = requests.get(f"https://api.wynncraft.com/v2/ingredient/search/tier/{i}").json()["data"]
+            tier_count += len(request_ingredient)
+            print(f"Tier {i} Ingreident: {tier_count} count")
+            all_ingredients += request_ingredient
+        except Exception as error:
+            print(error)
+            pass
+        await asyncio.sleep(rate_limit)
+    ingredient_data = {"ingredients": all_ingredients}
+    with open("/app/bot/wynn_ingredients.json", 'w') as f:
+        f.write(json.dumps(ingredient_data, indent=4))
 
+
+# Old methods, not nearly as efficient
 class IngredientUpdater:
     def __init__(self):
         self.base_url = BASE_URL
