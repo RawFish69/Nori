@@ -9,17 +9,17 @@ first_week_timestamp = 1690567200  # First week recorded
 
 # Weekly lootpool
 mythics = {
-    "SE": [],
-    "Corkus": [],
-    "Sky": [],
-    "Molten": []
+    "SE": ["Boreal","Thrundacrack","Warchief","Moontower","Lament"],
+    "Corkus": ["Moontower","Sunstar","Spring","Aftershock","Az","Boreal","Corkian Simulator"],
+    "Sky": ["Collapse","Idol","Weathered","Archangel","Az","Warp","Corkian Simulator"],
+    "Molten": ["Az","Spring","Nirvana","Collapse","Crusade Sabatons","Discoverer","Corkian Insulator"]
 }
 
 shiny = {
-    "SE": {"Item": "", "Tracker": ""},
-    "Corkus": {"Item": "", "Tracker": ""},
-    "Sky": {"Item": "", "Tracker": ""},
-    "Molten": {"Item": "", "Tracker": ""}
+    "SE": {"Item": "Cataclysm", "Tracker": "Dungeons Won"},
+    "Corkus": {"Item": "Convergence", "Tracker": "Lootruns Completed"},
+    "Sky": {"Item": "Warp", "Tracker": "Wars Won"},
+    "Molten": {"Item": "Epoch", "Tracker": "Raids Won"}
 }
 
 
