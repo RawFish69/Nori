@@ -9,10 +9,10 @@ first_week_timestamp = 1690567200  # First week recorded
 
 # Weekly lootpool
 mythics = {
-    "SE": [],
-    "Corkus": [],
-    "Sky": [],
-    "Molten": []
+    "SE": [""],
+    "Corkus": [""],
+    "Sky": [""],
+    "Molten": [""]
 }
 
 shiny = {
@@ -33,7 +33,7 @@ def estimate_week_number():
 
 def create_weekly_lootpool():
     week = estimate_week_number()
-    starting_time = (week - 1) * seconds_per_week + first_week_timestamp  
+    starting_time = (week - 1) * seconds_per_week + first_week_timestamp
     lootpool = {
         "Loot": {
             region: {
@@ -66,7 +66,7 @@ def history_log(weekly_lootpool):
         log_data += f"{region}:\nShiny {pool['Shiny']['Item']}\n{pool['Shiny']['Tracker']} Tracker\n"
         for mythic in pool["Mythic"]:
             log_data += f"- {mythic}\n"
-        log_data += "\n"
+    log_data += "\n"
 
     with open("lootpool_history.log", "a") as file:
         file.write(log_data)
