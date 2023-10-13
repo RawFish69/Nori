@@ -9,18 +9,17 @@ first_week_timestamp = 1690567200  # First week recorded
 
 # Weekly lootpool
 mythics = {
-    "SE": ["Fatal", "Thrundacrack", "Monster", "Pure", "Hadal", "Corkian Insulator"],
-    "Corkus": ["Stratiformis", "Idol", "Nirvana", "Hero", "Collapse", "Corkian Insulator"],
-    "Sky": ["Fatal", "Sunstar", "Idol", "Guardian", "Immolation", "Corkian Insulator", "Corkian Simulator"],
-    "Molten": ["Slayer", "Sunstar", "Galleon", "Crusade Sabatons", "Alkatraz", "Revenant", "Corkian Insulator",
-               "Corkian Simulator"]
+    "SE": [],
+    "Corkus": [],
+    "Sky": [],
+    "Molten": []
 }
 
 shiny = {
-    "SE": {"Item": "Ignis", "Tracker": "Raids"},
-    "Corkus": {"Item": "Gaia", "Tracker": "Players killed"},
-    "Sky": {"Item": "Lament", "Tracker": "Chests"},
-    "Molten": {"Item": "Oblivion", "Tracker": "Mobs"}
+    "SE": {"Item": "", "Tracker": ""},
+    "Corkus": {"Item": "", "Tracker": ""},
+    "Sky": {"Item": "", "Tracker": ""},
+    "Molten": {"Item": "", "Tracker": ""}
 }
 
 
