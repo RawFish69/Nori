@@ -214,6 +214,7 @@ Chests Tracker
 - Guardian
 - Immolation
 - Corkian Insulator
+- Corkian Simulator
 Molten:
 Shiny Oblivion
 Mobs Tracker
@@ -235,8 +236,18 @@ Dungeons Won Tracker
 - Warchief
 - Moontower
 - Lament
-
+- Corkian Simulator
 Corkus:
+Shiny Warp
+Wars Won Tracker
+- Idol
+- Weathered
+- Warp
+- Az
+- Hero
+- Collapse
+- Corkian Simulator
+Sky:
 Shiny Convergence
 Lootruns Completed Tracker
 - Moontower
@@ -244,20 +255,7 @@ Lootruns Completed Tracker
 - Spring
 - Aftershock
 - Az
-- Boreal
 - Corkian Simulator
-
-Sky:
-Shiny Warp
-Wars Won Tracker
-- Collapse
-- Idol
-- Weathered
-- Archangel
-- Az
-- Warp
-- Corkian Simulator
-
 Molten:
 Shiny Epoch
 Raids Won Tracker
@@ -265,7 +263,7 @@ Raids Won Tracker
 - Spring
 - Nirvana
 - Collapse
-- Crusade Sabatons
-- Discoverer
+- Moontower
+- Discover
 - Corkian Insulator
 
