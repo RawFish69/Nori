@@ -2,16 +2,16 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Ignis",
-            "Tracker": "Raids"
+            "Item": "Cataclysm",
+            "Tracker": "Dungeons Won"
          },
          "Mythic": [
-            "Fatal",
+            "Boreal",
             "Thrundacrack",
-            "Monster",
-            "Pure",
-            "Hadal",
-            "Corkian Insulator"
+            "Warchief",
+            "Moontower",
+            "Lament",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -20,16 +20,17 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Gaia",
-            "Tracker": "Players killed"
+            "Item": "Warp",
+            "Tracker": "Wars Won"
          },
          "Mythic": [
-            "Stratiformis",
             "Idol",
-            "Nirvana",
+            "Weathered",
+            "Warp",
+            "Az",
             "Hero",
             "Collapse",
-            "Corkian Insulator"
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -38,16 +39,15 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Lament",
-            "Tracker": "Chests"
+            "Item": "Convergence",
+            "Tracker": "Lootruns Completed"
          },
          "Mythic": [
-            "Fatal",
+            "Moontower",
             "Sunstar",
-            "Idol",
-            "Guardian",
-            "Immolation",
-            "Corkian Insulator",
+            "Spring",
+            "Aftershock",
+            "Az",
             "Corkian Simulator"
          ],
          "Fabled": [],
@@ -57,18 +57,17 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Oblivion",
-            "Tracker": "Mobs"
+            "Item": "Epoch",
+            "Tracker": "Raids Won"
          },
          "Mythic": [
-            "Slayer",
-            "Sunstar",
-            "Galleon",
-            "Crusade Sabatons",
-            "Alkatraz",
-            "Revenant",
-            "Corkian Insulator",
-            "Corkian Simulator"
+            "Az",
+            "Spring",
+            "Nirvana",
+            "Collapse",
+            "Moontower",
+            "Discover",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -76,5 +75,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1696615200
+   "Timestamp": 1697220000
 }
