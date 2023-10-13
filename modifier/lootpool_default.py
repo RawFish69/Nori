@@ -9,10 +9,10 @@ first_week_timestamp = 1690567200  # First week recorded
 
 # Weekly lootpool
 mythics = {
-    "SE": [""],
-    "Corkus": [""],
-    "Sky": [""],
-    "Molten": [""]
+    "SE": [],
+    "Corkus": [],
+    "Sky": [],
+    "Molten": []
 }
 
 shiny = {
