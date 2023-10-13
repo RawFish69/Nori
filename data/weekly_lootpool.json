@@ -10,7 +10,8 @@
             "Thrundacrack",
             "Warchief",
             "Moontower",
-            "Lament"
+            "Lament",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -18,6 +19,25 @@
          "Unique": []
       },
       "Corkus": {
+         "Shiny": {
+            "Item": "Warp",
+            "Tracker": "Wars Won"
+         },
+         "Mythic": [
+            "Idol",
+            "Weathered",
+            "Warp",
+            "Az",
+            "Hero",
+            "Collapse",
+            "Corkian Simulator"
+         ],
+         "Fabled": [],
+         "Legendary": [],
+         "Rare": [],
+         "Unique": []
+      },
+      "Sky": {
          "Shiny": {
             "Item": "Convergence",
             "Tracker": "Lootruns Completed"
@@ -28,26 +48,6 @@
             "Spring",
             "Aftershock",
             "Az",
-            "Boreal",
-            "Corkian Simulator"
-         ],
-         "Fabled": [],
-         "Legendary": [],
-         "Rare": [],
-         "Unique": []
-      },
-      "Sky": {
-         "Shiny": {
-            "Item": "Warp",
-            "Tracker": "Wars Won"
-         },
-         "Mythic": [
-            "Collapse",
-            "Idol",
-            "Weathered",
-            "Archangel",
-            "Az",
-            "Warp",
             "Corkian Simulator"
          ],
          "Fabled": [],
@@ -65,8 +65,8 @@
             "Spring",
             "Nirvana",
             "Collapse",
-            "Crusade Sabatons",
-            "Discoverer",
+            "Moontower",
+            "Discover",
             "Corkian Insulator"
          ],
          "Fabled": [],
