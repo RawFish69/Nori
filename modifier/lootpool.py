@@ -58,7 +58,7 @@ def create_weekly_lootpool():
 
 
 def update_lootpool(weekly_lootpool):
-    with open("weekly_lootpool.json", "w") as file:
+    with open("data/weekly_lootpool.json", "w") as file:
         json.dump(weekly_lootpool, file, indent=3)
     print(json.dumps(weekly_lootpool, indent=3))
     print(f"\nFile updated\nTimestamp: {weekly_lootpool['Timestamp']}")
@@ -74,7 +74,7 @@ def history_log(weekly_lootpool):
             log_data += f"- {mythic}\n"
     log_data += "\n"
 
-    with open("lootpool_history.log", "a") as file:
+    with open("changelogs/lootpool_history.log", "a") as file:
         file.write(log_data)
     print(log_data)
 
