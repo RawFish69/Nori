@@ -16,7 +16,7 @@ first_week_timestamp = 1690567200  # First week recorded
 # Weekly lootpool
 mythics = {
     "SE": ["Boreal","Thrundacrack","Warchief","Moontower","Lament","Corkian Simulator"],
-    "Corkus": ["Idol","Weathered","Warp","Az","Hero","Collapse","Corkian Simulator"],
+    "Corkus": ["Idol","Weathered","Warp","Az","Archangel","Collapse","Corkian Simulator"],
     "Sky": ["Moontower","Sunstar","Spring","Aftershock","Az","Corkian Simulator"],
     "Molten": ["Az","Spring","Nirvana","Collapse","Moontower","Discover","Corkian Insulator"]
 }
