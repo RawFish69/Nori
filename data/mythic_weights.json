@@ -146,13 +146,6 @@
       "spellCostRaw2": "2.5",
       "healthRegen": "2.0"
     },
-    "Warp (Lootrun)": {
-      "spellCostRaw2": "35.0",
-      "healthRegenRaw": "30.0",
-      "speed": "20.0",
-      "manaRegen": "12.5",
-      "healthRegen": "2.5"
-    },
     "Quetzalcoatl": {
       "spellDamageBonusRaw": "55.0",
       "lifeSteal": "30.0",
@@ -369,7 +362,7 @@
     "Guardian (War)": "3",
     "Guardian": "3",
     "Alkatraz": "1.5",
-    "Idol": "8.5",
+    "Idol": "5",
     "Thrundacrack": "1.25",
     "Collapse": "0.75",
     "Collapse (spell)": "0.75",
@@ -383,14 +376,13 @@
     "Stratiformis": "1.5",
     "Epoch": "10",
     "Pure": "2",
-    "Lament": "2.75",
+    "Lament": "2",
     "Gaia": "0.5",
     "Monster": "3.5",
     "Singularity": "1",
     "Fatal": "1",
     "Fatal (Arcanist)": "1",
-    "Warp": "13",
-    "Warp (Lootrun)": "13",
+    "Warp": "8",
     "Quetzalcoatl": "2",
     "Aftershock": "2.5",
     "Olympic": "5",
@@ -402,19 +394,19 @@
     "Immolation": "0.5",
     "Archangel": "1.5",
     "Nullification": "1",
-    "Cataclysm": "15",
-    "Grimtrap": "2",
-    "Weathered": "3.5",
+    "Cataclysm": "14.5",
+    "Grimtrap": "1.5",
+    "Weathered": "1.5",
     "Inferno": "2",
-    "Nirvana": "7",
+    "Nirvana": "3",
     "Oblivion": "0.75",
     "Discoverer": "2.5",
     "Crusade Sabatons": "5",
-    "Resurgence": "3.5",
+    "Resurgence": "2.75",
     "Galleon": "0.5",
     "Boreal": "1",
-    "Slayer": "1.5",
-    "Slayer (melee)": "1.5",
+    "Slayer": "1.25",
+    "Slayer (melee)": "1.25",
     "Moontower": "1.25",
     "Dawnbreak": "0.25",
     "Dawnbreak (spell)": "0.25",
@@ -510,7 +502,7 @@
     "spellCostPct4"
   ],
   "latest": {
-    "Date": "2023-10-01 23:21:56",
-    "Timestamp": 1696220516
+    "Date": "2023-10-20 00:22:37",
+    "Timestamp": 1697779357
   }
 }
