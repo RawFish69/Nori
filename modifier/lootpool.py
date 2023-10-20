@@ -9,17 +9,17 @@ first_week_timestamp = 1690567200  # First week recorded
 
 # Weekly lootpool
 mythics = {
-    "SE": ["Boreal","Thrundacrack","Warchief","Moontower","Lament"],
-    "Corkus": ["Moontower","Sunstar","Spring","Aftershock","Az","Boreal","Corkian Simulator"],
-    "Sky": ["Collapse","Idol","Weathered","Archangel","Az","Warp","Corkian Simulator"],
-    "Molten": ["Az","Spring","Nirvana","Collapse","Crusade Sabatons","Discoverer","Corkian Insulator"]
+    "SE": ["Hadal","Alkatraz","Gaia","Grimtrap","Freedom","Stratiformis","Corkian Simulator"],
+    "Corkus": ["Absolution","Nirvana","Grandmother","Stratiformis","Galleon","Singularity","Corkian Simulator","Corkian Insulator"],
+    "Sky": ["Hadal","Absolution","Gaia","Cataclysm","Guardian","Thrundacrack"],
+    "Molten": ["Warchief","Absolution","Convergence","Divzer","Toxoplasmosis","Corkian Insulator"]
 }
 
 shiny = {
-    "SE": {"Item": "Cataclysm", "Tracker": "Dungeons Won"},
-    "Corkus": {"Item": "Convergence", "Tracker": "Lootruns Completed"},
-    "Sky": {"Item": "Warp", "Tracker": "Wars Won"},
-    "Molten": {"Item": "Epoch", "Tracker": "Raids Won"}
+    "SE": {"Item": "Guardian", "Tracker": "Players Killed "},
+    "Corkus": {"Item": "Divzer", "Tracker": "Chests Opened"},
+    "Sky": {"Item": "Hero", "Tracker": "Wars Won"},
+    "Molten": {"Item": "Lament", "Tracker": "Deaths"}
 }
 
 
