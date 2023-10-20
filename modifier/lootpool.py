@@ -16,7 +16,7 @@ first_week_timestamp = 1690567200  # First week recorded
 # Weekly lootpool
 mythics = {
     "SE": ["Hadal","Alkatraz","Gaia","Grimtrap","Freedom","Stratiformis","Corkian Simulator"],
-    "Corkus": ["Absolution","Nirvana","Grandmother","Stratiformis","Galleon","Singularity","Corkian Simulator","Corkian Insulator],
+    "Corkus": ["Absolution","Nirvana","Grandmother","Stratiformis","Galleon","Singularity","Corkian Simulator","Corkian Insulator"],
     "Sky": ["Hadal","Absolution","Gaia","Cataclysm","Guardian","Thrundacrack"],
     "Molten": ["Warchief","Absolution","Convergence","Divzer","Toxoplasmosis","Corkian Insulator"]
 }
