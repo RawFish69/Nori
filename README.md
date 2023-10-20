@@ -8,7 +8,7 @@
 - AI response (conversation with memory)
 - AI image generation
 - Mathematical Computation:
-  - Algebra Calculator
+  - Algebraic Calculator
   - Equation Solver
   - Integral & Derivative Calculator
   - Plot Generation
