@@ -2,15 +2,16 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Cataclysm",
-            "Tracker": "Dungeons Won"
+            "Item": "Guardian",
+            "Tracker": "Players Killed"
          },
          "Mythic": [
-            "Boreal",
-            "Thrundacrack",
-            "Warchief",
-            "Moontower",
-            "Lament",
+            "Hadal",
+            "Alkatraz",
+            "Gaia",
+            "Grimtrap",
+            "Freedom",
+            "Stratiformis",
             "Corkian Simulator"
          ],
          "Fabled": [],
@@ -20,17 +21,18 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Warp",
-            "Tracker": "Wars Won"
+            "Item": "Divzer",
+            "Tracker": "Chest Opened"
          },
          "Mythic": [
-            "Idol",
-            "Weathered",
-            "Warp",
-            "Az",
-            "Archangel",
-            "Collapse",
-            "Corkian Simulator"
+            "Absolution",
+            "Nirvana",
+            "Grandmother",
+            "Stratiformis",
+            "Galleon",
+            "Singularity",
+            "Corkian Simulator",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -39,16 +41,16 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Convergence",
-            "Tracker": "Lootruns Completed"
+            "Item": "Hero",
+            "Tracker": "Wars Won"
          },
          "Mythic": [
-            "Moontower",
-            "Sunstar",
-            "Spring",
-            "Aftershock",
-            "Az",
-            "Corkian Simulator"
+            "Hadal",
+            "Absolution",
+            "Gaia",
+            "Cataclysm",
+            "Guardian",
+            "Thrundacrack"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -57,16 +59,15 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Epoch",
-            "Tracker": "Raids Won"
+            "Item": "Lament",
+            "Tracker": "Deaths"
          },
          "Mythic": [
-            "Az",
-            "Spring",
-            "Nirvana",
-            "Collapse",
-            "Moontower",
-            "Discover",
+            "Warchief",
+            "Absolution",
+            "Convergence",
+            "Divzer",
+            "Toxoplasmosis",
             "Corkian Insulator"
          ],
          "Fabled": [],
@@ -75,5 +76,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1697220000
+   "Timestamp": 1697824800
 }
