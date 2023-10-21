@@ -6,7 +6,7 @@ on:
       - 'modifier/lootpool.py'
 
 jobs:
-  run_script:
+  run_lootpool_script:
     runs-on: ubuntu-latest
 
     steps:
