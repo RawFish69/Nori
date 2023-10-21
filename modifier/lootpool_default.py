@@ -6,6 +6,7 @@ import math
 # Constants
 seconds_per_week = 604800
 first_week_timestamp = 1690567200  # First week recorded
+current_datetime = datetime.now().strftime("%Y-%m-%d")
 
 # Weekly lootpool
 mythics = {
@@ -58,24 +59,28 @@ def update_lootpool(weekly_lootpool):
     print(f"\nFile updated\nTimestamp: {weekly_lootpool['Timestamp']}")
 
 
-def history_log(weekly_lootpool):
-    current_datetime = datetime.now().strftime("%Y-%m-%d")
-    log_data = f"Week of {current_datetime}:\n"
+def history_log(weekly_lootpool, update: bool):
+    if update is True:
+        log_data = f"Week of {current_datetime}:\n"
+        for region, pool in weekly_lootpool["Loot"].items():
+            log_data += f"{region}:\nShiny {pool['Shiny']['Item']}\n{pool['Shiny']['Tracker']} Tracker\n"
+            for mythic in pool["Mythic"]:
+                log_data += f"- {mythic}\n"
+        log_data += "\n"
+        with open("lootpool_history.log", "a") as file:
+            file.write(log_data)
+        print(log_data)
+        return log_data
 
-    for region, pool in weekly_lootpool["Loot"].items():
-        log_data += f"{region}:\nShiny {pool['Shiny']['Item']}\n{pool['Shiny']['Tracker']} Tracker\n"
-        for mythic in pool["Mythic"]:
-            log_data += f"- {mythic}\n"
-    log_data += "\n"
-
-    with open("lootpool_history.log", "a") as file:
-        file.write(log_data)
-    print(log_data)
 
 def main():
+    with open("lootpool_history.log", "r") as log:
+        if current_datetime in log.read():
+            check = False
+        else:
+            check = True
     weekly_lootpool = create_weekly_lootpool()
     update_lootpool(weekly_lootpool)
-    history_log(weekly_lootpool)
-
+    history_log(weekly_lootpool, update=check)
 
 main()
