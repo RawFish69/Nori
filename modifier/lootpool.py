@@ -2,7 +2,7 @@
 Script Name: Nori-Lootpool 
 Github: https://github.com/RawFish69/Nori/blob/main/modifier/lootpool.py
 Description: Lootpool json and log generation for Nori-bot
-Last update: 10/22/2023
+Last update: 10/21/2023
 """
 import json
 import time
