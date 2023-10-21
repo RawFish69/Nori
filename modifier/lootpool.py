@@ -74,14 +74,14 @@ def history_log(weekly_lootpool, update: bool):
             for mythic in pool["Mythic"]:
                 log_data += f"- {mythic}\n"
         log_data += "\n"
-        with open("lootpool_history.log", "a") as file:
+        with open("changelogs/lootpool_history.log", "a") as file:
             file.write(log_data)
         print(log_data)
         return log_data
 
 
 def main():
-    with open("lootpool_history.log", "r") as log:
+    with open("changelogs/lootpool_history.log", "r") as log:
         if current_datetime in log.read():
             check = False
         else:
