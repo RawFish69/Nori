@@ -7,6 +7,11 @@
 ### General purpose
 - AI response (conversation with memory)
 - AI image generation
+- Mathematical Computation:
+  - Algebraic Calculator
+  - Equation Solver
+  - Integral & Derivative Calculator
+  - Plot Generation
 - Database Query and Caching (Owner only)
 - Task manager, in chat TO-DO List (Owner only)
 - Weather status

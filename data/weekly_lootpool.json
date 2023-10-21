@@ -2,16 +2,17 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Ignis",
-            "Tracker": "Raids"
+            "Item": "Guardian",
+            "Tracker": "Players Killed"
          },
          "Mythic": [
-            "Fatal",
-            "Thrundacrack",
-            "Monster",
-            "Pure",
             "Hadal",
-            "Corkian Insulator"
+            "Alkatraz",
+            "Gaia",
+            "Grimtrap",
+            "Freedom",
+            "Stratiformis",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -20,15 +21,17 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Gaia",
-            "Tracker": "Players killed"
+            "Item": "Divzer",
+            "Tracker": "Chest Opened"
          },
          "Mythic": [
-            "Stratiformis",
-            "Idol",
+            "Absolution",
             "Nirvana",
-            "Hero",
-            "Collapse",
+            "Grandmother",
+            "Stratiformis",
+            "Galleon",
+            "Singularity",
+            "Corkian Simulator",
             "Corkian Insulator"
          ],
          "Fabled": [],
@@ -38,17 +41,16 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Lament",
-            "Tracker": "Chests"
+            "Item": "Hero",
+            "Tracker": "Wars Won"
          },
          "Mythic": [
-            "Fatal",
-            "Sunstar",
-            "Idol",
+            "Hadal",
+            "Absolution",
+            "Gaia",
+            "Cataclysm",
             "Guardian",
-            "Immolation",
-            "Corkian Insulator",
-            "Corkian Simulator"
+            "Thrundacrack"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -57,18 +59,16 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Oblivion",
-            "Tracker": "Mobs"
+            "Item": "Lament",
+            "Tracker": "Deaths"
          },
          "Mythic": [
-            "Slayer",
-            "Sunstar",
-            "Galleon",
-            "Crusade Sabatons",
-            "Alkatraz",
-            "Revenant",
-            "Corkian Insulator",
-            "Corkian Simulator"
+            "Warchief",
+            "Absolution",
+            "Convergence",
+            "Divzer",
+            "Toxoplasmosis",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -76,5 +76,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1696615200
+   "Timestamp": 1697824800
 }
