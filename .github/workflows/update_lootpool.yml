@@ -1,4 +1,4 @@
-name: Run lootpool.py to update database
+name: Lootpool update
 
 on:
   push:
