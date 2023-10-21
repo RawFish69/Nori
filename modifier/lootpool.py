@@ -1,3 +1,9 @@
+"""
+Script Name: Nori-Lootpool 
+Github: https://github.com/RawFish69/Nori/blob/main/modifier/lootpool.py
+Description: Lootpool json and log generation for Nori-bot
+Last update: 10/13/2023
+"""
 import json
 import time
 from datetime import datetime
@@ -16,8 +22,8 @@ mythics = {
 }
 
 shiny = {
-    "SE": {"Item": "Guardian", "Tracker": "Players Killed "},
-    "Corkus": {"Item": "Divzer", "Tracker": "Chests Opened"},
+    "SE": {"Item": "Guardian", "Tracker": "Players Killed"},
+    "Corkus": {"Item": "Divzer", "Tracker": "Chest Opened"},
     "Sky": {"Item": "Hero", "Tracker": "Wars Won"},
     "Molten": {"Item": "Lament", "Tracker": "Deaths"}
 }
@@ -33,7 +39,7 @@ def estimate_week_number():
 
 def create_weekly_lootpool():
     week = estimate_week_number()
-    starting_time = (week - 1) * seconds_per_week + first_week_timestamp  
+    starting_time = (week - 1) * seconds_per_week + first_week_timestamp
     lootpool = {
         "Loot": {
             region: {
@@ -52,7 +58,7 @@ def create_weekly_lootpool():
 
 
 def update_lootpool(weekly_lootpool):
-    with open("weekly_lootpool.json", "w") as file:
+    with open("data/weekly_lootpool.json", "w") as file:
         json.dump(weekly_lootpool, file, indent=3)
     print(json.dumps(weekly_lootpool, indent=3))
     print(f"\nFile updated\nTimestamp: {weekly_lootpool['Timestamp']}")
@@ -66,9 +72,9 @@ def history_log(weekly_lootpool):
         log_data += f"{region}:\nShiny {pool['Shiny']['Item']}\n{pool['Shiny']['Tracker']} Tracker\n"
         for mythic in pool["Mythic"]:
             log_data += f"- {mythic}\n"
-        log_data += "\n"
+    log_data += "\n"
 
-    with open("lootpool_history.log", "a") as file:
+    with open("changelogs/lootpool_history.log", "a") as file:
         file.write(log_data)
     print(log_data)
 
