@@ -37,12 +37,12 @@
       "speed": "1.0"
     },
     "Collapse": {
-      "mainAttackDamageBonus": "80.0",
-      "manaSteal": "20.0"
-    },
-    "Collapse (spell)": {
       "manaSteal": "80.0",
       "mainAttackDamageBonus": "20.0"
+    },
+    "Collapse (melee)": {
+      "mainAttackDamageBonus": "80.0",
+      "manaSteal": "20.0"
     },
     "Convergence": {
       "spellCostPct3": "70.0",
@@ -365,7 +365,7 @@
     "Idol": "5",
     "Thrundacrack": "1.25",
     "Collapse": "0.75",
-    "Collapse (spell)": "0.75",
+    "Collapse (melee)": "0.75",
     "Convergence": "0.5",
     "Az": "2",
     "Freedom": "5",
@@ -502,7 +502,7 @@
     "spellCostPct4"
   ],
   "latest": {
-    "Date": "2023-10-20 00:22:37",
-    "Timestamp": 1697779357
+    "Date": "2023-10-23 17:28:17",
+    "Timestamp": 1698082097
   }
 }
