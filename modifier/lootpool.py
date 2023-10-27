@@ -2,7 +2,7 @@
 Script Name: Nori-Lootpool 
 Github: https://github.com/RawFish69/Nori/blob/main/modifier/lootpool.py
 Description: Lootpool json and log generation for Nori-bot
-Last update: 10/21/2023
+Last update: 10/28/2023
 """
 import json
 import time
@@ -17,17 +17,17 @@ current_datetime = datetime.now().strftime("%Y-%m-%d")
 
 # Weekly lootpool
 mythics = {
-    "SE": ["Hadal","Alkatraz","Gaia","Grimtrap","Freedom","Stratiformis","Corkian Simulator"],
-    "Corkus": ["Absolution","Nirvana","Grandmother","Stratiformis","Galleon","Singularity","Corkian Simulator","Corkian Insulator"],
-    "Sky": ["Hadal","Absolution","Gaia","Cataclysm","Guardian","Thrundacrack"],
-    "Molten": ["Warchief","Absolution","Convergence","Divzer","Toxoplasmosis","Corkian Insulator"]
+    "SE": ["Archangel","Boreal","Olympic","Toxoplasmosis","Thrundacrack","Corkian Insulator"],
+    "Corkus": ["Nirvana","Quetzalcoatl","Pure","Gaia","Warp","Corkian Insulator","Corkian Simulator"],
+    "Sky": ["Archangel","Cataclysm","Monster","Oblivion","Warp","Corkian Insulator","Corkian Simulator"],
+    "Molten": ["Lament","Archangel","Hero","Singularity","Idol","Divzer","Corkian Simulator"]
 }
 
 shiny = {
-    "SE": {"Item": "Guardian", "Tracker": "Players Killed"},
-    "Corkus": {"Item": "Divzer", "Tracker": "Chest Opened"},
-    "Sky": {"Item": "Hero", "Tracker": "Wars Won"},
-    "Molten": {"Item": "Lament", "Tracker": "Deaths"}
+    "SE": {"Item": "Immolation", "Tracker": "Players Killed"},
+    "Corkus": {"Item": "Galleon", "Tracker": "Deaths"},
+    "Sky": {"Item": "Monster", "Tracker": "Raids Won"},
+    "Molten": {"Item": "Olympic", "Tracker": "Lootruns Completed "}
 }
 
 
