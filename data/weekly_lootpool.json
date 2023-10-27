@@ -2,17 +2,16 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Guardian",
+            "Item": "Immolation",
             "Tracker": "Players Killed"
          },
          "Mythic": [
-            "Hadal",
-            "Alkatraz",
-            "Gaia",
-            "Grimtrap",
-            "Freedom",
-            "Stratiformis",
-            "Corkian Simulator"
+            "Archangel",
+            "Boreal",
+            "Olympic",
+            "Toxoplasmosis",
+            "Thrundacrack",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -21,18 +20,17 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Divzer",
-            "Tracker": "Chest Opened"
+            "Item": "Galleon",
+            "Tracker": "Deaths"
          },
          "Mythic": [
-            "Absolution",
             "Nirvana",
-            "Grandmother",
-            "Stratiformis",
-            "Galleon",
-            "Singularity",
-            "Corkian Simulator",
-            "Corkian Insulator"
+            "Quetzalcoatl",
+            "Pure",
+            "Gaia",
+            "Warp",
+            "Corkian Insulator",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -41,16 +39,17 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Hero",
-            "Tracker": "Wars Won"
+            "Item": "Monster",
+            "Tracker": "Raids Won"
          },
          "Mythic": [
-            "Hadal",
-            "Absolution",
-            "Gaia",
+            "Archangel",
             "Cataclysm",
-            "Guardian",
-            "Thrundacrack"
+            "Monster",
+            "Oblivion",
+            "Warp",
+            "Corkian Insulator",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -59,16 +58,17 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Lament",
-            "Tracker": "Deaths"
+            "Item": "Olympic",
+            "Tracker": "Lootruns Completed "
          },
          "Mythic": [
-            "Warchief",
-            "Absolution",
-            "Convergence",
+            "Lament",
+            "Archangel",
+            "Hero",
+            "Singularity",
+            "Idol",
             "Divzer",
-            "Toxoplasmosis",
-            "Corkian Insulator"
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -76,5 +76,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1697824800
+   "Timestamp": 1698429600
 }
