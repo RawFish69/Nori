@@ -451,9 +451,24 @@
          "tag": "mage, arcanist, meteor cost, no-crafted, ender"
       },
       {
-         "name": "divzer_dps",
-         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uB0DP0Je0Lg0OS0K20ON0KG0QS1M2Q14+Psy1g1003CC10006C10006C10006C10036C1B1B050505050elFcVCVuAN",
+         "name": "divzer dps",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uB0DP0Je0Lg0OS0K20ON0KG0QS1M2Q14+Psy1g1003CC10006C10006C10006C10036C1B1B050505050elFyUiVmAN",
          "tag": "archer, sharpshooter, etw, divzer, no-crafted, dps, yuki"
+      },
+      {
+         "name": "Riftwalker Warp (moontower)",
+         "link": "https://hppeng-wynn.github.io/builder/?v=3#8_0tx09-0PW0Qj0ta0t80wr0Ji0R1-s1B1p-E2W1g1000FU01006FU1006FU1007lU1B1B070707070kj-RwsdT1",
+         "tag": "mage, riftwalker, warp, lootrun, tna, manastorm, no-crafted"
+      },
+      {
+         "name": "Trickster Cata",
+         "link": "https://wynnbuilder.github.io/builder/#8_07F0u702R0Lg0K20TQ0tz0Ji0QQ152C1400-s1g010006C10006C10009I10036C1717050505050kldxakIZu2C",
+         "tag": "assassin, trickster, cataclysm, no-crafted, dps, tna, raid"
+      },
+      {
+         "name": "Stardew Idol Fallenmonk",
+         "link": "https://wynnbuilder.github.io/builder/?v=4#8_01d0u70Je0Qx0GQ0K20vF0tt0Qf0v112R-Y-Y1g10009I1007fI10009I10009I1004fI1B1B050505050iz-wZslXi0",
+         "tag": "warrior, battle monk, fallen, idol, stardew, raid, dps"
       }
    ]
 }
