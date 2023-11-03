@@ -20,7 +20,7 @@ mythics = {
     "SE": ["Thrundacrack","Dawnbreak","Apocalypse","Oblivion","Idol","Corkian Insulator","Corkian Simulator"],
     "Corkus": ["Warchief","Singularity","Az","Cataclysm","Immolation","Corkian Insulator","Corkian Simulator"],
     "Sky": ["Grandmother","Crusade Sabatons","Warp","Apocalypse","Lament","Corkian Insulator"],
-    "Molten": ["Sunstar","Convergence","Revenant","Collapse","Archangel","Resurgence","Insulator","Corkian Simulator"]
+    "Molten": ["Sunstar","Convergence","Revenant","Collapse","Archangel","Resurgence","Corkian Insulator","Corkian Simulator"]
 }
 
 shiny = {
