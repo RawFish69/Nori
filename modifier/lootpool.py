@@ -17,17 +17,17 @@ current_datetime = datetime.now().strftime("%Y-%m-%d")
 
 # Weekly lootpool
 mythics = {
-    "SE": ["Archangel","Boreal","Olympic","Toxoplasmosis","Thrundacrack","Corkian Insulator"],
-    "Corkus": ["Nirvana","Quetzalcoatl","Pure","Gaia","Warp","Corkian Insulator","Corkian Simulator"],
-    "Sky": ["Archangel","Cataclysm","Monster","Oblivion","Warp","Corkian Insulator","Corkian Simulator"],
-    "Molten": ["Lament","Archangel","Hero","Singularity","Idol","Divzer","Corkian Simulator"]
+    "SE": ["Apocalypse","Thundacrack","Dawnbreak","Oblivion","Idol","Corkian Insulator","Corkian Simulator"],
+    "Corkus": ["Warchief","Singularity","Az","Cataclysm","Immolation","Corkian Insulator","Corkian Simulator"],
+    "Sky": ["Grandmother","Crusade Sabatons","Warp","Apocalypse","Lament","Corkian Insulator","Corkian Simulator"],
+    "Molten": ["Sunstar","Convergence","Revenant","Collapse","Archangel","Resurgence","Corkian Simulator","Corkian Insulator"]
 }
 
 shiny = {
-    "SE": {"Item": "Immolation", "Tracker": "Players Killed"},
-    "Corkus": {"Item": "Galleon", "Tracker": "Deaths"},
-    "Sky": {"Item": "Monster", "Tracker": "Raids Won"},
-    "Molten": {"Item": "Olympic", "Tracker": "Lootruns Completed "}
+    "SE": {"Item": "Weathered", "Tracker": "Raids Won"},
+    "Corkus": {"Item": "Spring", "Tracker": "Players Killed"},
+    "Sky": {"Item": "Alkatraz", "Tracker": "Chest Opened"},
+    "Molten": {"Item": "Boreal", "Tracker": "Mobs Killed"}
 }
 
 
