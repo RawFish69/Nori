@@ -2,16 +2,17 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Immolation",
-            "Tracker": "Players Killed"
+            "Item": "Weathered",
+            "Tracker": "Raids Won"
          },
          "Mythic": [
-            "Archangel",
-            "Boreal",
-            "Olympic",
-            "Toxoplasmosis",
             "Thrundacrack",
-            "Corkian Insulator"
+            "Dawnbreak",
+            "Apocalypse",
+            "Oblivion",
+            "Idol",
+            "Corkian Insulator",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -20,15 +21,15 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Galleon",
-            "Tracker": "Deaths"
+            "Item": "Spring",
+            "Tracker": "Players Killed"
          },
          "Mythic": [
-            "Nirvana",
-            "Quetzalcoatl",
-            "Pure",
-            "Gaia",
-            "Warp",
+            "Warchief",
+            "Singularity",
+            "Az",
+            "Cataclysm",
+            "Immolation",
             "Corkian Insulator",
             "Corkian Simulator"
          ],
@@ -39,17 +40,16 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Monster",
-            "Tracker": "Raids Won"
+            "Item": "Alkatraz",
+            "Tracker": "Chests Opened"
          },
          "Mythic": [
-            "Archangel",
-            "Cataclysm",
-            "Monster",
-            "Oblivion",
+            "Grandmother",
+            "Crusade Sabatons",
             "Warp",
-            "Corkian Insulator",
-            "Corkian Simulator"
+            "Apocalypse",
+            "Lament",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -58,16 +58,17 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Olympic",
-            "Tracker": "Lootruns Completed "
+            "Item": "Boreal",
+            "Tracker": "Mobs killed"
          },
          "Mythic": [
-            "Lament",
+            "Sunstar",
+            "Convergence",
+            "Revenant",
+            "Collapse",
             "Archangel",
-            "Hero",
-            "Singularity",
-            "Idol",
-            "Divzer",
+            "Resurgence",
+            "Corkian Insulator",
             "Corkian Simulator"
          ],
          "Fabled": [],
@@ -76,5 +77,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1698429600
+   "Timestamp": 1699034400
 }
