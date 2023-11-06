@@ -2,7 +2,7 @@
 Script Name: Nori-Lootpool 
 Github: https://github.com/RawFish69/Nori/blob/main/modifier/lootpool.py
 Description: Lootpool json and log generation for Nori-bot
-Last update: 11/4/2023
+Last update: 11/6/2023
 """
 import json
 import time
@@ -17,10 +17,10 @@ current_datetime = datetime.now().strftime("%Y-%m-%d")
 
 # Weekly lootpool
 mythics = {
-    "SE": ["Thrundacrack","Dawnbreak","Apocalypse","Oblivion","Idol","Corkian Insulator","Corkian Simulator"],
-    "Corkus": ["Warchief","Singularity","Az","Cataclysm","Immolation","Corkian Insulator","Corkian Simulator"],
-    "Sky": ["Grandmother","Crusade Sabatons","Warp","Apocalypse","Lament","Corkian Insulator"],
-    "Molten": ["Sunstar","Convergence","Revenant","Collapse","Archangel","Resurgence","Corkian Insulator","Corkian Simulator"]
+    "SE": ["Thrundacrack","Dawnbreak","Apocalypse","Oblivion","Corkian Simulator"],
+    "Corkus": ["Warchief","Singularity","Az","Cataclysm","Corkian Simulator"],
+    "Sky": ["Grandmother","Crusade Sabatons","Warp","Apocalypse","Corkian Insulator"],
+    "Molten": ["Sunstar","Convergence","Revenant","Collapse","Archangel","Corkian Simulator"]
 }
 
 shiny = {
