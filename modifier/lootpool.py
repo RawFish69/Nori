@@ -17,17 +17,17 @@ current_datetime = datetime.now().strftime("%Y-%m-%d")
 
 # Weekly lootpool
 mythics = {
-    "SE": ["Thrundacrack","Dawnbreak","Apocalypse","Oblivion","Corkian Simulator"],
-    "Corkus": ["Warchief","Singularity","Az","Cataclysm","Corkian Simulator"],
-    "Sky": ["Grandmother","Crusade Sabatons","Warp","Apocalypse","Corkian Insulator"],
-    "Molten": ["Sunstar","Convergence","Revenant","Collapse","Archangel","Corkian Simulator"]
+    "SE": ["Grandmother","Singularity","Stratiformis","Stardew","Fantasia","Corkian Simulator","Corkian Insulator"],
+    "Corkus": ["Olympic","Alkatraz","Az","Crusade Sabotons","Corkian Simulator","Corkian Insulator"],
+    "Sky": ["Sunstar","Crusade Sabatons","Resugence","Lament","Thrundacrack","Corkian Insulator"],
+    "Molten": ["Sunstar","Resugence","Az","Oblivion"]
 }
 
 shiny = {
-    "SE": {"Item": "Weathered", "Tracker": "Raids Won"},
+    "SE": {"Item": "Quetzalcoatl", "Tracker": "Raids Won"},
     "Corkus": {"Item": "Spring", "Tracker": "Players Killed"},
-    "Sky": {"Item": "Alkatraz", "Tracker": "Chests Opened"},
-    "Molten": {"Item": "Boreal", "Tracker": "Mobs killed"}
+    "Sky": {"Item": "Revenant", "Tracker": "Chests Opened"},
+    "Molten": {"Item": "Stratiformis", "Tracker": "Mobs killed"}
 }
 
 
