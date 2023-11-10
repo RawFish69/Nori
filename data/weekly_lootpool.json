@@ -2,15 +2,17 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Weathered",
+            "Item": "Quetzalcoatl",
             "Tracker": "Raids Won"
          },
          "Mythic": [
-            "Thrundacrack",
-            "Dawnbreak",
-            "Apocalypse",
-            "Oblivion",
-            "Corkian Simulator"
+            "Grandmother",
+            "Singularity",
+            "Stratiformis",
+            "Stardew",
+            "Fantasia",
+            "Corkian Simulator",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -23,11 +25,12 @@
             "Tracker": "Players Killed"
          },
          "Mythic": [
-            "Warchief",
-            "Singularity",
+            "Olympic",
+            "Alkatraz",
             "Az",
-            "Cataclysm",
-            "Corkian Simulator"
+            "Crusade Sabotons",
+            "Corkian Simulator",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -36,14 +39,15 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Alkatraz",
+            "Item": "Revenant",
             "Tracker": "Chests Opened"
          },
          "Mythic": [
-            "Grandmother",
+            "Sunstar",
             "Crusade Sabatons",
-            "Warp",
-            "Apocalypse",
+            "Resugence",
+            "Lament",
+            "Thrundacrack",
             "Corkian Insulator"
          ],
          "Fabled": [],
@@ -53,16 +57,14 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Boreal",
+            "Item": "Stratiformis",
             "Tracker": "Mobs killed"
          },
          "Mythic": [
             "Sunstar",
-            "Convergence",
-            "Revenant",
-            "Collapse",
-            "Archangel",
-            "Corkian Simulator"
+            "Resugence",
+            "Az",
+            "Oblivion"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -70,5 +72,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1699034400
+   "Timestamp": 1699639200
 }
