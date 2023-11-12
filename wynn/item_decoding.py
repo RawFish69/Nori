@@ -42,7 +42,7 @@ class ItemDecoder:
         }
 
         def decode_item(self, item_string):
-        stat_order = self.fetch_stat_order()
+        stat_order = self.stat_order
         decoded_item = self.decode_gear_item(item_string)
         if not decoded_item:
             return None
