@@ -1,5 +1,6 @@
 import requests
 import re
+from items import item_search
 
 class ItemDecoder:
     def __init__(self):
@@ -69,9 +70,7 @@ class ItemDecoder:
             stat_sorted["rate"].update({tils_stat: min(max(round(percentage, 1), 0), 100)})
             index += 1
         return stat_sorted
-      
-    def item_search(self, name):
-        """My item search function"""
+    
 
 
 
