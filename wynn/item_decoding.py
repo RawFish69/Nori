@@ -12,6 +12,8 @@ class ItemDecoder:
         return api_data.json()["order"]
 
     def decode_gear_item(self, encoded_string):
+        # Current wynntils blocker format 
+        # Update once artemis makes any changes
         START = "\U000F5FF0"
         END = "\U000F5FF1"
         SEPARATOR = "\U000F5FF2"
@@ -59,13 +61,9 @@ class ItemDecoder:
             id_max = baseValue * 1.3
             id_min = baseValue * 0.3 if baseValue >= 0 else baseValue * 1.3
             id_max = baseValue * 0.3 if baseValue < 0 else id_max
-
-            # Decode the ID based on the base value
             encoded_value = ids[index] // 4
             Actual_ID = ((encoded_value + 30) / 100) * baseValue if abs(baseValue) > 100 else encoded_value + id_min
             percentage = ((Actual_ID - id_min) / (id_max - id_min)) * 100
-
-            # Update the dictionary and increment the index
             stat_sorted[name].update({tils_stat: round(Actual_ID, 2)})
             stat_sorted["rate"].update({tils_stat: min(max(round(percentage, 1), 0), 100)})
             index += 1
