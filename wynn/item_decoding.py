@@ -45,6 +45,7 @@ class ItemDecoder:
         }
 
     def decode_item(self, item_string):
+        # Stats matching and rate calculation
         stat_order = self.stat_order
         decoded_item = self.decode_gear_item(item_string)
         if not decoded_item:
