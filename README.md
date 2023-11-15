@@ -7,6 +7,7 @@
 ### General purpose
 - AI response (conversation with memory)
 - AI image generation
+- AI Vision System
 - Mathematical Computation:
   - Algebraic Calculator
   - Equation Solver
