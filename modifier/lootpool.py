@@ -17,17 +17,17 @@ current_datetime = datetime.now().strftime("%Y-%m-%d")
 
 # Weekly lootpool
 mythics = {
-    "SE": ["Grandmother","Singularity","Stratiformis","Stardew","Fantasia","Corkian Simulator","Corkian Insulator"],
-    "Corkus": ["Olympic","Alkatraz","Az","Crusade Sabotons","Corkian Simulator","Corkian Insulator"],
-    "Sky": ["Sunstar","Crusade Sabatons","Resugence","Lament","Thrundacrack","Corkian Insulator"],
-    "Molten": ["Sunstar","Resugence","Az","Oblivion"]
+    "SE": ["Discoverer","Idol","Apocalypse","Slayer","Corkian Simulator","Corkian Insulator"],
+    "Corkus": ["Singularity","Apocalypse","Boreal","Toxoplasmosis","Corkian Simulator","Corkian Insulator"],
+    "Sky": ["Discoverer","Hero","Warp","Convergence","Corkian Simulator"],
+    "Molten": ["Quetzalcoatl","Revenant","Fantasia","Freedom"]
 }
 
 shiny = {
-    "SE": {"Item": "Quetzalcoatl", "Tracker": "Raids Won"},
-    "Corkus": {"Item": "Spring", "Tracker": "Players Killed"},
-    "Sky": {"Item": "Revenant", "Tracker": "Chests Opened"},
-    "Molten": {"Item": "Stratiformis", "Tracker": "Mobs killed"}
+    "SE": {"Item": "Absolution", "Tracker": "Wars Won"},
+    "Corkus": {"Item": "Stardew", "Tracker": "Players Killed"},
+    "Sky": {"Item": "Alkatraz", "Tracker": "Chests Opened"},
+    "Molten": {"Item": "Cataclysm", "Tracker": "Mobs killed"}
 }
 
 
