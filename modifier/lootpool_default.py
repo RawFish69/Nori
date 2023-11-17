@@ -5,7 +5,7 @@ import math
 
 # Constants
 seconds_per_week = 604800
-first_week_timestamp = 1690567200  # First week recorded
+first_week_timestamp = 1690567200 + 3600 # First week recorded + Daylight saving offset
 current_datetime = datetime.now().strftime("%Y-%m-%d")
 
 # Weekly lootpool
