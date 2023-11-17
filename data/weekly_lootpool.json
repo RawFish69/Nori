@@ -2,15 +2,14 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Quetzalcoatl",
-            "Tracker": "Raids Won"
+            "Item": "Absolution",
+            "Tracker": "Wars Won"
          },
          "Mythic": [
-            "Grandmother",
-            "Singularity",
-            "Stratiformis",
-            "Stardew",
-            "Fantasia",
+            "Discoverer",
+            "Idol",
+            "Apocalypse",
+            "Slayer",
             "Corkian Simulator",
             "Corkian Insulator"
          ],
@@ -21,14 +20,14 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Spring",
+            "Item": "Stardew",
             "Tracker": "Players Killed"
          },
          "Mythic": [
-            "Olympic",
-            "Alkatraz",
-            "Az",
-            "Crusade Sabotons",
+            "Singularity",
+            "Apocalypse",
+            "Boreal",
+            "Toxoplasmosis",
             "Corkian Simulator",
             "Corkian Insulator"
          ],
@@ -39,16 +38,15 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Revenant",
+            "Item": "Alkatraz",
             "Tracker": "Chests Opened"
          },
          "Mythic": [
-            "Sunstar",
-            "Crusade Sabatons",
-            "Resugence",
-            "Lament",
-            "Thrundacrack",
-            "Corkian Insulator"
+            "Discoverer",
+            "Hero",
+            "Warp",
+            "Convergence",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -57,14 +55,14 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Stratiformis",
+            "Item": "Cataclysm",
             "Tracker": "Mobs killed"
          },
          "Mythic": [
-            "Sunstar",
-            "Resugence",
-            "Az",
-            "Oblivion"
+            "Quetzalcoatl",
+            "Revenant",
+            "Fantasia",
+            "Freedom"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -72,5 +70,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1699642800
+   "Timestamp": 1700247600
 }
