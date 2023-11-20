@@ -1,11 +1,7 @@
 # Nori
 
-<div align="center">
-
 ![Nori](docs/nori.png)  
-*Bot profile*  
 [Database](data) Repository of Project Nori
-</div>
 
 
 ## Server & Bot Invite
