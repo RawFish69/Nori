@@ -1,6 +1,18 @@
 # Nori
-- Database Repository of Project Nori
-- Nori is a chatbot project operating on Discord and Kook 24/7. It uses the `SlashCommand` prefix format, for example: `/help`.
+
+<div align="center">
+
+![Nori](docs/nori.png)  
+*Bot profile*  
+[Database](data) Repository of Project Nori
+</div>
+
+
+## Server & Bot Invite
+
+- Nori is currently on [App Directory](https://discord.com/application-directory/873677970928193568)
+- Or use [Bot invite link](https://discord.com/api/oauth2/authorize?client_id=873677970928193568&permissions=311385246784&scope=bot)
+- More info regarding wynn features: [Forum post](https://forums.wynncraft.com/threads/nori-wynn-utility-bot-on-discord.308524/)
 
 ## Supported Features
 
@@ -60,12 +72,6 @@
 ## Repository Information
 
 Main code (bot structure & logic) is in a private repository that is synced with the host server. The public Nori repository (this one) has some of the functions and the database.
-
-## Server & Bot Invite
-
-- Nori is currently on [App Directory](https://discord.com/application-directory/873677970928193568)
-- Or use [Bot invite link](https://discord.com/api/oauth2/authorize?client_id=873677970928193568&permissions=311385246784&scope=bot)
-- More info regarding wynn features: [Forum post](https://forums.wynncraft.com/threads/nori-wynn-utility-bot-on-discord.308524/)
 
 ## Library
 
