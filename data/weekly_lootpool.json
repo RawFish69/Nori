@@ -2,16 +2,15 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Absolution",
-            "Tracker": "Wars Won"
+            "Item": "Grandmother",
+            "Tracker": "Death"
          },
          "Mythic": [
-            "Discoverer",
-            "Idol",
-            "Apocalypse",
-            "Slayer",
-            "Corkian Simulator",
-            "Corkian Insulator"
+            "Immolation",
+            "Boreal",
+            "Warp",
+            "Dawnbreak",
+            "Divzer"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -20,8 +19,8 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Stardew",
-            "Tracker": "Players Killed"
+            "Item": "Az",
+            "Tracker": "Death"
          },
          "Mythic": [
             "Singularity",
@@ -38,14 +37,15 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Alkatraz",
-            "Tracker": "Chests Opened"
+            "Item": "Guardian",
+            "Tracker": "Players Killed"
          },
          "Mythic": [
-            "Discoverer",
-            "Hero",
-            "Warp",
-            "Convergence",
+            "Inferno",
+            "Apocalypse",
+            "Collapse",
+            "Alkatraz",
+            "Warchief",
             "Corkian Simulator"
          ],
          "Fabled": [],
@@ -55,14 +55,15 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Cataclysm",
-            "Tracker": "Mobs killed"
+            "Item": "Immolation",
+            "Tracker": "Dungeons Won"
          },
          "Mythic": [
-            "Quetzalcoatl",
-            "Revenant",
-            "Fantasia",
-            "Freedom"
+            "Aftershock",
+            "Az",
+            "Singuarity",
+            "Pure",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -70,5 +71,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1700247600
+   "Timestamp": 1700852400
 }
