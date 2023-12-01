@@ -2,15 +2,16 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Grandmother",
-            "Tracker": "Death"
+            "Item": "Archangel",
+            "Tracker": "Dungeons Won"
          },
          "Mythic": [
-            "Immolation",
-            "Boreal",
-            "Warp",
-            "Dawnbreak",
-            "Divzer"
+            "Az",
+            "Guardian",
+            "Toxoplasmosis",
+            "Weathered",
+            "Fantasia",
+            "Corkian Simulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -19,16 +20,16 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Az",
-            "Tracker": "Death"
+            "Item": "Thrundacrack",
+            "Tracker": "Mobs Killed"
          },
          "Mythic": [
-            "Singularity",
-            "Apocalypse",
-            "Boreal",
-            "Toxoplasmosis",
+            "Nullification",
+            "Aftershock",
+            "Stratiformis",
+            "Guardian",
             "Corkian Simulator",
-            "Corkian Insulator"
+            "Singularity"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -37,15 +38,15 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Guardian",
-            "Tracker": "Players Killed"
+            "Item": "Boreal",
+            "Tracker": "Death"
          },
          "Mythic": [
-            "Inferno",
-            "Apocalypse",
-            "Collapse",
-            "Alkatraz",
-            "Warchief",
+            "Az",
+            "Grimtrap",
+            "Spring",
+            "Galleon",
+            "Singularity",
             "Corkian Simulator"
          ],
          "Fabled": [],
@@ -55,15 +56,16 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Immolation",
-            "Tracker": "Dungeons Won"
+            "Item": "Dawnbreak",
+            "Tracker": "Wars Won"
          },
          "Mythic": [
-            "Aftershock",
-            "Az",
-            "Singuarity",
-            "Pure",
-            "Corkian Simulator"
+            "Monster",
+            "Grandmother",
+            "Nirvana",
+            "Idol",
+            "Corkian Simulator",
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -71,5 +73,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1700852400
+   "Timestamp": 1701457200
 }
