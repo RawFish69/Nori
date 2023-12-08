@@ -1,0 +1,35 @@
+name: Auto Pull Request Approval
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'modifier/**'
+      - 'data/**'
+      - 'changelogs/**'
+
+jobs:
+  auto-approve-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Check username
+      id: check_user
+      run: |
+        AUTHOR="${{ github.event.pull_request.user.login }}"
+        ALLOWED_USERS="EternityTQ, Cre-epbee, RawFish69"
+        if [[ $ALLOWED_USERS =~ (^|[[:space:]])$AUTHOR($|[[:space:]]) ]]; then
+          echo "::set-output name=allowed::true"
+        else
+          echo "::set-output name=allowed::false"
+        fi
+
+    - name: Auto approve pull request
+      if: steps.check_user.outputs.allowed == 'true'
+      run: |
+        curl -X POST -H "Authorization: token ${{ secrets.nori-pr-workflow }}" \
+             -H "Accept: application/vnd.github.v3+json" \
+             https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+             -d '{"event":"APPROVE"}'
