@@ -45,9 +45,6 @@ jobs:
     - name: Commit changes
       run: |
         git add .
-        git commit -m "Commit automated by Github Actions"
-        if git diff-index --quiet HEAD --; then
-          echo "No changes to commit"
-        else
-          git push origin main
-        fi
+        git diff --staged --quiet || git commit -m "Commit automated by Github Actions"
+        git push origin main || echo "No changes to commit"
+
