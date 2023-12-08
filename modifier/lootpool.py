@@ -17,17 +17,17 @@ current_datetime = datetime.now().strftime("%Y-%m-%d")
 
 # Weekly lootpool
 mythics = {
-    "SE": ["Az","Guardian","Toxoplasmosis","Weathered","Fantasia","Corkian Simulator"],
-    "Corkus": ["Nullification","Aftershock","Stratiformis","Guardian","Corkian Simulator","Singularity"],
-    "Sky": ["Az","Grimtrap","Spring","Galleon","Singularity","Corkian Simulator"],
-    "Molten": ["Monster","Grandmother","Nirvana","Idol","Corkian Simulator","Corkian Insulator"]
+    "SE": ["Warchief","Inferno","Fatal","Resugence","Corkian Insulator","Corkian Simulator"],
+    "Corkus": ["Discoverer","Stratiformis","Archangel","Freedom","Apocalypse","Corkian Simulator","Corkian Insulator"],
+    "Sky": ["Warchief","Immolation","Fatal","Hadal","Corkian Simulator"],
+    "Molten": ["Guardian","Inferno","Cataclysm","Moontower","Oblivion","Corkian Simulator","Corkian Insulator"]
 }
 
 shiny = {
-    "SE": {"Item": "Archangel", "Tracker": "Dungeons Won"},
-    "Corkus": {"Item": "Thrundacrack", "Tracker": "Mobs Killed"},
-    "Sky": {"Item": "Boreal", "Tracker": "Death"},
-    "Molten": {"Item": "Dawnbreak", "Tracker": "Wars Won"}
+    "SE": {"Item": "Stratiformis", "Tracker": "Lootruns Completed"},
+    "Corkus": {"Item": "Hero", "Tracker": "Dungeon Won"},
+    "Sky": {"Item": "Thrundacrack", "Tracker": "Mobs Killed"},
+    "Molten": {"Item": "Absolution", "Tracker": "Deaths"}
 }
 
 
