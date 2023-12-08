@@ -2,15 +2,15 @@
    "Loot": {
       "SE": {
          "Shiny": {
-            "Item": "Archangel",
-            "Tracker": "Dungeons Won"
+            "Item": "Stratiformis",
+            "Tracker": "Lootruns Completed"
          },
          "Mythic": [
-            "Az",
-            "Guardian",
-            "Toxoplasmosis",
-            "Weathered",
-            "Fantasia",
+            "Warchief",
+            "Inferno",
+            "Fatal",
+            "Resugence",
+            "Corkian Insulator",
             "Corkian Simulator"
          ],
          "Fabled": [],
@@ -20,16 +20,17 @@
       },
       "Corkus": {
          "Shiny": {
-            "Item": "Thrundacrack",
-            "Tracker": "Mobs Killed"
+            "Item": "Hero",
+            "Tracker": "Dungeon Won"
          },
          "Mythic": [
-            "Nullification",
-            "Aftershock",
+            "Discoverer",
             "Stratiformis",
-            "Guardian",
+            "Archangel",
+            "Freedom",
+            "Apocalypse",
             "Corkian Simulator",
-            "Singularity"
+            "Corkian Insulator"
          ],
          "Fabled": [],
          "Legendary": [],
@@ -38,15 +39,14 @@
       },
       "Sky": {
          "Shiny": {
-            "Item": "Boreal",
-            "Tracker": "Death"
+            "Item": "Thrundacrack",
+            "Tracker": "Mobs Killed"
          },
          "Mythic": [
-            "Az",
-            "Grimtrap",
-            "Spring",
-            "Galleon",
-            "Singularity",
+            "Warchief",
+            "Immolation",
+            "Fatal",
+            "Hadal",
             "Corkian Simulator"
          ],
          "Fabled": [],
@@ -56,14 +56,15 @@
       },
       "Molten": {
          "Shiny": {
-            "Item": "Dawnbreak",
-            "Tracker": "Wars Won"
+            "Item": "Absolution",
+            "Tracker": "Deaths"
          },
          "Mythic": [
-            "Monster",
-            "Grandmother",
-            "Nirvana",
-            "Idol",
+            "Guardian",
+            "Inferno",
+            "Cataclysm",
+            "Moontower",
+            "Oblivion",
             "Corkian Simulator",
             "Corkian Insulator"
          ],
@@ -73,5 +74,5 @@
          "Unique": []
       }
    },
-   "Timestamp": 1701457200
+   "Timestamp": 1702062000
 }
