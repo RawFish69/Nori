@@ -16,12 +16,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         ref: main
-
-    - name: Configure Git User
-      run: |
-        git config --global user.name "${{ github.actor }}"
-        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-
+  
       
     - name: Check username
       id: check_user
@@ -37,15 +32,17 @@ jobs:
     - name: Auto approve pull request
       if: env.ALLOWED == 'true'
       run: |
-        curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        curl -X POST -H "Authorization: token ${{ secrets.ACCESS_TOKEN }}" \
              -H "Accept: application/vnd.github.v3+json" \
              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
              -d '{"event":"APPROVE"}'
 
 
-    - name: Commit changes
+    - name: Commit and push changes
       run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         git add .
-        git diff --staged --quiet || git commit -m "Commit automated by Github Actions"
-        git push origin main || echo "No changes to commit"
+        git commit -m "Commit automated by actions" || echo "No changes to commit"
+        git push
 
