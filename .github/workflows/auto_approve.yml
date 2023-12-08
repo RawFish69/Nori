@@ -27,7 +27,7 @@ jobs:
       id: check_user
       run: |
         AUTHOR="${{ github.event.pull_request.user.login }}"
-        ALLOWED_USERS="EternityTQ, Cre-epbee, QueenOfDemons"
+        ALLOWED_USERS="EternityTQ, Cre-epbee, tankofpacer"
         echo "ALLOWED=false" >> $GITHUB_ENV
         if [[ $ALLOWED_USERS =~ (^|[[:space:]])$AUTHOR($|[[:space:]]) ]]; then
           echo "ALLOWED=true" >> $GITHUB_ENV
