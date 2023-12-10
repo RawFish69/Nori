@@ -3,11 +3,13 @@ Name: Wrapper for Wynncraft API v3
 Author: RawFish
 Github: https://github.com/RawFish69
 """
-import json
-import request
 import aiohttp
+import requests
+import json
 
 class Player:
+    """Async Wrapper for Wynncraft Player"""
+
     async def fetch(self, session, url):
         async with session.get(url) as response:
             response_json = await response.json()
@@ -58,8 +60,17 @@ class Player:
         player_main = await self.get_player_main(session, ign)
         return player_main["globalData"]["dungeons"]["total"]
 
+    async def playtime_global(self, session, ign):
+        player_main = await self.get_player_main(session, ign)
+        return player_main["playtime"]
+
+    async def quest_global(self, session, ign):
+        player_main = await self.get_player_main(session, ign)
+        return player_main["globalData"]["dungeons"]["total"]
 
 class Guild:
+    """Async Wrapper for Wynncraft Guild"""
+
     async def fetch(self, session, url):
         async with session.get(url) as response:
             response_json = await response.json()
@@ -121,3 +132,74 @@ class Guild:
                 print(f"Guild name match error: {error}")
                 return "NOT_FOUND"
         return "GUILD_FOUND"
+
+class Items:
+    """v3 item wrapping Async style"""
+
+    async def fetch(self, session, url):
+        async with session.get(url) as response:
+            return await response.json()
+
+    async def post(self, session, url, data=None):
+        async with session.post(url, json=data) as response:
+            return await response.json()
+
+    async def get_all_items(self, session):
+        api_url = "https://api.wynncraft.com/v3/item/database?fullResult=True"
+        return await self.fetch(session, api_url)
+
+    async def get_metadata(self, session):
+        url = "https://api.wynncraft.com/v3/item/metadata"
+        return await self.fetch(session, url)
+
+    async def item_query(self, session, data=None):
+        """
+        Payload format:
+        {
+            "query": [str],
+            "type": [str, list],
+            "tier": [int, list, str],
+            "attackSpeed": [str, list],
+            "levelRange": [int, list],
+            "professions": [str, list],
+            "identifications": [str, list],
+            "majorIds": [str, list]
+        }
+        """
+        api_url = "https://api.wynncraft.com/v3/item/search?fullResult=True"
+        return await self.post(session, api_url, data)
+
+
+class Leaderboard:
+    async def fetch(self, session, url):
+        async with session.get(url) as response:
+            response_json = await response.json()
+            return response_json
+
+    async def get_raid_leaderboard(self, session, raid, limit):
+        """Available types: nogCompletion, tccCompletion, nolCompletion, tnaCompletion"""
+        url = f"https://api.wynncraft.com/v3/leaderboards/{raid}?resultLimit={limit}"
+        return await self.fetch(session, URL)
+
+
+def update_file(input, output):
+    try:
+        json.dump(input, open(output, "w"), indent=3)
+    except Exception as error:
+        print(f"File update error: {error}")
+
+
+# Sample usage
+async def update_items(file_path):
+    async with aiohttp.ClientSession() as session:
+        data = await Items().get_all_items(session)
+    update_file(data, file_path)
+    print(f"{len(data)} items updated")
+
+
+async def task():
+    # Queue any func
+    await update_items("home/ubuntu/nori/data/items.json")
+    
+asyncio.run(task())
+
