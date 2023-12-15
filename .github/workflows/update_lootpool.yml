@@ -3,7 +3,7 @@ name: Lootpool update
 on:
   push:
     paths:
-      - 'modifier/lootpool.py'
+      - 'modifier/lootpool_default.py'
 
 jobs:
   run_lootpool_script:
