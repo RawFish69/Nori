@@ -1,13 +1,4 @@
-@flight.child()
-@lightbulb.option('flight_id', 'Flight number (no space)')
-@lightbulb.command('find', 'Find a flight')
-@lightbulb.implements(lightbulb.SlashSubCommand)
-async def cmd_find_flight(ctx):
-    await ctx.respond('Processing request, hold on')
-    call_sign = ctx.options.flightID
-    flight_info = find_flight(call_sign)
-    await ctx.respond(flight_info)
-
+# Get flight - local test
 
 def get_flights():
     try:
