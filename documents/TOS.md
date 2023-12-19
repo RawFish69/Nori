@@ -41,4 +41,4 @@ The owner of the Bot reserves the right to modify, update, or change the ToS at 
 
 ## 9. Contact Information
 
-For any inquiries, feedback, or to report any violations of the ToS, please contact me at RawFish#5055 on discord or at bfzh233@gmail.com
+For any inquiries, feedback, or to report any violations of the ToS, please contact me at RawFish69 on discord or at bfzh233@gmail.com
