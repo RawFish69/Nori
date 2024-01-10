@@ -6,251 +6,251 @@
       "exploding": 5.0
     },
     "Hero": {
-      "speed": 80.0,
+      "walkSpeed": 80.0,
       "healthRegen": 19.0,
-      "mainAttackDamageBonus": 1.0
+      "mainAttackDamage": 1.0
     },
     "Guardian (War)": {
-      "healthBonus": 98.0,
+      "rawHealth": 98.0,
       "healthRegenRaw": 2.0
     },
     "Guardian": {
       "healthRegenRaw": 65.0,
-      "healthBonus": 35.0
+      "rawHealth": 35.0
     },
     "Alkatraz": {
-      "earthDamageBonus": 47.5,
-      "mainAttackDamageBonus": 42.5,
+      "earthDamage": 47.5,
+      "mainAttackDamage": 42.5,
       "exploding": 10.0
     },
     "Idol": {
-      "spellCostRaw2": 55.0,
-      "spellDamageBonusRaw": 25.0,
+      "raw2ndSpellCost": 55.0,
+      "rawSpellDamage": 25.0,
       "manaRegen": 15.0,
       "reflection": 5.0
     },
     "Thrundacrack": {
-      "spellCostRaw3": 45.0,
-      "thunderDamageBonus": 27.5,
-      "waterDamageBonus": 22.5,
+      "raw3rdSpellCost": 45.0,
+      "thunderDamage": 27.5,
+      "waterDamage": 22.5,
       "healthRegen": 4.0,
-      "speed": 1.0
+      "walkSpeed": 1.0
     },
     "Collapse": {
       "manaSteal": 80.0,
-      "mainAttackDamageBonus": 20.0
+      "mainAttackDamage": 20.0
     },
     "Collapse (melee)": {
-      "mainAttackDamageBonus": 80.0,
+      "mainAttackDamage": 80.0,
       "manaSteal": 20.0
     },
     "Convergence": {
-      "spellCostPct3": 70.0,
+      "3rdSpellCost": 70.0,
       "healthRegen": 12.5,
-      "earthDamageBonus": 12.5,
-      "thunderDamageBonus": 5.0
+      "earthDamage": 12.5,
+      "thunderDamage": 5.0
     },
     "Az": {
-      "spellCostPct1": 70.0,
-      "fireDamageBonus": 10.0,
-      "waterDamageBonus": 10.0,
+      "1stSpellCost": 70.0,
+      "fireDamage": 10.0,
+      "waterDamage": 10.0,
       "xpBonus": 10.0
     },
     "Freedom": {
       "manaRegen": 60.0,
-      "healthBonus": 20.0,
-      "speed": 10.0,
-      "spellDamageBonusRaw": 10.0
+      "rawHealth": 20.0,
+      "walkSpeed": 10.0,
+      "rawSpellDamage": 10.0
     },
     "Grandmother": {
       "healthRegenRaw": 50.0,
-      "spellDamageBonus": 35.0,
+      "spellDamage": 35.0,
       "healthRegen": 12.5,
-      "speed": 2.5
+      "walkSpeed": 2.5
     },
     "Ignis": {
       "healthRegenRaw": 40.0,
       "healthRegen": 25.0,
-      "healthBonus": 20.0,
-      "spellCostPct4": 10.0,
-      "fireDamageBonus": 5.0
+      "rawHealth": 20.0,
+      "4thSpellCost": 10.0,
+      "fireDamage": 5.0
     },
     "Divzer": {
       "manaSteal": 70.0,
       "lifeSteal": 20.0,
-      "spellDamageBonusRaw": 10.0
+      "rawSpellDamage": 10.0
     },
     "Spring": {
       "manaRegen": 79.0,
-      "waterDamageBonus": 20.0,
-      "thunderDamageBonus": 1.0
+      "waterDamage": 20.0,
+      "thunderDamage": 1.0
     },
     "Stratiformis": {
-      "speed": 80.0,
-      "healthBonus": 18.0,
-      "spellDamageBonus": 2.0
+      "walkSpeed": 80.0,
+      "rawHealth": 18.0,
+      "spellDamage": 2.0
     },
     "Epoch": {
-      "mainAttackDamageBonusRaw": 65.0,
+      "rawMainAttackDamage": 65.0,
       "lifeSteal": 20.0,
-      "spellDamageBonus": 10.0,
-      "speed": 5.0
+      "spellDamage": 10.0,
+      "walkSpeed": 5.0
     },
     "Pure": {
-      "spellDamageBonus": 65.0,
+      "spellDamage": 65.0,
       "manaSteal": 22.5,
       "xpBonus": 12.5
     },
     "Lament": {
-      "waterDamageBonus": 70.0,
+      "waterDamage": 70.0,
       "manaSteal": 17.5,
-      "spellCostPct1": 12.5
+      "1stSpellCost": 12.5
     },
     "Gaia": {
-      "mainAttackDamageBonusRaw": 70.0,
-      "mainAttackDamageBonus": 25.0,
+      "rawMainAttackDamage": 70.0,
+      "mainAttackDamage": 25.0,
       "poison": 5.0
     },
     "Monster": {
-      "healthBonus": 37.5,
+      "rawHealth": 37.5,
       "manaSteal": 27.5,
-      "spellCostRaw1": 17.5,
+      "raw1stSpellCost": 17.5,
       "lifeSteal": 10.0,
-      "fireDamageBonus": 7.5
+      "fireDamage": 7.5
     },
     "Singularity": {
-      "spellDamageBonusRaw": 40.0,
-      "speed": 25.0,
+      "rawSpellDamage": 40.0,
+      "walkSpeed": 25.0,
       "healthRegenRaw": 15.0,
-      "spellDamageBonus": 10.0,
-      "mainAttackDamageBonusRaw": 7.5,
-      "mainAttackDamageBonus": 2.5
+      "spellDamage": 10.0,
+      "rawMainAttackDamage": 7.5,
+      "mainAttackDamage": 2.5
     },
     "Fatal": {
-      "spellDamageBonus": 50.0,
-      "spellCostPct1": 27.5,
-      "spellCostPct2": 20.0,
-      "speed": 2.5
+      "spellDamage": 50.0,
+      "1stSpellCost": 27.5,
+      "2ndSpellCost": 20.0,
+      "walkSpeed": 2.5
     },
     "Fatal (Arcanist)": {
-      "spellDamageBonus": 65.0,
-      "speed": 20.0,
-      "spellCostPct2": 15.0
+      "spellDamage": 65.0,
+      "walkSpeed": 20.0,
+      "2ndSpellCost": 15.0
     },
     "Warp": {
       "healthRegenRaw": 27.5,
-      "speed": 25.0,
+      "walkSpeed": 25.0,
       "manaRegen": 22.5,
-      "spellCostRaw2": 10.0,
+      "raw2ndSpellCost": 10.0,
       "healthRegen": 7.5,
-      "airDamageBonus": 5.0,
-      "spellCostRaw1": 2.5
+      "airDamage": 5.0,
+      "raw1stSpellCost": 2.5
     },
     "Quetzalcoatl": {
-      "spellDamageBonusRaw": 55.0,
+      "rawSpellDamage": 55.0,
       "lifeSteal": 30.0,
-      "speed": 15.0
+      "walkSpeed": 15.0
     },
     "Aftershock": {
-      "healthBonus": 70.0,
-      "earthDamageBonus": 25.0,
-      "spellCostPct4": 5.0
+      "rawHealth": 70.0,
+      "earthDamage": 25.0,
+      "4thSpellCost": 5.0
     },
     "Olympic": {
       "jumpHeight": 40.0,
-      "speed": 35.0,
-      "airDamageBonus": 12.5,
-      "spellCostRaw1": 10.0,
-      "spellCostRaw2": 2.5
+      "walkSpeed": 35.0,
+      "airDamage": 12.5,
+      "raw1stSpellCost": 10.0,
+      "raw2ndSpellCost": 2.5
     },
     "Hadal": {
-      "spellDamageBonus": 50.0,
-      "spellCostPct3": 20.0,
+      "spellDamage": 50.0,
+      "3rdSpellCost": 20.0,
       "manaRegen": 20.0,
-      "spellCostPct4": 10.0
+      "4thSpellCost": 10.0
     },
     "Sunstar": {
-      "mainAttackDamageBonusRaw": 60.0,
+      "rawMainAttackDamage": 60.0,
       "lifeSteal": 30.0,
-      "thunderDamageBonus": 10.0
+      "thunderDamage": 10.0
     },
     "Toxoplasmosis": {
       "poison": 85.0,
       "lootBonus": 12.5,
-      "speed": 2.5
+      "walkSpeed": 2.5
     },
     "Fantasia": {
-      "spellCostPct3": 27.5,
-      "spellDamageBonus": 22.5,
+      "3rdSpellCost": 27.5,
+      "spellDamage": 22.5,
       "manaRegen": 20.0,
-      "spellCostPct1": 15.0,
-      "spellCostPct4": 8.0,
+      "1stSpellCost": 15.0,
+      "4thSpellCost": 8.0,
       "manaSteal": 6.0,
-      "spellCostPct2": 1.0
+      "2ndSpellCost": 1.0
     },
     "Absolution": {
-      "waterDamageBonus": 50.0,
-      "healthBonus": 22.5,
+      "waterDamage": 50.0,
+      "rawHealth": 22.5,
       "manaRegen": 17.5,
-      "spellCostRaw1": 9.0,
-      "fireDamageBonus": 1.0
+      "raw1stSpellCost": 9.0,
+      "fireDamage": 1.0
     },
     "Immolation": {
-      "fireDamageBonus": 30.0,
-      "airDamageBonus": 30.0,
-      "healthBonus": 30.0,
-      "spellCostPct3": 7.5,
+      "fireDamage": 30.0,
+      "airDamage": 30.0,
+      "rawHealth": 30.0,
+      "3rdSpellCost": 7.5,
       "healthRegen": 2.5
     },
     "Archangel": {
-      "speed": 70.0,
+      "walkSpeed": 70.0,
       "healthRegenRaw": 10.0,
       "healthRegen": 10.0,
-      "healthBonus": 10.0
+      "rawHealth": 10.0
     },
     "Nullification": {
       "lifeSteal": 65.0,
       "manaSteal": 34.0,
-      "bonusEarthDefense": 0.2,
-      "bonusThunderDefense": 0.2,
-      "bonusWaterDefense": 0.2,
-      "bonusFireDefense": 0.2,
-      "bonusAirDefense": 0.2
+      "earthDefence": 0.2,
+      "thunderDefence": 0.2,
+      "waterDefence": 0.2,
+      "fireDefence": 0.2,
+      "airDefence": 0.2
     },
     "Cataclysm": {
-      "healthBonus": 80.0,
-      "thunderDamageBonus": 19.0,
-      "emeraldStealing": 1.0
+      "rawHealth": 80.0,
+      "thunderDamage": 19.0,
+      "stealing": 1.0
     },
     "Grimtrap": {
-      "spellCostRaw4": 50.0,
+      "raw4thSpellCost": 50.0,
       "manaSteal": 25.0,
       "lifeSteal": 24.0,
       "poison": 1.0
     },
     "Weathered": {
-      "speed": 40.0,
+      "walkSpeed": 40.0,
       "manaSteal": 35.0,
-      "airDamageBonus": 25.0
+      "airDamage": 25.0
     },
     "Inferno": {
-      "mainAttackDamageBonusRaw": 35.0,
-      "fireDamageBonus": 25.0,
-      "healthBonus": 25.0,
-      "mainAttackDamageBonus": 10.0,
+      "rawMainAttackDamage": 35.0,
+      "fireDamage": 25.0,
+      "rawHealth": 25.0,
+      "mainAttackDamage": 10.0,
       "healthRegen": 2.5,
-      "speed": 2.5
+      "walkSpeed": 2.5
     },
     "Nirvana": {
-      "spellDamageBonus": 32.5,
+      "spellDamage": 32.5,
       "manaRegen": 27.5,
-      "healthBonus": 22.5,
+      "rawHealth": 22.5,
       "manaSteal": 17.5
     },
     "Oblivion": {
       "manaRegen": 35.0,
-      "spellCostRaw2": 25.0,
-      "spellDamageBonusRaw": 20.0,
+      "raw2ndSpellCost": 25.0,
+      "rawSpellDamage": 20.0,
       "manaSteal": 15.0,
       "exploding": 5.0
     },
@@ -259,137 +259,137 @@
       "xpBonus": 0.1
     },
     "Crusade Sabatons": {
-      "healthBonus": 85.0,
+      "rawHealth": 85.0,
       "healthRegen": 10.0,
-      "speed": 5.0
+      "walkSpeed": 5.0
     },
     "Resurgence": {
       "manaRegen": 40.0,
       "healthRegenRaw": 35.0,
-      "spellDamageBonus": 20.0,
-      "speed": 5.0
+      "spellDamage": 20.0,
+      "walkSpeed": 5.0
     },
     "Galleon": {
       "manaSteal": 42.5,
-      "earthDamageBonus": 22.5,
-      "waterDamageBonus": 20.0,
+      "earthDamage": 22.5,
+      "waterDamage": 20.0,
       "lootBonus": 5.0,
-      "emeraldStealing": 5.0,
-      "mainAttackDamageBonus": 2.5,
+      "stealing": 5.0,
+      "mainAttackDamage": 2.5,
       "poison": 2.5
     },
     "Boreal": {
       "healthRegen": 50.0,
       "healthRegenRaw": 30.0,
       "manaRegen": 15.0,
-      "speed": 5.0
+      "walkSpeed": 5.0
     },
     "Slayer": {
-      "spellCostPct3": 47.5,
-      "speed": 25.0,
+      "3rdSpellCost": 47.5,
+      "walkSpeed": 25.0,
       "healthRegenRaw": 20.0,
-      "mainAttackDamageBonusRaw": 5.0,
-      "emeraldStealing": 2.5
+      "rawMainAttackDamage": 5.0,
+      "stealing": 2.5
     },
     "Slayer (melee)": {
-      "mainAttackDamageBonusRaw": 37.5,
-      "speed": 25.0,
+      "rawMainAttackDamage": 37.5,
+      "walkSpeed": 25.0,
       "healthRegenRaw": 20.0,
-      "spellCostPct3": 15.0,
-      "emeraldStealing": 2.5
+      "3rdSpellCost": 15.0,
+      "stealing": 2.5
     },
     "Moontower": {
-      "speed": 95.0,
-      "bonusAirDefense": 2.5,
-      "bonusWaterDefense": 2.5
+      "walkSpeed": 95.0,
+      "airDefence": 2.5,
+      "waterDefence": 2.5
     },
     "Dawnbreak": {
-      "mainAttackDamageBonusRaw": 70.0,
+      "rawMainAttackDamage": 70.0,
       "manaSteal": 15.0,
       "lifeSteal": 10.0,
-      "thunderDamageBonus": 2.5,
-      "fireDamageBonus": 2.5
+      "thunderDamage": 2.5,
+      "fireDamage": 2.5
     },
     "Dawnbreak (spell)": {
       "manaSteal": 42.5,
       "lifeSteal": 30.0,
-      "fireDamageBonus": 12.5,
-      "thunderDamageBonus": 12.5,
-      "mainAttackDamageBonusRaw": 2.5
+      "fireDamage": 12.5,
+      "thunderDamage": 12.5,
+      "rawMainAttackDamage": 2.5
     },
     "Stardew": {
-      "spellDamageBonusRaw": 25.0,
+      "rawSpellDamage": 25.0,
       "manaRegen": 22.5,
       "manaSteal": 20.0,
-      "waterDamageBonus": 16.0,
-      "thunderDamageBonus": 15.5,
+      "waterDamage": 16.0,
+      "thunderDamage": 15.5,
       "reflection": 1.0
     },
     "Warchief": {
-      "mainAttackDamageBonus": 37.5,
-      "earthDamageBonus": 35.0,
-      "mainAttackDamageBonusRaw": 20.0,
+      "mainAttackDamage": 37.5,
+      "earthDamage": 35.0,
+      "rawMainAttackDamage": 20.0,
       "exploding": 5.0,
-      "speed": 2.5
+      "walkSpeed": 2.5
     },
     "Warchief (thunder)": {
-      "thunderDamageBonus": 47.5,
-      "mainAttackDamageBonus": 25.0,
-      "mainAttackDamageBonusRaw": 20.0,
+      "thunderDamage": 47.5,
+      "mainAttackDamage": 25.0,
+      "rawMainAttackDamage": 20.0,
       "exploding": 5.0,
-      "speed": 2.5
+      "walkSpeed": 2.5
     },
     "Revenant": {
-      "mainAttackDamageBonusRaw": 35.0,
-      "speed": 15.0,
-      "healthBonus": 15.0,
-      "mainAttackDamageBonus": 15.0,
-      "airDamageBonus": 12.5,
-      "earthDamageBonus": 5.0
+      "rawMainAttackDamage": 35.0,
+      "walkSpeed": 15.0,
+      "rawHealth": 15.0,
+      "mainAttackDamage": 15.0,
+      "airDamage": 12.5,
+      "earthDamage": 5.0
     },
     "Revenant (spell)": {
-      "spellCostPct4": 45.0,
+      "4thSpellCost": 45.0,
       "manaSteal": 22.5,
-      "earthDamageBonus": 10.0,
-      "airDamageBonus": 10.0,
-      "healthBonus": 7.5,
-      "speed": 5.0
+      "earthDamage": 10.0,
+      "airDamage": 10.0,
+      "rawHealth": 7.5,
+      "walkSpeed": 5.0
     }
   },
   "price": {
     "Apocalypse": {
-      "unid": 0.4,
+      "unid": 0.8,
       "samples": [
         0.0,
-        0.04,
-        0.06,
-        0.09,
-        0.135,
+        0.08,
+        0.12,
+        0.18,
         0.27,
-        0.4,
-        0.5,
-        0.625,
-        0.938,
+        0.54,
+        0.8,
+        1.0,
+        1.25,
         1.875,
-        5.625,
-        11.25
+        3.75,
+        11.25,
+        20.0
       ]
     },
     "Hero": {
-      "unid": 4.5,
+      "unid": 5.0,
       "samples": [
         0.0,
-        0.45,
-        0.675,
-        1.013,
-        1.519,
-        3.038,
-        4.5,
-        5.625,
-        7.031,
-        8.789,
-        10.986,
-        21.973,
+        0.5,
+        0.75,
+        1.125,
+        1.688,
+        3.375,
+        5.0,
+        6.25,
+        7.813,
+        9.766,
+        12.207,
+        18.311,
         30.0
       ]
     },
@@ -448,75 +448,75 @@
       ]
     },
     "Idol": {
-      "unid": 7.5,
+      "unid": 5.8,
       "samples": [
         0.0,
-        0.75,
-        1.125,
-        1.688,
-        2.531,
-        5.063,
-        7.5,
-        9.375,
-        12.188,
-        18.281,
-        27.422,
-        54.844,
-        90.0
+        0.58,
+        0.87,
+        1.305,
+        1.958,
+        3.915,
+        5.8,
+        7.25,
+        9.425,
+        14.138,
+        21.206,
+        42.413,
+        84.825
       ]
     },
     "Thrundacrack": {
-      "unid": 1.5,
+      "unid": 0.7,
       "samples": [
         0.0,
-        0.15,
-        0.225,
-        0.338,
-        0.506,
-        1.013,
-        1.5,
-        1.875,
-        2.813,
-        4.922,
-        12.305,
-        24.609,
-        35.0
+        0.07,
+        0.105,
+        0.158,
+        0.236,
+        0.473,
+        0.7,
+        0.875,
+        1.313,
+        2.297,
+        5.742,
+        11.484,
+        22.969
       ]
     },
     "Collapse": {
-      "unid": 1.5,
+      "unid": 0.8,
       "samples": [
         0.0,
-        0.15,
-        0.225,
-        0.338,
-        0.506,
-        1.013,
-        1.5,
-        1.875,
-        2.344,
-        2.93,
-        3.662,
-        9.155,
-        15.0
+        0.08,
+        0.12,
+        0.18,
+        0.27,
+        0.54,
+        0.8,
+        1.0,
+        1.25,
+        1.563,
+        1.953,
+        4.883,
+        9.766
       ]
     },
     "Collapse (melee)": {
-      "unid": 1.5,
+      "unid": 0.8,
       "samples": [
         0.0,
-        0.15,
-        0.225,
-        0.338,
-        0.506,
-        1.013,
-        1.5,
-        1.875,
-        2.344,
-        2.93,
-        3.662,
-        9.155,
-        15.0
+        0.08,
+        0.12,
+        0.18,
+        0.27,
+        0.54,
+        0.8,
+        1.0,
+        1.25,
+        1.563,
+        1.953,
+        4.883,
+        9.766
       ]
     },
     "Convergence": {
@@ -538,6 +538,42 @@
       ]
     },
     "Az": {
+      "unid": 1.0,
+      "samples": [
+        0.0,
+        0.1,
+        0.15,
+        0.225,
+        0.338,
+        0.675,
+        1.0,
+        1.25,
+        1.875,
+        2.813,
+        4.922,
+        9.844,
+        19.688
+      ]
+    },
+    "Freedom": {
+      "unid": 3.0,
+      "samples": [
+        0.0,
+        0.3,
+        0.45,
+        0.675,
+        1.013,
+        2.025,
+        3.0,
+        3.75,
+        4.688,
+        5.859,
+        8.789,
+        17.578,
+        35.156
+      ]
+    },
+    "Grandmother": {
       "unid": 1.5,
       "samples": [
         0.0,
@@ -548,47 +584,11 @@
         1.013,
         1.5,
         1.875,
-        2.813,
-        4.219,
-        7.383,
-        14.766,
-        20.0
-      ]
-    },
-    "Freedom": {
-      "unid": 3.5,
-      "samples": [
-        0.0,
-        0.35,
-        0.525,
-        0.788,
-        1.181,
-        2.363,
-        3.5,
-        4.375,
-        5.469,
-        6.836,
-        10.254,
-        20.508,
-        41.016
-      ]
-    },
-    "Grandmother": {
-      "unid": 2.5,
-      "samples": [
-        0.0,
-        0.25,
-        0.375,
-        0.563,
-        0.844,
-        1.688,
-        2.5,
-        3.125,
-        3.906,
-        4.883,
-        9.766,
-        29.297,
-        40.0
+        2.344,
+        2.93,
+        5.859,
+        17.578,
+        35.156
       ]
     },
     "Ignis": {
@@ -610,21 +610,21 @@
       ]
     },
     "Divzer": {
-      "unid": 2.5,
+      "unid": 2.0,
       "samples": [
         0.0,
-        0.25,
-        0.375,
-        0.563,
-        0.844,
-        1.688,
+        0.2,
+        0.3,
+        0.45,
+        0.675,
+        1.35,
+        2.0,
         2.5,
         3.125,
         3.906,
-        4.883,
-        9.766,
-        19.531,
-        39.063
+        7.813,
+        15.625,
+        31.25
       ]
     },
     "Spring": {
@@ -646,39 +646,39 @@
       ]
     },
     "Stratiformis": {
-      "unid": 2.5,
+      "unid": 1.5,
       "samples": [
         0.0,
-        0.25,
-        0.375,
-        0.563,
-        0.844,
-        1.688,
-        2.5,
-        3.125,
-        4.063,
-        6.094,
-        15.234,
-        38.086,
-        75.0
+        0.15,
+        0.225,
+        0.338,
+        0.506,
+        1.013,
+        1.5,
+        1.875,
+        2.438,
+        3.656,
+        9.141,
+        22.852,
+        45.703
       ]
     },
     "Epoch": {
-      "unid": 11.0,
+      "unid": 13.0,
       "samples": [
         0.0,
-        1.1,
-        1.65,
-        2.475,
-        3.713,
-        7.425,
-        11.0,
-        12.65,
-        15.813,
-        19.766,
-        24.707,
-        37.061,
-        60.0
+        1.3,
+        1.95,
+        2.925,
+        4.388,
+        8.775,
+        13.0,
+        14.95,
+        18.688,
+        23.359,
+        29.199,
+        43.799,
+        70.0
       ]
     },
     "Pure": {
@@ -700,21 +700,21 @@
       ]
     },
     "Lament": {
-      "unid": 1.5,
+      "unid": 2.0,
       "samples": [
         0.0,
-        0.15,
-        0.225,
-        0.338,
-        0.506,
-        1.013,
-        1.5,
-        1.875,
-        2.344,
-        2.93,
-        4.395,
-        8.789,
-        17.578
+        0.2,
+        0.3,
+        0.45,
+        0.675,
+        1.35,
+        2.0,
+        2.5,
+        3.125,
+        3.906,
+        5.859,
+        11.719,
+        23.438
       ]
     },
     "Gaia": {
@@ -736,147 +736,147 @@
       ]
     },
     "Monster": {
-      "unid": 3.0,
+      "unid": 4.0,
       "samples": [
         0.0,
-        0.3,
-        0.45,
-        0.675,
-        1.013,
-        2.025,
-        3.0,
-        3.75,
-        4.688,
-        5.859,
-        7.324,
-        10.986,
-        21.973
+        0.4,
+        0.6,
+        0.9,
+        1.35,
+        2.7,
+        4.0,
+        5.0,
+        6.25,
+        7.813,
+        9.766,
+        14.648,
+        29.297
       ]
     },
     "Singularity": {
-      "unid": 0.75,
+      "unid": 1.0,
       "samples": [
         0.0,
-        0.075,
-        0.113,
-        0.169,
-        0.253,
-        0.506,
-        0.75,
-        0.938,
-        1.406,
-        3.516,
-        7.031,
-        14.063,
-        28.125
-      ]
-    },
-    "Fatal": {
-      "unid": 1.5,
-      "samples": [
-        0.0,
+        0.1,
         0.15,
         0.225,
         0.338,
-        0.506,
-        1.013,
-        1.5,
+        0.675,
+        1.0,
+        1.25,
         1.875,
-        3.75,
-        6.563,
-        13.125,
-        26.25,
+        4.688,
+        9.375,
+        18.75,
+        35.0
+      ]
+    },
+    "Fatal": {
+      "unid": 2.0,
+      "samples": [
+        0.0,
+        0.2,
+        0.3,
+        0.45,
+        0.675,
+        1.35,
+        2.0,
+        2.5,
+        5.0,
+        8.75,
+        17.5,
+        35.0,
         50.0
       ]
     },
     "Fatal (Arcanist)": {
-      "unid": 1.5,
+      "unid": 2.0,
       "samples": [
         0.0,
-        0.15,
-        0.225,
-        0.338,
-        0.506,
-        1.013,
-        1.5,
-        1.875,
-        3.75,
-        6.563,
-        13.125,
-        26.25,
+        0.2,
+        0.3,
+        0.45,
+        0.675,
+        1.35,
+        2.0,
+        2.5,
+        5.0,
+        8.75,
+        17.5,
+        35.0,
         50.0
       ]
     },
     "Warp": {
-      "unid": 10.0,
+      "unid": 8.0,
       "samples": [
         0.0,
-        1.0,
-        1.5,
-        2.25,
-        3.375,
-        6.75,
+        0.8,
+        1.2,
+        1.8,
+        2.7,
+        5.4,
+        8.0,
         10.0,
         12.5,
-        15.625,
-        23.438,
-        41.016,
-        71.777,
-        120.0
+        18.75,
+        32.813,
+        57.422,
+        114.844
       ]
     },
     "Quetzalcoatl": {
-      "unid": 2.5,
+      "unid": 2.0,
       "samples": [
         0.0,
-        0.25,
-        0.375,
-        0.563,
-        0.844,
-        1.688,
-        2.5,
-        3.125,
-        3.906,
-        4.883,
-        9.766,
-        19.531,
-        39.063
-      ]
-    },
-    "Aftershock": {
-      "unid": 3.0,
-      "samples": [
-        0.0,
+        0.2,
         0.3,
         0.45,
         0.675,
-        1.013,
-        2.025,
-        3.0,
-        3.75,
-        4.688,
-        5.859,
-        11.719,
-        23.438,
+        1.35,
+        2.0,
+        2.5,
+        3.125,
+        3.906,
+        7.813,
+        15.625,
+        31.25
+      ]
+    },
+    "Aftershock": {
+      "unid": 3.8,
+      "samples": [
+        0.0,
+        0.38,
+        0.57,
+        0.855,
+        1.283,
+        2.565,
+        3.8,
+        4.75,
+        5.938,
+        7.422,
+        14.844,
+        29.688,
         40.0
       ]
     },
     "Olympic": {
-      "unid": 3.0,
+      "unid": 4.5,
       "samples": [
         0.0,
-        0.3,
         0.45,
         0.675,
         1.013,
-        2.025,
-        3.0,
-        3.75,
-        4.688,
-        5.859,
+        1.519,
+        3.038,
+        4.5,
+        5.625,
+        7.031,
         8.789,
-        17.578,
-        35.156
+        13.184,
+        26.367,
+        40.0
       ]
     },
     "Hadal": {
@@ -898,21 +898,21 @@
       ]
     },
     "Sunstar": {
-      "unid": 1.0,
+      "unid": 0.8,
       "samples": [
         0.0,
-        0.1,
-        0.15,
-        0.225,
-        0.338,
-        0.675,
+        0.08,
+        0.12,
+        0.18,
+        0.27,
+        0.54,
+        0.8,
         1.0,
         1.25,
-        1.563,
-        2.344,
-        7.031,
-        21.094,
-        35.0
+        1.875,
+        5.625,
+        16.875,
+        33.75
       ]
     },
     "Toxoplasmosis": {
@@ -934,38 +934,38 @@
       ]
     },
     "Fantasia": {
-      "unid": 1.5,
+      "unid": 0.5,
       "samples": [
         0.0,
-        0.15,
-        0.225,
+        0.05,
+        0.075,
+        0.113,
+        0.169,
         0.338,
-        0.506,
-        1.013,
-        1.5,
-        1.875,
-        2.344,
-        3.516,
-        7.91,
-        19.775,
-        39.551
+        0.5,
+        0.625,
+        0.781,
+        1.172,
+        2.637,
+        6.592,
+        13.184
       ]
     },
     "Absolution": {
-      "unid": 4.0,
+      "unid": 3.0,
       "samples": [
         0.0,
-        0.4,
-        0.6,
-        0.9,
-        1.35,
-        2.7,
-        4.0,
-        5.0,
-        6.25,
-        9.375,
-        23.438,
-        46.875,
+        0.3,
+        0.45,
+        0.675,
+        1.013,
+        2.025,
+        3.0,
+        3.75,
+        4.688,
+        7.031,
+        17.578,
+        35.156,
         60.0
       ]
     },
@@ -988,93 +988,93 @@
       ]
     },
     "Archangel": {
-      "unid": 1.0,
+      "unid": 0.8,
       "samples": [
         0.0,
-        0.1,
-        0.15,
-        0.225,
-        0.338,
-        0.675,
-        1.0,
-        1.25,
-        1.563,
-        2.344,
-        5.859,
-        11.719,
-        20.0
-      ]
-    },
-    "Nullification": {
-      "unid": 1.0,
-      "samples": [
-        0.0,
-        0.1,
-        0.15,
-        0.225,
-        0.338,
-        0.675,
-        1.0,
-        1.25,
-        1.563,
-        1.953,
-        2.93,
-        8.789,
-        17.578
-      ]
-    },
-    "Cataclysm": {
-      "unid": 8.0,
-      "samples": [
-        0.0,
+        0.08,
+        0.12,
+        0.18,
+        0.27,
+        0.54,
         0.8,
-        1.2,
-        1.8,
-        2.7,
-        5.4,
-        8.0,
-        9.2,
-        11.5,
-        14.375,
-        17.969,
-        26.953,
-        50.0
-      ]
-    },
-    "Grimtrap": {
-      "unid": 1.0,
-      "samples": [
-        0.0,
-        0.1,
-        0.15,
-        0.225,
-        0.338,
-        0.675,
         1.0,
         1.25,
-        1.563,
-        2.344,
+        1.875,
         4.688,
         9.375,
         18.75
       ]
     },
-    "Weathered": {
-      "unid": 5.0,
+    "Nullification": {
+      "unid": 2.0,
       "samples": [
         0.0,
-        0.5,
-        0.75,
-        1.125,
-        1.688,
-        3.375,
-        5.0,
-        6.25,
-        7.813,
-        9.766,
-        14.648,
-        25.635,
-        40.0
+        0.2,
+        0.3,
+        0.45,
+        0.675,
+        1.35,
+        2.0,
+        2.5,
+        3.125,
+        3.906,
+        5.859,
+        11.719,
+        20.0
+      ]
+    },
+    "Cataclysm": {
+      "unid": 8.5,
+      "samples": [
+        0.0,
+        0.85,
+        1.275,
+        1.913,
+        2.869,
+        5.738,
+        8.5,
+        9.775,
+        12.219,
+        15.273,
+        19.092,
+        28.638,
+        50.0
+      ]
+    },
+    "Grimtrap": {
+      "unid": 2.0,
+      "samples": [
+        0.0,
+        0.2,
+        0.3,
+        0.45,
+        0.675,
+        1.35,
+        2.0,
+        2.5,
+        3.125,
+        4.688,
+        9.375,
+        18.75,
+        30.0
+      ]
+    },
+    "Weathered": {
+      "unid": 3.0,
+      "samples": [
+        0.0,
+        0.3,
+        0.45,
+        0.675,
+        1.013,
+        2.025,
+        3.0,
+        3.75,
+        4.688,
+        5.859,
+        8.789,
+        15.381,
+        30.762
       ]
     },
     "Inferno": {
@@ -1096,21 +1096,21 @@
       ]
     },
     "Nirvana": {
-      "unid": 3.0,
+      "unid": 2.0,
       "samples": [
         0.0,
+        0.2,
         0.3,
         0.45,
         0.675,
-        1.013,
-        2.025,
-        3.0,
-        3.75,
-        4.688,
-        8.203,
-        14.355,
-        25.122,
-        40.0
+        1.35,
+        2.0,
+        2.5,
+        3.125,
+        5.469,
+        9.57,
+        16.748,
+        33.496
       ]
     },
     "Oblivion": {
@@ -1150,20 +1150,20 @@
       ]
     },
     "Crusade Sabatons": {
-      "unid": 7.0,
+      "unid": 6.0,
       "samples": [
         0.0,
-        0.7,
-        1.05,
-        1.575,
-        2.363,
-        4.725,
-        7.0,
-        7.7,
-        8.855,
-        11.069,
-        16.603,
-        24.905,
+        0.6,
+        0.9,
+        1.35,
+        2.025,
+        4.05,
+        6.0,
+        6.6,
+        7.59,
+        9.488,
+        14.231,
+        21.347,
         40.0
       ]
     },
@@ -1222,57 +1222,57 @@
       ]
     },
     "Slayer": {
-      "unid": 1.0,
+      "unid": 1.5,
       "samples": [
         0.0,
-        0.1,
         0.15,
         0.225,
         0.338,
-        0.675,
-        1.0,
-        1.25,
-        1.563,
-        3.125,
+        0.506,
+        1.013,
+        1.5,
+        1.875,
+        2.344,
         4.688,
-        9.375,
-        18.75
+        7.031,
+        14.063,
+        28.125
       ]
     },
     "Slayer (melee)": {
-      "unid": 1.0,
+      "unid": 1.5,
       "samples": [
         0.0,
-        0.1,
         0.15,
         0.225,
         0.338,
-        0.675,
-        1.0,
-        1.25,
-        1.563,
-        3.125,
+        0.506,
+        1.013,
+        1.5,
+        1.875,
+        2.344,
         4.688,
-        9.375,
-        18.75
+        7.031,
+        14.063,
+        28.125
       ]
     },
     "Moontower": {
-      "unid": 2.5,
+      "unid": 3.5,
       "samples": [
         0.0,
-        0.25,
-        0.375,
-        0.563,
-        0.844,
-        1.688,
-        2.5,
-        2.875,
-        3.163,
-        3.479,
-        4.001,
-        5.001,
-        12.502
+        0.35,
+        0.525,
+        0.788,
+        1.181,
+        2.363,
+        3.5,
+        4.025,
+        4.428,
+        4.87,
+        5.601,
+        7.001,
+        17.502
       ]
     },
     "Dawnbreak": {
@@ -1312,183 +1312,98 @@
       ]
     },
     "Stardew": {
-      "unid": 1.0,
+      "unid": 0.8,
       "samples": [
         0.0,
-        0.1,
-        0.15,
-        0.225,
-        0.338,
-        0.675,
+        0.08,
+        0.12,
+        0.18,
+        0.27,
+        0.54,
+        0.8,
         1.0,
         1.25,
         1.563,
-        1.953,
-        3.906,
-        11.719,
-        23.438
+        3.125,
+        9.375,
+        18.75
       ]
     },
     "Warchief": {
-      "unid": 1.5,
+      "unid": 1.0,
       "samples": [
         0.0,
+        0.1,
         0.15,
         0.225,
         0.338,
-        0.506,
-        1.013,
-        1.5,
-        1.875,
-        2.344,
-        4.688,
-        9.375,
-        18.75,
-        37.5
+        0.675,
+        1.0,
+        1.25,
+        1.563,
+        3.125,
+        6.25,
+        12.5,
+        25.0
       ]
     },
     "Warchief (thunder)": {
-      "unid": 1.5,
+      "unid": 1.0,
       "samples": [
         0.0,
+        0.1,
         0.15,
         0.225,
         0.338,
-        0.506,
-        1.013,
-        1.5,
-        1.875,
-        2.344,
-        4.688,
-        9.375,
-        18.75,
-        37.5
+        0.675,
+        1.0,
+        1.25,
+        1.563,
+        3.125,
+        6.25,
+        12.5,
+        25.0
       ]
     },
     "Revenant": {
-      "unid": 1.0,
+      "unid": 0.8,
       "samples": [
         0.0,
-        0.1,
-        0.15,
-        0.225,
-        0.338,
-        0.675,
+        0.08,
+        0.12,
+        0.18,
+        0.27,
+        0.54,
+        0.8,
         1.0,
         1.25,
-        1.563,
-        3.125,
-        7.031,
-        17.578,
-        30.0
+        2.5,
+        5.625,
+        14.063,
+        28.125
       ]
     },
     "Revenant (spell)": {
-      "unid": 1.0,
+      "unid": 0.8,
       "samples": [
         0.0,
-        0.1,
-        0.15,
-        0.225,
-        0.338,
-        0.675,
+        0.08,
+        0.12,
+        0.18,
+        0.27,
+        0.54,
+        0.8,
         1.0,
         1.25,
-        1.563,
-        3.125,
-        7.031,
-        17.578,
-        30.0
+        2.5,
+        5.625,
+        14.063,
+        28.125
       ]
     }
   },
-  "order": [
-    "attackSpeedBonus",
-    "mainAttackDamageBonusRaw",
-    "mainAttackDamageBonus",
-    "mainAttackNeutralDamageBonusRaw",
-    "mainAttackNeutralDamageBonus",
-    "mainAttackEarthDamageBonusRaw",
-    "mainAttackEarthDamageBonus",
-    "mainAttackThunderDamageBonusRaw",
-    "mainAttackThunderDamageBonus",
-    "mainAttackWaterDamageBonusRaw",
-    "mainAttackWaterDamageBonus",
-    "mainAttackFireDamageBonusRaw",
-    "mainAttackFireDamageBonus",
-    "mainAttackAirDamageBonusRaw",
-    "mainAttackAirDamageBonus",
-    "mainAttackElementalDamageBonusRaw",
-    "mainAttackElementalDamageBonus",
-    "spellDamageBonusRaw",
-    "spellDamageBonus",
-    "spellNeutralDamageBonusRaw",
-    "spellNeutralDamageBonus",
-    "spellEarthDamageBonusRaw",
-    "spellEarthDamageBonus",
-    "spellThunderDamageBonusRaw",
-    "spellThunderDamageBonus",
-    "spellWaterDamageBonusRaw",
-    "spellWaterDamageBonus",
-    "spellFireDamageBonusRaw",
-    "spellFireDamageBonus",
-    "spellAirDamageBonusRaw",
-    "spellAirDamageBonus",
-    "spellElementalDamageBonusRaw",
-    "spellElementalDamageBonus",
-    "healthBonus",
-    "healthRegenRaw",
-    "healthRegen",
-    "lifeSteal",
-    "manaRegen",
-    "manaSteal",
-    "damageBonusRaw",
-    "damageBonus",
-    "neutralDamageBonusRaw",
-    "neutralDamageBonus",
-    "earthDamageBonusRaw",
-    "earthDamageBonus",
-    "thunderDamageBonusRaw",
-    "thunderDamageBonus",
-    "waterDamageBonusRaw",
-    "waterDamageBonus",
-    "fireDamageBonusRaw",
-    "fireDamageBonus",
-    "airDamageBonusRaw",
-    "airDamageBonus",
-    "elementalDamageBonusRaw",
-    "elementalDamageBonus",
-    "bonusEarthDefense",
-    "bonusThunderDefense",
-    "bonusWaterDefense",
-    "bonusFireDefense",
-    "bonusAirDefense",
-    "exploding",
-    "poison",
-    "thorns",
-    "reflection",
-    "speed",
-    "sprint",
-    "sprintRegen",
-    "jumpHeight",
-    "soulPoints",
-    "lootBonus",
-    "lootQuality",
-    "emeraldStealing",
-    "xpBonus",
-    "gatherXpBonus",
-    "gatherSpeed",
-    "spellCostRaw1",
-    "spellCostPct1",
-    "spellCostRaw2",
-    "spellCostPct2",
-    "spellCostRaw3",
-    "spellCostPct3",
-    "spellCostRaw4",
-    "spellCostPct4"
-  ],
   "latest": {
-    "Date": "2023-12-21 09:16:08",
-    "Timestamp": 1703171768
+    "Date": "2024-01-10 16:56:39",
+    "Timestamp": 1704876999
   }
 }
