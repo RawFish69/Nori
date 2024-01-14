@@ -1,0 +1,484 @@
+{
+   "Builds": {
+      "Crusade Fatal Arcanist (Madness)": {
+         "tag": "mage, arcanist, fatal, crabs, pande, lootrun, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0Pf0r50QW0Xr0uP0Wf0OH0QY1G270y1a0l1g000010036C17150E0E0I0H0ql-p+Ept",
+         "credit": "rawfish"
+      },
+      "Crusade Fatal Arcanist (Entropy)": {
+         "tag": "mage, arcanist, fatal, crabs, entropy, lootrun, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0Pf0r50QW0uP0uP0wr0OH0QY1G270o1a0o1g000010036C17150E0E0I0H0qlNxppzR",
+         "credit": "rawfish"
+      },
+      "Slayer Fatal Riftwalker (Entropy)": {
+         "tag": "mage, riftwalker, fatal, slayer, entropy, lootrun, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VR0Pf0uj0Qq0uP0050wr0Ji0QY0e270y0e0+1g010006C10006C10009I10036C1717050I050H0-lVRwkUs5",
+         "credit": "rawfish"
+      },
+      "Stratiformis Boltslinger": {
+         "tag": "strati, archer, bolt, boltslinger, rainbow, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0K70uj0xP0nu0K20K40OH0Rb0e0t160y2C1g10009I1000FU10009I1007lU1007lU1B1B0H0J0H0H0s-pn-ZJxu0",
+         "credit": "rawfish"
+      },
+      "Stratiformis Sharpshooter (Classic)": {
+         "tag": "strati, archer, sharp, sharpshooter, aqua, capri, spellspam, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r507W0nu0K20K40OH0Rb0l0e1k0P2C1g10009I1000FU10009I1000FU1007lU1B1B0H0J0H0H0slVC-ueJZh",
+         "credit": "rawfish"
+      },
+      "Stratiformis Sharpshooter (Variant)": {
+         "tag": "strati, archer, sharp, sharpshooter, anxio, steamjet, spellspam, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0uj0nB0Xr0K20K40OH0Rb0Z0t1k0Z2C1g10009I1000FU10009I01007lU1B1B0H0J0H0H0slVC-ueJZh",
+         "credit": "rawfish"
+      },
+      "Fallen Thrundacrack": {
+         "tag": "warrior, fallen, tcrack, flying kick, spellspam, lootrun, dps, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0ZP0Pf0uj0Qq0uP0uP0x40Ji0Qw0e2C0y0g181g010006C10006C10009I101Z6C1717050I050H0-z+rZ+BQS2",
+         "credit": "rawfish"
+      },
+      "Slayer Thrundacrack": {
+         "tag": "warrior, fallen, mantle, tcrack, lootrun, akhilfv, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0ZP0Pf0uj0Qq0uP0uP0x40Ji0Qw0e2C0y0g181g010006C10006C10009I101Z6C1717050I050H0-jdRhhZ-2A",
+         "credit": "rawfish"
+      },
+      "TNA Alkatraz": {
+         "tag": "warrior, fallen, raid, alka, alkatraz, tstack, tierstack, dps, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=5#8_CR-18rAsAY8r9F7G9r910xOCR-19w9F9CAM8r9t9i910QzCR-18j9k9f7J9f7J9m91CR-18j9k9f7J9f7J9m910OC0uH0QJ2M1a-s0L-s1g100036100036100036100036018180D0D03030l-+uzXhvD",
+         "credit": "rawfish"
+      },
+      "LI Alkatraz": {
+         "tag": "warrior, fallen, li, alka, alkatraz, tstack, tierstack, dps, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=5#8_CR-1AY96679F8rAs9g910xOCR-19w9F9CAM8r9t9i910Qz0A5CR-18j9k9f7J9f7J9m910K40OO0QJ2M1Q-y0K-y1g100036100036100036100036015150D0D0E0E0i-sM+nhv9",
+         "credit": "rawfish"
+      },
+      "Rage GMA Eleventh Hour": {
+         "tag": "archer, sharpshooter, grandmother, rage, crafted, thequeenofdemons",
+         "link": "https://hppeng-wynn.github.io/builder/?v=3#8_CR-1AiAiAi3MAYAY9r910xO0uX0Qz0050050K40BR0Qe1z1Q0z0U111g0000100nZ610100+0+0+0+0-tdNzhJPXQ",
+         "credit": "thequeenofdemons"
+      },
+      "Water Archer (Cspring)": {
+         "tag": "archer, boltslinger, no-mythic, cspring, crafted, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r50xP0K20OK0K40OHCR-16v8v9B9N6v8v9b920y0q1u0e0o1g010009I10009I01004fI0W0Z0E0E0E0E0j-pn-ZpmT0",
+         "credit": "rawfish"
+      },
+      "TWA Weathered Acrobat": {
+         "tag": "assassin, weathered, acro, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r50nB0OW0K20K40OH0Q+0P181k0P221g10006C0001007lU15150E0E0+0+0ql7tp+svP",
+         "credit": "rawfish"
+      },
+      "Trickobat Weathered": {
+         "tag": "assassin, trickster, acrobat, weathered, weath, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0ZP01+0r50nB0nu0K20K40OH0Q+0d0U1k0P221g01000FU1000FU1000FU1007lU0c1B0I0E0+0+0qldxawAnQQ ",
+         "credit": "rawfish"
+      },
+      "Resurgence Idol": {
+         "tag": "warrior, semi-tank, idol, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0Pf0r50Qr0050K20K40OH0Qf0v0t2I1Q0y1g00010039I1004fI18180H0I0I0E0o--huiLbf3",
+         "credit": "rawfish"
+      },
+      "Warp Arcanist": {
+         "tag": "mage, arcanist, warp, combat",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_02709-0Jo0QjCR-19c456w456w459m91CR-18n8n8n8n8n8n9W910T40Ji0R10l-v1f-O2W1g1000FU001007iU1007lU1B1B070707070el-odp7-0",
+         "credit": "combat"
+      },
+      "ETA Tstack Sunstar": {
+         "tag": "shaman, summoner, ritualist, tstack, sunstar, melee, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uZ0U20PW0Qq0K00Jf00W0OO0Qu161p00001B1g000010036C1B1B0J0505050pl--j2Fp1",
+         "credit": "rawfish"
+      },
+      "Tstack Aftershock (11th Hour + Crafted)": {
+         "tag": "shaman, tier stack, crafted, ashock, bmade, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uh0xOCR-1679w9fAM8r9t9i910QzCR-18j9k8j9k9f7J9m910BK0BI0uH0QK2G1Q0010001g0000100nZ61B1B030303030dj-NvUJM10",
+         "credit": "rawfish"
+      },
+      "Battle Monk Thrundacrack": {
+         "tag": "warrior, battlemonk, tcrack, dps, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VR0Pf0uj0tv0uP0K00x40OH0Qw0e2C160e0+1g010006C10009I01006660z0z0+0+0+0+0-ldNHLcwt9",
+         "credit": "rawfish"
+      },
+      "Bolt Ignis": {
+         "tag": "archer, boltslinger, tank, ignis, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0K70x70xP0050K20K40OH0Qg0o0o141z0o1g10009I1000CO01000CO1006CO1B1B0H0J0H0H0s-tu+ZJxu0",
+         "credit": "rawfish"
+      },
+      "Sharpshooter Ignis": {
+         "tag": "archer, sharpshooter, tank, ignis, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0Pf0x70xP0050050K40OH0Qg0o0o111z161g10009I1000CO01000CO1006CO1B190H0H0H0H0-l7tK-fJv0",
+         "credit": "rawfish"
+      },
+      "Riftwalker Warp TWA": {
+         "tag": "mage, riftwalker, warp, mana",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au01+0r507W0K20K00wr0OM0R10C0f1k062M1g10006C0001007lU1A1B0E0E0+0+0q-VxBJtM2",
+         "credit": "mana"
+      },
+      "Classic ETA Epoch": {
+         "tag": "archer, sharpshooter, epoch, tierstack, ts, eta, ender",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VI0KF0PW0Qz0Jf0x200W0OO0uz1a1a-Y-Y1J1g000010036C0z0z0+0+0+0+0--lYdvg7N3",
+         "credit": "ender"
+      },
+      "Warp Cancel-HPR": {
+         "tag": "mage, arcanist, manastorm, yuki",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_02709-0Jo0QjCR-18n8n8n8n8n8n9W91CR-18n8n8n8n8n8n9W91CR-18n8n8n8n8n8n9Q910Ji0R10s-v1f-O2W1g1000FU01000FU1007iU1007lU1B1B070707070ellwpv7-4",
+         "credit": "yuki"
+      },
+      "Warp Combat alternative": {
+         "tag": "mage, arcanist, manastorm, no-crafted, yuki",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_02509-0Jo0Qj0x30K20T40Ji0R10++c1k-O2W1g1000FU01000FU1007iU1007lU1B1B070505050qllwpv7-4",
+         "credit": "yuki"
+      },
+      "Crabs Idol": {
+         "tag": "warrior, idol, battlemonk, lootrun, rainbow, discombobulate, ender",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_01d0Pf0r50QW0050050x40OH0Qf1G0e2R1a0e1g10009I10009I10009I10009I1006660z0z0+0+0+0+0-jdNniCJxE1",
+         "credit": "ender"
+      },
+      "Fallen Monk Generalist Hero": {
+         "tag": "warrior, fallen, hero, hppeng",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_06W05W0D40Qt0050vI0vK0Ji0Qi1u1a-G0V2C1g001000FU1004lU103tlU0z0z0+0+0+0+0--k-xCx0B",
+         "credit": "hppeng"
+      },
+      "EWA Meteor Riftwalker Warp": {
+         "tag": "mage, riftwalker, ewa, warp, hppeng",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_02709-0Ja0Qj0K20uN0OJ0OM0R10v-O1t+w2W1g00001004fU0z0z0+0+0+0+0-j-RwsdT1",
+         "credit": "hppeng"
+      },
+      "Spellspam Quetzalcoatl": {
+         "tag": "mage, arcanist, quetz, quetzalcoatl, spellspam, etwa",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au05W0PW0Qt0WA0vI0T40Ji0uy1a1a0p041B1g1006FU01006FU1006FU103tlU0z0z0+0+0+0+0-lloFYxvN",
+         "credit": "etwa"
+      },
+      "ETW Divzer": {
+         "tag": "archer, boltslinger, etw, divzer, rawfish, crafted, dps",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_CR-1969F9F946c949g92CR-1969F9F946c949d92CR-18v8v94947C8w9i92CR-18v8v94947C8w9a920OS0K00T40KG0QS142O0q+utT1g000010036C0W0Y0E0E0E0E0o-pn-ZrUu0",
+         "credit": "dps"
+      },
+      "ETW Idol": {
+         "tag": "warrior, fallen, idol, spellspam, rawfish, dps, raid",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_01dCR-1968v8vAiAi979d91CR-1969C9F977j7j9i91CR-1969C9F977j7j9a91CR-19C8v9i4+9i9i9m91CR-19C8v9i4+9i9i9m91CR-19C8v9i4+9i9i9c91CR-19C8v9i4+9i9i9n910Qf0m1U2R00001g10009I10039I1004fI10039I1004fI0z0z0+0+0+0+0--+rJxbjC0",
+         "credit": "raid"
+      },
+      "Royal Hydrangea": {
+         "tag": "shaman, budget build, no crafted, glass, me1tryllis",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0cD0u80x70nB0x30K00T40OH0BH0y0y1G0o1Q1g000001B1B0J0J05050sz-fhVq03",
+         "credit": "me1tryllis"
+      },
+      "Bolt gma ignis dual": {
+         "tag": "grandmother, ignis, boltslinger, archer, no crafted, tankofpacer",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0XL08F0uX0QW0uP0K20K40OP0Qe1z05141m0y1g1000361001Z61000361001Z6100nZ60z0z0+0+0+0+0---iViklG0",
+         "credit": "tankofpacer"
+      },
+      "Trapper gma ignis dual for lr and TNA": {
+         "tag": "grandmother, ignis, trapper, archer, no crafted, tankofpacer",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0XL08F0uX0QW0WA0K20tz0OP0Qe1z00141m0w1g1000361001Z61000361001Z6102HZI0z0z0+0+0+0+0-l7Mt5JbNn1",
+         "credit": "tankofpacer"
+      },
+      "Bolt freedom for lr": {
+         "tag": "Freedom, boltslinger, archer, no crafted, tankofpacer",
+         "link": "https://hppeng-wynn.github.io/builder/?v=3#8_0cD0Pf0uR0xP0TQ0K20x40OH0QV0y0o140o1Q1g000000z0z0+0+0+0+0--Zv+n7as1",
+         "credit": "tankofpacer"
+      },
+      "Hybrid weathered": {
+         "tag": "weathered, hybrid, assassin, no crafted, tankofpacer",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0qn0Pf0r50Qr0050uP0K40OH0Q+0e0e1Q1Q221g00001000FU15150+0+0+0+0lldB+RMdK",
+         "credit": "tankofpacer"
+      },
+      "Battle paladin RotS": {
+         "tag": "rhythm of the seasons, paladin, warrior, no crafted, no mythic, tankofpacer",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0Pf0x70FP0WA0K20K40OH0uE1G0o14180o1g000010009I0z0z0+0+0+0+0-ltuBdXIbD",
+         "credit": "tankofpacer"
+      },
+      "dps The Nothing": {
+         "tag": "the nothing, lightbender, mega, no crafted, tankofpacer",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0cD0K70r50Qx0K00K20x40OH0CD0o110o0y0o1g000000z0z0+0+0+0+0--Zdxiiof5",
+         "credit": "tankofpacer"
+      },
+      "Shadestepper Weathered": {
+         "tag": "weathered, shadestepper, assassin, no crafted, tankofpacer",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0uC0l-0jn0Qt0nu0K20K40BR0Q+16+d140o221g103niU1007ZU1007cU1007ZU1007lU15150+0+0+0+0ol-R-ON23",
+         "credit": "tankofpacer"
+      },
+      "Shadestepper Grimtrap (tomes needed)": {
+         "tag": "grimtrap, shadestepper, assassin, no crafted, tankofpacer",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uC0000uX0Qt0vI0K20K40BR0QZ1u+f140o161g00001001Z60z0z0+0+0+0+0--Bjtlws0",
+         "credit": "tankofpacer"
+      },
+      "Nychthemeron Freedom": {
+         "tag": "freedom, archer, boltslinger, duat, outdated link",
+         "link": "https://hppeng-wynn.github.io/builder?v=1#8_0uB0Pf0FT0Qx0TQ0K00x40OH0QV1B1G1B0e161g1006CO11unfI1000FU10006C102J6I1B1B050505050stx7-F1gF2",
+         "credit": "outdated link"
+      },
+      "Combat Warp Pandemonium": {
+         "tag": "warp, pandemonium, mage, lightbender, madness, entropy, crafted item, birdmade",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0F+0uj0wh0Fx0uA0Wf0OH0R10o110y0o2M1g10009I1000FU10009I1000FU1007PI150W0+0+0+0+0hzZddJhSk5",
+         "credit": "birdmade"
+      },
+      "Tierstack Alkatraz": {
+         "tag": "alka, fallen, glass, crafted items, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0u30KFCR-19F969wAM9w9t9i910QzCR-16F7J6F6F9C9c9m910rr0OC0uH0QJ2M1G-Q-Q0U1g000000W0W0+0+0+0+0o-sMUlEU3",
+         "credit": "rawfish"
+      },
+      "Event Horizon": {
+         "tag": "mage, non-mythic, ophanim, lightbender, me1tryllis",
+         "link": "https://hppeng-wynn.github.io/builder/#8_07F0DP0x70wh0K20K00x40OH0Fq1F1F140U0U1g000010006C1B1B0J0505050stMphvikg1",
+         "credit": "me1tryllis"
+      },
+      "Trickobat Cataclysm": {
+         "tag": "acrobat, cataclysm, assassin, no-crafted, acrocat, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0u70r50xP0K00K20x40OH0QQ0U2C140Y0e1g01000FU1000FU1000FU10036C0c1B0I0E0+0+0qldxawAnQQ",
+         "credit": "rawfish"
+      },
+      "Acrobat Cataclysm": {
+         "tag": "acrobat, cataclysm, assassin, no-crafted, acrocat, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au01+0r50tv0uP0A50K40OH0QQ0P2C1k0P0e1g10006C00010036C17170+0+0+0+0-lNiRVxy3",
+         "credit": "rawfish"
+      },
+      "Riftwalker Fatal (Budget)": {
+         "tag": "mage, riftwalker, fatal, no-crafted, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VR0u70uj0xP0050uP0K40OH0QY0Z27110Z0+1g0010006C10006C10036C15150E0E0E0E0q-VxDzrM0",
+         "credit": "rawfish"
+      },
+      "Glass Cataclysm Shadestepper": {
+         "tag": "assassin, shadestepper, cataclysm, glass, thequeenofdemons",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0VR0DP0Je0Qz0uP0uP00W0KG0QQ1i2C0e-a-a1g010006C10006C10006C10036C0z0z0+0+0+0+0--pVqxUv0",
+         "credit": "thequeenofdemons"
+      },
+      "Chaos Monster": {
+         "tag": "mage, arcanist, monster, entropy, time rift, thequeenofdemons",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0K90px0r50uV0U60DU0wr0OM0Qn070f1u2M0G1g1004Z61004iO1004iO1000CO1006CO0z0z0+0+0+0+0-lNv7UkV3",
+         "credit": "thequeenofdemons"
+      },
+      "Summoner Olympic": {
+         "tag": "shaman, summoner, olympic, thequeenofdemons, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0u70r50nB0OW0K20K40OH0Qs0P111411221g1001lU1006FU1006FU1000FU1006FO0z0z0+0+0+0+0-zpx-DTE",
+         "credit": "rawfish"
+      },
+      "Singularity Arcanist": {
+         "tag": "mage, arcanist, singularity, thequeenofdemons",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0cD0Pf09U07W0DU0I90K40OH0Qp0o1L1D1G1D1g1001Z611ZtcC10009I1001cC3OnZ6OOnZ6C0066C0z0z0+0+0+0+0-lNv7nzyR",
+         "credit": "thequeenofdemons"
+      },
+      "1000 Cuts Nirvana (Shadestepper)": {
+         "tag": "assassin, shadestepper, nirvana, nightcloak, thequeenofdemons",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0VR0Pf0uj0Qx0DU0K20K40OH0Qm0e132M0v0+1g00001004fI0z0z0+0+0+0+0--ZttUt31",
+         "credit": "thequeenofdemons"
+      },
+      "morph the nothing": {
+         "tag": "morph",
+         "link": "https://hppeng-wynn.github.io/builder?v=2#8_0cD0cB0cA0c82SK2SL2SM2SN0CD0o0t0P0t0o1g000000z0z0+0+0+0+0-",
+         "credit": "morph"
+      },
+      "TNA Acrocat (Cataclysm)": {
+         "tag": "acrobat, acrocat, cata, assassin, crafted, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_CR-1969F9F946c6Y9g92CR-1969F9F946c6Y9d92CR-1969F9F947C8w9i92CR-1969F9F947C8w9a920K00OS00W0Xc0QQ0u2C0+02041g000010036C15150+0+0+0+0olNidzjpp",
+         "credit": "rawfish"
+      },
+      "Fallen Monk Hero (tomes needed)": {
+         "tag": "fallen monk, hero, warrior, no crafted, badlife",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0ZP07Y0D40Qq0nu0nu0wr0Ji0Qi1Q1V01-j2C1g0000103tlU150z0+0+0+0+0oz+r3-xk0",
+         "credit": "badlife"
+      },
+      "Fallen Monk Convergence (tomes needed)": {
+         "tag": "fallen monk, convergence, warrior, hyedam",
+         "link": "https://hppeng-wynn.github.io/builder?v=2#8_0XL0PY0Jo0tZ0050K20K4CR-19i9S9C9c4+9i9n910ux160I1i1B061g1000361000361000361000361001Z61B1B0+0+0+0+0sjNhFS-jn0",
+         "credit": "hyedam"
+      },
+      "Crafted Fallen Monk (tomes needed)": {
+         "tag": "fallen monk, crafted water spear, warrior, hyedam",
+         "link": "https://hppeng-wynn.github.io/builder?v=2#8_01d0pxCR-1969C9F6I7X7j9i910Qr0K20K00OJ0ttCR-1ArAY6Y626c6Y9p91010q2C1U011g00001004fI1B1B0+0+0+0+0sz+wr-l54",
+         "credit": "hyedam"
+      },
+      "Olympic Fast Hybrid (tomes needed)": {
+         "tag": "ritualist, olympic, shaman, no crafted, badlife",
+         "link": "https://hppeng-wynn.github.io/builder?v=2#8_0VI0000PW0Qt0050050NH0Ji0Qs161E010e221g00001007lU150z0+0+0+0+0p-pVoDcT30",
+         "credit": "badlife"
+      },
+      "Arbalest Uproot Gun": {
+         "tag": "summoner, no crafted, shaman, badlife",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0uB0DP0uX0Qt0vI0vI0Fl0Ji0231f140408161g00001001Z60z0z0+0+0+0+0--Rw-jU9",
+         "credit": "badlife"
+      },
+      "Absolution Fanatic Acolyte": {
+         "tag": "acolyte, absolution, no crafted, shaman, badlife",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0Au0Pf0uj0QW0050K00x40OH0QI1G0+141p0+1g000000z0z0+0+0+0+0-j-jL-Hy52",
+         "credit": "badlife"
+      },
+      "Crabs Absolution": {
+         "tag": "acolyte, healing, no crafted, shaman, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=3#8_0tX0K70r50QW0K00K20T40OH0QI1G0e141p0o1g000000z0z0+0+0+0+0---vF-mE2",
+         "credit": "rawfish"
+      },
+      "Statue Monster": {
+         "tag": "monster, mage, lightbender, no crafted, rawfish",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07R0K70uj0n60050K20wr0OH0Qn0Z0u182M0+1g10009I10009I10009I10009I1004fI0W0W0E0E0E0E0qzZddJhSk5",
+         "credit": "rawfish"
+      },
+      "Monster Warp Dual Wield": {
+         "tag": "mage, riftbender, lootrun, rainbow, ender",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07R0Pf0D40wh0050050K40OH0Qn0e0g0e2M221g00001006CO0z0z0+0+0+0+0-zZdcjPbJB",
+         "credit": "ender"
+      },
+      "Combat Guardian": {
+         "tag": "warrior, battle monk, paladin, guard",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0cD0K70r50xP0050K20K40OH0Qb0o0o1D220o1g00001004fI18180H0I0I0E0o-+hSsCH+0",
+         "credit": "guard"
+      },
+      "Fallen Convergence": {
+         "tag": "warrior, corrupt, rots, raid, conv, convergence, no-crafted, yuki",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0u70r50tZ0K20WA0ZR0Ji0ux1G13141B081g1000361001f61001f61001i61001Z60c0c050505050izc--BR6A",
+         "credit": "yuki"
+      },
+      "ETA Tstack Aftershock": {
+         "tag": "shaman, tier stack, ashock, one-crafted, blu",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0VI0KF0D40Qz0JfCR-1AcAbAb6F6F7J9m910OC0OO0QK1+1a-Y-y1S1g1000361000361000361000361031ZO0z0z0+0+0+0+0-l-dRNDR1",
+         "credit": "blu"
+      },
+      "Tstack Aftershock (No-Crafted)": {
+         "tag": "shaman, tier stack, ashock, no-crafted, Ewadert",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0u30KF0PW0Qz0Jf0Nm0OC0uH0QK1+1Q-Y-s1G1g0000100nZ60z0z0+0+0+0+0-jFFtsPs3",
+         "credit": "Ewadert"
+      },
+      "Idol (charge kick)": {
+         "tag": "warrior, corrupt, rots, raid, lr, Idol, no craft, yuki",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_01d01+0r50QW0t80t80K40BR0Qf1G0c2R1a0E1g10009I1004cI1004cI1004iI1004fI0c0c050505050izVzHxtGP1",
+         "credit": "yuki"
+      },
+      "Crabs Convergence": {
+         "tag": "warrior, fallen monk, corrupt, rots, raid, lr, conv, convergence, no-crafted, Kotoko",
+         "link": "https://wynnbuilder.github.io/builder?v=4#8_0tX0Pf0x70QW0uP0K00vJ0OH0ux1G0h111a0j1f10003610003601000361001Z61B1B050505050ojNNVqVPZ1",
+         "credit": "Kotoko"
+      },
+      "ETW Grimtrap": {
+         "tag": "assassin, grimtrap, arcobat, no crafted, ender",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0KA0uX0Rl0WA0WA0vF0Ji0QZ1u0y1G00001g1000361000361000361000361001Z60z0z0+0+0+0+0-lFJlAsh63",
+         "credit": "ender"
+      },
+      "Idol (hpr)": {
+         "tag": "warrior, fallen, rots, raid, idol, yuki",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_01d0F+0r50Qr0t80t80K40OH0Qf1G0m2R1Q0d1g10009I119Z6I1004cI1004iI1004fI0c0c050505050izVzHxtGP1",
+         "credit": "yuki"
+      },
+      "EWA spring": {
+         "tag": "archer, boltslinger, spring, trift, no-crafted, pudding",
+         "link": "https://hppeng-wynn.github.io/builder/?v=4#8_0250px0r507W0TQ0OK0OJ0Ji0Qv1G+E27061D1g10009I10009I10009I10009I1004fI1B1B050505050f-BpzvLxX2",
+         "credit": "pudding"
+      },
+      "ETA Bash scream Hero": {
+         "tag": "warrior, battle monk, discombobulate, no crafted, ender",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_09V0KA0uR0Qt0OW0nS0vJ0Ji0Qi1S0H16-x2C1g00001034c60z0z0+0+0+0+0-ltuZPcPus0",
+         "credit": "ender"
+      },
+      "Rainbow Grimtrap": {
+         "tag": "assassin, grimtrap, arcobat, no crafted, tome needed,  ender",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_07F0Pf0uX0tZ0050WA0x40OH0QZ1u0y0y0y0e1g1000361000361000361000361001Z60z0z0+0+0+0+0-lFJlAsh63",
+         "credit": " ender"
+      },
+      "Rainbow Nirvana": {
+         "tag": "assassin, nirvana, acrobat, no crafted, badlife",
+         "link": "https://wynnbuilder.github.io/builder?v=4#8_0xi0u70r50Qx0t80t80x40OH0Qm0U112M0U0U1g00001004fI0z0z0+0+0+0+0-jdvM5-Lp3",
+         "credit": "badlife"
+      },
+      "Guardian (Quad Major IDs)": {
+         "tag": "warrior, guardian, paladin, no crafted, rally, badlife",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0pc0xo0uF0Qr0OQ0OQ0Jg0na0Qb000K1f250L1g00001006CO0z0z0+0+0+0+0-j7RlVChI1",
+         "credit": "badlife"
+      },
+      "ETA Thrundacrack": {
+         "tag": "warrior, thrundacrack, tcrack, fallen, monk, fallenmonk, fallen monk, no crafted, badlife",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_06W07Y0PW0Qq0nu0nu0wr0Ji0Qw162C-E-i1B1g0000101Z6C0z0z0707070+0-zch7+-M6",
+         "credit": "badlife"
+      },
+      "Tstack Sunstar": {
+         "tag": "shaman, sunstar, me1tryllis",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0ui0BO0PW0Qq0K00Jf00W0OO0Qu0j1p-i-T1B1g000010036C1B1B0J0505050el-RVwl50",
+         "credit": "me1tryllis"
+      },
+      "Nona": {
+         "tag": "assassin, trickster, budget build, no-crafted, me1tryllis",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0Au0Pf0uR0xP0K00TQ0x40OH00211110y0e191g1006FU11Z6FU1006FU1004lU1007lU1B1B0J0505050--pxifRo1O0",
+         "credit": "me1tryllis"
+      },
+      "Quetz Arcanist": {
+         "tag": "mage, arcanist, quetzalcoatl, no-crafted, me1tryllis",
+         "link": "https://hppeng-wynn.github.io/builder/#8_07F0Pf0r50Qt0K20K00x40OH0uy1616140e161g100036100036100036100036103tlU1B1B0J0505050-l-p+EzR",
+         "credit": "me1tryllis"
+      },
+      "TWF Thrundacrack": {
+         "tag": "warrior, corrupted, lootrun, tcrack, no-crafted, pudding",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0VR0u70uS0tv0050050TN0Ji0Qw0j2C110e021g010006C10006C10009I102J6I1B1B050505050-z+rZ+3RS0",
+         "credit": "pudding"
+      },
+      "Trickobat Oblivion": {
+         "tag": "assassin, trickster, acrobat, oblivion, obli, no-crafted",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0Au0u70uj0nB0nu0K00x40OH0u-0o1Q150o131g01000FU1000FU1000FU1007lU0c1B0I0E0+0+0qldxawAnQQ",
+         "credit": "no-crafted"
+      },
+      "Tstack Oblivion": {
+         "tag": "Juse use inferno at this point",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_CR-1AY96679F8rAs9g910PYCR-19F9F9fAM8r9f9i910Qz0x+0GQ0T40uH0u-1a1f110A0A1g0000101Z6C17170E0303030ol-VsKDn4m0",
+         "credit": "Juse use inferno at this point"
+      },
+      "Lootrun Olympic Summoner": {
+         "tag": "shaman, summoner, lr, Lootrun, olympic, tome required, no crafted, qwq_yingbing",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0Au0u70E-0xP0K20050K40OH0Qs0U11140P221g1000FU1000FU1000FU1000FU1007lU1B1B0J0505050szpllfLZ3",
+         "credit": "qwq_yingbing"
+      },
+      "Inhibitor Toxo": {
+         "tag": "used by true qira lover",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_02F0w70Sl0QW0x20x20bC0Ji0Qy2M03-s1a1F1g00001000CO0z0z0+0+0+0+0--Z7hfCNv1",
+         "credit": "used by true qira lover"
+      },
+      "Tierstack Inferno": {
+         "tag": "assassin, shadestepper, trickester, crafted, tstack, tank, life steal",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_CR-1969FBv9k7G629g910C7CR-19F9F9fAM7G9f9i910QW0BK0BK0K40uH0Qh1C0U041y0v1g00001006CO19190E0E0E0E0-l-VsKDn4m0",
+         "credit": "life steal"
+      },
+      "Hero for Raid": {
+         "tag": "warrior, fallen, corrupted, raid, hero, no-crafted, yuki",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0ZP09-0Zc07W0xd0nu0vJ0Ji0Qi0q0e1D-y2C1g10000U01000FU1007fU103tlU1B1B050505050szVzHxtGM1",
+         "credit": "yuki"
+      },
+      "ETW Hadal": {
+         "tag": "shaman, acolyte, raid, hadal, crafted, yuki",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_01d0u70Je0QcCR-18j9k9f7J9f7J9m91CR-18j9k9f7J9f7J9m910T40BR0Qd111122-c-c1g10009I1004lI10009I1004lI1004fI1B1B050505050k--LV+1R2",
+         "credit": "yuki"
+      },
+      "Warchief Inferno": {
+         "tag": "assassin, tstack, ETF, marked, trickster, non-crafted, ender",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0u30ZS0060Qz0EE0BK0BI0uH0Qh1a1Q001u001g010000O1000CO1000CO1006CO0z0z0+0+0+0+0-jVlBRgcS20",
+         "credit": "ender"
+      },
+      "ETA Quetzalcoatl": {
+         "tag": "mage, arcanist, meteor cost, no-crafted, ender",
+         "link": "https://wynnbuilder.github.io/builder?v=4#8_06W07Y0LM0Qq0vI0vI0wr0Ji0uy161V-I-q161g0000100nZ60z0z0+0+0+0+0-llwpppl1",
+         "credit": "ender"
+      },
+      "divzer dps": {
+         "tag": "archer, sharpshooter, etw, divzer, no-crafted, dps, yuki",
+         "link": "https://hppeng-wynn.github.io/builder?v=4#8_0uB0DP0Je0Lg0OS0K20ON0KG0QS1M2Q14+Psy1g1003CC10006C10006C10006C10036C1B1B050505050elFyUiVmAN",
+         "credit": "yuki"
+      },
+      "Riftwalker Warp (moontower)": {
+         "tag": "mage, riftwalker, warp, lootrun, tna, manastorm, no-crafted",
+         "link": "https://hppeng-wynn.github.io/builder/?v=3#8_0tx09-0PW0Qj0ta0t80wr0Ji0R1-s1B1p-E2W1g1000FU01006FU1006FU1007lU1B1B070707070kj-RwsdT1",
+         "credit": "no-crafted"
+      },
+      "Trickster Cata": {
+         "tag": "assassin, trickster, cataclysm, no-crafted, dps, tna, raid",
+         "link": "https://wynnbuilder.github.io/builder/#8_07F0u702R0Lg0K20TQ0tz0Ji0QQ152C1400-s1g010006C10006C10009I10036C1717050505050kldxakIZu2C",
+         "credit": "raid"
+      },
+      "Stardew Idol Fallenmonk": {
+         "tag": "warrior, battle monk, fallen, idol, stardew, raid, dps",
+         "link": "https://wynnbuilder.github.io/builder/?v=4#8_01d0u70Je0Qx0GQ0K20vF0tt0Qf0v112R-Y-Y1g10009I1007fI10009I10009I1004fI1B1B050505050iz-wZslXi0",
+         "credit": "dps"
+      },
+      "MR Divzer": {
+         "tag": "archer, boltslinger, etw, divzer, manaregen, dps, floweroftruth",
+         "link": "https://hppeng-wynn.github.io/builder/#8_CR-196678v6YBoBo9r91CR-196678vBo8wBo9R91CR-196678vAF8wAF9Z910Lg0TQCR-19C9CA29iA2A29W910ON0Ji0QS0Z2O16+ttQ1g000010036C1717050505050el-hsoNk20",
+         "credit": "floweroftruth"
+      },
+      "Boltslinger Divzer": {
+         "tag": "archer, boltslinger, etw, divzer, dps, floweroftruth",
+         "link": "https://hppeng-wynn.github.io/builder/#8_0uB0DP0Je0Lg0TQCR-19C9CA29iA2A29W910ONCR-19C9CA29iA2A29T910QS1D2O0z+Psy1g000010036C1717050505050el-hsoNk20",
+         "credit": "floweroftruth"
+      }
+   }
+}
