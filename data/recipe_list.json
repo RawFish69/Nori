@@ -256,6 +256,11 @@
          "tag": "armoring, 24 gxp, no reqs, low dura"
       },
       {
+         "type": "Chestplate",
+         "link": "https://hppeng-wynn.github.io/crafter/#1C4CD96C4C4CD9d91",
+         "tag": "armoring, healing efficiency, no reqs"
+      },
+      {
          "type": "Helmet",
          "link": "https://hppeng-wynn.github.io/crafter/#18v8v9T8w9T8w9g91",
          "tag": "armoring, mana regen, walkspeed, 104 agi req, 104 int req"
