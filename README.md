@@ -1,6 +1,4 @@
 # Nori
-
-![Nori](docs/nori.png)  
 ## Project Site: https://nori.fish
 
 ## Links
