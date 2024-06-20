@@ -201,5 +201,5 @@ async def task():
     # Queue any func
     await update_items("home/ubuntu/nori/data/items.json")
     
-asyncio.run(task())
+
 
