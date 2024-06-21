@@ -68,10 +68,6 @@ The stats for headquarters towers are calculated by scaling the base stats with 
     ```
     dmg_max = base_dmg_high * (1 + 0.3 * link) * (1.5 + 0.25 * ext)
     ```
-  - Average Damage:
-    ```
-    dmg_avg = (dmg_min + dmg_max) / 2
-    ```
 
 - **Health Calculation**:
     ```
@@ -91,11 +87,7 @@ The stats for regular towers are calculated by scaling the base stats with link 
     ```
     dmg_max = base_dmg_high * (1 + 0.3 * link)
     ```
-    - Average Damage:
-    ```
-    dmg_avg = (dmg_min + dmg_max) / 2
-    ```
-    
+
 - **Health Calculation**:
     ```
     health = base_hp * (1 + 0.3 * link)
@@ -122,7 +114,6 @@ Consider a headquarters tower with the following parameters:
 
  - Maximum Damage: `1500 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1500 * 1.6 * 2.25 = 5400`
 
- - Average Damage: `(3600 + 5400) / 2 = 4500`
 
 2. **Calculate Health**:
     - health = `300000 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 300000 * 1.6 * 2.25 = 1,080,000 HP`
@@ -132,7 +123,6 @@ Now, consider a regular tower with the same parameters but without external conn
 3. **Calculate Damage**:
 - Minimum Damage: `1000 * (1 + 0.3 * 2) = 1000 * 1.6 = 1600`
 - Maximum Damage: `1500 * (1 + 0.3 * 2) = 1500 * 1.6 = 2400`
-- Average Damage: `(1600 + 2400) / 2 = 2000`
 
 4. **Calculate Health**:
 health = `300000 * (1 + 0.3 * 2) = 300000 * 1.6 = 480,000 HP`
