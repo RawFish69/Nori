@@ -64,11 +64,11 @@ The stats for headquarters towers are calculated by scaling the base stats with 
 - **Damage Calculation**:
   - Minimum Damage:
     ```
-    dmg_min = base_dmg_low * (1 + 0.3 * link) * (1.5 + 0.25 * ext)
+    dmg_min = base_dmg_low * Dmg[damageLevel] * (1 + 0.3 * link) * (1.5 + 0.25 * ext)
     ```
   - Maximum Damage:
     ```
-    dmg_max = base_dmg_high * (1 + 0.3 * link) * (1.5 + 0.25 * ext)
+    dmg_max = base_dmg_high * Dmg[damageLevel] * (1 + 0.3 * link) * (1.5 + 0.25 * ext)
     ```
 
 - **Health Calculation**:
