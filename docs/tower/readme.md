@@ -99,7 +99,7 @@ The stats for regular towers are calculated by scaling the base stats with link 
     atk_rate = base_atk_rate * Atk[attackLevel]
 
 ### Defense Calculation:
-    defense = Def[defLevel]
+    defense = base_defense * Def[defLevel]
 
 ## Example Calculation
 
@@ -124,7 +124,7 @@ Now, consider a regular tower with the same parameters but without external conn
 
 3. **Calculate Damage**:
 - Minimum Damage: `1000 * 3 * (1 + 0.3 * 2) = 1000 * 1.6 = 4800`
-- Maximum Damage: `1500 * 3) * (1 + 0.3 * 2) = 1500 * 1.6 = 7200`
+- Maximum Damage: `1500 * 3 * (1 + 0.3 * 2) = 1500 * 1.6 = 7200`
 
 4. **Calculate Attack Rate**:
 Attack Rate = `0.5 * attack[7] = 1.6`
@@ -133,7 +133,7 @@ Attack Rate = `0.5 * attack[7] = 1.6`
 health = `300000 * 5 * (1 + 0.3 * 2) = 300000 * 1.6 = 2,400,000 HP`
 
 6. **Calculate Defense**:
-defense = `defense[7] * 100 = 82%`
+defense = `0.1 * defense[7] * 100 = 82%`
 
 
 # Territory Tier (Difficulty) Calculation
