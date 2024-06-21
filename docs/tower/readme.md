@@ -23,10 +23,12 @@ Each guild tower starts with a set of base stats:
 
 Upgrades improve the tower’s stats. Each upgrade level corresponds to a specific value increase. The values used in the calculations are:
 
-- **Damage Upgrade Levels**: 0 to 4.4
-- **Attack Rate Upgrade Levels**: 0 to 8.4
-- **Health Upgrade Levels**: 0 to 10.0
-- **Defense Upgrade Levels**: 0 to 8.0
+- **Damage Upgrades**: 0 to 4.4 (Lv. 0 - 11)
+- **Attack Rate Upgrades**: 0 to 8.4 (Lv. 0 - 11)
+- **Health Upgrades**: 0 to 10.0 (Lv. 0 - 11)
+- **Defense Upgrades**: 0 to 8.0 (Lv. 0 - 11)
+
+For bonus per level, refer to the arrays below
 
 Variables expression in JavaScript:
 ```javascript
