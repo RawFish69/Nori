@@ -73,7 +73,7 @@ The stats for headquarters towers are calculated by scaling the base stats with 
 
 - **Health Calculation**:
     ```
-    health = base_hp * (1 + 0.3 * link) * (1.5 + 0.25 * ext)
+    health = base_hp * Hp[healthLevel] * (1 + 0.3 * link) * (1.5 + 0.25 * ext)
     ```
 
 ### Regular Towers
