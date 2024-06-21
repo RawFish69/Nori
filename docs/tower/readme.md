@@ -83,23 +83,23 @@ The stats for regular towers are calculated by scaling the base stats with link 
 - **Damage Calculation**:
     - Minimum Damage:
     ```
-    dmg_min = base_dmg_low * (1 + 0.3 * link)
+    dmg_min = base_dmg_low * Dmg[damageLevel] * (1 + 0.3 * link)
     ```
     - Maximum Damage:
     ```
-    dmg_max = base_dmg_high * (1 + 0.3 * link)
+    dmg_max = base_dmg_high * Dmg[damageLevel] * (1 + 0.3 * link)
     ```
 
 - **Health Calculation**:
     ```
-    health = base_hp * (1 + 0.3 * link)
+    health = base_hp * Hp[healthLevel] * (1 + 0.3 * link)
     ```
 
 ### Attack Rate:
-    atk_rate = base_atk_rate + valAtk[attackLevel]
+    atk_rate = base_atk_rate + Atk[attackLevel]
 
 ### Defense Calculation:
-    defense = defense[defLevel]
+    defense = Def[defLevel]
 
 ## Example Calculation
 
@@ -112,22 +112,22 @@ Consider a headquarters tower with the following parameters:
 - **Defense Upgrade Level**: 7
 
 1. **Calculate Damage**:
- - Minimum Damage: `1000 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1000 * 1.6 * 2.25 = 3600`
+ - Minimum Damage: `1000 * 2 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1000 * 2 * 1.6 * 2.25 = 7200`
 
- - Maximum Damage: `1500 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1500 * 1.6 * 2.25 = 5400`
+ - Maximum Damage: `1500 * 2 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1500 * 2 * 1.6 * 2.25 = 10800`
 
 
 2. **Calculate Health**:
-    - health = `300000 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 300000 * 1.6 * 2.25 = 1,080,000 HP`
+    - health = `300000 * 4 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 300000 * 1.6 * 2.25 = 4,320,000 HP`
 
 Now, consider a regular tower with the same parameters but without external connections:
 
 3. **Calculate Damage**:
-- Minimum Damage: `1000 * (1 + 0.3 * 2) = 1000 * 1.6 = 1600`
-- Maximum Damage: `1500 * (1 + 0.3 * 2) = 1500 * 1.6 = 2400`
+- Minimum Damage: `1000 * 2 * (1 + 0.3 * 2) = 1000 * 1.6 = 3200`
+- Maximum Damage: `1500 * 2 * (1 + 0.3 * 2) = 1500 * 1.6 = 4800`
 
 4. **Calculate Health**:
-health = `300000 * (1 + 0.3 * 2) = 300000 * 1.6 = 480,000 HP`
+health = `300000 * 4 * (1 + 0.3 * 2) = 300000 * 1.6 = 1,920,000 HP`
 
 5. **Calculate Defense**:
 defense = `defense[7] * 100 = 82%`
