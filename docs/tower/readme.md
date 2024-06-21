@@ -3,7 +3,8 @@
 
 ## Overview
 
-How to calculate guild tower stats, including damage, attack rate, health, and defense, based on different upgrade levels and bonuses. The calculations consider the effects of links between territories and external connections to the headquarters.
+- Calculation of guild tower stats, including damage, attack rate, health, and defense, based on different upgrade levels and bonuses. The calculations consider the effects of links between territories and external connections to the headquarters. 
+- Calculation of the rating and determine the tier for a given set of attributes (`dmg`, `atk`, `hp`, `def`, `aura`, and `volley`). The tier is determined based on the rating calculated from these attributes.
 
 ## Base Stats
 
@@ -139,13 +140,9 @@ health = `300000 * (1 + 0.3 * 2) = 300000 * 1.6 = 480,000 HP`
 5. **Calculate Defense**:
 defense = `defense[7] * 100 = 82%`
 
-## Summary
 
-By following the above steps, you can calculate the guild tower stats based on upgrades and bonuses. This process ensures that you accurately determine the tower’s damage, attack rate, health, and defense, taking into account the effects of links and external connections.
 
 # Territory Tier (Difficulty) Calculation
-
-How to calculate the rating and determine the tier for a given set of attributes (`dmg`, `atk`, `hp`, `def`, `aura`, and `volley`). The tier is determined based on the rating calculated from these attributes.
 
 ## Rating Calculation
 
