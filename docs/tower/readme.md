@@ -112,22 +112,22 @@ Consider a headquarters tower with the following parameters:
 - **Defense Upgrade Level**: 7
 
 1. **Calculate Damage**:
- - Minimum Damage: `1000 * 2 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1000 * 2 * 1.6 * 2.25 = 7200`
+ - Minimum Damage: `1000 * (1 + 2) * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1000 * 2 * 1.6 * 2.25 = 10800`
 
- - Maximum Damage: `1500 * 2 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1500 * 2 * 1.6 * 2.25 = 10800`
+ - Maximum Damage: `1500 * (1 + 2) * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1500 * 2 * 1.6 * 2.25 = 16200`
 
 
 2. **Calculate Health**:
-    - health = `300000 * 4 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 300000 * 1.6 * 2.25 = 4,320,000 HP`
+    - health = `300000 * (1 + 4) * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 300000 * 1.6 * 2.25 = 5,400,000 HP`
 
 Now, consider a regular tower with the same parameters but without external connections:
 
 3. **Calculate Damage**:
-- Minimum Damage: `1000 * 2 * (1 + 0.3 * 2) = 1000 * 1.6 = 3200`
-- Maximum Damage: `1500 * 2 * (1 + 0.3 * 2) = 1500 * 1.6 = 4800`
+- Minimum Damage: `1000 * (1 + 2) * (1 + 0.3 * 2) = 1000 * 1.6 = 4800`
+- Maximum Damage: `1500 * (1 + 2) * (1 + 0.3 * 2) = 1500 * 1.6 = 7200`
 
 4. **Calculate Health**:
-health = `300000 * 4 * (1 + 0.3 * 2) = 300000 * 1.6 = 1,920,000 HP`
+health = `300000 * (1 + 4) * (1 + 0.3 * 2) = 300000 * 1.6 = 2,400,000 HP`
 
 5. **Calculate Defense**:
 defense = `defense[7] * 100 = 82%`
