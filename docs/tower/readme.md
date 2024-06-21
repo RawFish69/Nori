@@ -39,10 +39,10 @@ const baseDef = 0.1;
 const hqBonusBase = 0.5;
 const hqBonusPerTerritory = 0.25;
 const connectionBonus = 0.3;
-const Dmg = [0, 0.4, 0.8, 1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0, 4.4];
-const Atk = [0, 0.5, 1.0, 1.5, 2.2, 3.0, 4.0, 5.0, 6.2, 6.6, 7.4, 8.4];
-const Hp = [0, 0.5, 1.0, 1.5, 2.2, 3.0, 4.0, 5.2, 6.4, 7.6, 8.8, 10.0];
-const Def = [0, 3, 4.50, 5.25, 6.00, 6.50, 6.90, 7.20, 7.40, 7.60, 7.80, 8.00];
+const Dmg = [1, 1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0, 5.4];
+const Atk = [1, 1.5, 2.0, 2.5, 3.2, 4.0, 5.0, 6.0, 7.2, 7.6, 8.4, 9.4];
+const Hp = [1, 1.5, 2.0, 2.5, 3.2, 4.0, 5.0, 6.2, 7.4, 8.6, 9.8, 11.0];
+const Def = [1, 4, 5.5, 6.25, 7.00, 7.50, 7.90, 8.20, 8.40, 8.60, 8.80, 9.00];
 ```
 
 ## Bonuses
@@ -96,7 +96,7 @@ The stats for regular towers are calculated by scaling the base stats with link 
     ```
 
 ### Attack Rate:
-    atk_rate = base_atk_rate + Atk[attackLevel]
+    atk_rate = base_atk_rate * Atk[attackLevel]
 
 ### Defense Calculation:
     defense = Def[defLevel]
@@ -112,26 +112,28 @@ Consider a headquarters tower with the following parameters:
 - **Defense Upgrade Level**: 7
 
 1. **Calculate Damage**:
- - Minimum Damage: `1000 * (1 + 2) * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1000 * 2 * 1.6 * 2.25 = 10800`
+ - Minimum Damage: `1000 * 3 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1000 * 2 * 1.6 * 2.25 = 10800`
 
- - Maximum Damage: `1500 * (1 + 2) * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1500 * 2 * 1.6 * 2.25 = 16200`
+ - Maximum Damage: `1500 * 3 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 1500 * 2 * 1.6 * 2.25 = 16200`
 
 
 2. **Calculate Health**:
-    - health = `300000 * (1 + 4) * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 300000 * 1.6 * 2.25 = 5,400,000 HP`
+    - health = `300000 * 5 * (1 + 0.3 * 2) * (1.5 + 0.25 * 3) = 300000 * 1.6 * 2.25 = 5,400,000 HP`
 
 Now, consider a regular tower with the same parameters but without external connections:
 
 3. **Calculate Damage**:
-- Minimum Damage: `1000 * (1 + 2) * (1 + 0.3 * 2) = 1000 * 1.6 = 4800`
-- Maximum Damage: `1500 * (1 + 2) * (1 + 0.3 * 2) = 1500 * 1.6 = 7200`
+- Minimum Damage: `1000 * 3 * (1 + 0.3 * 2) = 1000 * 1.6 = 4800`
+- Maximum Damage: `1500 * 3) * (1 + 0.3 * 2) = 1500 * 1.6 = 7200`
 
-4. **Calculate Health**:
-health = `300000 * (1 + 4) * (1 + 0.3 * 2) = 300000 * 1.6 = 2,400,000 HP`
+4. **Calculate Attack Rate**:
+Attack Rate = `0.5 * attack[7] = 1.6`
 
-5. **Calculate Defense**:
+5. **Calculate Health**:
+health = `300000 * 5 * (1 + 0.3 * 2) = 300000 * 1.6 = 2,400,000 HP`
+
+6. **Calculate Defense**:
 defense = `defense[7] * 100 = 82%`
-
 
 
 # Territory Tier (Difficulty) Calculation
