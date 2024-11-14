@@ -75,7 +75,6 @@ Modern web interface offering:
 
 ## Documentation
 - [API References](https://nori.fish/docs) (TODO)
-- [Command List](https://nori.fish/docs/commands)
 
 ## Links
 - [Nori-Web](https://nori.fish)
