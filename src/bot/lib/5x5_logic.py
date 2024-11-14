@@ -1,3 +1,8 @@
+"""
+Author: RawFish
+Description: 5x5 tic tac toe logic
+"""
+
 class GameViewFive(miru.View):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
