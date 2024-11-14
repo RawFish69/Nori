@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- Home Page (real) -->
+<html lang="en">
+<head>
+    <link rel="icon" href="fish_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori Hub" />
+    <meta property="og:description" content="Nori Web Tools, created by RawFish" />
+    <meta property="og:url" content="https://nori.fish" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
+    <title>Nori Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css_global/default.css">
+    <link rel="stylesheet" href="css_global/sidebar.css">
+    <link rel="stylesheet" href="css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <script type="text/javascript" src="js_global/sidebar.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@latest/dist/zero-md.min.js"></script>
+    <script src="js_global/home.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="js_global/analytics.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484" 
+    data-overlays="bottom" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
+            <h1>Nori Hub</h1>
+        </div>
+        <nav>
+            <a href="#" onclick="openTab('Home')">Home</a>
+            <a href="https://nori.fish/wynn">Wynn</a>
+            <a href="https://nori.fish/docs">Docs</a>
+            <a href="https://nori.fish/chat">Playground</a>
+            <a href="#" onclick="openTab('About')">About Me</a>
+        </nav>
+        <div class="language-selector">
+            <select onchange="changeLanguage(this)">
+                <option value="index.html">English</option>
+                <option value="index_cn.html">中文</option>
+            </select>
+        </div>    
+    </header>
+
+    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar"></div>
+    <div class="container">
+        <div id="Home" class="panel active">
+            <div class="feature">
+                <h2>Install Links</h2>
+                <h3>
+                    For Discord:
+                    <button class="install-button discord-button" onclick="window.open('https://discord.com/api/oauth2/authorize?client_id=873677970928193568&permissions=277028662336&scope=bot', '_blank')">Install on Discord</button>
+                </h3>
+                <h3>
+                    For Kook (users in China):
+                    <button class="install-button kook-button" onclick="window.open('https://www.botmarket.cn/bot/28', '_blank')">Install on Kook</button>
+                </h3>
+                <h3>
+                    For Browser:
+                    <button class="install-button web-button" onclick="window.open('https://nori.fish', '_blank')">Nori-Web (nori.fish)</button>
+                </h3>
+            </div>
+            <div class="feature">
+                <h2>About this Project</h2>
+                <div style="display: flex; align-items: center;">
+                    <h3>Nori-Bot</h3>
+                    <img src="resources/nori.png" alt="Nori Logo" style="width: 75px; height: auto; margin-left: 10px;">
+                </div>
+                <p>Chat Bot version of Nori, supporting commands on different platforms</p>
+                <h3>Nori-Wynn</h3>
+                <p>Third-party app for online RPG game "Wynncraft", providing features including player/guild statistics, leaderboard, class-builds, item-related, lootpool information, and more.</p>
+
+                <button id="changelog-button" class="changelog-button" onclick="toggleChangelog()">View Changelog</button>
+                <zero-md id="changelog" class="changelog" src="changelog.md"></zero-md>
+            </div>
+            <div class="feature">
+                <h3>Nori-API</h3>
+                <p>Database hosted on AWS for general purposes, tracking information including command usage, user activity, in-game player stats, user prompts for generative AI features, generation results from models, etc...</p>
+            </div>
+            <div class="feature">
+                <h3>Nori-ToolKit</h3>
+                <p>Utility tools made for various purposes, consisting of API wrappers, data analysis & visualization, testing, and some specific stuff.</p>
+            </div>
+            <div class="feature">
+                <h3>Nori-Web</h3>
+                <p>Web version of Nori, which happens to be the site you are on right now.</p>
+            </div>
+        </div>
+        <div id="About" class="panel">
+            <h2>Social Media / Contact Info</h2>
+            <p>Discord nametag: rawfish69</p>
+            <p><a href="https://github.com/RawFish69" target="_blank" class="install-link">GitHub Page</a></p>
+            <p><a href="https://nori.fish/license" target="_blank" class="install-link">Website License</a></p>
+            <p><a href="https://www.youtube.com/@RawFish69" target="_blank" class="install-link">YouTube Channel</a></p>
+            <p>For feedback & bug report, join our Discord community server: <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="install-link">Join Discord</a></p>
+            <h2>About Me (Nori Developer)</h2>
+            <p>I find enjoyment in transforming my concepts into reality.</p>
+            <p>Some of my other projects include:</p>
+            <p>- 2D rogue-like game developed with Godot Engine (expected release in 2025/2026)</p>
+            <p>- Image-to-Image Generation (Web-based)</p>
+            <p>- Inventory Control (Windows Application)</p>
+            <p>- Various utility bots</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
+    </footer>
+</body>
+
+
+</html>

@@ -1,0 +1,355 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header {
+    background: #708090;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFD700;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    width: 100%;
+}
+
+.centered-text {
+    text-align: center;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .guild-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .guild-info, .online-players, .buttons-container {
+        width: 100%;
+    }
+
+    .guild-info {
+        margin-bottom: 20px;
+    }
+
+    .guild-icon {
+        margin-bottom: 0;
+        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .guild-info h3 {
+        font-size: 1em;
+    }
+
+    .guild-info p {
+        font-size: 0.8em;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    nav a {
+        margin: 0 5px;
+    }
+
+    #menu-button {
+        top: 10px;
+        left: 10px;
+        padding: 5px;
+    }
+
+    footer {
+        padding: 5px 0;
+    }
+
+    .members-table, .seasons-table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .members-table thead, .seasons-table thead {
+        display: none;
+    }
+
+    .members-table tbody tr, .seasons-table tbody tr {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 10px;
+        background: #fff;
+    }
+
+    .members-table tbody td, .seasons-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+    }
+
+    .members-table tbody td::before, .seasons-table tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 40%;
+    }
+}
+
+.guild-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.guild-info {
+    flex: 1 1 55%;
+    padding-right: 20px;
+}
+
+.online-players {
+    flex: 1 1 40%;
+}
+
+.player-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.hidden {
+    display: none;
+}
+
+.buttons-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: green;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: darkgreen;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.members-card, .seasons-card {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.members-card ul, .seasons-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.members-card li, .seasons-card li {
+    margin-bottom: 10px;
+}
+
+.members-table, .seasons-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.members-table th, .seasons-table th,
+.members-table td, .seasons-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    cursor: pointer;
+}
+
+.members-table th.asc::after, .seasons-table th.asc::after,
+.members-table th.desc::after, .seasons-table th.desc::after {
+    content: " ";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    vertical-align: middle;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+.members-table th.asc::after, .seasons-table th.asc::after {
+    border-bottom: 5px solid #000;
+}
+
+.members-table th.desc::after, .seasons-table th.desc::after {
+    border-top: 5px solid #000;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+#guild-search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#guild-search-form input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+#guild-search-form button {
+    padding: 10px 20px;
+    background-color: green;
+    color: #fff;
+    border: 1px solid green;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#guild-search-form button:hover {
+    background-color: darkgreen;
+    transform: scale(1.05);
+}
+
+#guild-search-form button:active {
+    transform: scale(0.95);
+}
+
+.online-players ul {
+    list-style: none;
+    padding: 0;
+}
+
+.online-players li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.online-players .server-name {
+    min-width: 60px; 
+    margin-right: 10px;
+}
+
+.online-players .player-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.online-players .player-info {
+    display: flex;
+    align-items: center;
+}
+
+.online-players .player-name {
+    margin-right: 5px;
+}
+
+th {
+    cursor: pointer;
+}
+
+th.asc::after {
+    content: '↑';
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+th.desc::after {
+    content: '↓';
+    margin-left: 10px;
+    font-weight: bold;
+}

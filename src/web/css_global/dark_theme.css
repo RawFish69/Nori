@@ -1,0 +1,129 @@
+body {
+    background: #2c2c2c; 
+    color: #e8e8e8; 
+}
+
+.container {
+    background: #3b3b3b; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header {
+    background: #555555; 
+    color: #fff;
+}
+
+.install-link, nav a {
+    color: #e8e8e8; 
+}
+
+nav a:hover, .install-link:hover {
+    color: #FFD700;
+}
+
+footer {
+    background: #444444; 
+    color: #e8e8e8;
+    width: 100%;
+}
+
+.centered-text, .subtitle, .tooltip {
+    color: #e8e8e8; 
+}
+
+table {
+    background-color: #3b3b3b;
+}
+
+th, td {
+    border-bottom: 1px solid #555555;
+    color: #e8e8e8;
+}
+
+th {
+    background-color: #555555;
+}
+
+tr:nth-child(even) {
+    background-color: #2c2c2c;
+}
+
+tr:hover {
+    background-color: #444444;
+}
+
+button, .online-button, .centered-button, #uptimeButton, #toggleAllButton, .back-button, .search-bar button {
+    background-color: #555555;
+    color: #e8e8e8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .online-button:hover, .centered-button:hover, #uptimeButton:hover, #toggleAllButton:hover, .back-button:hover, .search-bar button:hover {
+    background-color: #666666;
+}
+
+button:active, .online-button:active, .centered-button:active, #uptimeButton:active, #toggleAllButton:active, .back-button:active, .search-bar button:active {
+    background-color: #4b4b4b;
+}
+
+
+.centered-text, .subtitle, .tooltip, .player-info, .install-link, .subtitle, #countdown-label, #build-count, #recipe-count {
+    color: #e8e8e8;
+}
+
+.panel.active, .player-card, .server, .guild-card, .members-card, .seasons-card, .region-title, .rarity-title {
+    background-color: #3b3b3b;
+    color: #e8e8e8;
+    box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+.build-card, .recipe-card {
+    background-color: #4c4c4c;
+    color: #e8e8e8;
+    box-shadow: rgba(0, 0, 0, 0.2);
+    border: 1px solid #646464;
+}
+
+.lootpool-card, .item-card {
+    background-color: #4c4c4c;
+    color: #e8e8e8;
+    box-shadow: rgba(0, 0, 0, 0.2);
+    border: 1px solid #646464;
+}
+
+.panel {
+    background: #4a4a4a;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.main-panel, .card, .scale-content, .lootpool-container {
+    background-color: #3b3b3b;
+    color: #e8e8e8;
+    border: 1px solid #646464;
+}
+
+.panel h2, .card h4, #chatHistory {
+    background-color: #555555;
+    color: #fff;
+
+}
+
+.panel-link, .checkbox-container input[type="checkbox"], .region-title, .rarity-title, .quote, .scale-weight, .scale-item, #suggestions-container, #build-search-form input[type="text"], #recipe-search-form input[type="text"] {
+    background-color: #3b3b3b;
+    color: #e8e8e8;
+    
+}
+
+.shiny-item {
+    background-color: #3b3b3b;
+    border-color: #555555;
+    color: #FFD700;
+}
+
+.mythic-color {
+    color: #e400e4;
+}

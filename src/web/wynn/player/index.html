@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../../fish_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori-Wynn Player Stats" />
+    <meta property="og:description" content="Player Stats for Wynncraft" />
+    <meta property="og:url" content="https://nori.fish/wynn/player" />
+    <meta property="og:type" content="website" />
+    <title>Nori-Wynn Player Stats</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../css_global/sidebar.css">
+    <link rel="stylesheet" href="../../css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@latest/dist/zero-md.min.js"></script>
+    <script type="text/javascript" src="../../js_global/sidebar.js"></script>
+    <script defer src="../../js_global/fetch_player.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../../js_global/analytics.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484"
+    data-overlays="bottom" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
+            <h1>Nori-Wynn</h1>
+        </div>
+        <nav>
+            <a href="https://nori.fish">Home</a>
+            <a href="https://nori.fish/wynn">Wynn</a>
+            <a href="https://discord.com/application-directory/873677970928193568" target="_blank">Nori-Bot (Discord)</a>
+            <a href="https://discord.gg/eDssA6Jbwd" target="_blank">Support Server</a>
+        </nav>
+    </header>
+
+    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar"></div>
+    <div class="container">
+        <div id="PlayerSearch" class="panel active">
+            <h2 class="centered-text">Player Stats Search</h2>
+            <form id="player-search-form" class="centered-text">
+                <div class="search-bar">
+                    <input type="text" id="player-name" name="player-name" placeholder="Enter player name">
+                    <button type="submit" class="search-button">Search</button>
+                </div>
+            </form>
+            <div id="player-results" class="results-container"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
+    </footer>
+</body>
+</html>

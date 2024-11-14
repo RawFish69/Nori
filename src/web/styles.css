@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header {
+    background: #708090;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.install-link {
+    color: #006eff;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFD700;
+}
+
+.language-selector {
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    color: white;
+}
+
+.language-selector select {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #70809000;
+    color: rgb(115, 231, 142);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    width: 100%;
+}
+.changelog {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.changelog-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #708090;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.changelog-button:hover {
+    background-color: #556070;
+}
+
+.install-button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.install-button:hover {
+    transform: scale(1.05);
+}
+
+.install-button:active {
+    transform: scale(0.95);
+}
+
+.discord-button {
+    background-color: #7289DA; 
+    color: white;
+}
+
+.discord-button:hover {
+    background-color: #5a6fae;
+}
+
+.discord-button:active {
+    background-color: #4b5d92;
+}
+
+.kook-button {
+    background-color: #32CD32;
+    color: white;
+}
+
+.kook-button:hover {
+    background-color: #28a828;
+}
+
+.kook-button:active {
+    background-color: #208820;
+}
+
+.web-button {
+    background-color: #808080; 
+    color: white;
+}
+
+.web-button:hover {
+    background-color: #6d6d6d;
+}
+
+.web-button:active {
+    background-color: #5c5c5c;
+}
