@@ -1,5 +1,6 @@
 """
-Description: Quick item save/search with v3 item database
+Author: RawFish
+Description: Quick item save/search with v3 item database integration
 API Documentation: https://documentation.wynncraft.com/docs/
 Update item db: python item_wrapper.py update-item [file_directory]
 Item search: python item_wrapper.py search -keyword [War] -itemType [mythic] ...
@@ -8,10 +9,15 @@ Item search: python item_wrapper.py search -keyword [War] -itemType [mythic] ...
 import requests
 import json
 import argparse
+from typing import Dict, Optional
 
 
 class Items:
     """v3 item wrapping - Synchronous"""
+
+    def __init__(self):
+        self.base_url = "https://api.wynncraft.com/v3"
+        self.beta_url = "https://api-legacy.wynncraft.com/v2"
 
     def fetch(self, url):
         response = requests.get(url)
@@ -21,9 +27,23 @@ class Items:
         response = requests.post(url, json=data)
         return response.json()
 
-    def get_all_items(self):
-        api_url = "https://api.wynncraft.com/v3/item/database?fullResult=True"
-        return self.fetch(api_url)
+    def get_all_items(self) -> Optional[Dict]:
+        """Fetch all items from main API"""
+        try:
+            response = requests.get(f"{self.base_url}/items")
+            return response.json() if response.status_code == 200 else None
+        except Exception as error:
+            print(f"API error: {error}")
+            return None
+
+    def get_beta_items(self) -> Optional[Dict]:
+        """Fetch items from beta/legacy API"""
+        try:
+            response = requests.get(f"{self.beta_url}/items/all")
+            return response.json() if response.status_code == 200 else None
+        except Exception as error:
+            print(f"Beta API error: {error}")
+            return None
 
     def get_metadata(self):
         url = "https://api.wynncraft.com/v3/item/metadata"
