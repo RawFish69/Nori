@@ -5,7 +5,7 @@ Description: Item string decoding and analysis utilities
 
 from typing import Dict, Optional
 from dataclasses import dataclass
-from wynntils.resolver import GearItemResolver
+from wynntilsresolver import GearItemResolver
 
 @dataclass
 class DecodedItem:
