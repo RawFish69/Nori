@@ -1,0 +1,143 @@
+header {
+    position: relative;
+}
+
+#menu-button {
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    background: #708090;
+    border: none;
+    padding: 10px;
+    z-index: 3; 
+    transition: left 0.25s, background-color 0.3s ease;
+}
+
+#menu-button.sidebar-active {
+    left: 300px;
+}
+
+#sidebar {
+    height: 86%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #708090;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: 0.25s;
+    padding-top: 100px;
+    scrollbar-width: thin;
+    scrollbar-color: #708090 #2f4f4f; 
+}
+
+#sidebar.active {
+    width: 300px;
+    overflow-y: auto; 
+}
+
+#sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+#sidebar a:hover {
+    background-color: #575757;
+}
+
+#menu-button.dark-mode {
+    background-color: #555555;
+    color: #FFFFFF;
+}
+
+#sidebar.dark-mode {
+    background-color: #555555;
+    scrollbar-color: #555555 #3b3b3b; 
+}
+
+#sidebar.dark-mode a {
+    color: white;
+}
+
+#sidebar.dark-mode a:hover {
+    background-color: #444444;
+}
+
+#sidebar.dark-mode .sub-menu {
+    background-color: #444444;
+}
+
+#sidebar::-webkit-scrollbar {
+    width: 12px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: #2f4f4f;
+    border-radius: 10px;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: #708090; 
+    border-radius: 10px;
+    border: 3px solid #2f4f4f; 
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+    background: #556070; 
+}
+
+.sub-menu {
+    display: none;
+    background-color: #556070;
+    padding-left: 20px;
+}
+
+.sub-menu a {
+    font-size: 16px !important;
+    padding: 8px 15px; 
+}
+
+.sub-menu.active {
+    display: block;
+}
+
+.theme-button {
+    padding: 5px 10px;
+    background-color: #708090; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.theme-button:hover {
+    background-color: #556070;
+}
+
+.theme-button:active {
+    background-color: #394450;
+}
+
+.theme-button.dark-mode {
+    background-color: #555555; 
+    color: #FFFFFF; 
+}
+
+.theme-button.dark-mode:hover {
+    background-color: #444444; 
+}
+
+.theme-button.dark-mode:active {
+    background-color: #333333; 
+}

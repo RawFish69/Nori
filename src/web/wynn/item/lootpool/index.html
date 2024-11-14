@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../../../fish_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori-Wynn Item Lootpool" />
+    <meta property="og:description" content="Item Weekly Lootpool Rotation" />
+    <meta property="og:url" content="https://nori.fish/wynn/item/lootpool" />
+    <meta property="og:type" content="website" />
+    <meta name="session-token" content="">
+    <title>Nori-Wynn Item Lootpool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../../css_global/default.css">
+    <link rel="stylesheet" href="../../../css_global/sidebar.css">
+    <link rel="stylesheet" href="../../../css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <script src="../../../js_global/sidebar.js"></script>
+    <script src="../../../js_global/fetch_lootpool.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../../../js_global/analytics.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484"
+    data-overlays="bottom" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
+            <h1>Nori-Wynn</h1>
+        </div>
+        <nav>
+            <a href="https://nori.fish">Home</a>
+            <a href="https://nori.fish/wynn">Wynn</a>
+            <a href="https://nori.fish/wynn/item">Item</a>
+            <a href="https://discord.gg/eDssA6Jbwd" target="_blank">Discord</a>
+        </nav>
+    </header>
+    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar"></div>
+    <div class="container">
+        <div class="feature">
+            <h2 id="lootpool-title">Updating Lootpool Content...</h2>
+            <p style="text-align: center; font-size: 1.3em;">Join <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="install-link">Community Discord</a> to follow Nori updates & post feedbacks</p>
+            <div id="lootpool-filters" class="checkbox-container">
+                <label><input type="checkbox" id="toggle-mythic" checked>Mythic</label>
+                <label><input type="checkbox" id="toggle-fabled">Fabled</label>
+                <label><input type="checkbox" id="toggle-legendary">Legendary</label>
+                <label><input type="checkbox" id="toggle-rare">Rare</label>
+                <label><input type="checkbox" id="toggle-unique">Unique</label>
+            </div>
+            <div id="lootpool" class="lootpool-container"></div>
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <button id="aspect-button" class="aspect-button" onclick="window.location.href='https://nori.fish/wynn/aspects'">
+                    Raid Aspect Lootpool
+                </button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
+    </footer>
+</body>
+</html>

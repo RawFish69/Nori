@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+header {
+    background: #708090; 
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+.install-link {
+    color: #006eff; 
+}
+header nav {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+header nav a:hover {
+    color: #ffd700;
+}
+h1 {
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#inputForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#userInput {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: vertical; 
+    height: 200px; 
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#clearHistory, #sendButton {
+    padding: 10px 20px;
+    background-color: #708090;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#clearHistory:hover, #sendButton:hover {
+    background-color: #556070;
+}
+
+/* Chat history and output styles */
+#chatHistory {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+#output {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    #userInput {
+        width: 100%; 
+        height: 200px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #clearHistory, #sendButton {
+        width: 100%;
+    }
+}
+
+
+#inputForm button {
+    padding: 10px 20px;
+    background-color: #708090;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#inputForm button:hover {
+    background-color: #556070;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #708090;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #556070;
+}
+#chatHistory {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 300px;
+    overflow-y: scroll;
+}
+#output {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: white;
+    margin-top: 20px;
+}

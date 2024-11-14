@@ -1,0 +1,218 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header {
+    background: #708090;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.install-link {
+    color: #006eff;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFD700;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    width: 100%;
+}
+
+.centered-text {
+    text-align: center;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.players-list {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); 
+    gap: 10px;
+}
+
+
+@media (max-width: 1024px) {
+    .players-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .players-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .players-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.server {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.server-uptime {
+    font-size: 0.8em;
+    color: #FFD700;
+    margin-left: 10px;
+}
+
+.server-header {
+    position: relative;
+    background: #708090;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.players-list .server-header:hover {
+    background-color: #a2f3eb !important;
+    transform: scale(1.05);
+}
+
+.players-list .server-header:active {
+    background-color: #50c4b8 !important;
+    transform: scale(1);
+}
+
+.server-body.collapsed {
+    display: none;
+}
+
+.server-body {
+    display: block;
+    padding: 10px;
+}
+
+.server-body ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.server-body li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.server-body li:last-child {
+    border-bottom: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+
+#uptimeButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #708090;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#uptimeButton:hover {
+    background-color: #556070;
+    transform: translateX(-50%) scale(1.05);
+}
+
+#uptimeButton:active {
+    background-color: #3a4a5a;
+    transform: translateX(-50%) scale(1);
+}
+
+
+#toggleAllButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #3eb2a2; 
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    position: absolute;
+    left: 90%;
+    transform: translateX(-90%);
+}
+
+#toggleAllButton:hover {
+    background-color: #26655d; 
+    transform: translateX(-90%) scale(1.05);
+}
+
+#toggleAllButton:active {
+    background-color: #348d81; 
+    transform: translateX(-90%) scale(1);
+}
+
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    pointer-events: none;
+    display: none;
+    z-index: 1000;
+}

@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header {
+    background: #708090;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.install-link {
+    color: #006eff;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFD700;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    width: 100%;
+}
+
+.centered-text {
+    text-align: center;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.table-container {
+    width: 60%;
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #708090;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+.online-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 16px;
+    background-color: #64abae;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 3s ease-in-out, transform 0.3s ease;
+    width: 150px;
+    text-align: center;
+}
+
+.online-button:hover {
+    background-color: #556070;
+    transform: scale(1.05);
+}
+
+.online-button:active {
+    background-color: #3a4a5a;
+    transform: scale(1);
+}
+
+@media (max-width: 600px) {
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        display: inline-block;
+        text-align: left;
+        width: 25%;  
+    }
+
+    th::before, td::before {
+        display: none;  
+    }
+}

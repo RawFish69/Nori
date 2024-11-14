@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../../../fish_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori-Wynn Item Simulation" />
+    <meta property="og:description" content="Item Simulation for Wynncraft" />
+    <meta property="og:url" content="https://nori.fish/wynn/simulation" />
+    <meta property="og:type" content="website" />
+    <title>Nori-Wynn Item Simulation</title>
+    <link rel="stylesheet" href="../../../css_global/sidebar.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../../css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <script type="text/javascript" src="../../../js_global/sidebar.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../../../js_global/analytics.js"></script>
+    <script src="../../../js_global/item_rendering.js"></script>
+    <script src="../../../js_global/item_rerolling.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484"
+    data-overlays="bottom" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
+            <h1>Nori-Wynn</h1>
+        </div>
+        <nav>
+            <a href="https://nori.fish">Home</a>
+            <a href="https://nori.fish/wynn">Wynn</a>
+            <a href="https://discord.com/application-directory/873677970928193568" target="_blank">Nori-Bot (Discord)</a>
+            <a href="https://discord.gg/eDssA6Jbwd" target="_blank">Support Server</a>
+        </nav>
+    </header>
+    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar"></div>
+    <div class="container">
+        <div id="ItemSimulation" class="panel">
+            <h2 class="centered-text">Item Simulation</h2>
+            <p class="quote">"99% of gamblers quit before hitting it big"</p>
+            <form id="item-simulation-form" class="centered-text">
+                <div class="analysis-bar">
+                    <input type="text" id="item-name" name="item_name" placeholder="Enter item name" oninput="showSuggestions(this.value)">
+                    <div id="suggestions-container"></div>
+                    <select id="amplifier-tier" name="amplifier_tier" class="amplifier-dropdown">
+                        <option value="" disabled selected>Amp Tier</option>
+                    </select>
+                    <button type="submit" id="search-button">Search</button>
+                </div>
+            </form>
+            <div id="simulation-results" class="results-container reroll-results"></div>
+            <button id="reroll-button" class="reroll-button" style="display:none;">Reroll</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
+    </footer>
+</body>
+</html>

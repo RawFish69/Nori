@@ -1,0 +1,255 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background: #708090;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFD700;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    width: 100%;
+}
+
+.page-title{
+    text-align: center;
+    color: #ca00ca;
+}
+
+.filter-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.info-link {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.info-link a {
+    color: #00ccff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.info-link a:hover {
+    color: #0071dc;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.checkbox-container label {
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.checkbox-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#item-type-dropdown {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.item-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.item-card {
+    width: calc(30% - 20px); 
+    background-color: #333; 
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.item-card.full-row {
+    width: 100%;
+}
+
+.item-icon {
+    width: 75px;
+    height: 75px;
+    display: block;
+    margin: 0 auto;
+}
+
+.item-card h3 {
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.item-scale {
+    margin: 2px 0; 
+}
+
+.item-owner {
+    margin: 2px 0; 
+}
+
+.shiny-icon {
+    width: 25px; 
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.item-card .item-stats,
+.item-card .item-scales {
+    margin-top: 10px;
+}
+
+.item-card .item-scales .scale {
+    cursor: pointer;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.item-card .item-scales .scale:hover {
+    background-color: #444;
+}
+
+.item-card .stat-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 2px 0;
+}
+
+.item-card .stat-value {
+    flex: 1;
+    text-align: left;
+}
+
+.item-card .stat-name {
+    flex: 2;
+    text-align: center;
+}
+
+.item-card .stat-rate {
+    flex: 1;
+    text-align: right;
+    margin-right: 2px;
+}
+
+.scale-details {
+    display: none;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.show-scales-btn {
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FF7F50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; 
+}
+
+.show-scales-btn:hover {
+    background-color: #FF6347;
+}
+
+.show-scales-btn:active {
+    background-color: #FF4500;
+}
+
+.scale-row {
+    margin-bottom: 5px; 
+}
+
+.scale-spacing {
+    margin: 10px 0; 
+}
+
+.scale-row span {
+    display: block;
+}
+
+.footer-info {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .item-card {
+        width: 100%;
+    }
+    .checkbox-container {
+        flex-direction: column;
+    }
+}
