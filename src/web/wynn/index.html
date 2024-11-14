@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../fish_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori-Wynn" />
+    <meta property="og:description" content="Nori-Web Wynncraft Features" />
+    <meta property="og:url" content="https://nori.fish/wynn" />
+    <meta property="og:type" content="website" />
+    <title>Nori-Wynn</title>
+    <link rel="stylesheet" href="../css_global/default.css">
+    <link rel="stylesheet" href="../css_global/sidebar.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <script type="text/javascript" src="../js_global/sidebar.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../js_global/analytics.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484"
+    data-overlays="bottom" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
+            <h1>Nori-Wynn</h1>
+        </div>
+        <nav>
+            <a href="https://nori.fish">Home</a>
+            <a href="https://nori.fish/docs">Docs</a>
+            <a href="https://discord.com/application-directory/873677970928193568" target="_blank">Nori-Bot (Discord)</a>
+            <a href="https://discord.gg/eDssA6Jbwd" target="_blank">Support Server</a>
+        </nav>
+    </header>
+
+    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar"></div>
+    <div class="container">
+        <div class="main-panel">
+            <div class="panel">
+                <h2>Items</h2>
+                <div class="panel-content">
+                    <a href="https://nori.fish/wynn/item/analysis" class="panel-link">
+                        <div class="card">
+                            <h4>Item Analysis</h4>
+                            <p>Analyze items to decode IDs, show scales and weights.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/item/lootpool" class="panel-link">
+                        <div class="card">
+                            <h4>Item Lootpool</h4>
+                            <p>View Lootrun Reward Lootpool.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/aspects" class="panel-link">
+                        <div class="card">
+                            <h4>Aspect Lootpool</h4>
+                            <p>View Raid Aspect Rewards</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/item/simulation" class="panel-link">
+                        <div class="card">
+                            <h4>Item Simulation</h4>
+                            <p>Simulate item identification.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/item/changelog" class="panel-link">
+                        <div class="card">
+                            <h4>Item Changelog</h4>
+                            <p>View Full item changelog, generated from API data.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/item/mythic" class="panel-link">
+                        <div class="card">
+                            <h4>Mythic Items</h4>
+                            <p>Top Mythic Items in game, and mythic scales.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="panel">
+                <h2>Builds</h2>
+                <div class="panel-content">
+                    <a href="https://nori.fish/wynn/build" class="panel-link">
+                        <div class="card">
+                            <h4>Class Build Search</h4>
+                            <p>Search for class builds.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/recipe" class="panel-link">
+                        <div class="card">
+                            <h4>Recipe Search</h4>
+                            <p>Search for crafted recipes.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/showcase" class="panel-link">
+                        <div class="card">
+                            <h4>Build Showcase</h4>
+                            <p>Showcase of builds that are meta, new, or interesting.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="panel">
+                <h2>Leaderboards</h2>
+                <div class="panel-content">
+                    <a href="https://nori.fish/wynn/leaderboard" class="panel-link">
+                        <div class="card">
+                            <h4>Menu</h4>
+                            <p>Leaderboard selection menu</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/leaderboard/?type=guilds&category=raids_total&page=1" class="panel-link">
+                        <div class="card">
+                            <h4>Guilds</h4>
+                            <p>View Guild leaderboards.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/leaderboard/?type=raids&category=raids_total&page=1" class="panel-link">
+                        <div class="card">
+                            <h4>Raids</h4>
+                            <p>View raid leaderboards.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/leaderboard/?type=stats&category=chests&page=1" class="panel-link">
+                        <div class="card">
+                            <h4>Stats</h4>
+                            <p>View statistics leaderboards.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/leaderboard/?type=professions&category=professionsGlobal&page=1" class="panel-link">
+                        <div class="card">
+                            <h4>Professions</h4>
+                            <p>View profession leaderboards.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <div class="panel">
+                <h2>Stats</h2>
+                <div class="panel-content">
+                    <a href="https://nori.fish/wynn/player" class="panel-link">
+                        <div class="card">
+                            <h4>Player Stats</h4>
+                            <p>View player statistics.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/guild" class="panel-link">
+                        <div class="card">
+                            <h4>Guild Stats</h4>
+                            <p>View guild statistics.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/online" class="panel-link">
+                        <div class="card">
+                            <h4>Online Activity</h4>
+                            <p>View online players.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="panel">
+                <h2>Utility</h2>
+                <div class="panel-content">
+                    <a href="https://nori.fish/wynn/uptime" class="panel-link">
+                        <div class="card">
+                            <h4>Server Uptime</h4>
+                            <p>Check server uptime.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/uptime" class="panel-link">
+                        <div class="card">
+                            <h4>Soul Point Timer</h4>
+                            <p>Check soul point timer.</p>
+                        </div>
+                    </a>
+                    <a href="https://nori.fish/wynn/tower" class="panel-link">
+                        <div class="card">
+                            <h4>Guild Tower Stats</h4>
+                            <p>View guild tower statistics.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="panel">
+                <h2>About</h2>
+                <div class="panel-content">
+                    <a href="https://nori.fish/wynn/credit" target="_blank" class="panel-link">
+                        <div class="card">
+                            <h4>Credits</h4>
+                            <p>Contributors, in no particular order.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/@RawFish69" target="_blank" class="panel-link">
+                        <div class="card">
+                            <h4>My Youtube Channel</h4>
+                            <p>If you like my tools, feel free to subscribe to my channel.</p>
+                        </div>
+                    </a>
+                    <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="panel-link">
+                        <div class="card">
+                            <h4>Community Discord</h4>
+                            <p>For Feedback, Bug Report, and Chat with Developer & Contributors</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
+    </footer>
+</body>
+</html>

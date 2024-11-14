@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background: #708090;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFD700;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    width: 100%;
+}
+
+.main-panel {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.panel {
+    flex: 1 1 calc(50% - 20px);
+    margin: 10px;
+    background: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+}
+
+.panel h2 {
+    background: #5a8fc5;
+    color: white;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    margin: 0;
+    text-align: center;
+}
+
+.panel-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+    .panel {
+        flex: 1 1 calc(50% - 20px);
+    }
+
+    .card {
+        max-width: 100%; 
+    }
+    .main-panel {
+        flex-direction: column;
+    }
+}
+
+.build-showcase {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.build-link {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 22px; 
+    font-weight: bold;
+    color: #006eff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-align: center; 
+}
+
+.build-link:hover {
+    color: #FFD700;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto; 
+    height: auto; 
+    box-sizing: border-box;
+}
+
+.card iframe {
+    width: 100%;
+    height: 315px; 
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin: 0;
+}

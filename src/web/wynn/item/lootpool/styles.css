@@ -1,0 +1,420 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header {
+    background: #708090;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFD700;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    width: 100%;
+}
+
+.feature {
+    margin-bottom: 20px;
+}
+
+.install-link {
+    color: #006eff;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: flex-start; 
+    gap: 15px; 
+    margin-top: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.checkbox-container label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+    width: 25px; 
+    height: 25px; 
+    cursor: pointer;
+    appearance: none;
+    border: 1px solid #0077B6; 
+    border-radius: 5px; 
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.checkbox-container input[type="checkbox"].mythic:checked {
+    background-color: #AA00AA; 
+    border-color: #AA00AA;
+}
+
+.checkbox-container input[type="checkbox"].fabled:checked {
+    background-color: #FF5555; 
+    border-color: #FF5555;
+}
+
+.checkbox-container input[type="checkbox"].legendary:checked {
+    background-color: #14cece;
+    border-color: #14cece;
+}
+
+.checkbox-container input[type="checkbox"].rare:checked {
+    background-color: #FF55FF;
+    border-color: #FF55FF;
+}
+
+.checkbox-container input[type="checkbox"].unique:checked {
+    background-color: #c1c11f; 
+    border-color: #c1c11f;
+}
+
+.lootpool {
+    margin-bottom: 20px;
+}
+
+.region-title {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+    user-select: none;
+    text-align: left;
+    display: inline-block;
+    width: auto;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.region-title:hover {
+    background-color: #ddd;
+    border-color: #aaa;
+}
+
+.region-title:active {
+    background-color: #ccc;
+    border-color: #888;
+}
+
+.shiny-item {
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: #e2e2e2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.rarity-title {
+    background-color: #e2e2e2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.lootpool ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lootpool li {
+    background-color: #f9f9f9;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.shiny-color {
+    color: #FFAA00;
+}
+
+.mythic-color {
+    color: #AA00AA;
+}
+
+.fabled-color {
+    color: #FF5555;
+}
+
+.legendary-color {
+    color: #14cece;
+}
+
+.rare-color {
+    color: #FF55FF;
+}
+
+.unique-color {
+    color: #c1c11f;
+}
+
+#countdown-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; 
+    flex-wrap: wrap; 
+}
+
+.countdown-container {
+    display: flex;
+    gap: 10px; 
+    flex-wrap: nowrap;
+}
+
+.countdown-segment {
+    background-color: #708090;
+    color: white;
+    padding: 10px 15px; 
+    border-radius: 10px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px; 
+    font-size: 1.5em; 
+}
+
+.countdown-segment span {
+    font-size: 0.8em; 
+    color: #ffffff;
+}
+
+#countdown-label {
+    font-size: 1em;
+    color: #333;
+    font-weight: bold;
+    margin-right: 20px; 
+    text-align: center; 
+}
+
+#countdown div {
+    font-size: 0.9em;
+}
+
+.lootpool-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.lootpool-card {
+    flex: 1 1 15%; 
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.lootpool-card:hover {
+    transform: translateY(-5px);
+}
+
+.lootpool-card-content {
+    display: none;
+}
+
+.lootpool-card.active .lootpool-card-content {
+    display: block;
+}
+
+.item-icon {
+    width: 35px;  
+    height: 35px; 
+    margin-right: 10px; 
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.shiny-icon {
+    width: 30px;  
+    height: 30px; 
+    margin-right: 5px; 
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.shiny-item {
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: #e2e2e2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.shiny-item .label {
+    color: #000; 
+    display: block;
+}
+
+.shiny-item .item-name {
+    color: #e7c500; 
+    display: inline;
+}
+
+.shiny-item .tracker {
+    font-weight: normal;
+    font-style: italic;
+    color: rgb(0, 150, 50); 
+    display: inline;
+}
+
+#lootpool-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#lootpool-filters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+    .lootpool-card {
+        flex: 1 1 45%; 
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    nav a {
+        margin: 0 5px;
+    }
+
+    .lootpool-card {
+        flex: 1 1 100%; 
+    }
+
+    .checkbox-container {
+        display: flex;
+        justify-content: flex-start; 
+        gap: 15px; 
+        margin-top: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .checkbox-container label {
+        font-size: 14px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        width: 25px; 
+        height: 25px;
+    }
+
+
+    .countdown-container {
+        display: flex;
+        gap: px; 
+        flex-wrap: nowrap;
+    }
+
+    .countdown-segment {
+        background-color: #708090;
+        color: white;
+        padding: 10px 15px; 
+        border-radius: 10px; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 10%; 
+        font-size: 1.2em; 
+    }
+
+    .countdown-segment span {
+        font-size: 0.8em; 
+        color: #ffffff;
+    }
+
+    #countdown-label {
+        font-size: 1em;
+        color: #333;
+        font-weight: bold;
+        margin-right: 20px; 
+        text-align: center; 
+    }
+}
+
+.aspect-button {
+    background-color: #21b600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.aspect-button:hover {
+    background-color: #1b9500;
+}

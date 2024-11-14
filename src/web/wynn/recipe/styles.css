@@ -1,0 +1,341 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header {
+    background: #708090;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.install-link {
+    color: #006eff;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFD700;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    width: 100%;
+}
+
+.centered-text {
+    text-align: center;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.table-container {
+    width: 60%;
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #708090;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    #recipe-search-form input[type="text"] {
+        width: 100%;
+    }
+
+    .checkbox-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .checkbox-container label {
+        flex: 1 1 30%;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    .recipe-card {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .recipe-icon {
+        margin-bottom: 0;
+        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .recipe-info h3 {
+        font-size: 1em;
+    }
+
+    .recipe-info p {
+        font-size: 0.8em;
+    }
+
+    .pagination-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .pagination-container button {
+        margin: 3px;
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    nav a {
+        margin: 0 5px;
+    }
+
+    #menu-button {
+        top: 10px;
+        left: 10px;
+        padding: 5px;
+    }
+
+    footer {
+        padding: 5px 0;
+    }
+}
+
+#recipe-search-form {
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#recipe-search-form input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 300px; 
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px; 
+    box-sizing: border-box;
+}
+
+#recipe-search-form button {
+    padding: 10px 20px;
+    background-color: #00b312;
+    color: #fff;
+    border: 1px solid #00b312;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#recipe-search-form button:hover {
+    background-color: #008a0e;
+    transform: scale(1.05);
+}
+
+#recipe-search-form button:active {
+    transform: scale(0.95);
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-group label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    appearance: none;
+    border: 1px solid #00b312;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: #00b312;
+    border-color: #00b312;
+}
+
+
+.results-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.recipe-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.recipe-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 4px;
+}
+
+.recipe-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.recipe-info p {
+    margin: 5px 0;
+}
+
+.no-results, .search-warning {
+    text-align: center;
+    font-size: 1.5em; 
+    color: #ff0000;
+    margin: 20px 0;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.pagination-container button {
+    margin: 5px;
+    padding: 8px 12px;
+    background-color: #00b312;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1em;
+}
+
+.pagination-container button:hover {
+    background-color: #005f8a;
+    transform: scale(1.05);
+}
+
+.pagination-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#recipe-count {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: #666;
+}
+
+.bold-number {
+    font-weight: bold;
+}

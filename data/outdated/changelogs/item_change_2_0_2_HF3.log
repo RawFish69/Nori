@@ -1,0 +1,892 @@
+Item changelog - Updated from API
+3804 total items scanned
+New Items: 7, Items Removed: 0, Items changed: 292
+Item Changes: 
+Eidolon:
+dropMeta: weapon -> {'coordinates': '-1746,65,-3069', 'name': 'Aerie of the Recluse', 'type': 'altar'}
+
+Nona:
+dropMeta: weapon -> {'coordinates': '-1746,65,-3069', 'name': 'Aerie of the Recluse', 'type': 'altar'}
+
+Dondasch:
+dropMeta: armor -> {'coordinates': '-1746,65,-3069', 'name': 'Aerie of the Recluse', 'type': 'altar'}
+
+Summa:
+dropMeta: accessory -> {'coordinates': '-1573,27,-3204', 'name': 'Geyser Pit', 'type': 'altar'}
+
+Breakbore:
+dropMeta: weapon -> {'coordinates': '-1573,27,-3204', 'name': 'Geyser Pit', 'type': 'altar'}
+
+Back-up Plan:
+dropMeta: accessory -> {'coordinates': '-711,58,-657', 'name': 'Tribal Sanctuary', 'type': 'altar'}
+
+Helm Splitter:
+dropMeta: weapon -> {'coordinates': '-711,58,-657', 'name': 'Tribal Sanctuary', 'type': 'altar'}
+
+Quick-Strike Leggings:
+dropMeta: armor -> {'coordinates': '-711,58,-657', 'name': 'Tribal Sanctuary', 'type': 'altar'}
+
+Greenhoof:
+dropMeta: armor -> {'coordinates': '471,44,-2912', 'name': 'Bovine Barn', 'type': 'altar'}
+
+Tera:
+dropMeta: armor -> {'coordinates': '-1573,27,-3204', 'name': 'Geyser Pit', 'type': 'altar'}
+
+The Scarecrow's Vest:
+dropMeta: armor -> {'coordinates': '471,44,-2912', 'name': 'Bovine Barn', 'type': 'altar'}
+
+Durum's Serenity:
+dropMeta: accessory -> {'coordinates': '471,44,-2912', 'name': 'Bovine Barn', 'type': 'altar'}
+
+Ohonte Kerhite:
+dropMeta: weapon -> {'coordinates': '-911,73,-1068', 'name': 'Altar of Sanctification', 'type': 'altar'}
+
+Kahontsi Ohstyen:
+dropMeta: weapon -> {'coordinates': '-911,73,-1068', 'name': 'Altar of Sanctification', 'type': 'altar'}
+
+Onenya Hronkas:
+dropMeta: armor -> {'coordinates': '-911,73,-1068', 'name': 'Altar of Sanctification', 'type': 'altar'}
+
+Blade of Shade:
+dropMeta: weapon -> {'coordinates': '-802,76,-5394', 'name': 'Challenge of the Blades', 'type': 'altar'}
+
+Shackle of Shade:
+dropMeta: accessory -> {'coordinates': '-802,76,-5394', 'name': 'Challenge of the Blades', 'type': 'altar'}
+
+Shadestep:
+dropMeta: armor -> {'coordinates': '-802,76,-5394', 'name': 'Challenge of the Blades', 'type': 'altar'}
+
+Plague Mask:
+dropMeta: armor -> {'coordinates': '-1833,46,-5259', 'name': 'Plague Laboratory', 'type': 'altar'}
+
+Plague Staff:
+dropMeta: weapon -> {'coordinates': '-1833,46,-5259', 'name': 'Plague Laboratory', 'type': 'altar'}
+
+Purification Bead:
+dropMeta: accessory -> {'coordinates': '-1833,46,-5259', 'name': 'Plague Laboratory', 'type': 'altar'}
+
+Dissociation:
+dropMeta: armor -> {'coordinates': '1332,11,-516', 'name': 'Bottomless Pit', 'type': 'altar'}
+
+Redrock Bandanna:
+dropMeta: armor -> {'coordinates': '1417,100,-1462', 'name': 'Sunrise Canyon', 'type': 'altar'}
+
+Anxiolytic:
+dropMeta: armor -> {'coordinates': '1332,11,-516', 'name': 'Bottomless Pit', 'type': 'altar'}
+
+Panic Zealot:
+dropMeta: weapon -> {'coordinates': '1332,11,-516', 'name': 'Bottomless Pit', 'type': 'altar'}
+
+Deadeye:
+dropMeta: weapon -> {'coordinates': '1417,100,-1462', 'name': 'Sunrise Canyon', 'type': 'altar'}
+
+Haros' Oar:
+dropMeta: weapon -> {'coordinates': '321,32,-2035', 'name': 'Rotten Passage', 'type': 'altar'}
+
+Crossbolt:
+dropMeta: weapon -> {'coordinates': '321,32,-2035', 'name': 'Rotten Passage', 'type': 'altar'}
+
+Sundown Poncho:
+dropMeta: armor -> {'coordinates': '1417,100,-1462', 'name': 'Sunrise Canyon', 'type': 'altar'}
+
+Obolus:
+dropMeta: armor -> {'coordinates': '321,32,-2035', 'name': 'Rotten Passage', 'type': 'altar'}
+
+Trainer's Pendant:
+dropMeta: accessory -> {'coordinates': '-692,73,-1068', 'name': 'Arena of the Legends', 'type': 'altar'}
+
+Stave of the Legends:
+dropMeta: weapon -> {'coordinates': '-692,73,-1068', 'name': 'Arena of the Legends', 'type': 'altar'}
+
+Legend Guard's Plate:
+dropMeta: armor -> {'coordinates': '-692,73,-1068', 'name': 'Arena of the Legends', 'type': 'altar'}
+
+Constrict Collar:
+dropMeta: accessory -> {'coordinates': '51,68,-485', 'name': 'Prison of Souls', 'type': 'altar'}
+
+Shackles of the Beast:
+dropMeta: armor -> {'coordinates': '51,68,-485', 'name': 'Prison of Souls', 'type': 'altar'}
+
+Binding Brace:
+dropMeta: accessory -> {'coordinates': '51,68,-485', 'name': 'Prison of Souls', 'type': 'altar'}
+
+Marius' Prison:
+dropMeta: armor -> {'coordinates': '51,68,-485', 'name': 'Prison of Souls', 'type': 'altar'}
+
+Capsid Frame:
+dropMeta: armor -> {'coordinates': '-1025,95,-3657', 'name': 'Magmastream Core', 'type': 'altar'}
+
+Crystal Coil:
+dropMeta: armor -> {'coordinates': '-1025,95,-3657', 'name': 'Magmastream Core', 'type': 'altar'}
+
+Bonder:
+dropMeta: weapon -> {'coordinates': '1296,19,-4670', 'name': '??????????', 'type': 'altar'}
+
+Phage Pins:
+dropMeta: armor -> {'coordinates': '-1025,95,-3657', 'name': 'Magmastream Core', 'type': 'altar'}
+
+Lower:
+dropMeta: weapon -> {'coordinates': '1296,19,-4670', 'name': '??????????', 'type': 'altar'}
+
+Braker:
+dropMeta: weapon -> {'coordinates': '1296,19,-4670', 'name': '??????????', 'type': 'altar'}
+
+Slider:
+dropMeta: weapon -> {'coordinates': '1296,19,-4670', 'name': '??????????', 'type': 'altar'}
+
+Anthem:
+dropMeta: weapon -> {'coordinates': '-345,35,-3970', 'event': 'bonfire', 'name': 'Isles of Fiction', 'type': ['event', 'merchant']}
+
+Autumn Leaves:
+dropMeta: armor -> {'coordinates': '-345,35,-3970', 'event': 'bonfire', 'name': 'Isles of Fiction', 'type': ['event', 'merchant']}
+
+Midnight Sun:
+dropMeta: armor -> {'coordinates': '-345,35,-3970', 'event': 'bonfire', 'name': 'Isles of Fiction', 'type': ['event', 'merchant']}
+
+Cicada:
+dropMeta: weapon -> {'coordinates': '-345,35,-3970', 'event': 'bonfire', 'name': 'Isles of Fiction', 'type': ['event', 'merchant']}
+
+Marshmallow:
+dropMeta: armor -> {'coordinates': '-345,35,-3970', 'event': 'bonfire', 'name': 'Isles of Fiction', 'type': ['event', 'merchant']}
+
+Mosquito:
+dropMeta: weapon -> {'coordinates': '-345,35,-3970', 'event': 'bonfire', 'name': 'Isles of Fiction', 'type': ['event', 'merchant']}
+
+Storyteller:
+dropMeta: weapon -> {'coordinates': '-345,35,-3970', 'event': 'bonfire', 'name': 'Isles of Fiction', 'type': ['event', 'merchant']}
+
+Seabreeze:
+dropMeta: armor -> {'coordinates': '-345,35,-3970', 'event': 'bonfire', 'name': 'Isles of Fiction', 'type': ['event', 'merchant']}
+
+Sharpened Seaglass:
+dropMeta: weapon -> {'coordinates': '-345,35,-3970', 'event': 'bonfire', 'name': 'Isles of Fiction', 'type': ['event', 'merchant']}
+
+Bane:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Corrupted Witherhead's Bow:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Depth:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Demonio:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Destructor:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Nightmare:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Corrupted Nii Shako:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Void:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Brigantine:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': "Corrupted Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Wall Breaker:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Sorrow:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Atakebune:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': "Corrupted Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Dreadnought:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': "Corrupted Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Frigate:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': "Corrupted Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Privateer:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': "Corrupted Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Skipjack:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': "Corrupted Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Mistico:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': "Corrupted Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Skidbladnir:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': "Corrupted Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Xebec:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': "Corrupted Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Brace of the Ninth:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Closure:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Desperation:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Conduit of Spirit:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Nauticals:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Final Compulsion:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Pulse Starter:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Gaze from the Snowbank:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Peaceful Rest:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Pulse Stopper:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Corrupted Uth Sandals:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Ghoul:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Infested Pit', 'type': 'dungeonMerchant'}
+
+Rune of Safe Passage:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+The Crossing:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Ice Barrows', 'type': 'dungeonMerchant'}
+
+Nest:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Infested Pit', 'type': 'dungeonMerchant'}
+
+Paranoia:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Salticidae:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Infested Pit', 'type': 'dungeonMerchant'}
+
+Corrupted Nii Plate:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Infested Pit', 'type': 'dungeonMerchant'}
+
+Vanguard:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Infested Pit', 'type': 'dungeonMerchant'}
+
+Fire Sanctuary:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Scytodidae:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Infested Pit', 'type': 'dungeonMerchant'}
+
+Earth Sanctuary:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Corrupted Nii Mukluk:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Air Sanctuary:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Rainbow Sanctuary:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Centipede:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Thunder Sanctuary:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Water Sanctuary:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Dust Skaters:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Golden Scarab:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Dune Storm:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Infidel:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Judas:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Lion's Pelt:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Manna:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Achilles:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Corrupted Uth Belt:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Plague:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Black Catalyst:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Sacramentalia:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Argos:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Ossuary:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Prognosticum:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Salpinx:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Corrupted Uth Plume:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Drain:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Tophet:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Dying Lobelia:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Black Amaranth:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Orange Lily:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Forest Aconite:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Royal Hydrangea:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Flashfire Knuckle:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Yellow Rose:
+dropMeta: weapon -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Flashfire Gauntlet:
+dropMeta: accessory -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Corpse:
+dropMeta: weapon -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Macabre:
+dropMeta: weapon -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Knee:
+dropMeta: armor -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Ribcage:
+dropMeta: armor -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Defibrillator:
+dropMeta: weapon -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Serpent's Kiss:
+dropMeta: weapon -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Sketiq:
+dropMeta: weapon -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Stale:
+dropMeta: weapon -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Skull Breaker:
+dropMeta: weapon -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+Witherhead's Talisman:
+dropMeta: accessory -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeonMerchant'}
+
+The Exploited:
+dropMeta: weapon -> {'coordinates': '1290,55,-738', 'name': 'Eldritch Outlook', 'type': 'dungeonMerchant'}
+
+Ambivalence:
+dropMeta: accessory -> {'coordinates': '1290,55,-738', 'name': 'Eldritch Outlook', 'type': 'dungeonMerchant'}
+
+The Forsaken:
+dropMeta: weapon -> {'coordinates': '1290,55,-738', 'name': 'Eldritch Outlook', 'type': 'dungeonMerchant'}
+
+The Nothing:
+dropMeta: weapon -> {'coordinates': '1290,55,-738', 'name': 'Eldritch Outlook', 'type': 'dungeonMerchant'}
+
+The Watched:
+dropMeta: weapon -> {'coordinates': '1290,55,-738', 'name': 'Eldritch Outlook', 'type': 'dungeonMerchant'}
+
+Writhing Growth:
+dropMeta: armor -> {'coordinates': '1290,55,-738', 'name': 'Eldritch Outlook', 'type': 'dungeonMerchant'}
+
+The Evolved:
+dropMeta: weapon -> {'coordinates': '1290,55,-738', 'name': 'Eldritch Outlook', 'type': 'dungeonMerchant'}
+
+Kindled Orchid:
+dropMeta: armor -> {'coordinates': '-861,123,-4896', 'name': 'Corrupted Undergrowth Ruins', 'type': 'dungeon'}
+
+Gaping Cavity:
+dropMeta: armor -> {'coordinates': '1290,55,-738', 'name': 'Eldritch Outlook', 'type': 'dungeonMerchant'}
+
+Rat Skull:
+dropMeta: armor -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeon'}
+
+Vertebra:
+dropMeta: accessory -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeon'}
+
+Bermuda:
+dropMeta: accessory -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Witherhead's Bow:
+dropMeta: weapon -> {'coordinates': '-901,62,-1886', 'name': 'Decrepit Sewers', 'type': 'dungeon'}
+
+Barbarossa:
+dropMeta: accessory -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Coral Charm:
+dropMeta: accessory -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Crew's Breeches:
+dropMeta: armor -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Onyx Anchor:
+dropMeta: weapon -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Ornate Band:
+dropMeta: accessory -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+League:
+dropMeta: accessory -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Redbeard's Cutlass:
+dropMeta: weapon -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Maritime Cavaliers:
+dropMeta: armor -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Salt Sea:
+dropMeta: accessory -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Seastone Shank:
+dropMeta: weapon -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Siren Killer:
+dropMeta: weapon -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Privateering:
+dropMeta: accessory -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Skull Bandanna:
+dropMeta: armor -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Whirl:
+dropMeta: accessory -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Spider's Eye Pendant:
+dropMeta: accessory -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Thalassa:
+dropMeta: accessory -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeon'}
+
+Arakadicus' Body:
+dropMeta: armor -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Silkwrap:
+dropMeta: accessory -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Webstring:
+dropMeta: weapon -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Spiderweb String:
+dropMeta: weapon -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Darting Blur:
+dropMeta: armor -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Spider Bracelet:
+dropMeta: accessory -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeon'}
+
+Body Axe:
+dropMeta: armor -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Blazing Ruin:
+dropMeta: weapon -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Ancient Waters:
+dropMeta: weapon -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Enflame:
+dropMeta: weapon -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Power Scale:
+dropMeta: accessory -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Law of the Jungle:
+dropMeta: accessory -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Rock Head:
+dropMeta: armor -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Life Charge:
+dropMeta: accessory -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Wind Spine:
+dropMeta: weapon -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Discharge:
+dropMeta: armor -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Spirit Calling:
+dropMeta: accessory -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Scorpion Tail:
+dropMeta: armor -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeon'}
+
+Ra:
+dropMeta: accessory -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeon'}
+
+Byte:
+dropMeta: accessory -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Anti-Static:
+dropMeta: armor -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Heat Sink:
+dropMeta: armor -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Compiler:
+dropMeta: weapon -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Hardcore:
+dropMeta: weapon -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Gigabyte:
+dropMeta: accessory -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Packet:
+dropMeta: weapon -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Megabyte:
+dropMeta: accessory -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Admiral:
+dropMeta: armor -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Sawtooth:
+dropMeta: weapon -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Ouragan:
+dropMeta: weapon -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Algaa:
+dropMeta: weapon -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Sine:
+dropMeta: armor -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Wick:
+dropMeta: weapon -> {'coordinates': '-1682,79,-2605', 'name': 'Fallen Factory', 'type': 'dungeonMerchant'}
+
+Scorch Breath:
+dropMeta: weapon -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeon'}
+
+Rumble:
+dropMeta: weapon -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Grounder:
+dropMeta: weapon -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Redbeard's Hand Cannon:
+dropMeta: weapon -> {'coordinates': '-581,30,-3545', 'name': "Galleon's Graveyard", 'type': 'dungeonMerchant'}
+
+Criistal:
+dropMeta: accessory -> {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'}
+
+Blasphemy:
+dropMeta: armor -> {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'}
+
+Heartbreak:
+dropMeta: armor -> {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'}
+
+Brainfreeze:
+dropMeta: armor -> {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'}
+
+Iron Foot:
+dropMeta: armor -> {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'}
+
+Vapor:
+dropMeta: accessory -> {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'}
+
+Hearthfire:
+dropMeta: armor -> {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'}
+
+Hourglass:
+dropMeta: weapon -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Fangs:
+dropMeta: weapon -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Shade:
+dropMeta: armor -> {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'}
+
+Iklaj:
+dropMeta: weapon -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Maul:
+dropMeta: weapon -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Spinneret:
+dropMeta: armor -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Spider Ring:
+dropMeta: accessory -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Abdomen:
+dropMeta: armor -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Cephalothorax:
+dropMeta: armor -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Sting:
+dropMeta: weapon -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Web Plate:
+dropMeta: armor -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Stingy:
+dropMeta: armor -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Web Spitter:
+dropMeta: weapon -> {'coordinates': '-157,63,-1819', 'name': 'Infested Pit', 'type': 'dungeonMerchant'}
+
+Brise:
+dropMeta: armor -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Field:
+dropMeta: accessory -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Butterfly:
+dropMeta: armor -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Garoth's Hope:
+dropMeta: armor -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Gold Digger:
+dropMeta: armor -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Mud:
+dropMeta: armor -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Chaser:
+dropMeta: weapon -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Hashr Claw:
+dropMeta: weapon -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Clunderthap:
+dropMeta: weapon -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Dune Beast Jaw:
+dropMeta: armor -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Karma:
+dropMeta: weapon -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Jaw Breaker:
+dropMeta: weapon -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Vitre:
+dropMeta: accessory -> {'coordinates': '-11118,109,-10436', 'name': 'Lost Sanctuary', 'type': 'dungeonMerchant'}
+
+Sol:
+dropMeta: weapon -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Miasma:
+dropMeta: weapon -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Springtrap:
+dropMeta: armor -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Sprout:
+dropMeta: weapon -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Tremolo:
+dropMeta: weapon -> {'coordinates': '1390,90,-1835', 'name': 'Sand-Swept Tomb', 'type': 'dungeonMerchant'}
+
+Cathedral:
+dropMeta: weapon -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Damnation:
+dropMeta: weapon -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Dead Samurai's Plate:
+dropMeta: armor -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Black Ripper:
+dropMeta: armor -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Death's Reach:
+dropMeta: weapon -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Abolition:
+dropMeta: weapon -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Hymn of the Dead:
+dropMeta: weapon -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Sanies:
+dropMeta: weapon -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Putrid:
+dropMeta: weapon -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Thriller:
+dropMeta: weapon -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Barbed:
+dropMeta: weapon -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Styx's Grab:
+dropMeta: weapon -> {'coordinates': '284,18,-1952', 'name': 'Underworld Crypt', 'type': 'dungeonMerchant'}
+
+Granite Plate:
+dropMeta: armor -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Cuthroat:
+dropMeta: weapon -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Jungle Spirit:
+dropMeta: weapon -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Fetish:
+dropMeta: armor -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Piranha:
+dropMeta: armor -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Molten Greaves:
+dropMeta: armor -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Lobotomy:
+dropMeta: armor -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Sacrificial:
+dropMeta: weapon -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Whirlwind:
+dropMeta: weapon -> {'coordinates': '-635,61,-864', 'name': 'Undergrowth Ruins', 'type': 'dungeonMerchant'}
+
+Stinger:
+dropMeta: weapon -> {'coordinates': '1296,19,-4670', 'name': '??????????', 'type': 'altar'}
+
+Ice Sickle:
+dropMeta: weapon -> {'coordinates': '132,85,-660', 'name': 'Ice Barrows', 'type': 'dungeonMerchant'}
+
+Hero's Mask:
+tier: Legendary -> Rare
+addedLore: It bears the visage of a great hero. Thank you for participating in the 2022 Festival of the Heroes! -> It bears the visage of a great hero. Thank you for participating in the Festival of the Heroes!
+
+Compliance:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Dispersion:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Abrasion:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Obstinance:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Succession:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Homeorhesis:
+dropMeta: accessory -> {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'}
+
+Eyes on All:
+dropMeta: accessory -> {'coordinates': '-1977,63,-5615', 'name': 'Nest of the Grootslangs', 'type': 'raid'}
+
+Recalcitrance:
+dropMeta: accessory -> {'coordinates': '662,49,-4448', 'name': 'The Canyon Colossus', 'type': 'raid'}
+
+Detachment:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Exhibition:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Forbearance:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Aleph Null:
+dropMeta: armor -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Ingress:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Breakthrough:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Continuum:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Divergence:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Fractal:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Infinitesimal:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Recursion:
+dropMeta: weapon -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Athanasia:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Simulacrum:
+dropMeta: accessory -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Nonexistence:
+dropMeta: armor -> {'coordinates': '1193,64,-947', 'name': 'The Nameless Anomaly', 'type': 'raid'}
+
+Metamorphosis:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Cacophony:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Provenance:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Veneration:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Reckoning:
+dropMeta: accessory -> {'coordinates': '-732,100,-6412', 'name': "Orphion's Nexus of Light", 'type': 'raid'}
+
+Items Added:
+- Eleventh Hour
+- Gladiator
+- Mythos
+- Gleeman's Tale
+- Epilogue
+- Prologue
+- Folklore
+Removed Items:
+
+Log Update Date: 2023-06-27 22:45:47
