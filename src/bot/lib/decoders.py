@@ -30,7 +30,6 @@ class ItemDecoder:
                 "misc": {"reroll": item.rerolls if hasattr(item, "rerolls") else None}
             }
 
-            # Process identifications
             id_range = item_data[item.name]["identifications"]
             if item.shiny:
                 stats_output["shiny"] = f"{item.shiny.display_name}: {item.shiny.value}"
@@ -51,15 +50,12 @@ class ItemDecoder:
 
     def _calculate_rolled_value(self, stat, id_range):
         """Calculate the rolled value for a stat"""
-        # Implementation details depend on your specific needs
         pass
 
     def _calculate_percentage(self, stat, id_range, rolled_value):
         """Calculate the percentage for a stat roll"""
-        # Implementation details depend on your specific needs
         pass
 
     def _get_item_tier(self, item, item_data):
         """Determine item tier"""
-        # Implementation details depend on your specific needs
         pass
