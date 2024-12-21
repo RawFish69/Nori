@@ -30,7 +30,7 @@
             <a href="https://nori.fish/wynn">Wynn</a>
             <a href="https://nori.fish/docs">文档</a>
             <a href="https://nori.fish/chat">实验功能</a>
-            <a href="#" onclick="openTab('About')">关于我</a>
+            <!-- Removed the "关于我" link -->
         </nav>
         <div class="language-selector">
             <select onchange="changeLanguage(this)">
@@ -61,48 +61,62 @@
                 </h3>
             </div>
             <div class="feature">
-                <h2>关于该项目</h2>
-                <div style="display: flex; align-items: center;">
-                    <h3>Nori-Bot</h3>
-                    <img src="resources/nori.png" alt="Nori Logo" style="width: 75px; height: auto; margin-left: 10px;">
+                <button class="toggle-button" onclick="toggleSection('aboutMeSection', this)">关于开发者</button>
+                <div id="aboutMeSection" style="display: block;">
+                    <h2>关于我 （开发者）</h2>
+                    <p>I find enjoyment in transforming my concepts into reality.</p>
+                    <p>Some of my other projects:</p>
+                    <p>- Autonomous Differential-Drive Mobile Robot with Web Interface (C, C++)</p>
+                    <p>- Package for 7 DOF Robot Arm Control & Vision System (Python)</p>
+                    <p>- <a href="https://github.com/RawFish69/ESP32-Ranger-Finder" target="_blank" class="install-link">Portable range finder with ESP32 (Arduino C++)</a></p>
+                    <p>- WIP 2D Rogue-like game developed with Godot Engine (GDScript, C++, C#)</p>
+                    <p>- Image Generation Tool (HTML, JavaScript, CSS, Python)</p>
+                    <p>- Inventory Control (VB.net)</p>
+                    <p>- Various utility bots (JavaScript, Python)</p>
+                    <h2>联系方式</h2>
+                    <p>Discord: rawfish69</p>
+                    <p><a href="https://github.com/RawFish69" target="_blank" class="install-link">GitHub Page</a></p>
+                    <p><a href="https://nori.fish/license" target="_blank" class="install-link">Website License</a></p>
+                    <p><a href="https://www.youtube.com/@RawFish69" target="_blank" class="install-link">YouTube Channel</a></p>
+                    <p>如需提交BUG报告或建议反馈，可以加入社区群组: <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="install-link">Join Discord</a></p>
                 </div>
-                <p>Nori的机器人版本，在多个软件平台的聊天栏支持指令。</p>
-                <h3>Nori-Wynn</h3>
-                <p>作为在线RPG网游Wynncraft的第三方工具，提供各类查询功能，包括：玩家/公会数据，各类排行榜，职业配装，物品相关，奖池轮换等等。</p>
-                <button id="changelog-button" class="changelog-button" onclick="toggleChangelog()">显示更新日志</button>
-                <zero-md id="changelog" class="changelog" src="changelog.md"></zero-md>
+            </div>
+            <div class="feature">
+                <button class="toggle-button" onclick="toggleSection('aboutProjectSection', this)">关于该项目</button>
+                <div id="aboutProjectSection" style="display: none;">
+                    <h2>关于该项目</h2>
+                    <div style="display: flex; align-items: center;">
+                        <h3>Nori-Bot</h3>
+                        <img src="resources/nori.png" alt="Nori Logo" style="width: 75px; height: auto; margin-left: 10px;">
+                    </div>
+                    <p>Nori的机器人版本，在多个软件平台的聊天栏支持指令。</p>
+                    <h3>Nori-Wynn</h3>
+                    <p>作为在线RPG网游Wynncraft的第三方工具，提供各类查询功能，包括：玩家/公会数据，各类排行榜，职业配装，物品相关，奖池轮换等等。</p>
+                    <button id="changelog-button" class="changelog-button" onclick="toggleChangelog()">显示更新日志</button>
+                    <zero-md id="changelog" class="changelog" src="changelog.md"></zero-md>
+
+                    <h3>Nori-API</h3>
+                    <p>用户数据和各项生成结果都将储存于云端数据库，可通过API进行获取。</p>
+
+                    <h3>Nori-ToolKit</h3>
+                    <p>各类用于处理API、数据和图形的算法和脚本。</p>
+
+                    <h3>Nori-Web</h3>
+                    <p>Web版本的Nori，现已支持多数bot版本的功能，且更快速更便捷。</p>
                 </div>
-            <div class="feature">
-                <h3>Nori-API</h3>
-                <p>用户数据和各项生成结果都将储存于云端数据库，可通过API进行获取。</p>
             </div>
-            <div class="feature">
-                <h3>Nori-ToolKit</h3>
-                <p>各类用于处理API、数据和图形的算法和脚本。</p>
-            </div>
-            <div class="feature">
-                <h3>Nori-Web</h3>
-                <p>Web版本的Nori，现已支持多数bot版本的功能，且更快速更便捷。</p>
-            </div>
-        </div>
-        <div id="About" class="panel">
-            h2>联系方式</h2>
-            <p>Discord: rawfish69</p>
-            <p><a href="https://github.com/RawFish69" target="_blank" class="install-link">GitHub Page</a></p>
-            <p><a href="https://nori.fish/license" target="_blank" class="install-link">Website License</a></p>
-            <p><a href="https://www.youtube.com/@RawFish69" target="_blank" class="install-link">YouTube Channel</a></p>
-            <p>如需提交BUG报告或建议反馈，可以加入社区群组: <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="install-link">Join Discord</a></p>
-            <h2>关于我 （开发者）</h2>
-            <p>I find enjoyment in transforming my concepts into reality.</p>
-            <p>Some of my other projects include:</p>
-            <p>- 2D rogue-like game developed with Godot Engine (expected release in 2025/2026)</p>
-            <p>- Image-to-Image Generation (Web-based)</p>
-            <p>- Inventory Control (Windows Application)</p>
-            <p>- Various utility bots</p>
         </div>
     </div>
     <footer>
         <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
     </footer>
+    <script>
+    function toggleSection(id, btn) {
+      const section = document.getElementById(id);
+      const hidden = (section.style.display === 'none');
+      section.style.display = hidden ? 'block' : 'none';
+      btn.classList.toggle('active', hidden);
+    }
+    </script>
 </body>
 </html>

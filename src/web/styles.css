@@ -141,3 +141,28 @@ footer {
 .web-button:active {
     background-color: #5c5c5c;
 }
+
+.toggle-button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    color: #333;
+    border: 2px solid #708090;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+.toggle-button:hover {
+    background-color: #f2f2f2;
+    border-color: #555;
+}
+.toggle-button:active {
+    transform: scale(0.95);
+}
+.toggle-button.active {
+    background-color: #e6faff;
+    border-color: #3d7a99;
+    color: #333;
+}
