@@ -34,7 +34,6 @@
             <a href="https://nori.fish/wynn">Wynn</a>
             <a href="https://nori.fish/docs">Docs</a>
             <a href="https://nori.fish/chat">Playground</a>
-            <a href="#" onclick="openTab('About')">About Me</a>
         </nav>
         <div class="language-selector">
             <select onchange="changeLanguage(this)">
@@ -64,51 +63,63 @@
                 </h3>
             </div>
             <div class="feature">
-                <h2>About this Project</h2>
-                <div style="display: flex; align-items: center;">
-                    <h3>Nori-Bot</h3>
-                    <img src="resources/nori.png" alt="Nori Logo" style="width: 75px; height: auto; margin-left: 10px;">
+                <button class="toggle-button" onclick="toggleSection('aboutMeSection', this)">Nori Developer</button>
+                <div id="aboutMeSection" style="display: block;">
+                    <h2>A little about myself</h2>
+                    <p>I find enjoyment in transforming my concepts into reality.</p>
+                    <p>Some of my other projects:</p>
+                    <p>- Autonomous Differential-Drive Mobile Robot with Web Interface (C, C++)</p>
+                    <p>- Package for 7 DOF Robot Arm Control & Vision System (Python)</p>
+                    <p>- <a href="https://github.com/RawFish69/ESP32-Ranger-Finder" target="_blank" class="install-link">Portable range finder with ESP32 (Arduino C++)</a></p>
+                    <p>- WIP 2D Rogue-like game developed with Godot Engine (GDScript, C++, C#)</p>
+                    <p>- Image Generation Tool (HTML, JavaScript, CSS, Python)</p>
+                    <p>- Inventory Control Windows Application (VB.NET)</p>
+                    <p>- Various utility bots (JavaScript, Python)</p>
+                    <h2>Social Media / Contact Info</h2>
+                    <p>Discord nametag: rawfish69</p>
+                    <p><a href="https://github.com/RawFish69" target="_blank" class="install-link">GitHub Page</a></p>
+                    <p><a href="https://nori.fish/license" target="_blank" class="install-link">Website License</a></p>
+                    <p><a href="https://www.youtube.com/@RawFish69" target="_blank" class="install-link">YouTube Channel</a></p>
+                    <p>For feedback & bug report, join our Discord community server: <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="install-link">Join Discord</a></p>
                 </div>
-                <p>Chat Bot version of Nori, supporting commands on different platforms</p>
-                <h3>Nori-Wynn</h3>
-                <p>Third-party app for online RPG game "Wynncraft", providing features including player/guild statistics, leaderboard, class-builds, item-related, lootpool information, and more.</p>
+            </div>
+            <div class="feature">
+                <button class="toggle-button" onclick="toggleSection('aboutProjectSection', this)">About This Project</button>
+                <div id="aboutProjectSection" style="display: none;">
+                    <h2>About this Project</h2>
+                    <div style="display: flex; align-items: center;">
+                        <h3>Nori-Bot</h3>
+                        <img src="resources/nori.png" alt="Nori Logo" style="width: 75px; height: auto; margin-left: 10px;">
+                    </div>
+                    <p>Chat Bot version of Nori, supporting commands on different platforms</p>
+                    <h3>Nori-Wynn</h3>
+                    <p>Third-party app for online RPG game "Wynncraft", providing features including player/guild statistics, leaderboard, class-builds, item-related, lootpool information, and more.</p>
 
-                <button id="changelog-button" class="changelog-button" onclick="toggleChangelog()">View Changelog</button>
-                <zero-md id="changelog" class="changelog" src="changelog.md"></zero-md>
+                    <button id="changelog-button" class="changelog-button" onclick="toggleChangelog()">View Changelog</button>
+                    <zero-md id="changelog" class="changelog" src="changelog.md"></zero-md>
+
+                    <h3>Nori-API</h3>
+                    <p>Database hosted on AWS for general purposes, tracking information including command usage, user activity, in-game player stats, user prompts for generative AI features, generation results from models, etc...</p>
+
+                    <h3>Nori-ToolKit</h3>
+                    <p>Utility tools made for various purposes, consisting of API wrappers, data analysis & visualization, testing, and some specific stuff.</p>
+
+                    <h3>Nori-Web</h3>
+                    <p>Web version of Nori, which happens to be the site you are on right now.</p>
+                </div>
             </div>
-            <div class="feature">
-                <h3>Nori-API</h3>
-                <p>Database hosted on AWS for general purposes, tracking information including command usage, user activity, in-game player stats, user prompts for generative AI features, generation results from models, etc...</p>
-            </div>
-            <div class="feature">
-                <h3>Nori-ToolKit</h3>
-                <p>Utility tools made for various purposes, consisting of API wrappers, data analysis & visualization, testing, and some specific stuff.</p>
-            </div>
-            <div class="feature">
-                <h3>Nori-Web</h3>
-                <p>Web version of Nori, which happens to be the site you are on right now.</p>
-            </div>
-        </div>
-        <div id="About" class="panel">
-            <h2>Social Media / Contact Info</h2>
-            <p>Discord nametag: rawfish69</p>
-            <p><a href="https://github.com/RawFish69" target="_blank" class="install-link">GitHub Page</a></p>
-            <p><a href="https://nori.fish/license" target="_blank" class="install-link">Website License</a></p>
-            <p><a href="https://www.youtube.com/@RawFish69" target="_blank" class="install-link">YouTube Channel</a></p>
-            <p>For feedback & bug report, join our Discord community server: <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="install-link">Join Discord</a></p>
-            <h2>About Me (Nori Developer)</h2>
-            <p>I find enjoyment in transforming my concepts into reality.</p>
-            <p>Some of my other projects include:</p>
-            <p>- 2D rogue-like game developed with Godot Engine (expected release in 2025/2026)</p>
-            <p>- Image-to-Image Generation (Web-based)</p>
-            <p>- Inventory Control (Windows Application)</p>
-            <p>- Various utility bots</p>
         </div>
     </div>
     <footer>
         <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
     </footer>
+    <script>
+    function toggleSection(id, btn) {
+      const section = document.getElementById(id);
+      const hidden = (section.style.display === 'none');
+      section.style.display = hidden ? 'block' : 'none';
+      btn.classList.toggle('active', hidden);
+    }
+    </script>
 </body>
-
-
 </html>
