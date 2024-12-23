@@ -31,19 +31,13 @@
         <aside class="docs-sidebar">
             <h2>Documentation</h2>
             <ul>
-                <li><a href="#" onclick="loadDoc('command-documentation')">Bot Commands</a></li>
                 <li><a href="#" onclick="loadDoc('api-documentation')">API Documentation</a></li>
+                <li><a href="#" onclick="loadDoc('command-documentation')">Bot Commands</a></li>
                 <li>Wynncraft Features
                     <ul>
-                        <li><a href="#" onclick="loadDoc('item')">Item</a></li>
-                        <li><a href="#" onclick="loadDoc('class-build')">Class Build</a></li>
-                        <li><a href="#" onclick="loadDoc('crafted-recipe')">Crafted Recipe</a></li>
-                        <li><a href="#" onclick="loadDoc('leaderboard')">Leaderboard</a></li>
-                        <li><a href="#" onclick="loadDoc('player-guild-stats')">Player/Guild Stats</a></li>
                         <li><a href="#" onclick="loadDoc('guild-tower')">Guild Tower</a></li>
                     </ul>
                 </li>
-                
             </ul>
         </aside>
         <main class="docs-content">
@@ -58,13 +52,8 @@
     <script>
         const docMap = {
             'command-documentation': 'commands.md',
-            'item': 'placeholder.md',
-            'class-build': 'placeholder.md',
-            'crafted-recipe': 'placeholder.md',
-            'leaderboard': 'placeholder.md',
-            'player-guild-stats': 'placeholder.md',
             'guild-tower': 'https://raw.githubusercontent.com/RawFish69/Nori/main/docs/tower/readme.md',
-            'api-documentation': 'placeholder.md'
+            'api-documentation': 'api.md'
         };
 
         function loadDoc(section) {
@@ -84,7 +73,7 @@
             if (doc && docMap[doc]) {
                 document.getElementById('docs-content').setAttribute('src', docMap[doc]);
             } else {
-                loadDoc('command-documentation');
+                loadDoc('api-documentation'); 
             }
         }
 
