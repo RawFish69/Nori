@@ -74,7 +74,7 @@ Modern web interface offering:
 - Cross-platform compatibility
 
 ## Documentation
-- [API References](https://nori.fish/docs) (TODO)
+- [API References](https://nori.fish/docs/)
 
 ## Links
 - [Nori-Web](https://nori.fish)
