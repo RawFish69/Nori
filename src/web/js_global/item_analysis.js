@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "4thSpellCost": "4th Spell Cost %",
         "raw4thSpellCost": "4th Spell Cost",
         "sprint": "Sprint %",
-        "sprintRegen": "Sprint Regen %",
+        "sprintRegen": "Spring Regen %",
         "jumpHeight": "Jump Height",
         "lootQuality": "Loot Quality %",
         "gatherXpBonus": "Gather XP Bonus %",
@@ -124,10 +124,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "knockback": "Knockback %",
         "weakenEnemy": "Weaken Enemy %",
         "slowEnemy": "Slow Enemy %",
-        "elementalDefense": "Elemental Defence %",
+        "elementalDefence": "Elemental Defence %",
         "damageFromMobs": "Damage From Mobs %",
-        "maxMana": "Max Mana"
-    };
+        "maxMana": "Max Mana %",
+        "rawMaxMana": "Max Mana",
+        "mainAttackRange": "Main Attack Range",
+        "criticalDamageBonus": "Critical Damage Bonus"
+     }     
 
     const tierColors = {
         "mythic": "#AA00AA",
