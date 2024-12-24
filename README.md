@@ -3,7 +3,7 @@
 [![Bot](https://img.shields.io/badge/discord%20bot-verified-5865F2?logo=discord&logoColor=white)](https://discord.com/application-directory/873677970928193568)
 [![License](https://img.shields.io/badge/license-proprietary-orange)](https://nori.fish/license)
 
-Nori started as a hobby project, born from my love for gaming communities and software development. What began as a simple Discord bot has evolved into a comprehensive ecosystem of tools and services, driven by community feedback and continuous learning. The project represents both my journey as a developer and my passion for creating useful tools for player communities.
+This project started as a simple Discord bot but grew into a comprehensive ecosystem of tools, driven by passion and community feedback.
 
 > A comprehensive suite of tools and services, featuring Discord/Kook integration, web interfaces, and public APIs.
 
@@ -50,12 +50,11 @@ Third-party application for Wynncraft (MMORPG) featuring:
 ### Nori-API
 Public REST API service providing:
 - Comprehensive endpoints for game data
+- Stable backend processing
 - Real-time statistics tracking
 - User authentication and management
-- Command usage analytics
-- AI integration endpoints
 - Rate-limited access for community developers
-- Documentation (TODO)
+- **[API References](https://nori.fish/docs/)**
 
 ### Nori-ToolKit
 Development toolkit featuring:
@@ -73,9 +72,6 @@ Modern web interface offering:
 - Community features
 - Cross-platform compatibility
 
-## Documentation
-- [API References](https://nori.fish/docs/)
-
 ## Links
 - [Nori-Web](https://nori.fish)
 - [Discord Bot](https://discord.com/application-directory/873677970928193568)
@@ -88,7 +84,6 @@ The core services (Discord bot, API implementation) are currently closed-source.
 
 ## Contact
 - Discord: rawfish69
-- [YouTube Channel](https://www.youtube.com/@RawFish69)
 
 ## License
 See [Website License](https://nori.fish/license)
