@@ -241,7 +241,7 @@ const mapping = {
     "4thSpellCost": "4th Spell Cost %",
     "raw4thSpellCost": "4th Spell Cost",
     "sprint": "Sprint %",
-    "sprintRegen": "Spring Regen %",
+    "sprintRegen": "Sprint Regen %",
     "jumpHeight": "Jump Height",
     "lootQuality": "Loot Quality %",
     "gatherXpBonus": "Gather XP Bonus %",
@@ -256,7 +256,7 @@ const mapping = {
     "rawMaxMana": "Max Mana",
     "mainAttackRange": "Main Attack Range",
     "criticalDamageBonus": "Critical Damage Bonus"
- }
+ };
  
 
 const tierColors = {
