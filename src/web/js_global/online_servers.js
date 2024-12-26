@@ -79,11 +79,11 @@ function getColorGradient(playerCount) {
         r = 200;
         g = 200;
         b = 0;
-    } else if (playerCount < 35) {
+    } else if (playerCount < 40) {
         r = 255;
         g = 150;
         b = 0;
-    } else if (playerCount < 40) {
+    } else if (playerCount < 45) {
         r = 255;
         g = 0;
         b = 0;
