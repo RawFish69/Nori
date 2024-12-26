@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:title" content="something something claw control" />
+    <meta property="og:description" content="just a demo" />
+    <title>Claw Machine Control</title>
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script async src="../../js_global/analytics.js"></script>
+    <script async src="../../js_global/demo_claw.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Claw Machine Controller Demo</h1>
+    <canvas id="clawCanvas" width="500" height="500"></canvas>
+    <div id="statusMessages" class="status" style="text-align:center; margin-top:1rem; color:green;"></div>
+    <div class="controls">
+      <div class="control-group">
+        <button id="upBtn">↑ (W)</button>
+      </div>
+      <div class="control-group">
+        <button id="leftBtn">← (A)</button>
+        <button id="downBtn">↓ (S)</button>
+        <button id="rightBtn">→ (D)</button>
+      </div>
+      <div class="control-group">
+        <button id="grabBtn">Grab (F)</button>
+        <button id="releaseBtn">Release (R)</button>
+      </div>
+      <div class="control-group">
+        <label for="speedRange">Speed:</label>
+        <input type="range" id="speedRange" min="1" max="5" step="1" value="1" />
+      </div>
+      <div class="control-group">
+        <label>Targets:</label>
+        <select id="targetCount">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+        </select>
+        <button id="generateBtn">Generate</button>
+      </div>
+      <div class="control-group">
+        <button id="resetBtn">Reset</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
