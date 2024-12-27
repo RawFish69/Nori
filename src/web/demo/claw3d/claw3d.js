@@ -581,7 +581,7 @@ const targetCount = document.getElementById("targetCount");
 if(generateBtn && targetCount){
   generateBtn.addEventListener("click", ()=>{
     let val = parseInt(targetCount.value, 10);
-    val = clamp(1, 100, val);
+    val = clamp(1, 500, val);
     clawState.targets = val;
     randomizeObjects(val);
   });
