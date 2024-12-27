@@ -55,17 +55,27 @@ function init3D() {
   container.innerHTML = "";
 
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xeeeeee);
+  scene.background = new THREE.Color(0xeeeeee); 
 
   const aspect = container.clientWidth/container.clientHeight;
   camera = new THREE.PerspectiveCamera(50, aspect, 0.1, 1000);
   camera.position.set(25,25,25);
   camera.lookAt(0,0,0);
-
-  renderer = new THREE.WebGLRenderer({ antialias:true });
+  renderer = new THREE.WebGLRenderer({ 
+    antialias: true,
+    alpha: true,
+    powerPreference: "high-performance",
+    precision: "highp",
+    premultipliedAlpha: false,
+    stencil: false
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0xeeeeee, 1);
+  renderer.autoClear = true;
   renderer.setSize(container.clientWidth, container.clientHeight);
   container.appendChild(renderer.domElement);
-
+  renderer.clear();
+  renderer.render(scene, camera);
   orbitControls = new THREE.OrbitControls(camera, renderer.domElement);
   orbitControls.enableDamping = true;
   orbitControls.dampingFactor = 0.1;
@@ -384,6 +394,7 @@ function checkGoalZone() {
 function animate() {
   requestAnimationFrame(animate);
 
+  renderer.clear();  // add this line
   orbitControls.update();
   updateClawPosition();
 
@@ -402,11 +413,12 @@ function animate() {
 
 function onWindowResize(){
   const container = document.getElementById("clawCanvas");
-  let w=container.clientWidth;
-  let h=container.clientHeight;
-  camera.aspect=w/h;
+  let w = container.clientWidth;
+  let h = container.clientHeight;
+  camera.aspect = w/h;
   camera.updateProjectionMatrix();
-  renderer.setSize(w,h);
+  renderer.setSize(w, h);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 }
 
 window.addEventListener("DOMContentLoaded", ()=>{
