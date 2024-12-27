@@ -260,6 +260,15 @@ function updateClawPosition() {
   claw.position.x = clamp(-halfX, halfX, claw.position.x);
   claw.position.y = clamp(-halfY, halfY, claw.position.y);
   claw.position.z = clamp(-halfZ, halfZ, claw.position.z);
+  if (!isGrabbing && claw.position.y < -5) {
+    claw.position.y = -5;
+  }
+  if (!isGrabbing) {
+    const halfMachineHeight = machineSize.y / 2;
+    if (claw.position.y < 0) {
+      claw.position.y = 0;
+    }
+  }
 }
 
 function animateCloseProngs() {
