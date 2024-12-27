@@ -1,5 +1,12 @@
-// Query string schema: 
-// ?direction=string&grabbed=boolean&speed=int&targets=int
+/*
+  2D Claw Machine Demo
+  Simple 2D claw machine simulation with basic physics and collision detection.
+  Query string schema: 
+  ?direction=string&grabbed=boolean&speed=int&targets=int
+  For usage with MCU or any embedded system, use the query string to control the claw machine.
+  Example: ?direction=up&grabbed=true&speed=2&targets=5
+  This will set the claw direction to 'up', item grabbed, speed to 2 and 5 targets to deliver.
+*/
 function getQueryParam(name) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
