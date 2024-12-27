@@ -1,3 +1,9 @@
+/*
+  Demo for a 3D claw machine control
+  Based on claw2d demo, but with 3D objects and physics
+  Rendered using WebGL (three.js)
+*/
+
 let scene, camera, renderer, orbitControls;
 const machineSize = { x: 20, y: 20, z: 20 };
 
@@ -394,7 +400,7 @@ function checkGoalZone() {
 function animate() {
   requestAnimationFrame(animate);
 
-  renderer.clear();  // add this line
+  renderer.clear();
   orbitControls.update();
   updateClawPosition();
 
