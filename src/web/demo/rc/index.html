@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP32 RC Car</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="joysticks-row">
+      <div class="joystick-container">
+        <canvas id="joystick" width="300" height="300"></canvas>
+      </div>
+      <div class="joystick-container">
+        <canvas id="joystick2" width="300" height="300"></canvas>
+      </div>
+    </div>
+    <div class="controls-container">
+      <button class="grid-button rotation-button" onclick="rotateLeft()">↺</button>
+      <div class="grid-buttons">
+        <button class="grid-button" onclick="moveNW()">↖</button>
+        <button class="grid-button" onclick="moveUp()">↑</button>
+        <button class="grid-button" onclick="moveNE()">↗</button>
+        <button class="grid-button" onclick="moveLeft()">←</button>
+        <button class="grid-button" onclick="rotateCenter()">⊙</button>
+        <button class="grid-button" onclick="moveRight()">→</button>
+        <button class="grid-button" onclick="moveSW()">↙</button>
+        <button class="grid-button" onclick="moveDown()">↓</button>
+        <button class="grid-button" onclick="moveSE()">↘</button>
+      </div>
+      <button class="grid-button rotation-button" onclick="rotateRight()">↻</button>
+    </div>
+    <div class="button-group">
+      <button class="button reverse" onclick="setReverseMax()">Reverse</button>
+      <button class="button stop" onclick="emergencyStop()">STOP</button>
+      <button class="button forward" onclick="setForwardMax()">Forward</button>
+    </div>
+    <div class="slider-container">
+      <div class="tune-label">Left Wheel Tuning: <span id="leftTuneVal">1.0</span></div>
+      <input type="range" id="leftTuneSlider" class="slider" min="0.5" max="1.5" step="0.01" value="1.0">
+      
+      <div class="tune-label">Right Wheel Tuning: <span id="rightTuneVal">1.0</span></div>
+      <input type="range" id="rightTuneSlider" class="slider" min="0.5" max="1.5" step="0.01" value="1.0">
+    </div>
+  </div>
+  <script src="rc.js"></script>
+</body>
+</html>
