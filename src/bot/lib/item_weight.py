@@ -15,48 +15,35 @@ class WeightResult:
     timestamp: str
     scale_data: Dict[str, float]
 
-
 class WeightManager:
     def __init__(self, weight_data_path: str):
-        """
-        :param weight_data_path: Path to a JSON file containing the "mythic_weights" structure.
-        """
         self.weight_data_path = weight_data_path
         self.weight_data = self._load_weight_data()
 
     def _load_weight_data(self) -> Dict:
-        """
-        Load the JSON data from disk. If error, returns an empty dict.
-        """
         try:
-            with open(self.weight_data_path, "r") as file:
+            with open(self.weight_data_path, "r", encoding='utf-8') as file:
                 return json.load(file)
-        except Exception as error:
-            print(f"Error loading weight data: {error}")
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"Error loading weight data: {e}")
             return {}
 
     def calculate_mythic_weight(self, target: str, user_inputs: List[float]) -> Optional[WeightResult]:
         """
-        Calculate mythic item weights based on user inputs. 
-        Essentially replicates your 'mythic_weigh' logic in an OOP method.
-
-        :param target: Name of the item you want to weigh (case-insensitive).
-        :param user_inputs: The rolled stats (or user-provided stats) to multiply by weighting factors.
-        :return: WeightResult or None if not found.
+        Calculate mythic item weights based on user inputs.
         """
         data = self.weight_data.get("Data", {})
         timestamp = self.weight_data.get("latest", {}).get("Timestamp", "")
-        product_main = []
 
         for item_name, scales in data.items():
             if target.lower() == item_name.lower():
                 result_scales = {}
                 for scale, stats_dict in scales.items():
-                    item_weights = [float(v)/100 for k, v in stats_dict.items()]
-                    product = [x * y for x, y in zip(user_inputs, item_weights)]
+                    weights = [float(v)/100 for v in stats_dict.values()]
+                    products = [x * y for x, y in zip(user_inputs, weights)]
+                    result_scales[scale] = round(sum(products), 2)
                     if scale == "Main":
-                        product_main = product
-                    result_scales[scale] = round(sum(product), 2)
+                        product_main = products
 
                 return WeightResult(
                     item_name=item_name,
@@ -69,10 +56,7 @@ class WeightManager:
 
     def get_scale_info(self, target: str) -> Optional[Tuple[Dict, str, Dict, str]]:
         """
-        Get detailed scale information for an item (similar to `weigh_scale`).
-        
-        :param target: Name of the item (case-insensitive).
-        :return: (scale_display, timestamp, scale_data, item_name) or None.
+        Get detailed scale information for an item.
         """
         data = self.weight_data.get("Data", {})
         timestamp = self.weight_data.get("latest", {}).get("Timestamp", "")
@@ -81,15 +65,13 @@ class WeightManager:
             if target.lower() == item_name.lower():
                 scale_display = {item_name: {}}
                 scale_data = scales.get("Main", {})
-                index = 1
 
                 for scale, stats_dict in scales.items():
-                    scale_content = ""
-                    for stat_id, val in stats_dict.items():
-                        scale_content += f"{index}. {stat_id}: {val}%\n"
-                        index += 1
+                    scale_content = "\n".join(
+                        f"{i}. {stat_id}: {val}%" 
+                        for i, (stat_id, val) in enumerate(stats_dict.items(), 1)
+                    )
                     scale_display[item_name][scale] = scale_content
-                    index = 1
 
                 return scale_display, timestamp, scale_data, item_name
         return None
