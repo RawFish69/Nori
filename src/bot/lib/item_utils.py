@@ -9,7 +9,7 @@ import json
 from typing import Optional, Dict, Tuple, Any, List
 
 STAT_MAPPING = {
-    # load from stats_mapping or whatever your source is
+    # Load it from whatever your source is
 }
 
 class ItemUtils:
@@ -23,6 +23,14 @@ class ItemUtils:
         :param item_map: A dictionary of item data, typically loaded from items.json.
         """
         self.item_map = item_map
+        self.name_lookup = {k.lower(): k for k in item_map.keys()}
+
+    def _get_item_by_name(self, name: str) -> Tuple[Optional[str], Optional[Dict]]:
+        """Helper method to find items case-insensitively"""
+        real_name = self.name_lookup.get(name.lower())
+        if real_name:
+            return real_name, self.item_map[real_name]
+        return None, None
 
     def item_match(self, name: str) -> Optional[Dict[str, str]]:
         """
@@ -36,30 +44,29 @@ class ItemUtils:
             print("Item map is empty.")
             return None
 
-        for item_key, data in self.item_map.items():
-            if name.lower() == item_key.lower():
-                icon_id = None
-                if "icon" in data:
-                    if data["icon"]["format"] == "legacy":
-                        icon_id = data["icon"]["value"].replace(":", "_")
-                    elif data["icon"]["format"] == "attribute":
-                        icon_id = data["icon"]["value"]["name"]
-                if icon_id:
-                    icon_link = f"https://cdn.wynncraft.com/nextgen/itemguide/3.3/{icon_id}.webp"
-                else:
-                    icon_link = None
+        real_name, data = self._get_item_by_name(name)
+        if not data:
+            return None
 
-                item_type = data.get("weaponType", None)
-                type_translate = {
-                    "spear": "Warrior",
-                    "wand": "Mage",
-                    "bow": "Archer",
-                    "dagger": "Assassin",
-                    "relik": "Shaman"
-                }
-                class_type = type_translate.get(item_type, None)
-                return {"icon": icon_link, "class": class_type}
-        return None
+        icon_id = None
+        if "icon" in data:
+            icon_data = data["icon"]
+            if icon_data["format"] == "legacy":
+                icon_id = icon_data["value"].replace(":", "_")
+            elif icon_data["format"] == "attribute":
+                icon_id = icon_data["value"]["name"]
+
+        icon_link = f"https://cdn.wynncraft.com/nextgen/itemguide/3.3/{icon_id}.webp" if icon_id else None
+
+        type_translate = {
+            "spear": "Warrior",
+            "wand": "Mage",
+            "bow": "Archer",
+            "dagger": "Assassin",
+            "relik": "Shaman"
+        }
+        class_type = type_translate.get(data.get("weaponType"))
+        return {"icon": icon_link, "class": class_type}
 
     def item_search(
         self, 
@@ -74,90 +81,66 @@ class ItemUtils:
             (base_display, IDs, icon_id, lore, item_type)
             or None if not found.
         """
-        found_data = None
-        found_key = None
-
-        for item_key in self.item_map:
-            if name.lower() == item_key.lower():
-                found_data = self.item_map[item_key]
-                found_key = item_key
-                break
-
+        real_name, found_data = self._get_item_by_name(name)
         if not found_data:
             return None
 
-        base_display = f"{found_key}\n"
-        IDs = {}
-        id_display = ""
-        icon_id = None
-        lore = found_data.get("lore")
-        item_type = None
-
         try:
+            base_display = []
+            IDs = {}
+            
+            # Add item name
+            base_display.append(real_name)
+
+            # Add requirements
             if "requirements" in found_data:
                 level_req = found_data["requirements"].get("level", 0)
                 rarity = found_data.get("rarity", "")
-                if "type" in found_data and found_data["type"] == "weapon":
-                    base_display += f"Lv. {level_req} {rarity} {found_data['type']}\n"
-                elif "accessoryType" in found_data:
-                    base_display += f"Lv. {level_req} {rarity} {found_data['accessoryType']}\n"
-                elif "type" in found_data:
-                    base_display += f"Lv. {level_req} {rarity} {found_data['type']}\n"
+                item_type = (
+                    found_data["type"] if found_data.get("type") == "weapon"
+                    else found_data.get("accessoryType")
+                    or found_data.get("type")
+                )
+                base_display.append(f"Lv. {level_req} {rarity} {item_type}")
 
+            # Add base stats
             base_stats = found_data.get("base", {})
-            for stat, value in base_stats.items():
-                if isinstance(value, dict) and "min" in value and "max" in value:
-                    base_display += f"{stat}: {value['min']} - {value['max']}\n"
-                else:
-                    base_display += f"{stat}: {value}\n"
+            base_display.extend(
+                f"{stat}: {value['min']} - {value['max']}" if isinstance(value, dict) 
+                else f"{stat}: {value}"
+                for stat, value in base_stats.items()
+            )
 
+            # Add attack speed
             if "attackSpeed" in found_data:
-                base_display += f"Attack speed: {found_data['attackSpeed']}\n"
+                base_display.append(f"Attack speed: {found_data['attackSpeed']}")
 
-            identification = found_data.get("identifications", {})
-            for stat, value in identification.items():
+            # Process identifications
+            for stat, value in found_data.get("identifications", {}).items():
                 if isinstance(value, dict) and "min" in value and "max" in value:
-                    base_value = value.get("raw", 0)
-                    IDs[stat] = base_value
-                    id_display += f"{stat}: {base_value} [{value['min']}, {value['max']}]\n"
-                else:
-                    id_display += f"{stat}: {value}\n"
+                    IDs[stat] = value.get("raw", 0)
 
-            if "majorIds" in found_data:
-                major_data = found_data["majorIds"]
-                if major_data:
-                    name_key = list(major_data.keys())[0]
-                    pattern = r'&[a-zA-Z0-9+](?![a-zA-Z0-9])'
-                    cleaned_string = re.sub(pattern, '', name_key)
-                    parts = cleaned_string.split(":", 1)
-                    cleaned_description = parts[1].strip() if len(parts) > 1 else cleaned_string.strip()
-                    cleaned_description = re.sub("&3", "", cleaned_description)
-                    id_display += f"Major ID: {cleaned_description}\n"
-
-            if "dropMeta" in found_data:
-                drop_meta = found_data["dropMeta"]
-                drop_name = drop_meta.get("name", "")
-                drop_type = drop_meta.get("type", "")
-                coords = drop_meta.get("coordinates", "")
-                id_display += f"Drop: {drop_name} ({drop_type})\nCoordinates: {coords}"
-
+            # Get icon_id
+            icon_id = None
             if "icon" in found_data:
-                if found_data["icon"]["format"] == "legacy":
-                    icon_id = found_data["icon"]["value"].replace(":", "_")
-                elif found_data["icon"]["format"] == "attribute":
-                    icon_id = found_data["icon"]["value"]["name"]
+                icon_data = found_data["icon"]
+                if icon_data["format"] == "legacy":
+                    icon_id = icon_data["value"].replace(":", "_")
+                elif icon_data["format"] == "attribute":
+                    icon_id = icon_data["value"]["name"]
 
-            if "type" in found_data:
-                if found_data["type"] == "weapon":
-                    item_type = found_data.get("weaponType", None)
-                elif found_data["type"] == "armour":
-                    item_type = found_data.get("armourType", None)
+            # Get item_type
+            final_type = None
+            if found_data.get("type") == "weapon":
+                final_type = found_data.get("weaponType")
+            elif found_data.get("type") == "armour":
+                final_type = found_data.get("armourType")
+
+            return ("\n".join(base_display), IDs, icon_id, found_data.get("lore"), final_type)
 
         except Exception as error:
             print(f"Error in item_search: {error}")
             return None
-
-        return (base_display, IDs, icon_id, lore, item_type)
 
     def item_amp(self, name: str, tier: int) -> Tuple[str, str, Dict[str, int], Optional[str], Optional[str]]:
         """
