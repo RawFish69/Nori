@@ -311,3 +311,410 @@ class ChangelogManager:
 
         for line in lines:
             changelog_text += line + "\n"
+        return  
+
+    async def generate_item_changelog_html(self, before_json: Dict[str, Any], after_json: Dict[str, Any]) -> str:
+        non_items = {"ingredient", "tool", "tome", "charm", "material"}
+        changelog_data = {"Changed": {}, "Added": {}, "Removed": {}, "Generated": {}}
+        before_keys = set(before_json.keys())
+        after_keys = set(after_json.keys())
+
+        items_added_list = []
+        items_removed_list = []
+        changed_items_html = ""
+
+        # Detect added & removed
+        for added_item in (after_keys - before_keys):
+            if "type" in after_json[added_item] and after_json[added_item]["type"] not in non_items:
+                changelog_data["Added"][added_item] = after_json[added_item]
+                items_added_list.append(added_item)
+        for removed_item in (before_keys - after_keys):
+            if "type" in before_json[removed_item] and before_json[removed_item]["type"] not in non_items:
+                changelog_data["Removed"][removed_item] = before_json[removed_item]
+                items_removed_list.append(removed_item)
+
+        # Changed items
+        common_items = before_keys & after_keys
+        for item_name in common_items:
+            if "type" in before_json[item_name] and before_json[item_name]["type"] not in non_items:
+                if before_json[item_name] != after_json[item_name]:
+                    # We'll reuse a helper approach
+                    lines = []
+                    changed_dict = changelog_data["Changed"].setdefault(item_name, {})
+                    before_fields = set(before_json[item_name].keys())
+                    after_fields = set(after_json[item_name].keys())
+
+                    # Compare identifications separately
+                    if "identifications" in before_json[item_name] and "identifications" in after_json[item_name]:
+                        pre_id = before_json[item_name]["identifications"]
+                        post_id = after_json[item_name]["identifications"]
+                        if pre_id != post_id:
+                            changed_dict.setdefault("ids", {})
+                            pre_id_keys = set(pre_id.keys())
+                            post_id_keys = set(post_id.keys())
+                            for rem_id in (pre_id_keys - post_id_keys):
+                                changed_dict["ids"].setdefault("Removed", {})
+                                changed_dict["ids"]["Removed"][rem_id] = pre_id[rem_id]
+                                lines.append(f"Removed ID: {rem_id} {pre_id[rem_id]}")
+                            for new_id in (post_id_keys - pre_id_keys):
+                                changed_dict["ids"].setdefault("New", {})
+                                changed_dict["ids"]["New"][new_id] = post_id[new_id]
+                                lines.append(f"New ID: {new_id} {post_id[new_id]}")
+                            for stat_id in (pre_id_keys & post_id_keys):
+                                if pre_id[stat_id] != post_id[stat_id]:
+                                    changed_dict["ids"].setdefault("Change", {})
+                                    changed_dict["ids"]["Change"][stat_id] = {
+                                        "Before": pre_id[stat_id],
+                                        "After": post_id[stat_id]
+                                    }
+                                    lines.append(f"Changed ID: {stat_id} {pre_id[stat_id]} -> {post_id[stat_id]}")
+
+                    # Compare standard fields
+                    for field in (before_fields | after_fields):
+                        if field == "identifications":
+                            continue
+                        if field in before_fields and field not in after_fields:
+                            changed_dict.setdefault("Removed_Fields", {})
+                            changed_dict["Removed_Fields"][field] = before_json[item_name][field]
+                            lines.append(f"Removed field {field}: {before_json[item_name][field]}")
+                        elif field in after_fields and field not in before_fields:
+                            changed_dict.setdefault("New", {})
+                            changed_dict["New"][field] = after_json[item_name][field]
+                            lines.append(f"Added field {field}: {after_json[item_name][field]}")
+                        else:
+                            if before_json[item_name].get(field) != after_json[item_name].get(field):
+                                changed_dict.setdefault(field, {})
+                                changed_dict[field]["Before"] = before_json[item_name][field]
+                                changed_dict[field]["After"] = after_json[item_name][field]
+                                lines.append(f"Changed {field}: {before_json[item_name][field]} -> {after_json[item_name][field]}")
+
+                    # Build a small HTML section for this item
+                    if lines:
+                        changed_items_html += f'<h2>{item_name}</h2><ul>'
+                        for ln in lines:
+                            changed_items_html += f'<li>{ln}</li>'
+                        changed_items_html += '</ul>'
+
+        current_datetime = datetime.now().strftime("%Y-%m-%d")
+        changelog_data["Generated"]["Date"] = current_datetime
+        changelog_data["Generated"]["Timestamp"] = int(time.time())
+
+        # Summaries
+        summary_changed = len(changelog_data["Changed"])
+        summary_added = len(changelog_data["Added"])
+        summary_removed = len(changelog_data["Removed"])
+
+        # Build HTML
+        html_content = f"""
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Item Changelog {current_datetime}</title>
+</head>
+<body>
+    <h1>Item Changelog generated at {current_datetime}</h1>
+    <h2>Summary</h2>
+    <p>{summary_changed} items changed, {summary_added} items added, {summary_removed} items removed.</p>
+
+    <h2>Items Added</h2>
+    <ul>
+        {''.join(f'<li>{a}</li>' for a in items_added_list)}
+    </ul>
+    <h2>Items Removed</h2>
+    <ul>
+        {''.join(f'<li>{r}</li>' for r in items_removed_list)}
+    </ul>
+    <h2>Item Changes</h2>
+    {changed_items_html}
+</body>
+</html>
+        """
+        return html_content
+
+    async def generate_ingredient_changelog_html(self, before_json: Dict[str, Any], after_json: Dict[str, Any]) -> str:
+        changelog_data = {"Changed": {}, "Added": {}, "Removed": {}, "Generated": {}}
+        before_keys = set(before_json.keys())
+        after_keys = set(after_json.keys())
+
+        ing_added_list = []
+        ing_removed_list = []
+        changed_ings_html = ""
+
+        # Detect added/removed
+        for added_ing in (after_keys - before_keys):
+            if "ingredient" in after_json[added_ing].get("type", ""):
+                changelog_data["Added"][added_ing] = after_json[added_ing]
+                ing_added_list.append(added_ing)
+        for removed_ing in (before_keys - after_keys):
+            if "ingredient" in before_json[removed_ing].get("type", ""):
+                changelog_data["Removed"][removed_ing] = before_json[removed_ing]
+                ing_removed_list.append(removed_ing)
+
+        # Changed
+        common_ings = before_keys & after_keys
+        for ing_name in common_ings:
+            if "ingredient" in before_json[ing_name].get("type", ""):
+                if before_json[ing_name] != after_json[ing_name]:
+                    lines = []
+                    changed_dict = changelog_data["Changed"].setdefault(ing_name, {})
+                    before_fields = set(before_json[ing_name].keys())
+                    after_fields = set(after_json[ing_name].keys())
+                    for field in (before_fields | after_fields):
+                        if field in before_fields and field not in after_fields:
+                            changed_dict.setdefault("Removed_Fields", {})
+                            changed_dict["Removed_Fields"][field] = before_json[ing_name][field]
+                            lines.append(f"Removed field {field}: {before_json[ing_name][field]}")
+                        elif field in after_fields and field not in before_fields:
+                            changed_dict.setdefault("New", {})
+                            changed_dict["New"][field] = after_json[ing_name][field]
+                            lines.append(f"Added field {field}: {after_json[ing_name][field]}")
+                        else:
+                            if before_json[ing_name].get(field) != after_json[ing_name].get(field):
+                                changed_dict.setdefault(field, {})
+                                changed_dict[field]["Before"] = before_json[ing_name][field]
+                                changed_dict[field]["After"] = after_json[ing_name][field]
+                                lines.append(f"Changed {field}: {before_json[ing_name][field]} -> {after_json[ing_name][field]}")
+                    if lines:
+                        changed_ings_html += f'<h2>{ing_name}</h2><ul>'
+                        for ln in lines:
+                            changed_ings_html += f'<li>{ln}</li>'
+                        changed_ings_html += '</ul>'
+
+        current_datetime = datetime.now().strftime("%Y-%m-%d")
+        changelog_data["Generated"]["Date"] = current_datetime
+        changelog_data["Generated"]["Timestamp"] = int(time.time())
+
+        summary_changed = len(changelog_data["Changed"])
+        summary_added = len(changelog_data["Added"])
+        summary_removed = len(changelog_data["Removed"])
+
+        html_content = f"""
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ingredient Changelog {current_datetime}</title>
+</head>
+<body>
+    <h1>Ingredient Changelog generated at {current_datetime}</h1>
+    <h2>Summary</h2>
+    <p>{summary_changed} ingredients changed, {summary_added} added, {summary_removed} removed.</p>
+
+    <h2>Ingredients Added</h2>
+    <ul>
+        {''.join(f'<li>{a}</li>' for a in ing_added_list)}
+    </ul>
+    <h2>Ingredients Removed</h2>
+    <ul>
+        {''.join(f'<li>{r}</li>' for r in ing_removed_list)}
+    </ul>
+    <h2>Ingredient Changes</h2>
+    {changed_ings_html}
+</body>
+</html>
+        """
+        return html_content
+
+    async def generate_item_changelog_pdf(
+        self, before_json: Dict[str, Any], after_json: Dict[str, Any]
+    ) -> bytes:
+        """
+        Generates a basic PDF version of the item changelog.
+        """
+        # Simple placeholder for PDF bytes
+        pdf_data = b"%PDF-1.4\n%...dummy PDF data...\n%%EOF"
+        return pdf_data
+
+    async def generate_item_changelog_latex(
+        self, before_json: Dict[str, Any], after_json: Dict[str, Any]
+    ) -> str:
+        non_items = {"ingredient", "tool", "tome", "charm", "material"}
+        changelog_data = {"Changed": {}, "Added": {}, "Removed": {}, "Generated": {}}
+        before_keys = set(before_json.keys())
+        after_keys = set(after_json.keys())
+
+        items_added_list = []
+        items_removed_list = []
+        changed_items_latex = ""
+
+        # Detect added & removed
+        for added_item in (after_keys - before_keys):
+            if "type" in after_json[added_item] and after_json[added_item]["type"] not in non_items:
+                changelog_data["Added"][added_item] = after_json[added_item]
+                items_added_list.append(added_item)
+        for removed_item in (before_keys - after_keys):
+            if "type" in before_json[removed_item] and before_json[removed_item]["type"] not in non_items:
+                changelog_data["Removed"][removed_item] = before_json[removed_item]
+                items_removed_list.append(removed_item)
+
+        # Changed items
+        common_items = before_keys & after_keys
+        for item_name in common_items:
+            if "type" in before_json[item_name] and before_json[item_name]["type"] not in non_items:
+                if before_json[item_name] != after_json[item_name]:
+                    lines = []
+                    changed_dict = changelog_data["Changed"].setdefault(item_name, {})
+                    before_fields = set(before_json[item_name].keys())
+                    after_fields = set(after_json[item_name].keys())
+
+                    # Compare identifications
+                    if "identifications" in before_json[item_name] and "identifications" in after_json[item_name]:
+                        pre_id = before_json[item_name]["identifications"]
+                        post_id = after_json[item_name]["identifications"]
+                        if pre_id != post_id:
+                            changed_dict.setdefault("ids", {})
+                            pre_id_keys = set(pre_id.keys())
+                            post_id_keys = set(post_id.keys())
+                            for rem_id in (pre_id_keys - post_id_keys):
+                                changed_dict["ids"].setdefault("Removed", {})
+                                changed_dict["ids"]["Removed"][rem_id] = pre_id[rem_id]
+                                lines.append(f"Removed ID: {rem_id} {pre_id[rem_id]}")
+                            for new_id in (post_id_keys - pre_id_keys):
+                                changed_dict["ids"].setdefault("New", {})
+                                changed_dict["ids"]["New"][new_id] = post_id[new_id]
+                                lines.append(f"New ID: {new_id} {post_id[new_id]}")
+                            for stat_id in (pre_id_keys & post_id_keys):
+                                if pre_id[stat_id] != post_id[stat_id]:
+                                    changed_dict["ids"].setdefault("Change", {})
+                                    changed_dict["ids"]["Change"][stat_id] = {
+                                        "Before": pre_id[stat_id],
+                                        "After": post_id[stat_id]
+                                    }
+                                    lines.append(f"Changed ID: {stat_id} {pre_id[stat_id]} -> {post_id[stat_id]}")
+
+                    # Compare standard fields
+                    for field in (before_fields | after_fields):
+                        if field == "identifications":
+                            continue
+                        if field in before_fields and field not in after_fields:
+                            changed_dict.setdefault("Removed_Fields", {})
+                            changed_dict["Removed_Fields"][field] = before_json[item_name][field]
+                            lines.append(f"Removed field {field}: {before_json[item_name][field]}")
+                        elif field in after_fields and field not in before_fields:
+                            changed_dict.setdefault("New", {})
+                            changed_dict["New"][field] = after_json[item_name][field]
+                            lines.append(f"Added field {field}: {after_json[item_name][field]}")
+                        else:
+                            if before_json[item_name].get(field) != after_json[item_name].get(field):
+                                changed_dict.setdefault(field, {})
+                                changed_dict[field]["Before"] = before_json[item_name][field]
+                                changed_dict[field]["After"] = after_json[item_name][field]
+                                lines.append(f"Changed {field}: {before_json[item_name][field]} -> {after_json[item_name][field]}")
+
+                    if lines:
+                        changed_items_latex += f"\\subsection*{{{item_name}}}\n\\begin{{itemize}}\n"
+                        for ln in lines:
+                            changed_items_latex += f"  \\item {ln}\n"
+                        changed_items_latex += "\\end{itemize}\n"
+
+        current_datetime = datetime.now().strftime("%Y-%m-%d")
+        changelog_data["Generated"]["Date"] = current_datetime
+        changelog_data["Generated"]["Timestamp"] = int(time.time())
+
+        summary_changed = len(changelog_data["Changed"])
+        summary_added = len(changelog_data["Added"])
+        summary_removed = len(changelog_data["Removed"])
+
+        latex_content = rf"""
+\documentclass{{article}}
+\usepackage[utf8]{{inputenc}}
+\begin{{document}}
+\section*{{Item Changelog generated at {current_datetime}}}
+\textbf{{Summary:}} {summary_changed} items changed, {summary_added} items added, {summary_removed} items removed.
+
+\subsection*{{Items Added}}
+\begin{{itemize}}
+{''.join(f'\\item {a}' for a in items_added_list)}
+\end{{itemize}}
+
+\subsection*{{Items Removed}}
+\begin{{itemize}}
+{''.join(f'\\item {r}' for r in items_removed_list)}
+\end{{itemize}}
+
+\subsection*{{Item Changes}}
+{changed_items_latex}
+\end{{document}}
+"""
+        return latex_content
+
+    async def generate_ingredient_changelog_latex(
+        self, before_json: Dict[str, Any], after_json: Dict[str, Any]
+    ) -> str:
+        changelog_data = {"Changed": {}, "Added": {}, "Removed": {}, "Generated": {}}
+        before_keys = set(before_json.keys())
+        after_keys = set(after_json.keys())
+
+        ing_added_list = []
+        ing_removed_list = []
+        changed_ings_latex = ""
+
+        # Detect added/removed
+        for added_ing in (after_keys - before_keys):
+            if "ingredient" in after_json[added_ing].get("type", ""):
+                changelog_data["Added"][added_ing] = after_json[added_ing]
+                ing_added_list.append(added_ing)
+        for removed_ing in (before_keys - after_keys):
+            if "ingredient" in before_json[removed_ing].get("type", ""):
+                changelog_data["Removed"][removed_ing] = before_json[removed_ing]
+                ing_removed_list.append(removed_ing)
+
+        # Changed
+        common_ings = before_keys & after_keys
+        for ing_name in common_ings:
+            if "ingredient" in before_json[ing_name].get("type", ""):
+                if before_json[ing_name] != after_json[ing_name]:
+                    lines = []
+                    changed_dict = changelog_data["Changed"].setdefault(ing_name, {})
+                    before_fields = set(before_json[ing_name].keys())
+                    after_fields = set(after_json[ing_name].keys())
+                    for field in (before_fields | after_fields):
+                        if field in before_fields and field not in after_fields:
+                            changed_dict.setdefault("Removed_Fields", {})
+                            changed_dict["Removed_Fields"][field] = before_json[ing_name][field]
+                            lines.append(f"Removed field {field}: {before_json[ing_name][field]}")
+                        elif field in after_fields and field not in before_fields:
+                            changed_dict.setdefault("New", {})
+                            changed_dict["New"][field] = after_json[ing_name][field]
+                            lines.append(f"Added field {field}: {after_json[ing_name][field]}")
+                        else:
+                            if before_json[ing_name].get(field) != after_json[ing_name].get(field):
+                                changed_dict.setdefault(field, {})
+                                changed_dict[field]["Before"] = before_json[ing_name][field]
+                                changed_dict[field]["After"] = after_json[ing_name][field]
+                                lines.append(f"Changed {field}: {before_json[ing_name][field]} -> {after_json[ing_name][field]}")
+                    if lines:
+                        changed_ings_latex += f"\\subsection*{{{ing_name}}}\n\\begin{{itemize}}\n"
+                        for ln in lines:
+                            changed_ings_latex += f"  \\item {ln}\n"
+                        changed_ings_latex += "\\end{itemize}\n"
+
+        current_datetime = datetime.now().strftime("%Y-%m-%d")
+        changelog_data["Generated"]["Date"] = current_datetime
+        changelog_data["Generated"]["Timestamp"] = int(time.time())
+
+        summary_changed = len(changelog_data["Changed"])
+        summary_added = len(changelog_data["Added"])
+        summary_removed = len(changelog_data["Removed"])
+
+        latex_content = rf"""
+\documentclass{{article}}
+\usepackage[utf8]{{inputenc}}
+\begin{{document}}
+\section*{{Ingredient Changelog generated at {current_datetime}}}
+\textbf{{Summary:}} {summary_changed} ingredients changed, {summary_added} added, {summary_removed} removed.
+
+\subsection*{{Ingredients Added}}
+\begin{{itemize}}
+{''.join(f'\\item {a}' for a in ing_added_list)}
+\end{{itemize}}
+
+\subsection*{{Ingredients Removed}}
+\begin{{itemize}}
+{''.join(f'\\item {r}' for r in ing_removed_list)}
+\end{{itemize}}
+
+\subsection*{{Ingredient Changes}}
+{changed_ings_latex}
+\end{{document}}
+"""
+        return latex_content
