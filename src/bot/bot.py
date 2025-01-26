@@ -15,6 +15,7 @@ import logging
 import os
 import random
 import time
+
 from dotenv import load_dotenv
 import hikari
 import lightbulb
@@ -25,16 +26,11 @@ import requests
 import seaborn as sns
 import sympy as sp
 import tracemalloc
-from PIL import (
-    Image,
-    ImageDraw,
-    ImageFont
-)
-from matplotlib import (
-    pyplot as plt,
-    colors as mcolors
-)
+from PIL import Image, ImageDraw, ImageFont
+from matplotlib import pyplot as plt, colors as mcolors
 from scipy.interpolate import CubicSpline
+
+# Library imports
 from lib.item_wrapper import Items
 from lib.item_manager import ItemManager
 from lib.price_estimator import PriceEstimator
@@ -43,8 +39,10 @@ from lib.item_weight import WeightManager
 from lib.changelog_generate import ChangelogManager
 from lib.guild_display import GuildManager
 from lib.player_display import PlayerManager
+
 current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 tracemalloc.start()
+
 bot_token = os.getenv('NORI_TOKEN')
 bot = lightbulb.BotApp(
     token=bot_token,
@@ -78,9 +76,6 @@ def setup_bot():
         "guild_manager": guild_manager,
         "player_manager": player_manager
     }
-
-# Below are the example structures for the various classes and components
-# I left them as skeletons to show the intended structure and usage of each class
 
 
 class BotData:
@@ -161,8 +156,6 @@ class CustomTextSelect:
       - Define selectable text items
       - Bind a callback that processes the user choice
       - Update a message or embed upon selection
-    
-    This refers to the lightbulb SelectMenu component.
     """
 
 
@@ -213,9 +206,8 @@ class GameView:
       - Checks for winning conditions or a draw
       - Renders updated board state after each button press
       - Provides more complex AI or advanced strategy for larger boards
-    
-    Refer to 5x5_logic.py in lib for the actual implementation.
     """
+
 
 class menuView:
     """
@@ -378,6 +370,49 @@ class towerView:
       - Provide a quick reference for upcoming war attempts
     """
 
+
+@bot.command
+@lightbulb.command("ping", "Check the bot's response latency.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def ping_cmd(ctx: lightbulb.Context):
+    """
+    Example skeleton command for checking latency.
+    """
+    pass
+
+
+@bot.command
+@lightbulb.option("name", "Name of the Wynncraft player to search.", type=str, required=True)
+@lightbulb.command("player", "Retrieve info about a Wynncraft player.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def player_cmd(ctx: lightbulb.Context):
+    """
+    Example skeleton command for player data.
+    """
+    pass
+
+
+@bot.command
+@lightbulb.option("guild", "Guild prefix or name", type=str, required=True)
+@lightbulb.command("guildstats", "Retrieve info about a Wynncraft guild.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def guildstats_cmd(ctx: lightbulb.Context):
+    """
+    Example skeleton command for guild data.
+    """
+    pass
+
+
+@bot.command
+@lightbulb.command("help", "Shows this bot's help menu.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def help_cmd(ctx: lightbulb.Context):
+    """
+    Example skeleton command for showing help menus.
+    """
+    pass
+
+
 def main():
     """
     Entry point for running the Nori bot. This function sets up resources,
@@ -388,7 +423,7 @@ def main():
     player_mgr = managers["player_manager"]
     guild_mgr = managers["guild_manager"]
 
-    updated_count = item_mgr.update_items("/home/ubuntu/nori-bot/bot/items.json")
+    updated_count = item_mgr.update_items("item file path")
     print(f"Items updated: {updated_count}")
 
     stats_result = player_mgr.get_player_stats("ExamplePlayerName")
