@@ -8,12 +8,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime, timedelta, timezone
 
-SERVER_JSON_FILE_PATH = "/home/ubuntu/data-scripts/database/server_uptime.json"
-ONLINE_ACTIVITY_JSON_FILE_PATH = "/home/ubuntu/data-scripts/database/online_activity.json"
-GRAPH_OUTPUT_DIRECTORY = "/home/ubuntu/data-scripts/graphs/"
+SERVER_JSON_FILE_PATH = "your file path here"
+ONLINE_ACTIVITY_JSON_FILE_PATH = "your file path here"
+GRAPH_OUTPUT_DIRECTORY = "your directory path here"
 SERVER_CHECK_INTERVAL_SECS = 30
 PLOT_GENERATION_INTERVAL_SECS = 1800
-LOG_FILE_PATH = "/home/ubuntu/data-scripts/server_uptime.log"
+LOG_FILE_PATH = "your file path here"
 LOG_LEVEL = logging.INFO
 CST = timezone(timedelta(hours=-5))
 
