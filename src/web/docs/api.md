@@ -64,6 +64,7 @@ Response:
     "powder": []
   },
   "shiny": null,
+  "internalName": "string",
   "icon": "string",
   "item_type": "string",
   "item_tier": "string",
