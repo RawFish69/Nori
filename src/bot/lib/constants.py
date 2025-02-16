@@ -1,6 +1,7 @@
 """
 Author: RawFish
 Description: Constants and configuration values
+If you would rather load these from other sources, feel free to ignore this file.
 """
 
 VERSION = "1.0.0"
