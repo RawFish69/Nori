@@ -78,8 +78,7 @@ class WeightManager:
 
     def item_weight_output(self, item_string: str, item_map: Dict[str, Dict]) -> Optional[Dict[str, Dict[str, float]]]:
         """
-        Replicates your 'item_weight_output' logic. Decodes an item string 
-        to retrieve ID stats + roll percentages, then runs them through the 
+        Decodes an item string to retrieve ID stats + roll percentages, then runs them through the 
         'mythic_weights' data to produce final weighting for each scale.
 
         :param item_string: UTF-16 WynnTils item string.
