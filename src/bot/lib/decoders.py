@@ -1,6 +1,9 @@
 """
 Author: RawFish
 Description: Item string decoding and analysis utilities
+I would recommend checking out the wynntilsresolver repo for more information
+
+I also have an API route for this, so check the docs on nori.fish
 """
 
 from typing import Dict, Optional

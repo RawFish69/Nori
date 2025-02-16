@@ -1,6 +1,8 @@
 """
 Author: RawFish
 Description: Price estimation and trend analysis for item marketplace
+Current issue is that the lack of data and bad data makes it reliable to perform regression. 
+What I have planned is revamping the approach with RL models, so let's see how that goes. 
 """
 
 import numpy as np
