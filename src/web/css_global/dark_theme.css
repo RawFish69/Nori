@@ -1,5 +1,5 @@
 body {
-    background: #121212; /* material dark background */
+    background: #121212;
     color: #e0e0e0;
 }
 
@@ -14,12 +14,12 @@ header {
 }
 
 .install-link, nav a {
-    color: #bb86fc; /* accent color similar to Material design */
+    color: #bb86fc; 
     transition: color 0.3s ease;
 }
 
 nav a:hover, .install-link:hover {
-    color: #FFD700; /* Bright yellow on hover */
+    color: #FFD700; 
     text-decoration: underline;
 }
 
@@ -296,13 +296,45 @@ a.panel-link:hover {
 }
 
 body.dark-mode .item-card {
-    outline: 2px solid #0077B6;
+    background-color: #2d2d2d !important;
+    border: 2px solid rgba(0, 119, 182, 0.6) !important;
+    outline: 2px solid #0077B6 !important;
     outline-offset: 4px;
-    border-color: #0077B6;
+    box-shadow: none !important;
 }
 
 body.dark-mode .item-card:hover {
-    outline: 3px solid #58a6ff;
+    transform: translateY(-5px);
+    outline: 3px solid #58a6ff !important;
     outline-offset: 5px;
-    box-shadow: 0 8px 16px rgba(0, 119, 182, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 119, 182, 0.3) !important;
+}
+
+body.dark-mode .item-cards-container .item-card {
+    background-color: #2d2d2d !important;
+    border: 2px solid rgba(0, 119, 182, 0.6) !important;
+    outline: 2px solid #0077B6 !important;
+    outline-offset: 4px;
+}
+
+body.dark-mode .item-cards-container .item-card:hover {
+    transform: translateY(-5px);
+    outline: 3px solid #58a6ff !important;
+    outline-offset: 5px;
+    box-shadow: 0 8px 16px rgba(0, 119, 182, 0.3) !important;
+}
+
+body.dark-mode .build-card {
+    background-color: #2d2d2d !important;
+    border: 2px solid rgba(0, 119, 182, 0.6) !important;
+    outline: 2px solid #0077B6 !important;
+    outline-offset: 4px;
+    box-shadow: none !important;
+}
+
+body.dark-mode .build-card:hover {
+    transform: translateY(-5px);
+    outline: 3px solid #58a6ff !important;
+    outline-offset: 5px;
+    box-shadow: 0 8px 16px rgba(0, 119, 182, 0.3) !important;
 }
