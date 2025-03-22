@@ -8,12 +8,15 @@ body {
 }
 
 .container {
-    width: 80%;
-    margin: 20px auto;
+    width: 100%;
+    margin: 0;
     padding: 20px;
     background: white;
-    border-radius: 8px;
+    border-radius: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header {
@@ -113,8 +116,10 @@ footer {
 .item-cards-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
+    width: 100%;
+    max-width: 1800px;
 }
 
 .item-card {
@@ -126,7 +131,7 @@ footer {
     text-align: center;
     border: 2px solid rgba(0, 119, 182, 0.6);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    width: 250px;
+    width: 250px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,23 +200,33 @@ footer {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin: 2px 0;
+    margin: 0; 
+    padding: 1px 0; 
 }
 
 .item-card .stat-value {
-    flex: 1;
+    flex: 0.75;
     text-align: left;
+    padding-right: 2px; 
+    padding-left: 0; 
+    min-width: 20px; 
 }
 
 .item-card .stat-name {
-    flex: 2;
+    flex: 3;
     text-align: center;
+    padding: 0 2px; 
+    margin: 0 2px;
+    overflow-wrap: break-word;  
 }
 
 .item-card .stat-rate {
-    flex: 1;
+    flex: 0.75;
     text-align: right;
-    margin-right: 2px;
+    padding-right: 0; 
+    padding-left: 2px;  
+    white-space: nowrap;  
+    min-width: 40px; 
 }
 
 .scale-details {
@@ -260,9 +275,18 @@ footer {
     margin-top: 20px;
 }
 
+@media (max-width: 1200px) {
+    .item-card {
+        width: 45%;
+        min-width: 300px;
+    }
+}
+
 @media (max-width: 768px) {
     .item-card {
-        width: 100%;
+        width: 90%;
+        min-width: 250px;
+        max-width: 300px;  
     }
     .checkbox-container {
         flex-direction: column;
