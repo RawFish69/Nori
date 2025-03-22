@@ -8,6 +8,7 @@
     <meta property="og:description" content="#1 Ranked Mythic Items & Mythic Scales" />
     <meta property="og:url" content="https://nori.fish/wynn/item/mythic" />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
     <title>Nori-Wynn Mythic Items</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../../../css_global/default.css">
@@ -19,6 +20,8 @@
     <script src="../../../js_global/analytics.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484"
     data-overlays="bottom" crossorigin="anonymous"></script>
+    <script src="../../../js_global/config.js"></script>
+    <script src="../../../js_global/layout.js"></script>
 </head>
 <body>
     <header>
@@ -27,10 +30,7 @@
             <h1>Nori-Wynn</h1>
         </div>
         <nav>
-            <a href="https://nori.fish">Home</a>
-            <a href="https://nori.fish/wynn">Wynn</a>
-            <a href="https://nori.fish/wynn/item">Item</a>
-            <a href="https://discord.gg/eDssA6Jbwd" target="_blank">Discord</a>
+            <!-- Navigation links will be inserted by layout.js -->
         </nav>
     </header>
     <div id="menu-button" onclick="toggleSidebar()">☰</div>
@@ -41,8 +41,8 @@
             <h3 class="filter-title">Filter items by type</h3>
             <div class="checkbox-container">
                 <label><input type="checkbox" value="spear" class="item-filter" checked> Spear <img src="../../../resources/spear.png" alt="Spear" class="checkbox-icon"></label>
-                <label><input type="checkbox" value="wand" class="item-filter" checked> Wand <img src="../../../resources/wand.png" alt="Wand" class="checkbox-icon"></label>
                 <label><input type="checkbox" value="bow" class="item-filter" checked> Bow <img src="../../../resources/bow.png" alt="Bow" class="checkbox-icon"></label>
+                <label><input type="checkbox" value="wand" class="item-filter" checked> Wand <img src="../../../resources/wand.png" alt="Wand" class="checkbox-icon"></label>
                 <label><input type="checkbox" value="dagger" class="item-filter" checked> Dagger <img src="../../../resources/dagger.png" alt="Dagger" class="checkbox-icon"></label>
                 <label><input type="checkbox" value="relik" class="item-filter" checked> Relik <img src="../../../resources/relik.png" alt="Relik" class="checkbox-icon"></label>
                 <label><input type="checkbox" value="armor" class="item-filter" checked> Armor <img src="../../../resources/boots.png" alt="Armor" class="checkbox-icon"></label>

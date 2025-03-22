@@ -255,15 +255,16 @@ tr:hover {
     margin: 0 auto;
 }
 
+/* Recipe card styling with outline effect */
 .recipe-card {
     display: flex;
     align-items: center;
     padding: 20px;
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 2px solid rgba(0, 119, 182, 0.6);  /* Theme-colored border */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     cursor: pointer;
     margin-bottom: 20px;
 }
@@ -271,6 +272,16 @@ tr:hover {
 .recipe-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-color: #0077B6; /* Stronger border color on hover */
+    outline: 2px solid #0077B6;  /* Outline like panel cards */
+    outline-offset: 4px;
+}
+
+.recipe-card:focus,
+.recipe-card:active {
+    border-color: #0077B6;
+    outline: 2px solid #0077B6;
+    outline-offset: 4px;
 }
 
 .recipe-icon {

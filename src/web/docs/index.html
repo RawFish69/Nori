@@ -8,9 +8,18 @@
     <meta property="og:description" content="Documentation for Nori Web" />
     <meta property="og:url" content="https://nori.fish/docs" />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
     <title>Nori Documentation</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css_global/default.css">
+    <link rel="stylesheet" href="../css_global/sidebar.css">
+    <link rel="stylesheet" href="../css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <script type="text/javascript" src="../js_global/sidebar.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@latest/dist/zero-md.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../js_global/analytics.js"></script>
+    <script src="../js_global/config.js"></script>
+    <script src="../js_global/layout.js"></script>
 </head>
 <body>
     <header>
@@ -19,65 +28,253 @@
             <h1>Nori Documentation</h1>
         </div>
         <nav>
-            <a href="https://nori.fish">Home</a>
-            <a href="https://nori.fish/wynn">Wynn</a>
-            <a href="https://nori.fish/docs">Docs</a>
-            <a href="https://discord.com/application-directory/873677970928193568" target="_blank">Nori-Bot (Discord)</a>
-            <a href="https://discord.gg/eDssA6Jbwd" target="_blank">Support Server</a>
+            <!-- Navigation links will be inserted by layout.js -->
         </nav>
     </header>
 
-    <div class="docs-container">
+    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar"></div>
+    
+    <div class="documentation-wrapper">
         <aside class="docs-sidebar">
-            <h2>Documentation</h2>
-            <ul>
-                <li><a href="#" onclick="loadDoc('api-documentation')">API Documentation</a></li>
-                <li><a href="#" onclick="loadDoc('command-documentation')">Bot Commands</a></li>
-                <li>Wynncraft Features
-                    <ul>
-                        <li><a href="#" onclick="loadDoc('guild-tower')">Guild Tower</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <div class="docs-nav-wrapper">
+                <div class="docs-search">
+                    <input type="text" id="docs-search-input" placeholder="Search documentation">
+                </div>
+                <nav class="docs-nav">
+                    <div class="nav-section">
+                        <h3>API Documentation</h3>
+                        <ul>
+                            <li><a href="#" onclick="scrollToTop()" class="nav-link">Overview</a></li>
+                            <li><a href="#" onclick="loadSection('item-endpoints')" class="nav-link">Item Endpoints</a></li>
+                            <li><a href="#" onclick="loadSection('uptime-endpoint')" class="nav-link">Uptime Endpoint</a></li>
+                            <li><a href="#" onclick="loadSection('leaderboard-endpoints')" class="nav-link">Leaderboard Endpoints</a></li>
+                            <li><a href="#" onclick="loadSection('database-guild-endpoint')" class="nav-link">Guild Database</a></li>
+                            <li><a href="#" onclick="loadSection('build-and-recipe-search')" class="nav-link">Build & Recipe Search</a></li>
+                            <li><a href="#" onclick="loadSection('item-lootpool-endpoint')" class="nav-link">Item Lootpool</a></li>
+                            <li><a href="#" onclick="loadSection('aspect-lootpool-endpoint')" class="nav-link">Aspect Lootpool</a></li>
+                            <li><a href="#" onclick="loadSection('guild-endpoints')" class="nav-link">Guild Endpoints</a></li>
+                            <li><a href="#" onclick="loadSection('player-endpoint')" class="nav-link">Player Endpoint</a></li>
+                            <li><a href="#" onclick="loadSection('showcase-endpoint')" class="nav-link">Showcase Endpoint</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <h3>Discord Bot</h3>
+                        <ul>
+                            <li><a href="#" onclick="loadDoc('command-documentation')" class="nav-link">Command List</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <h3>Wynncraft Features</h3>
+                        <ul>
+                            <li><a href="#" onclick="loadDoc('guild-tower')" class="nav-link">Guild Tower</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="nav-link external">Discord Support</a></li>
+                            <li><a href="https://github.com/RawFish69/Nori" target="_blank" class="nav-link external">GitHub Repository</a></li>
+                            <li><a href="https://github.com/RawFish69/Nori/issues" target="_blank" class="nav-link external">Issue Tracker</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </aside>
         <main class="docs-content">
-            <zero-md id="docs-content" src=""></zero-md>
+            <div class="content-header">
+                <button id="toggle-sidebar" class="toggle-sidebar-btn">Toggle Navigation</button>
+            </div>
+            <div class="content-container">
+                <div id="loading-indicator" class="loading">Loading documentation...</div>
+                <zero-md id="docs-content" src=""></zero-md>
+            </div>
         </main>
     </div>
 
     <footer>
-        <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
+        <div class="footer-content">
+            <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
+            <div class="footer-links">
+                <a href="../">Home</a>
+                <a href="../wynn/">Wynn</a>
+                <a href="https://discord.gg/eDssA6Jbwd" target="_blank">Discord</a>
+            </div>
+        </div>
     </footer>
 
     <script>
         const docMap = {
+            'api-documentation': 'api.md',
             'command-documentation': 'commands.md',
-            'guild-tower': 'https://raw.githubusercontent.com/RawFish69/Nori/main/docs/tower/readme.md',
-            'api-documentation': 'api.md'
+            'guild-tower': 'https://raw.githubusercontent.com/RawFish69/Nori/main/docs/tower/readme.md'
         };
+
+        function scrollToTop() {
+            const contentElement = document.getElementById('docs-content');
+            
+            if (contentElement.getAttribute('src') !== 'api.md') {
+                document.getElementById('loading-indicator').style.display = 'block';
+                contentElement.setAttribute('src', 'api.md');
+                
+                contentElement.addEventListener('zero-md-rendered', function() {
+                    document.getElementById('loading-indicator').style.display = 'none';
+                    window.scrollTo(0, 0);
+                    const contentTop = document.querySelector('.docs-content').offsetTop;
+                    window.scrollTo(0, contentTop - 120); 
+                }, { once: true });
+            } else {
+                window.scrollTo(0, 0);
+                const contentTop = document.querySelector('.docs-content').offsetTop;
+                window.scrollTo(0, contentTop - 120); 
+            }
+
+            const url = new URL(window.location);
+            url.searchParams.set('doc', 'api-documentation');
+            url.searchParams.delete('section');
+            window.history.pushState({}, '', url);
+        
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
 
         function loadDoc(section) {
             const url = new URL(window.location);
             url.searchParams.set('doc', section);
             window.history.pushState({}, '', url);
 
+            document.getElementById('loading-indicator').style.display = 'block';
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
             const file = docMap[section];
             if (file) {
-                document.getElementById('docs-content').setAttribute('src', file);
+                const contentElement = document.getElementById('docs-content');
+                contentElement.setAttribute('src', file);
+                
+                contentElement.addEventListener('zero-md-rendered', function() {
+                    document.getElementById('loading-indicator').style.display = 'none';
+                }, { once: true });
             }
+        }
+
+        function loadSection(sectionId) {
+            const contentElement = document.getElementById('docs-content');
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            if (contentElement.getAttribute('src') !== 'api.md') {
+                document.getElementById('loading-indicator').style.display = 'block';
+                
+                contentElement.setAttribute('src', 'api.md');
+                
+                contentElement.addEventListener('zero-md-rendered', function() {
+                    document.getElementById('loading-indicator').style.display = 'none';
+                    setTimeout(() => {
+                        const shadowRoot = contentElement.shadowRoot;
+                        const section = shadowRoot.querySelector(`#${sectionId}`);
+                        if (section) {
+                            section.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 100);
+                }, { once: true });
+            } else {
+                setTimeout(() => {
+                    const shadowRoot = contentElement.shadowRoot;
+                    const section = shadowRoot.querySelector(`#${sectionId}`);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+            }
+            
+            const url = new URL(window.location);
+            url.searchParams.set('doc', 'api-documentation');
+            url.searchParams.set('section', sectionId);
+            window.history.pushState({}, '', url);
         }
 
         function loadDocFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
             const doc = urlParams.get('doc');
+            const contentElement = document.getElementById('docs-content');
+            
+            document.getElementById('loading-indicator').style.display = 'block';
+            
             if (doc && docMap[doc]) {
-                document.getElementById('docs-content').setAttribute('src', docMap[doc]);
+                contentElement.setAttribute('src', docMap[doc]);
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(doc)) {
+                        link.classList.add('active');
+                    }
+                });
             } else {
-                loadDoc('api-documentation'); 
+                // Default to API documentation
+                contentElement.setAttribute('src', 'api.md');
+                
+                // Set active class on Overview link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('onclick') && link.getAttribute('onclick').includes('scrollToTop')) {
+                        link.classList.add('active');
+                    }
+                });
             }
+            
+            // Hide loading indicator once content is rendered
+            contentElement.addEventListener('zero-md-rendered', function() {
+                document.getElementById('loading-indicator').style.display = 'none';
+            }, { once: true });
         }
 
-        window.onload = loadDocFromURL;
+        document.getElementById('toggle-sidebar').addEventListener('click', function() {
+            const sidebar = document.querySelector('.docs-sidebar');
+            sidebar.classList.toggle('active');
+        });
+
+        document.getElementById('dark-theme-css').disabled = true;
+
+        document.getElementById('docs-search-input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const text = link.textContent.toLowerCase();
+                if (text.includes(searchTerm) || searchTerm === '') {
+                    link.parentElement.style.display = '';
+                } else {
+                    link.parentElement.style.display = 'none';
+                }
+            });
+        });
+
+        window.onload = function() {
+            document.getElementById('loading-indicator').style.display = 'block';
+            
+            // Set initial document to API documentation
+            document.getElementById('docs-content').setAttribute('src', 'api.md');
+            
+            // Set active class on Overview link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('onclick') && link.getAttribute('onclick').includes('scrollToTop')) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Check URL parameters
+            loadDocFromURL();
+        };
         window.onpopstate = loadDocFromURL;
     </script>
 </body>

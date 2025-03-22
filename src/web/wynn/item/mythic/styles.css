@@ -118,14 +118,27 @@ footer {
 }
 
 .item-card {
-    width: calc(30% - 20px); 
-    background-color: #333; 
+    background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    margin: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin-bottom: 20px;
-    color: white;
+    border: 2px solid rgba(0, 119, 182, 0.6);  /* Adding a visible border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-color: #0077B6; /* Stronger border color on hover */
+    outline: 2px solid #0077B6;  /* Adding outline like panel cards */
+    outline-offset: 4px;  /* Space between border and outline */
 }
 
 .item-card.full-row {
