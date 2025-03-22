@@ -4,7 +4,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
+    background: #ffffff; /* Changed from #f4f4f4 to pure white */
     color: #333;
 }
 
@@ -62,7 +62,7 @@ footer {
 .panel {
     flex: 1 1 calc(33.333% - 20px);
     margin: 10px;
-    background: #f1f1f1;
+    background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -70,7 +70,7 @@ footer {
 }
 
 .panel h2 {
-    background: #708090;
+    background: #0077B6; /* Changed from #708090 to match header color */
     color: white;
     padding: 10px;
     border-radius: 8px 8px 0 0;

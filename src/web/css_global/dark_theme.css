@@ -1,24 +1,26 @@
 body {
-    background: #2c2c2c; 
-    color: #e8e8e8; 
+    background: #121212; /* material dark background */
+    color: #e0e0e0;
 }
 
 .container {
-    background: #3b3b3b; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background: #1e1e1e;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.7);
 }
 
 header {
-    background: #555555; 
-    color: #fff;
+    background: #1f1f1f;
+    color: #e0e0e0;
 }
 
 .install-link, nav a {
-    color: #e8e8e8; 
+    color: #bb86fc; /* accent color similar to Material design */
+    transition: color 0.3s ease;
 }
 
 nav a:hover, .install-link:hover {
-    color: #FFD700;
+    color: #FFD700; /* Bright yellow on hover */
+    text-decoration: underline;
 }
 
 footer {
@@ -53,12 +55,13 @@ tr:hover {
 }
 
 button, .online-button, .centered-button, #uptimeButton, #toggleAllButton, .back-button, .search-bar button {
-    background-color: #555555;
-    color: #e8e8e8;
+    background-color: #bb86fc;
+    color: #1e1e1e;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.7);
 }
 
 button:hover, .online-button:hover, .centered-button:hover, #uptimeButton:hover, #toggleAllButton:hover, .back-button:hover, .search-bar button:hover {
@@ -68,7 +71,6 @@ button:hover, .online-button:hover, .centered-button:hover, #uptimeButton:hover,
 button:active, .online-button:active, .centered-button:active, #uptimeButton:active, #toggleAllButton:active, .back-button:active, .search-bar button:active {
     background-color: #4b4b4b;
 }
-
 
 .centered-text, .subtitle, .tooltip, .player-info, .install-link, .subtitle, #countdown-label, #build-count, #recipe-count {
     color: #e8e8e8;
@@ -109,13 +111,11 @@ button:active, .online-button:active, .centered-button:active, #uptimeButton:act
 .panel h2, .card h4, #chatHistory {
     background-color: #555555;
     color: #fff;
-
 }
 
 .panel-link, .checkbox-container input[type="checkbox"], .region-title, .rarity-title, .quote, .scale-weight, .scale-item, #suggestions-container, #build-search-form input[type="text"], #recipe-search-form input[type="text"] {
     background-color: #3b3b3b;
     color: #e8e8e8;
-    
 }
 
 .shiny-item {
@@ -126,4 +126,183 @@ button:active, .online-button:active, .centered-button:active, #uptimeButton:act
 
 .mythic-color {
     color: #e400e4;
+}
+
+.container,
+.card,
+.item-card,
+.panel,
+.lootpool-card,
+.build-card {
+    background-color: #1c1c1c !important;  
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.panel h2 {
+    background-color: #0077B6 !important; 
+    color: white !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.card h4,
+#chatHistory,
+.region-title,
+.rarity-title {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.panel-link .card {
+    border: 2px solid rgba(0, 119, 182, 0.6) !important;
+    transition: border-color 0.3s ease;
+}
+.panel-link .card:hover,
+.panel-link .card:focus,
+.panel-link .card:active {
+    border-color: #0077B6 !important;
+    outline: 2px solid #0077B6 !important;
+    outline-offset: 4px;
+}
+
+#sidebar {
+    font-size: 16px !important; 
+}
+
+.container,
+.card,
+.item-card,
+.panel,
+.lootpool-card,
+.build-card,
+.main-panel,
+.panel-content,
+body > div:not(#sidebar):not(#menu-button) {
+    background-color: #1c1c1c !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+table, 
+tr:nth-child(even),
+.panel-link, 
+.checkbox-container input[type="checkbox"], 
+.region-title, 
+.rarity-title {
+    background-color: #1c1c1c !important;
+}
+
+th {
+    background-color: #0077B6 !important;
+    color: white !important;
+}
+
+a {
+    color: #bb86fc;
+    transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: #FFD700; 
+    text-decoration: underline;
+}
+
+.panel-link a:hover, .panel-link a:focus {
+    color: #FFD700;
+}
+
+.checkbox-container input[type="checkbox"] {
+    background-color: #1c1c1c !important;
+    border-color: #555555 !important;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: #0077B6 !important;
+    border-color: #0077B6 !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+.checkbox-container input[type="checkbox"].mythic:checked {
+    background-color: #e400e4 !important;
+    border-color: #e400e4 !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+.checkbox-container input[type="checkbox"].fabled:checked {
+    background-color: #FF5555 !important;
+    border-color: #FF5555 !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+.checkbox-container input[type="checkbox"].legendary:checked {
+    background-color: #14cece !important;
+    border-color: #14cece !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+.checkbox-container input[type="checkbox"].rare:checked {
+    background-color: #FF55FF !important;
+    border-color: #FF55FF !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+.checkbox-container input[type="checkbox"].unique:checked {
+    background-color: #c1c11f !important;
+    border-color: #c1c11f !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+.panel-link a:hover, 
+.panel-link a:focus,
+.panel-link:hover,
+.panel-link:focus {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+.panel-link .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    border-color: #0077B6 !important;
+}
+
+.panel a.panel-link:hover {
+    text-decoration: none !important;
+}
+
+a.panel-link:hover {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+body.dark-mode .item-card {
+    outline: 2px solid #0077B6;
+    outline-offset: 4px;
+    border-color: #0077B6;
+}
+
+body.dark-mode .item-card:hover {
+    outline: 3px solid #58a6ff;
+    outline-offset: 5px;
+    box-shadow: 0 8px 16px rgba(0, 119, 182, 0.3);
 }
