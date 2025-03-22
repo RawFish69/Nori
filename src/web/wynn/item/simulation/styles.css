@@ -93,6 +93,17 @@ footer {
     background-color: #333;
     color: white;
     position: relative;
+    border: 2px solid rgba(0, 119, 182, 0.6);
+    outline: 2px solid #0077B6;
+    outline-offset: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, outline 0.3s ease;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    outline: 3px solid #58a6ff;
+    outline-offset: 5px;
 }
 
 .item-icon {
