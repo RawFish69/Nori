@@ -1,10 +1,7 @@
 # Nori-Wynn Changelog
 
 ## Latest Changes
-- Added Aspect Lootpool to both Discord Bot and Website
-- Added Canyon of the lost (COTL) to Item Lootpool
-- Item changelog page now shows all changes since 2.0.3
-- Pricecheck system upgrade: Now sales data submitted by user also contribute to the price estimation algorithm
+- UI Overhaul
 
 ### v1.0.2
 - Nori now checks API itemDB and generates changelog automatically
@@ -111,3 +108,6 @@
 - Adjusted function to fit new Item Database format
 - Changed CDN path from Wynncraft
 - Added Aspect Lootpool to both Discord Bot and Website
+
+### v1.3.2
+- UI Overhaul

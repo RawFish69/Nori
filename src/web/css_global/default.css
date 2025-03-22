@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif !important;
+    background: #ffffff;
+    color: #202124;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+p, h1, h2, h3, h4, h5, h6, span, li, a {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+a {
+    color: #0077B6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: #005b8f;
+    text-decoration: underline;
+}
+
+.install-link {
+    color: #006eff;
+    transition: color 0.3s ease;
+}
+
+.install-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+button, .button {
+    background-color: #0077B6;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: box-shadow 0.2s ease;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+button:hover, .button:hover {
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+}
+
+#theme-switch {
+    font-size: 18px;
+    padding: 12px 24px;
+    background-color: #0077B6;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.container {
+    padding: 16px;
+    margin: 16px auto;
+    flex: 1 0 auto;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #0077B6;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    color: #c0c0c0;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+footer {
+    background-color: #0077B6;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 0;
+    position: relative;
+    width: 100%;
+    font-family: 'Roboto', sans-serif !important;
+    flex-shrink: 0;
+    box-shadow: none;
+    margin-top: auto;
+}
+
+footer p, footer h3 {
+    margin: 5px 0;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 2;
+}
+
+footer::before {
+    display: none;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0 2px;
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+footer a:hover {
+    color: #e1e1e1;
+}
+
+footer a:hover::after {
+    width: 100%;
+}
+
+body.dark-mode footer {
+    background-color: #1c1c1c;
+    box-shadow: none;
+}
+
+body.dark-mode footer::before {
+    background: linear-gradient(to right, #bb86fc, #3700b3, #bb86fc);
+    background-size: 200% 100%;
+}
+
+footer {
+    background-color: #333333;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+body.dark-mode button,
+body.dark-mode .button,
+.theme-button.dark-mode {
+    background-color: #1f1f1f !important;
+    color: #e0e0e0 !important;
+}
+
+#menu-button.dark-mode {
+    background-color: #1f1f1f !important;
+    color: #e0e0e0 !important;
+}
+
+.panel-link .card {
+    border: 2px solid rgba(0, 119, 182, 0.6);
+    transition: border-color 0.3s ease;
+}
+
+.panel-link .card:hover,
+.panel-link .card:focus,
+.panel-link .card:active {
+    border-color: #0077B6;
+    outline: 2px solid #0077B6 !important;
+    outline-offset: 4px;
+}
+
+.game-link {
+    position: relative;
+    color: #ffeb3b !important;
+    text-shadow: 0 0 5px rgba(255, 235, 59, 0.7);
+    animation: pulse 2s infinite alternate, glow 3s infinite;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.game-link::after {
+    content: "Multiplayer Web Game Developed by RawFish - Currently in Open Beta!";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.game-link:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+@keyframes pulse {
+    0% { 
+        text-shadow: 0 0 5px rgba(255, 235, 59, 0.7);
+    }
+    100% { 
+        text-shadow: 0 0 10px rgba(255, 235, 59, 1), 0 0 15px rgba(255, 165, 0, 0.8);
+    }
+}
+
+@keyframes glow {
+    0%, 100% { 
+        color: #ffeb3b; 
+    }
+    50% { 
+        color: #ffc107; 
+    }
+}
+
+body.dark-mode .game-link {
+    color: #ffeb3b !important;
+}
+
+@media (max-width: 600px) {
+    nav {
+        gap: 8px;
+    }
+    
+    nav a {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+    
+    .game-link::after {
+        width: auto;
+        max-width: 180px;
+        white-space: normal;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    nav {
+        flex-direction: row;
+        justify-content: center;
+        gap: 6px;
+    }
+    
+    nav a {
+        padding: 5px 6px;
+        font-size: 13px;
+    }
+}

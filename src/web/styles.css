@@ -84,6 +84,7 @@ footer {
     background-color: #556070;
 }
 
+/* Update install button styling */
 .install-button {
     display: inline-block;
     padding: 15px 30px;
@@ -92,6 +93,8 @@ footer {
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.2em;
+    font-weight: bold;
+    text-transform: none;
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -165,4 +168,14 @@ footer {
     background-color: #e6faff;
     border-color: #3d7a99;
     color: #333;
+}
+
+.feature h2 {
+    background-color: #708090;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    margin-top: 25px;
+    font-size: 1.5em;
 }

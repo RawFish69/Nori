@@ -128,26 +128,33 @@ function toggleTheme() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    const themeButton = document.createElement("button");
-    themeButton.id = "theme-switch";
-    themeButton.textContent = "Dark Theme";
-    themeButton.className = "theme-button"; 
-    themeButton.style.position = "absolute";
-    themeButton.style.top = "10px";
-    themeButton.style.right = "10px";
-    themeButton.style.padding = "10px 20px";
-    themeButton.style.fontSize = "16px"; 
-    themeButton.style.borderRadius = "8px";  
-    themeButton.onclick = toggleTheme;
-    document.querySelector("header").appendChild(themeButton);
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.getElementById("dark-theme-css").disabled = false;
-        themeButton.textContent = "Light Theme";
-        themeButton.classList.add("dark-mode");
-        document.getElementById("sidebar").classList.add("dark-mode");
-        document.getElementById("menu-button").classList.add("dark-mode");
+    const isDocsPage = window.location.pathname.includes('/docs');
+    
+    if (!isDocsPage) {
+        const themeButton = document.createElement("button");
+        themeButton.id = "theme-switch";
+        themeButton.textContent = "Dark Theme";
+        themeButton.className = "theme-button"; 
+        themeButton.style.position = "absolute";
+        themeButton.style.top = "10px";
+        themeButton.style.right = "10px";
+        themeButton.style.padding = "10px 20px";
+        themeButton.style.fontSize = "16px"; 
+        themeButton.style.borderRadius = "8px";  
+        themeButton.onclick = toggleTheme;
+        document.querySelector("header").appendChild(themeButton);
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.getElementById("dark-theme-css").disabled = false;
+            themeButton.textContent = "Light Theme";
+            themeButton.classList.add("dark-mode");
+            document.getElementById("sidebar").classList.add("dark-mode");
+            document.getElementById("menu-button").classList.add("dark-mode");
+        }
+    } else {
+        document.getElementById("dark-theme-css").disabled = true;
     }
+    
     createSidebar();
 });
 

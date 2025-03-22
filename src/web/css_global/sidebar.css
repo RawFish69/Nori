@@ -3,21 +3,27 @@ header {
 }
 
 #menu-button {
-    font-size: 30px;
+    font-size: 36px;
     cursor: pointer;
     position: absolute;
     top: 20px;
     left: 20px;
     color: white;
-    background: #708090;
+    background: #0077B6;
     border: none;
-    padding: 10px;
-    z-index: 3; 
+    padding: 12px 20px;
+    z-index: 3;
     transition: left 0.25s, background-color 0.3s ease;
+    border-radius: 4px;
 }
 
 #menu-button.sidebar-active {
     left: 300px;
+}
+
+#menu-button:not(.dark-mode) {
+    background: #0077B6;
+    color: white;
 }
 
 #sidebar {
@@ -27,31 +33,79 @@ header {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #708090;
+    background-color: #1c1c1c; /* Changed from #373737 to match dark theme */
     overflow-y: auto;
     overflow-x: hidden;
     transition: 0.25s;
     padding-top: 100px;
     scrollbar-width: thin;
-    scrollbar-color: #708090 #2f4f4f; 
+    scrollbar-color: #708090 #2f4f4f;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
+    font-size: 16px;
 }
 
 #sidebar.active {
     width: 300px;
-    overflow-y: auto; 
+    overflow-y: auto;
+}
+
+#sidebar:not(.dark-mode) {
+    background-color: #ffffff;
+}
+
+#sidebar:not(.dark-mode) a {
+    font-size: 18px;
+    color: #0077B6 !important;
+    padding: 12px 20px;
+    background: transparent !important;
+}
+
+#sidebar:not(.dark-mode) a:hover {
+    background-color: #c0e6f1 !important;
+    color: #005b8f !important;
+}
+
+#sidebar:not(.dark-mode) a:active {
+    background-color: #a0d7e0 !important;
+    color: #004a7f !important;
+}
+
+/* Override the default sub-menu in non-dark mode so it shows the bright theme */
+#sidebar:not(.dark-mode) .sub-menu {
+    background-color: #e6faff;
+}
+#sidebar:not(.dark-mode) .sub-menu a {
+    font-size: 18px;
+    color: #0077B6 !important;
+    padding: 12px 20px;
+    background: transparent !important;
+}
+#sidebar:not(.dark-mode) .sub-menu a:hover,
+#sidebar:not(.dark-mode) .sub-menu a:active {
+    background-color: #a0d7e0 !important;
+    color: #004a7f !important;
 }
 
 #sidebar a {
-    padding: 10px 15px;
+    padding: 8px 12px;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 16px;
     color: white;
     display: block;
-    transition: 0.3s;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* Update hover/focus/active for sidebar links: use only a single border line */
+#sidebar a:hover,
+#sidebar a:focus,
+#sidebar a:active {
+    border-color: #0077B6 !important;
+    /* Removed extra outline for a single-line effect */
 }
 
 #sidebar a:hover {
-    background-color: #575757;
+    background-color: #2c2c2c; /* Changed from #4e4e4e to be darker */
 }
 
 #menu-button.dark-mode {
@@ -60,20 +114,44 @@ header {
 }
 
 #sidebar.dark-mode {
-    background-color: #555555;
-    scrollbar-color: #555555 #3b3b3b; 
+    background-color: #1c1c1c; /* Changed from #555555 to be consistent */
+    scrollbar-color: #1c1c1c #0f0f0f;
+    font-size: 16px !important;
+}
+
+body.dark-mode #sidebar {
+    background-color: #1c1c1c !important;
+    font-size: 16px !important;
 }
 
 #sidebar.dark-mode a {
     color: white;
+    font-size: 18px !important;
+    padding: 12px 20px !important;
 }
 
 #sidebar.dark-mode a:hover {
     background-color: #444444;
 }
 
+#sidebar.dark-mode a:active {
+    background-color: #555555 !important; /* match dark mode background */
+    color: #e0e0e0 !important;
+}
+
 #sidebar.dark-mode .sub-menu {
     background-color: #444444;
+}
+
+/* Ensure dark mode sidebar links match light mode size and spacing */
+body.dark-mode #sidebar a {
+    font-size: 18px !important;
+    padding: 12px 20px !important;
+}
+
+body.dark-mode #sidebar .sub-menu a {
+    font-size: 18px !important;
+    padding: 12px 20px !important;
 }
 
 #sidebar::-webkit-scrollbar {
@@ -86,24 +164,24 @@ header {
 }
 
 #sidebar::-webkit-scrollbar-thumb {
-    background-color: #708090; 
+    background-color: #708090;
     border-radius: 10px;
-    border: 3px solid #2f4f4f; 
+    border: 3px solid #2f4f4f;
 }
 
 #sidebar::-webkit-scrollbar-thumb:hover {
-    background: #556070; 
+    background: #556070;
 }
 
 .sub-menu {
     display: none;
-    background-color: #556070;
+    background-color: #2c2c2c; /* Changed from #4e4e4e to be consistent */
     padding-left: 20px;
 }
 
 .sub-menu a {
     font-size: 16px !important;
-    padding: 8px 15px; 
+    padding: 8px 15px;
 }
 
 .sub-menu.active {
@@ -112,10 +190,10 @@ header {
 
 .theme-button {
     padding: 5px 10px;
-    background-color: #708090; 
+    background-color: #6200ee;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease;
@@ -130,14 +208,14 @@ header {
 }
 
 .theme-button.dark-mode {
-    background-color: #555555; 
-    color: #FFFFFF; 
+    background-color: #555555;
+    color: #FFFFFF;
 }
 
 .theme-button.dark-mode:hover {
-    background-color: #444444; 
+    background-color: #444444;
 }
 
 .theme-button.dark-mode:active {
-    background-color: #333333; 
+    background-color: #333333;
 }
