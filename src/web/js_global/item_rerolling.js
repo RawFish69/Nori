@@ -91,7 +91,9 @@ function displayItem(item, amplifierTier, rerollCount, isInitialLoad) {
     const itemCardContainer = document.createElement("div");
     itemCardContainer.classList.add("item-card-container");
 
-    const icon = item.icon || `../../../resources/${item.type.toLowerCase()}.png`;
+    const icon = ["helmet", "chestplate", "leggings", "boots"].includes(item.type.toLowerCase()) 
+        ? `${item.type.toLowerCase()}.png` 
+        : item.icon;
     const imageSrc = icon.startsWith('http') ? icon : `../../../resources/${item.type.toLowerCase()}.png`;
 
     const itemElement = document.createElement("div");

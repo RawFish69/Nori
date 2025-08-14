@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drone Control Panel</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    body { font-family: Arial; margin: 0; padding: 20px; }
+    .row { display: flex; flex-wrap: wrap; margin: 0 -10px; }
+    .control-panel, .data-panel, .pid-panel { margin: 10px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+    .control-panel { flex: 100%; }
+    .pid-panel, .data-panel { flex: 1; min-width: 300px; }
+    h2 { color: #333; }
+    .slider-container { margin: 10px 0; }
+    .slider { width: 100%; }
+    .controls-container { display: flex; justify-content: space-between; }
+    .control-column { flex: 1; margin: 0 10px; }
+    
+    /* Joystick styling */
+    .joystick-container { position: relative; width: 180px; height: 180px; margin: 20px auto; }
+    .joystick-base { position: absolute; width: 180px; height: 180px; border-radius: 50%; background: #ddd; }
+    .joystick-handle { position: absolute; width: 40px; height: 40px; border-radius: 50%; background: #007bff; top: 70px; left: 70px; cursor: pointer; }
+    
+    /* Throttle styling */
+    .throttle-container { position: relative; width: 60px; height: 180px; margin: 20px auto; background: #ddd; border-radius: 10px; }
+    .throttle-handle { position: absolute; width: 60px; height: 30px; background: #007bff; bottom: 0; border-radius: 10px; cursor: pointer; }
+    
+    .pid-param { display: flex; margin: 5px 0; }
+    .pid-param span { flex: 1; }
+    .pid-param input { flex: 2; }
+    button { padding: 10px; margin: 10px 0; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    .gauge { margin: 10px 0; height: 20px; background: #eee; position: relative; }
+    .gauge-fill { height: 100%; background: #4CAF50; width: 50%; position: absolute; }
+    .gauge-text { position: absolute; width: 100%; text-align: center; }
+    #viz-container { display: flex; flex-wrap: wrap; }
+    .viz-box { flex: 1; min-width: 200px; margin: 5px; padding: 10px; border: 1px solid #ddd; }
+    
+    #drone-visualization {
+      width: 100%;
+      height: 250px;  /* Made slightly taller */
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 10px 0 20px 0;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <h1>Drone Control Panel</h1>
+  
+  <!-- Drone Pose Visualization - Moved to top -->
+  <div class="viz-box" style="width: 100%; margin: 0 10px 20px 10px;">
+    <h3>Drone Pose</h3>
+    <div id="drone-visualization"></div>
+  </div>
+  
+  <div class="row">
+    <div class="control-panel">
+      <h2>Flight Controls</h2>
+      
+      <div class="controls-container">
+        <div class="control-column">
+          <h3>Throttle</h3>
+          <div class="throttle-container" id="throttle-container">
+            <div class="throttle-handle" id="throttle-handle"></div>
+          </div>
+          <div>Value: <span id="throttle-value">0</span></div>
+        </div>
+        
+        <div class="control-column">
+          <h3>Direction</h3>
+          <div class="joystick-container">
+            <div class="joystick-base"></div>
+            <div class="joystick-handle" id="joystick"></div>
+          </div>
+          <div>Roll: <span id="roll-value">127</span> | Pitch: <span id="pitch-value">127</span></div>
+        </div>
+        
+        <div class="control-column">
+          <h3>Yaw Control</h3>
+          <div class="slider-container">
+            <input type="range" id="yaw" class="slider" min="0" max="255" value="127" style="margin-top: 80px;">
+            <div>Value: <span id="yaw-value">127</span></div>
+          </div>
+        </div>
+      </div>
+      
+      <button id="send-controls">Apply Controls</button>
+    </div>
+  </div>
+    
+  <div class="row">
+    <div class="pid-panel">
+      <h2>PID Tuning</h2>
+      
+      <h3>Roll Parameters</h3>
+      <div class="pid-param">
+        <span>Kp:</span>
+        <input type="number" id="roll-kp" step="0.1" value="1.0">
+      </div>
+      <div class="pid-param">
+        <span>Ki:</span>
+        <input type="number" id="roll-ki" step="0.01" value="0.0">
+      </div>
+      <div class="pid-param">
+        <span>Kd:</span>
+        <input type="number" id="roll-kd" step="0.1" value="0.0">
+      </div>
+      
+      <h3>Pitch Parameters</h3>
+      <div class="pid-param">
+        <span>Kp:</span>
+        <input type="number" id="pitch-kp" step="0.1" value="1.0">
+      </div>
+      <div class="pid-param">
+        <span>Ki:</span>
+        <input type="number" id="pitch-ki" step="0.01" value="0.0">
+      </div>
+      <div class="pid-param">
+        <span>Kd:</span>
+        <input type="number" id="pitch-kd" step="0.1" value="0.0">
+      </div>
+      
+      <button id="update-pid">Update PID Parameters</button>
+    </div>
+  
+    <div class="data-panel">
+      <h2>Sensor Data <span id="last-update"></span></h2>
+      <div id="viz-container">
+        <div class="viz-box">
+          <h3>Acceleration</h3>
+          <div>X: <span id="accel-x">0</span></div>
+          <div class="gauge">
+            <div class="gauge-fill" id="accel-x-gauge"></div>
+            <div class="gauge-text">X</div>
+          </div>
+          <div>Y: <span id="accel-y">0</span></div>
+          <div class="gauge">
+            <div class="gauge-fill" id="accel-y-gauge"></div>
+            <div class="gauge-text">Y</div>
+          </div>
+          <div>Z: <span id="accel-z">0</span></div>
+          <div class="gauge">
+            <div class="gauge-fill" id="accel-z-gauge"></div>
+            <div class="gauge-text">Z</div>
+          </div>
+        </div>
+        
+        <div class="viz-box">
+          <h3>Gyroscope</h3>
+          <div>X: <span id="gyro-x">0</span></div>
+          <div class="gauge">
+            <div class="gauge-fill" id="gyro-x-gauge"></div>
+            <div class="gauge-text">X</div>
+          </div>
+          <div>Y: <span id="gyro-y">0</span></div>
+          <div class="gauge">
+            <div class="gauge-fill" id="gyro-y-gauge"></div>
+            <div class="gauge-text">Y</div>
+          </div>
+          <div>Z: <span id="gyro-z">0</span></div>
+          <div class="gauge">
+            <div class="gauge-fill" id="gyro-z-gauge"></div>
+            <div class="gauge-text">Z</div>
+          </div>
+        </div>
+        
+        <div class="viz-box">
+          <h3>Orientation</h3>
+          <div>Roll: <span id="orientation-roll">0</span>°</div>
+          <div class="gauge">
+            <div class="gauge-fill" id="roll-gauge"></div>
+            <div class="gauge-text">Roll</div>
+          </div>
+          <div>Pitch: <span id="orientation-pitch">0</span>°</div>
+          <div class="gauge">
+            <div class="gauge-fill" id="pitch-gauge"></div>
+            <div class="gauge-text">Pitch</div>
+          </div>
+        </div>
+        
+        <!-- Removed the drone pose div from here since it's now at the top -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize variables
+    let throttleValue = 0;
+    let rollValue = 127;
+    let pitchValue = 127;
+    let yawValue = 127;
+    
+    // Update DOM elements with initial values
+    document.getElementById('throttle-value').textContent = throttleValue;
+    document.getElementById('roll-value').textContent = rollValue;
+    document.getElementById('pitch-value').textContent = pitchValue;
+    document.getElementById('yaw-value').textContent = yawValue;
+    
+    // Add event listener for yaw slider
+    document.getElementById('yaw').addEventListener('input', function() {
+      yawValue = parseInt(this.value);
+      document.getElementById('yaw-value').textContent = yawValue;
+    });
+    
+    // Throttle control logic
+    const throttleHandle = document.getElementById('throttle-handle');
+    const throttleContainer = document.getElementById('throttle-container');
+    let isDraggingThrottle = false;
+    
+    throttleHandle.addEventListener('mousedown', startDragThrottle);
+    throttleHandle.addEventListener('touchstart', startDragThrottle);
+    document.addEventListener('mousemove', dragThrottle);
+    document.addEventListener('touchmove', dragThrottle);
+    document.addEventListener('mouseup', endDragThrottle);
+    document.addEventListener('touchend', endDragThrottle);
+    
+    // Initial throttle position
+    updateThrottlePosition(0);
+    
+    function startDragThrottle(e) {
+      isDraggingThrottle = true;
+      e.preventDefault();
+    }
+    
+    function dragThrottle(e) {
+      if (!isDraggingThrottle) return;
+      
+      let clientY;
+      if (e.type === 'touchmove') {
+        clientY = e.touches[0].clientY;
+      } else {
+        clientY = e.clientY;
+      }
+      
+      const rect = throttleContainer.getBoundingClientRect();
+      const containerHeight = rect.height;
+      const handleHeight = throttleHandle.offsetHeight;
+      
+      // Calculate position from bottom (0 is bottom, containerHeight-handleHeight is top)
+      let posFromBottom = containerHeight - (clientY - rect.top + handleHeight/2);
+      
+      // Constrain within container
+      posFromBottom = Math.max(0, Math.min(posFromBottom, containerHeight - handleHeight));
+      
+      // Map to 0-255 range for throttle
+      throttleValue = Math.round(map(posFromBottom, 0, containerHeight - handleHeight, 0, 255));
+      
+      // Update handle position
+      updateThrottlePosition(posFromBottom);
+      
+      // Update the thrust indicator
+      updateThrustIndicator(throttleValue);
+      
+      // Update display
+      document.getElementById('throttle-value').textContent = throttleValue;
+    }
+    
+    function updateThrottlePosition(posFromBottom) {
+      throttleHandle.style.bottom = posFromBottom + 'px';
+    }
+    
+    function endDragThrottle() {
+      isDraggingThrottle = false;
+      // Throttle remains where it was left
+    }
+    
+    // Update the thrust arrow visualization based on throttle value
+    function updateThrustIndicator(throttleValue) {
+      if (!drone || !drone.thrustArrow) return;
+      
+      // Map throttle value (0-255) to a reasonable arrow height (0.1-2.0)
+      const arrowHeight = map(throttleValue, 0, 255, 0.1, 2.0);
+      const arrowOpacity = map(throttleValue, 0, 255, 0.3, 1.0);
+      
+      // Scale the shaft
+      drone.thrustArrow.shaft.scale.y = arrowHeight / drone.thrustArrow.defaultHeight;
+      
+      // Position the head at the top of the shaft
+      drone.thrustArrow.head.position.y = (arrowHeight / 2) + 0.15;
+      
+      // Make arrow more vibrant with higher throttle
+      drone.thrustArrow.shaft.material.opacity = arrowOpacity;
+      drone.thrustArrow.head.material.opacity = arrowOpacity;
+      
+      // Add a subtle glow effect for higher throttle values
+      if (throttleValue > 100) {
+        const glowIntensity = map(throttleValue, 100, 255, 0.1, 0.8);
+        drone.thrustArrow.shaft.material.emissive = new THREE.Color(0xff4400);
+        drone.thrustArrow.shaft.material.emissiveIntensity = glowIntensity;
+        drone.thrustArrow.head.material.emissive = new THREE.Color(0xff4400);
+        drone.thrustArrow.head.material.emissiveIntensity = glowIntensity;
+      } else {
+        drone.thrustArrow.shaft.material.emissiveIntensity = 0;
+        drone.thrustArrow.head.material.emissiveIntensity = 0;
+      }
+    }
+    
+    // Joystick logic
+    const joystick = document.getElementById('joystick');
+    const joystickBase = document.querySelector('.joystick-base');
+    let isDragging = false;
+    
+    joystick.addEventListener('mousedown', startDrag);
+    joystick.addEventListener('touchstart', startDrag);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('touchmove', drag);
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+    
+    function startDrag(e) {
+      isDragging = true;
+      e.preventDefault();
+    }
+    
+    function drag(e) {
+      if (!isDragging) return;
+      
+      let clientX, clientY;
+      if (e.type === 'touchmove') {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+      
+      const rect = joystickBase.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      let deltaX = clientX - centerX;
+      let deltaY = clientY - centerY;
+      
+      // Calculate distance from center
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      const maxDistance = rect.width / 2 - joystick.offsetWidth / 2;
+      
+      // Constrain to circle
+      if (distance > maxDistance) {
+        const angle = Math.atan2(deltaY, deltaX);
+        deltaX = Math.cos(angle) * maxDistance;
+        deltaY = Math.sin(angle) * maxDistance;
+      }
+      
+      // Update joystick position
+      joystick.style.left = (rect.width / 2 + deltaX - joystick.offsetWidth / 2) + 'px';
+      joystick.style.top = (rect.height / 2 + deltaY - joystick.offsetHeight / 2) + 'px';
+      
+      // Map to 0-255 range for roll and pitch
+      rollValue = Math.round(map(deltaX, -maxDistance, maxDistance, 0, 255));
+      pitchValue = Math.round(map(deltaY, -maxDistance, maxDistance, 0, 255));
+      
+      document.getElementById('roll-value').textContent = rollValue;
+      document.getElementById('pitch-value').textContent = pitchValue;
+    }
+    
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      
+      // Reset joystick to center
+      joystick.style.left = '70px';
+      joystick.style.top = '70px';
+      
+      // Reset values to center
+      rollValue = 127;
+      pitchValue = 127;
+      document.getElementById('roll-value').textContent = rollValue;
+      document.getElementById('pitch-value').textContent = pitchValue;
+    }
+    
+    function map(value, inMin, inMax, outMin, outMax) {
+      return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+    }
+    
+    // Three.js variables
+    let scene, camera, renderer, drone;
+    let rotors = []; // Track rotors for animation
+    
+    // Initialize 3D visualization
+    function initDroneVisualization() {
+      console.log("Initializing drone visualization");
+      
+      // Get container first
+      const container = document.getElementById('drone-visualization');
+      if (!container) {
+        console.error("Drone visualization container not found!");
+        return;
+      }
+      
+      // Create scene
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xf0f0f0);
+      
+      // Set up camera with better position - now uses container after it's defined
+      camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.set(0, 3, 5); // Position camera above and behind for better view
+      camera.lookAt(0, 0, 0);
+      
+      // Create renderer with proper sizing
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      container.innerHTML = ''; // Clear any previous content
+      container.appendChild(renderer.domElement);
+      
+      // Add grid for reference
+      const gridHelper = new THREE.GridHelper(10, 10, 0x888888, 0x444444);
+      scene.add(gridHelper);
+      
+      // Create drone model with simpler geometry
+      createDroneModel();
+      
+      // Add directional light for better visibility
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(5, 10, 7);
+      scene.add(light);
+      
+      // Add ambient light for overall illumination
+      const ambientLight = new THREE.AmbientLight(0x404040);
+      scene.add(ambientLight);
+      
+      // Start animation loop
+      animate();
+      
+      // Handle window resize
+      window.addEventListener('resize', onWindowResize);
+      
+      // Set initial drone orientation
+      updateDroneOrientation(0, 0, 0);
+      
+      console.log("Drone visualization initialized");
+    }
+    
+    function createDroneModel() {
+      // Create a group to hold all drone parts
+      drone = new THREE.Group();
+      
+      // Drone body - using a more visible color
+      const bodyGeometry = new THREE.BoxGeometry(1.5, 0.2, 2);
+      const bodyMaterial = new THREE.MeshPhongMaterial({ 
+        color: 0x2194ce,
+        shininess: 100
+      });
+      const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+      drone.add(body);
+      
+      // Add thrust indicator arrow
+      const arrowGroup = new THREE.Group();
+      arrowGroup.position.set(0, 0.3, 0); // Position above the drone body
+      
+      // Arrow shaft
+      const shaftGeometry = new THREE.CylinderGeometry(0.05, 0.05, 0.5, 8);
+      const arrowMaterial = new THREE.MeshPhongMaterial({ 
+        color: 0xff8800,
+        transparent: true,
+        opacity: 0.3
+      });
+      const shaft = new THREE.Mesh(shaftGeometry, arrowMaterial);
+      shaft.position.set(0, 0.25, 0); // Position the shaft
+      arrowGroup.add(shaft);
+      
+      // Arrow head
+      const headGeometry = new THREE.ConeGeometry(0.12, 0.3, 8);
+      const head = new THREE.Mesh(headGeometry, arrowMaterial);
+      head.position.set(0, 0.65, 0); // Position at the top of the shaft
+      arrowGroup.add(head);
+      
+      // Add arrow to drone
+      drone.add(arrowGroup);
+      
+      // Store reference to arrow parts for animation
+      drone.thrustArrow = {
+        group: arrowGroup,
+        shaft: shaft,
+        head: head,
+        defaultHeight: 0.5 // Initial shaft height
+      };
+      
+      // Create arms in X configuration
+      const armLength = 1.5;
+      const armWidth = 0.1;
+      const armHeight = 0.05;
+      
+      // Create main arms that form an X shape
+      const armGeometry = new THREE.BoxGeometry(armLength * 2, armHeight, armWidth);
+      const armMaterial = new THREE.MeshPhongMaterial({ color: 0x333333 });
+      
+      // Front-right to back-left arm
+      const arm1 = new THREE.Mesh(armGeometry, armMaterial);
+      arm1.rotation.y = Math.PI / 4; // 45 degrees
+      drone.add(arm1);
+      
+      // Front-left to back-right arm
+      const arm2 = new THREE.Mesh(armGeometry, armMaterial);
+      arm2.rotation.y = -Math.PI / 4; // -45 degrees
+      drone.add(arm2);
+      
+      // Create more realistic propellers
+      rotors = [];
+      
+      // Define the propeller positions (clockwise order is common in quadcopters)
+      // Front-right, front-left, back-left, back-right
+      const rotorPositions = [
+        { x: armLength * Math.cos(Math.PI/4), y: 0.1, z: -armLength * Math.sin(Math.PI/4) }, // Front-right
+        { x: -armLength * Math.cos(Math.PI/4), y: 0.1, z: -armLength * Math.sin(Math.PI/4) }, // Front-left
+        { x: -armLength * Math.cos(Math.PI/4), y: 0.1, z: armLength * Math.sin(Math.PI/4) }, // Back-left
+        { x: armLength * Math.cos(Math.PI/4), y: 0.1, z: armLength * Math.sin(Math.PI/4) }  // Back-right
+      ];
+      
+      // Propeller colors (standard color coding: front-right red, front-left green, rear right green, rear left red)
+      const rotorColors = [0xff0000, 0x00ff00, 0xff0000, 0x00ff00];
+      
+      // Motor housing
+      const motorHousingGeometry = new THREE.CylinderGeometry(0.15, 0.15, 0.1, 16);
+      const motorHousingMaterial = new THREE.MeshPhongMaterial({ color: 0x222222 });
+      
+      // Create each propeller
+      rotorPositions.forEach((pos, index) => {
+        // Add motor housing
+        const motorHousing = new THREE.Mesh(motorHousingGeometry, motorHousingMaterial);
+        motorHousing.position.set(pos.x, pos.y - 0.05, pos.z);
+        drone.add(motorHousing);
+        
+        // Create propeller group
+        const propGroup = new THREE.Group();
+        propGroup.position.set(pos.x, pos.y, pos.z);
+        
+        // Create a more detailed propeller with two blades
+        const bladeGeometry = new THREE.BoxGeometry(0.7, 0.02, 0.1);
+        const bladeMaterial = new THREE.MeshPhongMaterial({ 
+          color: rotorColors[index],
+          transparent: true,
+          opacity: 0.8
+        });
+        
+        // First blade
+        const blade1 = new THREE.Mesh(bladeGeometry, bladeMaterial);
+        propGroup.add(blade1);
+        
+        // Second blade (perpendicular)
+        const blade2 = new THREE.Mesh(bladeGeometry, bladeMaterial);
+        blade2.rotation.y = Math.PI / 2;
+        propGroup.add(blade2);
+        
+        // Add propeller group to drone
+        drone.add(propGroup);
+        
+        // Store reference for animation
+        rotors.push(propGroup);
+      });
+      
+      // Add a nose indicator to show front direction
+      const noseGeometry = new THREE.ConeGeometry(0.15, 0.4, 16);
+      const noseMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+      const nose = new THREE.Mesh(noseGeometry, noseMaterial);
+      nose.position.set(0, 0, -1.2);
+      nose.rotation.x = Math.PI / 2;
+      drone.add(nose);
+      
+      // Add drone to scene
+      scene.add(drone);
+      
+      return drone;
+    }
+    
+    function onWindowResize() {
+      const container = document.getElementById('drone-visualization');
+      if (!container || !camera || !renderer) return;
+      
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      
+      renderer.setSize(width, height);
+      console.log(`Resized renderer to ${width}x${height}`);
+    }
+    
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      // Animate rotors spinning - faster and more subtle
+      if (rotors && rotors.length > 0) {
+        rotors.forEach((rotor, index) => {
+          // Alternate rotation direction based on position
+          // (quadcopters have rotors spinning in opposite directions for stability)
+          const direction = index % 2 === 0 ? 1 : -1;
+          rotor.rotation.y += direction * 0.3; // Faster spin
+        });
+      }
+      
+      if (renderer && scene && camera) {
+        renderer.render(scene, camera);
+      }
+    }
+    
+    function updateDroneOrientation(roll, pitch, yaw) {
+      if (!drone) {
+        console.warn("Drone model not initialized yet");
+        return;
+      }
+      
+      // Convert degrees to radians
+      const rollRad = roll * Math.PI / 180; // Removed negative sign to fix joystick direction
+      const pitchRad = pitch * Math.PI / 180;
+      const yawRad = yaw * Math.PI / 180;
+      
+      // Reset rotation
+      drone.rotation.set(0, 0, 0);
+      
+      // Apply rotations in the correct order (YXZ)
+      drone.rotateY(yawRad);   // Yaw (around Y axis)
+      drone.rotateX(pitchRad); // Pitch (around X axis)
+      drone.rotateZ(rollRad);  // Roll (around Z axis)
+      
+      console.log(`Updated drone orientation: roll=${roll}°, pitch=${pitch}°, yaw=${yaw}°`);
+    }
+    
+    // Add some test controls to verify the visualization works
+    function addTestControls() {
+      const testControlsDiv = document.createElement('div');
+      testControlsDiv.style.position = 'absolute';
+      testControlsDiv.style.top = '10px';
+      testControlsDiv.style.right = '10px';
+      testControlsDiv.style.backgroundColor = 'rgba(255,255,255,0.7)';
+      testControlsDiv.style.padding = '10px';
+      testControlsDiv.style.borderRadius = '5px';
+      testControlsDiv.innerHTML = `
+        <div>Test Controls</div>
+        <div>
+          <label>Roll: <input type="range" id="test-roll" min="-90" max="90" value="0"></label>
+          <span id="roll-value-test">0</span>°
+        </div>
+        <div>
+          <label>Pitch: <input type="range" id="test-pitch" min="-90" max="90" value="0"></label>
+          <span id="pitch-value-test">0</span>°
+        </div>
+        <div>
+          <label>Yaw: <input type="range" id="test-yaw" min="-180" max="180" value="0"></label>
+          <span id="yaw-value-test">0</span>°
+        </div>
+      `;
+      
+      document.getElementById('drone-visualization').appendChild(testControlsDiv);
+      
+      document.getElementById('test-roll').addEventListener('input', function() {
+        const value = parseInt(this.value);
+        document.getElementById('roll-value-test').textContent = value;
+        updateDroneOrientation(value, 
+                              parseInt(document.getElementById('test-pitch').value),
+                              parseInt(document.getElementById('test-yaw').value));
+      });
+      
+      document.getElementById('test-pitch').addEventListener('input', function() {
+        const value = parseInt(this.value);
+        document.getElementById('pitch-value-test').textContent = value;
+        updateDroneOrientation(parseInt(document.getElementById('test-roll').value),
+                              value,
+                              parseInt(document.getElementById('test-yaw').value));
+      });
+      
+      document.getElementById('test-yaw').addEventListener('input', function() {
+        const value = parseInt(this.value);
+        document.getElementById('yaw-value-test').textContent = value;
+        updateDroneOrientation(parseInt(document.getElementById('test-roll').value),
+                              parseInt(document.getElementById('test-pitch').value),
+                              value);
+      });
+    }
+    
+    // Initialize drone visualization when page loads
+    window.addEventListener('DOMContentLoaded', function() {
+      console.log("DOM loaded, initializing visualization");
+      initDroneVisualization();
+      // Add test controls to verify visualization works
+      setTimeout(addTestControls, 500);
+      // Initialize thrust indicator
+      updateThrustIndicator(throttleValue);
+    });
+    
+    // Send control updates
+    document.getElementById('send-controls').addEventListener('click', function() {
+      sendControlUpdate();
+    });
+    
+    // Update PID parameters
+    document.getElementById('update-pid').addEventListener('click', function() {
+      sendControlUpdate();
+    });
+    
+    function sendControlUpdate() {
+      // Get current PID values
+      const rollKp = parseFloat(document.getElementById('roll-kp').value);
+      const rollKi = parseFloat(document.getElementById('roll-ki').value);
+      const rollKd = parseFloat(document.getElementById('roll-kd').value);
+      const pitchKp = parseFloat(document.getElementById('pitch-kp').value);
+      const pitchKi = parseFloat(document.getElementById('pitch-ki').value);
+      const pitchKd = parseFloat(document.getElementById('pitch-kd').value);
+      
+      // Send data to server
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/setControls', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.send(`throttle=${throttleValue}&roll=${rollValue}&pitch=${pitchValue}&yaw=${yawValue}`+
+               `&rollKp=${rollKp}&rollKi=${rollKi}&rollKd=${rollKd}`+
+               `&pitchKp=${pitchKp}&pitchKi=${pitchKi}&pitchKd=${pitchKd}`);
+    }
+    
+    // For manual testing, we can update the drone based on the joystick and controls
+    // Add listeners to the flight controls to update the 3D model
+    document.getElementById('joystick').addEventListener('mousemove', function() {
+      if (isDragging) {
+        // Map 0-255 to -90 to 90 degrees for visualization
+        // Swapped the output range to correct the roll direction
+        const rollDeg = map(rollValue, 0, 255, 90, -90); // Invert mapping (left joystick should make left side down)
+        const pitchDeg = map(pitchValue, 0, 255, -90, 90); // Forward on joystick should pitch down
+        updateDroneOrientation(rollDeg, pitchDeg, 0);
+      }
+    });
+    
+    document.getElementById('yaw').addEventListener('input', function() {
+      // Map 0-255 to -180 to 180 degrees for visualization
+      const yawDeg = map(yawValue, 0, 255, -180, 180);
+      updateDroneOrientation(
+        map(rollValue, 0, 255, 90, -90), // Swapped the output range to match the joystick handler
+        map(pitchValue, 0, 255, -90, 90), // Fixed pitch mapping
+        yawDeg
+      );
+    });
+  </script>
+</body>
+</html>
