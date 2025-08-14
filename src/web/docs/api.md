@@ -7,8 +7,10 @@
 ## General Information
 - **Base URL**: <https://nori.fish>  
 - **Rate Limiting**, Common limits include:
-  - `180/minute`
+  - `3/second`
   - `20/minute`
+  - `90/minute`
+  - `180/minute`
   - `300/minute`
 - **Authentication**:  
   - Most endpoints are public.  
@@ -44,7 +46,7 @@
 ## Item Endpoints
 
 ### `POST` /api/item/analysis
-- Rate Limit: 180/minute
+- Rate Limit: 3/second
 - Description: Decodes wynntils encoded item and returns analysis for the item
 
 Request:
@@ -77,7 +79,7 @@ Response:
 > **Note**: Payload should match current Wynntils gear encoding format. Only latest version compatibility is guaranteed. Legacy formats may not work correctly.
 
 ### `GET` /api/item/mythic
-- Rate Limit: 180/minute
+- Rate Limit: 3/second
 - Description: Returns mythic item scales and rankings.
 - 
 
@@ -123,7 +125,7 @@ Response:
 ```
 
 ### `GET` /api/item/list
-- Rate Limit: 180/minute
+- Rate Limit: 3/second
 - Description: Lists all valid item names.
 
 Response:
@@ -226,7 +228,7 @@ When insufficient data points are available:
 ### Changelog Endpoints
 
 ### `GET` /api/changelog/all
-- Rate Limit: 180/minute
+- Rate Limit: 3/second
 - Description: Lists available dates for item/ingredient changelogs.
 
 Response:
@@ -237,8 +239,8 @@ Response:
 }
 ```
 
-### `GET` /api/changelog/item/{date}
-### `GET` /api/changelog/ingredient/{date}
+### `GET` /api/changelog/item/{date}`
+### `GET` /api/changelog/ingredient/{date}`
 - Rate Limit: 300/minute
 - Description: Retrieves plain text changelogs by date.
 
@@ -250,7 +252,7 @@ Raw text content
 ## Uptime Endpoint
 
 ### `GET` /api/uptime
-- Rate Limit: 180/minute
+- Rate Limit: 300/minute
 - Description: Offers server uptime info.
 - 20-30 seconds TTL, so the uptime may be different from other sources, latency is expected.
 
@@ -274,9 +276,10 @@ Response:
 
 ## Leaderboard Endpoints
 
-### `GET` /api/leaderboard/raid/{raid_name}
-### `GET` /api/leaderboard/stat/{stat_name}
+### `GET` /api/leaderboard/raid/{raid_name}`
+### `GET` /api/leaderboard/stat/{stat_name}`
 
+- Rate Limit: 300/minute
 - Description: Returns data for a specified raid or stat leaderboard.
 
 Available Parameters:
@@ -307,9 +310,9 @@ Response:
 ```
 
 
-### `GET` /api/leaderboard/profession/{category}
-### `GET` /api/leaderboard/guild/{category}
-- Rate Limit: 180/minute
+### `GET` /api/leaderboard/profession/{category}`
+### `GET` /api/leaderboard/guild/{category}`
+- Rate Limit: 300/minute
 - Description: Queries Wynncraft leaderboards for professions or guild data.
 
 - Available Parameters:
@@ -377,7 +380,7 @@ Response (Guild leaderboard):
 ## Database Guild Endpoint
 
 ### `GET` /api/database/guild
-- Rate Limit: 180/minute
+- Rate Limit: 300/minute
 - Description: Retrieves a locally stored guild database (JSON).
 
 Response:
@@ -404,7 +407,7 @@ Response:
 ## Build and Recipe Search
 
 ### `POST` /api/build/search
-- Rate Limit: 180/minute
+- Rate Limit: 3/second
 - Description: Searches builds by keyword and class.  
 
 Request Body:
@@ -431,7 +434,7 @@ Response (Array of objects):
 ```
 
 ### `POST` /api/recipe/search
-- Rate Limit: 180/minute
+- Rate Limit: 3/second
 - Description: Searches recipes by keyword and type.
 
 Request Body:
@@ -457,7 +460,7 @@ Response (Array of objects):
 ## Item Lootpool Endpoint
 
 ### `GET` /api/lootpool
-- Rate Limit: 180/minute
+- Rate Limit: 3/second
 - Description: Requires valid tokens. Returns weekly lootpool data.
 
 Response:
@@ -492,7 +495,7 @@ Response:
 ## Aspect Lootpool Endpoint
 
 ### `GET` /api/aspects
-- Rate Limit: 180/minute
+- Rate Limit: 3/second
 - Description: Provides weekly aspects data.
 
 Response:
@@ -515,7 +518,7 @@ Response:
 ## Guild Endpoints
 
 ### `GET` /api/guild/{user_input}
-- Rate Limit: 180/minute
+- Rate Limit: 90/minute
 - Description: Returns guild info by prefix or name.
 
 Response:
@@ -552,7 +555,7 @@ Response:
 ## Player Endpoint
 
 ### `GET` /api/player/{user_input}
-- Rate Limit: 180/minute
+- Rate Limit: 90/minute
 - Description: Returns full Wynncraft player data.
 - This route serves as a proxy for users in China, where access to the official API is blocked.
 
@@ -566,7 +569,7 @@ Response:
 ## Showcase Endpoint
 
 ### `GET` /api/showcase
-- Rate Limit: 180/minute
+- Rate Limit: 3/second
 - Description: Fetches build showcase data.
 
 Response:

@@ -62,7 +62,9 @@ function renderItems(data) {
                 const owner = scales[scale].owner;
                 const weight = itemStats.weight;
                 const shiny = itemStats.shiny;
-                const icon = itemStats.icon || `../../../resources/${itemStats.item_type}.png`;
+                const icon = ["helmet", "chestplate", "leggings", "boots"].includes(itemStats.item_type) 
+                    ? `../../../resources/${itemStats.item_type}.png` 
+                    : itemStats.icon;
                 const tier = itemStats.item_tier || 'common';
                 const tierColor = tierColors[tier];
 
