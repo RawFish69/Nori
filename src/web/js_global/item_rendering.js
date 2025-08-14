@@ -200,7 +200,9 @@ function displayResults(result) {
     const itemData = result[itemName];
     const rateData = result.rate || {};
     const shiny = result.shiny;
-    const icon = result.icon || `${result.item_type}.png`;
+    const icon = ["helmet", "chestplate", "leggings", "boots"].includes(result.item_type) 
+    ? `../../../resources/${result.item_type}.png` 
+    : result.icon;
     const tier = result.item_tier || "common";
     const tierColor = tierColors[tier];
 

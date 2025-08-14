@@ -156,7 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const scales = result.scales || {};
         const weights = result.weights || {};
         const shiny = result.shiny;
-        const icon = result.icon || `../../../resources/${result.item_type}.png`;
+        const icon = ["helmet", "chestplate", "leggings", "boots"].includes(result.item_type) 
+    ? `../../../resources/${result.item_type}.png` 
+    : result.icon;
         const tier = result.item_tier || "common";
         const tierColor = tierColors[tier];
     
