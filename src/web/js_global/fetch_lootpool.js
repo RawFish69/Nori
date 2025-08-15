@@ -64,6 +64,12 @@ function formatIconUrl(iconUrl) {
     if (iconUrl === null || iconUrl === undefined) {
         return null;
     }
+    const armorTypes = ["helmet", "chestplate", "leggings", "boots"];
+    for (const type of armorTypes) {
+        if (iconUrl.toLowerCase().includes(type)) {
+            return `../../../resources/${type}.png`;
+        }
+    }
     if (!iconUrl.startsWith("http") && iconUrl.endsWith(".png")) {
         return `../../../resources/${iconUrl}`;
     }
