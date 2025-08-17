@@ -47,7 +47,7 @@ function displayPlayerData(playerData) {
                 <p>${guildInfo}</p>
                 <p>First Joined: ${firstJoined}</p>
                 <p>Last Seen: ${lastJoined}</p>
-                <p>Mobs Killed: <span class="stat-positive">${playerData.globalData.killedMobs}</span></p>
+                <p>Mobs Killed: <span class="stat-positive">${playerData.globalData.mobsKilled}</span></p>
                 <p>Chests Opened: <span class="stat-positive">${playerData.globalData.chestsFound}</span></p>
                 <p>Playtime: <span class="stat-neutral">${playerData.playtime} hours</span></p>
                 <p>War Count: <span class="stat-positive">${playerData.globalData.wars}</span></p>
