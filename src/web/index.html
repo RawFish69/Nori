@@ -20,8 +20,9 @@
     <script src="js_global/home.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
     <script src="js_global/analytics.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484" 
-    data-overlays="bottom" crossorigin="anonymous"></script>
+    <!-- Temporarily disabled Google Ads -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484" 
+    data-overlays="bottom" crossorigin="anonymous"></script> -->
     <script src="js_global/config.js"></script>
     <script src="js_global/layout.js"></script>
 </head>
@@ -34,85 +35,186 @@
         <nav>
             <!-- Navigation links will be inserted by layout.js -->
         </nav>
-        <div class="language-selector">
-            <select onchange="changeLanguage(this)">
-                <option value="index.html">English</option>
-                <option value="index_cn.html">中文</option>
-            </select>
-        </div>    
     </header>
 
     <div id="menu-button" onclick="toggleSidebar()">☰</div>
     <div id="sidebar"></div>
     <div class="container">
         <div id="Home" class="panel active">
-            <div class="feature">
-                <h2>Install Links</h2>
-                <h3>
-                    For Discord:
-                    <button class="install-button discord-button" onclick="window.open('https://discord.com/api/oauth2/authorize?client_id=873677970928193568&permissions=277028662336&scope=bot', '_blank')">Install on Discord</button>
-                </h3>
-                <h3>
-                    For Kook (users in China):
-                    <button class="install-button kook-button" onclick="window.open('https://www.botmarket.cn/bot/28', '_blank')">Install on Kook</button>
-                </h3>
-                <h3>
-                    Source Code:
-                    <button class="install-button web-button" onclick="window.open('https://github.com/RawFish69/Nori', '_blank')">Github Repository</button>
-                </h3>
-                <h3>
-                    API Documentation:
-                    <button class="install-button web-button" onclick="window.open('https://nori.fish/docs/', '_blank')">View Documentation</button>
-                </h3>
-            </div>
-            <div class="feature">
-                <button class="toggle-button" onclick="toggleSection('aboutMeSection', this)">Nori Developer</button>
-                <div id="aboutMeSection" style="display: block;">
-                    <h2>A little about myself</h2>
-                    <p>I find enjoyment in transforming my concepts into reality.</p>
-                    <p>My other non-research/work related projects:</p>
-                    <p>- Multiple models of FPV Drones: Free style, Racing, Long Range.</p>
-                    <p>- ESP32 Quadcopter, custom frame, PCB, and flight controller firmware. (C++)</p>
-                    <p>- Autonomous Differential-Drive Mobile Robot with Web Interface (C, C++)</p>
-                    <p>- Controls for 7 DOF Robot Arm & Vision System (Python, ROS)</p>
-                    <p>- <a href="https://game.nori.fish" target="_blank" class="install-link">Space Orbs - Multiplayer Web Game (WebGL, Flask)</a></p>
-                    <p>- <a href="https://github.com/RawFish69/ESP32-RC-Car" target="_blank" class="install-link">Web RC Car with ESP32 (Arduino C++)</a></p>
-                    <p>- <a href="https://github.com/RawFish69/Toast-E" target="_blank" class="install-link">Thermal Sensor Mobile Bot (Arduino C++)</a></p>
-                    <p>- <a href="https://github.com/RawFish69/ESP32-Ranger-Finder" target="_blank" class="install-link">Portable range finder with ESP32 (Arduino C++)</a></p>
-                    <p>- WIP 2D Rogue-like game developed with Godot Engine (GDScript, C++, C#)</p>
-                    <p>- Inventory Control Windows Application (VB.NET)</p>
-                    <p>- Various utility bots and websites (JavaScript, Python)</p>
-                    <h2>Social Media / Contact Info</h2>
-                    <p>Discord nametag: rawfish69</p>
-                    <p><a href="https://github.com/RawFish69" target="_blank" class="install-link">GitHub Page</a></p>
-                    <p><a href="https://nori.fish/license" target="_blank" class="install-link">Website License</a></p>
-                    <p><a href="https://www.youtube.com/@RawFish69" target="_blank" class="install-link">YouTube Channel</a></p>
-                    <p>For feedback & bug report, join our Discord community server: <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="install-link">Join Discord</a></p>
+            <!-- Time Banner -->
+            <div class="time-banner" id="timeBanner">
+                <div class="time-content">
+                    <div class="time-display" id="timeDisplay">Loading...</div>
+                    <div class="timezone-display" id="timezoneDisplay"></div>
                 </div>
             </div>
-            <div class="feature">
-                <button class="toggle-button" onclick="toggleSection('aboutProjectSection', this)">About This Project</button>
-                <div id="aboutProjectSection" style="display: none;">
-                    <h2>About this Project</h2>
-                    <div style="display: flex; align-items: center;">
-                        <h3>Nori-Bot</h3>
-                        <img src="resources/nori.png" alt="Nori Logo" style="width: 75px; height: auto; margin-left: 10px;">
+
+            <!-- About Nori Developer -->
+            <div class="about-nori-section">
+                <div class="about-nori-content">
+                    <h2>About Nori Developer</h2>
+                    <p>I enjoy turning ideas into something tangible. Some work out, some don't, but I believe that even the wild ones deserve a shot to show what they can become.</p>
+                    <h3>Contact & Social</h3>
+                    <div class="contact-links">
+                        <a href="https://github.com/RawFish69" target="_blank" class="contact-link">🐙 GitHub</a>
+                        <a href="https://www.youtube.com/@RawFish69" target="_blank" class="contact-link">📺 YouTube</a>
+                        <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="contact-link">💬 Discord</a>
+                        <a href="https://nori.fish/license" target="_blank" class="contact-link">📄 License</a>
                     </div>
+                    <p><strong>Discord nametag:</strong> rawfish69</p>
+                </div>
+            </div>
+
+            <!-- Project Categories -->
+            <div class="project-categories" id="projects">
+                <div class="category-grid">
+                    <div class="category-card" onclick="toggleSection('dronesSection', this)">
+                        <h3>Multirotor Drones</h3>
+                        <p>Mostly FPV & custom builds</p>
+                    </div>
+                    <div class="category-card" onclick="toggleSection('roboticsSection', this)">
+                        <h3>Robotics</h3>
+                        <p>Hardware, Software, Prototyping, Simulation</p>
+                    </div>
+                    <div class="category-card" onclick="toggleSection('wynnSection', this)">
+                        <h3>Nori Wynn</h3>
+                        <p>Third-party tools for Wynncraft</p>
+                    </div>
+                    <div class="category-card" onclick="toggleSection('gamedevSection', this)">
+                        <h3>Games & Apps</h3>
+                        <p>game dev and desktop apps</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Sections -->
+            <div class="content-sections">
+                <div class="feature" id="drones">
+                    <div id="dronesSection" style="display: none;">
+                        <div class="project-showcase">
+                            <div class="project-header">
+                                <h2>Multirotor Drones</h2>
+                                <a href="/drones" class="topic-link">View More</a>
+                            </div>
+                            <p>Non research/work related projects.</p>
+                            
+                            <ul class="project-list">
+                                <li><strong>Autonomous Racing Drone</strong> - Autonomous racing drone (WIP) <span class="tech-tags">Firmware Dev, ROS2, Simulation,Prototyping</span></li>
+                                <li><strong>Manual Racing FPV Drone</strong> - FPV drone with custom hardware<span class="tech-tags">CAD, Betaflight</span></li>
+                                <li><strong>Long Range FPV Drone</strong> - Extended range drones with custom hardware<span class="tech-tags">CAD, Firmware Dev</span></li>
+                                <li><strong>Nano FPV Drone</strong> - micro/nano FPV drone with custom hardware<span class="tech-tags">CAD, Betaflight</span></li>
+                                <li><strong>ESP32 Quadcopter</strong> - Custom frame, PCB, and flight controller firmware <span class="tech-tags">ESP32, C++</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature" id="robotics">
+                    <div id="roboticsSection" style="display: none;">
+                        <div class="project-showcase">
+                            <div class="project-header">
+                                <h2>Robotics</h2>
+                                <a href="/robotics" class="topic-link">View More</a>
+                            </div>
+                            <p>Non research/work related projects.</p>
+                            
+                            <ul class="project-list">
+                                <li><strong>Differential-Drive Mobile Robot</strong> - Autonomous mobile robot with web interface <span class="tech-tags">C/C++, CAD, Prototyping</span></li>
+                                <li><strong>7 DOF Robot Arm</strong> - Controls for robot arm with vision system <span class="tech-tags">Python, ROS, Simulation</span></li>
+                                <li><strong>Web RC Car</strong> - ESP32-based RC car with web control <span class="tech-tags">Arduino C++</span></li>
+                                <li><strong>Thermal Sensor Mobile Bot</strong> - Mobile robot with thermal sensors <span class="tech-tags">Arduino C++</span></li>
+                                <li><strong>Mechanical Gripper</strong> - Designed and built a mechanical gripper with a servo motor and a gripper mechanism <span class="tech-tags">CAD, Prototyping</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature" id="gamedev">
+                    <div id="gamedevSection" style="display: none;">
+                        <div class="project-showcase">
+                            <div class="project-header">
+                                <h2>Game & App Development</h2>
+                                <a href="/games" class="topic-link">View More</a>
+                            </div>
+                            <p>Passion projects.</p>
+                            
+                            <ul class="project-list">
+                                <li><strong>Space Orbs</strong> - Multiplayer web game <span class="tech-tags">WebGL, Flask</span> <a href="https://game.nori.fish" target="_blank" class="project-link">Play Now</a></li>
+                                <li><strong>2D Rogue-like (WIP)</strong> - Game developed with Godot Engine <span class="tech-tags">Godot, GDScript</span></li>
+                                <li><strong>Inventory Control</strong> - Windows application <span class="tech-tags">VB.NET</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature" id="wynn">
+                    <div id="wynnSection" style="display: none;">
+                        <div class="install-section">
+                            <h2>Nori Wynn Install & Resources</h2>
+                            <div class="install-grid">
+                                <div class="install-item">
+                                    <h4>Discord Bot</h4>
+                                    <button class="install-button discord-button" onclick="window.open('https://discord.com/api/oauth2/authorize?client_id=873677970928193568&permissions=277028662336&scope=bot', '_blank')">Install</button>
+                                </div>
+                                <div class="install-item">
+                                    <h4>Kook (China)</h4>
+                                    <button class="install-button kook-button" onclick="window.open('https://www.botmarket.cn/bot/28', '_blank')">Install</button>
+                                </div>
+                                <div class="install-item">
+                                    <h4>Source Code</h4>
+                                    <button class="install-button web-button" onclick="window.open('https://github.com/RawFish69/Nori', '_blank')">GitHub</button>
+                                </div>
+                                <div class="install-item">
+                                    <h4>API Docs</h4>
+                                    <button class="install-button web-button" onclick="window.open('https://nori.fish/docs/', '_blank')">View Docs</button>
+                                </div>
+                            </div>
+                            <p class="install-tip">
+                                Visit the <a href="https://nori.fish/wynn" class="install-link">Wynn Tools page</a> for more.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <button class="toggle-button" onclick="toggleSection('aboutProjectSection', this)">🚀 About This Project</button>
+                    <div id="aboutProjectSection" style="display: none;">
+                        <div class="project-content">
+                            <div class="project-item">
+                                <div class="project-header">
+                                    <img src="resources/nori.png" alt="Nori Logo" class="project-icon">
+                                    <div>
+                                        <h3>Nori-Bot</h3>
                     <p>Chat Bot version of Nori, supporting commands on different platforms</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="project-item">
                     <h3>Nori-Wynn</h3>
                     <p>Third-party app for online RPG game "Wynncraft", providing features including player/guild statistics, leaderboard, class-builds, item-related, lootpool information, and more.</p>
+                            </div>
 
-                    <button id="changelog-button" class="changelog-button" onclick="toggleChangelog()">View Changelog</button>
-                    <zero-md id="changelog" class="changelog" src="changelog.md"></zero-md>
-
+                            <div class="project-item">
                     <h3>Nori-API</h3>
                     <p>Database hosted on AWS for general purposes, tracking information including command usage, user activity, in-game player stats, user prompts for generative AI features, generation results from models, etc...</p>
+                            </div>
 
+                            <div class="project-item">
                     <h3>Nori-ToolKit</h3>
                     <p>Utility tools made for various purposes, consisting of API wrappers, data analysis & visualization, testing, and some specific stuff.</p>
+                            </div>
 
+                            <div class="project-item">
                     <h3>Nori-Web</h3>
                     <p>Web version of Nori, which happens to be the site you are on right now.</p>
+                            </div>
+
+                            <button id="changelog-button" class="changelog-button" onclick="toggleChangelog()">📋 View Changelog</button>
+                            <zero-md id="changelog" class="changelog" src="changelog.md"></zero-md>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,13 +222,5 @@
     <footer>
         <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
     </footer>
-    <script>
-    function toggleSection(id, btn) {
-      const section = document.getElementById(id);
-      const hidden = (section.style.display === 'none');
-      section.style.display = hidden ? 'block' : 'none';
-      btn.classList.toggle('active', hidden);
-    }
-    </script>
 </body>
 </html>
