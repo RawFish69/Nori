@@ -1,42 +1,145 @@
-document.addEventListener('DOMContentLoaded', function() {
-    setCurrentLanguage();
-    openTab('Home'); 
+// Global variables for time banner
+let currentHue = Math.random() * 360;
+let targetHue = Math.random() * 360;
+let userTimezone = 'UTC';
+let userLocation = '';
+let isHovered = false;
 
-    var button = document.getElementById('changelog-button');
-    var isChinese = window.location.href.includes('index_cn.html');
-    var showText = isChinese ? '显示更新日志' : 'View changelog';
-    button.textContent = showText;
-});
+// Section toggle function
+function toggleSection(id, btn) {
+    const section = document.getElementById(id);
+    const hidden = (section.style.display === 'none');
+    section.style.display = hidden ? 'block' : 'none';
+    btn.classList.toggle('active', hidden);
+}
 
-function openTab(tabName) {
-    var i, tabcontent;
-    tabcontent = document.getElementsByClassName("panel");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+// Time banner color transition
+function smoothColorTransition() {
+    if (isHovered) return; // Pause transitions on hover
+    
+    // Smoothly transition to target hue
+    const diff = targetHue - currentHue;
+    const shortestDiff = ((diff + 540) % 360) - 180;
+    currentHue += shortestDiff * 0.01; // Faster transition
+    currentHue = (currentHue + 360) % 360;
+
+    // Pick new target occasionally
+    if (Math.abs(shortestDiff) < 1) {
+        targetHue = Math.random() * 360;
     }
-    document.getElementById(tabName).style.display = "block";
-}
 
-function changeLanguage(select) {
-    window.location = select.value;
-}
-
-function setCurrentLanguage() {
-    var selector = document.querySelector('.language-selector select');
-    var currentUrl = window.location.href;
-    if (currentUrl.includes('index_cn.html')) {
-        selector.value = 'index_cn.html';
-    } else {
-        selector.value = 'index.html';
+    // Generate gradient colors with FULL freedom - can be bright or dark
+    const saturation1 = 25 + Math.sin(Date.now() / 8000) * 45; // 0-70%
+    const lightness1 = 25 + Math.sin(Date.now() / 12000) * 50; // 25-75% (avoid pure black/white)
+    
+    const hue2 = (currentHue + 60 + Math.sin(Date.now() / 6000) * 40) % 360;
+    const saturation2 = 20 + Math.sin(Date.now() / 9000) * 40; // 0-60%
+    const lightness2 = 20 + Math.sin(Date.now() / 11000) * 55; // 20-75% (avoid pure black/white)
+    
+    // Simple, smooth diagonal gradient - no direction changes
+    const bgGradient = `linear-gradient(135deg, hsl(${currentHue}, ${saturation1}%, ${lightness1}%), hsl(${hue2}, ${saturation2}%, ${lightness2}%))`;
+    
+    // Ensure text contrast - use the darker of the two colors for contrast calculation
+    const avgLightness = (lightness1 + lightness2) / 2;
+    const textLightness = avgLightness < 50 ? 95 : 5;
+    const textSaturation = Math.min(Math.max(saturation1, saturation2) * 0.2, 25);
+    const textColor = `hsl(${currentHue}, ${textSaturation}%, ${textLightness}%)`;
+    
+    const banner = document.getElementById('timeBanner');
+    if (banner) {
+        banner.style.background = bgGradient;
+        banner.style.color = textColor;
     }
 }
 
+// Update time display
+function updateTime() {
+    const now = new Date();
+    
+    // Format: 2025/10/12 time
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    const timeString = `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+    
+    const timeDisplay = document.getElementById('timeDisplay');
+    if (timeDisplay) {
+        timeDisplay.textContent = timeString;
+    }
+}
+
+// Get timezone abbreviation
+function getTimezoneAbbreviation(timezone) {
+    const now = new Date();
+    const options = {
+        timeZone: timezone,
+        timeZoneName: 'short'
+    };
+    
+    try {
+        const formatter = new Intl.DateTimeFormat('en-US', options);
+        const parts = formatter.formatToParts(now);
+        const timeZoneName = parts.find(part => part.type === 'timeZoneName');
+        
+        if (timeZoneName) {
+            return timeZoneName.value; // e.g., "CST", "EST", "PST"
+        }
+    } catch (error) {
+        console.log('Error getting timezone abbreviation');
+    }
+    
+    return timezone.split('/').pop() || 'UTC'; // Fallback to last part of timezone
+}
+
+// Get timezone offset
+function getTimezoneOffset() {
+    const now = new Date();
+    const utcOffset = now.getTimezoneOffset(); // in minutes
+    const hours = Math.abs(utcOffset) / 60;
+    const sign = utcOffset <= 0 ? '+' : '-';
+    
+    if (hours === 0) return 'UTC+0';
+    return `UTC${sign}${hours}`;
+}
+
+// Get location and time
+async function getLocationAndTime() {
+    try {
+        // Try to get timezone from IP
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        
+        if (data.timezone) {
+            userTimezone = data.timezone;
+        } else {
+            userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+        }
+    } catch (error) {
+        console.log('Could not fetch location, using local timezone');
+        userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+    }
+    
+    // Update timezone display
+    const timezoneDisplay = document.getElementById('timezoneDisplay');
+    if (timezoneDisplay) {
+        const abbrev = getTimezoneAbbreviation(userTimezone);
+        const offset = getTimezoneOffset();
+        timezoneDisplay.textContent = `${abbrev} / ${offset}`;
+    }
+    
+    updateTime();
+}
+
+// Changelog toggle function
 function toggleChangelog() {
-    var changelog = document.getElementById('changelog');
-    var button = document.getElementById('changelog-button');
-    var isChinese = window.location.href.includes('index_cn.html');
-    var showText = isChinese ? '显示更新日志' : 'View changelog';
-    var hideText = isChinese ? '隐藏更新日志' : 'Hide changelog';
+    const changelog = document.getElementById('changelog');
+    const button = document.getElementById('changelog-button');
+    const showText = 'View Changelog';
+    const hideText = 'Hide Changelog';
 
     if (changelog.style.display === 'none' || changelog.style.display === '') {
         changelog.style.display = 'block';
@@ -46,3 +149,18 @@ function toggleChangelog() {
         button.textContent = showText;
     }
 }
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Set up time banner hover events
+    const banner = document.getElementById('timeBanner');
+    if (banner) {
+        banner.addEventListener('mouseenter', () => isHovered = true);
+        banner.addEventListener('mouseleave', () => isHovered = false);
+    }
+
+    // Initialize time and location
+    getLocationAndTime();
+    setInterval(updateTime, 1000);
+    setInterval(smoothColorTransition, 16); // ~60fps for smooth transitions
+});

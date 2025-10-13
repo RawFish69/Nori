@@ -1,7 +1,12 @@
 # Nori-Wynn Changelog
 
 ## Latest Changes
+- Removed ads
 - UI Overhaul
+
+### v1.0.3
+- Reworked home page & Wynn main page
+- **Removed ads**
 
 ### v1.0.2
 - Nori now checks API itemDB and generates changelog automatically

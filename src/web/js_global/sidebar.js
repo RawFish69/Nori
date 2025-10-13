@@ -109,6 +109,7 @@ function toggleTheme() {
     const darkThemeLink = document.getElementById("dark-theme-css");
     const sidebar = document.getElementById("sidebar");
     const menuButton = document.getElementById("menu-button");
+    const htmlElement = document.documentElement;
 
     if (darkThemeLink.disabled) {
         darkThemeLink.disabled = false;
@@ -116,6 +117,7 @@ function toggleTheme() {
         themeButton.classList.add("dark-mode");
         sidebar.classList.add("dark-mode");
         menuButton.classList.add("dark-mode");
+        htmlElement.classList.add("site-dark");
         localStorage.setItem('theme', 'dark');
     } else {
         darkThemeLink.disabled = true;
@@ -123,6 +125,7 @@ function toggleTheme() {
         themeButton.classList.remove("dark-mode");
         sidebar.classList.remove("dark-mode");
         menuButton.classList.remove("dark-mode");
+        htmlElement.classList.remove("site-dark");
         localStorage.setItem('theme', 'light');
     }
 }
@@ -150,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
             themeButton.classList.add("dark-mode");
             document.getElementById("sidebar").classList.add("dark-mode");
             document.getElementById("menu-button").classList.add("dark-mode");
+            document.documentElement.classList.add("site-dark");
         }
     } else {
         document.getElementById("dark-theme-css").disabled = true;

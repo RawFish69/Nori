@@ -1,33 +1,80 @@
+/* CSS Variables for Wynn page theming */
+:root {
+    --accent: #0077B6;
+    --muted: #667788;
+    --gap: 18px;
+    --card-radius: 10px;
+    --bg: #f7f9fb;
+    --panel-bg: linear-gradient(180deg,#ffffff,#fbfdff);
+    --panel-bg-color: #ffffff;
+    --card-bg: linear-gradient(180deg,#ffffff,#f6fbff);
+    --card-bg-color: #ffffff;
+    --panel-border: rgba(0,0,0,0.04);
+    --card-border: rgba(0,119,182,0.06);
+    --shadow: 0 6px 14px rgba(20,30,50,0.04);
+    --text: #0b1820;
+}
+
+/* Dark mode variables */
+.site-dark {
+    --accent: #4a6fa5;
+    --muted: #a9b0b6;
+    --bg: #0f0f10;
+    --panel-bg: linear-gradient(180deg,#111213,#0b0b0b);
+    --panel-bg-color: #111213;
+    --card-bg: linear-gradient(180deg,#111213,#0b0b0b);
+    --card-bg-color: #111213;
+    --panel-border: rgba(255,255,255,0.03);
+    --card-border: rgba(255,255,255,0.04);
+    --shadow: 0 6px 14px rgba(0,0,0,0.6);
+    --text: #e8eef2;
+}
+
 /* General styles */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: #ffffff; /* Changed from #f4f4f4 to pure white */
-    color: #333;
+    background: var(--bg);
+    color: var(--text);
 }
 
+/* Container */
 .container {
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1200px;
+    margin: 18px auto;
+    padding: 18px;
 }
 
+/* Header styles */
 header {
     background: #708090;
     color: #fff;
-    padding: 20px 0;
+    padding: 18px 12px;
     text-align: center;
     position: relative;
 }
 
+header .brand {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+header .brand h1 {
+    color: #ffffff;
+    margin: 0;
+}
+
+header .brand div {
+    color: #FFD700;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Navigation */
 .install-link {
     color: #006eff;
 }
@@ -43,71 +90,425 @@ nav a:hover {
     color: #FFD700;
 }
 
+/* Hero section */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 0 0 320px;
+}
+
+/* Install panel */
+.install-panel {
+    flex: 1 1 400px;
+    background: var(--panel-bg);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+    text-align: center;
+}
+
+.install-panel h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.15rem;
+    color: var(--text);
+}
+
+.install-panel .small {
+    color: var(--muted);
+}
+
+.install-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    justify-content: center;
+}
+
+.install-button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.install-button:hover {
+    background: var(--accent-hover, #005a8d);
+    transform: translateY(-1px);
+}
+
+.install-button.web-button {
+    background: #2d2d2d;
+}
+
+.install-button.web-button:hover {
+    background: #1a1a1a;
+}
+
+.install-button.discord-button {
+    background: #5865F2;
+}
+
+.install-button.discord-button:hover {
+    background: #4752C4;
+}
+
+/* Quick search */
+.quick-search {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+}
+
+.quick-search input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #d6dbe3;
+    background: var(--card-bg-color);
+    color: var(--text);
+}
+
+/* Game panel */
+.game-panel {
+    background: var(--panel-bg);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+    text-align: center;
+}
+
+.game-panel h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+.game-panel p {
+    margin: 0 0 12px 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.install-button.game-button {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    font-weight: 600;
+}
+
+.install-button.game-button:hover {
+    background: linear-gradient(45deg, #ff5252, #26a69a);
+    transform: translateY(-2px);
+}
+
+/* Grid layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+/* Panels */
+.panel {
+    background: var(--panel-bg);
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+}
+
+.panel h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.05rem;
+    color: var(--text);
+    background: var(--accent);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px 6px 0 0;
+    margin: -14px -14px 10px -14px;
+}
+
+.panel .small {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.panel-link {
+    text-decoration: none;
+    color: var(--text);
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--card-bg);
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--card-border);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 18px rgba(0,0,0,0.06);
+}
+
+.card h4 {
+    margin: 0;
+    font-size: 0.98rem;
+    color: var(--text);
+}
+
+.card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+/* Footer */
 footer {
     text-align: center;
-    padding: 10px 0;
+    padding: 18px 0;
     background: #333;
     color: white;
     width: 100%;
 }
 
-.main-panel {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-}
-
-.panel {
-    flex: 1 1 calc(33.333% - 20px);
-    margin: 10px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.panel h2 {
-    background: #0077B6; /* Changed from #708090 to match header color */
-    color: white;
-    padding: 10px;
-    border-radius: 8px 8px 0 0;
-    margin: 0;
+.footer-note {
     text-align: center;
+    color: var(--muted);
+    margin-top: 22px;
+    font-size: 0.9rem;
 }
 
-.panel-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.panel-link {
+.footer-note a {
+    color: var(--accent);
     text-decoration: none;
-    color: #333;
 }
 
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+.footer-note a:hover {
+    text-decoration: underline;
 }
 
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+/* Responsive design */
+@media (max-width: 980px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
 
-.card h4 {
-    margin-top: 0;
-    margin-bottom: 10px;
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .quick-search {
+        order: 2;
+    }
+    
+    .install-panel {
+        order: 1;
+    }
+    
+    /* Header improvements */
+    header {
+        padding: 15px 10px;
+        padding-right: 120px; /* Make room for theme button */
+        position: relative;
+    }
+    
+    .brand h1 {
+        font-size: 1.4rem !important;
+    }
+    
+    .brand img {
+        width: 40px !important;
+    }
+    
+    /* Theme button positioning on mobile */
+    #theme-switch {
+        position: absolute !important;
+        top: 10px !important;
+        right: 10px !important;
+        padding: 8px 12px !important;
+        font-size: 0.8rem !important;
+        z-index: 10;
+    }
+    
+    /* Hero section improvements */
+    .hero {
+        padding: 20px 15px;
+    }
+    
+    .install-panel {
+        padding: 20px 15px;
+    }
+    
+    .install-panel h2 {
+        font-size: 1.2rem;
+    }
+    
+    .quick-search {
+        padding: 20px 15px;
+    }
+    
+    .quick-search h2 {
+        font-size: 1.2rem;
+    }
+    
+    /* Install actions improvements */
+    .install-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .install-button {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+    
+    /* Card improvements */
+    .card {
+        padding: 20px 15px;
+    }
+    
+    .card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Search form improvements */
+    .search-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .search-form input {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+    
+    .search-form button {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+    
+    /* Container improvements */
+    .container {
+        padding: 15px 10px;
+    }
+    
+    /* Navigation improvements */
+    nav {
+        gap: 8px;
+        padding: 10px 0;
+    }
+    
+    nav a {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
 }
 
-.card p {
-    margin: 0;
+/* Dark mode compatibility - These will be applied when dark_theme.css is enabled */
+/* The dark_theme.css file already handles most styling with !important rules */
+/* We just need to ensure our new elements respect the dark theme */
+
+#dark-theme-css:not([disabled]) ~ body .install-panel,
+body.dark-mode .install-panel {
+    background: #1c1c1c !important;
+    border: 1px solid #555555;
+}
+
+#dark-theme-css:not([disabled]) ~ body .quick-search input,
+body.dark-mode .quick-search input {
+    background: #1c1c1c !important;
+    border-color: #555555;
+    color: #e8e8e8;
+}
+
+#dark-theme-css:not([disabled]) ~ body .install-button,
+body.dark-mode .install-button {
+    background-color: #bb86fc !important;
+    color: #1e1e1e;
+}
+
+#dark-theme-css:not([disabled]) ~ body .install-button:hover,
+body.dark-mode .install-button:hover {
+    background-color: #666666 !important;
+}
+
+#dark-theme-css:not([disabled]) ~ body .install-button.web-button,
+body.dark-mode .install-button.web-button {
+    background-color: #2d2d2d !important;
+    color: #e8e8e8;
+}
+
+#dark-theme-css:not([disabled]) ~ body .install-button.web-button:hover,
+body.dark-mode .install-button.web-button:hover {
+    background-color: #1a1a1a !important;
+}
+
+#dark-theme-css:not([disabled]) ~ body .install-button.discord-button,
+body.dark-mode .install-button.discord-button {
+    background-color: #5865F2 !important;
+    color: white;
+}
+
+#dark-theme-css:not([disabled]) ~ body .install-button.discord-button:hover,
+body.dark-mode .install-button.discord-button:hover {
+    background-color: #4752C4 !important;
+}
+
+#dark-theme-css:not([disabled]) ~ body .footer-note,
+body.dark-mode .footer-note {
+    color: #e8e8e8;
+}
+
+#dark-theme-css:not([disabled]) ~ body .brand div,
+body.dark-mode .brand div {
+    color: #e8e8e8 !important;
 }
