@@ -12,25 +12,32 @@ header {
     background: #0077B6;
     border: none;
     padding: 12px 20px;
-    z-index: 3;
+    z-index: 1001;
     transition: left 0.25s, background-color 0.3s ease;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 #menu-button.sidebar-active {
     left: 300px;
 }
 
-#menu-button:not(.dark-mode) {
-    background: #0077B6;
-    color: white;
+#menu-button:hover {
+    background-color: #0056b3;
+}
+
+#menu-button:active {
+    background-color: #004085;
 }
 
 #sidebar {
     height: 86%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     top: 0;
     left: 0;
     background-color: #1c1c1c; /* Changed from #373737 to match dark theme */
@@ -111,6 +118,14 @@ header {
 #menu-button.dark-mode {
     background-color: #555555;
     color: #FFFFFF;
+}
+
+#menu-button.dark-mode:hover {
+    background-color: #666666;
+}
+
+#menu-button.dark-mode:active {
+    background-color: #444444;
 }
 
 #sidebar.dark-mode {
