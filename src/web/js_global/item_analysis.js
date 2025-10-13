@@ -220,13 +220,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 scaleContentElement.classList.add("scale-content");
                 scaleContentElement.id = `scale-content-${scale}`;
                 scaleContentElement.innerHTML = `<strong>${scale} Scale Weight Distribution</strong><br>`;
+                
+                let hasNegativeValues = false;
                 for (const stat in scales[scale]) {
                     if (scales[scale][stat] !== null) {
                         const scaleStatElement = document.createElement("p");
                         scaleStatElement.innerHTML = `${mapping[stat]}: ${scales[scale][stat]}%`;
                         scaleContentElement.appendChild(scaleStatElement);
+                        
+                        if (scales[scale][stat] < 0) {
+                            hasNegativeValues = true;
+                        }
                     }
                 }
+                
+                if (hasNegativeValues) {
+                    const negativeNote = document.createElement("p");
+                    negativeNote.style.fontStyle = "italic";
+                    negativeNote.style.color = "#FFD700";
+                    negativeNote.style.marginTop = "8px";
+                    negativeNote.style.fontSize = "0.9em";
+                    negativeNote.innerHTML = "<em>Negative weight % means it's inversed weight</em>";
+                    scaleContentElement.appendChild(negativeNote);
+                }
+                
                 scalesContainer.appendChild(scaleContentElement);
             }
     

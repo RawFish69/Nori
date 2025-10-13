@@ -81,13 +81,80 @@
 /* Project Categories */
 .project-categories {
     margin-bottom: 20px;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 25px;
 }
+
+.category-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.category-content {
+    width: 100%;
+    background: var(--card-bg);
+    border-radius: 0 0 12px 12px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--card-border);
+    border-top: none;
+    overflow: hidden;
+}
+
+/* Desktop: Cards side by side, content below */
+@media (min-width: 769px) {
+    .project-categories {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .category-wrapper {
+        margin-bottom: 0;
+        display: contents; /* This makes children participate in parent grid */
+    }
+    
+    .category-content {
+        grid-column: 1 / -1; /* Content spans all columns */
+        margin-top: -10px; /* Slight adjustment to connect to card above */
+    }
+    
+    /* Better width utilization for desktop */
+    .container {
+        max-width: 1400px;
+        padding: 20px 40px;
+    }
+    
+    .project-showcase,
+    .install-section {
+        padding: 30px;
+    }
+    
+    .project-list {
+        max-width: none;
+    }
+    
+    .project-list li {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        padding: 12px 0;
+    }
+    
+    .tech-tags {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+        margin-left: 8px;
+    }
+}
+
+/* For larger screens, show all 4 cards in one row */
+@media (min-width: 1200px) {
+    .project-categories {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 
 .category-card {
     background: var(--card-bg);
@@ -101,6 +168,14 @@
     border: 1px solid var(--card-border);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+}
+
+/* When content is visible, adjust card border radius */
+.category-card:has(+ .category-content[style*="display: block"]),
+.category-card:has(+ .category-content:not([style*="display: none"])) {
+    border-radius: 12px 12px 0 0;
+    border-bottom: none;
 }
 
 .category-card::before {
@@ -734,9 +809,25 @@
         z-index: 10;
     }
     
-    /* Category grid improvements */
-    .category-grid {
-        grid-template-columns: 1fr;
+    /* Menu button positioning on mobile */
+    #menu-button {
+        position: absolute !important;
+        top: 10px !important;
+        left: 10px !important;
+        padding: 8px 12px !important;
+        font-size: 24px !important;
+        z-index: 1001 !important;
+    }
+    
+    /* Navigation spacing to avoid menu button */
+    nav {
+        padding-left: 80px;
+        padding-right: 120px;
+        margin-top: 10px;
+    }
+    
+    /* Category wrapper improvements */
+    .project-categories {
         gap: 15px;
     }
     
@@ -778,6 +869,17 @@
     }
     
     /* Time banner improvements */
+    .time-banner {
+        position: relative;
+        z-index: 1;
+        margin-top: 20px;
+    }
+    
+    /* Hide time banner when sidebar is active to prevent overlap */
+    body.sidebar-active .time-banner {
+        display: none;
+    }
+    
     .time-display {
         font-size: 2.5rem;
     }
@@ -814,6 +916,19 @@
     #theme-switch {
         padding: 6px 10px !important;
         font-size: 0.7rem !important;
+    }
+    
+    /* Menu button for smaller screens */
+    #menu-button {
+        padding: 6px 10px !important;
+        font-size: 20px !important;
+        z-index: 1001 !important;
+    }
+    
+    /* Navigation spacing for smaller screens */
+    nav {
+        padding-left: 70px;
+        padding-right: 100px;
     }
     
     .category-card h3 {

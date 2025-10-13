@@ -3,7 +3,6 @@
 <head>
     <link rel="icon" href="../../fish_logo.png" type="image/x-icon">
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Nori-Wynn Aspect Lootpool" />
     <meta property="og:description" content="Aspect Weekly Lootpool Rotation" />
@@ -19,42 +18,61 @@
     <script src="../../js_global/fetch_aspects.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
     <script src="../../js_global/analytics.js"></script>
-    <!-- Temporarily disabled Google Ads -->
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484"
-    data-overlays="bottom" crossorigin="anonymous"></script> -->
     <script src="../../js_global/config.js"></script>
     <script src="../../js_global/layout.js"></script>
 </head>
 <body>
     <header>
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
-            <h1>Nori-Wynn</h1>
+        <div class="header-content">
+            <div class="brand">
+                <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo">
+                <div>
+                    <h1>Nori‑Wynn</h1>
+                    <div class="subtitle">Aspect Lootpool</div>
+                </div>
+            </div>
+            <nav aria-label="Main navigation">
+                <!-- Navigation links will be inserted by layout.js -->
+            </nav>
         </div>
-        <nav>
-            <!-- Navigation links will be inserted by layout.js -->
-        </nav>
     </header>
+    
     <div id="menu-button" onclick="toggleSidebar()">☰</div>
     <div id="sidebar"></div>
-    <div class="container">
-        <div class="feature">
-            
-            <h2 id="lootpool-title">Updating Aspect Lootpool Content...</h2>
-            <p style="text-align: center; font-size: 1.3em;">Join <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="install-link">Community Discord</a> to follow Nori updates & post feedbacks</p>
-            <div id="lootpool-filters" class="checkbox-container">
-                <label><input type="checkbox" id="toggle-mythic" checked>Mythic</label>
-                <label><input type="checkbox" id="toggle-fabled">Fabled</label>
-                <label><input type="checkbox" id="toggle-legendary">Legendary</label>
-            </div>
-            <div id="lootpool" class="lootpool-container"></div>
+    
+    <main class="container">
+        <div class="page-header">
+            <h2 id="lootpool-title" class="page-title">
+                <span class="loading-spinner"></span>
+                Updating Aspect Lootpool...
+            </h2>
+            <div id="countdown-container" class="countdown-section"></div>
+            <p class="page-subtitle">
+                Join <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="discord-link">Community Discord</a> to follow Nori updates & post feedback
+            </p>
         </div>
-        <div style="display: flex; justify-content: center; margin-top: 20px;">
-            <button id="lootpool-button" class="lootpool-button" onclick="window.location.href='https://nori.fish/wynn/item/lootpool'">
+
+        <div id="lootpool-filters" class="filter-pills">
+            <button class="filter-pill active mythic" data-filter="mythic" id="toggle-mythic">
+                <span class="pill-icon">✦</span>Mythic
+            </button>
+            <button class="filter-pill fabled" data-filter="fabled" id="toggle-fabled">
+                <span class="pill-icon">✦</span>Fabled
+            </button>
+            <button class="filter-pill legendary" data-filter="legendary" id="toggle-legendary">
+                <span class="pill-icon">✦</span>Legendary
+            </button>
+        </div>
+
+        <div id="lootpool" class="lootpool-container"></div>
+
+        <div class="action-buttons">
+            <button class="primary-button" onclick="window.location.href='https://nori.fish/wynn/item/lootpool'">
+                <span class="button-icon">◆</span>
                 Lootrun Item Rewards
             </button>
         </div>
-    </div>
+    </main>
     
     <footer>
         <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
