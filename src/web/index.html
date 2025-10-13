@@ -67,30 +67,14 @@
 
             <!-- Project Categories -->
             <div class="project-categories" id="projects">
-                <div class="category-grid">
+                
+                <!-- Drones Category + Content -->
+                <div class="category-wrapper">
                     <div class="category-card" onclick="toggleSection('dronesSection', this)">
                         <h3>Multirotor Drones</h3>
                         <p>Mostly FPV & custom builds</p>
                     </div>
-                    <div class="category-card" onclick="toggleSection('roboticsSection', this)">
-                        <h3>Robotics</h3>
-                        <p>Hardware, Software, Prototyping, Simulation</p>
-                    </div>
-                    <div class="category-card" onclick="toggleSection('wynnSection', this)">
-                        <h3>Nori Wynn</h3>
-                        <p>Third-party tools for Wynncraft</p>
-                    </div>
-                    <div class="category-card" onclick="toggleSection('gamedevSection', this)">
-                        <h3>Games & Apps</h3>
-                        <p>game dev and desktop apps</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Sections -->
-            <div class="content-sections">
-                <div class="feature" id="drones">
-                    <div id="dronesSection" style="display: none;">
+                    <div id="dronesSection" class="category-content" style="display: none;">
                         <div class="project-showcase">
                             <div class="project-header">
                                 <h2>Multirotor Drones</h2>
@@ -109,8 +93,13 @@
                     </div>
                 </div>
 
-                <div class="feature" id="robotics">
-                    <div id="roboticsSection" style="display: none;">
+                <!-- Robotics Category + Content -->
+                <div class="category-wrapper">
+                    <div class="category-card" onclick="toggleSection('roboticsSection', this)">
+                        <h3>Robotics</h3>
+                        <p>Hardware, Software, Prototyping, Simulation</p>
+                    </div>
+                    <div id="roboticsSection" class="category-content" style="display: none;">
                         <div class="project-showcase">
                             <div class="project-header">
                                 <h2>Robotics</h2>
@@ -129,26 +118,13 @@
                     </div>
                 </div>
 
-                <div class="feature" id="gamedev">
-                    <div id="gamedevSection" style="display: none;">
-                        <div class="project-showcase">
-                            <div class="project-header">
-                                <h2>Game & App Development</h2>
-                                <a href="/games" class="topic-link">View More</a>
-                            </div>
-                            <p>Passion projects.</p>
-                            
-                            <ul class="project-list">
-                                <li><strong>Space Orbs</strong> - Multiplayer web game <span class="tech-tags">WebGL, Flask</span> <a href="https://game.nori.fish" target="_blank" class="project-link">Play Now</a></li>
-                                <li><strong>2D Rogue-like (WIP)</strong> - Game developed with Godot Engine <span class="tech-tags">Godot, GDScript</span></li>
-                                <li><strong>Inventory Control</strong> - Windows application <span class="tech-tags">VB.NET</span></li>
-                            </ul>
-                        </div>
+                <!-- Wynn Category + Content -->
+                <div class="category-wrapper">
+                    <div class="category-card" onclick="toggleSection('wynnSection', this)">
+                        <h3>Nori Wynn</h3>
+                        <p>Third-party tools for Wynncraft</p>
                     </div>
-                </div>
-
-                <div class="feature" id="wynn">
-                    <div id="wynnSection" style="display: none;">
+                    <div id="wynnSection" class="category-content" style="display: none;">
                         <div class="install-section">
                             <h2>Nori Wynn Install & Resources</h2>
                             <div class="install-grid">
@@ -176,7 +152,33 @@
                     </div>
                 </div>
 
+                <!-- Games & Apps Category + Content -->
+                <div class="category-wrapper">
+                    <div class="category-card" onclick="toggleSection('gamedevSection', this)">
+                        <h3>Games & Apps</h3>
+                        <p>game dev and desktop apps</p>
+                    </div>
+                    <div id="gamedevSection" class="category-content" style="display: none;">
+                        <div class="project-showcase">
+                            <div class="project-header">
+                                <h2>Game & App Development</h2>
+                                <a href="/games" class="topic-link">View More</a>
+                            </div>
+                            <p>Passion projects.</p>
+                            
+                            <ul class="project-list">
+                                <li><strong>Space Orbs</strong> - Multiplayer web game <span class="tech-tags">WebGL, Flask</span> <a href="https://game.nori.fish" target="_blank" class="project-link">Play Now</a></li>
+                                <li><strong>2D Rogue-like (WIP)</strong> - Game developed with Godot Engine <span class="tech-tags">Godot, GDScript</span></li>
+                                <li><strong>Inventory Control</strong> - Windows application <span class="tech-tags">VB.NET</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+
+            <!-- About This Project Section -->
+            <div class="content-sections">
                 <div class="feature">
                     <button class="toggle-button" onclick="toggleSection('aboutProjectSection', this)">About This Project</button>
                     <div id="aboutProjectSection" style="display: none;">
