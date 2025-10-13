@@ -4,10 +4,6 @@
 - Removed ads
 - UI Overhaul
 
-### v1.0.3
-- Reworked home page & Wynn main page
-- **Removed ads**
-
 ### v1.0.2
 - Nori now checks API itemDB and generates changelog automatically
 - Reworked guild tower stats calculation, now works for both HQ and regular tower, user may define the upgrades and links/externals
@@ -116,3 +112,7 @@
 
 ### v1.3.2
 - UI Overhaul
+
+### v1.3.3
+- Reworked home page & Wynn main page
+- **Removed ads**
