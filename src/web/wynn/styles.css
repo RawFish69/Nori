@@ -372,6 +372,23 @@ footer {
         z-index: 10;
     }
     
+    /* Menu button positioning on mobile */
+    #menu-button {
+        position: absolute !important;
+        top: 10px !important;
+        left: 10px !important;
+        padding: 8px 12px !important;
+        font-size: 24px !important;
+        z-index: 1001 !important;
+    }
+    
+    /* Navigation spacing to avoid menu button */
+    nav {
+        padding-left: 80px;
+        padding-right: 120px;
+        margin-top: 10px;
+    }
+    
     /* Hero section improvements */
     .hero {
         padding: 20px 15px;

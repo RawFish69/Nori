@@ -2,13 +2,16 @@
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const menuButton = document.getElementById('menu-button');
+    const body = document.body;
 
     sidebar.classList.toggle('active');
 
     if (sidebar.classList.contains('active')) {
-        menuButton.classList.add('sidebar-active'); 
+        menuButton.classList.add('sidebar-active');
+        body.classList.add('sidebar-active');
     } else {
-        menuButton.classList.remove('sidebar-active'); 
+        menuButton.classList.remove('sidebar-active');
+        body.classList.remove('sidebar-active');
     }
 }
 
