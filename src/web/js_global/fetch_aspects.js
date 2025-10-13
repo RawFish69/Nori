@@ -107,8 +107,8 @@ function displayLootpool(loot, icons) {
 }
 
 function startCountdown(seconds) {
-    const countdownContainer = document.createElement('div');
-    countdownContainer.id = 'countdown-container';
+    const countdownContainer = document.getElementById('countdown-container');
+    countdownContainer.innerHTML = '';
 
     const countdownLabel = document.createElement('div');
     countdownLabel.id = 'countdown-label';
@@ -118,7 +118,6 @@ function startCountdown(seconds) {
     countdownElement.classList.add('countdown-container');
     countdownContainer.appendChild(countdownLabel);
     countdownContainer.appendChild(countdownElement);
-    document.getElementById('lootpool-title').appendChild(countdownContainer);
 
     function updateCountdown() {
         const days = Math.floor(seconds / (3600 * 24));
@@ -167,19 +166,20 @@ function startCountdown(seconds) {
 }
 
 function setupTierFilters() {
-    const filters = document.querySelectorAll('#lootpool-filters input[type="checkbox"]');
+    const filters = document.querySelectorAll('.filter-pill');
     filters.forEach(filter => {
-        filter.addEventListener('change', filterLootpool);
-        const id = filter.id.split('-')[1];
-        filter.classList.add(id);
+        filter.addEventListener('click', function() {
+            this.classList.toggle('active');
+            filterLootpool();
+        });
     });
 }
 
 function filterLootpool() {
     const filters = {
-        mythic: document.getElementById('toggle-mythic').checked,
-        fabled: document.getElementById('toggle-fabled').checked,
-        legendary: document.getElementById('toggle-legendary').checked,
+        mythic: document.getElementById('toggle-mythic').classList.contains('active'),
+        fabled: document.getElementById('toggle-fabled').classList.contains('active'),
+        legendary: document.getElementById('toggle-legendary').classList.contains('active'),
     };
 
     document.querySelectorAll('.lootpool-card').forEach(card => {
@@ -187,7 +187,7 @@ function filterLootpool() {
         card.querySelectorAll('.rarity-title').forEach(title => {
             const rarity = title.classList[1].split('-')[0];
             if (filters[rarity]) {
-                title.style.display = 'block';
+                title.style.display = 'flex';
                 title.nextElementSibling.style.display = 'block';
                 showCard = true;
             } else {

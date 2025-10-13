@@ -63,10 +63,17 @@
                     <input id="pageSearch" type="search" placeholder="Quick search features (e.g. item, builds, uptime)" aria-label="Search features">
                 </div>
                 
-                <div class="game-panel" role="region" aria-labelledby="game-heading">
-                    <h2 id="game-heading">Space Orbs Open Beta</h2>
-                    <p>Take a break and try my web game c:</p>
-                    <button class="install-button game-button" onclick="window.open('https://game.nori.fish', '_blank')">Play Space Orbs</button>
+                <div class="application-portal">
+                    <div class="portal-content">
+                        <h3 class="portal-title">Become a Nori Contributor</h3>
+                        <p class="portal-description">
+                            Application Status: Open
+                        </p>
+                        <a href="https://forms.gle/ALqc5G22n2AsChTf6" target="_blank" class="portal-button">
+                            <span class="button-icon">📝</span>
+                            Apply Now
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,11 +89,19 @@
                     </a>
                     <a class="card" href="https://nori.fish/wynn/item/lootpool">
                         <h4>Item Lootpool</h4>
-                        <p>Examine Lootrun reward pools & rotations.</p>
+                        <p>Lootrun reward pools & rotations.</p>
+                    </a>
+                    <a class="card" href="https://nori.fish/wynn/item/simulation">
+                        <h4>Item Simulation</h4>
+                        <p>99% of gamblers quit before hitting it big.</p>
+                    </a>
+                    <a class="card" href="https://nori.fish/wynn/item/mythic">
+                        <h4>Mythic Items</h4>
+                        <p>#1 Mythic items in the game</p>
                     </a>
                     <a class="card" href="https://nori.fish/wynn/item/changelog">
                         <h4>Item Changelog</h4>
-                        <p>Latest item changes, sync'd from API.</p>
+                        <p>Latest raw item changes, sync'd from API.</p>
                     </a>
                 </div>
             </article>
@@ -100,7 +115,7 @@
                     </a>
                     <a class="card" href="https://nori.fish/wynn/showcase">
                         <h4>Build Showcase</h4>
-                        <p>Curated, community-submitted builds.</p>
+                        <p>Videos from nori dev & people.</p>
                     </a>
                     <a class="card" href="https://nori.fish/wynn/recipe">
                         <h4>Recipe Search</h4>
@@ -118,7 +133,7 @@
                     </a>
                     <a class="card" href="https://nori.fish/wynn/leaderboard/?type=guilds&category=raids_total&page=1">
                         <h4>Guilds</h4>
-                        <p>Guild raid totals and rankings.</p>
+                        <p>Guild rankings.</p>
                     </a>
                     <a class="card" href="https://nori.fish/wynn/leaderboard/?type=raids&category=raids_total&page=1">
                         <h4>Raids</h4>
@@ -154,11 +169,11 @@
                     </a>
                     <a class="card" href="https://nori.fish/wynn/uptime">
                         <h4>Soul Point Timer</h4>
-                        <p>Track soul point respawns.</p>
+                        <p>Deprecated feature.</p>
                     </a>
                     <a class="card" href="https://nori.fish/wynn/tower">
                         <h4>Guild Tower Stats</h4>
-                        <p>Tower progress and stats.</p>
+                        <p>Nothing to see here.</p>
                     </a>
                 </div>
             </article>
@@ -180,10 +195,17 @@
                     </a>
                 </div>
             </article>
+
         </section>
 
         <div class="footer-note" aria-hidden="false">
             <p>Powered by Nori‑Web — <a href="https://nori.fish/docs" target="_blank">API docs</a> • <a href="https://github.com/RawFish69/Nori" target="_blank">Source</a></p>
+        </div>
+
+        <div class="game-panel" role="region" aria-labelledby="game-heading">
+            <h2 id="game-heading">Space Orbs Open Beta</h2>
+            <p>Take a break and try my web game c:</p>
+            <button class="install-button game-button" onclick="window.open('https://game.nori.fish', '_blank')">Play Space Orbs</button>
         </div>
     </main>
 
