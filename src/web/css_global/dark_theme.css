@@ -144,6 +144,7 @@ button:active, .online-button:active, .centered-button:active, #uptimeButton:act
     color: white !important;
     border: none !important;
     box-shadow: none !important;
+    border-radius: 12px !important;
 }
 
 .card h4,
@@ -197,6 +198,7 @@ tr:nth-child(even),
 th {
     background-color: #0077B6 !important;
     color: white !important;
+    border-radius: 8px !important;
 }
 
 a {

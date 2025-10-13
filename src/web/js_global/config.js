@@ -31,7 +31,8 @@ const NoriConfig = {
             { text: "Wynn", url: "/wynn" },
             { text: "Docs", url: "/docs" },
             { text: "Support", url: "https://discord.gg/eDssA6Jbwd", external: true },
-            { text: "Game", url: "https://game.nori.fish", external: true, special: "game-link", target: "_blank" },
+            // Temporarily disabled Game tab
+            // { text: "Game", url: "https://game.nori.fish", external: true, special: "game-link", target: "_blank" },
             { text: "Demo", url: "/demo" },
         ],
         wynn: [
@@ -39,7 +40,8 @@ const NoriConfig = {
             { text: "Wynn", url: "/wynn" },
             { text: "Docs", url: "/docs" },
             { text: "Support", url: "https://discord.gg/eDssA6Jbwd", external: true },
-            { text: "Game", url: "https://game.nori.fish", external: true, special: "game-link", target: "_blank" },
+            // Temporarily disabled Game tab
+            // { text: "Game", url: "https://game.nori.fish", external: true, special: "game-link", target: "_blank" },
             { text: "Demo", url: "/demo" }
         ]
     }
