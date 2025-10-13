@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Nori-Wynn Item Analysis" />
     <meta property="og:description" content="Item Analysis for Wynncraft" />
-    <meta property="og:url" content="https://nori.fish/wynn/build" />
+    <meta property="og:url" content="https://nori.fish/wynn/item/analysis" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
     <title>Nori-Wynn Item Analysis</title>
@@ -14,45 +14,71 @@
     <link rel="stylesheet" href="../../../css_global/default.css">
     <link rel="stylesheet" href="../../../css_global/sidebar.css">
     <link rel="stylesheet" href="../../../css_global/dark_theme.css" id="dark-theme-css" disabled>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@latest/dist/zero-md.min.js"></script>
     <script type="text/javascript" src="../../../js_global/sidebar.js"></script>
     <script src="../../../js_global/item_analysis.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
     <script src="../../../js_global/analytics.js"></script>
-    <!-- Temporarily disabled Google Ads -->
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484"
-    data-overlays="bottom" crossorigin="anonymous"></script> -->
     <script src="../../../js_global/config.js"></script>
     <script src="../../../js_global/layout.js"></script>
 </head>
 <body>
     <header>
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
-            <h1>Nori-Wynn</h1>
+        <div class="header-content">
+            <div class="brand">
+                <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo">
+                <div>
+                    <h1>Nori‑Wynn</h1>
+                    <div class="subtitle">Item Analysis</div>
+                </div>
+            </div>
+            <nav aria-label="Main navigation">
+                <!-- Navigation links will be inserted by layout.js -->
+            </nav>
         </div>
-        <nav>
-            <!-- Navigation links will be inserted by layout.js -->
-        </nav>
     </header>
 
     <div id="menu-button" onclick="toggleSidebar()">☰</div>
     <div id="sidebar"></div>
-    <div class="container">
+    
+    <main class="container">
+        <div class="page-header">
+            <h2 class="page-title">Item Analysis</h2>
+            <p class="page-subtitle">
+                Hover over items in-game and press <b>F3</b> to copy using Wynntils
+            </p>
+            <p class="page-subtitle">
+                Join <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="discord-link">Community Discord</a> to follow Nori updates & post feedback
+            </p>
+        </div>
 
-        <div id="ItemAnalysis" class="panel">
-            <h2 class="centered-text">Item Analysis</h2>
-            <p class="centered-text">Hover over Item and press <b>F3</b> to Copy Items using Wynntils.</p>
-            <form id="item-analysis-form" class="centered-text">
-                <div class="analysis-bar">
-                    <input type="text" id="encoded-item" name="encoded_item" placeholder="Enter encoded item">
-                    <button type="submit">Analyze</button>
+        <div class="search-section">
+            <form id="item-analysis-form" class="search-form">
+                <div class="search-bar">
+                    <input type="text" id="encoded-item" name="encoded_item" placeholder="Paste your encoded item here..." class="search-input">
+                    <button type="submit" class="analyze-button">
+                        <span class="button-icon">⚡</span>
+                        Analyze
+                    </button>
                 </div>
             </form>
-            <div id="analysis-results" class="results-container analysis-results"></div>
         </div>
-    </div>
 
+        <div id="analysis-results" class="results-container"></div>
+
+        <div class="application-portal">
+            <div class="portal-content">
+                <h3 class="portal-title">Join the Nori Team</h3>
+                <p class="portal-description">
+                    Applications are now open - We're looking for dedicated players to contribute to Item Scales (weight), Builds, and Recipes, etc.
+                </p>
+                <a href="https://forms.gle/ALqc5G22n2AsChTf6" target="_blank" class="portal-button">
+                    <span class="button-icon">📝</span>
+                    Apply Now
+                </a>
+            </div>
+        </div>
+    </main>
+    
     <footer>
         <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
     </footer>

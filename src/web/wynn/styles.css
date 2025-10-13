@@ -529,3 +529,89 @@ body.dark-mode .footer-note {
 body.dark-mode .brand div {
     color: #e8e8e8 !important;
 }
+
+/* Application Portal - Compact for hero area */
+.application-portal {
+    margin: 0;
+    text-align: center;
+}
+
+.portal-content {
+    background: var(--panel-bg);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--panel-border);
+}
+
+.portal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #10b981, #059669, #047857);
+}
+
+.portal-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.portal-description {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.portal-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.portal-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #059669, #047857);
+}
+
+.portal-button .button-icon {
+    font-size: 0.9rem;
+}
+
+/* Light theme adjustments */
+:root:not(.site-dark) .portal-content {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Dark mode for application portal */
+#dark-theme-css:not([disabled]) ~ body .portal-content,
+body.dark-mode .portal-content {
+    background: #1c1c1c !important;
+    border: 1px solid #555555 !important;
+}
+
+#dark-theme-css:not([disabled]) ~ body .portal-description,
+body.dark-mode .portal-description {
+    color: #a9b0b6 !important;
+}

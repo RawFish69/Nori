@@ -4,75 +4,113 @@
     <link rel="icon" href="../fish_logo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Nori-Items" />
-    <meta property="og:description" content="Nori-Web Items Features" />
-    <meta property="og:url" content="https://nori.fish/items" />
+    <meta property="og:title" content="Nori-Wynn Item Tools" />
+    <meta property="og:description" content="Comprehensive Item Analysis & Tools for Wynncraft" />
+    <meta property="og:url" content="https://nori.fish/wynn/item" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
-    <title>Nori-Items</title>
-    <link rel="stylesheet" href="../../css_global/sidebar.css">
+    <title>Nori-Wynn Item Tools</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../css_global/default.css">
+    <link rel="stylesheet" href="../../css_global/sidebar.css">
     <link rel="stylesheet" href="../../css_global/dark_theme.css" id="dark-theme-css" disabled>
     <script type="text/javascript" src="../../js_global/sidebar.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
     <script src="../../js_global/analytics.js"></script>
-    <!-- Temporarily disabled Google Ads -->
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484"
-    data-overlays="bottom" crossorigin="anonymous"></script> -->
     <script src="../../js_global/config.js"></script>
     <script src="../../js_global/layout.js"></script>
 </head>
 <body>
     <header>
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
-            <h1>Nori-Wynn Items</h1>
-        </div>
-        <nav>
-            <!-- Navigation links will be inserted by layout.js -->
-        </nav>
-    </header>
-    <div id="menu-button" onclick="toggleSidebar()">☰</div>
-    <div id="sidebar"></div>
-    <div class="container">
-        <div class="main-panel">
-            <div class="panel">
-                <h2>Item Features</h2>
-                <div class="panel-content">
-                    <a href="https://nori.fish/wynn/item/analysis" class="panel-link">
-                        <div class="card">
-                            <h4>Item Analysis</h4>
-                            <p>Analyze items to decode IDs, show scales and weights.</p>
-                        </div>
-                    </a>
-                    <a href="https://nori.fish/wynn/item/lootpool" class="panel-link">
-                        <div class="card">
-                            <h4>Item Lootpool</h4>
-                            <p>View Lootrun Reward Lootpool.</p>
-                        </div>
-                    </a>
-                    <a href="https://nori.fish/wynn/item/simulation" class="panel-link">
-                        <div class="card">
-                            <h4>Item Simulation</h4>
-                            <p>Simulate item identification, reroll with amplifier.</p>
-                        </div>
-                    </a>
-                    <a href="https://nori.fish/wynn/item/changelog" class="panel-link">
-                        <div class="card">
-                            <h4>Item Changelog</h4>
-                            <p>View Full item changelog, generated from API data.</p>
-                        </div>
-                    </a>
-                    <a href="https://nori.fish/wynn/item/mythic" class="panel-link">
-                        <div class="card">
-                            <h4>Mythic Items</h4>
-                            <p>#1 Mythic Items and Item Scales.</p>
-                        </div>
-                    </a>
+        <div class="header-content">
+            <div class="brand">
+                <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo">
+                <div>
+                    <h1>Nori‑Wynn</h1>
+                    <div class="subtitle">Item Tools</div>
                 </div>
             </div>
+            <nav aria-label="Main navigation">
+                <!-- Navigation links will be inserted by layout.js -->
+            </nav>
         </div>
-    </div>
+    </header>
+
+    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar"></div>
+    
+    <main class="container">
+        <div class="page-header">
+            <h2 class="page-title">Item Analysis & Tools</h2>
+            <p class="page-subtitle">
+                Comprehensive tools for analyzing, simulating, and tracking Wynncraft items
+            </p>
+            <p class="page-subtitle">
+                Join <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="discord-link">Community Discord</a> to follow Nori updates & post feedback
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <a href="https://nori.fish/wynn/item/analysis" class="feature-card">
+                <div class="card-icon">⚡</div>
+                <h3>Item Analysis</h3>
+                <p>Analyze encoded items to decode IDs, show scales and weight distributions with detailed statistics.</p>
+                <div class="card-footer">
+                    <span class="card-tag">Analysis</span>
+                </div>
+            </a>
+
+            <a href="https://nori.fish/wynn/item/lootpool" class="feature-card">
+                <div class="card-icon">🎁</div>
+                <h3>Item Lootpool</h3>
+                <p>View the current Lootrun reward lootpool with real-time updates and countdown timers.</p>
+                <div class="card-footer">
+                    <span class="card-tag">Lootrun</span>
+                </div>
+            </a>
+
+            <a href="https://nori.fish/wynn/item/simulation" class="feature-card">
+                <div class="card-icon">🎲</div>
+                <h3>Item Simulation</h3>
+                <p>Simulate item identification and reroll mechanics with amplifier effects for testing builds.</p>
+                <div class="card-footer">
+                    <span class="card-tag">Simulation</span>
+                </div>
+            </a>
+
+            <a href="https://nori.fish/wynn/item/changelog" class="feature-card">
+                <div class="card-icon">📋</div>
+                <h3>Item Changelog</h3>
+                <p>View the complete item changelog generated from API data with detailed update history.</p>
+                <div class="card-footer">
+                    <span class="card-tag">Updates</span>
+                </div>
+            </a>
+
+            <a href="https://nori.fish/wynn/item/mythic" class="feature-card">
+                <div class="card-icon">💎</div>
+                <h3>Mythic Items</h3>
+                <p>Browse the #1 ranked mythic items and their scales maintained by the marketplace community.</p>
+                <div class="card-footer">
+                    <span class="card-tag">Mythic</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="application-portal">
+            <div class="portal-content">
+                <h3 class="portal-title">Join the Nori Team</h3>
+                <p class="portal-description">
+                    Applications are now open! We're looking for dedicated players to contribute to Item Scales (weight), Builds, and Recipes.
+                </p>
+                <a href="https://forms.gle/ALqc5G22n2AsChTf6" target="_blank" class="portal-button">
+                    <span class="button-icon">📝</span>
+                    Apply Now
+                </a>
+            </div>
+        </div>
+    </main>
+    
     <footer>
         <p>&copy; 2024 RawFish. Powered by Nori-Web.</p>
     </footer>
