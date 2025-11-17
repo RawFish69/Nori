@@ -78,6 +78,21 @@
     margin: 0;
 }
 
+/* Quote styling - make it stand out a bit more */
+#nori-quote {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--card-text);
+    line-height: 1.7;
+    margin: 15px 0 20px 0;
+    padding: 15px 0;
+    border-left: 3px solid #667eea;
+    padding-left: 20px;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
 /* Project Categories */
 .project-categories {
     margin-bottom: 20px;

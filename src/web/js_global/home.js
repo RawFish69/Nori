@@ -150,6 +150,57 @@ function toggleChangelog() {
     }
 }
 
+// Output from my mind
+const noriQuotes = [
+    "I enjoy turning ideas into something tangible. Some work out, some don't, but I believe that even the wild ones deserve a shot to show what they can become.",
+    "Half my breakthroughs start with \"I probably shouldn't do this,\" and honestly that's a system I'm proud of.",
+    "My guiding philosophy: if it works, great. If it doesn't, it becomes a story. Both outcomes win.",
+    "My creative process is like 30% planning, 70% \"oh, so that's what I meant.\"",
+    "I trust my instincts even when they behave like they've never met me before.",
+    "If life hands you confusion, build something weird out of it.",
+    "I like doing things I've never done before because technically that means I have no expectations to disappoint :)",
+    "If you're wondering why I stopped doing that gaming stuff, that's just me attempting to be a responsible adult.",
+    "I'm not always motivated, especially when I'm doing stuff I don't even like but somehow still ended up responsible for. I just rely on discipline and the fear of regret.",
+    "I used to have zero patience. I worked on it for years, and now I’m still not patient - I just wait aggressively."
+];
+
+// Quote rotation interval in milliseconds (30 seconds)
+const QUOTE_ROTATION_INTERVAL = 30000;
+
+let currentQuoteIndex = 0;
+
+function rotateQuote() {
+    const quoteElement = document.getElementById('nori-quote');
+    if (!quoteElement) return;
+    
+    // Pick a random quote (excluding the current one to avoid immediate repeats)
+    let newIndex;
+    do {
+        newIndex = Math.floor(Math.random() * noriQuotes.length);
+    } while (newIndex === currentQuoteIndex && noriQuotes.length > 1);
+    
+    // Fade out, change quote, fade in
+    quoteElement.style.opacity = '0';
+    setTimeout(() => {
+        currentQuoteIndex = newIndex;
+        quoteElement.textContent = noriQuotes[currentQuoteIndex];
+        quoteElement.style.opacity = '1';
+    }, 250); // Half of transition duration (500ms / 2)
+}
+
+function initializeQuoteRotation() {
+    // Set initial random quote on page load
+    currentQuoteIndex = Math.floor(Math.random() * noriQuotes.length);
+    const quoteElement = document.getElementById('nori-quote');
+    if (quoteElement) {
+        quoteElement.textContent = noriQuotes[currentQuoteIndex];
+        quoteElement.style.opacity = '1'; // Ensure initial quote is visible
+    }
+    
+    // Rotate quote at the specified interval
+    setInterval(rotateQuote, QUOTE_ROTATION_INTERVAL);
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Set up time banner hover events
@@ -163,4 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
     getLocationAndTime();
     setInterval(updateTime, 1000);
     setInterval(smoothColorTransition, 16); // ~60fps for smooth transitions
+    
+    // Initialize quote rotation
+    initializeQuoteRotation();
 });
