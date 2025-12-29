@@ -1,32 +1,81 @@
 """
 Feature engineering for item price prediction.
+
+This module extracts comprehensive features from item data including ALL possible stats
+from the game's stat system. The full list of stats is loaded from id_map.json to ensure
+complete feature representation for ML models.
+
+Feature Vector Structure:
+- 120 stat values (one for each stat in id_map.json)
+- 120 stat rates (roll percentages for each stat)
+- 13 item type features (one-hot encoded: wand, spear, bow, dagger, relik, helmet, etc.)
+- 6 tier features (one-hot encoded: mythic, fabled, legendary, rare, unique, unknown)
+- 8 metadata features (level requirement, shiny, reroll count, weight, stat counts, aggregates)
+
+Total: ~267 features per item, giving models complete understanding of item properties.
 """
 
 import numpy as np
 from typing import Dict, List, Optional, Tuple, Any
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 import json
+from pathlib import Path
+from lib.config import BOT_PATH
 
 
 class ItemFeatureEngineer:
-    """Extracts features from item data for ML models."""
+    """Extracts comprehensive features from item data for ML models."""
     
-    def __init__(self, stat_mapping: Optional[Dict[str, str]] = None):
+    def __init__(self, stat_mapping: Optional[Dict[str, str]] = None, id_map_path: Optional[Path] = None):
         self.stat_mapping = stat_mapping or {}
+        self.id_map_path = id_map_path or (BOT_PATH / "id_map.json")
+        self.all_stat_ids = self._load_all_stat_ids()
         self.stat_order = self._get_stat_order()
         self.item_type_encoder = LabelEncoder()
         self.tier_encoder = LabelEncoder()
         self._fitted = False
     
+    def _load_all_stat_ids(self) -> List[str]:
+        """Load all stat IDs from id_map.json to ensure complete feature coverage."""
+        try:
+            with open(self.id_map_path, "r") as f:
+                id_map = json.load(f)
+            # Reverse the mapping: id -> stat_name
+            stat_ids = {v: k for k, v in id_map.items()}
+            # Return sorted list of stat names for consistent ordering
+            return sorted(id_map.keys())
+        except Exception as e:
+            print(f"Warning: Could not load id_map.json: {e}")
+            # Fallback to a basic set if file not found
+            return [
+                "spellDamage", "elementalSpellDamage", "mainAttackDamage",
+                "elementalMainAttackDamage", "healthRegen", "manaRegen",
+                "lifeSteal", "manaSteal", "xpBonus", "lootBonus",
+                "rawStrength", "rawDexterity", "rawIntelligence",
+                "rawDefence", "rawAgility", "rawHealth", "rawMaxMana",
+            ]
+    
     def _get_stat_order(self) -> List[str]:
-        """Standard stat order for consistent feature vectors."""
-        return [
-            "spellDamage", "elementalSpellDamage", "mainAttackDamage",
-            "elementalMainAttackDamage", "healthRegen", "manaRegen",
-            "lifeSteal", "manaSteal", "xpBonus", "lootBonus",
-            "rawStrength", "rawDexterity", "rawIntelligence",
-            "rawDefence", "rawAgility", "rawHealth", "rawMaxMana",
-        ]
+        """
+        Get ordered list of all stats for consistent feature vectors.
+        
+        Returns all 120 stats from id_map.json in sorted order to ensure
+        consistent feature vector dimensions across all items.
+        """
+        return self.all_stat_ids
+    
+    def get_feature_vector_size(self) -> int:
+        """
+        Get the expected size of the feature vector.
+        
+        Returns:
+            Total number of features: 
+            - 2 * len(stat_order) (stat values + stat rates for all stats)
+            - 13 (item type one-hot)
+            - 6 (tier one-hot)
+            - 8 (metadata: level, shiny, reroll, weight, stat counts, aggregates)
+        """
+        return (2 * len(self.stat_order)) + 13 + 6 + 8
     
     def extract_features_from_item_data(
         self,
@@ -34,15 +83,46 @@ class ItemFeatureEngineer:
         weight: Optional[float] = None,
         item_name: Optional[str] = None
     ) -> np.ndarray:
-        """Extract feature vector from item data."""
+        """
+        Extract comprehensive feature vector from item data.
+        
+        Includes ALL stats from id_map.json to give models full understanding of item properties.
+        Features include:
+        - All stat values (raw and percentage-based)
+        - All stat roll percentages (rates)
+        - Item type (one-hot encoded)
+        - Tier/rarity (one-hot encoded)
+        - Level requirement (normalized)
+        - Shiny status
+        - Reroll count
+        - Weight (if available)
+        - Derived features (stat count, high-value stat count)
+        """
         features = []
         
-        stats = item_data.get(list(item_data.keys())[0], {}) if item_data else {}
+        # Extract stats dict - could be under item name key or directly in item_data
+        if item_data and len(item_data) > 0:
+            # Try to find the stats dict (usually under item name key)
+            stats = {}
+            for key in item_data.keys():
+                if key not in ["rate", "shiny", "item_type", "item_tier", "level_requirement", "misc"]:
+                    if isinstance(item_data[key], dict):
+                        stats = item_data[key]
+                        break
+            # If no nested dict found, use item_data itself (minus metadata keys)
+            if not stats:
+                stats = {k: v for k, v in item_data.items() 
+                        if k not in ["rate", "shiny", "item_type", "item_tier", "level_requirement", "misc"]}
+        else:
+            stats = {}
+        
         rates = item_data.get("rate", {})
         
+        # Extract ALL stats in consistent order
         stat_values = []
         stat_rates = []
         
+        # First, extract all known stats from stat_order (from id_map.json)
         for stat_id in self.stat_order:
             stat_value = stats.get(stat_id, 0)
             stat_values.append(float(stat_value))
@@ -50,11 +130,8 @@ class ItemFeatureEngineer:
             stat_rate = rates.get(stat_id, 0.0)
             stat_rates.append(float(stat_rate))
         
-        for stat_id, value in stats.items():
-            if stat_id not in self.stat_order and stat_id != "rate":
-                stat_values.append(float(value))
-                stat_rates.append(float(rates.get(stat_id, 0.0)))
-        
+        # All stats from id_map.json are now included in stat_order
+        # This ensures consistent feature vector size
         features.extend(stat_values)
         features.extend(stat_rates)
         
@@ -81,10 +158,27 @@ class ItemFeatureEngineer:
             avg_rate = np.mean(list(rates.values())) if rates else 0.0
             features.append(avg_rate / 100.0)
         
+        # Derived features
         stat_count = len([v for v in stat_values if v != 0])
         high_value_stat_count = len([r for r in stat_rates if r > 80.0])
-        features.append(float(stat_count) / 10.0)
-        features.append(float(high_value_stat_count) / 5.0)
+        very_high_value_stat_count = len([r for r in stat_rates if r > 90.0])
+        
+        # Normalize counts
+        features.append(float(stat_count) / len(self.stat_order))  # Normalize by total possible stats
+        features.append(float(high_value_stat_count) / len(self.stat_order))
+        features.append(float(very_high_value_stat_count) / len(self.stat_order))
+        
+        # Aggregate stats by category for additional insights
+        raw_stats_sum = sum([stat_values[i] for i, stat_id in enumerate(self.stat_order) if stat_id.startswith("raw")])
+        elemental_stats_sum = sum([stat_values[i] for i, stat_id in enumerate(self.stat_order) if "elemental" in stat_id.lower()])
+        damage_stats_sum = sum([stat_values[i] for i, stat_id in enumerate(self.stat_order) if "damage" in stat_id.lower()])
+        defence_stats_sum = sum([stat_values[i] for i, stat_id in enumerate(self.stat_order) if "defence" in stat_id.lower() or "defense" in stat_id.lower()])
+        
+        # Normalize aggregates (rough normalization)
+        features.append(float(raw_stats_sum) / 1000.0)
+        features.append(float(elemental_stats_sum) / 1000.0)
+        features.append(float(damage_stats_sum) / 1000.0)
+        features.append(float(defence_stats_sum) / 1000.0)
         
         return np.array(features, dtype=np.float32)
     
@@ -136,19 +230,29 @@ class ItemFeatureEngineer:
         """Get feature names for interpretability."""
         names = []
         
+        # All stat values (from id_map.json - all 120 stats)
         names.extend([f"stat_value_{stat}" for stat in self.stat_order])
+        # All stat rates (from id_map.json - all 120 stats)
         names.extend([f"stat_rate_{stat}" for stat in self.stat_order])
+        # Item type (one-hot)
         names.extend([f"item_type_{t}" for t in ["wand", "spear", "bow", "dagger", "relik",
                                                   "helmet", "chestplate", "leggings", "boots",
                                                   "ring", "bracelet", "necklace", "unknown"]])
+        # Tier (one-hot)
         names.extend([f"tier_{t}" for t in ["mythic", "fabled", "legendary", "rare", "unique", "unknown"]])
+        # Metadata
         names.extend([
             "level_requirement",
             "shiny",
             "reroll_count",
             "weight",
             "stat_count",
-            "high_value_stat_count"
+            "high_value_stat_count",
+            "very_high_value_stat_count",
+            "raw_stats_sum",
+            "elemental_stats_sum",
+            "damage_stats_sum",
+            "defence_stats_sum"
         ])
         
         return names
