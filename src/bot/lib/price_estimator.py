@@ -4,11 +4,31 @@ Description: Price estimation and trend analysis for item marketplace
 
 This module provides price estimation using various approaches:
 - Traditional regression (polynomial, spline)
-- Advanced ML methods (see ml_price_models.py)
+- Advanced ML methods (see ml_approach.py)
 - Ensemble methods
 
-Current issue is that the lack of data and bad data makes it reliable to perform regression. 
-What I have planned is revamping the approach with RL models, so let's see how that goes.
+Status: Proof of Concept
+
+I've implemented proof of concept code for various price estimation methods, but we don't 
+have a completed pipeline yet. The current implementation includes:
+- Traditional regression methods (polynomial, spline, linear interpolation)
+- Advanced ML approaches (Bayesian optimization, neural networks, ensemble learning, etc.)
+- Feature engineering for full item data
+
+However, the full integration and production pipeline is still a work in progress. This might 
+be completed by me or someone else in the future. Regardless, this source code can serve as 
+a reference for the approaches and methods I've explored.
+
+Current challenges:
+- Lack of sufficient data and data quality issues make reliable regression difficult
+- Full ML pipeline integration needs more work
+- Data collection and validation pipeline needs to be established
+
+Future work:
+- Complete the data pipeline
+- Improve data quality and collection methods
+- Full integration of ML methods into production
+- Possibly explore RL models for dynamic pricing
 """
 
 import numpy as np
