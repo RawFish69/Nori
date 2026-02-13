@@ -158,6 +158,16 @@
   /* No min-height, max-height — let image display at natural size */
 }
 
+/* Video under text in left column (e.g. Micro FPV Drone) */
+.robotics-project-content video {
+  width: 100%;
+  margin-top: 1.25rem;
+  border-radius: 6px;
+  background: #0a0a0a;
+  object-fit: contain;
+  display: block;
+}
+
 /* ===== Two+ images: text on top centered, images in row below ===== */
 .robotics-project-body.media-below {
   display: block;
