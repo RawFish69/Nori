@@ -1,12 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="../fish_logo.png" type="image/x-icon">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori Robotics" />
+    <meta property="og:description" content="Personal projects — design, prototyping, hardware & software" />
+    <meta property="og:url" content="https://nori.fish/robotics" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
     <title>Nori Robotics</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css_global/default.css">
+    <link rel="stylesheet" href="../css_global/sidebar.css">
+    <link rel="stylesheet" href="../css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="../js_global/sidebar.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../js_global/analytics.js"></script>
+    <script src="../js_global/config.js"></script>
+    <script src="../js_global/layout.js"></script>
 </head>
 <body>
-    <h1>Robotics</h1>
-    <p>Under construction</p>
-    <a href="../">Back to Home</a>
+    <header>
+        <div class="brand">
+            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width:48px;height:auto;">
+            <div>
+                <h1 style="margin:0;">Nori Robotics</h1>
+                <div class="robotics-header-subtitle">Design · Prototyping · Hardware & Software</div>
+            </div>
+        </div>
+        <nav aria-label="Main navigation">
+            <!-- Navigation links inserted by layout.js -->
+        </nav>
+    </header>
+
+    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="sidebar"></div>
+
+    <main class="robotics-container" role="main">
+        <p class="robotics-intro">Personal projects related to robotics and mechatronic systems.</p>
+
+        <div class="robotics-grid">
+
+        <!-- ========== PROJECT TEMPLATE ==========
+        - One image: media-side media-right (text left, image right) or media-side media-left (image left, text right)
+        - Two+ images: media-below (text centered on top, images in row below)
+        <article class="robotics-project">
+            <h2>Project Name</h2>
+            <div class="robotics-project-body [media-side media-right|media-below]">
+                <div class="robotics-project-content">...</div>
+                <div class="robotics-media"><img src="images/name.jpg" alt="..."></div>
+            </div>
+        </article>
+        ========== END TEMPLATE ========== -->
+
+        <article class="robotics-project">
+            <h2>Long Range FPV Drone</h2>
+            <div class="robotics-project-body media-below">
+                <div class="robotics-project-content">
+                    <p>I designed the frame in CAD, all 3D-printed mounting components, and validated the build through multiple design iterations. The carbon fiber frame is machined by fabrication partners. Full FPV with camera and live video.</p>
+                    <p>Powered by 1–2S 18650 Li-ion, this drone achieves 15–20 minutes conservative flight time. GPS integration enables waypoint navigation and GPS-safe rescue on Betaflight, with support for Betaflight, iNav, and ArduPilot on various flight controllers.</p>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/long_range_render.png" alt="Long Range FPV Drone (CAD render)">
+                    <img src="images/long_range_real.jpg" alt="Long Range FPV Drone (real)">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>Nano FPV Drone</h2>
+            <div class="robotics-project-body media-side media-right">
+                <div class="robotics-project-content">
+                    <p>Fits in the palm of your hand—smaller than off-the-shelf micros like the Cinewhoop 65-class. Fully custom build; nothing like it on the market.</p>
+                    <p>I designed the frame in CAD, all mounting components (3D-printed), and iterated on the design. I experimented with both 3D-printed frame and carbon-fiber-printed frame at this scale; both are viable. For the production build, the carbon fiber frame was machined by fabrication partners. Equipped with FPV camera and live video footage.</p>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/nano_drone.png" alt="Nano FPV Drone">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>UAV Controller</h2>
+            <div class="robotics-project-body media-side media-left">
+                <div class="robotics-project-content">
+                    <p>Full-stack quadcopter control system with ROS 2 and a custom communication protocol I built from scratch.</p>
+                    <ul class="robotics-features">
+                        <li>Controllers: cascaded PID, LQR, MPC (C++ for ROS; Python for standalone sim)</li>
+                        <li>Path planning: straight, A*, RRT in forest/mountain/plains terrain</li>
+                        <li>Safety gate: validation, limiting, watchdog</li>
+                        <li>TX/RX stack: ESP32 (ESP-NOW) for manual flight and autonomous relay; CRSF/SBUS/PPM bridging</li>
+                        <li>LoRa-based communication stack (in progress)—shared with the RL Racing Drone project</li>
+                        <li>Standalone Python simulator for fast iteration without ROS</li>
+                    </ul>
+                    <a href="https://github.com/RawFish69/UAV-Controller" target="_blank" rel="noopener" class="project-link">GitHub Repo</a>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/uav_controller_1.png" alt="UAV Controller">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>ESP32 Flight Controller</h2>
+            <div class="robotics-project-body media-below">
+                <div class="robotics-project-content">
+                    <p>Custom PCB—a breakout-style board for ESP32 with motor drivers built in, enabling flight control on the chip. This is the prototype; "Nori AIO" on the PCB stands for Nori (this site) and AIO (all-in-one). I'm also working on a chip-only board that does a lot more than this.</p>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/Nori_AIO_Altium.png" alt="Nori AIO PCB (Altium design)">
+                    <img src="images/nori_aio_real.jpg" alt="Nori AIO PCB (real)">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>RL Racing Drone</h2>
+            <div class="robotics-project-body media-side media-right">
+                <div class="robotics-project-content">
+                    <p>Sim-to-real reinforcement learning control stack for quadrotors. End-to-end system to deploy PyTorch RL policies on real hardware using ROS 2, Betaflight MSP, and ESP32 (CRSF/RC override). Designed for real-world deployment: deterministic control paths, explicit authority handoff, hardware-enforced safety, recoverable failure modes. RL inference on onboard SBC; ROS 2 as control/safety layer; ESP32 enforces RC-side arming and AUX; physical kill always overrides software. FPV not yet equipped.</p>
+                    <a href="https://github.com/virmani11kartik/Integrated-UAV-Stack/tree/yc" target="_blank" rel="noopener" class="project-link" id="rl-drone-repo">GitHub Repo</a>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/rl_drones.png" alt="RL Racing Drone">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>Differential-Drive Mobile Robot</h2>
+            <div class="robotics-project-body media-below">
+                <div class="robotics-project-content">
+                    <p>Semi-autonomous mobile robot with web interface. Features: localization-based navigation, wall follow, manual control for target tracking. PID control via motor encoders; position/orientation from Vive tracker integration. RGB LED effects and wheel system live visual feedback. Web-based control: point somewhere, the robot goes. Main board ESP32 for wireless; multiple microcontroller boards.</p>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/mechatronics_1.png" alt="Differential-Drive Mobile Robot">
+                    <img src="images/mechatronics_2.png" alt="Differential-Drive Mobile Robot">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>7 DOF Robot Arm</h2>
+            <div class="robotics-project-body media-side media-left">
+                <div class="robotics-project-content">
+                    <p>Panda Franka 7 DOF arm. Robotic manipulation system for pick-and-place operations. Path planning: RRT and potential field—reach the goal while avoiding collisions and obstacles. Forward and inverse kinematics; vision-based object detection. Part of MEAM 5200 at UPenn.</p>
+                    <a href="https://github.com/c-y-i/7-DoF-Arm-Manipulation" target="_blank" rel="noopener" class="project-link">GitHub Repo</a>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/7dof_arm.png" alt="7 DOF Robot Arm">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>Manual Racing FPV Drone</h2>
+            <div class="robotics-project-body media-below">
+                <div class="robotics-project-content">
+                    <p>3.5" quadcopter with STM32F4/F5 flight controller, 3–6" battery (typically 4S LiPo)—built for freestyle and racing, very fast.</p>
+                    <p>I designed the frame myself using topology optimization; the frame was fabricated in carbon fiber. Custom mounting and integration. Full FPV with camera and live video.</p>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/manual_racer_cad.png" alt="Manual Racing FPV Drone (CAD)">
+                    <img src="images/manual_racer_real.png" alt="Manual Racing FPV Drone (real)">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>Web RC Car</h2>
+            <div class="robotics-project-body media-below">
+                <div class="robotics-project-content">
+                    <p>ESP32-based RC car with browser control. Single-board or dual-board (ESP-NOW) setups; default and omni drive modes. Web interface with virtual joystick.</p>
+                    <a href="https://github.com/RawFish69/ESP32-RC-Car" target="_blank" rel="noopener" class="project-link">GitHub Repo</a>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/web_rc_1.png" alt="Web RC Car">
+                    <img src="images/web_rc_2.png" alt="Web RC Car">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>Thermal Sensor Mobile Bot (Toast-E)</h2>
+            <div class="robotics-project-body media-side media-right">
+                <div class="robotics-project-content">
+                    <p>Differential-drive robot with thermal imaging streamed to a web browser. ESP32-based; uses ESP-NOW for wireless joystick control and AMG8833 8×8 thermal sensor. Live heatmap view with bilinear interpolation upscaling (64×64) for smoother visualization.</p>
+                    <a href="https://github.com/RawFish69/Toast-E" target="_blank" rel="noopener" class="project-link">GitHub Repo</a>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/toast-E.png" alt="Toast-E Thermal Bot">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project">
+            <h2>Mechanical Gripper</h2>
+            <div class="robotics-project-body">
+                <div class="robotics-project-content">
+                    <p>Mechanical gripper with servo motor.</p>
+                </div>
+            </div>
+        </article>
+
+        </div>
+
+        <p class="robotics-back"><a href="../">← Back to Home</a></p>
+    </main>
+
+    <footer style="padding:18px 0;text-align:center;">
+        <p style="margin:0;color:var(--card-text-secondary, #666);">&copy; 2024-2026 Nori, All rights reserved. Web URL: nori.fish</p>
+    </footer>
 </body>
 </html>

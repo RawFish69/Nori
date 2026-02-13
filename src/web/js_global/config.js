@@ -4,7 +4,8 @@ const NoriConfig = {
         wynn: "https://nori.fish/wynn",
         docs: "https://nori.fish/docs",
         demo: "https://nori.fish/demo",
-        chat: "https://nori.fish/chat"
+        chat: "https://nori.fish/utils#chat-assistant",
+        utils: "https://nori.fish/utils"
     },
     
     links: {
@@ -16,7 +17,7 @@ const NoriConfig = {
     
     text: {
         siteName: "Nori-Web",
-        footerText: "© 2024-2025 RawFish. Web URL: nori.fish",
+        footerText: "© 2024-2026 Nori, All rights reserved. Web URL: nori.fish",
         wynncraftName: "Nori-Wynn"
     },
     
@@ -29,6 +30,7 @@ const NoriConfig = {
         default: [
             { text: "Home", url: "/" },
             { text: "Wynn", url: "/wynn" },
+            { text: "Utils", url: "/utils" },
             { text: "Docs", url: "/docs" },
             { text: "Support", url: "https://discord.gg/eDssA6Jbwd", external: true },
             // Temporarily disabled Game tab
@@ -38,10 +40,19 @@ const NoriConfig = {
         wynn: [
             { text: "Home", url: "/" },
             { text: "Wynn", url: "/wynn" },
+            { text: "Utils", url: "/utils" },
             { text: "Docs", url: "/docs" },
             { text: "Support", url: "https://discord.gg/eDssA6Jbwd", external: true },
             // Temporarily disabled Game tab
             // { text: "Game", url: "https://game.nori.fish", external: true, special: "game-link", target: "_blank" },
+            { text: "Demo", url: "/demo" }
+        ],
+        utils: [
+            { text: "Home", url: "/" },
+            { text: "Wynn", url: "/wynn" },
+            { text: "Utils", url: "/utils" },
+            { text: "Docs", url: "/docs" },
+            { text: "Support", url: "https://discord.gg/eDssA6Jbwd", external: true },
             { text: "Demo", url: "/demo" }
         ]
     }

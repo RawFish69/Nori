@@ -340,3 +340,8 @@ body.dark-mode .build-card:hover {
     outline-offset: 5px;
     box-shadow: 0 8px 16px rgba(0, 119, 182, 0.3) !important;
 }
+
+/* Robotics page header subtitle — visible on dark background */
+.robotics-header-subtitle {
+    color: #58a6ff !important;
+}
