@@ -4,6 +4,7 @@ let targetHue = Math.random() * 360;
 let userTimezone = 'UTC';
 let userLocation = '';
 let isHovered = false;
+let use24Hour = true;
 
 // Section toggle function
 function toggleSection(id, btn) {
@@ -52,20 +53,25 @@ function smoothColorTransition() {
     }
 }
 
-// Update time display
+// Update time display (in selected timezone)
 function updateTime() {
     const now = new Date();
-    
-    // Format: 2025/10/12 time
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    
-    const timeString = `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
-    
+    const opts = {
+        timeZone: userTimezone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: !use24Hour
+    };
+    const formatter = new Intl.DateTimeFormat('en-CA', opts);
+    const parts = formatter.formatToParts(now);
+    const get = (type) => parts.find(p => p.type === type)?.value || '';
+    const ampm = !use24Hour ? ` ${get('dayPeriod')}` : '';
+    const timeString = `${get('year')}/${get('month')}/${get('day')} ${get('hour')}:${get('minute')}:${get('second')}${ampm}`;
+
     const timeDisplay = document.getElementById('timeDisplay');
     if (timeDisplay) {
         timeDisplay.textContent = timeString;
@@ -95,17 +101,6 @@ function getTimezoneAbbreviation(timezone) {
     return timezone.split('/').pop() || 'UTC'; // Fallback to last part of timezone
 }
 
-// Get timezone offset
-function getTimezoneOffset() {
-    const now = new Date();
-    const utcOffset = now.getTimezoneOffset(); // in minutes
-    const hours = Math.abs(utcOffset) / 60;
-    const sign = utcOffset <= 0 ? '+' : '-';
-    
-    if (hours === 0) return 'UTC+0';
-    return `UTC${sign}${hours}`;
-}
-
 // Get location and time
 async function getLocationAndTime() {
     try {
@@ -123,15 +118,100 @@ async function getLocationAndTime() {
         userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
     }
     
-    // Update timezone display
+    updateTimezoneDisplay();
+    updateTime();
+}
+
+function updateTimezoneDisplay() {
     const timezoneDisplay = document.getElementById('timezoneDisplay');
     if (timezoneDisplay) {
         const abbrev = getTimezoneAbbreviation(userTimezone);
-        const offset = getTimezoneOffset();
+        let offset = 'UTC';
+        try {
+            const f = new Intl.DateTimeFormat('en-US', { timeZone: userTimezone, timeZoneName: 'shortOffset' });
+            const parts = f.formatToParts(new Date());
+            const p = parts.find(x => x.type === 'timeZoneName');
+            if (p) offset = p.value.replace('GMT', 'UTC');
+        } catch (_) {}
         timezoneDisplay.textContent = `${abbrev} / ${offset}`;
     }
-    
+}
+
+// Toggle 12h/24h format
+function toggleTimeFormat() {
+    use24Hour = !use24Hour;
+    const btn = document.getElementById('timeFormatBtn');
+    if (btn) btn.textContent = use24Hour ? '24h' : '12h';
     updateTime();
+}
+
+// Major cities for timezone picker
+const MAJOR_CITIES = [
+    'America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles',
+    'America/Toronto', 'America/Vancouver', 'America/Sao_Paulo', 'America/Mexico_City',
+    'Europe/London', 'Europe/Paris', 'Europe/Berlin', 'Europe/Moscow', 'Europe/Istanbul',
+    'Asia/Tokyo', 'Asia/Shanghai', 'Asia/Hong_Kong', 'Asia/Singapore', 'Asia/Dubai',
+    'Asia/Kolkata', 'Asia/Seoul', 'Australia/Sydney', 'Australia/Melbourne',
+    'Pacific/Auckland', 'Africa/Cairo', 'Africa/Johannesburg',
+    'UTC'
+];
+
+function populateTimezonePicker() {
+    const select = document.getElementById('timezoneSelect');
+    if (!select) return;
+    select.innerHTML = '';
+    MAJOR_CITIES.forEach(tz => {
+        const opt = document.createElement('option');
+        opt.value = tz;
+        opt.textContent = tz.replace(/_/g, ' ');
+        if (tz === userTimezone) opt.selected = true;
+        select.appendChild(opt);
+    });
+}
+
+function initTimeControls() {
+    const gearBtn = document.getElementById('timeGearBtn');
+    const dropdown = document.getElementById('timeControlsDropdown');
+    const formatBtn = document.getElementById('timeFormatBtn');
+    const tzBtn = document.getElementById('timezoneBtn');
+    const tzPicker = document.getElementById('timezonePicker');
+    const tzSelect = document.getElementById('timezoneSelect');
+
+    function toggleDropdown() {
+        if (dropdown) dropdown.classList.toggle('open');
+    }
+
+    function closeDropdown(e) {
+        if (!dropdown || !dropdown.classList.contains('open')) return;
+        if (gearBtn && gearBtn.contains(e.target)) return;
+        if (dropdown.contains(e.target)) return;
+        dropdown.classList.remove('open');
+    }
+
+    if (gearBtn && dropdown) {
+        gearBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleDropdown();
+        });
+        document.addEventListener('click', closeDropdown);
+    }
+
+    if (formatBtn) {
+        formatBtn.textContent = use24Hour ? '24h' : '12h';
+        formatBtn.addEventListener('click', toggleTimeFormat);
+    }
+
+    if (tzBtn && tzPicker && tzSelect) {
+        tzBtn.addEventListener('click', () => {
+            tzPicker.style.display = tzPicker.style.display === 'none' ? 'block' : 'none';
+            if (tzPicker.style.display === 'block') populateTimezonePicker();
+        });
+        tzSelect.addEventListener('change', () => {
+            userTimezone = tzSelect.value;
+            updateTimezoneDisplay();
+            updateTime();
+        });
+    }
 }
 
 // Changelog toggle function
@@ -212,9 +292,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize time and location
     getLocationAndTime();
+    initTimeControls();
     setInterval(updateTime, 1000);
     setInterval(smoothColorTransition, 16); // ~60fps for smooth transitions
-    
+
     // Initialize quote rotation
     initializeQuoteRotation();
 });

@@ -58,6 +58,8 @@ function applyStandardNavigation() {
     let navLinks;
     if (window.location.pathname.includes('/wynn')) {
         navLinks = NoriConfig.navigation.wynn;
+    } else if (window.location.pathname.includes('/utils')) {
+        navLinks = NoriConfig.navigation.utils;
     } else {
         navLinks = NoriConfig.navigation.default;
     }
