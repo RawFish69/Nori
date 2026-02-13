@@ -1,7 +1,6 @@
 /**
  * MP4 to GIF - Canvas-based frame extraction + GIF encoding
- * Uses video element + canvas; encodes frames via minimal GIF writer
- * Lazy-loads gif.js from CDN when tool opens
+ * Uses gifenc (ESM from unpkg) - runs on main thread and completes reliably.
  */
 window.UtilsTools = window.UtilsTools || {};
 window.UtilsTools['mp4-to-gif'] = {
@@ -69,7 +68,7 @@ window.UtilsTools['mp4-to-gif'] = {
       btn.disabled = true;
       status.textContent = 'Step 1/3: Loading GIF encoder...';
       status.className = 'utils-status loading';
-      loadGifJs().then(function() {
+      loadGifenc().then(function() {
         var numFrames = Math.floor(duration * fps);
         status.textContent = 'Step 2/3: Extracting frames (0/' + numFrames + ')...';
         runConversion(video, start, duration, fps, width, function(blob) {
@@ -95,19 +94,16 @@ window.UtilsTools['mp4-to-gif'] = {
         btn.disabled = false;
       });
     };
-    function loadGifJs() {
-      if (window.GIF) return Promise.resolve();
-      return new Promise(function(resolve, reject) {
-        var s = document.createElement('script');
-        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js';
-        s.onload = resolve;
-        s.onerror = reject;
-        document.head.appendChild(s);
+    function loadGifenc() {
+      if (window.__gifenc) return Promise.resolve(window.__gifenc);
+      return import('https://unpkg.com/gifenc@1.0.3').then(function(m) {
+        window.__gifenc = m;
+        return m;
       });
     }
     function runConversion(video, startSec, durationSec, fps, maxWidth, onDone, onErr, onProgress) {
       onProgress = onProgress || function() {};
-      var delay = 1000 / fps;
+      var delayMs = Math.round(1000 / fps);
       var numFrames = Math.floor(durationSec * fps);
       var canvas = document.createElement('canvas');
       var ctx = canvas.getContext('2d', { willReadFrequently: true });
@@ -118,13 +114,13 @@ window.UtilsTools['mp4-to-gif'] = {
       function captureNextFrame() {
         if (frameIdx >= numFrames) {
           video.onseeked = null;
-          addFramesToGif();
+          encodeGif();
           return;
         }
         var t = startSec + (frameIdx / fps);
         if (t >= video.duration) {
           video.onseeked = null;
-          addFramesToGif();
+          encodeGif();
           return;
         }
         video.currentTime = t;
@@ -141,49 +137,40 @@ window.UtilsTools['mp4-to-gif'] = {
         canvas.width = w;
         canvas.height = h;
         ctx.drawImage(video, 0, 0, w, h);
-        var copy = document.createElement('canvas');
-        copy.width = w;
-        copy.height = h;
-        copy.getContext('2d', { willReadFrequently: true }).drawImage(canvas, 0, 0);
-        frameBuffers.push(copy);
+        var imgData = ctx.getImageData(0, 0, w, h);
+        frameBuffers.push(new Uint8Array(imgData.data));
         frameIdx++;
         onProgress('Step 2/3: Extracting frames (' + frameIdx + '/' + numFrames + ')...');
         captureNextFrame();
       };
 
-      function addFramesToGif() {
+      function encodeGif() {
         var total = frameBuffers.length;
-        onProgress('Step 3/3: Encoding GIF... adding frame 0/' + total);
-        var gif = new GIF({
-          workers: 0,
-          quality: 10,
-          width: w,
-          height: h
-        });
-        gif.on('finished', function(blob) {
-          onDone(blob);
-        });
-        gif.on('error', function(err) {
-          onErr(err || new Error('GIF encoding failed'));
-        });
-        var i = 0;
-        function addNext() {
-          if (i >= total) {
-            onProgress('Step 3/3: Encoding GIF... rendering (this may take a moment)...');
-            gif.render();
-            return;
-          }
-          onProgress('Step 3/3: Encoding GIF... adding frame ' + (i + 1) + '/' + total);
-          try {
-            gif.addFrame(frameBuffers[i], { copy: true, delay: delay });
-          } catch (e) {
-            onErr(e);
-            return;
-          }
-          i++;
-          setTimeout(addNext, 30);
+        if (total === 0) {
+          onErr(new Error('No frames captured'));
+          return;
         }
-        addNext();
+        onProgress('Step 3/3: Encoding GIF...');
+        try {
+          var gifenc = window.__gifenc;
+          var quantize = gifenc.quantize;
+          var applyPalette = gifenc.applyPalette;
+          var GIFEncoder = gifenc.GIFEncoder;
+          var firstFrame = frameBuffers[0];
+          var palette = quantize(firstFrame, 256);
+          var gif = GIFEncoder();
+          for (var i = 0; i < total; i++) {
+            onProgress('Step 3/3: Encoding GIF... frame ' + (i + 1) + '/' + total);
+            var index = applyPalette(frameBuffers[i], palette);
+            gif.writeFrame(index, w, h, { palette: palette, delay: delayMs });
+          }
+          gif.finish();
+          var bytes = gif.bytes();
+          var blob = new Blob([bytes], { type: 'image/gif' });
+          onDone(blob);
+        } catch (e) {
+          onErr(e);
+        }
       }
 
       video.currentTime = startSec;
