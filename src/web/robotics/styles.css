@@ -1,0 +1,284 @@
+/**
+ * Robotics page — portfolio layout
+ * - One image: side-by-side (text left or right, image other side) — mix it up
+ * - Two+ images: text centered on top, images in row below
+ */
+
+/* Header subtitle — light theme: bright yellow for visibility; dark: blue */
+.robotics-header-subtitle {
+  font-size: 0.9rem;
+  color: #facc15;
+}
+
+
+.robotics-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 5rem;
+}
+
+.robotics-intro {
+  font-size: 1.4rem;
+  color: var(--card-text, #2a2a2a);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5rem;
+  max-width: 42rem;
+  line-height: 1.7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  text-align: center;
+}
+
+.robotics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+/* Project sections */
+.robotics-project {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  position: relative;
+}
+
+.robotics-project:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: -3rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0,0,0,0.06);
+}
+
+.robotics-project h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--card-text, #1a1a1a);
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.02em;
+}
+
+/* Title matches text alignment */
+.robotics-project:has(.media-below) h2 {
+  text-align: center;
+}
+
+.robotics-project-body {
+  display: block;
+}
+
+/* Text */
+.robotics-project-content {
+  max-width: 42rem;
+}
+
+.robotics-project p {
+  margin: 0 0 1.25rem 0;
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: var(--card-text, #2d2d2d);
+}
+
+.robotics-project p:last-of-type {
+  margin-bottom: 0;
+}
+
+.robotics-features {
+  margin: 1rem 0 0 0;
+  padding-left: 1.5rem;
+  color: var(--card-text, #2d2d2d);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.robotics-features li {
+  margin-bottom: 0.4rem;
+}
+
+/* Links — GitHub button (more visible) */
+.robotics-project .project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.65rem 1.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  background: #238636;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.robotics-project .project-link:hover {
+  background: #2ea043;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+
+/* ===== Single image: side-by-side layout ===== */
+.robotics-project-body.media-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.robotics-project-body.media-side.media-right {
+  grid-template-columns: 1fr 1fr;
+}
+.robotics-project-body.media-side.media-right .robotics-project-content { order: 1; }
+.robotics-project-body.media-side.media-right .robotics-media { order: 2; }
+
+.robotics-project-body.media-side.media-left {
+  grid-template-columns: 1fr 1fr;
+}
+.robotics-project-body.media-side.media-left .robotics-project-content { order: 2; }
+.robotics-project-body.media-side.media-left .robotics-media { order: 1; }
+
+/* Single image: full natural size, no cropping or constraining */
+.robotics-project-body.media-side .robotics-media {
+  margin-top: 0;
+}
+
+.robotics-project-body.media-side .robotics-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  object-fit: contain;
+  /* No min-height, max-height — let image display at natural size */
+}
+
+/* ===== Two+ images: text on top centered, images in row below ===== */
+.robotics-project-body.media-below {
+  display: block;
+}
+
+.robotics-project-body.media-below .robotics-project-content {
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.robotics-project-body.media-below .robotics-media {
+  margin-top: 2.5rem;
+  padding: 0;
+}
+
+.robotics-project-body.media-below .robotics-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  object-fit: contain;
+  box-shadow: none;
+}
+
+.robotics-project-body.media-below .robotics-media:has(img:nth-child(2)) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.robotics-project-body.media-below .robotics-media:has(img:nth-child(3)) {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.robotics-media video {
+  width: 100%;
+  min-height: 400px;
+  max-height: 600px;
+  border-radius: 6px;
+  background: #0a0a0a;
+  object-fit: cover;
+}
+
+.robotics-back {
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.robotics-back a {
+  color: var(--link-color, #0077B6);
+  text-decoration: none;
+}
+
+.robotics-back a:hover {
+  text-decoration: underline;
+}
+
+.robotics-media-placeholder {
+  font-style: italic;
+  color: var(--card-text, #555) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .robotics-container {
+    padding: 2rem 1.25rem 3rem;
+  }
+
+  .robotics-grid {
+    gap: 3.5rem;
+  }
+
+  .robotics-project-content {
+    max-width: none;
+  }
+
+  .robotics-project-body.media-side {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  .robotics-project-body.media-side.media-right .robotics-project-content,
+  .robotics-project-body.media-side.media-right .robotics-media,
+  .robotics-project-body.media-side.media-left .robotics-project-content,
+  .robotics-project-body.media-side.media-left .robotics-media {
+    order: unset;
+  }
+
+  .robotics-project-body.media-side .robotics-media {
+    order: -1; /* image first on mobile */
+  }
+
+  .robotics-project-body.media-below .robotics-project-content {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .robotics-project-body.media-below .robotics-media:has(img:nth-child(2)),
+  .robotics-project-body.media-below .robotics-media:has(img:nth-child(3)) {
+    grid-template-columns: 1fr;
+  }
+
+
+  .robotics-project h2 {
+    font-size: 1.5rem;
+  }
+
+  .robotics-intro {
+    font-size: 1.2rem;
+  }
+
+  .robotics-project p {
+    font-size: 1.05rem;
+  }
+}

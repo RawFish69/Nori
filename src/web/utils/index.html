@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="utils-page-html">
+<head>
+  <link rel="icon" href="../fish_logo.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Nori Utils" />
+  <meta property="og:description" content="Utility tools - JSON, regex, encoding, and more" />
+  <meta property="og:url" content="https://nori.fish/utils" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
+  <title>Nori Utils</title>
+  <link rel="stylesheet" href="../css_global/default.css">
+  <link rel="stylesheet" href="../css_global/sidebar.css">
+  <link rel="stylesheet" href="../css_global/dark_theme.css" id="dark-theme-css" disabled>
+  <link rel="stylesheet" href="../css_global/utils.css">
+  <script type="text/javascript" src="../js_global/sidebar.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+  <script src="../js_global/analytics.js"></script>
+  <script src="../js_global/config.js"></script>
+  <script src="../js_global/layout.js"></script>
+</head>
+<body class="utils-page">
+  <header>
+    <div class="brand">
+      <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width:48px;height:auto;">
+      <div>
+        <h1 style="margin:0;">Nori Utils</h1>
+      </div>
+    </div>
+    <nav aria-label="Main navigation">
+      <!-- Navigation links inserted by layout.js -->
+    </nav>
+  </header>
+
+  <div id="menu-button" onclick="toggleSidebar()">☰</div>
+  <div id="sidebar"></div>
+
+  <main class="utils-container" role="main">
+    <div id="utils-home" class="utils-home">
+      <div class="utils-category">
+        <h2 class="utils-category-title">System & Developer</h2>
+        <div class="utils-tools">
+          <a href="#system-analyzer" class="utils-tool-card">
+            <div class="utils-tool-icon">📊</div>
+            <h3>System Analyzer</h3>
+            <p>Live system & network info, FPS, memory, GPU</p>
+          </a>
+          <a href="#json-tool" class="utils-tool-card">
+            <div class="utils-tool-icon">{}</div>
+            <h3>JSON Formatter</h3>
+            <p>Validate, pretty-print, minify JSON</p>
+          </a>
+          <a href="#timestamp" class="utils-tool-card">
+            <div class="utils-tool-icon">⏱️</div>
+            <h3>Timestamp Converter</h3>
+            <p>Unix ↔ human date, timezone</p>
+          </a>
+          <a href="#html-minifier" class="utils-tool-card">
+            <div class="utils-tool-icon">⬇️</div>
+            <h3>HTML Minifier</h3>
+            <p>Minify or beautify HTML</p>
+          </a>
+          <a href="#css-minifier" class="utils-tool-card">
+            <div class="utils-tool-icon">⬇️</div>
+            <h3>CSS Minifier</h3>
+            <p>Minify or beautify CSS</p>
+          </a>
+          <a href="#regex-tester" class="utils-tool-card">
+            <div class="utils-tool-icon">🔍</div>
+            <h3>Regex Tester</h3>
+            <p>Test regular expressions live</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="utils-category">
+        <h2 class="utils-category-title">Web & Finance</h2>
+        <div class="utils-tools">
+          <a href="#crypto-tracker" class="utils-tool-card">
+            <div class="utils-tool-icon">🪙</div>
+            <h3>Crypto Tracker</h3>
+            <p>Top cryptos by market cap, prices, 24h change</p>
+          </a>
+          <a href="#world-clock" class="utils-tool-card">
+            <div class="utils-tool-icon">🌍</div>
+            <h3>World Clock</h3>
+            <p>Multiple timezones, favorites saved</p>
+          </a>
+          <a href="#youtube-helper" class="utils-tool-card">
+            <div class="utils-tool-icon">▶️</div>
+            <h3>YouTube Helper</h3>
+            <p>Validate URL, open in converters</p>
+          </a>
+          <a href="#chat-assistant" class="utils-tool-card">
+            <div class="utils-tool-icon">💬</div>
+            <h3>Chat Assistant</h3>
+            <p>Prompts, templates, copy to ChatGPT/Claude</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="utils-category">
+        <h2 class="utils-category-title">Media & Design</h2>
+        <div class="utils-tools">
+          <a href="#image-converter" class="utils-tool-card">
+            <div class="utils-tool-icon">🖼️</div>
+            <h3>Image Converter</h3>
+            <p>PNG, JPEG, WebP, SVG conversion</p>
+          </a>
+          <a href="#qr-code" class="utils-tool-card">
+            <div class="utils-tool-icon">📱</div>
+            <h3>QR Code Generator</h3>
+            <p>Create QR codes from URLs, text</p>
+          </a>
+          <a href="#color-picker" class="utils-tool-card">
+            <div class="utils-tool-icon">🎨</div>
+            <h3>Color Picker</h3>
+            <p>Pick colors, HEX/RGB/HSL, palettes</p>
+          </a>
+          <a href="#mp4-to-gif" class="utils-tool-card">
+            <div class="utils-tool-icon">🎬</div>
+            <h3>MP4 to GIF</h3>
+            <p>Convert video clips to animated GIF</p>
+          </a>
+          <a href="#video-compressor" class="utils-tool-card">
+            <div class="utils-tool-icon">🎞️</div>
+            <h3>Video Compressor</h3>
+            <p>Reduce video file size</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="utils-category">
+        <h2 class="utils-category-title">Security & Encoding</h2>
+        <div class="utils-tools">
+          <a href="#password-gen" class="utils-tool-card">
+            <div class="utils-tool-icon">🔐</div>
+            <h3>Password Generator</h3>
+            <p>Strong passwords, passphrases</p>
+          </a>
+          <a href="#hash-tool" class="utils-tool-card">
+            <div class="utils-tool-icon">#️⃣</div>
+            <h3>Hash & Encode</h3>
+            <p>SHA hashes, Base64, file hashing</p>
+          </a>
+          <a href="#uuid-gen" class="utils-tool-card">
+            <div class="utils-tool-icon">🆔</div>
+            <h3>UUID Generator</h3>
+            <p>Generate UUIDs v4</p>
+          </a>
+          <a href="#url-encoder" class="utils-tool-card">
+            <div class="utils-tool-icon">🔗</div>
+            <h3>URL Encoder</h3>
+            <p>Encode / decode URLs</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="utils-category">
+        <h2 class="utils-category-title">Text & Productivity</h2>
+        <div class="utils-tools">
+          <a href="#notes" class="utils-tool-card">
+            <div class="utils-tool-icon">📝</div>
+            <h3>Quick Notes</h3>
+            <p>Scratchpad, auto-saves locally</p>
+          </a>
+          <a href="#lorem" class="utils-tool-card">
+            <div class="utils-tool-icon">✒️</div>
+            <h3>Lorem Ipsum</h3>
+            <p>Generate placeholder text</p>
+          </a>
+          <a href="#markdown-preview" class="utils-tool-card">
+            <div class="utils-tool-icon">📄</div>
+            <h3>Markdown Preview</h3>
+            <p>Live markdown to HTML preview</p>
+          </a>
+          <a href="#text-toolkit" class="utils-tool-card">
+            <div class="utils-tool-icon">🔤</div>
+            <h3>Text Toolkit</h3>
+            <p>Word count, case conversion, reverse, remove spaces</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="utils-tool-view" style="display: none;">
+      <!-- Tool content injected by utils_app.js -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024-2026 Nori, All rights reserved. Web URL: nori.fish</p>
+  </footer>
+
+  <script src="../js_global/utils_app.js"></script>
+</body>
+</html>
