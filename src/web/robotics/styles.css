@@ -238,6 +238,38 @@
   color: var(--card-text, #555) !important;
 }
 
+/* ===== No-image project notes ===== */
+.robotics-project-notes h2 {
+  text-align: left;
+}
+
+.robotics-notes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 62rem;
+}
+
+.robotics-note-card {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 1.1rem 1.1rem 1rem;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.robotics-note-card h3 {
+  margin: 0 0 0.45rem 0;
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--card-text, #1f1f1f);
+}
+
+.robotics-note-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .robotics-container {
@@ -290,5 +322,9 @@
 
   .robotics-project p {
     font-size: 1.05rem;
+  }
+
+  .robotics-notes-grid {
+    grid-template-columns: 1fr;
   }
 }

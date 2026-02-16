@@ -88,17 +88,17 @@
                 <div class="robotics-project-content">
                     <p>Full-stack quadcopter control system with ROS 2 and a custom communication protocol I built from scratch.</p>
                     <ul class="robotics-features">
-                        <li>Controllers: cascaded PID, LQR, MPC (C++ for ROS; Python for standalone sim)</li>
-                        <li>Path planning: straight, A*, RRT in forest/mountain/plains terrain</li>
+                        <li>Controllers (multiple options): cascaded PID, LQR, MPC (C++ for ROS; Python for standalone sim)</li>
+                        <li>Path planning (multiple options): A*, RRT, RRT* across plain, forest, and mountain terrains; fully adjustable via config</li>
                         <li>Safety gate: validation, limiting, watchdog</li>
-                        <li>TX/RX stack: ESP32 (ESP-NOW) for manual flight and autonomous relay; CRSF/SBUS/PPM bridging</li>
+                        <li>TX/RX stack: ESP32 (ESP-NOW) for manual flight and autonomous relay; CRSF/SBUS/PPM bridging; GPS support for autonomous navigation</li>
                         <li>LoRa-based communication stack (in progress)—shared with the RL Racing Drone project</li>
-                        <li>Standalone Python simulator for fast iteration without ROS</li>
+                        <li>Standalone Python-based simulator for fast iteration without ROS: quad pose visualization, dynamics simulation, and interchangeable controller/path-planner modules</li>
                     </ul>
                     <a href="https://github.com/RawFish69/UAV-Controller" target="_blank" rel="noopener" class="project-link">GitHub Repo</a>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/uav_controller_1.png" alt="UAV Controller">
+                    <img src="images/forest_rotor.png" alt="UAV Controller forest terrain simulation">
                 </div>
             </div>
         </article>
@@ -196,11 +196,30 @@
             </div>
         </article>
 
-        <article class="robotics-project">
-            <h2>Mechanical Gripper</h2>
+        <article class="robotics-project robotics-project-notes">
+            <h2>Additional Small Projects</h2>
             <div class="robotics-project-body">
-                <div class="robotics-project-content">
-                    <p>Mechanical gripper with servo motor.</p>
+                <div class="robotics-notes-grid">
+                    <section class="robotics-note-card">
+                        <h3>Mechanical Gripper</h3>
+                        <p>Physical build of my <a href="https://nori.fish/demo/claw3d/" target="_blank" rel="noopener">claw machine simulator</a>.</p>
+                    </section>
+                    <section class="robotics-note-card">
+                        <h3>Range Finder Tools</h3>
+                        <p>Built multiple distance-sensing tools using ToF and ultrasonic sensors for calibration, validation, and rapid integration tests.</p>
+                    </section>
+                    <section class="robotics-note-card">
+                        <h3>Early-Stage UAV Variants</h3>
+                        <p>Developed various UAV builds for different purposes, mostly as early-stage work that informed my current drone platforms.</p>
+                    </section>
+                    <section class="robotics-note-card">
+                        <h3>Drone Systems R&amp;D</h3>
+                        <p>Hands-on playground to explore electrical systems, embedded development, and drone-frame mechanical design, with focus on material selection and structural behavior.</p>
+                    </section>
+                    <section class="robotics-note-card">
+                        <h3>Gearbox Actuator Systems</h3>
+                        <p>In one of my published research projects, I used Bayesian optimization for Wolfrom bilateral gearbox design. Building on that ML work, I have also made custom gearbox + motor actuator systems for other robotics projects.</p>
+                    </section>
                 </div>
             </div>
         </article>
