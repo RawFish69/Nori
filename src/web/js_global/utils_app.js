@@ -7,7 +7,7 @@
   const TOOL_SLUGS = [
     'system-analyzer', 'json-tool', 'timestamp', 'html-minifier', 'css-minifier', 'regex-tester', 'world-clock',
     'password-gen', 'hash-tool', 'uuid-gen', 'url-encoder',
-    'image-converter', 'qr-code', 'color-picker', 'mp4-to-gif', 'video-compressor',
+    'model-viewer', 'image-converter', 'qr-code', 'color-picker', 'mp4-to-gif', 'video-compressor',
     'notes', 'lorem', 'markdown-preview', 'text-toolkit', 'text-case',
     'crypto-tracker', 'bitcoin-tracker', 'youtube-helper', 'chat-assistant'
   ];
@@ -24,6 +24,7 @@
     'hash-tool': 'hash_tool.js',
     'uuid-gen': 'uuid_gen.js',
     'url-encoder': 'url_encoder.js',
+    'model-viewer': 'model_viewer.js',
     'image-converter': 'image_converter.js',
     'qr-code': 'qr_code.js',
     'color-picker': 'color_picker.js',
