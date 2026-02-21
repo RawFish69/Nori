@@ -187,6 +187,10 @@ html.site-light .utils-page {
   padding: 1.5rem;
 }
 
+.utils-page .utils-tool-view.utils-model-tool {
+  max-width: 1400px;
+}
+
 /* Tool grid home */
 .utils-page .utils-header {
   text-align: center;
@@ -1262,4 +1266,100 @@ html.site-light .utils-page {
   background: var(--utils-surface);
   border: 1px dashed var(--utils-border);
   border-radius: 12px;
+}
+
+/* 3D model viewer */
+.utils-page .utils-model-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.utils-page .utils-model-stage {
+  display: flex;
+  min-height: 620px;
+  border: 1px solid var(--utils-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--utils-bg);
+}
+
+.utils-page .utils-model-stage > * {
+  flex: 1 1 auto;
+}
+
+.utils-page .utils-model-controls {
+  background: var(--utils-surface);
+  border: 1px solid var(--utils-border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.utils-page .utils-model-controls .utils-btn {
+  width: 100%;
+  margin-right: 0;
+}
+
+.utils-page .utils-model-controls .utils-input[type="range"] {
+  padding: 0;
+  height: 28px;
+}
+
+.utils-page .utils-model-advanced {
+  border: 1px solid var(--utils-border);
+  border-radius: 10px;
+  background: var(--utils-bg);
+  margin-bottom: 1rem;
+}
+
+.utils-page .utils-model-advanced summary {
+  cursor: pointer;
+  color: var(--utils-text);
+  font-size: 0.85rem;
+  padding: 0.75rem 0.9rem;
+  user-select: none;
+}
+
+.utils-page .utils-model-advanced-body {
+  padding: 0 0.9rem 0.9rem;
+}
+
+.utils-page .utils-model-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.utils-page .utils-model-toggle-row label {
+  margin-bottom: 0;
+}
+
+.utils-page .utils-model-exposure-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.utils-page .utils-model-exposure-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--utils-accent);
+}
+
+.utils-page .utils-model-dropzone {
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 850px) {
+  .utils-page .utils-model-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .utils-page .utils-model-stage {
+    min-height: 360px;
+  }
 }
