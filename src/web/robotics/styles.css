@@ -158,6 +158,49 @@
   /* No min-height, max-height — let image display at natural size */
 }
 
+/* ===== UAV Controller: side image + wide image below ===== */
+.uav-controller-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.uav-controller-layout .robotics-project-content {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.uav-controller-layout .uav-controller-forest-media {
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 0;
+  justify-self: start;
+}
+
+.uav-controller-layout .uav-controller-forest-media img {
+  width: 94%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.uav-controller-layout .uav-controller-gazebo-media {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: 0.25rem;
+}
+
+.uav-controller-layout .uav-controller-gazebo-media img {
+  width: 70%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
 /* Video under text in left column (e.g. Micro FPV Drone) */
 .robotics-project-content video {
   width: 100%;
@@ -287,6 +330,30 @@
   .robotics-project-body.media-side {
     grid-template-columns: 1fr !important;
     gap: 2rem;
+  }
+
+  .uav-controller-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .uav-controller-layout .robotics-project-content,
+  .uav-controller-layout .uav-controller-forest-media,
+  .uav-controller-layout .uav-controller-gazebo-media {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .uav-controller-layout .uav-controller-forest-media {
+    order: -1;
+  }
+
+  .uav-controller-layout .uav-controller-gazebo-media {
+    margin-top: 0;
+  }
+
+  .uav-controller-layout .uav-controller-forest-media img {
+    width: 100%;
   }
 
   .robotics-project-body.media-side.media-right .robotics-project-content,
