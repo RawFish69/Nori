@@ -73,7 +73,7 @@
             <h2>Micro FPV Drone</h2>
             <div class="robotics-project-body media-side media-right">
                 <div class="robotics-project-content">
-                    <p>Fits in the palm of your hand—smaller than off-the-shelf micros like the Cinewhoop 65-class. Fully custom build; nothing like it on the market. I designed the frame in CAD, all mounting components (3D-printed), and iterated on the design. I experimented with both 3D-printed frame and carbon-fiber-printed frame at this scale; both are viable. For the production build, the carbon fiber frame was machined by fabrication partners. Equipped with FPV camera and live video footage.</p>
+                    <p>Fits in the palm of your hand—smaller than off-the-shelf micros like the Tinywhoop 65-class. Fully custom build; nothing like it on the market. I designed the frame in CAD, all mounting components (3D-printed), and iterated on the design. I experimented with both 3D-printed frame and carbon-fiber-printed frame at this scale; both are viable. For the production build, the carbon fiber frame was machined by fabrication partners. Equipped with FPV camera and live video footage.</p>
                     <video src="videos/drone_demo.mp4" controls playsinline></video>
                 </div>
                 <div class="robotics-media">
@@ -84,11 +84,12 @@
 
         <article class="robotics-project">
             <h2>UAV Controller</h2>
-            <div class="robotics-project-body media-side media-left">
+            <div class="robotics-project-body uav-controller-layout">
                 <div class="robotics-project-content">
-                    <p>Full-stack quadcopter control system with ROS 2 and a custom communication protocol I built from scratch.</p>
+                    <p>Full-stack quadcopter control system with ROS 2, ROS 2 simulation (Gazebo + RViz), and a custom communication protocol I built from scratch.</p>
                     <ul class="robotics-features">
                         <li>Controllers (multiple options): cascaded PID, LQR, MPC (C++ for ROS; Python for standalone sim)</li>
+                        <li>ROS 2 simulation workflow: Gazebo + RViz for system integration, visualization, and controller testing</li>
                         <li>Path planning (multiple options): A*, RRT, RRT* across plain, forest, and mountain terrains; fully adjustable via config</li>
                         <li>Safety gate: validation, limiting, watchdog</li>
                         <li>TX/RX stack: ESP32 (ESP-NOW) for manual flight and autonomous relay; CRSF/SBUS/PPM bridging; GPS support for autonomous navigation</li>
@@ -97,8 +98,11 @@
                     </ul>
                     <a href="https://github.com/RawFish69/UAV-Controller" target="_blank" rel="noopener" class="project-link">GitHub Repo</a>
                 </div>
-                <div class="robotics-media">
+                <div class="robotics-media uav-controller-forest-media">
                     <img src="images/forest_rotor.png" alt="UAV Controller forest terrain simulation">
+                </div>
+                <div class="robotics-media uav-controller-gazebo-media">
+                    <img src="images/uav_gazebo.png" alt="UAV Controller Gazebo simulation view">
                 </div>
             </div>
         </article>
