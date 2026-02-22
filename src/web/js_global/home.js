@@ -232,6 +232,16 @@ function toggleChangelog() {
 
 // Output from my mind
 const noriQuotes = [
+    "Every system tells a story if you listen.",
+    "Controlled chaos is still control.",
+    "Integration is where egos die.",
+    "State estimation is admitting you don’t actually know - It's pretty much disciplined guessing.",
+    "Sometimes I reverse engineer things just to see where they break.",
+    "Some ideas fail. That’s how you find the good ones.",
+    "Iteration beats overthinking.",
+    "Every system is a black box until you open it.",
+    "Theory is interesting. Hardware is honest.",
+    "I build things because I want to understand them.",
     "I enjoy turning ideas into something tangible. Some work out, some don't, but I believe that even the wild ones deserve a shot to show what they can become.",
     "Half my breakthroughs start with \"I probably shouldn't do this,\" and honestly that's a system I'm proud of.",
     "My guiding philosophy: if it works, great. If it doesn't, it becomes a story. Both outcomes win.",
