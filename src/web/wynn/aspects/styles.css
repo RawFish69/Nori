@@ -115,11 +115,12 @@ nav a:hover {
     color: var(--accent-primary);
 }
 
-/* Container */
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 2.5rem 1.5rem;
+/* Container (override global .container to use full width) */
+main.container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 2.5rem 2rem;
     position: relative;
     z-index: 1;
 }
@@ -264,12 +265,93 @@ nav a:hover {
     border-color: var(--legendary);
 }
 
-/* Lootpool Container */
+/* Lootpool Container - single row on desktop, wraps on smaller screens */
 .lootpool-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
     margin-bottom: 3rem;
+    justify-content: center;
+}
+
+.lootpool-card,
+.coming-soon-card {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.coming-soon-card {
+    max-width: 340px;
+    width: 100%;
+    background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.35), rgba(17, 24, 39, 0.95));
+    border-radius: 20px;
+    padding: 1.75rem 2rem;
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.coming-soon-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from 180deg at 50% 50%, #8b5cf6, #ec4899, #22d3ee, #8b5cf6);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0.8;
+}
+
+.coming-soon-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(17, 24, 39, 0.85);
+    color: var(--accent-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.coming-soon-title {
+    margin-top: 0.9rem;
+    margin-bottom: 0.35rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #f9fafb;
+    position: relative;
+    z-index: 1;
+}
+
+.coming-soon-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    margin-bottom: 0.35rem;
+    position: relative;
+    z-index: 1;
+}
+
+.coming-soon-subtext {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 320px;
+    margin: 0.25rem auto 0;
+    position: relative;
+    z-index: 1;
 }
 
 /* Lootpool Cards */
@@ -398,6 +480,8 @@ li {
     gap: 0.75rem;
     transition: all 0.3s ease;
     border: 1px solid transparent;
+    flex-wrap: wrap;
+    word-break: break-word;
 }
 
 li:hover {
@@ -552,15 +636,18 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-    .lootpool-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
 @media (max-width: 900px) {
     .lootpool-container {
-        grid-template-columns: repeat(2, 1fr);
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .lootpool-card,
+    .coming-soon-card {
+        flex: 0 1 calc(33.33% - 0.67rem);
+        max-width: calc(33.33% - 0.67rem);
+        min-width: 0;
     }
 }
 
@@ -571,15 +658,24 @@ footer {
 
     .page-title {
         font-size: 1.875rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
     .lootpool-container {
-        grid-template-columns: 1fr;
         gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .lootpool-card,
+    .coming-soon-card {
+        flex: 0 1 calc(50% - 0.5rem);
+        max-width: calc(50% - 0.5rem);
     }
 
     .filter-pills {
         gap: 0.5rem;
+        justify-content: flex-start;
     }
 
     .filter-pill {
@@ -602,6 +698,14 @@ footer {
 
     .brand h1 {
         font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .lootpool-card,
+    .coming-soon-card {
+        flex: 1 1 100%;
+        max-width: 100%;
     }
 }
 

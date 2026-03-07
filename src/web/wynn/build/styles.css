@@ -420,34 +420,122 @@ tr:hover {
     font-weight: bold;
 }
 
-.centered-button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 16px;
-    background-color: #ff5733;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 1.2em;
-    transition: background-color 3s ease-in-out, transform 0.3s ease;
-    width: 150px;
+/* Build Solver Portal */
+.build-solver-portal {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.solver-content {
+    background: rgba(17, 24, 58, 0.65);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(99, 132, 255, 0.25);
+    border-radius: 16px;
+    padding: 1.75rem 2rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.centered-button:hover {
-    transform: scale(1.05);
+.solver-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #818cf8, #a5b4fc);
 }
 
-@keyframes rainbowColorChange {
-    0% { background-color: #ff5733; }
-    20% { background-color: #f5d142; }
-    40% { background-color: #66ff66; }
-    60% { background-color: #33ccff; }
-    80% { background-color: #cc33ff; }
-    100% { background-color: #ff5733; }
+.solver-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
 }
 
-.centered-button {
-    animation: rainbowColorChange 15s infinite linear;
+.solver-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.solver-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #818cf8, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.solver-description {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    margin: 0 auto 0.85rem;
+    max-width: 620px;
+    line-height: 1.6;
+}
+
+.solver-beta-note {
+    font-size: 0.8rem;
+    color: #d1d5db;
+    margin: 0 auto 1.25rem;
+    max-width: 620px;
+}
+
+:root:not(.site-dark) .solver-beta-note {
+    color: #6b7280;
+}
+
+.solver-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    padding: 0.7rem 1.75rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+}
+
+.solver-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+}
+
+/* Light theme adjustments */
+:root:not(.site-dark) .solver-content {
+    background: rgba(238, 240, 255, 0.95);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+:root:not(.site-dark) .solver-description {
+    color: #4b5563;
+}
+
+/* Build showcase highlight */
+.showcase-highlight {
+    text-align: center;
+    font-size: 1.15em;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: #f97316; /* highlighted orange */
+}
+
+.showcase-link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+}
+
+.showcase-link:hover {
+    color: #fb923c;
 }
