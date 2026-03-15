@@ -39,7 +39,21 @@
     <div id="sidebar"></div>
 
     <main class="robotics-container" role="main">
-        <p class="robotics-intro">Personal projects related to robotics and mechatronic systems.</p>
+        <div class="robotics-header-row">
+            <p class="robotics-intro">Personal projects related to robotics and mechatronic systems.</p>
+            <nav class="robotics-quicknav" aria-label="Project quick navigation">
+                <a href="#proj-long-range">Long Range FPV Drone</a>
+                <a href="#proj-micro-fpv">Micro FPV Drone</a>
+                <a href="#proj-uav-controller">UAV Controller</a>
+                <a href="#proj-esp32-fc">ESP32 Flight Controller (PCB)</a>
+                <a href="#proj-manual-racer">Manual Racing FPV Drone</a>
+                <a href="#proj-rl-drone">RL Racing Drone</a>
+                <a href="#proj-diff-drive">Differential-Drive Mobile Robot</a>
+                <a href="#proj-7dof">7 DOF Robot Arm</a>
+                <a href="#proj-web-rc">Web RC Car</a>
+                <a href="#proj-toast-e">Thermal Sensor Bot (Toast-E)</a>
+            </nav>
+        </div>
 
         <div class="robotics-grid">
 
@@ -55,7 +69,7 @@
         </article>
         ========== END TEMPLATE ========== -->
 
-        <article class="robotics-project">
+        <article class="robotics-project" id="proj-long-range">
             <h2>Long Range FPV Drone</h2>
             <div class="robotics-project-body media-below">
                 <div class="robotics-project-content">
@@ -66,10 +80,14 @@
                     <img src="images/long_range_render.png" alt="Long Range FPV Drone (CAD render)">
                     <img src="images/long_range_real.jpg" alt="Long Range FPV Drone (real)">
                 </div>
+                <div class="robotics-video-section">
+                    <video src="videos/o4_vtx.mp4" controls playsinline></video>
+                    <p class="robotics-video-caption">Flight demo running DJI O4 VTX system. Flight performance is identical between the digital and analog; O4 simply replaces the analog video feed with a cleaner digital signal.</p>
+                </div>
             </div>
         </article>
 
-        <article class="robotics-project">
+        <article class="robotics-project" id="proj-micro-fpv">
             <h2>Micro FPV Drone</h2>
             <div class="robotics-project-body media-side media-right">
                 <div class="robotics-project-content">
@@ -82,7 +100,7 @@
             </div>
         </article>
 
-        <article class="robotics-project">
+        <article class="robotics-project" id="proj-uav-controller">
             <h2>UAV Controller</h2>
             <div class="robotics-project-body uav-controller-layout">
                 <div class="robotics-project-content">
@@ -107,8 +125,8 @@
             </div>
         </article>
 
-        <article class="robotics-project">
-            <h2>ESP32 Flight Controller</h2>
+        <article class="robotics-project" id="proj-esp32-fc">
+            <h2>ESP32 Flight Controller — Custom PCB</h2>
             <div class="robotics-project-body media-below">
                 <div class="robotics-project-content">
                     <p>Custom PCB—a breakout-style board for ESP32 with motor drivers built in, enabling flight control on the chip. This is the prototype; "Nori AIO" on the PCB stands for Nori (this site) and AIO (all-in-one). I'm also working on a chip-only board that does a lot more than this.</p>
@@ -120,7 +138,21 @@
             </div>
         </article>
 
-        <article class="robotics-project">
+        <article class="robotics-project" id="proj-manual-racer">
+            <h2>Manual Racing FPV Drone</h2>
+            <div class="robotics-project-body media-below">
+                <div class="robotics-project-content">
+                    <p>3.5" quadcopter with STM32F4/F5 flight controller, 3–6" battery (typically 4S LiPo)—built for freestyle and racing, very fast.</p>
+                    <p>Frame designed using topology optimization (Generative Design, Fusion 360). Iterated over multiple materials and geometry revisions, tuned using flight controller blackbox logs to validate structural and flight performance at each step. Final frame fabricated in carbon fiber. Custom mounting and integration. Full FPV with camera and live video.</p>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/manual_racer_cad.png" alt="Manual Racing FPV Drone (CAD)">
+                    <img src="images/manual_racer_real.png" alt="Manual Racing FPV Drone (real)">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project" id="proj-rl-drone">
             <h2>RL Racing Drone</h2>
             <div class="robotics-project-body media-side media-right">
                 <div class="robotics-project-content">
@@ -133,7 +165,7 @@
             </div>
         </article>
 
-        <article class="robotics-project">
+        <article class="robotics-project" id="proj-diff-drive">
             <h2>Differential-Drive Mobile Robot</h2>
             <div class="robotics-project-body media-below">
                 <div class="robotics-project-content">
@@ -146,7 +178,7 @@
             </div>
         </article>
 
-        <article class="robotics-project">
+        <article class="robotics-project" id="proj-7dof">
             <h2>7 DOF Robot Arm</h2>
             <div class="robotics-project-body media-side media-left">
                 <div class="robotics-project-content">
@@ -159,21 +191,7 @@
             </div>
         </article>
 
-        <article class="robotics-project">
-            <h2>Manual Racing FPV Drone</h2>
-            <div class="robotics-project-body media-below">
-                <div class="robotics-project-content">
-                    <p>3.5" quadcopter with STM32F4/F5 flight controller, 3–6" battery (typically 4S LiPo)—built for freestyle and racing, very fast.</p>
-                    <p>I designed the frame myself using topology optimization; the frame was fabricated in carbon fiber. Custom mounting and integration. Full FPV with camera and live video.</p>
-                </div>
-                <div class="robotics-media">
-                    <img src="images/manual_racer_cad.png" alt="Manual Racing FPV Drone (CAD)">
-                    <img src="images/manual_racer_real.png" alt="Manual Racing FPV Drone (real)">
-                </div>
-            </div>
-        </article>
-
-        <article class="robotics-project">
+        <article class="robotics-project" id="proj-web-rc">
             <h2>Web RC Car</h2>
             <div class="robotics-project-body media-below">
                 <div class="robotics-project-content">
@@ -187,7 +205,7 @@
             </div>
         </article>
 
-        <article class="robotics-project">
+        <article class="robotics-project" id="proj-toast-e">
             <h2>Thermal Sensor Mobile Bot (Toast-E)</h2>
             <div class="robotics-project-body media-side media-right">
                 <div class="robotics-project-content">
