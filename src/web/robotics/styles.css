@@ -510,6 +510,24 @@
     font-size: 1.2rem;
   }
 
+  .robotics-quicknav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    gap: 0.4rem;
+  }
+
+  .robotics-quicknav a {
+    white-space: normal;
+    text-align: center;
+    flex: 0 0 auto;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--link-color, #0077B6);
+    border-radius: 999px;
+    font-size: 0.8rem;
+  }
+
   .robotics-project p {
     font-size: 1.05rem;
   }
