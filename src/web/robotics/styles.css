@@ -14,21 +14,58 @@
 .robotics-container {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 3rem 2.5rem 5rem;
+  padding: 1.5rem 2.5rem 5rem;
+}
+
+.robotics-header-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .robotics-intro {
   font-size: 1.4rem;
   color: var(--card-text, #2a2a2a);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 5rem;
-  max-width: 42rem;
+  margin: 0;
   line-height: 1.7;
   font-family: Georgia, "Times New Roman", serif;
   font-style: italic;
   text-align: center;
 }
+
+.robotics-quicknav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: stretch;
+  width: 100%;
+  max-width: 1100px;
+  gap: 0.3rem 0;
+}
+
+.robotics-quicknav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--link-color, #0077B6);
+  border: none;
+  border-bottom: 1px solid transparent;
+  text-decoration: none;
+  line-height: 1.5;
+  transition: border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+  position: relative;
+}
+
+.robotics-quicknav a:hover {
+  border-bottom-color: var(--link-color, #0077B6);
+  text-decoration: none;
+}
+
 
 .robotics-grid {
   display: flex;
@@ -274,6 +311,92 @@
 
 .robotics-back a:hover {
   text-decoration: underline;
+}
+
+/* ===== Manual Racer — Generative Design workflow ===== */
+.racer-workflow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem auto 2.5rem;
+  max-width: 860px;
+}
+
+.racer-workflow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.02);
+  min-width: 110px;
+  text-align: center;
+}
+
+.racer-workflow-step--highlight {
+  border-color: #3b82f6;
+  background: rgba(59,130,246,0.07);
+}
+
+.racer-workflow-step--end {
+  border-color: #16a34a;
+  background: rgba(22,163,74,0.07);
+}
+
+.racer-workflow-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.racer-workflow-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--card-text, #1f1f1f);
+  line-height: 1.4;
+}
+
+.racer-workflow-sub {
+  font-weight: 400;
+  font-size: 0.76rem;
+  color: var(--card-text-secondary, #666);
+}
+
+.racer-workflow-arrow {
+  font-size: 1.2rem;
+  color: var(--card-text-secondary, #aaa);
+  flex-shrink: 0;
+}
+
+/* ===== Video section ===== */
+.robotics-video-section {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.robotics-video-section video {
+  width: 100%;
+  max-width: 860px;
+  max-height: 540px;
+  border-radius: 6px;
+  background: #0a0a0a;
+  object-fit: contain;
+  display: block;
+}
+
+.robotics-video-caption {
+  width: 100%;
+  max-width: 860px;
+  margin: 0.65rem 0 0;
+  font-size: 0.875rem;
+  color: var(--card-text-secondary, #666);
+  text-align: center;
+  line-height: 1.5;
 }
 
 .robotics-media-placeholder {
