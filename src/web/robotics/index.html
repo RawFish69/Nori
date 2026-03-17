@@ -74,7 +74,7 @@
             <div class="robotics-project-body media-below">
                 <div class="robotics-project-content">
                     <p>I designed the frame in CAD, all 3D-printed mounting components, and validated the build through multiple design iterations. The carbon fiber frame is machined by fabrication partners. Full FPV with camera and live video.</p>
-                    <p>Powered by 1–2S 18650 Li-ion, this drone achieves 15–20 minutes conservative flight time. GPS integration enables waypoint navigation and GPS-safe rescue on Betaflight, with support for Betaflight, iNav, and ArduPilot on various flight controllers.</p>
+                    <p>Powered by 1–2S 18650 Li-ion, this drone achieves 20-25 minutes flight time (hovering or cruising). GPS integration enables waypoint navigation and GPS-safe rescue on Betaflight, with support for Betaflight, iNav, and ArduPilot on various flight controllers.</p>
                 </div>
                 <div class="robotics-media">
                     <img src="images/long_range_render.png" alt="Long Range FPV Drone (CAD render)">
@@ -110,8 +110,7 @@
                         <li>ROS 2 simulation workflow: Gazebo + RViz for system integration, visualization, and controller testing</li>
                         <li>Path planning (multiple options): A*, RRT, RRT* across plain, forest, and mountain terrains; fully adjustable via config</li>
                         <li>Safety gate: validation, limiting, watchdog</li>
-                        <li>TX/RX stack: ESP32 (ESP-NOW) for manual flight and autonomous relay; CRSF/SBUS/PPM bridging; GPS support for autonomous navigation</li>
-                        <li>LoRa-based communication stack (in progress)—shared with the RL Racing Drone project</li>
+                        <li>TX/RX stack: ESP32 (ESP-NOW) for indoor testing; outdoor comms use LoRa — ELRS, plus two custom stacks: one on 2.4 GHz and one on 433 MHz; CRSF/SBUS/PPM bridging; GPS support for autonomous navigation</li>
                         <li>Standalone Python-based simulator for fast iteration without ROS: quad pose visualization, dynamics simulation, and interchangeable controller/path-planner modules</li>
                     </ul>
                     <a href="https://github.com/RawFish69/UAV-Controller" target="_blank" rel="noopener" class="project-link">GitHub Repo</a>
@@ -119,8 +118,15 @@
                 <div class="robotics-media uav-controller-forest-media">
                     <img src="images/forest_rotor.png" alt="UAV Controller forest terrain simulation">
                 </div>
-                <div class="robotics-media uav-controller-gazebo-media">
-                    <img src="images/uav_gazebo.png" alt="UAV Controller Gazebo simulation view">
+                <div class="uav-controller-gazebo-media">
+                    <figure class="uav-paired-image">
+                        <img src="images/uav_gazebo.png" alt="UAV Controller Gazebo simulation view">
+                        <figcaption>Gazebo simulation — RViz visualization and controller testing</figcaption>
+                    </figure>
+                    <figure class="uav-paired-image">
+                        <img src="images/5inch.png" alt="5-inch drone used for TX/RX testing">
+                        <figcaption>5" drone build used to test custom TX/RX communication stacks</figcaption>
+                    </figure>
                 </div>
             </div>
         </article>
