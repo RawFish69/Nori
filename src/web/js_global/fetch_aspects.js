@@ -103,6 +103,37 @@ function displayLootpool(loot, icons) {
             lootpoolContainer.appendChild(regionCard);
         }
     }
+
+    // Add TWP placeholder raid if not yet in API data
+    if (!loot.hasOwnProperty('TWP')) {
+        const regionCard = document.createElement('div');
+        regionCard.classList.add('lootpool-card', 'active', 'coming-soon-card');
+
+        const regionTitle = document.createElement('div');
+        regionTitle.classList.add('region-title');
+        regionTitle.textContent = 'TWP Aspects';
+        regionTitle.addEventListener('click', () => {
+            regionCard.classList.toggle('active');
+        });
+        regionCard.appendChild(regionTitle);
+
+        const regionContent = document.createElement('div');
+        regionContent.classList.add('lootpool-card-content');
+
+        const label = document.createElement('p');
+        label.classList.add('coming-soon-text');
+        label.textContent = 'COMING SOON';
+        regionContent.appendChild(label);
+
+        const sub = document.createElement('p');
+        sub.classList.add('coming-soon-subtext');
+        sub.textContent = 'New raid aspect lootpool planned for a future update.';
+        regionContent.appendChild(sub);
+
+        regionCard.appendChild(regionContent);
+        lootpoolContainer.appendChild(regionCard);
+    }
+
     filterLootpool();
 }
 
@@ -183,6 +214,12 @@ function filterLootpool() {
     };
 
     document.querySelectorAll('.lootpool-card').forEach(card => {
+        // Always show placeholder / coming-soon cards
+        if (card.classList.contains('coming-soon-card')) {
+            card.style.display = 'block';
+            return;
+        }
+
         let showCard = false;
         card.querySelectorAll('.rarity-title').forEach(title => {
             const rarity = title.classList[1].split('-')[0];
