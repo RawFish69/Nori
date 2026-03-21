@@ -152,37 +152,6 @@ function displayLootpool(loot, icons) {
 
                 const mythicList = document.createElement('ul');
 
-                if (regionData.hasOwnProperty('Shiny')) {
-                    const shinyItemElement = document.createElement('li');
-                    shinyItemElement.classList.add('shiny-item');
-
-                    const shinyIcon = document.createElement('img');
-                    shinyIcon.src = '../../../resources/shiny.png';
-                    shinyIcon.classList.add('shiny-icon');
-                    shinyItemElement.appendChild(shinyIcon);
-
-
-                    const shinyItemIconUrl = formatIconUrl(icons[regionData.Shiny.Item]);
-                    if (shinyItemIconUrl) {
-                        const shinyItemIcon = document.createElement('img');
-                        shinyItemIcon.src = shinyItemIconUrl;
-                        shinyItemIcon.classList.add('item-icon');
-                        shinyItemElement.appendChild(shinyItemIcon);
-                    }
-
-                    const shinyItemName = document.createElement('span');
-                    shinyItemName.classList.add('label', 'item-name');
-                    shinyItemName.textContent = regionData.Shiny.Item; 
-                    shinyItemElement.appendChild(shinyItemName);
-
-                    const shinyItemTracker = document.createElement('span');
-                    shinyItemTracker.classList.add('label', 'tracker');
-                    shinyItemTracker.innerHTML = `<br>Tracker: ${regionData.Shiny.Tracker}`;
-                    shinyItemElement.appendChild(shinyItemTracker);
-
-                    mythicList.appendChild(shinyItemElement);
-                }
-
                 regionData.Mythic.forEach(item => {
                     const itemElement = document.createElement('li');
                     itemElement.classList.add('mythic-color');
@@ -239,6 +208,44 @@ function displayLootpool(loot, icons) {
         }
     }
 
+    // Add Fruma placeholders as normal regions if not yet present
+    const frumaRegions = [
+        { key: 'Fruma West', label: 'Fruma West Lootpool' },
+        { key: 'Fruma East', label: 'Fruma East Lootpool' }
+    ];
+
+    frumaRegions.forEach(({ key, label }) => {
+        const exists = Object.keys(loot).some(r => r.toLowerCase() === key.toLowerCase());
+        if (!exists) {
+            const regionCard = document.createElement('div');
+            regionCard.classList.add('lootpool-card', 'active', 'coming-soon-card');
+
+            const regionTitle = document.createElement('div');
+            regionTitle.classList.add('region-title');
+            regionTitle.textContent = label;
+            regionTitle.addEventListener('click', () => {
+                regionCard.classList.toggle('active');
+            });
+            regionCard.appendChild(regionTitle);
+
+            const regionContent = document.createElement('div');
+            regionContent.classList.add('lootpool-card-content');
+
+            const labelEl = document.createElement('p');
+            labelEl.classList.add('coming-soon-text');
+            labelEl.textContent = 'COMING SOON';
+            regionContent.appendChild(labelEl);
+
+            const sub = document.createElement('p');
+            sub.classList.add('coming-soon-subtext');
+            sub.textContent = `Lootrun rewards for ${key} will be added in a future update.`;
+            regionContent.appendChild(sub);
+
+            regionCard.appendChild(regionContent);
+            lootpoolContainer.appendChild(regionCard);
+        }
+    });
+
     filterLootpool();
 }
 
@@ -254,8 +261,8 @@ function displayUpdatingMessage() {
 }
 
 function startCountdown(seconds) {
-    const countdownContainer = document.createElement('div');
-    countdownContainer.id = 'countdown-container';
+    const countdownContainer = document.getElementById('countdown-container');
+    countdownContainer.innerHTML = '';
 
     const countdownLabel = document.createElement('div');
     countdownLabel.id = 'countdown-label';
@@ -265,7 +272,6 @@ function startCountdown(seconds) {
     countdownElement.classList.add('countdown-container');
     countdownContainer.appendChild(countdownLabel);
     countdownContainer.appendChild(countdownElement);
-    document.getElementById('lootpool-title').appendChild(countdownContainer);
 
     function updateCountdown() {
         const days = Math.floor(seconds / (3600 * 24));
@@ -314,27 +320,37 @@ function startCountdown(seconds) {
 }
 
 function setupTierFilters() {
-    const filters = document.querySelectorAll('#lootpool-filters input[type="checkbox"]');
+    const filters = document.querySelectorAll('.filter-pill');
     filters.forEach(filter => {
-        filter.addEventListener('change', filterLootpool);
-        const id = filter.id.split('-')[1];
-        filter.classList.add(id);
+        filter.addEventListener('click', function() {
+            this.classList.toggle('active');
+            filterLootpool();
+        });
     });
 }
 
 function filterLootpool() {
     const filters = {
-        mythic: document.getElementById('toggle-mythic').checked,
-        fabled: document.getElementById('toggle-fabled').checked,
-        legendary: document.getElementById('toggle-legendary').checked,
-        rare: document.getElementById('toggle-rare').checked,
-        unique: document.getElementById('toggle-unique').checked,
+        mythic: document.getElementById('toggle-mythic').classList.contains('active'),
+        fabled: document.getElementById('toggle-fabled').classList.contains('active'),
+        legendary: document.getElementById('toggle-legendary').classList.contains('active'),
+        rare: document.getElementById('toggle-rare').classList.contains('active'),
+        unique: document.getElementById('toggle-unique').classList.contains('active'),
     };
 
     document.querySelectorAll('.lootpool-card').forEach(card => {
+        // Always show placeholder / coming-soon cards
+        if (card.classList.contains('coming-soon-card')) {
+            card.style.display = 'block';
+            return;
+        }
+
         let showCard = false;
         card.querySelectorAll('.rarity-title').forEach(title => {
-            const rarity = title.classList[1].split('-')[0];
+            let rarity = title.classList[1].split('-')[0];
+            if (rarity === 'shiny') {
+                rarity = 'mythic';
+            }
             if (filters[rarity]) {
                 title.style.display = 'block';
                 title.nextElementSibling.style.display = 'block';
