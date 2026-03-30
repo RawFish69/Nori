@@ -491,6 +491,12 @@
 
   .uav-controller-layout .uav-controller-gazebo-media {
     margin-top: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .uav-paired-image img {
+    height: auto;
+    min-height: unset;
   }
 
   .uav-controller-layout .uav-controller-forest-media img {
