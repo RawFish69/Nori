@@ -34,7 +34,95 @@
     margin-bottom: 30px;
     transition: background 0.5s ease, color 0.5s ease;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+}
+
+.time-gear-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    color: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s, background 0.2s;
+    z-index: 10;
+}
+
+.time-gear-btn:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.time-controls-dropdown {
+    position: absolute;
+    top: 52px;
+    right: 12px;
+    min-width: 180px;
+    padding: 0.75rem;
+    background: rgba(28, 33, 40, 0.98);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 10;
+}
+
+.time-controls-dropdown.open {
+    display: block;
+}
+
+.time-controls-dropdown .time-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.time-controls-dropdown .time-format-btn,
+.time-controls-dropdown .timezone-btn {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.time-controls-dropdown .time-format-btn:hover,
+.time-controls-dropdown .timezone-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.time-controls-dropdown .timezone-picker {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.time-controls-dropdown .timezone-picker select {
+    width: 100%;
+    padding: 0.4rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.time-controls-dropdown .timezone-picker select option {
+    background: #1c2128;
+    color: #e6edf3;
+    padding: 0.5rem;
 }
 
 .time-content {
@@ -70,6 +158,20 @@
     color: var(--card-text);
     margin-bottom: 15px;
     font-size: 1.5rem;
+}
+
+.about-nori-content h3 {
+    color: var(--card-text);
+    margin: 20px 0 10px 0;
+    font-size: 1.1rem;
+}
+
+.about-nori-content .about-bio {
+    font-family: Georgia, 'Cambria', 'Times New Roman', serif;
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: var(--card-text);
+    margin-bottom: 0;
 }
 
 .about-nori-content p {
@@ -214,6 +316,35 @@
     transition: transform 0.1s ease;
 }
 
+.utils-blue {
+    color: #58a6ff;
+}
+
+.card-disciplines {
+    margin-top: 8px !important;
+    font-size: 0.78rem !important;
+    font-style: italic;
+    color: var(--card-text-secondary) !important;
+    letter-spacing: 0.02em;
+}
+
+/* Per-card accent colors — top bar + hover border */
+.card-robotics::before  { background: linear-gradient(90deg, #10b981, #059669); }
+.card-robotics:hover    { border-color: #10b981; }
+.card-robotics h3       { color: #10b981; }
+
+.card-wynn::before      { background: linear-gradient(90deg, #3b82f6, #0ea5e9); }
+.card-wynn:hover        { border-color: #3b82f6; }
+.card-wynn h3           { color: #3b82f6; }
+
+.card-utils::before     { background: linear-gradient(90deg, #8b5cf6, #6d28d9); }
+.card-utils:hover       { border-color: #8b5cf6; }
+.card-utils h3          { color: #8b5cf6; }
+
+.card-games::before     { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+.card-games:hover       { border-color: #f59e0b; }
+.card-games h3          { color: #f59e0b; }
+
 .category-card h3 {
     margin: 0 0 15px 0;
     color: var(--card-text);
@@ -226,6 +357,11 @@
     color: var(--card-text-secondary);
     font-size: 0.95rem;
     line-height: 1.5;
+}
+
+/* Link-only cards (no expand) */
+.category-card-link {
+    display: block;
 }
 
 
@@ -676,6 +812,24 @@
     color: #666;
     font-size: 0.9rem;
     margin: 0;
+}
+
+.utils-tool-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px 16px;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.utils-tool-links a {
+    color: var(--link-color, #667eea);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.utils-tool-links a:hover {
+    text-decoration: underline;
 }
 
 /* Project Content */
