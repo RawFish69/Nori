@@ -22,37 +22,28 @@
     <script src="../js_global/layout.js"></script>
 </head>
 <body>
-    <header>
-        <div class="brand">
-            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width:48px;height:auto;">
-            <div>
-                <h1 style="margin:0;">Nori Robotics</h1>
-                <div class="robotics-header-subtitle">Design · Prototyping · Hardware & Software</div>
-            </div>
-        </div>
-        <nav aria-label="Main navigation">
-            <!-- Navigation links inserted by layout.js -->
-        </nav>
+    <header style="position:relative;">
+        <h1 style="margin:0;">Robotics Projects</h1>
+        <a href="../" class="robotics-back-home">Home</a>
     </header>
 
-    <div id="menu-button" onclick="toggleSidebar()">☰</div>
-    <div id="sidebar"></div>
+    <div id="menu-button" onclick="toggleSidebar()" style="display:none;"></div>
+    <div id="sidebar" style="display:none;"></div>
 
     <main class="robotics-container" role="main">
         <div class="robotics-header-row">
             <p class="robotics-intro">Personal projects related to robotics and mechatronic systems.</p>
             <nav class="robotics-quicknav" aria-label="Project quick navigation">
                 <a href="#proj-long-range">Long Range FPV Drone</a>
-                <a href="#proj-micro-fpv">Micro FPV Drone</a>
                 <a href="#proj-nori-f411">Nori F411 (PCB)</a>
+                <a href="#proj-micro-fpv">Micro FPV Drone</a>
                 <a href="#proj-uav-controller">UAV Controller</a>
-                <a href="#proj-esp32-fc">ESP32 Flight Controller (PCB)</a>
                 <a href="#proj-manual-racer">Manual Racing FPV Drone</a>
-                <a href="#proj-rl-drone">RL Racing Drone</a>
-                <a href="#proj-diff-drive">Differential-Drive Mobile Robot</a>
+                <a href="#proj-gearbox">Wolfrom Bilateral Gearbox Actuator</a>
                 <a href="#proj-7dof">7 DOF Robot Arm</a>
-                <a href="#proj-web-rc">Web RC Car</a>
-                <a href="#proj-toast-e">Thermal Sensor Bot (Toast-E)</a>
+                <a href="#proj-diff-drive">Differential-Drive Mobile Robot</a>
+                <a href="#proj-rl-drone">RL Racing Drone</a>
+                <a href="#proj-esp32-fc">ESP32 Flight Controller (PCB)</a>
             </nav>
         </div>
 
@@ -88,19 +79,6 @@
             </div>
         </article>
 
-        <article class="robotics-project" id="proj-micro-fpv">
-            <h2>Micro FPV Drone</h2>
-            <div class="robotics-project-body media-side media-right">
-                <div class="robotics-project-content">
-                    <p>Fits in the palm of your hand—smaller than off-the-shelf micros like the Tinywhoop 65-class. Fully custom build; nothing like it on the market. I designed the frame in Fusion 360 (MCAD), all mounting components (3D-printed), and iterated on the design. I experimented with both 3D-printed frame and carbon-fiber-printed frame at this scale; both are viable. For the production build, the carbon fiber frame was machined by fabrication partners. Equipped with FPV camera and live video footage.</p>
-                    <video src="videos/drone_demo.mp4" controls playsinline></video>
-                </div>
-                <div class="robotics-media">
-                    <img src="images/micro_drone.png" alt="Micro FPV Drone">
-                </div>
-            </div>
-        </article>
-
         <article class="robotics-project" id="proj-nori-f411">
             <h2>Nori F411 - Custom PCB Flight Controller</h2>
             <div class="robotics-project-body media-below">
@@ -111,6 +89,19 @@
                 <div class="robotics-media">
                     <img src="images/nori_f411_2d.png" alt="Nori F411 PCB (2D layout)">
                     <img src="images/nori_f411_3d.png" alt="Nori F411 PCB (3D render)">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project" id="proj-micro-fpv">
+            <h2>Micro FPV Drone</h2>
+            <div class="robotics-project-body media-side media-right">
+                <div class="robotics-project-content">
+                    <p>Fits in the palm of your hand—smaller than off-the-shelf micros like the Tinywhoop 65-class. Fully custom build; nothing like it on the market. I designed the frame in Fusion 360 (MCAD), all mounting components (3D-printed), and iterated on the design. I experimented with both 3D-printed frame and carbon-fiber-printed frame at this scale; both are viable. For the production build, the carbon fiber frame was machined by fabrication partners. Equipped with FPV camera and live video footage.</p>
+                    <video src="videos/drone_demo.mp4" controls playsinline></video>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/micro_drone.png" alt="Micro FPV Drone">
                 </div>
             </div>
         </article>
@@ -146,19 +137,6 @@
             </div>
         </article>
 
-        <article class="robotics-project" id="proj-esp32-fc">
-            <h2>Nori AIO - Custom ESP32 Flight Controller (PCB)</h2>
-            <div class="robotics-project-body media-below">
-                <div class="robotics-project-content">
-                    <p>Custom PCB designed in Altium Designer — a breakout-style all-in-one board for ESP32 with motor drivers integrated, enabling full flight control on a single chip. "Nori AIO" stands for Nori (this site) and AIO (all-in-one). This is the ESP32-based prototype, which isn't supported by mainstream firmware, so I wrote my own.</p>
-                </div>
-                <div class="robotics-media">
-                    <img src="images/Nori_AIO_Altium.png" alt="Nori AIO PCB (Altium design)">
-                    <img src="images/nori_aio_real.jpg" alt="Nori AIO PCB (real)">
-                </div>
-            </div>
-        </article>
-
         <article class="robotics-project" id="proj-manual-racer">
             <h2>Manual Racing FPV Drone</h2>
             <div class="robotics-project-body media-below">
@@ -173,28 +151,16 @@
             </div>
         </article>
 
-        <article class="robotics-project" id="proj-rl-drone">
-            <h2>RL Racing Drone</h2>
-            <div class="robotics-project-body media-side media-right">
-                <div class="robotics-project-content">
-                    <p>Sim-to-real reinforcement learning control stack for quadrotors. End-to-end system to deploy PyTorch RL policies on real hardware using ROS 2, Betaflight MSP, and ESP32 (CRSF/RC override). Designed for real-world deployment: deterministic control paths, explicit authority handoff, hardware-enforced safety, recoverable failure modes. RL inference on onboard SBC; ROS 2 as control/safety layer; ESP32 enforces RC-side arming and AUX; physical kill always overrides software. FPV not yet equipped.</p>
-                    <a href="https://github.com/virmani11kartik/Integrated-UAV-Stack/tree/yc" target="_blank" rel="noopener" class="project-link" id="rl-drone-repo">GitHub Repo</a>
-                </div>
-                <div class="robotics-media">
-                    <img src="images/rl_drones.png" alt="RL Racing Drone">
-                </div>
-            </div>
-        </article>
-
-        <article class="robotics-project" id="proj-diff-drive">
-            <h2>Differential-Drive Mobile Robot</h2>
+        <article class="robotics-project" id="proj-gearbox">
+            <h2>Wolfrom Bilateral Gearbox Actuator</h2>
             <div class="robotics-project-body media-below">
                 <div class="robotics-project-content">
-                    <p>Semi-autonomous mobile robot with web interface. Features: localization-based navigation, wall follow, manual control for target tracking. PID control via motor encoders; position/orientation from Vive tracker integration. RGB LED effects and wheel system live visual feedback. Web-based control: point somewhere, the robot goes. Main board ESP32 for wireless; multiple microcontroller boards.</p>
+                    <p>A compound Wolfrom bilateral gearbox with high reduction ratio and meaningful backdrivability, fabricated entirely on a desktop FDM 3D printer. Useful for robotic arm joints, legged actuators, and force-controlled manipulation.</p>
+                    <p>Based on my published research paper, where I co-optimized gearbox design parameters by combining Taguchi Orthogonal Arrays with Bayesian Optimization. One configuration identified through this method — 63.6:1 reduction ratio, backdrivable under 0.35 Nm, 49% score improvement over the Taguchi baseline.</p>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/mechatronics_1.png" alt="Differential-Drive Mobile Robot">
-                    <img src="images/mechatronics_2.png" alt="Differential-Drive Mobile Robot">
+                    <img src="images/BO22_1.png" alt="Wolfrom Bilateral Gearbox Actuator">
+                    <img src="images/BO22_2.png" alt="Wolfrom Bilateral Gearbox Actuator">
                 </div>
             </div>
         </article>
@@ -212,37 +178,58 @@
             </div>
         </article>
 
-        <article class="robotics-project" id="proj-web-rc">
-            <h2>Web RC Car</h2>
+        <article class="robotics-project" id="proj-diff-drive">
+            <h2>Differential-Drive Mobile Robot</h2>
             <div class="robotics-project-body media-below">
                 <div class="robotics-project-content">
-                    <p>ESP32-based RC car with browser control. Single-board or dual-board (ESP-NOW) setups; default and omni drive modes. Web interface with virtual joystick.</p>
-                    <a href="https://github.com/RawFish69/ESP32-RC-Car" target="_blank" rel="noopener" class="project-link">GitHub Repo</a>
+                    <p>Semi-autonomous mobile robot with web interface. Features: localization-based navigation, wall follow, manual control for target tracking. PID control via motor encoders; position/orientation from Vive tracker integration. RGB LED effects and wheel system live visual feedback. Web-based control: point somewhere, the robot goes. Main board ESP32 for wireless; multiple microcontroller boards.</p>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/web_rc_1.png" alt="Web RC Car">
-                    <img src="images/web_rc_2.png" alt="Web RC Car">
+                    <img src="images/mechatronics_1.png" alt="Differential-Drive Mobile Robot">
+                    <img src="images/mechatronics_2.png" alt="Differential-Drive Mobile Robot">
                 </div>
             </div>
         </article>
 
-        <article class="robotics-project" id="proj-toast-e">
-            <h2>Thermal Sensor Mobile Bot (Toast-E)</h2>
+        <article class="robotics-project" id="proj-rl-drone">
+            <h2>RL Racing Drone</h2>
             <div class="robotics-project-body media-side media-right">
                 <div class="robotics-project-content">
-                    <p>Differential-drive robot with thermal imaging streamed to a web browser. ESP32-based; uses ESP-NOW for wireless joystick control and AMG8833 8×8 thermal sensor. Live heatmap view with bilinear interpolation upscaling (64×64) for smoother visualization.</p>
-                    <a href="https://github.com/RawFish69/Toast-E" target="_blank" rel="noopener" class="project-link">GitHub Repo</a>
+                    <p>Sim-to-real reinforcement learning control stack for quadrotors. End-to-end system to deploy PyTorch RL policies on real hardware using ROS 2, Betaflight MSP, and ESP32 (CRSF/RC override). Designed for real-world deployment: deterministic control paths, explicit authority handoff, hardware-enforced safety, recoverable failure modes. RL inference on onboard SBC; ROS 2 as control/safety layer; ESP32 enforces RC-side arming and AUX; physical kill always overrides software. FPV not yet equipped.</p>
+                    <a href="https://github.com/virmani11kartik/Integrated-UAV-Stack/tree/yc" target="_blank" rel="noopener" class="project-link" id="rl-drone-repo">GitHub Repo</a>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/toast-E.png" alt="Toast-E Thermal Bot">
+                    <img src="images/rl_drones.png" alt="RL Racing Drone">
                 </div>
             </div>
         </article>
 
+        <article class="robotics-project" id="proj-esp32-fc">
+            <h2>Nori AIO - Custom ESP32 Flight Controller (PCB)</h2>
+            <div class="robotics-project-body media-below">
+                <div class="robotics-project-content">
+                    <p>Custom PCB designed in Altium Designer — a breakout-style all-in-one board for ESP32 with motor drivers integrated, enabling full flight control on a single chip. "Nori AIO" stands for Nori (this site) and AIO (all-in-one). This is the ESP32-based prototype, which isn't supported by mainstream firmware, so I wrote my own.</p>
+                </div>
+                <div class="robotics-media">
+                    <img src="images/Nori_AIO_Altium.png" alt="Nori AIO PCB (Altium design)">
+                    <img src="images/nori_aio_real.jpg" alt="Nori AIO PCB (real)">
+                </div>
+            </div>
+        </article>
+
+
         <article class="robotics-project robotics-project-notes">
-            <h2>Additional Small Projects</h2>
+            <h2>Additional Projects</h2>
             <div class="robotics-project-body">
                 <div class="robotics-notes-grid">
+                    <section class="robotics-note-card">
+                        <h3>Custom Embedded Linux Platform — Milk-V Duo S</h3>
+                        <p>Board bringup, custom toolchain, and build pipeline for the Milk-V Duo S (RISC-V/ARM64 SBC) for lab swarm robotics research. Built a ROS 2 / CycloneDDS bridge so the boards - too constrained for ROS 2 - can communicate with a centralized PC that publishes and subscribes over standard ROS 2. Core platform is in a private lab repo; an earlier Ubuntu port is public. <a href="https://github.com/RawFish69/ubuntu-milkv-duos" target="_blank" rel="noopener">Ubuntu Port Repo</a></p>
+                    </section>
+                    <section class="robotics-note-card">
+                        <h3>Web RC Car</h3>
+                        <p>ESP32-based RC car with browser control. Single-board or dual-board (ESP-NOW) setups; default and omni drive modes. Web interface with virtual joystick. <a href="https://github.com/RawFish69/ESP32-RC-Car" target="_blank" rel="noopener">GitHub Repo</a></p>
+                    </section>
                     <section class="robotics-note-card">
                         <h3>Mechanical Gripper</h3>
                         <p>Physical build of my <a href="https://nori.fish/demo/claw3d/" target="_blank" rel="noopener">claw machine simulator</a>.</p>
@@ -260,8 +247,8 @@
                         <p>Hands-on playground to explore electrical systems, embedded development, and drone-frame mechanical design, with focus on material selection and structural behavior.</p>
                     </section>
                     <section class="robotics-note-card">
-                        <h3>Gearbox Actuator Systems</h3>
-                        <p>In one of my published research projects, I used Bayesian optimization for Wolfrom bilateral gearbox design. Building on that ML work, I have also made custom gearbox + motor actuator systems for other robotics projects.</p>
+                        <h3>Thermal Sensor Mobile Bot (Toast-E)</h3>
+                        <p>Differential-drive robot with thermal imaging streamed to a web browser. ESP32-based; uses ESP-NOW for wireless joystick control and AMG8833 8×8 thermal sensor. Live heatmap view with bilinear interpolation upscaling (64×64) for smoother visualization. <a href="https://github.com/RawFish69/Toast-E" target="_blank" rel="noopener">GitHub Repo</a></p>
                     </section>
                 </div>
             </div>
