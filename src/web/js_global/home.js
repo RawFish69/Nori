@@ -232,6 +232,13 @@ function toggleChangelog() {
 
 // Output from my mind
 const noriQuotes = [
+    "Every weird behavior has a reason. It’s just usually annoying to find.",
+    "If it only breaks sometimes, it’s just being polite.",
+    "The system only understands exactly what you told it to do, not what you meant.",
+    "Most clarity comes after things go wrong.",
+    "Progress starts where comfort ends.",
+    "The edge is where things get interesting.",
+    "I push systems until they reveal themselves.",
     "Every system tells a story if you listen.",
     "Controlled chaos is still control.",
     "Integration is where egos die.",
@@ -249,9 +256,7 @@ const noriQuotes = [
     "I trust my instincts even when they behave like they've never met me before.",
     "If life hands you confusion, build something weird out of it.",
     "I like doing things I've never done before because technically that means I have no expectations to disappoint :)",
-    "If you're wondering why I stopped doing that gaming stuff, that's just me attempting to be a responsible adult.",
-    "I'm not always motivated, especially when I'm doing stuff I don't even like but somehow still ended up responsible for. I just rely on discipline and the fear of regret.",
-    "I used to have zero patience. I worked on it for years, and now I’m still not patient - I just wait aggressively."
+    "I used to have zero patience. I worked on it for years, now I just wait aggressively."
 ];
 
 // Quote rotation interval in milliseconds (30 seconds)
