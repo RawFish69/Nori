@@ -4,10 +4,43 @@
  * - Two+ images: text centered on top, images in row below
  */
 
-/* Header subtitle — light theme: bright yellow for visibility; dark: blue */
-.robotics-header-subtitle {
-  font-size: 0.9rem;
-  color: #facc15;
+.robotics-page-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.01em;
+}
+
+.robotics-back-home {
+  position: absolute;
+  top: 50%;
+  left: 1.5rem;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid rgba(255,255,255,0.75);
+  border-radius: 8px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.robotics-back-home:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: #fff;
+  text-decoration: none;
+}
+
+/* Dark theme: header is dark, use blue accent instead */
+.site-dark .robotics-back-home {
+  color: #0077B6;
+  border-color: #0077B6;
+}
+
+.site-dark .robotics-back-home:hover {
+  background: rgba(0,119,182,0.12);
+  border-color: #0077B6;
 }
 
 
