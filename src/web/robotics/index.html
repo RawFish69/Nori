@@ -141,7 +141,7 @@
             <h2>Manual Racing FPV Drone</h2>
             <div class="robotics-project-body media-below">
                 <div class="robotics-project-content">
-                    <p>3.5" quadcopter with STM32F4/F5 flight controller, 3–6" battery (typically 4S LiPo)—built for freestyle and racing, very fast.</p>
+                    <p>3.5" quadcopter with STM32F4/F7 flight controller, 3–6" battery (typically 4S LiPo)—built for freestyle and racing, very fast.</p>
                     <p>Frame designed using topology optimization (Generative Design, Fusion 360). Iterated over multiple materials and geometry revisions, tuned using flight controller blackbox logs to validate structural and flight performance at each step. Final frame fabricated in carbon fiber. Custom mounting and integration. Full FPV with camera and live video.</p>
                 </div>
                 <div class="robotics-media">
@@ -231,20 +231,22 @@
                         <p>ESP32-based RC car with browser control. Single-board or dual-board (ESP-NOW) setups; default and omni drive modes. Web interface with virtual joystick. <a href="https://github.com/RawFish69/ESP32-RC-Car" target="_blank" rel="noopener">GitHub Repo</a></p>
                     </section>
                     <section class="robotics-note-card">
+                        <h3>Early-Stage UAV Variants</h3>
+                        <p>Several early-stage quadcopter builds, each exploring a different approach to flight control from the ground up—rather than relying on off-the-shelf flight controllers or plug-and-play stacks. One of them (pictured) was built on perfboard with an ESP32-C3, 4 MOSFETs, and an IMU driving 4 brushed DC motors, running a PID loop in Arduino to stabilize from raw IMU data. For anyone who truly wants to understand how a system works, it is better to build it from first principles than to reach for a pre-made solution.</p>
+                        <img src="images/proto_drone.png" alt="Prototype Quadcopter">
+                    </section>
+                    <section class="robotics-note-card">
+                        <h3>UAV Testing Tools</h3>
+                        <p>A suite of tools built around UAV development and testing. Includes a custom test rig for securing drones during static thrust runs, flight controller software, GPS module software with calibration tooling, a gesture-based test controller—an IMU and RF transceiver mounted on a handheld board that lets you fly the drone with hand movements—testing scripts, and a web-based drone movement simulator that was later superseded by the ROS 2 simulation stack in the UAV controller project.</p>
+                        <img src="images/test_rig.png" alt="UAV Test Rig">
+                    </section>
+                    <section class="robotics-note-card">
                         <h3>Mechanical Gripper</h3>
                         <p>Physical build of my <a href="https://nori.fish/demo/claw3d/" target="_blank" rel="noopener">claw machine simulator</a>.</p>
                     </section>
                     <section class="robotics-note-card">
                         <h3>Range Finder Tools</h3>
                         <p>Built multiple distance-sensing tools using ToF and ultrasonic sensors for calibration, validation, and rapid integration tests.</p>
-                    </section>
-                    <section class="robotics-note-card">
-                        <h3>Early-Stage UAV Variants</h3>
-                        <p>Developed various UAV builds for different purposes, mostly as early-stage work that informed my current drone platforms.</p>
-                    </section>
-                    <section class="robotics-note-card">
-                        <h3>Drone Systems R&amp;D</h3>
-                        <p>Hands-on playground to explore electrical systems, embedded development, and drone-frame mechanical design, with focus on material selection and structural behavior.</p>
                     </section>
                     <section class="robotics-note-card">
                         <h3>Thermal Sensor Mobile Bot (Toast-E)</h3>
