@@ -9,7 +9,6 @@
     <meta property="og:url" content="https://nori.fish/wynn/item/lootpool" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
-    <meta name="session-token" content="">
     <title>Nori-Wynn Item Lootpool</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../../../css_global/default.css">
@@ -31,7 +30,7 @@
             <div class="brand">
                 <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo">
                 <div>
-                    <h1>Nori‑Wynn</h1>
+                    <h1>Nori-Wynn</h1>
                     <div class="subtitle">Item Lootpool</div>
                 </div>
             </div>
@@ -41,7 +40,7 @@
         </div>
     </header>
 
-    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="menu-button" onclick="toggleSidebar()">&#9776;</div>
     <div id="sidebar"></div>
 
     <main class="container">
@@ -51,36 +50,43 @@
                 Updating Item Lootpool...
             </h2>
             <div id="countdown-container" class="countdown-section"></div>
-            <p class="page-subtitle">
-                Join <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="discord-link">Community Discord</a> to follow Nori updates & post feedback
-            </p>
         </div>
 
         <div id="lootpool-filters" class="filter-pills">
             <button class="filter-pill active mythic" data-filter="mythic" id="toggle-mythic">
-                <span class="pill-icon">✦</span>Mythic
+                <span class="pill-icon">&#10022;</span>Mythic
             </button>
-            <button class="filter-pill fabled" data-filter="fabled" id="toggle-fabled">
-                <span class="pill-icon">✦</span>Fabled
+            <button class="filter-pill active fabled" data-filter="fabled" id="toggle-fabled">
+                <span class="pill-icon">&#10022;</span>Fabled
             </button>
-            <button class="filter-pill legendary" data-filter="legendary" id="toggle-legendary">
-                <span class="pill-icon">✦</span>Legendary
+            <button class="filter-pill active legendary" data-filter="legendary" id="toggle-legendary">
+                <span class="pill-icon">&#10022;</span>Legendary
             </button>
-            <button class="filter-pill rare" data-filter="rare" id="toggle-rare">
-                <span class="pill-icon">✦</span>Rare
+            <button class="filter-pill active rare" data-filter="rare" id="toggle-rare">
+                <span class="pill-icon">&#10022;</span>Rare
             </button>
-            <button class="filter-pill unique" data-filter="unique" id="toggle-unique">
-                <span class="pill-icon">✦</span>Unique
+            <button class="filter-pill active unique" data-filter="unique" id="toggle-unique">
+                <span class="pill-icon">&#10022;</span>Unique
+            </button>
+            <button class="filter-pill active misc" data-filter="misc" id="toggle-misc">
+                Misc
             </button>
         </div>
 
         <div id="lootpool" class="lootpool-container"></div>
 
         <div class="action-buttons">
-            <button class="primary-button" onclick="window.location.href='https://nori.fish/wynn/aspects'">
-                <span class="button-icon">◆</span>
-                Raid Aspect Lootpool
+            <button class="primary-button" onclick="window.location.href='https://nori.fish/wynn/raids'">
+                <span class="button-icon">&#9670;</span>
+                Raid Lootpool
             </button>
+        </div>
+
+        <div class="post-action-notes">
+            <p class="page-subtitle">
+                Join <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="discord-link">Community Discord</a> to follow Nori updates & post feedback
+            </p>
+            <p class="cache-refresh-hint">If this page looks broken or doesn't load properly, clear cache and refresh.</p>
         </div>
     </main>
 

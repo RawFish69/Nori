@@ -14,7 +14,7 @@
   - `300/minute`
 - **Authentication**:  
   - Most endpoints are public.  
-  - Others require authentication tokens set by `/api/tokens`, plus a CSRF token for HTTP modifications.  
+  - Some secured or legacy flows use tokens from `/api/tokens` (and CSRF for those legacy flows).  
 > For inquiries or assistance, join our [Support Server](https://discord.gg/eDssA6Jbwd) or reach out to the developer directly.
 
 ---
@@ -35,11 +35,13 @@
 4. [Database Guild Endpoint](#database-guild-endpoint)
 5. [Build and Recipe Search](#build-and-recipe-search)
 6. [Item Lootpool Endpoint](#item-lootpool-endpoint)
-7. [Aspects Lootpool Endpoint](#aspect-lootpool-endpoint)
-8. [Guild Endpoints](#guild-endpoints)
-9. [Player Endpoint](#player-endpoint)
-10. [Showcase Endpoint](#showcase-endpoint)
-11. [Lootpool History](#item-loot-history) (Not yet implemented)
+7. [Raid Lootpool Endpoint](#raid-lootpool-endpoint)
+8. [Daily Gambits Endpoint](#daily-gambits-endpoint)
+9. [Aspects Lootpool Endpoint](#aspect-lootpool-endpoint)
+10. [Guild Endpoints](#guild-endpoints)
+11. [Player Endpoint](#player-endpoint)
+12. [Showcase Endpoint](#showcase-endpoint)
+13. [Lootpool History](#item-loot-history) (Not yet implemented)
 
 ---
 
@@ -461,7 +463,15 @@ Response (Array of objects):
 
 ### `GET` /api/lootpool
 - Rate Limit: 3/second
-- Description: Requires valid tokens. Returns weekly lootpool data.
+- Description: Returns weekly item lootpool data.
+
+Request format:
+- Preferred: plain `GET /api/lootpool` (no CSRF token, no request body, no query parameters).
+- Legacy compatibility: old CSRF/auth style requests are still accepted for now, but are deprecated.
+
+Legacy warning behavior:
+- Header: `Warning: 299 - "..."` and `X-Nori-Warning: legacy_request_deprecated`
+- Body (legacy requests only): a top-level `warning` object is included with migration guidance.
 
 Response:
 ```json
@@ -488,15 +498,144 @@ Response:
 }
 ```
 
+Legacy warning object example (only present for legacy request format):
+```json
+{
+  "warning": {
+    "code": "legacy_request_deprecated",
+    "message": "Legacy /api/lootpool request detected. Please migrate to plain GET /api/lootpool without CSRF/auth tokens. Legacy compatibility will be removed in a future update and requests may break.",
+    "docs": "https://nori.fish/docs",
+    "support": "https://discord.gg/eDssA6Jbwd"
+  }
+}
+```
+
+Invalid request format (`400`) example:
+```json
+{
+  "error": "invalid_request_format",
+  "detail": "Request body is not supported for /api/lootpool.",
+  "expected": "Use GET /api/lootpool with no request body or query parameters.",
+  "docs": "https://nori.fish/docs",
+  "support": "https://discord.gg/eDssA6Jbwd"
+}
+```
+
 ## Item Loot History
 > Note: Complete historical data since the lootrun update exists in our database but is not yet publicly accessible. This endpoint will be enabled after the feature is implemented in Nori-Web.
 
 
-## Aspect Lootpool Endpoint
+## Raid Lootpool Endpoint
+
+### `GET` /api/raids
+- Rate Limit: 3/second
+- Description: Returns the combined raid payload used by the raid web page.
+- Includes:
+  - Weekly raid aspects (`Aspects`)
+  - Weekly raid items (`Items`)
+  - Daily shared gambits (`Gambits`)
+
+Response:
+```json
+{
+  "Timestamp": 1723222800,
+  "Aspects": {
+    "TNA": {
+      "Mythic": [],
+      "Fabled": [],
+      "Legendary": []
+    },
+    "TCC": {},
+    "NOL": {},
+    "NOTG": {},
+    "TWP": {}
+  },
+  "Items": {
+    "TNA": {
+      "Mythic": [],
+      "Fabled": [],
+      "Legendary": [],
+      "Rare": [],
+      "Unique": [],
+      "Misc": []
+    },
+    "TCC": {},
+    "NOL": {},
+    "NOTG": {},
+    "TWP": {}
+  },
+  "Icons": {
+    "Warrior's Embodiment of Everlasting Perseverance": "aspect_warrior.gif",
+    "Red Ward": "red_ward.png"
+  },
+  "AspectDescriptions": {},
+  "Gambits": [
+    {
+      "name": "Bleeding Warrior's Gambit",
+      "description": "For each 1% health you lack, make your attacks 1% weaker",
+      "confidence": 1.0
+    },
+    {
+      "name": "Glutton's Gambit",
+      "description": "Picking up 3 buffs will remove -6 reward pulls",
+      "confidence": 1.0
+    }
+  ],
+  "GambitRotation": {
+    "rotation_start": 1775620800,
+    "rotation_end": 1775707200
+  },
+  "GambitRotationStart": 1775620800,
+  "GambitRotationEnd": 1775707200,
+  "GambitRefreshedAt": 1775704250
+}
+```
+
+Notes:
+- `Gambits` are shared across all raids (not per-raid buckets).
+- `Items` includes `Misc` for non-standard drops.
+- `Icons` may use GIFs for mythic class aspects and PNG for normal tiers.
+
+## Daily Gambits Endpoint
+
+### `GET` /api/gambits
+- Rate Limit: 3/second
+- Description: Returns the cached daily shared gambit payload.
+
+Response:
+```json
+{
+  "Entries": [
+    {
+      "name": "Bleeding Warrior's Gambit",
+      "description": "For each 1% health you lack, make your attacks 1% weaker",
+      "confidence": 1.0
+    }
+  ],
+  "Rotation": {
+    "rotation_start": 1775620800,
+    "rotation_end": 1775707200
+  },
+  "RotationStart": 1775620800,
+  "RotationEnd": 1775707200,
+  "RefreshedAt": 1775704250,
+  "Timestamp": 1775620800
+}
+```
+
+Data unavailable (`404`) example:
+```json
+{
+  "error": "gambit_data_unavailable",
+  "detail": "Daily gambit data has not been published yet."
+}
+```
+
+## Aspects Lootpool Endpoint
 
 ### `GET` /api/aspects
 - Rate Limit: 3/second
-- Description: Provides weekly aspects data.
+- Description: Provides weekly aspects data only (legacy-compatible route).
 
 Response:
 ```json
@@ -511,7 +650,8 @@ Response:
   "Icon": {
     "AspectName": "string"
   },
-  "Timestamp": Timestamp
+  "Descriptions": {},
+  "Timestamp": 1723222800
 }
 ```
 
