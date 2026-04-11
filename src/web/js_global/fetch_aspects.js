@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayUpdatingMessage();
             } else {
                 updateLootpoolTitle(data.Timestamp);
-                displayLootpool(data.Loot, data.Icon);
+                displayLootpool(data.Loot, data.Icon, data.Descriptions || {});
                 startCountdown(nextUpdateTimestamp - currentTimestamp);
             }
             document.getElementById('lootpool-filters').style.display = 'flex';
@@ -28,6 +28,83 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => console.error('Error fetching the JSON:', error));
     setupTierFilters();
 });
+
+const ASPECT_GLYPH_MAP = {
+    '\ue000': '[Air]',
+    '\ue001': '[Earth]',
+    '\ue002': '[Fire]',
+    '\ue003': '[Thunder]',
+    '\ue004': '[Water]',
+    '\ue005': '[Damage]',
+    '\ue01b': '[Total Damage]',
+    '\ue01c': '[Range]',
+    '\ue01d': '[Area]',
+    '\ue01e': '[Stat]',
+    '\ue01f': '[Duration]'
+};
+const RAID_DISPLAY_ORDER = ['TNA', 'TCC', 'NOL', 'NOTG', 'TWP'];
+const WARD_ICON_BY_NAME = {
+    'yellow ward': 'yellow_ward.png',
+    'white ward': 'white_ward.png',
+    'red ward': 'red_ward.png',
+    'purple ward': 'purple_ward.png',
+    'pink ward': 'pink_ward.png',
+    'orange ward': 'orange_ward.png',
+    'green ward': 'green_ward.png',
+    'cyan ward': 'cyan_ward.png',
+    'blue ward': 'blue_ward.png',
+    'black ward': 'black_ward.png'
+};
+
+function escapeHtml(text) {
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function normalizeAspectGlyphs(text) {
+    return String(text).replace(/[\ue000-\uf8ff]/g, (glyph) => ASPECT_GLYPH_MAP[glyph] || '[Stat]');
+}
+
+function normalizeAspectDescriptionLine(rawLine) {
+    if (!rawLine) return '';
+
+    const normalizedHtml = String(rawLine)
+        .replace(/<\/br\s*>/gi, '<br>')
+        .replace(/<br\s*\/?>/gi, '\n');
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(`<div>${normalizedHtml}</div>`, 'text/html');
+    const text = doc.body.textContent || '';
+
+    return normalizeAspectGlyphs(text)
+        .replace(/\r/g, '')
+        .replace(/[ \t]+\n/g, '\n')
+        .replace(/\n[ \t]+/g, '\n')
+        .replace(/[ \t]{2,}/g, ' ')
+        .trim();
+}
+
+function getAspectIconUrl(itemName, iconValue) {
+    let resolvedIcon = iconValue;
+
+    if ((resolvedIcon === null || resolvedIcon === undefined || resolvedIcon === '') && typeof itemName === 'string') {
+        resolvedIcon = WARD_ICON_BY_NAME[itemName.trim().toLowerCase()] || null;
+    }
+
+    if (!resolvedIcon || typeof resolvedIcon !== 'string') {
+        return null;
+    }
+
+    if (!resolvedIcon.startsWith('http')) {
+        return `../../resources/${resolvedIcon}`;
+    }
+
+    return resolvedIcon;
+}
 
 function updateLootpoolTitle(timestamp) {
     const date = new Date(timestamp * 1000);
@@ -48,70 +125,23 @@ function updateLootpoolTitle(timestamp) {
     lootpoolTitle.style.textAlign = 'center'; 
 }
 
-function displayLootpool(loot, icons) {
+function displayLootpool(loot, icons, descriptions = {}) {
     const lootpoolContainer = document.getElementById('lootpool');
     lootpoolContainer.innerHTML = '';
 
-    for (const region in loot) {
-        if (loot.hasOwnProperty(region)) {
-            const regionData = loot[region];
-            const regionCard = document.createElement('div');
-            regionCard.classList.add('lootpool-card', 'active');
+    const regions = [
+        ...RAID_DISPLAY_ORDER.filter((region) => Object.prototype.hasOwnProperty.call(loot, region)),
+        ...Object.keys(loot).filter((region) => !RAID_DISPLAY_ORDER.includes(region))
+    ];
 
-            const regionTitle = document.createElement('div');
-            regionTitle.classList.add('region-title');
-            regionTitle.textContent = `${region} Aspects`;
-            regionTitle.addEventListener('click', () => {
-                regionCard.classList.toggle('active');
-            });
-            regionCard.appendChild(regionTitle);
-
-            const regionContent = document.createElement('div');
-            regionContent.classList.add('lootpool-card-content');
-
-            ['Mythic', 'Fabled', 'Legendary'].forEach(rarity => {
-                if (regionData[rarity]) {
-                    const rarityTitle = document.createElement('div');
-                    rarityTitle.classList.add('rarity-title', `${rarity.toLowerCase()}-color`);
-                    rarityTitle.textContent = rarity;
-                    regionContent.appendChild(rarityTitle);
-
-                    const itemList = document.createElement('ul');
-                    regionData[rarity].forEach(item => {
-                        const itemElement = document.createElement('li');
-                        itemElement.classList.add(`${rarity.toLowerCase()}-color`);
-
-                        const itemIconUrl = icons[item];
-                        if (itemIconUrl) {
-                            const itemIcon = document.createElement('img');
-                            itemIcon.src = `../../resources/${itemIconUrl}`;
-                            itemIcon.classList.add('item-icon');
-                            itemElement.appendChild(itemIcon);
-                        }
-
-                        const itemName = document.createElement('span');
-                        itemName.textContent = item;
-                        itemElement.appendChild(itemName);
-
-                        itemList.appendChild(itemElement);
-                    });
-                    regionContent.appendChild(itemList);
-                }
-            });
-
-            regionCard.appendChild(regionContent);
-            lootpoolContainer.appendChild(regionCard);
-        }
-    }
-
-    // Add TWP placeholder raid if not yet in API data
-    if (!loot.hasOwnProperty('TWP')) {
+    regions.forEach((region) => {
+        const regionData = loot[region] || {};
         const regionCard = document.createElement('div');
-        regionCard.classList.add('lootpool-card', 'active', 'coming-soon-card');
+        regionCard.classList.add('lootpool-card', 'active');
 
         const regionTitle = document.createElement('div');
         regionTitle.classList.add('region-title');
-        regionTitle.textContent = 'TWP Aspects';
+        regionTitle.textContent = `${region} Aspects`;
         regionTitle.addEventListener('click', () => {
             regionCard.classList.toggle('active');
         });
@@ -119,20 +149,78 @@ function displayLootpool(loot, icons) {
 
         const regionContent = document.createElement('div');
         regionContent.classList.add('lootpool-card-content');
+        let hasAspects = false;
 
-        const label = document.createElement('p');
-        label.classList.add('coming-soon-text');
-        label.textContent = 'COMING SOON';
-        regionContent.appendChild(label);
+        ['Mythic', 'Fabled', 'Legendary'].forEach(rarity => {
+            const rarityItems = Array.isArray(regionData[rarity]) ? regionData[rarity] : [];
+            if (!rarityItems.length) {
+                return;
+            }
 
-        const sub = document.createElement('p');
-        sub.classList.add('coming-soon-subtext');
-        sub.textContent = 'New raid aspect lootpool planned for a future update.';
-        regionContent.appendChild(sub);
+            hasAspects = true;
+            const rarityTitle = document.createElement('div');
+            rarityTitle.classList.add('rarity-title', `${rarity.toLowerCase()}-color`);
+            rarityTitle.textContent = rarity;
+            regionContent.appendChild(rarityTitle);
+
+            const itemList = document.createElement('ul');
+            rarityItems.forEach(item => {
+                const itemElement = document.createElement('li');
+                itemElement.classList.add(`${rarity.toLowerCase()}-color`);
+
+                const itemIconUrl = getAspectIconUrl(item, icons[item]);
+                if (itemIconUrl) {
+                    const itemIcon = document.createElement('img');
+                    itemIcon.src = itemIconUrl;
+                    itemIcon.classList.add('item-icon');
+                    itemElement.appendChild(itemIcon);
+                }
+
+                const itemName = document.createElement('span');
+                itemName.classList.add('item-name');
+                itemName.textContent = item;
+                itemElement.appendChild(itemName);
+
+                const itemDesc = descriptions[item];
+                if (itemDesc) {
+                    itemElement.classList.add('has-description');
+                    itemName.title = 'Hover to view tier descriptions';
+                    const descBlock = document.createElement('div');
+                    descBlock.classList.add('aspect-desc');
+                    ['1', '2', '3'].forEach((tier, idx) => {
+                        if (!itemDesc[tier]) return;
+                        const tierDiv = document.createElement('div');
+                        tierDiv.classList.add('aspect-tier');
+                        const tierLabel = document.createElement('span');
+                        tierLabel.classList.add('tier-label');
+                        tierLabel.textContent = `Tier ${'III'.slice(0, idx + 1)} (>=${itemDesc[tier].threshold} XP): `;
+                        tierDiv.appendChild(tierLabel);
+                        const tierText = document.createElement('span');
+                        const normalizedLines = (itemDesc[tier].description || [])
+                            .map(normalizeAspectDescriptionLine)
+                            .filter(Boolean);
+                        tierText.innerHTML = normalizedLines.map(escapeHtml).join('<br>');
+                        tierDiv.appendChild(tierText);
+                        descBlock.appendChild(tierDiv);
+                    });
+                    itemElement.appendChild(descBlock);
+                }
+
+                itemList.appendChild(itemElement);
+            });
+            regionContent.appendChild(itemList);
+        });
+
+        if (!hasAspects) {
+            const emptyState = document.createElement('p');
+            emptyState.classList.add('empty-raid-text');
+            emptyState.textContent = 'No listed aspects for this raid this week.';
+            regionContent.appendChild(emptyState);
+        }
 
         regionCard.appendChild(regionContent);
         lootpoolContainer.appendChild(regionCard);
-    }
+    });
 
     filterLootpool();
 }
@@ -214,14 +302,14 @@ function filterLootpool() {
     };
 
     document.querySelectorAll('.lootpool-card').forEach(card => {
-        // Always show placeholder / coming-soon cards
-        if (card.classList.contains('coming-soon-card')) {
+        const rarityTitles = card.querySelectorAll('.rarity-title');
+        if (rarityTitles.length === 0) {
             card.style.display = 'block';
             return;
         }
 
         let showCard = false;
-        card.querySelectorAll('.rarity-title').forEach(title => {
+        rarityTitles.forEach(title => {
             const rarity = title.classList[1].split('-')[0];
             if (filters[rarity]) {
                 title.style.display = 'flex';

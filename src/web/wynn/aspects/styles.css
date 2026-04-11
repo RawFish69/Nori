@@ -176,6 +176,24 @@ main.container {
     color: var(--text-secondary);
 }
 
+.cache-refresh-hint {
+    margin-top: 0.45rem;
+    font-size: 0.86rem;
+    color: #fbbf24;
+    opacity: 0.95;
+}
+
+:root:not(.site-dark) .cache-refresh-hint {
+    color: #92400e;
+}
+
+.aspect-hover-hint {
+    margin-top: 0.45rem;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    opacity: 0.92;
+}
+
 .discord-link {
     color: var(--accent-primary);
     text-decoration: none;
@@ -265,13 +283,15 @@ main.container {
     border-color: var(--legendary);
 }
 
-/* Lootpool Container - single row on desktop, wraps on smaller screens */
+/* Lootpool layout */
 .lootpool-container {
     display: flex;
     flex-wrap: nowrap;
-    gap: 1rem;
+    gap: 0;
     margin-bottom: 3rem;
-    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .lootpool-card,
@@ -280,248 +300,202 @@ main.container {
     min-width: 0;
 }
 
-.coming-soon-card {
-    max-width: 340px;
-    width: 100%;
-    background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.35), rgba(17, 24, 39, 0.95));
-    border-radius: 20px;
-    padding: 1.75rem 2rem;
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    box-shadow: var(--shadow-lg);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.coming-soon-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: conic-gradient(from 180deg at 50% 50%, #8b5cf6, #ec4899, #22d3ee, #8b5cf6);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-    opacity: 0.8;
-}
-
-.coming-soon-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    background: rgba(17, 24, 39, 0.85);
-    color: var(--accent-secondary);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
-}
-
-.coming-soon-title {
-    margin-top: 0.9rem;
-    margin-bottom: 0.35rem;
-    font-size: 1.6rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #f9fafb;
-    position: relative;
-    z-index: 1;
-}
-
-.coming-soon-text {
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #fbbf24;
-    margin-bottom: 0.35rem;
-    position: relative;
-    z-index: 1;
-}
-
-.coming-soon-subtext {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    max-width: 320px;
-    margin: 0.25rem auto 0;
-    position: relative;
-    z-index: 1;
-}
-
-/* Lootpool Cards */
+/* Region columns */
 .lootpool-card {
-    background: rgba(31, 41, 55, 0.4);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 1.5rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
+    padding: 1.25rem 1.5rem;
+    border-right: 1px solid var(--border-color);
+    background: none;
 }
 
-.lootpool-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+.lootpool-card:last-child { border-right: none; }
 
-.lootpool-card:hover::before {
-    opacity: 1;
-}
-
-.lootpool-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-xl);
-    border-color: rgba(139, 92, 246, 0.3);
-}
-
+/* Region header */
 .region-title {
-    font-size: 1.25rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    padding-bottom: 0.625rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
-    padding: 0.75rem;
-    background: rgba(139, 92, 246, 0.15);
-    border-radius: 8px;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: none;
+    border-radius: 0;
+    transition: color 0.2s ease;
 }
+
+.region-title:hover { color: var(--text-primary); }
 
 .region-title::after {
-    content: '▼';
+    content: '\25BE';
     font-size: 0.875rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.25s ease;
+    opacity: 0.5;
 }
 
-.lootpool-card:not(.active) .region-title::after {
-    transform: rotate(-90deg);
-}
+.lootpool-card:not(.active) .region-title::after { transform: rotate(-90deg); }
 
-.region-title:hover {
-    background: rgba(139, 92, 246, 0.25);
-}
+.lootpool-card-content { display: none; }
+.lootpool-card.active .lootpool-card-content { display: block; }
 
-.lootpool-card-content {
-    display: none;
-    animation: fadeIn 0.3s ease;
-}
-
-.lootpool-card.active .lootpool-card-content {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Rarity Sections */
+/* Rarity labels */
 .rarity-title {
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.625rem 1rem;
-    margin: 1rem 0 0.75rem 0;
-    border-radius: 8px;
-    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 0 0.2rem;
+    margin-top: 0.25rem;
+    border-top: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0;
+    background: none !important;
+    border-radius: 0;
 }
 
-.rarity-title::before {
-    content: '✦';
-    font-size: 0.875rem;
-}
+.rarity-title:first-child { border-top: none; padding-top: 0; margin-top: 0; }
 
-.mythic-color {
-    color: var(--mythic);
-    background: rgba(170, 0, 255, 0.1);
-}
+.mythic-color    { color: var(--mythic);    background: none; }
+.fabled-color    { color: var(--fabled);    background: none; }
+.legendary-color { color: var(--legendary); background: none; }
 
-.fabled-color {
-    color: var(--fabled);
-    background: rgba(255, 85, 85, 0.1);
-}
-
-.legendary-color {
-    color: var(--legendary);
-    background: rgba(0, 212, 212, 0.1);
-}
-
-/* Item Lists */
-ul {
-    list-style: none;
-    margin-bottom: 0.75rem;
-}
+/* Item rows */
+ul { list-style: none; margin: 0; }
 
 li {
-    background: rgba(17, 24, 39, 0.4);
-    padding: 0.75rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
+    padding: 0.3rem 0;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-    flex-wrap: wrap;
+    gap: 0.625rem;
+    background: none !important;
+    border: none !important;
+    border-radius: 0;
     word-break: break-word;
+    transition: opacity 0.15s ease;
+    flex-wrap: wrap;
 }
 
-li:hover {
-    background: rgba(17, 24, 39, 0.6);
-    border-color: var(--border-color);
-    transform: translateX(4px);
+li + li { border-top: 1px solid rgba(255, 255, 255, 0.04) !important; }
+
+li:hover { opacity: 0.75; }
+
+.item-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    flex-shrink: 0;
 }
 
-/* Light theme adjustments for better readability */
-:root:not(.site-dark) li {
-    background: rgba(255, 255, 255, 0.8);
-    color: #1f2937;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+/* Coming-soon columns */
+.coming-soon-card {
+    padding: 1.25rem 1.5rem;
+    border-right: 1px solid var(--border-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 120px;
+    background: none;
 }
 
-:root:not(.site-dark) li:hover {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.coming-soon-card:last-child { border-right: none; }
+
+.coming-soon-card .region-title {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.coming-soon-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fbbf24;
+}
+
+.coming-soon-subtext {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.empty-raid-text {
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Light theme */
+:root:not(.site-dark) .lootpool-container {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.85);
 }
 
 :root:not(.site-dark) .lootpool-card {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-right-color: rgba(0, 0, 0, 0.1);
 }
+
+:root:not(.site-dark) .lootpool-card:last-child { border-right: none; }
 
 :root:not(.site-dark) .region-title {
-    background: rgba(139, 92, 246, 0.1);
-    color: #1f2937;
+    color: #6b7280;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
-:root:not(.site-dark) .region-title:hover {
-    background: rgba(139, 92, 246, 0.2);
+:root:not(.site-dark) .region-title:hover { color: #1f2937; }
+
+:root:not(.site-dark) .rarity-title { border-top-color: rgba(0, 0, 0, 0.08); }
+
+:root:not(.site-dark) li + li { border-top-color: rgba(0, 0, 0, 0.05) !important; }
+
+/* Dark theme guardrails */
+:root.site-dark .lootpool-container {
+    background: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
 }
 
-.item-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    box-shadow: var(--shadow-sm);
+:root.site-dark .lootpool-card,
+:root.site-dark .coming-soon-card {
+    background: transparent !important;
+    border: none !important;
+    border-right: 1px solid var(--border-color) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+:root.site-dark .lootpool-card:last-child,
+:root.site-dark .coming-soon-card:last-child {
+    border-right: none !important;
+}
+
+:root.site-dark .region-title {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--text-secondary) !important;
+}
+
+:root.site-dark .rarity-title {
+    background: transparent !important;
+    border: none !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+:root.site-dark .rarity-title:first-child {
+    border-top: none !important;
+}
+
+:root.site-dark li + li {
+    border-top-color: rgba(255, 255, 255, 0.04) !important;
 }
 
 /* Countdown Timer */
@@ -635,78 +609,96 @@ footer {
     margin-top: 4rem;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 900px) {
     .lootpool-container {
         flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 1rem;
+        border-radius: 12px;
     }
 
     .lootpool-card,
     .coming-soon-card {
-        flex: 0 1 calc(33.33% - 0.67rem);
-        max-width: calc(33.33% - 0.67rem);
-        min-width: 0;
+        flex: 0 1 calc(50% - 0px);
+        max-width: 50%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
     }
+
+    .lootpool-card:nth-child(odd) { border-right: 1px solid var(--border-color); }
+    .lootpool-card:last-child,
+    .coming-soon-card:last-child { border-bottom: none; }
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 1.5rem 1rem;
-    }
-
-    .page-title {
-        font-size: 1.875rem;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .lootpool-container {
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .lootpool-card,
-    .coming-soon-card {
-        flex: 0 1 calc(50% - 0.5rem);
-        max-width: calc(50% - 0.5rem);
-    }
-
-    .filter-pills {
-        gap: 0.5rem;
-        justify-content: flex-start;
-    }
-
-    .filter-pill {
-        padding: 0.5rem 1rem;
-        font-size: 0.8125rem;
-    }
-
-    .countdown-segment {
-        min-width: 65px;
-        padding: 0.75rem 1rem;
-    }
-
-    .countdown-segment div {
-        font-size: 1.5rem;
-    }
-
-    header {
-        padding: 1rem;
-    }
-
-    .brand h1 {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 420px) {
+@media (max-width: 600px) {
     .lootpool-card,
     .coming-soon-card {
         flex: 1 1 100%;
         max-width: 100%;
+        border-right: none !important;
+        border-bottom: 1px solid var(--border-color);
     }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 1.5rem 1rem; }
+    .page-title { font-size: 1.875rem; flex-wrap: wrap; gap: 0.5rem; }
+    .filter-pills { gap: 0.5rem; justify-content: flex-start; }
+    .filter-pill { padding: 0.5rem 1rem; font-size: 0.8125rem; }
+    .countdown-segment { min-width: 65px; padding: 0.75rem 1rem; }
+    .countdown-segment div { font-size: 1.5rem; }
+    header { padding: 1rem; }
+    .brand h1 { font-size: 1.5rem; }
+}
+
+/* Aspect Descriptions */
+.item-name {
+    font-weight: 600;
+}
+
+.has-description .item-name {
+    text-decoration: underline dotted rgba(255, 255, 255, 0.35);
+    text-underline-offset: 0.18em;
+    cursor: help;
+}
+
+:root:not(.site-dark) .has-description .item-name {
+    text-decoration-color: rgba(0, 0, 0, 0.35);
+}
+
+.aspect-desc {
+    display: none;
+    flex: 0 0 100%;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+li.has-description:hover .aspect-desc,
+li.has-description:focus-within .aspect-desc {
+    display: block;
+}
+
+:root:not(.site-dark) .aspect-desc {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.aspect-tier {
+    margin-bottom: 0.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.tier-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+    white-space: nowrap;
 }
 
 /* Hidden Utility */

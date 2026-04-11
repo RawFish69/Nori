@@ -1,157 +1,458 @@
+let mythicData = null;
+let allTypeIconInterval = null;
+
+const armorTypes = ['helmet', 'chestplate', 'leggings', 'boots'];
+const allItemTypes = ['spear', 'bow', 'wand', 'dagger', 'relik', ...armorTypes];
+const pageState = {
+    selectedType: null,
+    selectedTypes: [],
+    viewMode: 'full'
+};
+
 document.addEventListener('DOMContentLoaded', async function() {
-    const checkboxes = document.querySelectorAll('.item-filter');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', handleCheckboxChange);
-    });
-    await fetchAndRenderItems();
+    await fetchMythicData();
+    initAllTypeIconAnimation();
+    updateViewModeButtons();
 });
 
-async function fetchAndRenderItems() {
+function initAllTypeIconAnimation() {
+    const allTypeIcon = document.getElementById('all-type-icon');
+    if (!allTypeIcon) {
+        return;
+    }
+
+    const iconSequence = [
+        { src: '../../../resources/simulator.png', alt: 'All Items' },
+        { src: '../../../resources/spear.png', alt: 'All Items - Spear' },
+        { src: '../../../resources/bow.png', alt: 'All Items - Bow' },
+        { src: '../../../resources/wand.png', alt: 'All Items - Wand' },
+        { src: '../../../resources/dagger.png', alt: 'All Items - Dagger' },
+        { src: '../../../resources/relik.png', alt: 'All Items - Relik' },
+        { src: '../../../resources/helmet.png', alt: 'All Items - Helmet' },
+        { src: '../../../resources/chestplate.png', alt: 'All Items - Chestplate' },
+        { src: '../../../resources/leggings.png', alt: 'All Items - Leggings' },
+        { src: '../../../resources/boots.png', alt: 'All Items - Boots' }
+    ];
+
+    let iconIndex = 0;
+    allTypeIcon.src = iconSequence[iconIndex].src;
+    allTypeIcon.alt = iconSequence[iconIndex].alt;
+
+    if (allTypeIconInterval) {
+        clearInterval(allTypeIconInterval);
+    }
+
+    allTypeIconInterval = setInterval(() => {
+        allTypeIcon.classList.add('is-transitioning');
+
+        setTimeout(() => {
+            iconIndex = (iconIndex + 1) % iconSequence.length;
+            allTypeIcon.src = iconSequence[iconIndex].src;
+            allTypeIcon.alt = iconSequence[iconIndex].alt;
+            allTypeIcon.classList.remove('is-transitioning');
+        }, 380);
+    }, 2000);
+}
+
+async function fetchMythicData() {
     try {
         const response = await fetch('https://nori.fish/api/item/mythic');
         if (!response.ok) {
             throw new Error('Failed to fetch item data');
         }
-        const data = await response.json();
-        renderItems(data);
+        mythicData = await response.json();
     } catch (error) {
         console.error(error);
-        alert('Failed to fetch item data');
     }
 }
 
-function handleCheckboxChange() {
-    const checkboxes = document.querySelectorAll('.item-filter');
-    const checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
-
-    if (checkedCheckboxes.length === 0) {
-        this.checked = true;
-        alert('At least one item type must be selected.');
-    } else {
-        fetchAndRenderItems();
+function selectType(type) {
+    if (!mythicData) {
+        alert('Still loading data, please wait...');
+        return;
     }
+
+    pageState.selectedType = type;
+    pageState.selectedTypes = getSelectedTypes(type);
+
+    document.getElementById('type-selector').style.display = 'none';
+    document.getElementById('items-view').style.display = '';
+
+    const typeLabels = {
+        all: 'All',
+        spear: 'Spear', bow: 'Bow', wand: 'Wand',
+        dagger: 'Dagger', relik: 'Relik', armor: 'Armor'
+    };
+    document.getElementById('items-view-title').textContent = `${typeLabels[type] || type} Mythics`;
+
+    renderCurrentView();
 }
 
-function getSelectedTypes() {
-    const checkboxes = document.querySelectorAll('.item-filter:checked');
-    const selectedTypes = Array.from(checkboxes).map(cb => cb.value);
-    if (selectedTypes.includes('armor')) {
-        selectedTypes.push('helmet', 'chestplate', 'leggings', 'boots');
-    }
-    return selectedTypes.flat();
+function goBack() {
+    pageState.selectedType = null;
+    pageState.selectedTypes = [];
+
+    document.getElementById('type-selector').style.display = '';
+    document.getElementById('items-view').style.display = 'none';
+    document.getElementById('item-cards-container').innerHTML = '';
 }
 
-function renderItems(data) {
+function setViewMode(mode) {
+    if (mode !== 'full' && mode !== 'scale-only') {
+        return;
+    }
+    pageState.viewMode = mode;
+    updateViewModeButtons();
+    renderCurrentView();
+}
+
+function updateViewModeButtons() {
+    const fullBtn = document.getElementById('view-mode-full');
+    const scaleOnlyBtn = document.getElementById('view-mode-scale-only');
+    if (!fullBtn || !scaleOnlyBtn) {
+        return;
+    }
+
+    fullBtn.classList.toggle('active', pageState.viewMode === 'full');
+    scaleOnlyBtn.classList.toggle('active', pageState.viewMode === 'scale-only');
+}
+
+function renderCurrentView() {
+    if (!mythicData || !pageState.selectedTypes.length) {
+        return;
+    }
+    renderItems(mythicData, pageState.selectedTypes, pageState.viewMode);
+}
+
+function getSelectedTypes(type) {
+    if (type === 'all') {
+        return allItemTypes;
+    }
+    if (type === 'armor') {
+        return armorTypes;
+    }
+    return [type];
+}
+
+function renderItems(data, selectedTypes, viewMode) {
     const itemCardsContainer = document.getElementById('item-cards-container');
     itemCardsContainer.innerHTML = '';
 
-    const selectedTypes = getSelectedTypes();
+    const rankedItems = data.ranked || {};
+    const weights = data.weights || {};
+    const mythicInfo = data.info || {};
 
-    const rankedItems = data.ranked;
-    const weights = data.weights;
+    if (viewMode === 'scale-only') {
+        renderScaleOnlyMode(itemCardsContainer, rankedItems, weights, mythicInfo, selectedTypes);
+    } else {
+        renderFullMode(itemCardsContainer, rankedItems, weights, mythicInfo, selectedTypes);
+    }
 
-    for (const itemName in rankedItems) {
+    if (itemCardsContainer.children.length === 0) {
+        itemCardsContainer.innerHTML = '<p style="color: #888; text-align: center;">No mythic items found for this type.</p>';
+    }
+}
+
+function renderFullMode(itemCardsContainer, rankedItems, weights, mythicInfo, selectedTypes) {
+    const renderedItems = new Set();
+
+    for (const itemName of Object.keys(rankedItems)) {
         const scales = rankedItems[itemName];
-        for (const scale in scales) {
-            const itemStats = scales[scale].stats;
-            if (!itemStats || !itemStats[itemName]) continue; 
-            const itemType = itemStats.item_type;
-            if (selectedTypes.includes(itemType)) {
-                const itemData = itemStats[itemName];
-                const rateData = itemStats.rate;
-                const owner = scales[scale].owner;
-                const weight = itemStats.weight;
-                const shiny = itemStats.shiny;
-                const icon = ["helmet", "chestplate", "leggings", "boots"].includes(itemStats.item_type) 
-                    ? `../../../resources/${itemStats.item_type}.png` 
-                    : itemStats.icon;
-                const tier = itemStats.item_tier || 'common';
-                const tierColor = tierColors[tier];
+        if (!scales || typeof scales !== 'object') {
+            continue;
+        }
 
-                const overallRating = rateData ? getOverallRating(rateData) : 'N/A';
+        const fallbackInfo = mythicInfo[itemName] || {};
 
-                const itemCard = document.createElement('div');
-                itemCard.classList.add('item-card');
-
-                itemCard.innerHTML = `
-                    <img src="${icon}" alt="${itemName}" class="item-icon">
-                    <h3 style="color: ${tierColor};">${itemName} <span style="color:${getRateColor(overallRating)}">[${overallRating}%]</span></h3>
-                    <p class="item-scale">Scale: <span style="color: #DDA0DD;">${scale}</span> <span style="color:${getRateColor(weight)}">[${weight}%]</span></p>
-                    <p class="item-owner">Owner: <span style="color: gold;">${owner}</span></p>
-                    ${shiny ? `<p class="shiny-value"><img src="../../../resources/shiny.png" class="shiny-icon" alt="Shiny"> ${shiny}</p>` : ''}
-                    <div class="item-stats">
-                        ${renderStats(itemData, rateData)}
-                    </div>
-                    <button class="show-scales-btn" onclick="toggleScales(event, '${itemName}')">Show Scales</button>
-                    <div class="scale-details" id="scales-${itemName}">${renderScales(weights[itemName])}</div>
-                `;
-
-                itemCardsContainer.appendChild(itemCard);
+        for (const scaleName of Object.keys(scales)) {
+            const entry = scales[scaleName];
+            if (!entry || typeof entry !== 'object') {
+                continue;
             }
+
+            const itemStats = entry.stats && typeof entry.stats === 'object' ? entry.stats : null;
+            const itemData = itemStats && typeof itemStats[itemName] === 'object' ? itemStats[itemName] : null;
+            const rateData = itemStats && typeof itemStats.rate === 'object' ? itemStats.rate : null;
+            const hasSnapshot = typeof entry.has_snapshot === 'boolean' ? entry.has_snapshot : !!itemData;
+            const snapshotMissing = typeof entry.snapshot_missing === 'boolean' ? entry.snapshot_missing : !hasSnapshot;
+
+            const itemTypeRaw = (
+                (itemStats && itemStats.item_type) ||
+                entry.item_type ||
+                fallbackInfo.item_type ||
+                null
+            );
+            const itemType = typeof itemTypeRaw === 'string' ? itemTypeRaw.toLowerCase() : null;
+            if (!itemType || !selectedTypes.includes(itemType)) {
+                continue;
+            }
+
+            const iconRaw = (
+                (itemStats && itemStats.icon) ||
+                entry.icon ||
+                fallbackInfo.icon ||
+                ''
+            );
+            const icon = getDisplayIcon(iconRaw, itemType);
+            const tierRaw = (
+                (itemStats && itemStats.item_tier) ||
+                entry.item_tier ||
+                fallbackInfo.item_tier ||
+                'mythic'
+            );
+            const tier = normalizeTier(tierRaw);
+            const tierColor = tierColors[tier] || tierColors.mythic;
+
+            const owner = entry.owner || 'None';
+            const ownerColor = owner === 'None' ? '#888' : 'gold';
+            const weight = itemStats && typeof itemStats.weight === 'number' ? itemStats.weight : null;
+            const shiny = itemStats ? itemStats.shiny : null;
+            const overallRating = rateData ? getOverallRating(rateData) : 'N/A';
+            const ratingHtml = overallRating !== 'N/A'
+                ? ` <span style="color:${getRateColor(overallRating)}">[${overallRating}%]</span>`
+                : '';
+            const weightHtml = typeof weight === 'number'
+                ? ` <span style="color:${getRateColor(weight)}">[${weight}%]</span>`
+                : '';
+
+            const cardKey = makeCardKey(itemName, scaleName, 'full');
+            const scaleSection = renderScaleSection(itemName, weights[itemName], cardKey, false);
+            const snapshotNote = snapshotMissing
+                ? '<p class="snapshot-note">ID snapshot unavailable</p>'
+                : '';
+            const statsHtml = itemData ? `<div class="item-stats">${renderStats(itemData, rateData)}</div>` : '';
+            const shinyHtml = shiny
+                ? `<p class="shiny-value"><img src="../../../resources/shiny.png" class="shiny-icon" alt="Shiny"> ${shiny}</p>`
+                : '';
+
+            const itemCard = document.createElement('div');
+            itemCard.classList.add('item-card');
+            itemCard.innerHTML = `
+                <img src="${icon}" alt="${itemName}" class="item-icon">
+                <h3 style="color: ${tierColor};">${itemName}${ratingHtml}</h3>
+                <p class="item-scale">Scale: <span style="color: #DDA0DD;">${scaleName}</span>${weightHtml}</p>
+                <p class="item-owner">Owner: <span style="color: ${ownerColor};">${owner}</span></p>
+                ${snapshotNote}
+                ${shinyHtml}
+                ${statsHtml}
+                ${scaleSection}
+            `;
+
+            itemCardsContainer.appendChild(itemCard);
+            renderedItems.add(itemName);
         }
     }
+
+    for (const itemName of Object.keys(weights)) {
+        if (renderedItems.has(itemName)) {
+            continue;
+        }
+
+        const info = mythicInfo[itemName] || {};
+        const itemType = typeof info.item_type === 'string' ? info.item_type.toLowerCase() : null;
+        if (!itemType || !selectedTypes.includes(itemType)) {
+            continue;
+        }
+
+        const icon = getDisplayIcon(info.icon || '', itemType);
+        const tier = normalizeTier(info.item_tier || 'mythic');
+        const tierColor = tierColors[tier] || tierColors.mythic;
+        const cardKey = makeCardKey(itemName, 'unranked', 'full');
+
+        const itemCard = document.createElement('div');
+        itemCard.classList.add('item-card');
+        itemCard.innerHTML = `
+            <img src="${icon}" alt="${itemName}" class="item-icon">
+            <h3 style="color: ${tierColor};">${itemName}</h3>
+            <p class="item-owner">Owner: <span style="color: #888;">None</span></p>
+            ${renderScaleSection(itemName, weights[itemName], cardKey, false)}
+        `;
+        itemCardsContainer.appendChild(itemCard);
+    }
+}
+
+function renderScaleOnlyMode(itemCardsContainer, rankedItems, weights, mythicInfo, selectedTypes) {
+    const orderedItems = [];
+    const seen = new Set();
+
+    for (const itemName of Object.keys(rankedItems)) {
+        if (!seen.has(itemName)) {
+            seen.add(itemName);
+            orderedItems.push(itemName);
+        }
+    }
+    for (const itemName of Object.keys(weights)) {
+        if (!seen.has(itemName)) {
+            seen.add(itemName);
+            orderedItems.push(itemName);
+        }
+    }
+
+    for (const itemName of orderedItems) {
+        const info = mythicInfo[itemName] || {};
+        const scales = weights[itemName] || null;
+
+        let itemType = info.item_type || null;
+        let tierRaw = info.item_tier || null;
+        let iconRaw = info.icon || '';
+
+        if (!itemType && rankedItems[itemName] && typeof rankedItems[itemName] === 'object') {
+            for (const scaleName of Object.keys(rankedItems[itemName])) {
+                const entry = rankedItems[itemName][scaleName];
+                if (!entry || typeof entry !== 'object') {
+                    continue;
+                }
+                const stats = entry.stats && typeof entry.stats === 'object' ? entry.stats : null;
+                itemType = itemType || (stats && stats.item_type) || entry.item_type || null;
+                tierRaw = tierRaw || (stats && stats.item_tier) || entry.item_tier || null;
+                iconRaw = iconRaw || (stats && stats.icon) || entry.icon || '';
+            }
+        }
+
+        itemType = typeof itemType === 'string' ? itemType.toLowerCase() : null;
+        if (!itemType || !selectedTypes.includes(itemType)) {
+            continue;
+        }
+
+        const icon = getDisplayIcon(iconRaw, itemType);
+        const tier = normalizeTier(tierRaw || 'mythic');
+        const tierColor = tierColors[tier] || tierColors.mythic;
+        const cardKey = makeCardKey(itemName, 'scale-only', 'scale-only');
+
+        const itemCard = document.createElement('div');
+        itemCard.classList.add('item-card', 'scale-only-card');
+        itemCard.innerHTML = `
+            <img src="${icon}" alt="${itemName}" class="item-icon">
+            <h3 style="color: ${tierColor};">${itemName}</h3>
+            ${renderScaleSection(itemName, scales, cardKey, true)}
+        `;
+
+        itemCardsContainer.appendChild(itemCard);
+    }
+}
+
+function renderScaleSection(itemName, scales, cardKey, expandedByDefault) {
+    const scaleId = `scales-${cardKey}`;
+    const buttonText = expandedByDefault ? 'Hide Scales' : 'Show Scales';
+    const displayStyle = expandedByDefault ? 'block' : 'none';
+
+    return `
+        <button class="show-scales-btn" onclick="toggleScales(event, '${scaleId}')">${buttonText}</button>
+        <div class="scale-details" id="${scaleId}" style="display:${displayStyle}">${renderScales(scales)}</div>
+    `;
+}
+
+function makeCardKey(itemName, scaleName, mode) {
+    return [itemName, scaleName, mode].map(part => String(part)
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+    ).join('-');
+}
+
+function normalizeTier(tier) {
+    if (!tier || typeof tier !== 'string') {
+        return 'mythic';
+    }
+    return tier.toLowerCase();
+}
+
+function getDisplayIcon(icon, itemType) {
+    if (armorTypes.includes(itemType)) {
+        return `../../../resources/${itemType}.png`;
+    }
+    return icon || '';
 }
 
 function renderStats(stats, rateData) {
     let statsHtml = '';
+    if (!stats || typeof stats !== 'object') {
+        return statsHtml;
+    }
 
     for (const stat in stats) {
         if (stat !== 'icon' && stat !== 'item_type' && stat !== 'shiny' && stat !== 'item_tier' && stats[stat] !== null) {
+            const rate = rateData && typeof rateData[stat] === 'number' ? rateData[stat] : null;
             statsHtml += `
                 <div class="stat-row">
                     <span class="stat-value">${stats[stat]}</span>
-                    <span class="stat-name">${mapping[stat]}</span>
-                    ${rateData[stat] !== undefined ? `<span class="stat-rate" style="color:${getRateColor(rateData[stat])}">[${rateData[stat]}%]</span>` : ''}
+                    <span class="stat-name">${mapping[stat] || stat}</span>
+                    ${rate !== null ? `<span class="stat-rate" style="color:${getRateColor(rate)}">[${rate}%]</span>` : ''}
                 </div>
             `;
         }
     }
-
     return statsHtml;
 }
 
 function renderScales(scales) {
-    let scalesHtml = '';
-
-    for (const scale in scales) {
-        scalesHtml += `<div class="scale-row"><strong>${scale} Scale:</strong></div>`;
-        for (const stat in scales[scale]) {
-            scalesHtml += `<div><span>${mapping[stat] || stat}: <span style="color:${getRateColor(scales[scale][stat])}">${scales[scale][stat]}%</span></span></div>`;
-        }
-        scalesHtml += `<div class="scale-spacing"></div>`;
+    if (!scales || typeof scales !== 'object') {
+        return '<p>No scale data available</p>';
     }
 
+    const scaleKeys = Object.keys(scales);
+    if (!scaleKeys.length) {
+        return '<p>No scale data available</p>';
+    }
+
+    let scalesHtml = '';
+    for (const scale of scaleKeys) {
+        const scaleStats = scales[scale];
+        scalesHtml += `<div class="scale-row"><strong>${scale} Scale:</strong></div>`;
+        if (!scaleStats || typeof scaleStats !== 'object') {
+            scalesHtml += '<div><span>No scale data available</span></div>';
+            scalesHtml += '<div class="scale-spacing"></div>';
+            continue;
+        }
+
+        for (const stat in scaleStats) {
+            const value = scaleStats[stat];
+            const color = getRateColor(value);
+            const displayValue = typeof value === 'number' ? `${value}%` : value;
+            scalesHtml += `<div><span>${mapping[stat] || stat}: <span style="color:${color}">${displayValue}</span></span></div>`;
+        }
+        scalesHtml += '<div class="scale-spacing"></div>';
+    }
     return scalesHtml;
 }
 
 function getOverallRating(rateData) {
-    const values = Object.values(rateData);
+    const values = Object.values(rateData).filter(value => typeof value === 'number' && Number.isFinite(value));
+    if (!values.length) {
+        return 'N/A';
+    }
+
     const total = values.reduce((sum, value) => sum + value, 0);
     return (total / values.length).toFixed(2);
 }
 
 function getRateColor(rate) {
+    const numericRate = Number(rate);
+    if (!Number.isFinite(numericRate)) {
+        return '#cccccc';
+    }
+
     const red = [255, 0, 0];
     const orange = [255, 165, 0];
     const yellow = [255, 255, 0];
     const green = [0, 255, 0];
     const cyan = [0, 255, 255];
 
-    if (rate <= 50) {
-        return interpolateColor(red, orange, rate / 50);
-    } else if (rate <= 75) {
-        return interpolateColor(orange, yellow, (rate - 50) / 20);
-    } else if (rate <= 90) {
-        return interpolateColor(yellow, green, (rate - 75) / 15);
-    } else {
-        return interpolateColor(green, cyan, (rate - 90) / 10);
+    if (numericRate <= 50) {
+        return interpolateColor(red, orange, numericRate / 50);
+    } else if (numericRate <= 75) {
+        return interpolateColor(orange, yellow, (numericRate - 50) / 25);
+    } else if (numericRate <= 90) {
+        return interpolateColor(yellow, green, (numericRate - 75) / 15);
     }
+    return interpolateColor(green, cyan, (numericRate - 90) / 10);
 }
 
 function interpolateColor(color1, color2, factor) {
+    const safeFactor = Math.max(0, Math.min(1, factor));
     const result = color1.slice();
     for (let i = 0; i < 3; i++) {
-        result[i] = Math.round(result[i] + factor * (color2[i] - result[i]));
+        result[i] = Math.round(result[i] + safeFactor * (color2[i] - result[i]));
     }
     return `rgb(${result[0]}, ${result[1]}, ${result[2]})`;
 }
@@ -252,39 +553,29 @@ const mapping = {
     "knockback": "Knockback %",
     "weakenEnemy": "Weaken Enemy %",
     "slowEnemy": "Slow Enemy %",
-    "elementalDefence": "Elemental Defence %",
     "damageFromMobs": "Damage From Mobs %",
     "maxMana": "Max Mana %",
     "rawMaxMana": "Max Mana",
     "mainAttackRange": "Main Attack Range",
     "criticalDamageBonus": "Critical Damage Bonus"
- };
- 
-
-const tierColors = {
-    "mythic": "#AA00AA",
-    "fabled": "#FF5555",
-    "legendary": "#55FFFF",
-    "rare": "#FF55FF",
-    "unique": "#c1c11f",
-    "common": "#FFFFFF"
 };
 
-function toggleScales(event, itemName) {
-    const scaleDetails = document.getElementById(`scales-${itemName}`);
-    const isVisible = scaleDetails.style.display === 'block';
+const tierColors = {
+    mythic: '#AA00AA',
+    fabled: '#FF5555',
+    legendary: '#55FFFF',
+    rare: '#FF55FF',
+    unique: '#c1c11f',
+    common: '#FFFFFF'
+};
 
-    const allScales = document.querySelectorAll('.scale-details');
-    allScales.forEach(scale => scale.style.display = 'none');
-
-    const allButtons = document.querySelectorAll('.show-scales-btn');
-    allButtons.forEach(button => button.textContent = 'Show Scales');
-
-    if (isVisible) {
-        scaleDetails.style.display = 'none';
-        event.target.textContent = 'Show Scales';
-    } else {
-        scaleDetails.style.display = 'block';
-        event.target.textContent = 'Hide Scales';
+function toggleScales(event, scaleId) {
+    const scaleDetails = document.getElementById(scaleId);
+    if (!scaleDetails) {
+        return;
     }
+
+    const isVisible = scaleDetails.style.display === 'block';
+    scaleDetails.style.display = isVisible ? 'none' : 'block';
+    event.target.textContent = isVisible ? 'Show Scales' : 'Hide Scales';
 }

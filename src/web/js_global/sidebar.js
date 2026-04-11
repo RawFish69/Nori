@@ -57,7 +57,7 @@ function createSidebar() {
             subItems: [
                 { name: 'Item Analysis', url: 'https://nori.fish/wynn/item/analysis' },
                 { name: 'Item Lootpool', url: 'https://nori.fish/wynn/item/lootpool' },
-                { name: 'Aspect Lootpool', url: 'https://nori.fish/wynn/aspects' },
+                { name: 'Raid Lootpool', url: 'https://nori.fish/wynn/raids' },
                 { name: 'Item Simulation', url: 'https://nori.fish/wynn/item/simulation' },
                 { name: 'Item Changelog', url: 'https://nori.fish/wynn/item/changelog' },
                 { name: 'Mythic Items', url: 'https://nori.fish/wynn/item/mythic' },
@@ -205,5 +205,3 @@ document.addEventListener("DOMContentLoaded", function() {
     
     createSidebar();
 });
-
-

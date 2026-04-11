@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../../fish_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori-Wynn Raid Lootpool" />
+    <meta property="og:description" content="Weekly raid aspects, daily raid gambits, and raid item lootpool rotation." />
+    <meta property="og:url" content="https://nori.fish/wynn/raids" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
+    <title>Nori-Wynn Raid Lootpool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../css_global/default.css">
+    <link rel="stylesheet" href="../../css_global/sidebar.css">
+    <link rel="stylesheet" href="../../css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <script src="../../js_global/sidebar.js"></script>
+    <script src="../../js_global/fetch_raids.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../../js_global/analytics.js"></script>
+    <script src="../../js_global/config.js"></script>
+    <script src="../../js_global/layout.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="brand">
+                <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo">
+                <div>
+                    <h1>Nori-Wynn</h1>
+                    <div class="subtitle">Raid Lootpool</div>
+                </div>
+            </div>
+            <nav aria-label="Main navigation">
+                <!-- Navigation links will be inserted by layout.js -->
+            </nav>
+        </div>
+    </header>
+
+    <div id="menu-button" onclick="toggleSidebar()">&#9776;</div>
+    <div id="sidebar"></div>
+
+    <main class="container">
+        <div class="page-header">
+            <h2 id="lootpool-title" class="page-title">
+                <span class="loading-spinner"></span>
+                Updating Raid Lootpool...
+            </h2>
+            <div id="countdown-container" class="countdown-section"></div>
+            <div id="gambit-overview" class="gambit-overview"></div>
+        </div>
+
+        <div id="source-filters" class="source-toggles">
+            <button class="source-pill active" id="source-all" data-source="all">All</button>
+            <button class="source-pill" id="source-aspects" data-source="aspects">Aspects only</button>
+            <button class="source-pill" id="source-items" data-source="items">Items only</button>
+        </div>
+
+        <div id="lootpool-filters" class="filter-pills">
+            <button class="filter-pill active mythic" data-filter="mythic" id="toggle-mythic">Mythic</button>
+            <button class="filter-pill active fabled" data-filter="fabled" id="toggle-fabled">Fabled</button>
+            <button class="filter-pill active legendary" data-filter="legendary" id="toggle-legendary">Legendary</button>
+            <button class="filter-pill active rare" data-filter="rare" id="toggle-rare">Rare</button>
+            <button class="filter-pill active unique" data-filter="unique" id="toggle-unique">Unique</button>
+            <button class="filter-pill active misc" data-filter="misc" id="toggle-misc">Misc</button>
+        </div>
+
+        <div id="lootpool" class="lootpool-container"></div>
+
+        <div class="action-buttons">
+            <button class="primary-button" onclick="window.location.href='https://nori.fish/wynn/item/lootpool'">
+                Lootrun Item Rewards
+            </button>
+        </div>
+
+        <div class="post-action-notes">
+            <p class="page-subtitle">
+                Join <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="discord-link">Community Discord</a> to follow Nori updates and post feedback
+            </p>
+            <p class="cache-refresh-hint">If this page looks broken or does not load properly, clear cache and refresh.</p>
+            <p class="aspect-hover-hint">Tip: Hover an aspect item to view tier descriptions.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024-2026 Nori, All rights reserved. Web URL: nori.fish</p>
+    </footer>
+</body>
+</html>

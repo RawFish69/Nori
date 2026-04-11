@@ -1,4 +1,3 @@
-/* Modern Reset & Base Styles (mirroring aspects page) */
 * {
     margin: 0;
     padding: 0;
@@ -18,8 +17,7 @@
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
     --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.3);
-    
-    /* Rarity Colors */
+
     --mythic: #aa00ff;
     --fabled: #ff5555;
     --legendary: #00d4d4;
@@ -45,14 +43,14 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 70% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
 
-/* Header Styles */
+/* Header */
 header {
     background: rgba(17, 24, 39, 0.8);
     backdrop-filter: blur(12px);
@@ -78,10 +76,7 @@ header {
     gap: 1rem;
 }
 
-nav {
-    display: flex;
-    gap: 1.5rem;
-}
+nav { display: flex; gap: 1.5rem; }
 
 .brand img {
     width: 48px;
@@ -110,15 +105,13 @@ nav a {
     color: var(--text-secondary);
     text-decoration: none;
     margin: 0 1rem;
-    transition: all 0.3s ease;
+    transition: color 0.2s ease;
     font-weight: 500;
 }
 
-nav a:hover {
-    color: var(--accent-primary);
-}
+nav a:hover { color: var(--accent-primary); }
 
-/* Container (override global .container to use full width) */
+/* Main container */
 main.container {
     width: 100%;
     max-width: 100%;
@@ -145,19 +138,12 @@ main.container {
     gap: 1rem;
 }
 
-/* Light theme adjustments */
 :root:not(.site-dark) .page-title {
     color: #1f2937;
     background: linear-gradient(135deg, #1f2937, #374151);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-}
-
-.page-title img {
-    width: 80px;
-    height: 80px;
-    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
 }
 
 .loading-spinner {
@@ -170,37 +156,32 @@ main.container {
     animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 .page-subtitle {
     font-size: 1.125rem;
     color: var(--text-secondary);
 }
 
+.cache-refresh-hint {
+    margin-top: 0.45rem;
+    font-size: 0.86rem;
+    color: #fbbf24;
+    opacity: 0.95;
+}
+
+:root:not(.site-dark) .cache-refresh-hint {
+    color: #92400e;
+}
+
 .discord-link {
     color: var(--accent-primary);
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
-    position: relative;
+    transition: opacity 0.2s ease;
 }
 
-.discord-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-primary);
-    transition: width 0.3s ease;
-}
-
-.discord-link:hover::after {
-    width: 100%;
-}
+.discord-link:hover { opacity: 0.8; }
 
 /* Filter Pills */
 .filter-pills {
@@ -220,7 +201,7 @@ main.container {
     font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -230,72 +211,35 @@ main.container {
 .pill-icon {
     font-size: 0.875rem;
     opacity: 0.7;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
-.filter-pill:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
+.filter-pill:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
-.filter-pill.active {
-    color: white;
-    box-shadow: var(--shadow-lg);
-}
-
-.filter-pill.active .pill-icon {
-    opacity: 1;
-    animation: sparkle 2s ease-in-out infinite;
-}
+.filter-pill.active { color: white; box-shadow: var(--shadow-lg); }
+.filter-pill.active .pill-icon { opacity: 1; animation: sparkle 2s ease-in-out infinite; }
 
 @keyframes sparkle {
     0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
     50% { opacity: 0.8; transform: scale(1.15) rotate(180deg); }
 }
 
-.filter-pill.mythic.active {
-    background: linear-gradient(135deg, var(--mythic), #8800cc);
-    border-color: var(--mythic);
-}
+.filter-pill.mythic.active   { background: linear-gradient(135deg, var(--mythic), #8800cc);   border-color: var(--mythic); }
+.filter-pill.fabled.active   { background: linear-gradient(135deg, var(--fabled), #cc3333);   border-color: var(--fabled); }
+.filter-pill.legendary.active{ background: linear-gradient(135deg, var(--legendary), #00aaaa); border-color: var(--legendary); }
+.filter-pill.rare.active     { background: linear-gradient(135deg, var(--rare), #d926d9);     border-color: var(--rare); }
+.filter-pill.unique.active   { background: linear-gradient(135deg, var(--unique), #a1a11a);   border-color: var(--unique); }
+.filter-pill.misc.active     { background: linear-gradient(135deg, #6b7280, #374151);          border-color: #6b7280; }
 
-.filter-pill.fabled.active {
-    background: linear-gradient(135deg, var(--fabled), #cc3333);
-    border-color: var(--fabled);
-}
+/* ─── Lootpool layout ────────────────────────────────────────────── */
 
-.filter-pill.legendary.active {
-    background: linear-gradient(135deg, var(--legendary), #00aaaa);
-    border-color: var(--legendary);
-}
-
-.filter-pill.rare.active {
-    background: linear-gradient(135deg, var(--rare), #d926d9);
-    border-color: var(--rare);
-}
-
-.filter-pill.unique.active {
-    background: linear-gradient(135deg, var(--unique), #a1a11a);
-    border-color: var(--unique);
-}
-
-/* Lootpool Container - single row on desktop, wraps on smaller screens */
 .lootpool-container {
     display: flex;
     flex-wrap: nowrap;
-    gap: 1rem;
+    gap: 0;
     margin-bottom: 3rem;
-    justify-content: center;
-}
-
-/* Lootpool Cards */
-.lootpool-card {
-    background: rgba(31, 41, 55, 0.4);
-    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 1.5rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
+    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -305,206 +249,275 @@ main.container {
     min-width: 0;
 }
 
-.lootpool-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-    opacity: 0;
-    transition: opacity 0.3s ease;
+/* Region columns */
+.lootpool-card {
+    padding: 1.25rem 1.5rem;
+    border-right: 1px solid var(--border-color);
+    background: none;
 }
 
-.lootpool-card:hover::before {
-    opacity: 1;
-}
+.lootpool-card:last-child { border-right: none; }
 
-.lootpool-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-xl);
-    border-color: rgba(139, 92, 246, 0.3);
-}
-
+/* Region header — plain text + bottom rule */
 .region-title {
-    font-size: 1.25rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    padding-bottom: 0.625rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
-    padding: 0.75rem;
-    background: rgba(139, 92, 246, 0.15);
-    border-radius: 8px;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: none;
+    border-radius: 0;
+    transition: color 0.2s ease;
 }
+
+.region-title:hover { color: var(--text-primary); }
 
 .region-title::after {
-    content: '▼';
+    content: '▾';
     font-size: 0.875rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.25s ease;
+    opacity: 0.5;
 }
 
-.lootpool-card:not(.active) .region-title::after {
-    transform: rotate(-90deg);
-}
+.lootpool-card:not(.active) .region-title::after { transform: rotate(-90deg); }
 
-.region-title:hover {
-    background: rgba(139, 92, 246, 0.25);
-}
+.lootpool-card-content { display: none; }
+.lootpool-card.active .lootpool-card-content { display: block; }
 
-.lootpool-card-content {
-    display: none;
-    animation: fadeIn 0.3s ease;
-}
-
-.lootpool-card.active .lootpool-card-content {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Rarity Sections */
+/* Rarity labels — colored text only, ruled above */
 .rarity-title {
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.625rem 1rem;
-    margin: 1rem 0 0.75rem 0;
-    border-radius: 8px;
-    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.6rem 0 0.2rem;
+    margin-top: 0.25rem;
+    border-top: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0;
+    background: none !important;
+    border-radius: 0;
 }
 
-.rarity-title::before {
-    content: '✦';
-    font-size: 0.875rem;
-}
+.rarity-title:first-child { border-top: none; padding-top: 0; margin-top: 0; }
 
-.mythic-color {
-    color: var(--mythic);
-    background: rgba(170, 0, 255, 0.1);
-}
+/* Rarity colors — color only, never background */
+.mythic-color    { color: var(--mythic);    background: none; }
+.fabled-color    { color: var(--fabled);    background: none; }
+.legendary-color { color: var(--legendary); background: none; }
+.rare-color      { color: var(--rare);      background: none; }
+.unique-color    { color: var(--unique);    background: none; }
+.misc-color      { color: #9ca3af;          background: none; }
+.shiny-color     { color: var(--shiny);     background: none; }
+.no-ward-item    { color: #f9fafb; background: none; }
 
-.fabled-color {
-    color: var(--fabled);
-    background: rgba(255, 85, 85, 0.1);
-}
-
-.legendary-color {
-    color: var(--legendary);
-    background: rgba(0, 212, 212, 0.1);
-}
-
-.rare-color {
-    color: var(--rare);
-    background: rgba(255, 85, 255, 0.1);
-}
-
-.unique-color {
-    color: var(--unique);
-    background: rgba(193, 193, 31, 0.12);
-}
-
-.shiny-color {
-    color: var(--shiny);
-    background: rgba(251, 191, 36, 0.12);
-}
-
-/* Item Lists */
+/* Item rows — no boxes, just plain rows */
 ul {
     list-style: none;
-    margin-bottom: 0.75rem;
+    margin: 0;
+    padding: 0;
 }
 
 li {
-    background: rgba(17, 24, 39, 0.4);
-    padding: 0.75rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
+    padding: 0.3rem 0;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-    flex-wrap: wrap;
-    word-break: break-word;
+    gap: 0.625rem;
+    background: none !important;
+    border: none !important;
+    border-radius: 0;
+    word-break: normal;
+    overflow-wrap: normal;
+    transition: opacity 0.15s ease;
 }
 
-li:hover {
-    background: rgba(17, 24, 39, 0.6);
-    border-color: var(--border-color);
-    transform: translateX(4px);
-}
+li + li { border-top: 1px solid rgba(255, 255, 255, 0.04) !important; }
 
-/* Shiny header/list styling */
+li:hover { opacity: 0.75; }
+
+/* Shiny — just a gold left accent, no box */
 .shiny-item {
-    font-weight: 600;
-    background: rgba(17, 24, 39, 0.75);
-    border-radius: 10px;
-    border: 1px solid rgba(251, 191, 36, 0.4);
+    border-left: 2px solid var(--shiny) !important;
+    padding-left: 0.12rem !important;
+    gap: 0.2rem;
+    background: none !important;
+    align-items: flex-start;
 }
 
-.shiny-item .label {
-    display: block;
+.shiny-item .item-icon {
+    margin-right: 0.42rem;
+}
+
+.shiny-item .shiny-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    min-width: 0;
 }
 
 .shiny-item .item-name {
     color: #fde68a;
+    font-weight: 600;
+    display: block;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    line-height: 1.25;
+}
+
+.lootpool-card-content li > .item-name {
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    line-height: 1.25;
 }
 
 .shiny-item .tracker {
-    font-weight: normal;
+    display: block;
     font-style: italic;
     color: rgb(16, 185, 129);
+    font-size: 0.8em;
+    line-height: 1.25;
 }
 
-/* Light theme adjustments for better readability */
-:root:not(.site-dark) li {
-    background: rgba(255, 255, 255, 0.8);
-    color: #1f2937;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+.item-count {
+    margin-left: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-secondary);
 }
 
-:root:not(.site-dark) li:hover {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-:root:not(.site-dark) .lootpool-card {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-:root:not(.site-dark) .region-title {
-    background: rgba(139, 92, 246, 0.1);
-    color: #1f2937;
-}
-
-:root:not(.site-dark) .region-title:hover {
-    background: rgba(139, 92, 246, 0.2);
-}
-
+/* Item icons */
 .item-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    box-shadow: var(--shadow-sm);
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    flex-shrink: 0;
 }
 
 .shiny-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
-    margin-right: 2px;
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* Coming-soon columns */
+.coming-soon-card {
+    padding: 1.25rem 1.5rem;
+    border-right: 1px solid var(--border-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 120px;
+    background: none;
+}
+
+.coming-soon-card:last-child { border-right: none; }
+
+.coming-soon-card .region-title {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.coming-soon-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fbbf24;
+}
+
+.coming-soon-subtext {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Light theme */
+:root:not(.site-dark) .lootpool-container {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+:root:not(.site-dark) .lootpool-card {
+    border-right-color: rgba(0, 0, 0, 0.1);
+}
+
+:root:not(.site-dark) .lootpool-card:last-child { border-right: none; }
+
+:root:not(.site-dark) .region-title {
+    color: #6b7280;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+:root:not(.site-dark) .region-title:hover { color: #1f2937; }
+
+:root:not(.site-dark) .rarity-title { border-top-color: rgba(0, 0, 0, 0.08); }
+
+:root:not(.site-dark) li + li { border-top-color: rgba(0, 0, 0, 0.05) !important; }
+:root:not(.site-dark) .no-ward-item { color: #111827; }
+
+/* Dark theme guardrails: keep the simplified lootpool layout */
+:root.site-dark .lootpool-container {
+    background: transparent !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+}
+
+:root.site-dark .lootpool-card,
+:root.site-dark .coming-soon-card {
+    background: transparent !important;
+    border: none !important;
+    border-right: 1px solid var(--border-color) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+:root.site-dark .lootpool-card:last-child,
+:root.site-dark .coming-soon-card:last-child {
+    border-right: none !important;
+}
+
+:root.site-dark .region-title {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--text-secondary) !important;
+}
+
+:root.site-dark .rarity-title {
+    background: transparent !important;
+    border: none !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+:root.site-dark .rarity-title:first-child {
+    border-top: none !important;
+}
+
+:root.site-dark .shiny-item {
+    background: transparent !important;
+    border-color: var(--shiny) !important;
+}
+
+:root.site-dark li + li {
+    border-top-color: rgba(255, 255, 255, 0.04) !important;
 }
 
 /* Countdown Timer */
@@ -531,15 +544,9 @@ li:hover {
     color: var(--text-primary);
 }
 
-/* Light theme adjustments for countdown label */
-:root:not(.site-dark) #countdown-label {
-    color: #1f2937;
-}
+:root:not(.site-dark) #countdown-label { color: #1f2937; }
 
-.countdown-container {
-    display: flex;
-    gap: 0.75rem;
-}
+.countdown-container { display: flex; gap: 0.75rem; }
 
 .countdown-segment {
     background: linear-gradient(135deg, #374151, #1f2937);
@@ -552,19 +559,12 @@ li:hover {
     align-items: center;
     min-width: 80px;
     box-shadow: var(--shadow-md);
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
-.countdown-segment:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
+.countdown-segment:hover { transform: translateY(-2px); }
 
-.countdown-segment div {
-    font-size: 1.75rem;
-    font-weight: 700;
-    line-height: 1;
-}
+.countdown-segment div { font-size: 1.75rem; font-weight: 700; line-height: 1; }
 
 .countdown-segment span {
     font-size: 0.75rem;
@@ -582,6 +582,19 @@ li:hover {
     margin-top: 3rem;
 }
 
+.post-action-notes {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.post-action-notes .page-subtitle {
+    margin: 0;
+}
+
+.post-action-notes .cache-refresh-hint {
+    margin-top: 0.45rem;
+}
+
 .primary-button {
     background: linear-gradient(135deg, #0ea5e9, #0284c7);
     color: white;
@@ -591,7 +604,7 @@ li:hover {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     box-shadow: var(--shadow-md);
     display: flex;
     align-items: center;
@@ -604,9 +617,7 @@ li:hover {
     background: linear-gradient(135deg, #0284c7, #0369a1);
 }
 
-.button-icon {
-    font-size: 1.25rem;
-}
+.button-icon { font-size: 1.25rem; }
 
 /* Footer */
 footer {
@@ -618,145 +629,44 @@ footer {
     margin-top: 4rem;
 }
 
-/* Coming Soon Section (for Fruma placeholders) */
-.coming-soon-section {
-    margin-bottom: 3rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-}
-
-.coming-soon-card {
-    background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.3), rgba(17, 24, 39, 0.96));
-    border-radius: 20px;
-    padding: 1.75rem 2rem;
-    border: 1px solid rgba(56, 189, 248, 0.5);
-    box-shadow: var(--shadow-lg);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.coming-soon-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    background: rgba(15, 23, 42, 0.9);
-    color: #22d3ee;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
-}
-
-.coming-soon-title {
-    margin-top: 0.9rem;
-    margin-bottom: 0.35rem;
-    font-size: 1.45rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #f9fafb;
-    position: relative;
-    z-index: 1;
-}
-
-.coming-soon-text {
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #fbbf24;
-    margin-bottom: 0.35rem;
-    position: relative;
-    z-index: 1;
-}
-
-.coming-soon-subtext {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    max-width: 320px;
-    margin: 0.25rem auto 0;
-    position: relative;
-    z-index: 1;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 900px) {
     .lootpool-container {
         flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 1rem;
+        border-radius: 12px;
     }
 
     .lootpool-card,
     .coming-soon-card {
-        flex: 0 1 calc(33.33% - 0.67rem);
-        max-width: calc(33.33% - 0.67rem);
-        min-width: 0;
+        flex: 0 1 calc(50% - 0px);
+        max-width: 50%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
     }
+
+    .lootpool-card:nth-child(odd) { border-right: 1px solid var(--border-color); }
+    .lootpool-card:last-child,
+    .coming-soon-card:last-child { border-bottom: none; }
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 1.5rem 1rem;
-    }
-
-    .page-title {
-        font-size: 1.875rem;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .lootpool-container {
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .lootpool-card,
-    .coming-soon-card {
-        flex: 0 1 calc(50% - 0.5rem);
-        max-width: calc(50% - 0.5rem);
-    }
-
-    .filter-pills {
-        gap: 0.5rem;
-        justify-content: flex-start;
-    }
-
-    .filter-pill {
-        padding: 0.5rem 1rem;
-        font-size: 0.8125rem;
-    }
-
-    .countdown-segment {
-        min-width: 65px;
-        padding: 0.75rem 1rem;
-    }
-
-    header {
-        padding: 1rem;
-    }
-
-    .brand h1 {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 420px) {
+@media (max-width: 600px) {
     .lootpool-card,
     .coming-soon-card {
         flex: 1 1 100%;
         max-width: 100%;
+        border-right: none !important;
+        border-bottom: 1px solid var(--border-color);
     }
 }
 
-/* Hidden Utility */
-.hidden {
-    display: none !important;
+@media (max-width: 768px) {
+    .container { padding: 1.5rem 1rem; }
+    .page-title { font-size: 1.875rem; flex-wrap: wrap; gap: 0.5rem; }
+    .filter-pills { gap: 0.5rem; justify-content: flex-start; }
+    .filter-pill { padding: 0.5rem 1rem; font-size: 0.8125rem; }
+    .countdown-segment { min-width: 65px; padding: 0.75rem 1rem; }
+    header { padding: 1rem; }
+    .brand h1 { font-size: 1.5rem; }
 }
 
+.hidden { display: none !important; }

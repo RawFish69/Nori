@@ -1,79 +1,115 @@
 document.addEventListener('DOMContentLoaded', () => {
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-    }
+    document.getElementById('lootpool-filters').style.display = 'none';
+    const lastKnownTimestamp = Number(localStorage.getItem('item_lootpool_last_timestamp') || 0);
 
-    function setTokens() {
-        return fetch('https://nori.fish/api/tokens', {
-            method: 'GET',
-            credentials: 'include'
-        });
-    }
-
-    setTokens().then(() => {
-        const csrfToken = getCookie('csrf_token');
-        console.log("Session token generated.")
-        document.getElementById('lootpool-filters').style.display = 'none';
-        fetch('https://nori.fish/api/lootpool', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': csrfToken
-            },
-            credentials: 'include' 
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data && data.Timestamp) {
-                const currentTimestamp = Math.floor(Date.now() / 1000);
-                const nextUpdateTimestamp = data.Timestamp + 604800;
-                if (currentTimestamp > nextUpdateTimestamp) {
-                    if (data.Timestamp === lastKnownTimestamp) {
-                        updateLootpoolTitle(nextUpdateTimestamp);
-                        displayUpdatingMessage();
-                    } else {
-                        updateLootpoolTitle(data.Timestamp);
-                        displayLootpool(data.Loot, data.Icon);
-                    }
+    fetch('https://nori.fish/api/lootpool', {
+        method: 'GET',
+        credentials: 'omit'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data && data.Timestamp) {
+            const currentTimestamp = Math.floor(Date.now() / 1000);
+            const nextUpdateTimestamp = data.Timestamp + 604800;
+            if (currentTimestamp > nextUpdateTimestamp) {
+                if (data.Timestamp === lastKnownTimestamp) {
+                    updateLootpoolTitle(nextUpdateTimestamp);
+                    displayUpdatingMessage();
                 } else {
                     updateLootpoolTitle(data.Timestamp);
                     displayLootpool(data.Loot, data.Icon);
-                    startCountdown(nextUpdateTimestamp - currentTimestamp);
-                    console.log("Lootpool fetched successfully.");
                 }
-                document.getElementById('lootpool-filters').style.display = 'flex';
             } else {
-                console.error('Invalid data structure:', data);
-                alert('Failed to fetch lootpool data.');
+                updateLootpoolTitle(data.Timestamp);
+                displayLootpool(data.Loot, data.Icon);
+                startCountdown(nextUpdateTimestamp - currentTimestamp);
+                console.log("Lootpool fetched successfully.");
             }
-        })
-        .catch(error => console.error('Error fetching the JSON:', error));
-    }).catch(error => console.error('Error setting tokens:', error));
+            localStorage.setItem('item_lootpool_last_timestamp', String(data.Timestamp));
+            document.getElementById('lootpool-filters').style.display = 'flex';
+        } else {
+            console.error('Invalid data structure:', data);
+            alert('Failed to fetch lootpool data.');
+        }
+    })
+    .catch(error => console.error('Error fetching the JSON:', error));
     setupTierFilters();
 });
 
+const WARD_ICON_BY_NAME = {
+    "yellow ward": "yellow_ward.png",
+    "white ward": "white_ward.png",
+    "red ward": "red_ward.png",
+    "purple ward": "purple_ward.png",
+    "pink ward": "pink_ward.png",
+    "orange ward": "orange_ward.png",
+    "green ward": "green_ward.png",
+    "cyan ward": "cyan_ward.png",
+    "blue ward": "blue_ward.png",
+    "black ward": "black_ward.png"
+};
 
-function formatIconUrl(iconUrl) {
-    if (iconUrl === null || iconUrl === undefined) {
+const MISC_ICON_BY_NAME = {
+    "liquid emerald": "liquid_emerald.png",
+    "emerald block": "emerald_block.png",
+    "emerald": "emerald.png",
+    "packed crafter bag [1/1]": "crafter_packed.png",
+    "stuffed crafter bag [1/1]": "crafter_stuffed.png",
+    "varied crafter bag [1/1]": "crafter_varied.png",
+    "corkian insulator": "insulator.png",
+    "corkian simulator": "simulator.png",
+    "tol rune": "tol.png",
+    "uth rune": "uth.png",
+    "nii rune": "nii.png",
+    "az rune": "az.png",
+    "ek rune": "ek.png"
+};
+
+
+function formatIconUrl(iconUrl, itemName = null) {
+    let resolved = iconUrl;
+    if ((resolved === null || resolved === undefined || resolved === "") && typeof itemName === "string") {
+        resolved = resolveSpecialItemIcon(itemName);
+    }
+    if (resolved === null || resolved === undefined || typeof resolved !== "string") {
         return null;
     }
     const armorTypes = ["helmet", "chestplate", "leggings", "boots"];
     for (const type of armorTypes) {
-        if (iconUrl.toLowerCase().includes(type)) {
+        if (resolved.toLowerCase().includes(type)) {
             return `../../../resources/${type}.png`;
         }
     }
-    if (!iconUrl.startsWith("http") && iconUrl.endsWith(".png")) {
-        return `../../../resources/${iconUrl}`;
+    if (!resolved.startsWith("http") && resolved.endsWith(".png")) {
+        return `../../../resources/${resolved}`;
     }
-    return iconUrl;
+    return resolved;
+}
+
+function resolveSpecialItemIcon(itemName) {
+    if (typeof itemName !== "string") return null;
+    const normalized = itemName.replace(/\u00a0/g, " ").replace(/\u00c0/g, " ").replace(/\s+/g, " ").trim();
+    const lowered = normalized.toLowerCase();
+    if (!lowered) return null;
+    if (WARD_ICON_BY_NAME[lowered]) return WARD_ICON_BY_NAME[lowered];
+    if (MISC_ICON_BY_NAME[lowered]) return MISC_ICON_BY_NAME[lowered];
+    if (lowered.endsWith(" key")) return "dungeon_key.png";
+    if (lowered.startsWith("corkian amplifier")) return "corkian_amplifier.png";
+    if (lowered.includes("crafter bag")) {
+        if (lowered.includes("packed")) return "crafter_packed.png";
+        if (lowered.includes("stuffed")) return "crafter_stuffed.png";
+        if (lowered.includes("varied")) return "crafter_varied.png";
+    }
+    const powderParts = lowered.split(" powder ");
+    if (powderParts.length === 2 && ["earth", "thunder", "water", "fire", "air"].includes(powderParts[0])) {
+        return "powder.png";
+    }
+    return null;
 }
 
 
@@ -85,12 +121,46 @@ function updateLootpoolTitle(timestamp) {
     lootpoolTitle.style.textAlign = 'center'; 
 }
 
+function lootpoolHasAnyWard(loot) {
+    const wardPattern = /\bward\b/i;
+
+    for (const regionData of Object.values(loot || {})) {
+        if (!regionData || typeof regionData !== 'object') continue;
+
+        if (regionData.Shiny && typeof regionData.Shiny.Item === 'string' && wardPattern.test(regionData.Shiny.Item)) {
+            return true;
+        }
+
+        for (const tierItems of Object.values(regionData)) {
+            if (!Array.isArray(tierItems)) continue;
+            if (tierItems.some(item => typeof item === 'string' && wardPattern.test(item))) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 function displayLootpool(loot, icons) {
     const lootpoolContainer = document.getElementById('lootpool');
     lootpoolContainer.innerHTML = '';
+    const hasAnyWard = lootpoolHasAnyWard(loot);
+    const shouldAddNoWard = !hasAnyWard;
+    const normalizeRegionKey = value =>
+        String(value || '')
+            .toLowerCase()
+            .replace(/[\s_-]+/g, '');
+    const existingRegionKeys = new Set(Object.keys(loot || {}).map(normalizeRegionKey));
+    const renderedRegionKeys = new Set();
 
     for (const region in loot) {
         if (loot.hasOwnProperty(region)) {
+            const canonicalRegion = normalizeRegionKey(region);
+            if (renderedRegionKeys.has(canonicalRegion)) {
+                continue;
+            }
+            renderedRegionKeys.add(canonicalRegion);
             const regionData = loot[region];
             const regionCard = document.createElement('div');
             regionCard.classList.add('lootpool-card');
@@ -122,7 +192,7 @@ function displayLootpool(loot, icons) {
                 shinyIcon.classList.add('shiny-icon');
                 shinyItemElement.appendChild(shinyIcon);
 
-                const shinyItemIconUrl = formatIconUrl(icons[regionData.Shiny.Item]);
+                const shinyItemIconUrl = formatIconUrl(icons[regionData.Shiny.Item], regionData.Shiny.Item);
                 if (shinyItemIconUrl) {
                     const shinyItemIcon = document.createElement('img');
                     shinyItemIcon.src = shinyItemIconUrl;
@@ -130,33 +200,46 @@ function displayLootpool(loot, icons) {
                     shinyItemElement.appendChild(shinyItemIcon);
                 }
 
+                const shinyMeta = document.createElement('div');
+                shinyMeta.classList.add('shiny-meta');
+
                 const shinyItemName = document.createElement('span');
                 shinyItemName.classList.add('label', 'item-name');
                 shinyItemName.textContent = regionData.Shiny.Item; 
-                shinyItemElement.appendChild(shinyItemName);
+                shinyMeta.appendChild(shinyItemName);
 
                 const shinyItemTracker = document.createElement('span');
                 shinyItemTracker.classList.add('label', 'tracker');
-                shinyItemTracker.innerHTML = `<br>Tracker: ${regionData.Shiny.Tracker}`;
-                shinyItemElement.appendChild(shinyItemTracker);
+                shinyItemTracker.textContent = `Tracker: ${regionData.Shiny.Tracker}`;
+                shinyMeta.appendChild(shinyItemTracker);
+
+                shinyItemElement.appendChild(shinyMeta);
 
                 shinyList.appendChild(shinyItemElement);
                 regionContent.appendChild(shinyList);
             }
 
-            if (regionData.hasOwnProperty('Mythic')) {
+            const mythicItems = Array.isArray(regionData.Mythic) ? [...regionData.Mythic] : [];
+            if (shouldAddNoWard && !mythicItems.some(item => typeof item === 'string' && item.toLowerCase() === 'no ward')) {
+                mythicItems.push('No Ward');
+            }
+
+            if (mythicItems.length > 0) {
                 const mythicTitle = document.createElement('div');
                 mythicTitle.classList.add('rarity-title', 'mythic-color');
                 mythicTitle.textContent = 'Mythic';
                 regionContent.appendChild(mythicTitle);
 
                 const mythicList = document.createElement('ul');
-
-                regionData.Mythic.forEach(item => {
+                const compactedMythic = compactDuplicateEntries(mythicItems);
+                compactedMythic.forEach(({ name, count }) => {
                     const itemElement = document.createElement('li');
-                    itemElement.classList.add('mythic-color');
+                    const isNoWard = name === 'No Ward';
+                    itemElement.classList.add(isNoWard ? 'no-ward-item' : 'mythic-color');
 
-                    const itemIconUrl = formatIconUrl(icons[item]);
+                    const itemIconUrl = isNoWard
+                        ? '../../../resources/white_ward.png'
+                        : formatIconUrl(icons[name], name);
                     if (itemIconUrl) {
                         const itemIcon = document.createElement('img');
                         itemIcon.src = itemIconUrl;
@@ -165,8 +248,15 @@ function displayLootpool(loot, icons) {
                     }
 
                     const itemName = document.createElement('span');
-                    itemName.textContent = item;
+                    itemName.classList.add('item-name');
+                    itemName.textContent = name;
                     itemElement.appendChild(itemName);
+                    if (count > 1) {
+                        const countBadge = document.createElement('span');
+                        countBadge.classList.add('item-count');
+                        countBadge.textContent = `x${count}`;
+                        itemElement.appendChild(countBadge);
+                    }
 
                     mythicList.appendChild(itemElement);
                 });
@@ -181,11 +271,12 @@ function displayLootpool(loot, icons) {
                     regionContent.appendChild(rarityTitle);
 
                     const itemList = document.createElement('ul');
-                    regionData[rarity].forEach(item => {
+                    const compactedEntries = compactDuplicateEntries(regionData[rarity]);
+                    compactedEntries.forEach(({ name, count }) => {
                         const itemElement = document.createElement('li');
                         itemElement.classList.add(`${rarity.toLowerCase()}-color`);
 
-                        const itemIconUrl = formatIconUrl(icons[item]);
+                        const itemIconUrl = formatIconUrl(icons[name], name);
                         if (itemIconUrl) {
                             const itemIcon = document.createElement('img');
                             itemIcon.src = itemIconUrl;
@@ -194,8 +285,15 @@ function displayLootpool(loot, icons) {
                         }
 
                         const itemName = document.createElement('span');
-                        itemName.textContent = item;
+                        itemName.classList.add('item-name');
+                        itemName.textContent = name;
                         itemElement.appendChild(itemName);
+                        if (count > 1) {
+                            const countBadge = document.createElement('span');
+                            countBadge.classList.add('item-count');
+                            countBadge.textContent = `x${count}`;
+                            itemElement.appendChild(countBadge);
+                        }
 
                         itemList.appendChild(itemElement);
                     });
@@ -215,7 +313,7 @@ function displayLootpool(loot, icons) {
     ];
 
     frumaRegions.forEach(({ key, label }) => {
-        const exists = Object.keys(loot).some(r => r.toLowerCase() === key.toLowerCase());
+        const exists = existingRegionKeys.has(normalizeRegionKey(key));
         if (!exists) {
             const regionCard = document.createElement('div');
             regionCard.classList.add('lootpool-card', 'active', 'coming-soon-card');
@@ -247,6 +345,17 @@ function displayLootpool(loot, icons) {
     });
 
     filterLootpool();
+}
+
+function compactDuplicateEntries(entries) {
+    const counts = new Map();
+    (Array.isArray(entries) ? entries : []).forEach(item => {
+        if (typeof item !== 'string') return;
+        const name = item.trim();
+        if (!name) return;
+        counts.set(name, (counts.get(name) || 0) + 1);
+    });
+    return Array.from(counts.entries()).map(([name, count]) => ({ name, count }));
 }
 
 function displayUpdatingMessage() {
@@ -336,6 +445,7 @@ function filterLootpool() {
         legendary: document.getElementById('toggle-legendary').classList.contains('active'),
         rare: document.getElementById('toggle-rare').classList.contains('active'),
         unique: document.getElementById('toggle-unique').classList.contains('active'),
+        misc: document.getElementById('toggle-misc').classList.contains('active'),
     };
 
     document.querySelectorAll('.lootpool-card').forEach(card => {

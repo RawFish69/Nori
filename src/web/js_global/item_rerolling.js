@@ -83,18 +83,19 @@ function displayItem(item, amplifierTier, rerollCount, isInitialLoad) {
 
     const itemName = item.name;
     const itemData = item.identifications;
-    const tier = capitalizeFirstLetter(item.rarity);
-    const type = capitalizeFirstLetter(item.type);
+    const tier = capitalizeFirstLetter(item.tier);
+    const type = capitalizeFirstLetter(item.subType || item.type);
     const tierColor = tierColors[tier.toLowerCase()];
     const overallRating = item.overall;
 
     const itemCardContainer = document.createElement("div");
     itemCardContainer.classList.add("item-card-container");
 
-    const icon = ["helmet", "chestplate", "leggings", "boots"].includes(item.type.toLowerCase()) 
-        ? `${item.type.toLowerCase()}.png` 
+    const itemSubType = (item.subType || item.type || '').toLowerCase();
+    const icon = ["helmet", "chestplate", "leggings", "boots"].includes(itemSubType)
+        ? `${itemSubType}.png`
         : item.icon;
-    const imageSrc = icon.startsWith('http') ? icon : `../../../resources/${item.type.toLowerCase()}.png`;
+    const imageSrc = icon && icon.startsWith('http') ? icon : `../../../resources/${itemSubType}.png`;
 
     const itemElement = document.createElement("div");
     itemElement.classList.add("item-card");
