@@ -1,0 +1,371 @@
+@import url('../item/lootpool/styles.css');
+
+main.container {
+    padding-top: 1.1rem;
+}
+
+.page-header {
+    margin-bottom: 1.15rem;
+}
+
+.page-title {
+    margin-bottom: 0.35rem;
+}
+
+.page-title .title-icon {
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    margin-right: 0.35rem;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.3));
+}
+
+.countdown-section {
+    margin: 0.4rem 0 0.2rem;
+}
+
+#countdown-container {
+    gap: 0.85rem;
+}
+
+#lootpool-filters.filter-pills {
+    margin-bottom: 1.2rem;
+}
+
+.source-toggles {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.source-pill {
+    background: rgba(31, 41, 55, 0.6);
+    border: 2px solid transparent;
+    color: var(--text-secondary);
+    padding: 0.6rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.source-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.source-pill.active {
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.source-pill[data-source="all"].active {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    border-color: #0284c7;
+}
+
+.source-pill[data-source="aspects"].active {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    border-color: #8b5cf6;
+}
+
+.source-pill[data-source="items"].active {
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    border-color: #22c55e;
+}
+
+.raid-source-section {
+    margin-top: 0.75rem;
+}
+
+.raid-source-section + .raid-source-section {
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.source-section-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.empty-raid-text {
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.aspect-hover-hint {
+    margin-top: 0.45rem;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    opacity: 0.92;
+}
+
+.post-action-notes {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center !important;
+}
+
+.post-action-notes .page-subtitle,
+.post-action-notes .cache-refresh-hint,
+.post-action-notes .aspect-hover-hint {
+    text-align: center !important;
+}
+
+.item-name {
+    font-weight: 600;
+}
+
+.lootpool-container,
+.lootpool-card,
+.lootpool-card-content,
+.aspect-section ul,
+.aspect-section li {
+    overflow: visible;
+}
+
+.has-description .item-name {
+    text-decoration: underline dotted rgba(255, 255, 255, 0.35);
+    text-underline-offset: 0.18em;
+    cursor: help;
+}
+
+:root:not(.site-dark) .has-description .item-name {
+    text-decoration-color: rgba(0, 0, 0, 0.35);
+}
+
+.aspect-desc {
+    display: none;
+    position: absolute;
+    left: 2.25rem;
+    top: calc(100% + 0.35rem);
+    z-index: 5000;
+    min-width: 260px;
+    max-width: min(520px, calc(100vw - 2rem));
+    padding: 0.55rem 0.65rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 10px;
+    background: #0b1220;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    isolation: isolate;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    white-space: normal;
+    color: #e5e7eb;
+}
+
+.aspect-desc * {
+    color: inherit;
+}
+
+.aspect-desc::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: -6px;
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    border-left: 1px solid rgba(148, 163, 184, 0.35);
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
+    transform: rotate(45deg);
+}
+
+li.has-description:hover .aspect-desc,
+li.has-description:focus-within .aspect-desc {
+    display: block;
+}
+
+:root:not(.site-dark) .aspect-desc {
+    background: #ffffff;
+    border-color: rgba(17, 24, 39, 0.28);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+    color: #111827;
+}
+
+:root:not(.site-dark) .aspect-desc::before {
+    border-left-color: rgba(17, 24, 39, 0.28);
+    border-top-color: rgba(17, 24, 39, 0.28);
+}
+
+.aspect-tier {
+    margin-bottom: 0.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.tier-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #cbd5e1;
+    opacity: 0.95;
+    white-space: nowrap;
+}
+
+:root:not(.site-dark) .tier-label {
+    color: #374151;
+}
+
+.filter-pill.misc.active {
+    background: linear-gradient(135deg, #6b7280, #374151);
+    border-color: #6b7280;
+}
+
+.misc-color {
+    color: #9ca3af;
+    background: none;
+}
+
+.item-count {
+    margin-left: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.item-name.emerald-highlight,
+.item-count.emerald-highlight {
+    color: #3dff78 !important;
+    text-shadow: 0 0 6px rgba(61, 255, 120, 0.28);
+}
+
+:root:not(.site-dark) .item-name.emerald-highlight,
+:root:not(.site-dark) .item-count.emerald-highlight {
+    color: #00a23a !important;
+    text-shadow: none;
+}
+
+.aspect-section li.has-description {
+    position: relative;
+    align-items: center;
+    z-index: 1;
+}
+
+.aspect-section li.has-description:hover,
+.aspect-section li.has-description:focus-within {
+    z-index: 6000;
+    opacity: 1 !important;
+}
+
+.gambit-overview {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0.2rem auto 0;
+}
+
+.gambit-overview-card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0.65rem 0.85rem;
+    background: rgba(17, 24, 39, 0.45);
+    text-align: center;
+}
+
+.gambit-overview-title {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
+}
+
+.gambit-overview-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.45rem;
+    margin-top: 0.25rem;
+    text-align: left;
+}
+
+.gambit-overview-list .gambit-entry {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.35rem 0.5rem;
+}
+
+.gambit-meta {
+    margin: 0.05rem 0 0.2rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.35;
+}
+
+.gambit-refresh-label {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.gambit-refresh-timer {
+    font-weight: 700;
+    color: #e5e7eb;
+    letter-spacing: 0.02em;
+    font-size: 1.02rem;
+}
+
+:root:not(.site-dark) .gambit-refresh-timer {
+    color: #111827;
+}
+
+.gambit-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gambit-entry {
+    display: block;
+    padding: 0.35rem 0;
+}
+
+.gambit-name {
+    font-weight: 700;
+    color: #f9fafb;
+    line-height: 1.25;
+}
+
+.gambit-description {
+    margin-top: 0.15rem;
+    color: var(--text-secondary);
+    font-size: 0.86rem;
+    line-height: 1.35;
+}
+
+:root:not(.site-dark) .gambit-name {
+    color: #111827;
+}
+
+:root:not(.site-dark) .gambit-overview-card {
+    background: rgba(255, 255, 255, 0.72);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root:not(.site-dark) .gambit-overview-list .gambit-entry {
+    border-color: rgba(0, 0, 0, 0.09);
+}
+
+@media (max-width: 768px) {
+    .page-title .title-icon {
+        width: 56px;
+        height: 56px;
+        margin-right: 0.2rem;
+    }
+}

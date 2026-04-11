@@ -27,7 +27,7 @@
         <div class="brand">
             <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width:48px;height:auto;">
             <div>
-                <h1 style="margin:0;">Nori‑Wynn</h1>
+                <h1 style="margin:0;">Nori-Wynn</h1>
                 <div style="font-size:0.9rem;color:#b2ff6f;">Wynncraft Utility App</div>
             </div>
         </div>
@@ -36,11 +36,11 @@
         </nav>
     </header>
 
-    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="menu-button" onclick="toggleSidebar()">&#9776;</div>
     <div id="sidebar"></div>
 
     <main class="container" role="main">
-        <!-- hero row: install panel + quick search -->
+        <!-- hero row: install panel -->
         <div class="hero" role="region" aria-label="Quick actions">
             <section class="install-panel" aria-labelledby="install-heading">
                 <h2 id="install-heading">Quick install & resources</h2>
@@ -58,29 +58,41 @@
                 </div>
             </section>
 
-            <div class="hero-right">
-                <div class="quick-search" role="search" aria-label="Search Wynn pages">
-                    <input id="pageSearch" type="search" placeholder="Quick search features (e.g. item, builds, uptime)" aria-label="Search features">
-                </div>
-                
-                <div class="application-portal">
-                    <div class="portal-content">
-                        <h3 class="portal-title">Become a Nori Contributor</h3>
-                        <p class="portal-description">
-                            Application Status: Open
-                        </p>
-                        <a href="https://forms.gle/ALqc5G22n2AsChTf6" target="_blank" class="portal-button">
-                            <span class="button-icon">📝</span>
-                            Apply Now
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- main feature grid -->
         <section class="grid" aria-label="Wynn features">
-            <article class="panel" aria-labelledby="items-heading">
+            <article class="panel panel-stats" aria-labelledby="stats-heading">
+                <h2 id="stats-heading">Stats & Leaderboards</h2>
+                <div class="cards">
+                    <a class="card" href="https://nori.fish/wynn/player">
+                        <h4>Player Stats</h4>
+                        <p>Player statistics and history.</p>
+                    </a>
+                    <a class="card" href="https://nori.fish/wynn/guild">
+                        <h4>Guild Stats</h4>
+                        <p>Guild overview and members.</p>
+                    </a>
+                    <a class="card" href="https://nori.fish/wynn/online">
+                        <h4>Online Activity</h4>
+                        <p>See who is online now.</p>
+                    </a>
+                    <a class="card" href="https://nori.fish/wynn/leaderboard">
+                        <h4>Leaderboard Menu</h4>
+                        <p>Choose leaderboards to explore.</p>
+                    </a>
+                    <a class="card" href="https://nori.fish/wynn/leaderboard/?type=guilds&category=raids_total&page=1">
+                        <h4>Guild Leaderboards</h4>
+                        <p>Guild rankings.</p>
+                    </a>
+                    <a class="card" href="https://nori.fish/wynn/leaderboard/?type=raids&category=raids_total&page=1">
+                        <h4>Raid Leaderboards</h4>
+                        <p>Top raid performances.</p>
+                    </a>
+                </div>
+            </article>
+
+            <article class="panel panel-items" aria-labelledby="items-heading">
                 <h2 id="items-heading">Items</h2>
                 <div class="cards">
                     <a class="card" href="https://nori.fish/wynn/item/analysis">
@@ -91,9 +103,9 @@
                         <h4>Item Lootpool</h4>
                         <p>Lootrun reward pools & rotations.</p>
                     </a>
-                    <a class="card" href="https://nori.fish/wynn/aspects">
-                        <h4>Aspect Lootpool</h4>
-                        <p>Weekly aspect lootpool rotation.</p>
+                    <a class="card" href="https://nori.fish/wynn/raids">
+                        <h4>Raid Lootpool</h4>
+                        <p>Weekly raid aspects + raid item pool.</p>
                     </a>
                     <a class="card" href="https://nori.fish/wynn/item/simulation">
                         <h4>Item Simulation</h4>
@@ -110,8 +122,8 @@
                 </div>
             </article>
 
-            <article class="panel" aria-labelledby="builds-heading">
-                <h2 id="builds-heading">Builds</h2>
+            <article class="panel panel-builds" aria-labelledby="builds-heading">
+                <h2 id="builds-heading">Builds & Utility</h2>
                 <div class="cards">
                     <a class="card" href="https://nori.fish/wynn/build">
                         <h4>Class Build Search</h4>
@@ -125,48 +137,6 @@
                         <h4>Recipe Search</h4>
                         <p>Lookup crafting recipes.</p>
                     </a>
-                </div>
-            </article>
-
-            <article class="panel" aria-labelledby="leaderboards-heading">
-                <h2 id="leaderboards-heading">Leaderboards</h2>
-                <div class="cards">
-                    <a class="card" href="https://nori.fish/wynn/leaderboard">
-                        <h4>Menu</h4>
-                        <p>Choose leaderboards to explore.</p>
-                    </a>
-                    <a class="card" href="https://nori.fish/wynn/leaderboard/?type=guilds&category=raids_total&page=1">
-                        <h4>Guilds</h4>
-                        <p>Guild rankings.</p>
-                    </a>
-                    <a class="card" href="https://nori.fish/wynn/leaderboard/?type=raids&category=raids_total&page=1">
-                        <h4>Raids</h4>
-                        <p>Top raid performances.</p>
-                    </a>
-                </div>
-            </article>
-
-            <article class="panel" aria-labelledby="stats-heading">
-                <h2 id="stats-heading">Stats</h2>
-                <div class="cards">
-                    <a class="card" href="https://nori.fish/wynn/player">
-                        <h4>Player Stats</h4>
-                        <p>Player statistics and history.</p>
-                    </a>
-                    <a class="card" href="https://nori.fish/wynn/guild">
-                        <h4>Guild Stats</h4>
-                        <p>Guild overview and members.</p>
-                    </a>
-                    <a class="card" href="https://nori.fish/wynn/online">
-                        <h4>Online Activity</h4>
-                        <p>See who is online now.</p>
-                    </a>
-                </div>
-            </article>
-
-            <article class="panel" aria-labelledby="utility-heading">
-                <h2 id="utility-heading">Utility</h2>
-                <div class="cards">
                     <a class="card" href="https://nori.fish/wynn/uptime">
                         <h4>Server Uptime</h4>
                         <p>Server status and uptime.</p>
@@ -182,7 +152,7 @@
                 </div>
             </article>
 
-            <article class="panel" aria-labelledby="about-heading">
+            <article class="panel panel-community" aria-labelledby="about-heading">
                 <h2 id="about-heading">About & Community</h2>
                 <div class="cards">
                     <a class="card" href="https://nori.fish/wynn/credit" target="_blank">
@@ -194,8 +164,8 @@
                         <p>Join to report bugs and chat.</p>
                     </a>
                     <a class="card" href="https://www.youtube.com/@RawFish69" target="_blank">
-                        <h4>YouTube</h4>
-                        <p>Tutorials & videos from RawFish.</p>
+                        <h4>RawFish's YouTube</h4>
+                        <p>This is peak.</p>
                     </a>
                 </div>
             </article>
@@ -203,13 +173,33 @@
         </section>
 
         <div class="footer-note" aria-hidden="false">
-            <p>Powered by Nori‑Web — <a href="https://nori.fish/docs" target="_blank">API docs</a> • <a href="https://github.com/RawFish69/Nori" target="_blank">Source</a></p>
+            <p>Powered by Nori-Web - <a href="https://nori.fish/docs" target="_blank">API docs</a> | <a href="https://github.com/RawFish69/Nori" target="_blank">Source</a></p>
         </div>
 
-        <div class="game-panel" role="region" aria-labelledby="game-heading">
-            <h2 id="game-heading">Space Orbs Open Beta</h2>
-            <p>Take a break and try my web game c:</p>
-            <button class="install-button game-button" onclick="window.open('https://game.nori.fish', '_blank')">Play Space Orbs</button>
+        <div class="bottom-panels">
+            <div class="application-portal">
+                <div class="portal-content">
+                    <h3 class="portal-title">Become a Nori Contributor</h3>
+                    <p class="portal-description">
+                        Application Status: Open
+                    </p>
+                    <a href="https://forms.gle/ALqc5G22n2AsChTf6" target="_blank" class="portal-button">
+                        Apply Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="youtube-panel" role="region" aria-labelledby="youtube-heading">
+                <h2 id="youtube-heading">Video content from the Developer.</h2>
+                <p>This is peak ^</p>
+                <button class="install-button youtube-button" onclick="window.open('https://www.youtube.com/@RawFish69', '_blank')">RawFish69 YouTube Channel</button>
+            </div>
+
+            <div class="game-panel" role="region" aria-labelledby="game-heading">
+                <h2 id="game-heading">Space Orbs Open Beta</h2>
+                <p>Take a break and try my web game c:</p>
+                <button class="install-button game-button" onclick="window.open('https://game.nori.fish', '_blank')">Play Space Orbs</button>
+            </div>
         </div>
     </main>
 
@@ -217,20 +207,5 @@
         <p style="margin:0;color:var(--muted)">&copy; 2024-2026 Nori, All rights reserved. Web URL: nori.fish</p>
     </footer>
 
-    <!-- Minimal script to filter cards in-place for quick search -->
-    <script>
-      (function(){
-        const input = document.getElementById('pageSearch');
-        if(!input) return;
-        const cards = Array.from(document.querySelectorAll('.card'));
-        input.addEventListener('input', (e) => {
-          const q = e.target.value.trim().toLowerCase();
-          cards.forEach(card => {
-            const text = (card.innerText || '').toLowerCase();
-            card.style.display = q === '' || text.includes(q) ? '' : 'none';
-          });
-        });
-      })();
-    </script>
 </body>
 </html>
