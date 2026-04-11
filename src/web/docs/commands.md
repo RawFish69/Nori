@@ -1,62 +1,66 @@
-# Command Guide
+# Nori Command Guide
 
-## Help Menu
-Nori command prefix use SlashCommands `/`
+Last updated: April 11, 2026
 
-Select a command group to view You can also type `/` in the chat and browse the command list.
+Nori uses slash commands (`/`). Type `/` in Discord to browse command groups.
 
-### For Bot Information
-Use `/nori`
+## Info
+- `/nori` view latest bot info
+- `/help` open command help menu
+- `/menu` open interactive command categories
+- `/status` bot runtime status
+- `/profile` check user profile
 
 ## Wynncraft Stats
-- `player` display a player's in-game statistics
-- `guild` display a guild's statistics
-- `lb raid` raid leaderboard of all players
-- `lb stat` stat leaderboard of all players
-- `lb profession` profession leaderboard of all players
-- `online` show online player activity (all players)
+- `/player` show a player's in-game stats
+- `/guild` show guild stats
+- `/online` show online player activity
+- `/lb raid` raid leaderboard
+- `/lb stat` stat leaderboard
+- `/lb profession` profession leaderboard
 
-## Wynncraft Utilities
-- `build search` search for class build with keyword
-- `recipe search` search for recipe with keyword
-- `ingredient search` search for ingredient with name
-- `uptime` online servers uptime
-- `soul` soul point regen timer
-- `forgery` forgery mythic odds
-- `gxp` guild xp requirement graph
-- `hq` calculate HQ guild tower stats
-- `tower` calculate regular guild tower stats
-- `lootpool` weekly lootpool for lootrun camps
+## Wynncraft Utility
+- `/build search` search class builds
+- `/recipe search` search recipes
+- `/ingredient search` search ingredients
+- `/uptime` Wynn server uptime tracker
+- `/soul` soul point regen timer
+- `/forgery` forgery mythic odds
+- `/gxp` guild xp requirement graph
+- `/hq` HQ guild tower calculator
+- `/tower` regular guild tower calculator
 
-## Item Commands
-- `item search` search for an item with name
-- `item roll` identify or reroll an item
-- `item changelog` item changelog fetched from API
-- `item check` view in-game item stats by pasting the wynntils encoded item (F3 function)
-- `item weigh` directly weigh the mythic copied from wynntils F3 chat-item with (mythic only)
-- `item pricecheck` directly price-check the mythic copied from wynntils F3 chat-item (mythic only)
-- `item scale` weighing scale of a mythic item
-- `item evaluate` manual weighing of an item by inputting the wynntils % for each stat in order from the weighing scale
-- `item pc` manual pricechecking of an item by inputting the wynntils % for each stat in order from the weighing scale
-  - For manual input if an item has less than 7 stats on the scale, leave the rest blank.
-- `item lootpool` weekly lootrun camp reward pool
-- `item history` check specific item in lootpool history
+## Lootpool and Raids
+- `/item lootpool` weekly lootrun camp reward pool
+- `/item history` item lootpool history lookup
+- `/raid aspect` weekly raid aspect pool
+- `/raid item` weekly raid item pool
+- `/raid gambit` daily shared raid gambits
+- `/aspect lootpool` deprecated alias that points to the `/raid ...` commands
 
-## Tools
-- `ask` ask AI (gpt-turbo model)
-- `image` generate image with keyword
-- `math` mathematical tools
-- `status` bot current status
-- `profile` check user profile
-- `ping` check the latency of a url
-- `weather` check weather of a city/area
-- `flight` show all flights info
-- `pingme` ping a user after a set timer
+## Item Tools
+- `/item search` item lookup
+- `/item roll` item reroll simulator
+- `/item check` decode Wynntils F3 encoded item
+- `/item scale` view mythic weighing scale
+- `/item weigh` auto mythic weighing from encoded item
+- `/item evaluate` manual mythic weighing input
+- `/item changelog` item db changelog export
+- `/item pricecheck` currently disabled
+- `/item pc` currently disabled
 
-## Developer / Contributor Only
-- `data loot` Lootpool maintenance
-- `data reload` Reload cached data
-- `data update` Manual update local files from API endpoints
-- `data export` Manual file export
-- `data progress` Display progress for ongoing tasks
-- `data memory` Memory report generation
+## Utility Tools
+- `/math calculate` expression evaluator
+- `/math solve` equation solver
+- `/math derivative` derivative calculator
+- `/math integral` integral calculator
+- `/math plot` graph plotter
+- `/ping` latency check
+- `/pingme` reminder ping timer
+- `/weather` weather lookup
+- `/flight find` search a flight
+- `/flight show` show tracked flights
+- `/ask` ai ask mode
+- `/image` ai image generation
+
+Maintainer-only data commands are intentionally not listed in public docs.
