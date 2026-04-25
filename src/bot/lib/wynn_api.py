@@ -4,24 +4,58 @@ Provides interfaces for fetching player, guild, and item data.
 """
 import requests
 from lib.config import WYNN_AUTH_HEADER
+from lib.item_db_compat import items_response_to_dict
 
 
 class Player:
     """Wrapper for Wynncraft Player API"""
+
+    def _resolve_latest_player(self, response, use_full):
+        """Resolve MultipleObjectsReturned (HTTP 300) to a single player.
+
+        Wynn returns this when an IGN maps to more than one historical UUID
+        (e.g. "Colena"). Shape:
+            {"error": "MultipleObjectsReturned", "code": 300,
+             "objects": {"<uuid>": {"username": ..., "rank": ...}, ...}}
+        Sub-objects lack ``lastJoin``, so we re-fetch each UUID and keep the
+        candidate with the latest ``lastJoin`` (ISO-8601 sorts lexicographically).
+        Single-player responses pass through unchanged.
+        """
+        if not isinstance(response, dict):
+            return response
+        objects = response.get("objects")
+        if "uuid" in response or not isinstance(objects, dict) or not objects:
+            return response
+        suffix = "?fullResult" if use_full else ""
+        candidates = []
+        for uuid in objects:
+            try:
+                per = requests.get(
+                    f"https://api.wynncraft.com/v3/player/{uuid}{suffix}",
+                    headers=WYNN_AUTH_HEADER,
+                ).json()
+            except Exception:
+                continue
+            if isinstance(per, dict) and "uuid" in per:
+                candidates.append(per)
+        if not candidates:
+            return response
+        candidates.sort(key=lambda p: p.get("lastJoin") or "", reverse=True)
+        return candidates[0]
 
     def get_player_main(self, ign):
         """Get basic player data."""
         api_url = f"https://api.wynncraft.com/v3/player/{ign}"
         stat_request = requests.get(api_url, headers=WYNN_AUTH_HEADER)
         player_data = stat_request.json()
-        return player_data
+        return self._resolve_latest_player(player_data, use_full=False)
 
     def get_player_full(self, ign):
         """Get full player data."""
         api_url = f"https://api.wynncraft.com/v3/player/{ign}?fullResult"
         stat_request = requests.get(api_url, headers=WYNN_AUTH_HEADER)
         player_data = stat_request.json()
-        return player_data
+        return self._resolve_latest_player(player_data, use_full=True)
 
     def player_uuid(self, ign):
         """Get player UUID."""
@@ -41,7 +75,7 @@ class Player:
 
     def mobs_global(self, ign):
         """Get player's global mob kills."""
-        return self.get_player_main(ign)["globalData"]["killedMobs"]
+        return self.get_player_main(ign)["globalData"]["mobsKilled"]
 
     def chest_global(self, ign):
         """Get player's global chests found."""
@@ -145,9 +179,9 @@ class Guild:
 class Items:
     """v3 item wrapping - Synchronous"""
 
-    def fetch(self, url):
+    def fetch(self, url, headers=None):
         """Fetch data from URL."""
-        response = requests.get(url, headers=WYNN_AUTH_HEADER)
+        response = requests.get(url, headers=headers if headers is not None else WYNN_AUTH_HEADER)
         return response.json()
 
     def post(self, url, data=None):
@@ -156,14 +190,31 @@ class Items:
         return response.json()
 
     def get_all_items(self):
-        """Get all items from database."""
+        """Get all items from database, normalised to a displayName-keyed dict."""
         api_url = "https://api.wynncraft.com/v3/item/database?fullResult"
-        return self.fetch(api_url)
+        raw = self.fetch(api_url)
+        result, _ = items_response_to_dict(raw)
+        return result
 
     def get_beta_items(self):
-        """Get beta items from database."""
+        """Get beta items (no auth required on beta-api.wynncraft.com)."""
         api_url = "https://beta-api.wynncraft.com/v3/item/database?fullResult"
-        return self.fetch(api_url)
+        try:
+            raw = self.fetch(api_url, headers={})
+            if not isinstance(raw, (dict, list)):
+                return None
+            result, _ = items_response_to_dict(raw)
+            return result
+        except Exception as error:
+            print(f"Beta item fetch error: {error}")
+            return None
+
+    def item_query(self, data=None):
+        """Search items and return a normalised displayName-keyed dict."""
+        api_url = "https://api.wynncraft.com/v3/item/search?fullResult"
+        raw = self.post(api_url, data)
+        result, _ = items_response_to_dict(raw)
+        return result
 
     def get_metadata(self):
         """Get item metadata."""

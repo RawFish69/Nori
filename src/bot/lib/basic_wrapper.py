@@ -1,19 +1,48 @@
 import requests
+from lib.item_db_compat import items_response_to_dict
 
 class Player:
     """Wrapper for Wynncraft Player"""
+
+    def _resolve_latest_player(self, response, use_full):
+        # Wynn returns HTTP 300 MultipleObjectsReturned when an IGN maps to
+        # more than one historical UUID (e.g. "Colena"). Shape:
+        #   {"error": "MultipleObjectsReturned", "code": 300,
+        #    "objects": {"<uuid>": {"username": ..., "rank": ...}, ...}}
+        # Sub-objects lack lastJoin, so we re-fetch each UUID and keep the
+        # one with the latest lastJoin (ISO-8601 strings sort lexicographically).
+        if not isinstance(response, dict):
+            return response
+        objects = response.get("objects")
+        if "uuid" in response or not isinstance(objects, dict) or not objects:
+            return response
+        suffix = "?fullResult=True" if use_full else ""
+        candidates = []
+        for uuid in objects:
+            try:
+                per = requests.get(
+                    f"https://api.wynncraft.com/v3/player/{uuid}{suffix}"
+                ).json()
+            except Exception:
+                continue
+            if isinstance(per, dict) and "uuid" in per:
+                candidates.append(per)
+        if not candidates:
+            return response
+        candidates.sort(key=lambda p: p.get("lastJoin") or "", reverse=True)
+        return candidates[0]
 
     def get_player_main(self, ign):
         api_url = f"https://api.wynncraft.com/v3/player/{ign}"
         stat_request = requests.get(api_url)
         player_data = stat_request.json()
-        return player_data
+        return self._resolve_latest_player(player_data, use_full=False)
 
     def get_player_full(self, ign):
         api_url = f"https://api.wynncraft.com/v3/player/{ign}?fullResult=True"
         stat_request = requests.get(api_url)
         player_data = stat_request.json()
-        return player_data
+        return self._resolve_latest_player(player_data, use_full=True)
 
     def player_uuid(self, ign):
         return Player.get_player_main(self, ign)["uuid"]
@@ -28,7 +57,7 @@ class Player:
         return Player.get_player_main(self, ign)["globalData"]["wars"]
 
     def mobs_global(self, ign):
-        return Player.get_player_main(self, ign)["globalData"]["killedMobs"]
+        return Player.get_player_main(self, ign)["globalData"]["mobsKilled"]
 
     def chest_global(self, ign):
         return Player.get_player_main(self, ign)["globalData"]["chestsFound"]
@@ -115,8 +144,8 @@ class Guild:
 class Items:
     """v3 item wrapping - Synchronous"""
 
-    def fetch(self, url):
-        response = requests.get(url)
+    def fetch(self, url, headers=None):
+        response = requests.get(url, headers=headers)
         return response.json()
 
     def post(self, url, data=None):
@@ -125,11 +154,22 @@ class Items:
 
     def get_all_items(self):
         api_url = "https://api.wynncraft.com/v3/item/database?fullResult=True"
-        return self.fetch(api_url)
+        raw = self.fetch(api_url)
+        result, _ = items_response_to_dict(raw)
+        return result
 
     def get_beta_items(self):
+        """Beta endpoint requires no auth header."""
         api_url = "https://beta-api.wynncraft.com/v3/item/database?fullResult=True"
-        return self.fetch(api_url)
+        try:
+            raw = self.fetch(api_url, headers={})
+            if not isinstance(raw, (dict, list)):
+                return None
+            result, _ = items_response_to_dict(raw)
+            return result
+        except Exception as error:
+            print(f"Beta item fetch error: {error}")
+            return None
 
     def get_metadata(self):
         url = "https://api.wynncraft.com/v3/item/metadata"
@@ -137,4 +177,6 @@ class Items:
 
     def item_query(self, data=None):
         api_url = "https://api.wynncraft.com/v3/item/search?fullResult=True"
-        return self.post(api_url, data)
+        raw = self.post(api_url, data)
+        result, _ = items_response_to_dict(raw)
+        return result

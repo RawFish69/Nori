@@ -1,20 +1,52 @@
 import aiohttp
 import asyncio
+from lib.item_db_compat import items_response_to_dict
 
 class AsyncPlayer:
     """Async wrapper for Wynncraft Player"""
+
+    async def _resolve_latest_player(self, session, response, use_full):
+        # Wynn returns HTTP 300 MultipleObjectsReturned when an IGN maps to
+        # more than one historical UUID (e.g. "Colena"). Shape:
+        #   {"error": "MultipleObjectsReturned", "code": 300,
+        #    "objects": {"<uuid>": {"username": ..., "rank": ...}, ...}}
+        # Sub-objects lack lastJoin, so we re-fetch each UUID and keep the
+        # one with the latest lastJoin (ISO-8601 strings sort lexicographically).
+        if not isinstance(response, dict):
+            return response
+        objects = response.get("objects")
+        if "uuid" in response or not isinstance(objects, dict) or not objects:
+            return response
+        suffix = "?fullResult=True" if use_full else ""
+        candidates = []
+        for uuid in objects:
+            try:
+                async with session.get(
+                    f"https://api.wynncraft.com/v3/player/{uuid}{suffix}"
+                ) as per_resp:
+                    per = await per_resp.json()
+            except Exception:
+                continue
+            if isinstance(per, dict) and "uuid" in per:
+                candidates.append(per)
+        if not candidates:
+            return response
+        candidates.sort(key=lambda p: p.get("lastJoin") or "", reverse=True)
+        return candidates[0]
 
     async def get_player_main(self, ign):
         async with aiohttp.ClientSession() as session:
             api_url = f"https://api.wynncraft.com/v3/player/{ign}"
             async with session.get(api_url) as response:
-                return await response.json()
+                data = await response.json()
+            return await self._resolve_latest_player(session, data, use_full=False)
 
     async def get_player_full(self, ign):
         async with aiohttp.ClientSession() as session:
             api_url = f"https://api.wynncraft.com/v3/player/{ign}?fullResult=True"
             async with session.get(api_url) as response:
-                return await response.json()
+                data = await response.json()
+            return await self._resolve_latest_player(session, data, use_full=True)
 
     async def player_uuid(self, ign):
         data = await self.get_player_main(ign)
@@ -34,7 +66,7 @@ class AsyncPlayer:
 
     async def mobs_global(self, ign):
         data = await self.get_player_main(ign)
-        return data["globalData"]["killedMobs"]
+        return data["globalData"]["mobsKilled"]
 
     async def chest_global(self, ign):
         data = await self.get_player_main(ign)
@@ -119,23 +151,34 @@ class AsyncGuild:
 class AsyncItems:
     """Async v3 item wrapping"""
 
-    async def fetch(self, url):
+    async def fetch(self, url, headers=None):
         async with aiohttp.ClientSession() as session:
-            async with session.get(url) as response:
-                return await response.json()
+            async with session.get(url, headers=headers) as response:
+                return await response.json(content_type=None)
 
     async def post(self, url, data=None):
         async with aiohttp.ClientSession() as session:
             async with session.post(url, json=data) as response:
-                return await response.json()
+                return await response.json(content_type=None)
 
     async def get_all_items(self):
         api_url = "https://api.wynncraft.com/v3/item/database?fullResult=True"
-        return await self.fetch(api_url)
+        raw = await self.fetch(api_url)
+        result, _ = items_response_to_dict(raw)
+        return result
 
     async def get_beta_items(self):
+        """Beta endpoint requires no auth header."""
         api_url = "https://beta-api.wynncraft.com/v3/item/database?fullResult=True"
-        return await self.fetch(api_url)
+        try:
+            raw = await self.fetch(api_url, headers={})
+            if not isinstance(raw, (dict, list)):
+                return None
+            result, _ = items_response_to_dict(raw)
+            return result
+        except Exception as error:
+            print(f"Beta item fetch error: {error}")
+            return None
 
     async def get_metadata(self):
         url = "https://api.wynncraft.com/v3/item/metadata"
@@ -143,4 +186,6 @@ class AsyncItems:
 
     async def item_query(self, data=None):
         api_url = "https://api.wynncraft.com/v3/item/search?fullResult=True"
-        return await self.post(api_url, data)
+        raw = await self.post(api_url, data)
+        result, _ = items_response_to_dict(raw)
+        return result

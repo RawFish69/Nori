@@ -19,12 +19,16 @@ async def check_user_access(ctx, blocked_users: list = None):
     if user_id in blocked_users:
         import hikari
         import lightbulb
-        from lib.config import bot
-        user = await bot.rest.fetch_user(user_id)
-        print(f"Blocked user {user.username} (ID: {user_id}) attempted to run a command.")
+        bot_app = getattr(ctx, "app", None)
+        if bot_app is not None:
+            user = await bot_app.rest.fetch_user(user_id)
+            username = user.username
+        else:
+            username = str(ctx.user)
+        print(f"Blocked user {username} (ID: {user_id}) attempted to run a command.")
         await ctx.respond("Your account has been blocked from this bot.",
                                     flags=hikari.MessageFlag.EPHEMERAL)
-        raise lightbulb.errors.CheckFailure(f"User {user.username} is blocked.")
+        raise lightbulb.errors.CheckFailure(f"User {username} is blocked.")
 
 
 def help(index):
@@ -103,18 +107,52 @@ def get_uptime(deploy_time):
     return time_display
 
 
+def format_compact(value):
+    """Format a number with K/M/B/T suffixes and smart decimal precision.
+
+    Tier rules (kept in sync with `nori-web/js_global/number_format.formatCompact`):
+        |value| >= 1e12  -> "X.XXT"  (2 dp)
+        |value| >= 1e9   -> "X.XXB"  (2 dp)
+        |value| >= 1e6   -> "X.XXM"  (2 dp)
+        |value| >= 1e3   -> "X.XK"   (1 dp)
+        |value|  < 1e3   -> integer
+
+    Trailing zeros are trimmed so "1.00M" displays as "1M" and "1.20M" as
+    "1.2M", which is gentler on the eye in tightly-packed embeds.
+    """
+    try:
+        n = float(value or 0)
+    except (TypeError, ValueError):
+        return "0"
+    sign = "-" if n < 0 else ""
+    abs_n = abs(n)
+
+    def _trim(text):
+        if "." not in text:
+            return text
+        return text.rstrip("0").rstrip(".")
+
+    if abs_n >= 1_000_000_000_000:
+        return f"{sign}{_trim(f'{abs_n / 1_000_000_000_000:.2f}')}T"
+    if abs_n >= 1_000_000_000:
+        return f"{sign}{_trim(f'{abs_n / 1_000_000_000:.2f}')}B"
+    if abs_n >= 1_000_000:
+        return f"{sign}{_trim(f'{abs_n / 1_000_000:.2f}')}M"
+    if abs_n >= 1_000:
+        return f"{sign}{_trim(f'{abs_n / 1_000:.1f}')}K"
+    return f"{sign}{int(round(abs_n))}"
+
+
 def format_xp(xp_value):
-    """Format XP value for display with proper scaling."""
-    if xp_value >= 1_000_000_000_000:
-        return '{:.1f}T'.format(xp_value / 1_000_000_000_000)
-    elif xp_value >= 1_000_000_000:
-        return '{:.0f}B'.format(xp_value / 1_000_000_000)
-    elif xp_value >= 1_000_000:
-        return '{:.0f}M'.format(xp_value / 1_000_000)
-    elif xp_value >= 1_000:
-        return '{:.0f}K'.format(xp_value / 1_000)
-    else:
-        return str(xp_value)
+    """Format XP value for display with proper scaling.
+
+    Thin alias over `format_compact` — kept for back-compat with callers that
+    historically used the old XP-specific formatter (which had a bug where the
+    million-branch threshold was miswritten as `1_000_000_000`, falling through
+    to the K branch and showing "1234K" instead of "1.23M"). Use `format_compact`
+    directly for new code; this wrapper exists purely for migration.
+    """
+    return format_compact(xp_value)
 
 
 async def build_file_search(keywords):
