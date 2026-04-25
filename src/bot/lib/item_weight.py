@@ -111,8 +111,14 @@ class WeightManager:
         item_scales = data[item_name] 
         item_IDs = {item_name: {}}
         for scale, stats_dict in item_scales.items():
-            sum_val = 0.0
+            # Skip scales that reference an ID absent from the decoded item — this
+            # is how Ascended vs original disambiguation works: the Masterwork scale
+            # references the Ascended-only extra ID; originals don't have it and
+            # the scale is silently omitted rather than scoring a misleading 0%.
+            if any(stat_id not in item_stats for stat_id in stats_dict):
+                continue
 
+            sum_val = 0.0
             for stat_id, percent_val in stats_dict.items():
                 factor = float(percent_val) / 100.0
                 rating = item_rate.get(stat_id, 0.0)
@@ -135,10 +141,15 @@ class WeightManager:
             if item.shiny:
                 stats_output["shiny"] = f"{item.shiny.display_name}: {item.shiny.value}"
             for stat in ids:
-                if stat.roll >= 0:
-                    id_min = id_range.get(stat.id, {}).get("min", 0)
-                    id_max = id_range.get(stat.id, {}).get("max", 0)
-                    id_base = id_range.get(stat.id, {}).get("raw", 0)
+                if stat.roll >= 0 and stat.id in id_range:
+                    stat_data = id_range[stat.id]
+                    if not isinstance(stat_data, dict):
+                        stats_output[name].update({stat.id: stat_data})
+                        stats_output["rate"].update({stat.id: 100.0})
+                        continue
+                    id_min = stat_data.get("min", 0)
+                    id_max = stat_data.get("max", 0)
+                    id_base = stat_data.get("raw", 0)
                     if stat.roll > 0:
                         id_rolled = round((stat.roll / 100) * id_base, 2)
                         if abs(abs(id_rolled) - abs(int(id_rolled))) == 0.5:

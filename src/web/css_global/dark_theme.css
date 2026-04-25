@@ -345,3 +345,14 @@ body.dark-mode .build-card:hover {
 .robotics-header-subtitle {
     color: #58a6ff !important;
 }
+
+/* Home page h2s live inside #Home.panel — undo the blue .panel h2 treatment */
+.about-nori-content h2,
+.project-showcase h2 {
+    background-color: transparent !important;
+    color: #d7dadc !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}

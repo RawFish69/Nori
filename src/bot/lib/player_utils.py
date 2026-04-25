@@ -7,9 +7,59 @@ player statistics and information.
 from datetime import datetime
 from typing import Optional, Tuple, Dict, Any
 from lib.wynn_api import Player
+from lib.utils import format_compact
+
+RAID_STATS_LABELS = {
+    "damageDealt": "Damage Dealt",
+    "damageTaken": "Damage Taken",
+    "healthHealed": "Healing",
+    "deaths": "Deaths",
+    "buffsTaken": "Buffs Taken",
+    "gambitsUsed": "Gambits Used",
+}
 
 
-def player_stats(ign: str) -> Optional[Tuple[str, bool, str]]:
+def _render_raid_stats_block(raid_stats: Optional[Dict[str, Any]]) -> str:
+    if not raid_stats:
+        return ""
+    display = "\nRaid Stats\n"
+    for key, label in RAID_STATS_LABELS.items():
+        display += f"{label}: {format_compact(raid_stats.get(key, 0))}\n"
+    return display
+
+
+def _render_guild_raid_table(guild_raids: Optional[Dict[str, Any]]) -> str:
+    """Render the per-guild-raid clears block. Returns "" when the player has
+    no guild raid data so the embed stays compact for non-raiders.
+
+    Earlier revisions of `player_stats` referenced this helper without
+    actually defining it — it was inlined into the legacy monolith bot but
+    never re-exported into the modular package. This stub keeps the
+    function name resolved while preserving the empty-on-missing contract.
+    """
+    if not guild_raids:
+        return ""
+    total = int(guild_raids.get("total") or 0)
+    raid_list = guild_raids.get("list") or {}
+    if total == 0 and not raid_list:
+        return ""
+    raid_map = {
+        "The Nameless Anomaly": "TNA",
+        "The Canyon Colossus": "TCC",
+        "Orphion's Nexus of Light": "NOL",
+        "Nest of the Grootslangs": "NOG",
+        "The Wartorn Palace": "TWP",
+        "Unknown": "TWP",
+    }
+    lines = ["\nGuild Raid Clears"]
+    for name, value in raid_list.items():
+        short = raid_map.get(name, name)
+        lines.append(f"{short}: {format_compact(value)}")
+    lines.append(f"Total: {format_compact(total)}")
+    return "\n".join(lines) + "\n"
+
+
+def player_stats(ign: str, include_history: bool = False) -> Optional[Tuple[str, bool, str]]:
     """
     Fetch and format player statistics.
 
@@ -22,18 +72,16 @@ def player_stats(ign: str) -> Optional[Tuple[str, bool, str]]:
     """
     player = Player()
     player_data = player.get_player_main(ign)
-    
+
+    # Player.get_player_main now handles MultipleObjectsReturned (HTTP 300) by
+    # picking the UUID with the latest lastJoin. If we still lack a uuid here,
+    # the player genuinely doesn't exist or the API returned an error payload.
     try:
-        online_status = player.online_status(ign)
         player_uuid = player_data["uuid"]
-    except Exception as error:
-        try:
-            player_uuid = list(player_data)[0]
-            player_data = player.get_player_main(player_uuid)
-        except Exception:
-            player_uuid = list(player_data)[1]
-            player_data = player.get_player_main(player_uuid)
-        online_status = player.online_status(player_uuid)
+        online_status = player_data.get("online", False)
+    except (KeyError, TypeError) as error:
+        print(f"Unable to resolve player '{ign}': {player_data}")
+        return None
     
     rank_map = {
         "vip": "VIP",
@@ -86,19 +134,28 @@ def player_stats(ign: str) -> Optional[Tuple[str, bool, str]]:
     
     display += f'PvP: {pvp_kills} K / {pvp_deaths} D [{KD}]\n'
     display += f'Quests Total: {player_data["globalData"]["completedQuests"]}\n'
+    display += f'World Events: {player_data["globalData"].get("worldEvents", 0)}\n'
+    guild_raids_total = (player_data["globalData"].get("guildRaids") or {}).get("total") or 0
+    display += f'Guild Raids: {guild_raids_total}\n'
+    total_deaths = sum(int((c or {}).get("deaths") or 0) for c in (player_data.get("characters") or {}).values())
+    display += f'Total Deaths: {total_deaths}\n'
     display += f"Total Level: {player_data['globalData']['totalLevel']}\n"
     
     max_raid_name_length = 0
+    # "Unknown" is the v3.3-prod label for TWP; unrecognized raids fall through to "NEW".
     raid_map = {
         "Nest of the Grootslangs": "NOG",
         "The Nameless Anomaly": "TNA",
         "The Canyon Colossus": "TCC",
-        "Orphion's Nexus of Light": "NOL"
+        "Orphion's Nexus of Light": "NOL",
+        "The Wartorn Palace": "TWP",
+        "Unknown": "TWP",
     }
     
     for raid in raids["list"].keys():
-        if len(raid_map[raid]) > max_raid_name_length:
-            max_raid_name_length = len(raid_map[raid])
+        short = raid_map.get(raid, "NEW")
+        if len(short) > max_raid_name_length:
+            max_raid_name_length = len(short)
     
     max_width = max(max_raid_name_length, len("Dungeons"), len("All Raids"))
     max_raid_value_length = 0
@@ -118,11 +175,22 @@ def player_stats(ign: str) -> Optional[Tuple[str, bool, str]]:
     display += '╠' + '═' * border_width_1 + '╬' + '═' * border_width_2 + '╣\n'
     
     for raid in raids["list"]:
-        display += f'║ {raid_map[raid].ljust(max_width)} ║ {str(raids["list"][raid]).rjust(num_width)} ║\n'
+        short = raid_map.get(raid, "NEW")
+        display += f'║ {short.ljust(max_width)} ║ {str(raids["list"][raid]).rjust(num_width)} ║\n'
     
     display += f'║ {"Dungeons".ljust(max_width)} ║ {str(dungeon_total).rjust(num_width)} ║\n'
     display += f'║ {"All Raids".ljust(max_width)} ║ {str(raid_total).rjust(num_width)} ║\n'
     display += '╚' + '═' * border_width_1 + '╩' + '═' * border_width_2 + '╝\n'
+    display += _render_guild_raid_table(player_data["globalData"].get("guildRaids"))
+    display += _render_raid_stats_block(player_data["globalData"].get("raidStats"))
+    if include_history:
+        restrictions = player_data.get("restrictions") or {}
+        if restrictions.get("guildHistoryAccess") is False:
+            display += "\nGuild History\nPlayer has hidden their guild history.\n"
+        elif player_data.get("guildHistory"):
+            display += f"\nGuild History ({len(player_data['guildHistory'])} guilds)\n"
+            for entry in player_data["guildHistory"][:10]:
+                display += f"- {entry}\n"
     
     print(display)
     return display, online_status, player_uuid
@@ -139,22 +207,51 @@ async def fetch_player_data(ign: str) -> Dict[str, Any]:
         Dictionary containing player statistics
     """
     player = Player()
-    raid_stats = player.raid_global(ign)
-    dungeon_stats = player.dungeon_global(ign)
-    chest_stats = player.chest_global(ign)
-    mob_stats = player.mobs_global(ign)
-    war_stats = player.war_global(ign)
-    
+    full_player = player.get_player_main(ign)
+    raid_stats = full_player["globalData"]["raids"]
+    dungeon_stats = full_player["globalData"]["dungeons"]["total"]
+    chest_stats = full_player["globalData"]["chestsFound"]
+    mob_stats = full_player["globalData"]["mobsKilled"]
+    war_stats = full_player["globalData"]["wars"]
+    world_events = full_player["globalData"].get("worldEvents") or 0
+    total_deaths = sum(int((c or {}).get("deaths") or 0) for c in (full_player.get("characters") or {}).values())
+    guild_raids = full_player["globalData"].get("guildRaids") or {}
+    g_list = guild_raids.get("list") or {}
+
     player_info = {
         "raids_total": raid_stats["total"],
         "tna": raid_stats.get("The Nameless Anomaly", 0),
         "tcc": raid_stats.get("The Canyon Colossus", 0),
         "nol": raid_stats.get("Orphion's Nexus of Light", 0),
         "nog": raid_stats.get("Nest of the Grootslangs", 0),
+        # TWP arrives under "Unknown" on v3.3 prod; expected to be "The Wartorn Palace"
+        # post-v3.7. Remove the Unknown alias after cut-day verification.
+        "twp": raid_stats.get("The Wartorn Palace", raid_stats.get("Unknown", 0)),
         "dungeons": dungeon_stats if dungeon_stats else 0,
         "chests": chest_stats if chest_stats else 0,
         "mobs": mob_stats if mob_stats else 0,
-        "wars": war_stats if war_stats else 0
+        "wars": war_stats if war_stats else 0,
+        "world_events": world_events,
+        "deaths": total_deaths,
+        "guild_raids_total": guild_raids.get("total") or 0,
+        "g_tna": g_list.get("The Nameless Anomaly") or 0,
+        "g_tcc": g_list.get("The Canyon Colossus") or 0,
+        "g_nol": g_list.get("Orphion's Nexus of Light") or 0,
+        "g_nog": g_list.get("Nest of the Grootslangs") or 0,
+        "g_twp": g_list.get("The Wartorn Palace", g_list.get("Unknown", 0)) or 0,
     }
+    raid_stats_raw = full_player["globalData"].get("raidStats") or {}
+    if raid_stats_raw:
+        player_info["raid_stats"] = {
+            "damage_dealt": raid_stats_raw.get("damageDealt", 0),
+            "damage_taken": raid_stats_raw.get("damageTaken", 0),
+            "heal": raid_stats_raw.get("healthHealed", 0),
+            "deaths": raid_stats_raw.get("deaths", 0),
+            "buffs_taken": raid_stats_raw.get("buffsTaken", 0),
+            "gambits_used": raid_stats_raw.get("gambitsUsed", 0),
+        }
+    guild_history = full_player.get("guildHistory") or []
+    if guild_history:
+        player_info["guild_history"] = guild_history
     return player_info
 
