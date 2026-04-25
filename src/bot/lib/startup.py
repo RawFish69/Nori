@@ -5,46 +5,40 @@ import asyncio
 import hikari
 import lightbulb
 from datetime import datetime, timezone, timedelta
-from lib.config import (
-    DATA_PATH, BOT_PATH, LOG_PATH
-)
+from lib.config import DATA_PATH, BOT_PATH, LOG_PATH
 
 
 async def load_startup_data(bot: lightbulb.BotApp):
     """Load all data files on bot startup."""
-    from lib.config import (
-        lootpool_history, lootpool_data, aspect_pool_data,
-        sales_data, item_map, stat_mapping, lb_in_guild,
-        blocked_users
-    )
+    import lib.config as config
     
     try:
         with open(DATA_PATH / "lootpool_default.json", "r") as file:
-            lootpool_data = json.load(file)["Loot"]
+            config.lootpool_data = json.load(file)["Loot"]
     except Exception as e:
         print(f"Error loading lootpool_default.json: {e}")
-        lootpool_data = {}
+        config.lootpool_data = {}
     
     try:
         with open(DATA_PATH / "lootpool_history.json", "r") as file:
-            lootpool_history = json.load(file)
+            config.lootpool_history = json.load(file)
     except Exception as e:
         print(f"Error loading lootpool_history.json: {e}")
-        lootpool_history = {}
+        config.lootpool_history = {}
     
     try:
         with open(DATA_PATH / "default_aspect_pool.json", "r") as file:
-            aspect_pool_data = json.load(file)["Loot"]
+            config.aspect_pool_data = json.load(file)["Loot"]
     except Exception as e:
         print(f"Error loading default_aspect_pool.json: {e}")
-        aspect_pool_data = {}
+        config.aspect_pool_data = {}
     
     try:
         with open(DATA_PATH / "sales_data.json", "r") as file:
-            sales_data = json.load(file)
+            config.sales_data = json.load(file)
     except Exception as e:
         print(f"Error loading sales_data.json: {e}")
-        sales_data = {}
+        config.sales_data = {}
     
     try:
         with open(BOT_PATH / "id_map.json", "r") as file:
@@ -62,33 +56,35 @@ async def load_startup_data(bot: lightbulb.BotApp):
     
     try:
         with open(BOT_PATH / "items.json", "r") as file:
-            item_map = json.load(file)
+            config.item_map = json.load(file)
     except Exception as e:
         print(f"Error loading items.json: {e}")
-        item_map = {}
+        config.item_map = {}
     
     try:
         with open(BOT_PATH / "stat_mapping.json", "r") as file:
-            stat_mapping = json.load(file)
+            config.stat_mapping = json.load(file)
     except Exception as e:
         print(f"Error loading stat_mapping.json: {e}")
-        stat_mapping = {}
+        config.stat_mapping = {}
     
     try:
         import os
         lb_in_guild_path = os.getenv('LB_IN_GUILD_PATH', str(DATA_PATH / "leaderboard_in_guild.json"))
         with open(lb_in_guild_path, "r") as file:
-            lb_in_guild = json.load(file)
+            config.lb_in_guild = json.load(file)
     except Exception as e:
         print(f"Error loading leaderboard_in_guild.json: {e}")
-        lb_in_guild = {}
+        config.lb_in_guild = {}
     
     try:
         with open(BOT_PATH / "blocked_users.json", "r") as file:
-            blocked_users = json.load(file)
+            loaded_blocked = json.load(file)
+            config.blocked_users.clear()
+            config.blocked_users.extend(loaded_blocked)
     except Exception as e:
         print(f"Error loading blocked_users.json: {e}")
-        blocked_users = []
+        config.blocked_users.clear()
     
     print("Data initial load complete.")
     

@@ -4,103 +4,110 @@ ML approaches for price prediction.
 
 import numpy as np
 import json
+import os
 from typing import Dict, List, Tuple, Optional, Any
 from datetime import datetime
 from pathlib import Path
 
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from sklearn.preprocessing import StandardScaler, RobustScaler
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor, VotingRegressor
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, Matern, WhiteKernel
+# Keep optional heavy frameworks out of the startup path for now.
+# Neural-network and Ax/BO methods remain disabled until we explicitly enable them.
+TORCH_AVAILABLE = False
+AX_AVAILABLE = False
+SKLEARN_AVAILABLE = os.getenv("NORI_ENABLE_SKLEARN", "false").strip().lower() in {
+    "1", "true", "yes", "on"
+}
 
-from lib.item_feature_engineering import ItemFeatureEngineer, create_item_feature_vector
-
-try:
-    import torch
-    import torch.nn as nn
-    import torch.optim as optim
-    from torch.utils.data import Dataset, DataLoader
-    TORCH_AVAILABLE = True
-except ImportError:
-    TORCH_AVAILABLE = False
-    print("Warning: PyTorch not available. Neural network methods will be disabled.")
-
-try:
-    from ax import optimize
-    from ax.models.torch.botorch import BotorchModel
-    from ax.service.ax_client import AxClient
-    from ax.service.utils.instantiation import ObjectiveProperties
-    AX_AVAILABLE = True
-except ImportError:
-    AX_AVAILABLE = False
-    print("Warning: Ax Framework not available. Bayesian optimization will be disabled.")
+if SKLEARN_AVAILABLE:
+    from sklearn.model_selection import train_test_split
+    from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+    from sklearn.preprocessing import StandardScaler, RobustScaler
+    from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor, VotingRegressor
+    from sklearn.gaussian_process import GaussianProcessRegressor
+    from sklearn.gaussian_process.kernels import RBF, Matern, WhiteKernel
+    from lib.item_feature_engineering import ItemFeatureEngineer, create_item_feature_vector
+else:
+    ItemFeatureEngineer = None
+    create_item_feature_vector = None
 
 
-class PriceDataset(Dataset):
-    """PyTorch dataset for price estimation."""
-    
-    def __init__(self, features: np.ndarray, prices: np.ndarray, scaler=None):
-        self.features = features
-        self.prices = prices
+if TORCH_AVAILABLE:
+    class PriceDataset(Dataset):
+        """PyTorch dataset for price estimation."""
         
-        if scaler is None:
-            self.scaler = StandardScaler()
-            self.features = self.scaler.fit_transform(self.features)
-        else:
-            self.scaler = scaler
-            self.features = self.scaler.transform(self.features)
-    
-    def __len__(self):
-        return len(self.features)
-    
-    def __getitem__(self, idx):
-        return torch.FloatTensor(self.features[idx]), torch.FloatTensor([self.prices[idx]])
+        def __init__(self, features: np.ndarray, prices: np.ndarray, scaler=None):
+            self.features = features
+            self.prices = prices
+            
+            if scaler is None:
+                self.scaler = StandardScaler()
+                self.features = self.scaler.fit_transform(self.features)
+            else:
+                self.scaler = scaler
+                self.features = self.scaler.transform(self.features)
+        
+        def __len__(self):
+            return len(self.features)
+        
+        def __getitem__(self, idx):
+            return torch.FloatTensor(self.features[idx]), torch.FloatTensor([self.prices[idx]])
 
 
-class MLPPricePredictor(nn.Module):
-    """Simple MLP for price prediction."""
-    
-    def __init__(self, input_dim: int = 50, hidden_dims: List[int] = [128, 256, 128, 64], dropout: float = 0.2):
-        super(MLPPricePredictor, self).__init__()
+    class MLPPricePredictor(nn.Module):
+        """Simple MLP for price prediction."""
         
-        layers = []
-        prev_dim = input_dim
+        def __init__(self, input_dim: int = 50, hidden_dims: List[int] = [128, 256, 128, 64], dropout: float = 0.2):
+            super(MLPPricePredictor, self).__init__()
+            
+            layers = []
+            prev_dim = input_dim
+            
+            for hidden_dim in hidden_dims:
+                layers.append(nn.Linear(prev_dim, hidden_dim))
+                layers.append(nn.ReLU())
+                layers.append(nn.Dropout(dropout))
+                prev_dim = hidden_dim
+            
+            layers.append(nn.Linear(prev_dim, 1))
+            self.network = nn.Sequential(*layers)
         
-        for hidden_dim in hidden_dims:
-            layers.append(nn.Linear(prev_dim, hidden_dim))
-            layers.append(nn.ReLU())
-            layers.append(nn.Dropout(dropout))
-            prev_dim = hidden_dim
-        
-        layers.append(nn.Linear(prev_dim, 1))
-        self.network = nn.Sequential(*layers)
-    
-    def forward(self, x):
-        return self.network(x)
+        def forward(self, x):
+            return self.network(x)
 
 
-class LSTMPricePredictor(nn.Module):
-    """LSTM for price prediction. Probably overkill but whatever."""
-    
-    def __init__(self, input_dim: int = 50, hidden_dim: int = 128, num_layers: int = 2, dropout: float = 0.2):
-        super(LSTMPricePredictor, self).__init__()
+    class LSTMPricePredictor(nn.Module):
+        """LSTM for price prediction. Probably overkill but whatever."""
         
-        self.hidden_dim = hidden_dim
-        self.num_layers = num_layers
+        def __init__(self, input_dim: int = 50, hidden_dim: int = 128, num_layers: int = 2, dropout: float = 0.2):
+            super(LSTMPricePredictor, self).__init__()
+            
+            self.hidden_dim = hidden_dim
+            self.num_layers = num_layers
+            
+            self.lstm = nn.LSTM(input_dim, hidden_dim, num_layers, batch_first=True, dropout=dropout)
+            self.fc = nn.Linear(hidden_dim, 1)
         
-        self.lstm = nn.LSTM(input_dim, hidden_dim, num_layers, batch_first=True, dropout=dropout)
-        self.fc = nn.Linear(hidden_dim, 1)
-    
-    def forward(self, x):
-        if x.dim() == 2:
-            x = x.unsqueeze(1)
-        
-        lstm_out, _ = self.lstm(x)
-        last_output = lstm_out[:, -1, :]
-        output = self.fc(last_output)
-        return output
+        def forward(self, x):
+            if x.dim() == 2:
+                x = x.unsqueeze(1)
+            
+            lstm_out, _ = self.lstm(x)
+            last_output = lstm_out[:, -1, :]
+            output = self.fc(last_output)
+            return output
+else:
+    class PriceDataset:
+        """Placeholder when PyTorch is unavailable."""
+        pass
+
+
+    class MLPPricePredictor:
+        """Placeholder when PyTorch is unavailable."""
+        pass
+
+
+    class LSTMPricePredictor:
+        """Placeholder when PyTorch is unavailable."""
+        pass
 
 
 class MLPriceModels:
@@ -110,7 +117,10 @@ class MLPriceModels:
         self.data_path = data_path
         self.models = {}
         self.scalers = {}
-        self.feature_engineer = ItemFeatureEngineer()
+        self.feature_engineer = ItemFeatureEngineer() if SKLEARN_AVAILABLE else None
+
+    def _disabled_result(self, method_name: str, reason: str) -> Dict[str, Any]:
+        return {"method": method_name, "error": reason}
     
     def prepare_data(
         self,
@@ -120,6 +130,9 @@ class MLPriceModels:
         test_size: float = 0.2,
         random_state: int = 42
     ) -> Tuple:
+        if not SKLEARN_AVAILABLE:
+            raise RuntimeError("scikit-learn is disabled (set NORI_ENABLE_SKLEARN=true to enable).")
+
         if len(items_data) < 5:
             features = self.feature_engineer.extract_features_batch(items_data, weights)
             return features, features, prices, prices, {"n_features": features.shape[1]}
@@ -150,6 +163,12 @@ class MLPriceModels:
         target_weight: Optional[float] = None
     ) -> Dict[str, Any]:
         """GP regression with uncertainty estimates."""
+        if not SKLEARN_AVAILABLE:
+            return self._disabled_result(
+                "Gaussian Process Regression (Full Features)",
+                "scikit-learn is disabled (set NORI_ENABLE_SKLEARN=true to enable).",
+            )
+
         X_train, X_test, y_train, y_test, feature_info = self.prepare_data(
             items_data, prices, weights
         )
@@ -195,6 +214,12 @@ class MLPriceModels:
         target_weight: Optional[float] = None
     ) -> Dict[str, Any]:
         """Bayesian optimization for hyperparameter tuning. Might be overkill with limited data."""
+        if not SKLEARN_AVAILABLE:
+            return self._disabled_result(
+                "Bayesian Optimization (Ax) - Full Features",
+                "scikit-learn is disabled (set NORI_ENABLE_SKLEARN=true to enable).",
+            )
+
         if not AX_AVAILABLE:
             return {"error": "Ax Framework not available"}
         
@@ -421,6 +446,12 @@ class MLPriceModels:
         target_weight: Optional[float] = None
     ) -> Dict[str, Any]:
         """Ensemble of multiple models for robust predictions."""
+        if not SKLEARN_AVAILABLE:
+            return self._disabled_result(
+                "Ensemble Learning - Full Features",
+                "scikit-learn is disabled (set NORI_ENABLE_SKLEARN=true to enable).",
+            )
+
         X_train, X_test, y_train, y_test, feature_info = self.prepare_data(items_data, prices, weights)
         
         target_features = self.feature_engineer.extract_features_from_item_data(
@@ -469,6 +500,12 @@ class MLPriceModels:
         target_weight: Optional[float] = None
     ) -> Dict[str, Any]:
         """Simplified meta-learning approach. Quick adaptation to new items."""
+        if not SKLEARN_AVAILABLE:
+            return self._disabled_result(
+                "Meta-Learning (Simplified) - Full Features",
+                "scikit-learn is disabled (set NORI_ENABLE_SKLEARN=true to enable).",
+            )
+
         X_train, X_test, y_train, y_test, feature_info = self.prepare_data(items_data, prices, weights)
         
         target_features = self.feature_engineer.extract_features_from_item_data(
@@ -516,6 +553,15 @@ class MLPriceModels:
         target_weight: Optional[float] = None
     ) -> Dict[str, Any]:
         """Compare all methods and return best prediction."""
+        if not SKLEARN_AVAILABLE:
+            disabled_message = "scikit-learn is disabled (set NORI_ENABLE_SKLEARN=true to enable)."
+            return {
+                "all_results": {"disabled": {"error": disabled_message}},
+                "best_method": None,
+                "best_prediction": None,
+                "comparison_summary": {"disabled": {"error": disabled_message}},
+            }
+
         results = {}
         
         try:

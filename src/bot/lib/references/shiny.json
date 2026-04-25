@@ -1,0 +1,66 @@
+{
+  "$schema": "./shiny.schema.json",
+  "lastUpdated": "2026-02-13T22:33:33Z",
+  "data": [
+    {
+      "id": 0,
+      "key": "bossAltarsWon",
+      "displayName": "Boss Altars Won"
+    },
+    {
+      "id": 1,
+      "key": "chestsOpened",
+      "displayName": "Chests Opened"
+    },
+    {
+      "id": 2,
+      "key": "deaths",
+      "displayName": "Deaths"
+    },
+    {
+      "id": 3,
+      "key": "dungeonsWon",
+      "displayName": "Dungeons Won"
+    },
+    {
+      "id": 4,
+      "key": "guildRaidsWon",
+      "displayName": "Guild Raids Won"
+    },
+    {
+      "id": 5,
+      "key": "lootrunsCompleted",
+      "displayName": "Lootruns Completed"
+    },
+    {
+      "id": 6,
+      "key": "majorWorldEventsWon",
+      "displayName": "Major World Events Won"
+    },
+    {
+      "id": 7,
+      "key": "mobsKilled",
+      "displayName": "Mobs Killed"
+    },
+    {
+      "id": 8,
+      "key": "playersKilled",
+      "displayName": "Players Killed"
+    },
+    {
+      "id": 9,
+      "key": "raidsWon",
+      "displayName": "Raids Won"
+    },
+    {
+      "id": 10,
+      "key": "warsWon",
+      "displayName": "Wars Won"
+    },
+    {
+      "id": 11,
+      "key": "worldEventsWon",
+      "displayName": "World Events Won"
+    }
+  ]
+}

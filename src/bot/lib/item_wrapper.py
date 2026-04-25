@@ -10,6 +10,10 @@ import requests
 import json
 import argparse
 from typing import Dict, Optional
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from lib.item_db_compat import items_response_to_dict
 
 
 class Items:
@@ -17,10 +21,9 @@ class Items:
 
     def __init__(self):
         self.base_url = "https://api.wynncraft.com/v3"
-        self.beta_url = "https://api-legacy.wynncraft.com/v2"
 
-    def fetch(self, url):
-        response = requests.get(url)
+    def fetch(self, url, headers=None):
+        response = requests.get(url, headers=headers)
         return response.json()
 
     def post(self, url, data=None):
@@ -28,19 +31,26 @@ class Items:
         return response.json()
 
     def get_all_items(self) -> Optional[Dict]:
-        """Fetch all items from main API"""
+        """Fetch all items from main API, normalised to displayName-keyed dict."""
         try:
-            response = requests.get(f"{self.base_url}/items")
-            return response.json() if response.status_code == 200 else None
+            raw = self.fetch(f"{self.base_url}/item/database?fullResult=True")
+            result, _ = items_response_to_dict(raw)
+            return result
         except Exception as error:
             print(f"API error: {error}")
             return None
 
     def get_beta_items(self) -> Optional[Dict]:
-        """Fetch items from beta/legacy API"""
+        """Fetch items from beta API (no auth required)."""
         try:
-            response = requests.get(f"{self.beta_url}/items/all")
-            return response.json() if response.status_code == 200 else None
+            raw = self.fetch(
+                "https://beta-api.wynncraft.com/v3/item/database?fullResult=True",
+                headers={}
+            )
+            if not isinstance(raw, (dict, list)):
+                return None
+            result, _ = items_response_to_dict(raw)
+            return result
         except Exception as error:
             print(f"Beta API error: {error}")
             return None
@@ -51,11 +61,16 @@ class Items:
 
     def item_query(self, data=None):
         api_url = "https://api.wynncraft.com/v3/item/search?fullResult=True"
-        return self.post(api_url, data)
+        raw = self.post(api_url, data)
+        result, _ = items_response_to_dict(raw)
+        return result
 
 
 def update_items(file_path):
     data = Items().get_all_items()
+    if data is None:
+        print("Failed to fetch items")
+        return
     update_file(data, file_path)
     print(f"{len(data)} items updated")
 

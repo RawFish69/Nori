@@ -613,6 +613,8 @@ class ChangelogManager:
         summary_changed = len(changelog_data["Changed"])
         summary_added = len(changelog_data["Added"])
         summary_removed = len(changelog_data["Removed"])
+        items_added_latex = "".join(f"\\item {a}" for a in items_added_list)
+        items_removed_latex = "".join(f"\\item {r}" for r in items_removed_list)
 
         latex_content = rf"""
 \documentclass{{article}}
@@ -623,12 +625,12 @@ class ChangelogManager:
 
 \subsection*{{Items Added}}
 \begin{{itemize}}
-{''.join(f'\\item {a}' for a in items_added_list)}
+{items_added_latex}
 \end{{itemize}}
 
 \subsection*{{Items Removed}}
 \begin{{itemize}}
-{''.join(f'\\item {r}' for r in items_removed_list)}
+{items_removed_latex}
 \end{{itemize}}
 
 \subsection*{{Item Changes}}
@@ -695,6 +697,8 @@ class ChangelogManager:
         summary_changed = len(changelog_data["Changed"])
         summary_added = len(changelog_data["Added"])
         summary_removed = len(changelog_data["Removed"])
+        ing_added_latex = "".join(f"\\item {a}" for a in ing_added_list)
+        ing_removed_latex = "".join(f"\\item {r}" for r in ing_removed_list)
 
         latex_content = rf"""
 \documentclass{{article}}
@@ -705,12 +709,12 @@ class ChangelogManager:
 
 \subsection*{{Ingredients Added}}
 \begin{{itemize}}
-{''.join(f'\\item {a}' for a in ing_added_list)}
+{ing_added_latex}
 \end{{itemize}}
 
 \subsection*{{Ingredients Removed}}
 \begin{{itemize}}
-{''.join(f'\\item {r}' for r in ing_removed_list)}
+{ing_removed_latex}
 \end{{itemize}}
 
 \subsection*{{Ingredient Changes}}

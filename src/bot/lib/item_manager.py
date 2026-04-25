@@ -5,6 +5,7 @@ Description: Core item management and data handling functionality
 
 import json
 from .item_wrapper import Items
+from .item_db_compat import items_response_to_dict
 
 
 class ItemManager:
@@ -27,27 +28,37 @@ class ItemManager:
         :return: The number of items updated (0 if error/failure).
         """
         self.items_path = path
-        data = Items().get_all_items()
-        if not data:
+        raw = Items().get_all_items()
+        if not raw:
             print("Invalid API response")
             return 0
 
-        # If API returned an error
-        if "Error" in data:
+        data, summary = items_response_to_dict(raw)
+        if summary is not None:
+            print(f"v3.7 array response converted: {summary['total']} keys, "
+                  f"{len(summary['collisions'])} displayName collisions")
+
+        # If API returned an error (only possible for legacy dict response)
+        if isinstance(data, dict) and "Error" in data:
             print(f"Error in item API response: {data['Error']}")
-            beta_data = Items().get_beta_items()
-            if beta_data and "Error" not in beta_data:
-                print("Beta API Item DB Valid, updating")
-                return self._save_item_data(beta_data, path)
+            beta_raw = Items().get_beta_items()
+            if beta_raw:
+                beta_data, beta_summary = items_response_to_dict(beta_raw)
+                if isinstance(beta_data, dict) and "Error" not in beta_data:
+                    print("Beta API Item DB Valid, updating")
+                    if beta_summary is not None:
+                        print(f"Beta converted: {beta_summary['total']} keys, "
+                              f"{len(beta_summary['collisions'])} collisions")
+                    return self._save_item_data(beta_data, path)
             return 0
 
         # Check for rate limit
-        if "message" in data and data["message"] == "API rate limit exceeded":
+        if isinstance(data, dict) and "message" in data and data["message"] == "API rate limit exceeded":
             print("Item Update - Exceeded API Rate limit") 
             return 0
 
         # Check for authentication/down
-        if "detail" in data and data["detail"] == "Authentication credentials were not provided.":
+        if isinstance(data, dict) and "detail" in data and data["detail"] == "Authentication credentials were not provided.":
             print("Error fetching item data, is it down?")
             return 0
 

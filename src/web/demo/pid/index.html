@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../../fish_logo.png" type="image/x-icon">
+<meta property="og:title" content="PID Controller Visualizer">
+<meta property="og:description" content="Interactive altitude and pitch PID controller demo.">
+<meta property="og:image" content="https://nori.fish/resources/nori_logo.png">
+<title>PID Controller Visualizer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+<script src="../../js_global/analytics.js"></script>
+<script defer src="pid.js"></script>
+</head>
+<body>
+<header class="hdr" role="banner">
+  <h1 class="hdr-logo">PID <span>/ controller visualizer</span></h1>
+  <div class="vsep"></div>
+  <div class="hdr-meta">
+    <div class="item" role="status" aria-live="polite">
+      <span class="led" id="ledDot"></span>
+      <b id="ledTxt">Running</b>
+    </div>
+    <div class="item">T+ <b id="hdrT">0.00</b> s</div>
+    <div class="item">240 Hz</div>
+  </div>
+  <div class="hdr-btns">
+    <button class="btn" id="btnPlay" aria-label="Pause" title="Pause (Space)">&#9646;&#9646;</button>
+    <button class="btn" id="btnReset" aria-label="Reset" title="Reset (R)">&#8635;</button>
+    <button class="btn" id="btnGust" aria-label="Trigger gust" title="Gust (G)">&#126;&#126;</button>
+    <button class="btn btn-tune" id="btnTune" aria-label="Open tuning panel" aria-expanded="false" aria-controls="drawer" title="Tune (T)">&#8801; Tune</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="drawer" id="drawer" aria-label="Tuning panel">
+    <div class="d-section">
+      <div class="d-title">Presets</div>
+      <div class="chips" id="presetChips">
+        <button class="chip" data-preset="0" aria-pressed="false">Open loop</button>
+        <button class="chip" data-preset="1" aria-pressed="false">P only</button>
+        <button class="chip" data-preset="2" aria-pressed="false">PI</button>
+        <button class="chip" data-preset="3" aria-pressed="false">PD</button>
+        <button class="chip on" data-preset="4" aria-pressed="true">Tuned PID</button>
+        <button class="chip" data-preset="5" aria-pressed="false">Oscillating</button>
+        <button class="chip" data-preset="6" aria-pressed="false">I windup</button>
+        <button class="chip" data-preset="7" aria-pressed="false">Noisy D</button>
+      </div>
+    </div>
+
+    <div class="d-section">
+      <div class="d-title">Altitude Gains <span class="d-aside" id="a1cls">PID</span></div>
+      <div class="gain-row">
+        <label class="gain-lbl P" for="a1kp">Kp</label>
+        <input type="range" class="alt" id="a1kp" min="0" max="30" step=".1" value="6" aria-label="Altitude proportional gain">
+        <span class="gain-val" id="a1kpV">6.00</span>
+      </div>
+      <div class="gain-row">
+        <label class="gain-lbl I" for="a1ki">Ki</label>
+        <input type="range" class="alt" id="a1ki" min="0" max="15" step=".05" value="2" aria-label="Altitude integral gain">
+        <span class="gain-val" id="a1kiV">2.00</span>
+      </div>
+      <div class="gain-row">
+        <label class="gain-lbl D" for="a1kd">Kd</label>
+        <input type="range" class="alt" id="a1kd" min="0" max="15" step=".05" value="3" aria-label="Altitude derivative gain">
+        <span class="gain-val" id="a1kdV">3.00</span>
+      </div>
+    </div>
+
+    <div class="d-section">
+      <div class="d-title">Pitch Gains <span class="d-aside" id="a2cls">PID</span></div>
+      <div class="gain-row">
+        <label class="gain-lbl P" for="a2kp">Kp</label>
+        <input type="range" class="pit" id="a2kp" min="0" max="30" step=".1" value="8" aria-label="Pitch proportional gain">
+        <span class="gain-val" id="a2kpV">8.00</span>
+      </div>
+      <div class="gain-row">
+        <label class="gain-lbl I" for="a2ki">Ki</label>
+        <input type="range" class="pit" id="a2ki" min="0" max="10" step=".05" value="1" aria-label="Pitch integral gain">
+        <span class="gain-val" id="a2kiV">1.00</span>
+      </div>
+      <div class="gain-row">
+        <label class="gain-lbl D" for="a2kd">Kd</label>
+        <input type="range" class="pit" id="a2kd" min="0" max="10" step=".05" value="2" aria-label="Pitch derivative gain">
+        <span class="gain-val" id="a2kdV">2.00</span>
+      </div>
+    </div>
+
+    <div class="d-section">
+      <div class="d-title">Setpoint Signal</div>
+      <div class="chips" id="sigChips">
+        <button class="chip on" data-sig="step" aria-pressed="true">Step</button>
+        <button class="chip" data-sig="square" aria-pressed="false">Square</button>
+        <button class="chip" data-sig="sine" aria-pressed="false">Sine</button>
+      </div>
+      <div class="d-row">
+        <label for="a1sp" style="color:var(--cAlt)">Altitude (m)</label>
+        <input type="number" id="a1sp" value="5" step="0.5">
+      </div>
+      <div class="d-row">
+        <label for="a2sp" style="color:var(--cPit)">Pitch (°)</label>
+        <input type="number" id="a2sp" value="15" step="1" min="-45" max="45">
+      </div>
+    </div>
+
+    <div class="d-section">
+      <div class="d-title">Environment</div>
+      <div class="tog-grid">
+        <label class="tog"><input type="checkbox" id="eGust"> Wind gusts</label>
+        <label class="tog"><input type="checkbox" id="eNoise"> Sensor noise</label>
+        <label class="tog"><input type="checkbox" id="eSat" checked> Thrust limits</label>
+        <label class="tog"><input type="checkbox" id="eAWU" checked> Anti-windup</label>
+      </div>
+      <div class="d-row"><label for="eMass">Mass (kg)</label><input type="number" id="eMass" value="1.0" step="0.1" min="0.2"></div>
+      <div class="d-row"><label for="eSpeed">Sim speed ×</label><input type="number" id="eSpeed" value="1.0" step="0.25" min="0.1" max="3"></div>
+    </div>
+  </aside>
+
+  <div class="app">
+    <div class="col axis-col" id="altCol">
+      <div class="viz-pane cw">
+        <canvas id="altCv" aria-label="Altitude visualization: drone hovers toward setpoint"></canvas>
+        <div class="pane-label">
+          <span class="dot" style="background:var(--cAlt)"></span>
+          Altitude · 1-DOF
+          <span class="hint">drag ↕ setpoint</span>
+        </div>
+      </div>
+      <div class="cw">
+        <canvas id="a1mainCv" aria-label="Altitude setpoint vs measured over time"></canvas>
+        <div class="leg">
+          <span><span class="lsw" style="background:var(--cAlt)"></span>set</span>
+          <span><span class="lsw" style="background:var(--ink)"></span>meas</span>
+        </div>
+        <div class="chart-ep" id="a1ep">e=0.00</div>
+      </div>
+      <div class="cw">
+        <canvas id="a1pidCv" aria-label="Altitude PID component outputs over time"></canvas>
+        <div class="leg">
+          <span><span class="lsw" style="background:var(--cP)"></span>P</span>
+          <span><span class="lsw" style="background:var(--cI)"></span>I</span>
+          <span><span class="lsw" style="background:var(--cD)"></span>D</span>
+        </div>
+      </div>
+      <div class="readouts" role="region" aria-label="Altitude readouts">
+        <div class="ro cAlt"><div class="k">ALT</div><div class="v"><span id="r_ay">0.00</span><span class="u">m</span></div></div>
+        <div class="ro"><div class="k">ERR</div><div class="v"><span id="r_ae">0.00</span><span class="u">m</span></div></div>
+        <div class="ro"><div class="k">THR</div><div class="v"><span id="r_au">0.00</span><span class="u">N</span></div></div>
+        <div class="ro cP"><div class="k">P</div><div class="v"><span id="r_ap">0.00</span></div></div>
+        <div class="ro cI"><div class="k">I</div><div class="v"><span id="r_ai">0.00</span></div></div>
+        <div class="ro cD"><div class="k">D</div><div class="v"><span id="r_ad">0.00</span></div></div>
+      </div>
+    </div>
+
+    <div class="resizer" id="colResizer" role="separator" aria-label="Resize columns"></div>
+
+    <div class="col axis-col" id="pitCol">
+      <div class="viz-pane cw">
+        <canvas id="pitCv" aria-label="Pitch visualization: drone tilts toward setpoint angle"></canvas>
+        <div class="pane-label">
+          <span class="dot" style="background:var(--cPit)"></span>
+          Pitch · Rotational
+          <span class="hint">drag ↕ setpoint</span>
+        </div>
+      </div>
+      <div class="cw">
+        <canvas id="a2mainCv" aria-label="Pitch setpoint vs measured angle over time"></canvas>
+        <div class="leg">
+          <span><span class="lsw" style="background:var(--cPit)"></span>set</span>
+          <span><span class="lsw" style="background:var(--ink)"></span>meas</span>
+        </div>
+        <div class="chart-ep" id="a2ep">e=0.0°</div>
+      </div>
+      <div class="cw">
+        <canvas id="a2pidCv" aria-label="Pitch PID component outputs over time"></canvas>
+        <div class="leg">
+          <span><span class="lsw" style="background:var(--cP)"></span>P</span>
+          <span><span class="lsw" style="background:var(--cI)"></span>I</span>
+          <span><span class="lsw" style="background:var(--cD)"></span>D</span>
+        </div>
+      </div>
+      <div class="readouts" role="region" aria-label="Pitch readouts">
+        <div class="ro cPit"><div class="k">ANG</div><div class="v"><span id="r_py">0.0</span><span class="u">°</span></div></div>
+        <div class="ro"><div class="k">ERR</div><div class="v"><span id="r_pe">0.0</span><span class="u">°</span></div></div>
+        <div class="ro"><div class="k">TRQ</div><div class="v"><span id="r_pu">0.0</span><span class="u">Nm</span></div></div>
+        <div class="ro cP"><div class="k">P</div><div class="v"><span id="r_pp">0.00</span></div></div>
+        <div class="ro cI"><div class="k">I</div><div class="v"><span id="r_pi">0.00</span></div></div>
+        <div class="ro cD"><div class="k">D</div><div class="v"><span id="r_pd">0.00</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

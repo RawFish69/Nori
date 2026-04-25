@@ -129,7 +129,7 @@ TIER_TRANSLATIONS = {
     "unique": "Unique",
 }
 
-SHINY_STATS = {
+SHINY_STATS = [
   {
     "id": 1,
     "key": "mobsKilled",
@@ -178,7 +178,7 @@ SHINY_STATS = {
     "displayName": "Lootruns Completed",
     "statUnit": "raw"
   }
-}
+]
 
 # from Wynntils static storage 
 ID_MAP = {

@@ -15,7 +15,7 @@ Nori uses slash commands (`/`). Type `/` in Discord to browse command groups.
 - `/player` show a player's in-game stats
 - `/guild` show guild stats
 - `/online` show online player activity
-- `/lb raid` raid leaderboard
+- `/lb raid` raid leaderboard (supported keys: `tna`, `tcc`, `nol`, `nog`, `twp`, `all`)
 - `/lb stat` stat leaderboard
 - `/lb profession` profession leaderboard
 
@@ -33,7 +33,7 @@ Nori uses slash commands (`/`). Type `/` in Discord to browse command groups.
 ## Lootpool and Raids
 - `/item lootpool` weekly lootrun camp reward pool
 - `/item history` item lootpool history lookup
-- `/raid aspect` weekly raid aspect pool
+- `/raid aspect` weekly raid aspect pool (raids: TNA, TCC, NOL, NOG, TWP — note: `NOTG` renamed to `NOG`)
 - `/raid item` weekly raid item pool
 - `/raid gambit` daily shared raid gambits
 - `/aspect lootpool` deprecated alias that points to the `/raid ...` commands

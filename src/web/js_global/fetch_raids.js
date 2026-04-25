@@ -1,4 +1,12 @@
-const RAID_DISPLAY_ORDER = ["TNA", "TCC", "NOL", "NOTG", "TWP"];
+const RAID_DISPLAY_ORDER = ["TNA", "TCC", "NOL", "NOG", "TWP"];
+
+const RAID_FULL_NAMES = {
+    "TNA": "The Nameless Anomaly",
+    "TCC": "The Canyon Colossus",
+    "NOL": "Orphion's Nexus of Light",
+    "NOG": "Nest of the Grootslangs",
+    "TWP": "The Wartorn Palace"
+};
 const ASPECT_TIERS = ["Mythic", "Fabled", "Legendary"];
 const ITEM_TIERS = ["Mythic", "Fabled", "Legendary", "Rare", "Unique", "Misc"];
 const SOURCE_MODES = ["all", "aspects", "items"];
@@ -398,7 +406,7 @@ function displayRaidLootpool(payload) {
 
         const title = document.createElement("div");
         title.classList.add("region-title");
-        title.textContent = `${raid} Raid Pool`;
+        title.textContent = `${RAID_FULL_NAMES[raid] || raid} Raid Pool`;
         title.addEventListener("click", () => card.classList.toggle("active"));
         card.appendChild(title);
 

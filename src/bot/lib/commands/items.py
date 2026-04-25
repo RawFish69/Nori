@@ -9,14 +9,16 @@ from lib.config import BOT_PATH, RESOURCES_PATH, CHANGELOG_PATH, USER_IMG_PATH, 
 from lib.item_utils import ItemUtils
 from lib.item_weight import WeightManager
 from lib.price_estimator import PriceEstimator
+from lib.manager_registry import get_managers
 
 
 def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     """Load all item-related commands."""
-    
-    item_utils = bot.managers.get("item_utils", ItemUtils(item_map))
-    weight_manager = bot.managers.get("weight_manager")
-    price_estimator = bot.managers.get("price_estimator", PriceEstimator(output_path=USER_IMG_PATH / "pricecheck"))
+
+    managers = get_managers()
+    item_utils = managers.get("item_utils", ItemUtils(item_map))
+    weight_manager = managers.get("weight_manager")
+    price_estimator = managers.get("price_estimator", PriceEstimator(output_path=USER_IMG_PATH / "pricecheck"))
     
     @bot.command()
     @lightbulb.command('item', 'Items for wynn')

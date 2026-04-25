@@ -67,7 +67,7 @@ class LeaderboardManager:
         """
         Retrieve pre-computed leaderboard data for a given raid from a local file.
 
-        :param raid_name: 'tna', 'tcc', 'nol', 'nog', or 'all'.
+        :param raid_name: 'tna', 'tcc', 'nol', 'nog', 'twp', or 'all'.
         :return: Dict of {player: clears}, or None if not found.
         """
         with open(self.leaderboard_path, "r") as file:
@@ -83,6 +83,8 @@ class LeaderboardManager:
                 return data["nol"]
             elif raid_name == "nog":
                 return data["nog"]
+            elif raid_name == "twp":
+                return data.get("twp", [])
             elif raid_name == "all":
                 return data["raids_total"]
         except KeyError:

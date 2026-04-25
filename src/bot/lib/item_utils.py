@@ -65,7 +65,7 @@ class ItemUtils:
             "dagger": "Assassin",
             "relik": "Shaman"
         }
-        class_type = type_translate.get(data.get("weaponType"))
+        class_type = type_translate.get(data.get("subType"))
         return {"icon": icon_link, "class": class_type}
 
     def item_search(
@@ -95,13 +95,9 @@ class ItemUtils:
             # Add requirements
             if "requirements" in found_data:
                 level_req = found_data["requirements"].get("level", 0)
-                rarity = found_data.get("rarity", "")
-                item_type = (
-                    found_data["type"] if found_data.get("type") == "weapon"
-                    else found_data.get("accessoryType")
-                    or found_data.get("type")
-                )
-                base_display.append(f"Lv. {level_req} {rarity} {item_type}")
+                tier = found_data.get("tier", "")
+                sub_type = found_data.get("subType", "")
+                base_display.append(f"Lv. {level_req} {tier} {sub_type}")
 
             # Add base stats
             base_stats = found_data.get("base", {})
@@ -130,13 +126,12 @@ class ItemUtils:
                     icon_id = icon_data["value"]["name"]
 
             # Get item_type
-            final_type = None
-            if found_data.get("type") == "weapon":
-                final_type = found_data.get("weaponType")
-            elif found_data.get("type") == "armour":
-                final_type = found_data.get("armourType")
+            final_type = found_data.get("subType")
 
-            return ("\n".join(base_display), IDs, icon_id, found_data.get("lore"), final_type)
+            raw_lore = found_data.get("lore")
+            lore = re.sub(r'<[^>]+>', '', raw_lore) if raw_lore else None
+
+            return ("\n".join(base_display), IDs, icon_id, lore, final_type)
 
         except Exception as error:
             print(f"Error in item_search: {error}")
@@ -290,8 +285,15 @@ class ItemUtils:
 
             for stat_id, roll_data in identifications.items():
                 roll_percentage = roll_data["roll"] / 100
-                base_stat_info = id_range.get(stat_id, {})
-                
+                base_stat_info = id_range.get(stat_id)
+
+                if base_stat_info is None:
+                    continue
+                if not isinstance(base_stat_info, dict):
+                    stats_output[name].update({stat_id: base_stat_info})
+                    stats_output["rate"].update({stat_id: 100.0})
+                    continue
+
                 id_min = base_stat_info.get("min", 0)
                 id_max = base_stat_info.get("max", 0)
                 id_base = base_stat_info.get("raw", 0)
