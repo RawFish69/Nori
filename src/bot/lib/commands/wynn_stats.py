@@ -202,19 +202,31 @@ def load_wynn_stats_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         lb_user_cache[username] = {"type": "", "page": 1}
         view = raidView(timeout=60)
         msg = '```json\n'
-        title_line = 'Wynncraft Raid Report [Global]\n'
-        description_line = f"Select a leaderboard category"
-        msg += '1. TNA - The Nameless Anomaly\n'
-        msg += '2. TCC - The Canyon Colossus\n'
-        msg += '3. NoL - Nexus of Light\n'
-        msg += '4. NoG - Nest of the Grootslangs\n'
-        msg += '5. All - Total Raid clears\n```'
+        title_line = 'Wynncraft Raid Leaderboard [Global]\n'
+        description_line = "Per-raid clears or aggregate raid metrics"
+        msg += 'Clears\n'
+        msg += '  1. TNA - The Nameless Anomaly\n'
+        msg += '  2. TCC - The Canyon Colossus\n'
+        msg += '  3. NoL - Nexus of Light\n'
+        msg += '  4. NoG - Nest of the Grootslangs\n'
+        msg += '  5. TWP - The Wartorn Palace\n'
+        msg += '  6. All - Total Raid clears\n'
+        msg += 'Metrics (global aggregates)\n'
+        msg += '  7. Damage Dealt\n'
+        msg += '  8. Damage Taken\n'
+        msg += '  9. Healing\n'
+        msg += ' 10. Deaths\n'
+        msg += ' 11. Buffs Taken\n'
+        msg += ' 12. Gambits Used\n```'
         raid_embed = hikari.Embed(title=title_line, description=description_line, color="#93FEFD")
         raid_embed.add_field("Information:", f"{msg}")
         raid_embed.set_thumbnail("https://cdn.wynncraft.com/nextgen/wynncraft_icon.png")
-        web_page = f"[Raid Leaderboards on Nori-Web](https://nori.fish/wynn/leaderboard/?type=raids&category=raids_total&page=1)"
+        web_page = (
+            "[Unified Raid Leaderboard on Nori-Web]"
+            "(https://nori.fish/wynn/leaderboard/?type=raids&category=all&page=1)"
+        )
         raid_embed.add_field("Leaderboard on Web Browser", f"{web_page}")
-        raid_embed.set_footer("Nori Bot - Wynn Raid Report")
+        raid_embed.set_footer("Nori Bot - Wynn Raid Leaderboard")
         message = await ctx.respond(embed=raid_embed, components=view.build())
         message = await message
         await view.start(message)

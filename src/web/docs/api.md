@@ -30,6 +30,7 @@
 2. [Uptime Endpoint](#uptime-endpoint)
 3. [Leaderboard Endpoints](#leaderboard-endpoints)
     - [Raid & Stat Leaderboards](#get-apileaderboardraidraid_name)
+    - [Unified Raid Leaderboard](#get-apileaderboardraid_all)
     - [Profession Leaderboards](#get-apileaderboardprofessioncategory)
     - [Guild Leaderboards](#get-apileaderboardguildcategory)
 4. [Database Guild Endpoint](#database-guild-endpoint)
@@ -286,11 +287,24 @@ Response:
 
 Available Parameters:
 - For raid leaderboards (`raid_name`):
-    - `raids_total`: Total raids completed
-    - `tna`: The Nameless Anomaly completions
-    - `tcc`: The Canyon Colossus completions
-    - `nol`: Nest of the Legends completions
-    - `nog`: Orphion's Gate completions
+    - **Per-raid clears**:
+        - `raids_total`: Total raids completed
+        - `tna`: The Nameless Anomaly completions
+        - `tcc`: The Canyon Colossus completions
+        - `nol`: Orphion's Nexus of Light completions
+        - `nog`: Nest of the Grootslangs completions
+        - `twp`: The Wartorn Palace completions
+    - **Aggregate raid metrics** *(global counters across all raid content; values come from Wynncraft `globalData.raidStats` and may be null for players Wynncraft hasn't backfilled yet)*:
+        - `raid_damage_dealt`: Total damage dealt in raids
+        - `raid_damage_taken`: Total damage taken in raids
+        - `raid_heal`: Total healing done in raids
+        - `raid_deaths`: Total raid deaths
+        - `raid_buffs_taken`: Buffs taken in raids
+        - `raid_gambits_used`: Gambits used in raids
+
+> **Unified leaderboard (2026-04-25)**: Raid clears and raid metrics now live under the same `/api/leaderboard/raid/{key}` route. The previous standalone `/api/leaderboard/raid_stats` aggregate endpoint has been **removed**; clients should switch to per-key requests above, or to `/api/leaderboard/raid_all` (below) for a single combined payload.
+
+> **Migration note**: the lootpool/aspect short code was previously `NOTG`; it has been renamed to `NOG` to match the stat-side key. Callers using `notg` in aspect/lootpool contexts should switch to `nog`.
 
 - For stat leaderboards (`stat_name`):
     - `dungeons`: Total dungeon completions
@@ -301,15 +315,54 @@ Available Parameters:
     - `pvp_kills`: PvP kills
     - `quests`: Quests completed
     - `levels`: Combined levels
+    - `world_events`: World events completed
+    - `deaths`: Character deaths
+
+Response (per-raid clears and stat leaderboards — array of `{IGN: value}` entries):
+```json
+[
+  { "PlayerName1": 0 },
+  { "PlayerName2": 0 }
+]
+```
+
+Response (aggregate raid metrics — same array shape, value is the metric total):
+```json
+[
+  { "PlayerName1": 1234567890 },
+  { "PlayerName2":   987654321 }
+]
+```
+
+### `GET` /api/leaderboard/raid_all
+- Rate Limit: 120/minute
+- Description: Unified raid leaderboard. Top-100 players sorted by total raid clears, with each row enriched with total clears and the six aggregate raid metrics. Replaces the legacy `/api/leaderboard/raid_stats` endpoint.
+- UI note: the web "All Raids & Metrics" table displays `raids_total` plus aggregate metrics only. Individual raid clear counts are still available through `/api/leaderboard/raid/{tna|tcc|nol|nog|twp}` and the focused Raid dropdown categories.
 
 Response:
 ```json
 {
-    "PlayerName1": 0,
-    "PlayerName2": 0,
-    ...
+  "ranking": [
+    {
+      "PlayerName": {
+        "raids_total":        4231,
+        "raid_damage_dealt":   186268752,
+        "raid_damage_taken":      180569,
+        "raid_heal":              251434,
+        "raid_deaths":                11,
+        "raid_buffs_taken":           63,
+        "raid_gambits_used":           0
+      }
+    }
+  ],
+  "timestamp": 1775704250
 }
 ```
+
+Notes:
+- Aggregate raid metrics are **global** (Wynncraft does not break them down per raid type), so `raid_damage_dealt` is one number per player regardless of raid.
+- Returns **404** when no `raids_total` data is available (e.g. fresh deploy before the data builder has run).
+- Unranked metrics for a player render as `0` until that player appears in the corresponding metric's top-100 list. The next data-scripts rebuild produces a fully-joined precomputed `raid_all` block that resolves zero-fill cases.
 
 
 ### `GET` /api/leaderboard/profession/{category}`
@@ -341,6 +394,7 @@ Response:
         - `tcc`: TCC completions
         - `nol`: NOL completions
         - `nog`: NOG completions
+        - `twp`: TWP (The Wartorn Palace) completions
         - `dungeons`: Dungeons completed
         - `playtime`: Total playtime
         - `quests`: Quests completed
@@ -547,7 +601,7 @@ Response:
     },
     "TCC": {},
     "NOL": {},
-    "NOTG": {},
+    "NOG": {},
     "TWP": {}
   },
   "Items": {
@@ -561,7 +615,7 @@ Response:
     },
     "TCC": {},
     "NOL": {},
-    "NOTG": {},
+    "NOG": {},
     "TWP": {}
   },
   "Icons": {

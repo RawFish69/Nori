@@ -1,152 +1,262 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    color: #333;
+html {
+    overflow-y: scroll; /* always reserve scrollbar space — prevents horizontal jitter on page height change */
 }
 
-.container {
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+/* ── CSS variables (lootpool palette) ───────────────────────────────── */
+:root {
+    --bg-card: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --accent-primary: #8b5cf6;
+    --border-color: rgba(255, 255, 255, 0.1);
 }
 
-header {
-    background: #708090;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    position: relative;
+/* ── Dark mode body ─────────────────────────────────────────────────── */
+:root.site-dark body {
+    /* Match the lootpool page: use the shared dark-theme base instead of
+       forcing the purple marketing gradient behind the leaderboard. */
+    background: #121212 !important;
+    color: var(--text-primary);
 }
 
-.install-link {
-    color: #006eff;
+:root.site-dark body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: none;
+    pointer-events: none;
+    z-index: 0;
 }
 
-nav a {
-    margin: 0 10px;
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
+/* ── Header ─────────────────────────────────────────────────────────── */
+:root.site-dark header {
+    background: #1f1f1f !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color) !important;
 }
 
-nav a:hover {
-    color: #FFD700;
+:root.site-dark #menu-button,
+:root.site-dark #menu-button.dark-mode {
+    background-color: #121212 !important;
+    color: var(--text-primary) !important;
+    box-shadow: none !important;
 }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #333;
-    color: white;
-    width: 100%;
+:root.site-dark #menu-button:hover,
+:root.site-dark #menu-button.dark-mode:hover {
+    background-color: #1f1f1f !important;
 }
 
-.centered-text {
-    text-align: center;
+:root.site-dark #menu-button:active,
+:root.site-dark #menu-button.dark-mode:active {
+    background-color: #0f0f0f !important;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand img { width: 48px; height: 48px; border-radius: 12px; }
+
+.brand h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: 0;
 }
 
 .subtitle {
-    font-size: 0.9em;
-    color: #666;
-    margin-top: 5px;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: -2px;
 }
 
-.table-container {
-    width: 100%;
-    margin: 20px auto;
-    overflow-x: auto;
-    text-align: center; 
+/* ── Container ──────────────────────────────────────────────────────── */
+/* Auto-fit the page to the active table. The shared default.css is loaded
+   after this file and also defines `.container`, so use a direct body child
+   selector to avoid being squeezed into the normal content column. */
+body > .container {
+    width: fit-content;
+    max-width: calc(100vw - 32px);
+    margin: 2rem auto;
+    padding: 1.25rem 0.5rem;
+    position: relative;
+    z-index: 1;
 }
 
-table {
-    width: 70%; 
-    margin: 0 auto; 
-    border-collapse: collapse;
+body > .container:has(table.wide-mode) {
+    width: fit-content;
+    max-width: calc(100vw - 32px);
 }
 
-th, td {
-    padding: 8px 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+/* ── Leaderboard panel ──────────────────────────────────────────────── */
+.leaderboard-panel {
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding: 24px 18px;
+    border: 1px solid var(--border-color);
 }
 
-th, td:nth-child(1), td:nth-child(3), td:nth-child(4), td:nth-child(5) {
-    text-align: center; 
+body > .container:has(table.wide-mode) .leaderboard-panel {
+    width: fit-content;
+    max-width: 100%;
 }
 
-.gold {
-    color: gold;
-    font-weight: bold;
+#Leaderboard h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
 }
 
-.silver {
-    color: silver;
-    font-weight: bold;
-}
-
-.bronze {
-    color: #cd7f32;
-    font-weight: bold;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-th {
-    background-color: #708090;
-    color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1.5s forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
+/* ── Dropdowns ──────────────────────────────────────────────────────── */
 .dropdown-container {
     display: flex;
     justify-content: center;
     margin: 20px 0;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 select {
     padding: 12px;
-    margin: 0 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f9f9f9;
     cursor: pointer;
     font-size: 16px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 180px;
 }
 
 select:focus {
-    border-color: #0077B6;
-    box-shadow: 0 0 5px rgba(0, 119, 182, 0.5);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.4);
     outline: none;
 }
 
+/* ── Table ──────────────────────────────────────────────────────────── */
+.table-container {
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 20px auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden; /* prevent vertical scrollbar pop-in that causes layout jitter */
+    text-align: center;
+    min-height: 560px;
+}
+
+body > .container:has(table.wide-mode) .table-container {
+    width: fit-content;
+    max-width: 100%;
+}
+
+/* Default (single-stat) layout: auto-size to content. The older fixed 720px
+   baseline made tiny tables feel as wide as guild/all-metric views. */
+table {
+    width: auto;
+    min-width: 0;
+    margin: 0 auto;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+/* Compact defaults for normal single-stat boards (raids total, stats, etc.). */
+table:not(.wide-mode) th:first-child { width: 64px; } /* Rank */
+table:not(.wide-mode) th:nth-child(2) { min-width: 210px; } /* Name */
+table:not(.wide-mode) th:nth-child(n+3) { min-width: 118px; } /* values */
+
+/* Views with naturally wider row shapes get only the extra width they need. */
+table.guild-mode th:nth-child(2) { min-width: 260px; }
+table.guild-mode th:nth-child(3) { min-width: 130px; }
+table.guild-mode th:nth-child(4) { min-width: 100px; }
+table.guild-mode th:nth-child(5) { min-width: 130px; }
+
+table.profession-mode th:nth-child(2) { min-width: 240px; }
+table.profession-mode th:nth-child(n+3) { min-width: 110px; }
+
+/* Combined view (Raid > All) — total clears + aggregate metrics only. Since
+   individual raid clears are separate categories, this can auto-fit like the
+   other focused boards instead of stretching across the whole viewport. */
+table.wide-mode {
+    width: auto;
+    min-width: 0;
+    table-layout: auto;
+}
+table.wide-mode th:first-child   { width: 58px; }
+table.wide-mode th:nth-child(2)  { width: 180px; }
+table.wide-mode th:nth-child(3)  { width: 88px; }
+table.wide-mode th:nth-child(n+4) { width: auto; }
+
+table.wide-mode th,
+table.wide-mode td {
+    padding: 11px 8px;
+    font-size: 0.96rem;
+}
+
+table.wide-mode .player-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 7px;
+}
+
+th, td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+/* Center rank, name, and value columns so player names align under "Name". */
+th, td:nth-child(1), td:nth-child(2), td:nth-child(n+3) {
+    text-align: center;
+}
+
+th {
+    background-color: #708090;
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+th.sortable-column {
+    cursor: pointer;
+    user-select: none;
+}
+
+th.sortable-column:hover {
+    filter: brightness(1.12);
+}
+
+tr:nth-child(even) { background-color: #f2f2f2; }
+tr:hover { background-color: #f1f1f1; }
+
+/* ── Rank badges ────────────────────────────────────────────────────── */
+.gold   { color: gold;    font-weight: bold; }
+.silver { color: silver;  font-weight: bold; }
+.bronze { color: #cd7f32; font-weight: bold; }
+.bold   { font-weight: bold; }
+
+/* ── Player avatar ──────────────────────────────────────────────────── */
 .player-icon {
     width: 32px;
     height: 32px;
@@ -154,36 +264,188 @@ select:focus {
     vertical-align: middle;
 }
 
+/* ── Pagination ─────────────────────────────────────────────────────── */
 .pagination-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
     flex-wrap: wrap;
+    gap: 5px;
 }
 
 .pagination-container button {
-    margin: 5px;
     padding: 8px 12px;
-    background-color: #00bcd4;
+    background-color: var(--accent-primary);
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
     font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .pagination-container button:hover {
-    background-color: #008ba3; 
+    background-color: #7048d6;
     transform: scale(1.05);
 }
 
 .pagination-container button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+    transform: none;
 }
 
+/* ── Status messages ────────────────────────────────────────────────── */
 .centered-text {
     text-align: center;
     margin: 20px 0;
+}
+
+/* ── Dark theme ─────────────────────────────────────────────────────── */
+:root.site-dark .leaderboard-panel {
+    background: rgba(31, 41, 55, 0.6);
+    border-color: var(--border-color);
+}
+
+:root.site-dark #Leaderboard h2 {
+    color: var(--text-primary);
+}
+
+:root.site-dark .centered-text {
+    color: var(--text-secondary);
+}
+
+:root.site-dark select {
+    background: rgba(31, 41, 55, 0.8);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+:root.site-dark select option,
+:root.site-dark select optgroup {
+    background: #1f2937;
+    color: var(--text-primary);
+}
+
+:root.site-dark table thead th {
+    background-color: rgba(31, 41, 55, 0.9) !important;
+    border-radius: 0 !important;
+    color: var(--text-secondary) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+:root.site-dark table tbody td {
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+:root.site-dark table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+:root.site-dark table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+:root.site-dark .pagination-container button:disabled {
+    background-color: #374151;
+    color: var(--text-secondary);
+}
+
+/* ── Rank badge theme overrides ─────────────────────────────────────── */
+/* dark: original bright CSS named colors */
+:root.site-dark .gold   { color: gold    !important; }
+:root.site-dark .silver { color: silver  !important; }
+:root.site-dark .bronze { color: #cd7f32 !important; }
+
+/* light: darker variants readable on white */
+:root:not(.site-dark) .gold   { color: #b8860b; }
+:root:not(.site-dark) .silver { color: #607080; }
+:root:not(.site-dark) .bronze { color: #a0522d; }
+
+/* ── Mobile responsive ─────────────────────────────────────────────── */
+/* Below ~768px the original layout had no breakpoints, so a 5-col
+   leaderboard with 120px stat columns rendered as a smushed wall: rank,
+   tiny avatar, truncated name, and three numbers all colliding. Here we:
+     - shrink page padding so the panel keeps full width,
+     - let the table use its full container width (no 90% inset),
+     - allow horizontal scroll for the wide All view (already handled by
+       .table-container { overflow-x: auto } above),
+     - tighten paddings and font slightly so each cell stays legible
+       without forcing line wraps in the value column. */
+@media (max-width: 768px) {
+    body > .container {
+        width: 100%;
+        max-width: none;
+        padding: 1rem 0.75rem;
+    }
+
+    .leaderboard-panel {
+        padding: 16px 12px;
+    }
+
+    #Leaderboard h2 {
+        font-size: 1.25rem;
+    }
+
+    .dropdown-container {
+        gap: 8px;
+    }
+
+    select {
+        min-width: 0;
+        flex: 1 1 45%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    table {
+        width: 100%;
+        min-width: 560px;
+    }
+
+    /* Combined All view stays scrollable on phones without needing desktop
+       viewport stretching. */
+    table.wide-mode {
+        min-width: 860px;
+    }
+
+    table th:first-child   { width: 50px; }
+    table th:nth-child(n+3) { width: auto; min-width: 90px; }
+
+    th, td {
+        padding: 9px 8px;
+        font-size: 0.9rem;
+    }
+
+    th {
+        font-size: 0.92rem;
+    }
+
+    .player-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 4px;
+    }
+
+    .pagination-container {
+        gap: 4px;
+    }
+    .pagination-container button {
+        padding: 6px 9px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Very small phones: shrink only as much as needed to keep the rank +
+       name + value columns from colliding. The All view still scrolls. */
+    th, td {
+        padding: 8px 6px;
+        font-size: 0.85rem;
+    }
+    .player-icon {
+        width: 20px;
+        height: 20px;
+    }
 }

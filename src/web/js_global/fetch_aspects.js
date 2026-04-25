@@ -42,7 +42,7 @@ const ASPECT_GLYPH_MAP = {
     '\ue01e': '[Stat]',
     '\ue01f': '[Duration]'
 };
-const RAID_DISPLAY_ORDER = ['TNA', 'TCC', 'NOL', 'NOTG', 'TWP'];
+const RAID_DISPLAY_ORDER = ['TNA', 'TCC', 'NOL', 'NOG', 'TWP'];
 const WARD_ICON_BY_NAME = {
     'yellow ward': 'yellow_ward.png',
     'white ward': 'white_ward.png',
