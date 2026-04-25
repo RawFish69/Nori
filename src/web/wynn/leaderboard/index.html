@@ -17,7 +17,8 @@
     <script type="text/javascript" src="../../js_global/sidebar.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
     <script src="../../js_global/analytics.js"></script>
-    <script src="../../js_global/leaderboard.js"></script>
+    <script src="../../js_global/number_format.js?v=20260425d"></script>
+    <script src="../../js_global/leaderboard.js?v=20260425d"></script>
     <!-- Temporarily disabled Google Ads -->
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6817592042954484"
     data-overlays="bottom" crossorigin="anonymous"></script> -->
@@ -26,19 +27,25 @@
 </head>
 <body>
     <header>
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
-            <h1>Nori-Wynn</h1>
+        <div class="header-content">
+            <div class="brand">
+                <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo">
+                <div>
+                    <h1>Nori-Wynn</h1>
+                    <div class="subtitle">Leaderboard</div>
+                </div>
+            </div>
+            <nav aria-label="Main navigation">
+                <!-- Navigation links will be inserted by layout.js -->
+            </nav>
         </div>
-        <nav>
-            <!-- Navigation links will be inserted by layout.js -->
-        </nav>
     </header>
 
-    <div id="menu-button" onclick="toggleSidebar()">☰</div>
+    <div id="menu-button" onclick="toggleSidebar()">&#9776;</div>
     <div id="sidebar"></div>
+
     <div class="container">
-        <div id="Leaderboard" class="panel active">
+        <div id="Leaderboard" class="leaderboard-panel">
             <h2 class="centered-text">Select a category to get started.</h2>
             <div class="dropdown-container">
                 <select id="typeDropdown" onchange="chooseType(this.value)">
@@ -47,12 +54,15 @@
                     <option value="stats">Stats</option>
                     <option value="professions">Professions</option>
                     <option value="guilds">Guilds</option>
-                </select>                  
+                </select>
                 <select id="categoryDropdown" onchange="chooseCategory(this.value)" style="display: none;"></select>
             </div>
             <div class="table-container">
                 <div id="noDataMessage" class="centered-text">
                     <p>Player data supported by Nori-API, updated hourly.</p>
+                </div>
+                <div id="loadingMessage" class="centered-text" style="display:none;">
+                    <p>Loading leaderboard data...</p>
                 </div>
                 <table id="leaderboardTable" style="display:none;">
                     <thead>
@@ -62,7 +72,7 @@
                             <th id="statHeader">Stat</th>
                             <th id="levelHeader" style="display:none;">Level</th>
                             <th id="xpHeader" style="display:none;">XP</th>
-                            <th id="memberHeader" style="display:none;">Member</th>
+                            <th id="memberHeader" style="display:none;">Members</th>
                             <th id="createdAtHeader" style="display:none;">Created At</th>
                         </tr>
                     </thead>

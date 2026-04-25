@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../../fish_logo.png" type="image/x-icon">
+  <meta property="og:title" content="FPV Drone Simulator">
+  <meta property="og:description" content="Minimal FPV drone simulator with twin sticks and first-person view.">
+  <meta property="og:image" content="https://nori.fish/resources/nori_logo.png">
+  <title>FPV Drone Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+  <script src="../../js_global/analytics.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="drone.js"></script>
+</head>
+
+<body>
+  <!-- Portrait orientation notice (shown via CSS on narrow-portrait screens) -->
+  <div id="rotate-notice" class="rotate-notice">
+    <div class="rotate-phone" aria-hidden="true"></div>
+    <h2>Rotate your screen</h2>
+    <p>Landscape mode gives you the full FPV view with both sticks at your thumbs</p>
+    <button type="button" class="rotate-dismiss" id="rotate-dismiss">Play anyway</button>
+  </div>
+
+  <button type="button" class="landscape-settings-btn" id="landscape-settings-btn">Settings</button>
+
+  <main class="container" id="sim-root">
+    <h1>FPV Drone Simulator</h1>
+    <p class="hint">Drag the sticks on mouse or touch. FPV view hides the quad body; the inset shows the drone.</p>
+
+    <div class="sim-layout">
+      <aside class="stick-side left" id="left-stick-panel">
+        <div class="stick-title">
+          <span>Left Stick</span>
+          <span id="left-stick-readout">T 52% · Y 0%</span>
+        </div>
+        <div class="stick-pad left-stick" id="left-stick-pad" aria-label="Left joystick for throttle and yaw">
+          <div class="stick-grid"></div>
+          <div class="stick-ring"></div>
+          <div class="stick-handle" id="left-stick-handle"></div>
+          <div class="stick-axis-label top">W</div>
+          <div class="stick-axis-label bottom">S</div>
+          <div class="stick-axis-label left">A</div>
+          <div class="stick-axis-label right">D</div>
+        </div>
+      </aside>
+
+      <section class="viewport-column">
+        <div class="viewport-frame" id="viewport-frame">
+          <div id="viewport" aria-label="FPV drone simulator viewport"></div>
+          <div class="reticle" aria-hidden="true">
+            <span class="reticle-h"></span>
+            <span class="reticle-v"></span>
+          </div>
+          <div class="hud-line top">
+            <span id="mode-readout">Trainer</span>
+            <span id="throttle-readout">52%</span>
+            <span id="heading-readout">0°</span>
+          </div>
+          <div class="hud-line bottom">
+            <span id="altitude-readout">0.0 m</span>
+            <span id="speed-readout">0.0 m/s</span>
+            <span id="pitch-readout">0.0°</span>
+          </div>
+          <div class="hud-horizon" id="hud-horizon" aria-hidden="true">
+            <div class="horizon-line"></div>
+          </div>
+          <div class="inset-frame"><span>Drone</span></div>
+        </div>
+      </section>
+
+      <aside class="stick-side right" id="right-stick-panel">
+        <div class="stick-title">
+          <span>Right Stick</span>
+          <span id="right-stick-readout">R 0% · P 0%</span>
+        </div>
+        <div class="stick-pad right-stick" id="right-stick-pad" aria-label="Right joystick for roll and pitch">
+          <div class="stick-grid"></div>
+          <div class="stick-ring"></div>
+          <div class="stick-handle" id="right-stick-handle"></div>
+          <div class="stick-axis-label top">I</div>
+          <div class="stick-axis-label bottom">K</div>
+          <div class="stick-axis-label left">J</div>
+          <div class="stick-axis-label right">L</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="toolbar bottom-toolbar">
+      <button id="mode-toggle" type="button">Mode: Angle (M)</button>
+      <button id="sticks-toggle" type="button">Sticks: On (V)</button>
+      <button id="right-input-toggle" type="button">Right Input: Mouse (B)</button>
+      <button id="fullscreen-toggle" type="button">Fullscreen: Off (F)</button>
+      <button id="settings-button" type="button">Settings</button>
+    </div>
+    <p class="hint keybinds bottom-keybinds" id="keybinds-hint">Keys: WASD left stick · Mouse right stick by default
+      (click FPV) · B switch to IJKL · M mode toggle · V show/hide sticks · F fullscreen</p>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="settings-modal">
+      <div class="settings-content">
+        <div class="settings-header">
+          <h2>Simulator Settings</h2>
+          <button id="settings-close" class="settings-close" type="button">&times;</button>
+        </div>
+
+        <div class="settings-body">
+          <div class="settings-group">
+            <label for="weather-select">Weather / Time:</label>
+            <select id="weather-select">
+              <option value="night">Night - Clear dark sky</option>
+              <option value="day" selected>Day - Blue sky with clouds</option>
+              <option value="sunset">Sunset - Golden hour</option>
+              <option value="cloudy">Cloudy - Overcast</option>
+            </select>
+          </div>
+
+          <div class="settings-group">
+            <label for="drone-type-select">Drone Type:</label>
+            <select id="drone-type-select">
+              <option value="tinywhoop">Tinywhoop</option>
+              <option value="micro">Micro</option>
+              <option value="longrange">Long Range</option>
+              <option value="racing">Racing</option>
+            </select>
+            <div id="drone-stats" class="drone-stats">
+              <p class="drone-stats-desc" id="drone-stats-desc"></p>
+              <div class="drone-stat-row">
+                <span class="drone-stat-label">Thrust</span>
+                <div class="drone-stat-track"><div class="drone-stat-fill" id="stat-bar-thrust"></div></div>
+                <span class="drone-stat-value" id="stat-val-thrust"></span>
+              </div>
+              <div class="drone-stat-row">
+                <span class="drone-stat-label">Rotation</span>
+                <div class="drone-stat-track"><div class="drone-stat-fill" id="stat-bar-rotation"></div></div>
+                <span class="drone-stat-value" id="stat-val-rotation"></span>
+              </div>
+              <div class="drone-stat-row">
+                <span class="drone-stat-label">Max Tilt</span>
+                <div class="drone-stat-track"><div class="drone-stat-fill" id="stat-bar-tilt"></div></div>
+                <span class="drone-stat-value" id="stat-val-tilt"></span>
+              </div>
+              <div class="drone-stat-row">
+                <span class="drone-stat-label">Stability</span>
+                <div class="drone-stat-track"><div class="drone-stat-fill" id="stat-bar-stability"></div></div>
+                <span class="drone-stat-value" id="stat-val-stability"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <label for="throttle-sensitivity-input">Throttle Sensitivity:</label>
+            <div class="slider-container">
+              <input id="throttle-sensitivity-input" type="range" min="0.5" max="2" step="0.1" value="1.4">
+              <span id="throttle-sensitivity-value">140%</span>
+            </div>
+          </div>
+
+          <div class="settings-info">
+            <p><strong>Drone Types:</strong></p>
+            <ul>
+              <li><strong>Tinywhoop:</strong> Ultra-responsive indoor flyer. Great for tight spaces.</li>
+              <li><strong>Micro:</strong> Balanced all-rounder. Good for general flying.</li>
+              <li><strong>Long Range:</strong> Stable, efficient cruiser. Smooth and predictable.</li>
+              <li><strong>Racing:</strong> Max performance speed racer. Very twitchy and responsive.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="settings-footer">
+          <button id="settings-regen" type="button" class="btn-secondary">Regenerate Map</button>
+          <button id="settings-apply" type="button">Apply & Close</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

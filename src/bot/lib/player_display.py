@@ -59,19 +59,17 @@ class PlayerManager:
 
     async def check_ign_db(self, ign: str):
         """
-        Check if the given IGN is in the local database. If not, add it.
+        Check if the given IGN is already queued for import. If not, add it.
         """
         with open(self.ign_db_path, "r") as f:
             data = json.load(f)
             ign_list = data.get("ign", [])
 
-        with open(self.player_data_path, "r") as f:
-            player_data = json.load(f)
-            if ign in player_data.get("data", {}) or ign in ign_list:
-                print(f"{ign} already in database")
-            else:
-                ign_list.append(ign)
-                print(f"{ign} added to list")
+        if ign in ign_list:
+            print(f"{ign} already in pending database import list")
+        else:
+            ign_list.append(ign)
+            print(f"{ign} added to list")
 
         with open(self.ign_db_path, "w") as f:
             output = {"ign": ign_list, "timestamp": int(time.time())}
@@ -96,6 +94,9 @@ class PlayerManager:
             "tcc": raid_stats.get("The Canyon Colossus", 0),
             "nol": raid_stats.get("Orphion's Nexus of Light", 0),
             "nog": raid_stats.get("Nest of the Grootslangs", 0),
+            # TWP arrives under "Unknown" on v3.3 prod; expected to be "The Wartorn Palace"
+            # post-v3.7. Remove the Unknown alias after cut-day verification.
+            "twp": raid_stats.get("The Wartorn Palace", raid_stats.get("Unknown", 0)),
             "dungeons": dungeon_stats or 0,
             "chests": chest_stats or 0,
             "mobs": mob_stats or 0,
@@ -155,7 +156,7 @@ class PlayerManager:
         display += f"Last Seen: {last_join}\n"
 
         global_data = player_data.get("globalData", {})
-        display += f"Mobs Killed: {global_data.get('killedMobs', 0)}\n"
+        display += f"Mobs Killed: {global_data.get('mobsKilled', 0)}\n"
         display += f"Chests Opened: {global_data.get('chestsFound', 0)}\n"
         display += f"Playtime: {player_data.get('playtime', 0)} hours\n"
         display += f"War Count: {global_data.get('wars', 0)}\n"
