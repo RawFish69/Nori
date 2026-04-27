@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../../fish_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori-Wynn Guild Tower Stats" />
+    <meta property="og:description" content="Calculate Wynncraft guild tower and HQ stats." />
+    <meta property="og:url" content="https://nori.fish/wynn/tower" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
+    <title>Nori-Wynn Guild Tower Stats</title>
+    <link rel="stylesheet" href="../../css_global/default.css">
+    <link rel="stylesheet" href="../../css_global/sidebar.css">
+    <link rel="stylesheet" href="../../css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="../../js_global/sidebar.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../../js_global/analytics.js"></script>
+    <script src="../../js_global/config.js"></script>
+    <script src="../../js_global/layout.js"></script>
+    <script src="../../js_global/tower_calculator.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="tower-brand">
+            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo">
+            <div>
+                <h1>Nori-Wynn</h1>
+                <p>Guild Tower Stats</p>
+            </div>
+        </div>
+        <nav>
+            <!-- Navigation links will be inserted by layout.js -->
+        </nav>
+    </header>
+
+    <div id="menu-button" onclick="toggleSidebar()">&#9776;</div>
+    <div id="sidebar"></div>
+
+    <main class="tower-shell">
+        <section class="tower-topbar">
+            <div>
+                <p class="eyebrow">Wynncraft guild war utility</p>
+                <h2>Guild Tower Calculator</h2>
+                <p class="lede">Calculate tower damage, DPS, health, EHP, defense, and territory difficulty.</p>
+            </div>
+            <div class="topbar-actions">
+                <button id="resetTower" type="button" class="secondary-action">Reset</button>
+                <button id="copyTowerLink" type="button" class="secondary-action">Copy Link</button>
+            </div>
+        </section>
+
+        <form id="towerCalculator" class="tower-grid" aria-label="Guild tower calculator">
+            <section class="tower-panel controls-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Inputs</h3>
+                        <p id="summaryMode">Regular Tower</p>
+                    </div>
+                </div>
+
+                <fieldset class="mode-toggle">
+                    <legend>Tower Type</legend>
+                    <label>
+                        <input type="radio" name="towerMode" value="regular" checked>
+                        <span>Regular</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="towerMode" value="hq">
+                        <span>HQ</span>
+                    </label>
+                </fieldset>
+
+                <div class="field-grid field-grid-small">
+                    <label class="tower-field">
+                        <span>Links</span>
+                        <input id="links" type="number" min="0" max="6" step="1" value="0">
+                    </label>
+                    <label class="tower-field" id="externalsField" hidden>
+                        <span>Externals</span>
+                        <input id="externals" type="number" min="0" max="50" step="1" value="0">
+                    </label>
+                </div>
+
+                <div class="field-section-title">Upgrades</div>
+                <div class="field-grid">
+                    <label class="tower-field">
+                        <span>Damage</span>
+                        <input id="damage" type="number" min="0" max="11" step="1" value="11">
+                    </label>
+                    <label class="tower-field">
+                        <span>Attack</span>
+                        <input id="attack" type="number" min="0" max="11" step="1" value="11">
+                    </label>
+                    <label class="tower-field">
+                        <span>Health</span>
+                        <input id="health" type="number" min="0" max="11" step="1" value="11">
+                    </label>
+                    <label class="tower-field">
+                        <span>Defense</span>
+                        <input id="defense" type="number" min="0" max="11" step="1" value="11">
+                    </label>
+                    <label class="tower-field">
+                        <span>Aura</span>
+                        <input id="aura" type="number" min="0" max="3" step="1" value="0">
+                    </label>
+                    <label class="tower-field">
+                        <span>Volley</span>
+                        <input id="volley" type="number" min="0" max="3" step="1" value="0">
+                    </label>
+                </div>
+            </section>
+
+            <section class="tower-panel results-panel" id="towerResult" aria-live="polite">
+                <div class="panel-heading">
+                    <div>
+                        <h3>Results</h3>
+                        <p id="summaryInputs">Links 0, upgrades 11/11/11/11</p>
+                    </div>
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card primary-metric">
+                        <span>Damage</span>
+                        <strong id="summaryDamage">-</strong>
+                    </div>
+                    <div class="metric-card">
+                        <span>Avg DPS</span>
+                        <strong id="summaryDps">-</strong>
+                    </div>
+                    <div class="metric-card">
+                        <span>Health</span>
+                        <strong id="summaryHealth">-</strong>
+                    </div>
+                    <div class="metric-card">
+                        <span>Tier</span>
+                        <strong id="summaryTier">-</strong>
+                    </div>
+                </div>
+
+                <div id="detailRows" class="detail-list"></div>
+
+                <div class="reference-row">
+                    <button class="info-chip" type="button" aria-describedby="regularFormula">Regular</button>
+                    <span id="regularFormula" class="tooltip-text" role="tooltip">Stats are multiplied by 1 + 0.3 per link.</span>
+
+                    <button class="info-chip" type="button" aria-describedby="hqFormula">HQ</button>
+                    <span id="hqFormula" class="tooltip-text" role="tooltip">HQ stats also multiply by 1.5 plus 0.25 per external.</span>
+
+                    <button class="info-chip" type="button" aria-describedby="tierFormula">Difficulty</button>
+                    <span id="tierFormula" class="tooltip-text" role="tooltip">Rating uses damage, attack, health, defense, aura, volley, aura bonus, volley bonus, and HQ adds one tier capped at 5.</span>
+
+                    <a class="docs-link" href="https://nori.fish/docs/" target="_blank">Docs</a>
+                </div>
+            </section>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024-2026 Nori, All rights reserved. Web URL: nori.fish</p>
+    </footer>
+</body>
+</html>
