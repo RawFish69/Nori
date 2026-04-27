@@ -53,7 +53,7 @@ async def item_db_refresh_task(bot: lightbulb.BotApp, interval: int = 7200):
             before_items = _normalize_item_map(config.item_map or _load_json(item_path, {}))
             had_valid_before_items = bool(before_items)
 
-            updated_count = item_manager.update_items(str(item_path)) if item_manager is not None else 0
+            updated_count = await asyncio.to_thread(item_manager.update_items, str(item_path)) if item_manager is not None else 0
             after_items = _normalize_item_map(_load_json(item_path, {}))
             if updated_count <= 0 and not after_items and before_items:
                 after_items = before_items
@@ -75,7 +75,7 @@ async def item_db_refresh_task(bot: lightbulb.BotApp, interval: int = 7200):
                 current_date = datetime.now().strftime("%Y-%m-%d")
                 archive_path = config.BOT_PATH / "item_db" / f"items_{current_date}.json"
                 if item_manager is not None:
-                    item_manager.update_items(str(archive_path))
+                    await asyncio.to_thread(item_manager.update_items, str(archive_path))
                 config.item_map = after_items
 
                 if file_name and config.ITEM_DB_LOG_CHANNEL_ID:
@@ -86,7 +86,7 @@ async def item_db_refresh_task(bot: lightbulb.BotApp, interval: int = 7200):
                         attachment=hikari.files.File(str(changelog_path)),
                     )
 
-            update_aspects(config.BOT_PATH / "aspects.json")
+            await asyncio.to_thread(update_aspects, config.BOT_PATH / "aspects.json")
         except Exception as error:
             print(f"[ItemDB refresh] unexpected error: {type(error).__name__}: {error}")
 
