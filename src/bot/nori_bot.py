@@ -16,7 +16,7 @@ import lightbulb
 import miru
 
 from lib.config import (
-    BOT_TOKEN, VERSION, MODE, ENGINE,
+    BOT_TOKEN, VERSION, MODE,
     BASE_PATH, DATA_PATH, BOT_PATH, LOG_PATH
 )
 from lib.data_manager import BotData, Database
@@ -89,7 +89,6 @@ async def bot_start(event):
     
     print(f"Nori Bot v{VERSION} started in {MODE} mode")
     print(f"Bot started at {current_datetime} CST")
-    print(f"Using {ENGINE} language model")
     
     await load_startup_data(bot)
 

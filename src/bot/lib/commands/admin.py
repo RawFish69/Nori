@@ -21,7 +21,6 @@ from lib.config import (
     LOOT_TIERS,
     ASPECT_TIERS,
     WYNN_SOURCE_TOKEN,
-    SITE_DATA_PATH,
 )
 from lib.utils import check_user_access, get_uptime
 from lib.wynnsource_pool import (
@@ -94,11 +93,6 @@ async def _fetch_api_usage_from_nori() -> dict:
 
     return await asyncio.to_thread(request_usage)
 
-
-def _load_local_api_usage() -> dict:
-    api_usage_path = SITE_DATA_PATH / "api_usage_today.json"
-    with open(api_usage_path, "r", encoding="utf-8") as file:
-        return json.load(file)
 
 
 def _ensure_lootpool_cache():
@@ -1295,21 +1289,8 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         try:
             data = await _fetch_api_usage_from_nori()
         except Exception as error:
-            try:
-                data = _load_local_api_usage()
-                source_label = "local fallback"
-            except FileNotFoundError:
-                await ctx.respond(
-                    "No API usage data found yet. "
-                    f"Nori API request failed: {error}"
-                )
-                return
-            except Exception as fallback_error:
-                await ctx.respond(
-                    f"Failed to fetch API usage from Nori API: {error}\n"
-                    f"Local fallback also failed: {fallback_error}"
-                )
-                return
+            await ctx.respond(f"Failed to fetch API usage: {error}")
+            return
 
         date_str = data.get("date", "unknown")
         updated_at = data.get("updated_at")
