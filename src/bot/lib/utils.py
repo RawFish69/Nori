@@ -80,7 +80,6 @@ def help(index):
         "profile": "Check user profile",
         "ping": "Check the latency of an url",
         "weather": "Check weather of a city/area",
-        "flight": "Show all flights info",
         "pingme": "Ping an user after a set timer"
     }
     if index == 0:

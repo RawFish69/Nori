@@ -58,8 +58,6 @@ Nori uses slash commands (`/`). Type `/` in Discord to browse command groups.
 - `/ping` latency check
 - `/pingme` reminder ping timer
 - `/weather` weather lookup
-- `/flight find` search a flight
-- `/flight show` show tracked flights
 - `/ask` ai ask mode
 - `/image` ai image generation
 
