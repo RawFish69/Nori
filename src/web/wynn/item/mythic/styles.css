@@ -357,16 +357,22 @@ body.dark-mode .mythic-container .item-card:hover {
     box-shadow: 0 4px 12px rgba(0, 119, 182, 0.28) !important;
 }
 
+/* Mythic cards keep the dark card background in light mode so the bright stat-rate
+   colors stay legible. Only the page chrome follows the light theme. */
 :root:not(.site-dark) .mythic-container .item-card {
-    background-color: #ffffff !important;
-    color: #1f2937 !important;
-    border: 1px solid rgba(0, 119, 182, 0.36) !important;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12) !important;
+    background-color: #242932 !important;
+    color: #e5e9f0 !important;
+    border: 1px solid rgba(88, 166, 255, 0.58) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35) !important;
 }
 
 :root:not(.site-dark) .mythic-container .item-card:hover {
-    border-color: rgba(0, 119, 182, 0.72) !important;
-    box-shadow: 0 16px 30px rgba(0, 119, 182, 0.2) !important;
+    border-color: #7cc0ff !important;
+    box-shadow: 0 16px 30px rgba(0, 119, 182, 0.25) !important;
+}
+
+:root:not(.site-dark) .mythic-container .item-card h3 {
+    color: #ccc;
 }
 
 :root:not(.site-dark) .item-card h3 {

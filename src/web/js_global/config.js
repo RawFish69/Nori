@@ -10,7 +10,7 @@ const NoriConfig = {
     
     links: {
         discord: "https://discord.gg/eDssA6Jbwd",
-        discordBot: "https://discord.com/discovery/applications/873677970928193568",
+        discordBot: "https://discord.com/application-directory/873677970928193568",
         github: "https://github.com/RawFish69/Nori",
         youtube: "https://www.youtube.com/@RawFish69"
     },

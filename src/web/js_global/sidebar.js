@@ -79,7 +79,7 @@ function createSidebar() {
             subItems: [
                 { name: 'Menu', url: 'https://nori.fish/wynn/leaderboard' },
                 { name: 'Guilds', url: 'https://nori.fish/wynn/leaderboard/?type=guilds&category=raids_total&page=1' },
-                { name: 'Raids', url: 'https://nori.fish/wynn/leaderboard/?type=raids&category=raids_total&page=1' },
+                { name: 'Raids', url: 'https://nori.fish/wynn/leaderboard/?type=raids&category=all&page=1' },
                 { name: 'Stats', url: 'https://nori.fish/wynn/leaderboard/?type=stats&category=chests&page=1' },
                 { name: 'Professions', url: 'https://nori.fish/wynn/leaderboard/?type=professions&category=professionsGlobal&page=1' },
             ],
