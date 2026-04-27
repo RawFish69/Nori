@@ -99,17 +99,6 @@ def load_owner_tools_commands(bot: lightbulb.BotApp, blocked_users: list = None)
 
     @bot.command
     @lightbulb.add_checks(lightbulb.owner_only)
-    @lightbulb.option("confirm", "Are you sure to wipe all commands?", choices=["Yes", "No"])
-    @lightbulb.command("wipe", "Wipe all slash commands.")
-    @lightbulb.implements(lightbulb.SlashCommand)
-    async def wipe(ctx: lightbulb.Context):
-        await check_user_access(ctx, blocked_users)
-        if ctx.options.confirm == "Yes":
-            await bot.purge_application_commands(ctx.guild_id)
-            await ctx.respond("`WIPED ALL SLASH COMMANDS.`")
-
-    @bot.command
-    @lightbulb.add_checks(lightbulb.owner_only)
     @lightbulb.option("type", "Activity type", choices=["Playing", "Watching", "Listening"], required=False)
     @lightbulb.option("display", "What do you think?")
     @lightbulb.command("set", "Only for rawfish")

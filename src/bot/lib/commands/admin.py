@@ -1,18 +1,20 @@
 """Admin and data maintenance command groups."""
 
+import asyncio
 import json
+import os
 import time
 import tracemalloc
 from datetime import datetime
 
 import hikari
 import lightbulb
+import requests
 
 import lib.config as config
 from lib.config import (
     BOT_PATH,
     DATA_PATH,
-    LOG_PATH,
     DATA_SCRIPTS_DATABASE_PATH,
     LOOTPOOL_REGIONS,
     RAID_NAMES,
@@ -21,14 +23,23 @@ from lib.config import (
     WYNN_SOURCE_TOKEN,
     SITE_DATA_PATH,
 )
-from lib.utils import check_user_access
+from lib.utils import check_user_access, get_uptime
 from lib.wynnsource_pool import (
+    RARITY_LABELS_BY_TOKEN,
     clean_item_name,
     fetch_pool_legacy_with_failover,
     format_attempt_log,
     is_ward_item,
 )
+from lib.raid_pool_utils import (
+    _normalize_gambit_loot_shape,
+    current_gambit_refresh_interval,
+    normalize_gambit_pool_cache,
+    refresh_gambits,
+)
+from lib.raid_pool_utils import _normalize_raid_loot
 from lib.manager_registry import get_managers
+from lib.item_db_compat import items_response_to_dict, looks_like_item_database
 
 
 def _write_json(path, payload):
@@ -46,6 +57,50 @@ def _load_json(path, default=None):
         return default
 
 
+def _normalize_item_payload(raw_items) -> dict:
+    try:
+        item_map, _ = items_response_to_dict(raw_items)
+        if looks_like_item_database(item_map):
+            return item_map
+    except Exception as error:
+        print(f"Item payload normalization failed: {type(error).__name__}: {error}")
+    return {}
+
+
+def _option_value(ctx: lightbulb.Context, name: str, default=None):
+    """Read slash option values safely, including names that shadow option methods."""
+    try:
+        return ctx.options[name]
+    except Exception:
+        pass
+    if isinstance(getattr(ctx, "raw_options", None), dict):
+        value = ctx.raw_options.get(name)
+        if value is not None:
+            return value
+    value = getattr(ctx.options, name, default)
+    return value if not callable(value) else default
+
+
+async def _fetch_api_usage_from_nori() -> dict:
+    def request_usage():
+        if not config.NORI_API_USAGE_TOKEN:
+            raise RuntimeError("Missing NORI_API_USAGE_TOKEN or API_USAGE_TOKEN in environment")
+        headers = {"X-Nori-Admin-Token": config.NORI_API_USAGE_TOKEN}
+        response = requests.get(f"{config.NORI_API_BASE_URL}/api/usage", headers=headers, timeout=10)
+        response.raise_for_status()
+        return response.json()
+
+    import asyncio
+
+    return await asyncio.to_thread(request_usage)
+
+
+def _load_local_api_usage() -> dict:
+    api_usage_path = SITE_DATA_PATH / "api_usage_today.json"
+    with open(api_usage_path, "r", encoding="utf-8") as file:
+        return json.load(file)
+
+
 def _ensure_lootpool_cache():
     if not config.lootpool_data:
         data = _load_json(DATA_PATH / "lootpool_default.json", {"Loot": {}})
@@ -55,7 +110,47 @@ def _ensure_lootpool_cache():
 def _ensure_aspect_cache():
     if not config.aspect_pool_data:
         data = _load_json(DATA_PATH / "default_aspect_pool.json", {"Loot": {}})
-        config.aspect_pool_data = data.get("Loot", {})
+        config.aspect_pool_data = _normalize_raid_loot(data.get("Loot", {}), ASPECT_TIERS)
+
+
+def _ensure_raid_item_cache():
+    if not config.raid_item_pool_data:
+        data = _load_json(config.RAID_ITEM_POOL_DEFAULT_FILE, {"Loot": {}})
+        config.raid_item_pool_data = _normalize_raid_loot(data.get("Loot", {}), config.RAID_ITEM_TIERS)
+
+
+def _trim_preview_text(text: str, limit: int = 900) -> str:
+    if not isinstance(text, str):
+        text = str(text)
+    return text if len(text) <= limit else text[:limit - 3] + "..."
+
+
+def _summarize_pool_tiers(bucket: dict, tiers: list[str], sample_size: int = 2) -> str:
+    bucket = bucket if isinstance(bucket, dict) else {}
+    lines = []
+    for tier in tiers:
+        entries = bucket.get(tier, [])
+        entries = entries if isinstance(entries, list) else []
+        count = len(entries)
+        if count:
+            sample = ", ".join(str(name) for name in entries[:sample_size])
+            if count > sample_size:
+                sample += ", ..."
+            lines.append(f"{tier}: {count} ({sample})")
+        else:
+            lines.append(f"{tier}: 0")
+    return _trim_preview_text("\n".join(lines), limit=900)
+
+
+def _summarize_lootpool_region_preview(region_bucket: dict, sample_size: int = 2) -> str:
+    region_bucket = region_bucket if isinstance(region_bucket, dict) else {}
+    shiny_data = region_bucket.get("Shiny", {})
+    shiny_data = shiny_data if isinstance(shiny_data, dict) else {}
+    shiny_item = shiny_data.get("Item", "N/A")
+    shiny_tracker = shiny_data.get("Tracker", "N/A")
+    lines = [f"Shiny: {shiny_item} ({shiny_tracker} Tracker)"]
+    lines.append(_summarize_pool_tiers(region_bucket, LOOT_TIERS, sample_size=sample_size))
+    return _trim_preview_text("\n".join(lines), limit=900)
 
 
 def _get_icon(item_name):
@@ -107,15 +202,17 @@ async def _get_loot_from_source(pool: str, token: str) -> dict:
     if pool not in {"item", "aspect", "tome"}:
         raise ValueError(f"Unknown pool type: {pool}")
 
-    result = fetch_pool_legacy_with_failover(
-        pool,
-        token,
-        primary_base_url=config.WCS_POOL_PRIMARY_BASE_URL,
-        beta_base_url=config.WCS_POOL_BETA_BASE_URL,
-        v1_base_url=config.WCS_POOL_V1_BASE_URL,
-        timeout=config.WCS_POOL_TIMEOUT,
-        allow_missing_regions=config.WCS_POOL_ALLOW_MISSING_REGIONS,
-        enable_v1_fallback=config.WCS_POOL_ENABLE_V1_FALLBACK,
+    result = await asyncio.to_thread(
+        lambda: fetch_pool_legacy_with_failover(
+            pool,
+            token,
+            primary_base_url=config.WCS_POOL_PRIMARY_BASE_URL,
+            beta_base_url=config.WCS_POOL_BETA_BASE_URL,
+            v1_base_url=config.WCS_POOL_V1_BASE_URL,
+            timeout=config.WCS_POOL_TIMEOUT,
+            allow_missing_regions=config.WCS_POOL_ALLOW_MISSING_REGIONS,
+            enable_v1_fallback=config.WCS_POOL_ENABLE_V1_FALLBACK,
+        )
     )
 
     if result.payload is None:
@@ -135,14 +232,25 @@ def _convert_lootpool_format(item_loot_data: dict) -> dict:
     loot = item_loot_data.get("data", {}).get("loot", {})
     weekly_loot = {}
 
+    def normalize_lr_tier(raw_tier) -> str:
+        if not isinstance(raw_tier, str):
+            return "Misc"
+        token = raw_tier.strip()
+        if not token:
+            return "Misc"
+        for tier in LOOT_TIERS:
+            if token.casefold() == tier.casefold():
+                return tier
+        normalized = token.upper()
+        if normalized.startswith("RARITY_"):
+            normalized = normalized[len("RARITY_"):]
+        mapped = RARITY_LABELS_BY_TOKEN.get(normalized)
+        return mapped if isinstance(mapped, str) and mapped in LOOT_TIERS else "Misc"
+
     for region, region_data in loot.items():
         out = {
             "Shiny": {"Item": "N/A", "Tracker": "N/A"},
-            "Mythic": [],
-            "Fabled": [],
-            "Legendary": [],
-            "Rare": [],
-            "Unique": [],
+            **{tier: [] for tier in LOOT_TIERS},
         }
         shiny_found = False
         rarity_map = {tier: [] for tier in LOOT_TIERS}
@@ -157,14 +265,18 @@ def _convert_lootpool_format(item_loot_data: dict) -> dict:
                 shiny_found = True
 
             items = page.get("items", {})
-            for rarity in LOOT_TIERS:
-                if rarity in items:
-                    for raw_name in items[rarity]:
-                        if not isinstance(raw_name, str):
-                            continue
-                        name = clean_item_name(raw_name)
-                        if name:
-                            rarity_map[rarity].append(name)
+            if not isinstance(items, dict):
+                continue
+            for raw_rarity, raw_entries in items.items():
+                if not isinstance(raw_entries, list):
+                    continue
+                rarity = normalize_lr_tier(raw_rarity)
+                for raw_name in raw_entries:
+                    if not isinstance(raw_name, str):
+                        continue
+                    name = clean_item_name(raw_name)
+                    if name:
+                        rarity_map[rarity].append(name)
 
         mythic_items = list(rarity_map.get("Mythic", []))
         mythic_seen = set(mythic_items)
@@ -181,6 +293,9 @@ def _convert_lootpool_format(item_loot_data: dict) -> dict:
                     filtered_items.append(name)
             rarity_map[rarity] = filtered_items
         rarity_map["Mythic"] = mythic_items
+        shiny_item_name = out["Shiny"]["Item"]
+        if shiny_found and shiny_item_name != "N/A" and shiny_item_name in rarity_map["Mythic"]:
+            rarity_map["Mythic"].remove(shiny_item_name)
 
         for rarity in LOOT_TIERS:
             out[rarity] = rarity_map[rarity]
@@ -240,7 +355,7 @@ async def _sync_aspect_lootpool():
 
     if "error" in fetch_result:
         defaults = _load_json(DATA_PATH / "default_aspect_pool.json", {"Loot": {}})
-        config.aspect_pool_data = defaults.get("Loot", {})
+        config.aspect_pool_data = _normalize_raid_loot(defaults.get("Loot", {}), ASPECT_TIERS)
         print(
             "Aspect sync fallback to defaults. "
             f"{fetch_result['error']} Attempts: {format_attempt_log(attempts)}"
@@ -248,9 +363,67 @@ async def _sync_aspect_lootpool():
         return {"raids": len(config.aspect_pool_data), "source": "defaults"}
 
     payload = fetch_result["payload"]
-    config.aspect_pool_data = _convert_aspect_loot_format(payload)["Loot"]
+    config.aspect_pool_data = _normalize_raid_loot(_convert_aspect_loot_format(payload)["Loot"], ASPECT_TIERS)
+    try:
+        wards_by_region = await _extract_raid_wards_by_region()
+    except Exception as error:
+        wards_by_region = {}
+        print(f"[Aspect sync] ward injection failed: {type(error).__name__}: {error}")
+
+    for raid, wards in wards_by_region.items():
+        if not wards:
+            continue
+        raid_bucket = config.aspect_pool_data.setdefault(raid, {})
+        mythic_list = raid_bucket.setdefault("Mythic", [])
+        if not isinstance(mythic_list, list):
+            mythic_list = []
+            raid_bucket["Mythic"] = mythic_list
+        existing = set(mythic_list)
+        for ward in wards:
+            if ward not in existing:
+                mythic_list.append(ward)
+                existing.add(ward)
     print(f"Aspect sync source={fetch_result.get('source')} Attempts: {format_attempt_log(attempts)}")
     return {"raids": len(config.aspect_pool_data), "source": fetch_result.get("source", "unknown")}
+
+
+async def _extract_raid_wards_by_region() -> dict:
+    wards_by_region = {raid: [] for raid in RAID_NAMES}
+    try:
+        fetch_result = await _get_loot_from_source("tome", WYNN_SOURCE_TOKEN)
+    except Exception as error:
+        print(f"[Aspect sync] tome pool fetch failed: {type(error).__name__}: {error}")
+        return wards_by_region
+
+    if "error" in fetch_result:
+        print(
+            "[Aspect sync] tome pool fetch unusable: "
+            f"{format_attempt_log(fetch_result.get('attempts', []))}"
+        )
+        return wards_by_region
+
+    loot = (fetch_result.get("payload", {}) or {}).get("data", {}).get("loot", {})
+    if not isinstance(loot, dict):
+        return wards_by_region
+
+    for raid, region_data in loot.items():
+        if not isinstance(region_data, dict):
+            continue
+        seen = set()
+        bucket = []
+        for page_key in sorted(region_data.keys(), key=lambda key: int(key) if str(key).isdigit() else 0):
+            page = region_data.get(page_key, {})
+            items = page.get("items", {}) if isinstance(page, dict) else {}
+            mythic_list = items.get("Mythic", []) if isinstance(items, dict) else []
+            if not isinstance(mythic_list, list):
+                continue
+            for name in mythic_list:
+                if not isinstance(name, str) or not is_ward_item(name) or name in seen:
+                    continue
+                seen.add(name)
+                bucket.append(name)
+        wards_by_region[raid] = bucket
+    return wards_by_region
 
 
 async def _estimate_week_number():
@@ -381,7 +554,7 @@ async def _lootpool_post_process():
         config.item_processed = _load_json(BOT_PATH / "items.json", {})
 
     all_icons = {}
-    tiers = {"Mythic", "Fabled", "Legendary", "Rare", "Unique"}
+    tiers = {"Mythic", "Fabled", "Legendary", "Rare", "Unique", "Misc"}
     for region_data in config.lootpool_data.values():
         shiny_name = region_data.get("Shiny", {}).get("Item")
         if shiny_name:
@@ -440,10 +613,27 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         await check_user_access(ctx, blocked_users)
         user_id = int(ctx.options.user)
         user_list = blocked_users if blocked_users is not None else config.blocked_users
+        if user_id == int(ctx.user.id):
+            await ctx.respond("You cannot block yourself.")
+            return
+        normalized_users = []
+        for blocked_id in user_list:
+            try:
+                normalized_users.append(int(blocked_id))
+            except (TypeError, ValueError):
+                continue
         try:
             user = await bot.rest.fetch_user(user_id)
-            user_list.append(user_id)
-            _write_json(BOT_PATH / "blocked_users.json", user_list)
+            if user_id in normalized_users:
+                await ctx.respond(f"User `{user.username}` ({user_id}) is already blocked.")
+                return
+            normalized_users.append(user_id)
+            user_list.clear()
+            user_list.extend(normalized_users)
+            if user_list is not config.blocked_users:
+                config.blocked_users.clear()
+                config.blocked_users.extend(normalized_users)
+            _write_json(BOT_PATH / "blocked_users.json", normalized_users)
             await ctx.respond(f"User `{user.username}` ({user_id}) added to blocked list.")
         except Exception as error:
             await ctx.respond(f"Failed to fetch user ID: {user_id}")
@@ -458,10 +648,24 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         await check_user_access(ctx, blocked_users)
         user_id = int(ctx.options.user)
         user_list = blocked_users if blocked_users is not None else config.blocked_users
+        normalized_users = []
+        for blocked_id in user_list:
+            try:
+                normalized_users.append(int(blocked_id))
+            except (TypeError, ValueError):
+                continue
         try:
             user = await bot.rest.fetch_user(user_id)
-            user_list.remove(user_id)
-            _write_json(BOT_PATH / "blocked_users.json", user_list)
+            if user_id not in normalized_users:
+                await ctx.respond(f"User `{user.username}` ({user_id}) is not blocked.")
+                return
+            normalized_users.remove(user_id)
+            user_list.clear()
+            user_list.extend(normalized_users)
+            if user_list is not config.blocked_users:
+                config.blocked_users.clear()
+                config.blocked_users.extend(normalized_users)
+            _write_json(BOT_PATH / "blocked_users.json", normalized_users)
             await ctx.respond(f"User `{user.username}` ({user_id}) removed from blocked list.")
         except Exception as error:
             await ctx.respond(f"Failed to fetch user ID: {user_id}")
@@ -541,8 +745,8 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         if file_type == "itemLog":
             await ctx.respond("Updating Item Changelog...")
             try:
-                check_items = _load_json(BOT_PATH / "items.json", {})
-                base_items = config.item_map if config.item_map else check_items
+                check_items = _normalize_item_payload(_load_json(BOT_PATH / "items.json", {}))
+                base_items = _normalize_item_payload(config.item_map) if config.item_map else check_items
                 if changelog_manager is not None:
                     await changelog_manager.generate_item_changelog(base_items, check_items)
                 config.item_map = check_items
@@ -561,8 +765,8 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         if file_type == "ingredientLog":
             await ctx.respond("Updating Ingredient Changelog...")
             try:
-                check_items = _load_json(BOT_PATH / "items.json", {})
-                base_items = config.item_map if config.item_map else check_items
+                check_items = _normalize_item_payload(_load_json(BOT_PATH / "items.json", {}))
+                base_items = _normalize_item_payload(config.item_map) if config.item_map else check_items
                 if changelog_manager is not None:
                     await changelog_manager.generate_ingredient_changelog(base_items, check_items)
                 config.item_map = check_items
@@ -583,7 +787,7 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     @lightbulb.option(
         "file_type",
         "Source File",
-        choices=["items", "lootHistory", "lootpool", "aspects", "aspectpool", "sales", "block"],
+        choices=["items", "lootHistory", "lootpool", "aspects", "aspectpool", "gambitpool", "sales", "block"],
         required=True,
     )
     @lightbulb.command("reload", "Reload variables and properties from local files")
@@ -594,7 +798,7 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         file_type = ctx.options.file_type
 
         if file_type == "items":
-            config.item_map = _load_json(BOT_PATH / "items.json", {})
+            config.item_map = _normalize_item_payload(_load_json(BOT_PATH / "items.json", {}))
             target_path = BOT_PATH / "items.json"
             content = "Item map data reloaded."
             export_content = "Item data reloaded, export complete."
@@ -614,19 +818,42 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
             content = "Lootpool data reloaded."
             export_content = "Lootpool data reloaded, export complete."
         elif file_type == "aspectpool":
-            config.aspect_pool_data = _load_json(DATA_PATH / "weekly_aspects.json", {"Loot": {}}).get("Loot", {})
-            target_path = DATA_PATH / "weekly_aspects.json"
-            content = "Aspect Lootpool data reloaded."
-            export_content = "Aspect Lootpool data reloaded, export complete."
+            aspect_payload = _load_json(config.WEEKLY_ASPECT_POOL_FILE, {"Loot": {}})
+            config.aspect_pool_data = _normalize_raid_loot(aspect_payload.get("Loot", {}), ASPECT_TIERS)
+            raid_payload = _load_json(config.WEEKLY_RAID_POOL_FILE, {})
+            if isinstance(raid_payload, dict) and raid_payload:
+                config.raid_item_pool_data = _normalize_raid_loot(raid_payload.get("Loot", {}), config.RAID_ITEM_TIERS)
+                config.raid_item_icon = raid_payload.get("Icon", {}) if isinstance(raid_payload.get("Icon"), dict) else {}
+                target_path = config.WEEKLY_RAID_POOL_FILE
+            else:
+                config.raid_item_pool_data = _normalize_raid_loot(aspect_payload.get("RaidItemLoot", {}), config.RAID_ITEM_TIERS)
+                config.raid_item_icon = aspect_payload.get("RaidItemIcon", {}) if isinstance(aspect_payload.get("RaidItemIcon"), dict) else {}
+                target_path = config.WEEKLY_ASPECT_POOL_FILE
+            content = "Raid lootpool data reloaded."
+            export_content = "Raid lootpool data reloaded, export complete."
+        elif file_type == "gambitpool":
+            cached = _load_json(config.GAMBIT_POOL_FILE, {})
+            loot = cached.get("Loot", []) if isinstance(cached, dict) else []
+            config.gambit_pool_data = _normalize_gambit_loot_shape(loot)
+            normalize_gambit_pool_cache()
+            target_path = config.GAMBIT_POOL_FILE
+            content = "Gambit Pool data reloaded."
+            export_content = "Gambit Pool data reloaded, export complete."
         elif file_type == "sales":
             config.sales_data = _load_json(DATA_PATH / "sales_data.json", {})
             target_path = DATA_PATH / "sales_data.json"
             content = "Sales data reloaded."
             export_content = "Sales data reloaded, export complete."
         else:
-            user_list = _load_json(BOT_PATH / "blocked_users.json", [])
-            config.blocked_users = user_list
-            if blocked_users is not None:
+            user_list = []
+            for blocked_id in _load_json(BOT_PATH / "blocked_users.json", []):
+                try:
+                    user_list.append(int(blocked_id))
+                except (TypeError, ValueError):
+                    continue
+            config.blocked_users.clear()
+            config.blocked_users.extend(user_list)
+            if blocked_users is not None and blocked_users is not config.blocked_users:
                 blocked_users.clear()
                 blocked_users.extend(user_list)
             target_path = BOT_PATH / "blocked_users.json"
@@ -661,22 +888,25 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         log_generation = ctx.options.log
         action = ctx.options.action
 
-        if action == "Entry" and ctx.options.area in LOOTPOOL_REGIONS:
+        if action == "Entry" and ctx.options.area in LOOTPOOL_REGIONS and ctx.options.tier in LOOT_TIERS:
             region = ctx.options.area
-            if ctx.options.shiny and ctx.options.tracker and ctx.options.tier == "Mythic":
+            tier = ctx.options.tier
+            if ctx.options.shiny and ctx.options.tracker and tier == "Mythic":
                 config.lootpool_data[region]["Shiny"]["Item"] = ctx.options.shiny
                 config.lootpool_data[region]["Shiny"]["Tracker"] = ctx.options.tracker
                 feedback += f"Shiny {ctx.options.shiny} + {ctx.options.tracker} Tracker\n"
-            items = [item.strip() for item in ctx.options.items.split(",") if item.strip()] if ctx.options.items else []
+            item_input = _option_value(ctx, "items")
+            items = [item.strip() for item in item_input.split(",") if item.strip()] if isinstance(item_input, str) else []
             for item_name in items:
-                config.lootpool_data[region][ctx.options.tier].append(item_name)
-            feedback += f"{config.lootpool_data[region][ctx.options.tier]}"
+                if item_name not in config.lootpool_data[region][tier]:
+                    config.lootpool_data[region][tier].append(item_name)
+            feedback += f"{config.lootpool_data[region][tier]}"
             feedback_embed = hikari.Embed(
                 title=f"{region} Lootpool Entry",
                 description=f"Submitted by {ctx.user}",
                 color="#83FFDB",
             )
-            feedback_embed.add_field(f"{ctx.options.tier} Items", feedback)
+            feedback_embed.add_field(f"{tier} Items", feedback if feedback else "No changes applied.")
             feedback_embed.set_footer("Nori Bot - Maintainer Tools")
             await ctx.respond(feedback_embed)
             return
@@ -780,18 +1010,12 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
                 color="#83FFDB",
             )
             for region in LOOTPOOL_REGIONS:
-                preview_embed.add_field(region, config.lootpool_data[region])
-
-            try:
-                icon_data = await _lootpool_post_process()
-                warning_list = icon_data["warning"]
-            except Exception as error:
-                await ctx.respond(f"Error fetching icons for lootpool items: {error}")
-                warning_list = []
-
-            if warning_list:
-                warning = ", ".join(warning_list)
-                preview_embed.add_field("Check Item Inputs", f"Failed to process: {warning}")
+                region_preview = _summarize_lootpool_region_preview(config.lootpool_data.get(region, {}), sample_size=2)
+                preview_embed.add_field(region, region_preview)
+            preview_embed.add_field(
+                "Preview Notes",
+                "Tier counts and small samples shown. Icon validation is skipped for a faster preview.",
+            )
             preview_embed.set_footer("Nori Bot - Maintainer Tools")
             await ctx.respond(preview_embed)
 
@@ -806,14 +1030,16 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     async def data_update_aspects(ctx: lightbulb.Context):
         await check_user_access(ctx, blocked_users)
         _ensure_aspect_cache()
+        _ensure_raid_item_cache()
         feedback = ""
         action = ctx.options.action
 
-        if action == "Entry" and ctx.options.raid in RAID_NAMES:
+        if action == "Entry" and ctx.options.raid in RAID_NAMES and ctx.options.tier in ASPECT_TIERS:
             raid = ctx.options.raid
             aspects = [aspect.strip() for aspect in ctx.options.aspects.split(",") if aspect.strip()] if ctx.options.aspects else []
             for aspect_name in aspects:
-                config.aspect_pool_data[raid][ctx.options.tier].append(aspect_name)
+                if aspect_name not in config.aspect_pool_data[raid][ctx.options.tier]:
+                    config.aspect_pool_data[raid][ctx.options.tier].append(aspect_name)
             feedback += f"{config.aspect_pool_data[raid][ctx.options.tier]}"
             feedback_embed = hikari.Embed(
                 title=f"{raid} Aspects Entry",
@@ -843,17 +1069,21 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         if action == "Sync":
             try:
                 sync_status = await _sync_aspect_lootpool()
+                from lib.tasks.raid_pool import _sync_raid_item_lootpool
+                raid_item_status = await _sync_raid_item_lootpool()
                 sync_embed = hikari.Embed(
                     title="Aspect Sync Complete",
-                    description="Aspect data has been synchronized from Wynn Source API.",
+                    description="Raid aspect and raid item data have been synchronized from Wynn Source API.",
                     color="#c0aaff",
                 )
                 sync_embed.set_footer("Nori Bot - Maintainer Tools")
                 sync_embed.add_field("Result", f"Cached raids updated: {sync_status.get('raids', 0)}")
-                sync_embed.add_field("Source", str(sync_status.get("source", "unknown")))
+                sync_embed.add_field("Raid Item Result", f"Cached raids updated: {raid_item_status.get('items', 0)}")
+                sync_embed.add_field("Aspect Source", str(sync_status.get("source", "unknown")))
+                sync_embed.add_field("Raid Item Source", str(raid_item_status.get("source", "unknown")))
                 sync_embed.add_field(
                     "Next",
-                    "Preview pool with `/data aspect Preview`, Run `/data aspect Update` to generate aspect pool data.",
+                    "Use Preview to verify inputs, then use Update to publish weekly raid data.",
                 )
                 await ctx.respond(embed=sync_embed)
             except Exception as error:
@@ -866,11 +1096,13 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
             return
 
         if action == "Update":
+            from lib.tasks.raid_pool import _create_weekly_raid_pool, _raid_item_post_process, _update_weekly_raid_pool
+
             current_date = datetime.now().strftime("%Y-%m-%d")
             now_ts = int(time.time())
             week_number = await _aspect_week_number()
             notice_embed = hikari.Embed(
-                title="Weekly Aspect Maintenance",
+                title="Weekly Raid Maintenance",
                 description=f"Week #{week_number} Date: {current_date}",
                 color="#c0aaff",
             )
@@ -879,47 +1111,113 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
             try:
                 icon_data = await _aspect_post_process()
                 config.aspect_icon = icon_data["icons"]
-                warning_list = icon_data["warning"]
+                aspect_warning_list = icon_data["warning"]
             except Exception as error:
-                await ctx.respond(f"Error fetching icon for aspects: {error}")
-                warning_list = []
+                notice_embed.add_field("Icon Fetch Error", f"{type(error).__name__}: {error}")
+                aspect_warning_list = []
 
-            if warning_list:
-                warning = ", ".join(warning_list)
-                notice_embed.add_field("Status", f"Aspect icons fetched complete.\nFailed to process: {warning}")
+            try:
+                raid_item_icon_data = await _raid_item_post_process()
+                config.raid_item_icon = raid_item_icon_data["icons"]
+                raid_item_warning_list = raid_item_icon_data["warning"]
+            except Exception as error:
+                notice_embed.add_field("Raid Item Icon Fetch Error", f"{type(error).__name__}: {error}")
+                raid_item_warning_list = []
+
+            if aspect_warning_list:
+                warning = ", ".join(aspect_warning_list)
+                notice_embed.add_field("Aspect Icon Status", f"Failed to process: {warning}")
+            if raid_item_warning_list:
+                warning = ", ".join(raid_item_warning_list)
+                notice_embed.add_field("Raid Item Icon Status", f"Failed to process: {warning}")
 
             weekly_aspects = await _create_weekly_aspects()
             await _update_aspect_pool(weekly_aspects)
-            report_line = f"Aspect pool data generated at <t:{now_ts}:T>"
+            weekly_raid_pool = await _create_weekly_raid_pool(weekly_aspects)
+            await _update_weekly_raid_pool(weekly_raid_pool)
+            report_line = f"Aspect + raid pool data generated at <t:{now_ts}:T>"
             notice_embed.add_field(f"Update Confirmed by {ctx.user}", report_line)
             notice_embed.set_footer("Nori Bot - Maintainer Tools")
             await ctx.edit_last_response(embed=notice_embed)
 
-            config.aspect_pool_data = _load_json(DATA_PATH / "default_aspect_pool.json", {"Loot": {}}).get("Loot", {})
-            print("Aspect lootpool update complete, cached data cleared.")
+            config.aspect_pool_data = _normalize_raid_loot(
+                _load_json(config.ASPECT_POOL_DEFAULT_FILE, {"Loot": {}}).get("Loot", {}),
+                ASPECT_TIERS,
+            )
+            config.raid_item_pool_data = _normalize_raid_loot(
+                _load_json(config.RAID_ITEM_POOL_DEFAULT_FILE, {"Loot": {}}).get("Loot", {}),
+                config.RAID_ITEM_TIERS,
+            )
+            print("Raid lootpool update complete, cached data cleared.")
             return
 
         if action == "Preview":
             preview_embed = hikari.Embed(
-                title="Aspects Lootpool Preview",
+                title="Raid Lootpool Preview",
                 description=f"Requested by {ctx.user}",
                 color="#c0aaff",
             )
             for raid in RAID_NAMES:
-                preview_embed.add_field(raid, config.aspect_pool_data[raid])
-
-            try:
-                icon_data = await _aspect_post_process()
-                warning_list = icon_data["warning"]
-            except Exception as error:
-                await ctx.respond(f"Error fetching icon for aspects: {error}")
-                warning_list = []
-
-            if warning_list:
-                warning = ", ".join(warning_list)
-                preview_embed.add_field("Check Aspect Inputs", f"Failed to process: {warning}")
+                aspect_preview = _summarize_pool_tiers(config.aspect_pool_data.get(raid, {}), ASPECT_TIERS)
+                item_preview = _summarize_pool_tiers(config.raid_item_pool_data.get(raid, {}), config.RAID_ITEM_TIERS)
+                preview_embed.add_field(f"{raid} Aspect Loot", aspect_preview)
+                preview_embed.add_field(f"{raid} Item Loot", item_preview)
+            preview_embed.add_field(
+                "Preview Notes",
+                "Tier counts and small samples shown. Icon validation is skipped for a faster preview.",
+            )
             preview_embed.set_footer("Nori Bot - Maintainer Tools")
             await ctx.respond(preview_embed)
+
+    @data.child()
+    @lightbulb.add_checks(_maintainer_check())
+    @lightbulb.command("gambit", "Manually refresh gambit data from Wynn Source")
+    @lightbulb.implements(lightbulb.SlashSubCommand)
+    async def data_refresh_gambits(ctx: lightbulb.Context):
+        await check_user_access(ctx, blocked_users)
+        await ctx.respond("Refreshing gambits from Wynn Source...", flags=hikari.MessageFlag.LOADING)
+        result = await refresh_gambits()
+
+        if "error" in result:
+            error_embed = hikari.Embed(
+                title="Gambit Refresh Failed",
+                description="Could not refresh gambit data from Wynn Source API.",
+                color="#FF0000",
+            )
+            error_embed.add_field("Error Detail", str(result["error"]))
+            error_embed.set_footer("Nori Bot - Maintainer Tools")
+            await ctx.edit_last_response(embed=error_embed, content="")
+            return
+
+        embed = hikari.Embed(
+            title="Gambit Refresh Complete",
+            description="Gambit pool pulled from WynnSource and written to disk.",
+            color="#c0aaff",
+        )
+        embed.add_field("Gambits Updated", str(result.get("gambits", 0)))
+        rotation_start = result.get("rotation_start")
+        rotation_end = result.get("rotation_end")
+        if rotation_start:
+            embed.add_field("Rotation Start", f"<t:{rotation_start}:F>")
+        if rotation_end:
+            embed.add_field("Rotation End", f"<t:{rotation_end}:F>")
+        next_interval = current_gambit_refresh_interval(now_ts=int(time.time()))
+        embed.add_field("Next Auto-Refresh", f"In {max(1, next_interval // 60)} minutes")
+
+        shared_lines = []
+        for entry in config.gambit_pool_data[:5]:
+            if not isinstance(entry, dict):
+                continue
+            name = entry.get("name", "?")
+            description = entry.get("description") or ""
+            shared_lines.append(f"- **{name}**")
+            if description:
+                shared_lines.append(f"  {description}")
+        if shared_lines:
+            embed.add_field("Preview", "\n".join(shared_lines)[:1024])
+
+        embed.set_footer("Nori Bot - Maintainer Tools")
+        await ctx.edit_last_response(embed=embed, content="")
 
     @data.child()
     @lightbulb.add_checks(lightbulb.owner_only)
@@ -993,16 +1291,25 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     @lightbulb.implements(lightbulb.SlashSubCommand)
     async def data_api_usage(ctx: lightbulb.Context):
         await check_user_access(ctx, blocked_users)
-        api_usage_path = SITE_DATA_PATH / "api_usage_today.json"
+        source_label = "Nori API"
         try:
-            with open(api_usage_path, "r", encoding="utf-8") as file:
-                data = json.load(file)
-        except FileNotFoundError:
-            await ctx.respond("No API usage data found yet. The file is created on the first request after deploy.")
-            return
+            data = await _fetch_api_usage_from_nori()
         except Exception as error:
-            await ctx.respond(f"Failed to read API usage file: {error}")
-            return
+            try:
+                data = _load_local_api_usage()
+                source_label = "local fallback"
+            except FileNotFoundError:
+                await ctx.respond(
+                    "No API usage data found yet. "
+                    f"Nori API request failed: {error}"
+                )
+                return
+            except Exception as fallback_error:
+                await ctx.respond(
+                    f"Failed to fetch API usage from Nori API: {error}\n"
+                    f"Local fallback also failed: {fallback_error}"
+                )
+                return
 
         date_str = data.get("date", "unknown")
         updated_at = data.get("updated_at")
@@ -1028,6 +1335,7 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
             description="\n".join(summary_lines),
             color="#5078FF",
         )
+        embed.add_field("Source", source_label, inline=True)
 
         # Show up to 20 active endpoints in fields (Discord limit: 25 fields)
         shown = active[:20]
@@ -1051,9 +1359,9 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
                 embed.add_field(field_name, "\n".join(chunk))
 
         if len(active) > 20:
-            embed.add_field("\u200b", f"… and {len(active) - 20} more active endpoints")
+            embed.add_field("\u200b", f"... and {len(active) - 20} more active endpoints")
 
-        embed.set_footer("Nori Bot — resets daily at midnight")
+        embed.set_footer("Nori Bot - resets daily at midnight")
         await ctx.respond(embed=embed)
 
     @data.child()
@@ -1062,19 +1370,37 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     @lightbulb.implements(lightbulb.SlashSubCommand)
     async def memory_report(ctx: lightbulb.Context):
         await check_user_access(ctx, blocked_users)
-        await ctx.respond("Generating memory report...")
+        if not tracemalloc.is_tracing():
+            tracemalloc.start()
 
-        tracemalloc.start()
-        snapshot = tracemalloc.take_snapshot()
-        top_stats = snapshot.statistics("lineno")
-        function_stats = snapshot.statistics("traceback")
-
-        def _format_size(size):
+        def _format_size(size: float) -> str:
             for unit in ["B", "KiB", "MiB", "GiB"]:
                 if size < 1024.0:
                     return f"{size:.2f} {unit}"
                 size /= 1024.0
             return f"{size:.2f} GiB"
+
+        await ctx.respond("Generating memory report...")
+
+        current, peak = tracemalloc.get_traced_memory()
+        rss_text = "Unavailable"
+        try:
+            import resource
+
+            rss_kib = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+            rss_bytes = rss_kib * 1024 if os.name != "darwin" else rss_kib
+            rss_text = _format_size(float(rss_bytes))
+        except Exception:
+            pass
+
+        uptime = get_uptime(config.deploy_time)
+        deploy_ts = int(config.deploy_time) if config.deploy_time else None
+        uptime_text = uptime
+        if deploy_ts:
+            uptime_text += f"\nStarted <t:{deploy_ts}:R>"
+        snapshot = tracemalloc.take_snapshot()
+        top_stats = snapshot.statistics("lineno")
+        function_stats = snapshot.statistics("traceback")
 
         now = datetime.now()
         date_time_str = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -1083,26 +1409,42 @@ def load_admin_commands(bot: lightbulb.BotApp, blocked_users: list = None):
             "Memory Usage Report",
             f"Generated on: {date_time_str}",
             f"Unix Timestamp: {unix_time_str}",
+            f"Uptime: {uptime}",
+            f"Current RSS: {rss_text}",
+            f"Python Allocated: {_format_size(float(current))}",
+            f"Python Peak: {_format_size(float(peak))}",
             "",
             "Top Memory Consumers by Line of Code:",
         ]
 
         for index, stat in enumerate(top_stats[:10], start=1):
-            size = _format_size(stat.size)
+            size = _format_size(float(stat.size))
             location = "\n".join(stat.traceback.format())
             report_lines.append(f"{index}. {size}, {stat.count} objects, {location}")
 
         report_lines.append("\nTop Memory Consumers by Function Calls:")
         for index, stat in enumerate(function_stats[:10], start=1):
-            size = _format_size(stat.size)
+            size = _format_size(float(stat.size))
             function_name = stat.traceback[-1]
             report_lines.append(f"{index}. {size}, {stat.count} objects, {function_name}")
 
         report = "\n".join(report_lines)
-        report_path = LOG_PATH / "memory_report.txt"
+        report_path = config.LOG_PATH / "memory_report.txt"
+        summary = (
+            "**Memory Usage**\n"
+            f"Current RSS: `{rss_text}`\n"
+            f"Python Allocated: `{_format_size(float(current))}`\n"
+            f"Python Peak: `{_format_size(float(peak))}`\n"
+            f"Uptime: `{uptime}`"
+        )
+        if deploy_ts:
+            summary += f"\nStarted <t:{deploy_ts}:R>"
         try:
             with open(report_path, "w", encoding="utf-8") as file:
                 file.write(report)
-            await ctx.edit_last_response(content="Report generated", attachment=hikari.files.File(str(report_path)))
+            await ctx.edit_last_response(
+                content=f"{summary}\n\nReport generated.",
+                attachment=hikari.files.File(str(report_path)),
+            )
         except Exception as error:
-            await ctx.edit_last_response(content=f"Error generating memory report: {str(error)}")
+            await ctx.edit_last_response(content=f"{summary}\n\nError generating memory report: {str(error)}")

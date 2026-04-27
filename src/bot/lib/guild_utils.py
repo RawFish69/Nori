@@ -62,6 +62,8 @@ def guild_stats(user_input: str) -> Optional[Tuple[str, str, str, str, str]]:
         display += f'Members: {guild_data["members"]["total"]}\n'
         display += f'Online Players: {len(online_players)}/{guild_data["members"]["total"]}\n'
 
+        online_display = "No online members."
+
         if online_players:
             max_name_length = 0
             for name in online_players.keys():
@@ -73,15 +75,16 @@ def guild_stats(user_input: str) -> Optional[Tuple[str, str, str, str, str]]:
                 if len(player["Server"]) > max_server_length:
                     max_server_length = len(player["Server"])
 
-            display += '╔' + '═' * (max_server_length + 2) + '╦' + '═' * (max_name_length + 2) + '╦═══════╗\n'
-            display += '║ ' + "WC".center(max_server_length) + ' ║ ' + "Player".center(
+            online_display = ""
+            online_display += '╔' + '═' * (max_server_length + 2) + '╦' + '═' * (max_name_length + 2) + '╦═══════╗\n'
+            online_display += '║ ' + "WC".center(max_server_length) + ' ║ ' + "Player".center(
                 max_name_length) + ' ║ Rank  ║\n'
-            display += '╠' + '═' * (max_server_length + 2) + '╬' + '═' * (max_name_length + 2) + '╬═══════╣\n'
+            online_display += '╠' + '═' * (max_server_length + 2) + '╬' + '═' * (max_name_length + 2) + '╬═══════╣\n'
 
             for player, data in online_players.items():
-                display += f'║ {data["Server"].center(max_server_length)} ║ {player.center(max_name_length)} ║ {data["Rank"]:5} ║\n'
+                online_display += f'║ {data["Server"].center(max_server_length)} ║ {player.center(max_name_length)} ║ {data["Rank"]:5} ║\n'
 
-            display += '╚' + '═' * (max_server_length + 2) + '╩' + '═' * (max_name_length + 2) + '╩═══════╝\n'
+            online_display += '╚' + '═' * (max_server_length + 2) + '╩' + '═' * (max_name_length + 2) + '╩═══════╝\n'
         
         print(display)
         
@@ -92,7 +95,8 @@ def guild_stats(user_input: str) -> Optional[Tuple[str, str, str, str, str]]:
                     guild_data["name"],
                     guild_data["prefix"],
                     guild_data["banner"]["tier"],
-                    guild_data["banner"]["structure"]
+                    guild_data["banner"]["structure"],
+                    online_display,
                 )
             else:
                 return (
@@ -100,7 +104,8 @@ def guild_stats(user_input: str) -> Optional[Tuple[str, str, str, str, str]]:
                     guild_data["name"],
                     guild_data["prefix"],
                     guild_data["banner"]["tier"],
-                    "No structure"
+                    "No structure",
+                    online_display,
                 )
         else:
             print("No banner info")
@@ -109,7 +114,8 @@ def guild_stats(user_input: str) -> Optional[Tuple[str, str, str, str, str]]:
                 guild_data["name"],
                 guild_data["prefix"],
                 "0 tier",
-                "No structure"
+                "No structure",
+                online_display,
             )
     except Exception as error:
         print(f"Error fetching guild stats: {error}")

@@ -12,8 +12,11 @@ and `raid_leaderboard()` resolves it to the right ranking list.
 """
 import json
 import requests
+from lib.config import WYNN_AUTH_HEADER
 from typing import Optional, Dict, Any, List
 from pathlib import Path
+
+from lib.config import PLAYER_LEADERBOARD_FILE
 
 # Friendly metric alias -> ranking key under `ranking` in player_leaderboard.json.
 # Used by the bot's `/lb raid` choices so users type `damage_dealt` rather than
@@ -67,7 +70,10 @@ async def profession_leaderboard(prof: str) -> str:
         Formatted string displaying top 20 players
     """
     profession = prof
-    server = requests.get(f'https://api.wynncraft.com/v2/leaderboards/player/solo/{profession}')
+    server = requests.get(
+        f'https://api.wynncraft.com/v2/leaderboards/player/solo/{profession}',
+        headers=WYNN_AUTH_HEADER,
+    )
     prof_info = server.json()
     prof_rank = prof_info.get('data')
 
@@ -132,7 +138,7 @@ async def raid_leaderboard(
         but contains only zero values (e.g. a not-yet-backfilled metric).
     """
     if leaderboard_path is None:
-        leaderboard_path = Path("/home/ubuntu/data-scripts/database/player_leaderboard.json")
+        leaderboard_path = PLAYER_LEADERBOARD_FILE
 
     ranking_key = _resolve_raid_key(raid)
     if ranking_key is None:
@@ -186,7 +192,7 @@ async def stat_leaderboard(stat: str, leaderboard_path: Optional[Path] = None) -
     stat_name = stat.lower()
 
     if leaderboard_path is None:
-        leaderboard_path = Path("/home/ubuntu/data-scripts/database/player_leaderboard.json")
+        leaderboard_path = PLAYER_LEADERBOARD_FILE
 
     try:
         with open(leaderboard_path, "r") as file:

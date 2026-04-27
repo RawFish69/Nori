@@ -26,6 +26,13 @@ class ChangelogManager:
         self.item_changelog_base = item_changelog_dir
         self.ingredient_changelog_base = ingredient_changelog_dir
 
+    @staticmethod
+    def _entry_type(entry: Any) -> str:
+        if not isinstance(entry, dict):
+            return ""
+        value = entry.get("type", "")
+        return value if isinstance(value, str) else str(value)
+
     async def generate_item_changelog(
         self, before_json: Dict[str, Any], after_json: Dict[str, Any]
     ) -> str:
@@ -52,36 +59,37 @@ class ChangelogManager:
         # Detect newly added items
         for added_item in (after_keys - before_keys):
             # Only consider if it's not in non_items
-            if "type" in after_json[added_item]:
-                if after_json[added_item]["type"] not in non_items:
-                    items_added += f"- {added_item}\n"
-                    changelog_data["Added"][added_item] = after_json[added_item]
+            added_data = after_json.get(added_item)
+            added_type = self._entry_type(added_data)
+            if added_type and added_type not in non_items:
+                items_added += f"- {added_item}\n"
+                changelog_data["Added"][added_item] = added_data
 
         # Detect removed items
         for removed_item in (before_keys - after_keys):
-            if "type" in before_json[removed_item]:
-                if before_json[removed_item]["type"] not in non_items:
-                    items_removed += f"- {removed_item}\n"
-                    changelog_data["Removed"][removed_item] = before_json[removed_item]
+            removed_data = before_json.get(removed_item)
+            removed_type = self._entry_type(removed_data)
+            if removed_type and removed_type not in non_items:
+                items_removed += f"- {removed_item}\n"
+                changelog_data["Removed"][removed_item] = removed_data
 
         # Check items present in both
         common_items = before_keys & after_keys
         for item_name in common_items:
             # If it’s not one of the non-item types
-            if "type" in before_json[item_name]:
-                if before_json[item_name]["type"] not in non_items:
-                    # Check if the entire object differs
-                    if before_json[item_name] != after_json[item_name]:
-                        # Something changed
-                        changelog_text += f"### {item_name}\n"
-                        self._compare_item_fields(
-                            item_name,
-                            before_json[item_name],
-                            after_json[item_name],
-                            changelog_data,
-                            changelog_text
-                        )
-                        changelog_text += "\n"
+            before_data = before_json.get(item_name)
+            after_data = after_json.get(item_name)
+            before_type = self._entry_type(before_data)
+            if before_type and before_type not in non_items and before_data != after_data:
+                changelog_text += f"### {item_name}\n"
+                self._compare_item_fields(
+                    item_name,
+                    before_data,
+                    after_data if isinstance(after_data, dict) else {},
+                    changelog_data,
+                    changelog_text
+                )
+                changelog_text += "\n"
 
         # Build final text
         current_datetime = datetime.now().strftime("%Y-%m-%d")
@@ -127,6 +135,8 @@ class ChangelogManager:
         Modifies `changelog_data` in-place and appends to `changelog_text`.
         """
         # To keep building the text, we can store each line in a list & join at the end
+        before_data = before_data if isinstance(before_data, dict) else {}
+        after_data = after_data if isinstance(after_data, dict) else {}
         lines = []
         changed_dict = changelog_data["Changed"].setdefault(item_name, {})
 
@@ -137,7 +147,7 @@ class ChangelogManager:
         if "identifications" in before_data and "identifications" in after_data:
             pre_id = before_data["identifications"]
             post_id = after_data["identifications"]
-            if pre_id != post_id:
+            if isinstance(pre_id, dict) and isinstance(post_id, dict) and pre_id != post_id:
                 changed_dict.setdefault("ids", {})
 
                 pre_id_keys = set(pre_id.keys())
@@ -220,26 +230,32 @@ class ChangelogManager:
 
         # Detect newly added ingredients
         for added_ing in (after_keys - before_keys):
-            if "ingredient" in after_json[added_ing].get("type", ""):
+            added_data = after_json.get(added_ing)
+            if "ingredient" in self._entry_type(added_data):
                 ing_added += f"- {added_ing}\n"
-                changelog_data["Added"][added_ing] = after_json[added_ing]
+                changelog_data["Added"][added_ing] = added_data
 
         # Detect removed ingredients
         for removed_ing in (before_keys - after_keys):
-            if "ingredient" in before_json[removed_ing].get("type", ""):
+            removed_data = before_json.get(removed_ing)
+            if "ingredient" in self._entry_type(removed_data):
                 ing_removed += f"- {removed_ing}\n"
-                changelog_data["Removed"][removed_ing] = before_json[removed_ing]
+                changelog_data["Removed"][removed_ing] = removed_data
 
         # Compare common ingredients
         common_ings = before_keys & after_keys
         for ing_name in common_ings:
-            before_data = before_json[ing_name]
-            after_data = after_json[ing_name]
-            if "ingredient" in before_data.get("type", ""):
+            before_data = before_json.get(ing_name)
+            after_data = after_json.get(ing_name)
+            if "ingredient" in self._entry_type(before_data):
                 if before_data != after_data:
                     changelog_text += f"### {ing_name}\n"
                     self._compare_ingredient_fields(
-                        ing_name, before_data, after_data, changelog_data, changelog_text
+                        ing_name,
+                        before_data if isinstance(before_data, dict) else {},
+                        after_data if isinstance(after_data, dict) else {},
+                        changelog_data,
+                        changelog_text
                     )
                     changelog_text += "\n"
 
@@ -284,6 +300,8 @@ class ChangelogManager:
         """
         Compare individual fields for an ingredient and populate changelog data.
         """
+        before_data = before_data if isinstance(before_data, dict) else {}
+        after_data = after_data if isinstance(after_data, dict) else {}
         lines = []
         changed_dict = changelog_data["Changed"].setdefault(ing_name, {})
 

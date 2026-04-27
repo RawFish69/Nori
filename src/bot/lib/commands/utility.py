@@ -5,10 +5,10 @@ from pathlib import Path
 
 import hikari
 import lightbulb
+import python_weather
 
 from lib.config import BOT_PATH, DATA_SCRIPTS_GRAPHS_PATH
 from lib.utils import check_user_access
-from lib.views.menu import TheView
 
 ONLINE_GRAPH_FILES = {
     "24 hours": "latest_activity.png",
@@ -50,49 +50,6 @@ def load_utility_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         await bot.rest.create_message(channel=channel_id, content=ping_user, user_mentions=True)
 
     @bot.command()
-    @lightbulb.command("menu", "Menu showing all the options")
-    @lightbulb.implements(lightbulb.SlashCommand)
-    async def menu(ctx: lightbulb.Context):
-        await check_user_access(ctx, blocked_users)
-        view = TheView(timeout=60)
-        user = await bot.rest.fetch_user(ctx.user.id)
-        message = await ctx.respond(f"Menu requested by {user}", components=view.build())
-        message = await message
-        await view.start(message)
-        await view.wait()
-
-    @bot.command()
-    @lightbulb.option("runs", "How many runs of 8/8 forgery", required=False, type=int, min_value=1, max_value=1000)
-    @lightbulb.command("forgery", "Forgery mythic drop chance")
-    @lightbulb.implements(lightbulb.SlashCommand)
-    async def forgery(ctx: lightbulb.Context):
-        await check_user_access(ctx, blocked_users)
-        graph_path = BOT_PATH / "forgery.png"
-        if not graph_path.exists():
-            await ctx.respond("Forgery graph file is missing. Expected `bot/forgery.png`.")
-            return
-
-        forgery_graph = hikari.files.File(str(graph_path))
-        forgery_embed = hikari.Embed(title="Forgery mythic chance", color="#FFA9F3")
-        if ctx.options.runs:
-            total = ctx.options.runs
-            chance_base = 1.5
-            bonus = 1.01
-            chance = chance_base
-            expected = chance
-            cumulative_expected = 0
-            for runs in range(1, total + 1):
-                chance = chance_base * (bonus ** runs)
-                current_expected = 1 - (1 - (chance / runs) / 100) ** runs
-                expected += current_expected
-                cumulative_expected += expected
-            display = "Mythic chance: {:.2f}%\nCumulative expected chance: {:.2f}%".format(chance, cumulative_expected)
-            forgery_embed.add_field(f"At {total} Forgery runs", display)
-        forgery_embed.set_image(forgery_graph)
-        forgery_embed.set_footer("Nori Bot - Forgery")
-        await ctx.respond(embed=forgery_embed)
-
-    @bot.command()
     @lightbulb.option(
         "range",
         "Time range",
@@ -124,4 +81,44 @@ def load_utility_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         online_embed.set_image(img)
         online_embed.set_footer("Nori Bot - Player Activity")
         await ctx.respond(embed=online_embed)
+
+    @bot.command()
+    @lightbulb.option("location", "Name of the city")
+    @lightbulb.command("weather", "Checks the weather status of a city")
+    @lightbulb.implements(lightbulb.SlashCommand)
+    async def check_weather(ctx: lightbulb.Context):
+        await check_user_access(ctx, blocked_users)
+        city = ctx.options.location
+        try:
+            async with python_weather.Client() as client:
+                weather = await client.get(city)
+        except Exception as error:
+            await ctx.respond(f"Could not fetch weather for `{city}`: {error}")
+            return
+
+        hourly_lines = []
+        forecasts = list(weather.forecasts)
+        if forecasts:
+            hourly = list(forecasts[0].hourly)
+            pairs = []
+            for section in hourly:
+                pairs.append(f"[{section.time.hour}:{section.time.minute}{section.time.second}] {section.description}")
+            for index in range(0, len(pairs), 2):
+                hourly_lines.append(" -> ".join(pairs[index:index + 2]))
+
+        display_weather = (
+            f"```City/Area: {city}\n"
+            f"Region: {weather.nearest_area.region}, {weather.nearest_area.country}\n"
+            f"Current Temperature: {weather.current.temperature} C\n"
+            f"Feels like {weather.current.feels_like} C\n"
+        )
+        if forecasts:
+            display_weather += f"{forecasts[0].date} (Today):\n"
+            display_weather += "\n".join(hourly_lines) + "\n"
+        display_weather += (
+            f"Wind Direction: {weather.current.wind_direction}, Wind Speed: {weather.current.wind_speed} mph\n"
+            f"Humidity: {weather.current.humidity} %\n"
+            "```"
+        )
+        await ctx.respond(display_weather[:1990])
 

@@ -1,5 +1,6 @@
 import requests
 from lib.item_db_compat import items_response_to_dict
+from lib.config import WYNN_AUTH_HEADER
 
 class Player:
     """Wrapper for Wynncraft Player"""
@@ -16,12 +17,13 @@ class Player:
         objects = response.get("objects")
         if "uuid" in response or not isinstance(objects, dict) or not objects:
             return response
-        suffix = "?fullResult=True" if use_full else ""
+        suffix = "?fullResult" if use_full else ""
         candidates = []
         for uuid in objects:
             try:
                 per = requests.get(
-                    f"https://api.wynncraft.com/v3/player/{uuid}{suffix}"
+                    f"https://api.wynncraft.com/v3/player/{uuid}{suffix}",
+                    headers=WYNN_AUTH_HEADER,
                 ).json()
             except Exception:
                 continue
@@ -34,13 +36,13 @@ class Player:
 
     def get_player_main(self, ign):
         api_url = f"https://api.wynncraft.com/v3/player/{ign}"
-        stat_request = requests.get(api_url)
+        stat_request = requests.get(api_url, headers=WYNN_AUTH_HEADER)
         player_data = stat_request.json()
         return self._resolve_latest_player(player_data, use_full=False)
 
     def get_player_full(self, ign):
-        api_url = f"https://api.wynncraft.com/v3/player/{ign}?fullResult=True"
-        stat_request = requests.get(api_url)
+        api_url = f"https://api.wynncraft.com/v3/player/{ign}?fullResult"
+        stat_request = requests.get(api_url, headers=WYNN_AUTH_HEADER)
         player_data = stat_request.json()
         return self._resolve_latest_player(player_data, use_full=True)
 
@@ -79,14 +81,14 @@ class Guild:
     """Wrapper for Wynncraft Guild"""
 
     def get_prefix_guild(self, prefix):
-        guild_request = requests.get(f"https://api.wynncraft.com/v3/guild/prefix/{prefix}")
+        guild_request = requests.get(f"https://api.wynncraft.com/v3/guild/prefix/{prefix}", headers=WYNN_AUTH_HEADER)
         prefix_guild_data = guild_request.json()
         # guild_json = json.dumps(prefix_guild_data, indent=3)
         # print(guild_json)
         return prefix_guild_data
 
     def get_name_guild(self, name):
-        guild_request = requests.get(f"https://api.wynncraft.com/v3/guild/{name}")
+        guild_request = requests.get(f"https://api.wynncraft.com/v3/guild/{name}", headers=WYNN_AUTH_HEADER)
         name_guild_data = guild_request.json()
         return name_guild_data
 
@@ -112,7 +114,7 @@ class Guild:
         return members_contribution
 
     def guild_list(self):
-        guild_request = requests.get(f"https://api.wynncraft.com/v3/guild/list/guild")
+        guild_request = requests.get(f"https://api.wynncraft.com/v3/guild/list/guild", headers=WYNN_AUTH_HEADER)
         all_guilds = guild_request.json()
         return all_guilds
 
@@ -145,22 +147,22 @@ class Items:
     """v3 item wrapping - Synchronous"""
 
     def fetch(self, url, headers=None):
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers if headers is not None else WYNN_AUTH_HEADER)
         return response.json()
 
     def post(self, url, data=None):
-        response = requests.post(url, json=data)
+        response = requests.post(url, json=data, headers=WYNN_AUTH_HEADER)
         return response.json()
 
     def get_all_items(self):
-        api_url = "https://api.wynncraft.com/v3/item/database?fullResult=True"
+        api_url = "https://api.wynncraft.com/v3/item/database?fullResult"
         raw = self.fetch(api_url)
         result, _ = items_response_to_dict(raw)
         return result
 
     def get_beta_items(self):
         """Beta endpoint requires no auth header."""
-        api_url = "https://beta-api.wynncraft.com/v3/item/database?fullResult=True"
+        api_url = "https://beta-api.wynncraft.com/v3/item/database?fullResult"
         try:
             raw = self.fetch(api_url, headers={})
             if not isinstance(raw, (dict, list)):
@@ -176,7 +178,7 @@ class Items:
         return self.fetch(url)
 
     def item_query(self, data=None):
-        api_url = "https://api.wynncraft.com/v3/item/search?fullResult=True"
+        api_url = "https://api.wynncraft.com/v3/item/search?fullResult"
         raw = self.post(api_url, data)
         result, _ = items_response_to_dict(raw)
         return result

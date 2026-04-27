@@ -4,6 +4,7 @@ Description: Module for handling various leaderboards (profession, raid, stat).
 """
 
 import requests
+from lib.config import WYNN_AUTH_HEADER
 import json
 from typing import Optional
 
@@ -27,7 +28,7 @@ class LeaderboardManager:
         :return: Formatted string ready for display.
         """
         url = f'https://api.wynncraft.com/v2/leaderboards/player/solo/{profession}'
-        response = requests.get(url)
+        response = requests.get(url, headers=WYNN_AUTH_HEADER)
         if response.status_code != 200:
             return f"Error fetching profession leaderboard for {profession}."
 

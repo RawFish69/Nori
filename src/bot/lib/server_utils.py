@@ -20,8 +20,10 @@ def get_server() -> Dict[str, list]:
     """
     servers = requests.get(
         'https://api.wynncraft.com/v3/player',
-        headers=WYNN_AUTH_HEADER
+        headers=WYNN_AUTH_HEADER,
+        timeout=20,
     )
+    servers.raise_for_status()
     server_data = servers.json()["players"]
     online_data = {}
     
@@ -41,7 +43,8 @@ def get_uptime() -> Dict[str, Tuple[str, str]]:
         Dictionary mapping server names to (uptime, soul_timer) tuples
     """
     try:
-        servers = requests.get("https://nori.fish/api/uptime")
+        servers = requests.get("https://nori.fish/api/uptime", timeout=20)
+        servers.raise_for_status()
         data = servers.json()['servers']
         world_uptime = {}
         

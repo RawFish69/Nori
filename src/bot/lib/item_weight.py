@@ -131,7 +131,10 @@ class WeightManager:
     def _decode_item(self, item_string: str, item_map: Dict) -> Optional[Dict]:
         """Decode item string using wynntilsresolver."""
         try:
+            from lib.wynntils_itemdb_patch import apply_wynntils_itemdb_identification_coercion
             import wynntilsresolver
+
+            apply_wynntils_itemdb_identification_coercion()
             item = wynntilsresolver.item.GearItemResolver.from_utf16(item_string)
             name = item.name
             ids = item.identifications
@@ -228,26 +231,58 @@ def weigh_scale(target: str, weight_data_path: str = None) -> tuple:
         data = raw_data["Data"]
     
     timestamp = raw_data["latest"]["Timestamp"]
+    ranked_data = raw_data.get("ranked", {})
+
+    def find_ranked_entry(item_name, scale_name):
+        if not isinstance(ranked_data, dict):
+            return None
+        matched_item = None
+        for ranked_item_name, ranked_item_data in ranked_data.items():
+            if ranked_item_name.lower() == item_name.lower():
+                matched_item = ranked_item_data
+                break
+        if not isinstance(matched_item, dict):
+            return None
+        for ranked_scale_name, ranked_scale_data in matched_item.items():
+            if ranked_scale_name.lower() == scale_name.lower():
+                return ranked_scale_data
+        return None
+
+    def owner_display(entry_data):
+        if not isinstance(entry_data, dict):
+            return "None"
+        owner = entry_data.get("owner")
+        if owner is None:
+            return "None"
+        if isinstance(owner, (list, tuple, set)):
+            owner_text = ", ".join(str(name).strip() for name in owner if str(name).strip())
+            return owner_text if owner_text else "None"
+        owner_text = str(owner).strip()
+        return owner_text if owner_text else "None"
+
     scale_data = {}
     scale_display = {}
     item_name = ""
-    index = 1
     for item in data:
         if target.lower() == item.lower():
             scales = data[item]
             item_name = item
+            scale_display[item] = {}
+            scale_data = scales.get("Main", {})
             for scale in scales:
                 stats = scales[scale]
-                scale_display[scale] = {}
-                for id in stats:
-                    scale_display[scale][id] = stats[id]
-            scale_data = scale_display.get("Main", {})
+                scale_content = ""
+                for index, item_id in enumerate(stats, 1):
+                    scale_content += f"{index}. {item_id}: {stats[item_id]}%\n"
+                ranked_entry = find_ranked_entry(item, scale)
+                scale_content += f"\nCurrent #1 Owner: *{owner_display(ranked_entry)}*"
+                scale_display[item][scale] = scale_content
             break
     
     if item_name == "":
         return None
     
-    return scale_data, timestamp, scale_data, item_name
+    return scale_display, timestamp, scale_data, item_name
 
 
 def item_weight_output(item_string: str, item_map: Dict, weight_data_path: str = None) -> Optional[Dict]:
@@ -280,10 +315,11 @@ def item_weight_output(item_string: str, item_map: Dict, weight_data_path: str =
             item_IDs.update({item: {}})
             for scale in scales:
                 stats = data[item][scale]
+                if any(stat_id not in item_stats for stat_id in stats):
+                    continue
                 rate_values = []
                 weighing_factors = []
                 for stat_id in stats:
-                    actual_ID = item_stats.get(stat_id, 0)
                     rating = item_rate.get(stat_id, 0.0)
                     factor = float(stats[stat_id]) / 100
                     if factor < 0:
@@ -294,5 +330,7 @@ def item_weight_output(item_string: str, item_map: Dict, weight_data_path: str =
                 product = list(map(lambda x, y: x * y, rate_values, weighing_factors))
                 weighted_overall = round(sum(product), 2)
                 item_IDs[item][scale] = weighted_overall
+    if not item_IDs.get(item_name):
+        return None
     return item_IDs
 

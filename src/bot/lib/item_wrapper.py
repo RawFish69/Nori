@@ -9,11 +9,12 @@ Item search: python item_wrapper.py search -keyword [War] -itemType [mythic] ...
 import requests
 import json
 import argparse
-from typing import Dict, Optional
+from typing import Any, Dict, Optional
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from lib.item_db_compat import items_response_to_dict
+from lib.item_db_compat import items_response_to_dict, looks_like_item_database
+from lib.config import WYNN_AUTH_HEADER
 
 
 class Items:
@@ -21,21 +22,41 @@ class Items:
 
     def __init__(self):
         self.base_url = "https://api.wynncraft.com/v3"
+        self.headers = {"User-Agent": "NoriBot/2.0.0 (+https://nori.fish)"}
 
     def fetch(self, url, headers=None):
-        response = requests.get(url, headers=headers)
+        request_headers = self.headers.copy()
+        if headers is None and "api.wynncraft.com" in url:
+            request_headers.update(WYNN_AUTH_HEADER)
+        elif headers:
+            request_headers.update(headers)
+        response = requests.get(url, headers=request_headers, timeout=30)
+        response.raise_for_status()
         return response.json()
 
     def post(self, url, data=None):
-        response = requests.post(url, json=data)
+        request_headers = self.headers.copy()
+        if "api.wynncraft.com" in url:
+            request_headers.update(WYNN_AUTH_HEADER)
+        response = requests.post(url, json=data, headers=request_headers, timeout=30)
+        response.raise_for_status()
         return response.json()
 
     def get_all_items(self) -> Optional[Dict]:
         """Fetch all items from main API, normalised to displayName-keyed dict."""
         try:
-            raw = self.fetch(f"{self.base_url}/item/database?fullResult=True")
+            raw = self.get_all_items_raw()
             result, _ = items_response_to_dict(raw)
             return result
+        except Exception as error:
+            print(f"API error: {error}")
+            return None
+
+    def get_all_items_raw(self) -> Optional[Any]:
+        """Fetch all items from main API in the upstream native shape."""
+        try:
+            raw = self.fetch(f"{self.base_url}/item/database?fullResult")
+            return raw if isinstance(raw, (dict, list)) else None
         except Exception as error:
             print(f"API error: {error}")
             return None
@@ -43,14 +64,21 @@ class Items:
     def get_beta_items(self) -> Optional[Dict]:
         """Fetch items from beta API (no auth required)."""
         try:
-            raw = self.fetch(
-                "https://beta-api.wynncraft.com/v3/item/database?fullResult=True",
-                headers={}
-            )
-            if not isinstance(raw, (dict, list)):
-                return None
+            raw = self.get_beta_items_raw()
             result, _ = items_response_to_dict(raw)
             return result
+        except Exception as error:
+            print(f"Beta API error: {error}")
+            return None
+
+    def get_beta_items_raw(self) -> Optional[Any]:
+        """Fetch beta items in the upstream native shape."""
+        try:
+            raw = self.fetch(
+                "https://beta-api.wynncraft.com/v3/item/database?fullResult",
+                headers={}
+            )
+            return raw if isinstance(raw, (dict, list)) else None
         except Exception as error:
             print(f"Beta API error: {error}")
             return None
@@ -60,19 +88,20 @@ class Items:
         return self.fetch(url)
 
     def item_query(self, data=None):
-        api_url = "https://api.wynncraft.com/v3/item/search?fullResult=True"
+        api_url = "https://api.wynncraft.com/v3/item/search?fullResult"
         raw = self.post(api_url, data)
         result, _ = items_response_to_dict(raw)
         return result
 
 
 def update_items(file_path):
-    data = Items().get_all_items()
-    if data is None:
+    data = Items().get_all_items_raw()
+    if data is None or not looks_like_item_database(data):
         print("Failed to fetch items")
         return
     update_file(data, file_path)
-    print(f"{len(data)} items updated")
+    normalized, _ = items_response_to_dict(data)
+    print(f"{len(normalized)} items updated")
 
 
 def update_metadata(file_path):
@@ -146,4 +175,5 @@ def main():
         )
 
 
-main()
+if __name__ == "__main__":
+    main()

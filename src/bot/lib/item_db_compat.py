@@ -9,6 +9,36 @@ into a dict, using internalName as a fallback key when displayName collides
 (needed for the 7 "Ascended" mythics that share a displayName with their
 original counterpart, e.g. "Fatal" / "Masterwork Fatal").
 """
+import json
+
+
+def looks_like_item_database(data) -> bool:
+    """Return True only for a plausible item database, not API error payloads."""
+    if isinstance(data, list):
+        if len(data) < 1000:
+            return False
+        sample = next((item for item in data if isinstance(item, dict)), None)
+        return isinstance(sample, dict) and ("internalName" in sample or "displayName" in sample)
+
+    if not isinstance(data, dict) or len(data) < 1000:
+        return False
+    if any(key in data for key in ("error", "Error", "detail", "code", "message")) and len(data) < 20:
+        return False
+    sample = next((value for value in data.values() if isinstance(value, dict)), None)
+    return isinstance(sample, dict) and ("internalName" in sample or "displayName" in sample)
+
+
+def load_item_map(path):
+    """Load items.json and return a displayName-keyed dict.
+
+    Accepts both list (current API shape) and dict (legacy on-disk shape).
+    """
+    with open(path, "r", encoding="utf-8") as f:
+        raw = json.load(f)
+    result, _ = items_response_to_dict(raw)
+    if not looks_like_item_database(result):
+        raise ValueError(f"{path} is not a valid item database")
+    return result
 
 
 def items_response_to_dict(response):
@@ -30,6 +60,7 @@ def items_response_to_dict(response):
 
     result = {}
     collision_map = {}  # displayName -> [internalName, ...]
+    skipped_duplicates = []
 
     for item in response:
         if not isinstance(item, dict):
@@ -49,6 +80,17 @@ def items_response_to_dict(response):
         if display not in result:
             result[display] = item
             collision_map.setdefault(display, [internal])
+        elif internal == display:
+            existing = result[display]
+            existing_internal = existing.get("internalName", display) if isinstance(existing, dict) else display
+            if display not in collision_map:
+                collision_map[display] = [existing_internal]
+            collision_map[display].append(internal)
+            if existing_internal in result and result[existing_internal] is not existing:
+                skipped_duplicates.append((display, existing_internal))
+            else:
+                result[existing_internal] = existing
+            result[display] = item
         else:
             # Collision on displayName — fall back to internalName as key.
             if display not in collision_map:
@@ -57,9 +99,7 @@ def items_response_to_dict(response):
             collision_map[display].append(internal)
 
             if internal in result:
-                print(
-                    f"WARNING: skipping duplicate — internalName {internal!r} already used as key"
-                )
+                skipped_duplicates.append((display, internal))
                 continue
             result[internal] = item
 
@@ -71,6 +111,7 @@ def items_response_to_dict(response):
 
     summary = {
         "collisions": collisions,
+        "skipped_duplicates": skipped_duplicates,
         "total": len(result),
     }
     return result, summary

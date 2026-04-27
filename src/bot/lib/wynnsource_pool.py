@@ -39,11 +39,11 @@ V2_POOL_CONFIG: dict[str, dict[str, Any]] = {
     },
     "aspect": {
         "pool_type": "raid_aspect_pool",
-        "regions": ("TNA", "TCC", "NOL", "NOG", "TWP"),
+        "regions": ("TNA", "TCC", "NOL", "NOTG", "TWP"),
     },
     "tome": {
         "pool_type": "raid_item_pool",
-        "regions": ("TNA", "TCC", "NOL", "NOG", "TWP"),
+        "regions": ("TNA", "TCC", "NOL", "NOTG", "TWP"),
     },
 }
 
@@ -62,6 +62,7 @@ RARITY_LABELS_BY_TOKEN = {
     "RARE": "Rare",
     "UNIQUE": "Unique",
 }
+_POSSIBLE_B64_PATTERN = re.compile(r"^[A-Za-z0-9+/=]+$")
 
 
 def _parse_bool_env(value: str | None, default: bool) -> bool:
@@ -92,11 +93,12 @@ class PoolFetchResult:
 
 
 def clean_item_name(value: str) -> str:
+    if not isinstance(value, str):
+        return ""
     cleaned: list[str] = []
     for ch in value:
         cp = ord(ch)
-        category = unicodedata.category(ch)
-        if category.startswith("C"):
+        if not ch.isprintable():
             continue
         is_private_use = (
             (0xE000 <= cp <= 0xF8FF)
@@ -105,7 +107,9 @@ def clean_item_name(value: str) -> str:
         )
         if not is_private_use:
             cleaned.append(ch)
-    return "".join(cleaned).strip()
+    cleaned_text = "".join(cleaned)
+    cleaned_text = cleaned_text.replace("\xa0", " ").replace("\u00c0", " ")
+    return " ".join(cleaned_text.split()).strip()
 
 
 _WARD_PATTERN = re.compile(r"\bward\b", flags=re.IGNORECASE)
@@ -263,6 +267,18 @@ def _extract_shiny_from_json_item(raw_item: dict[str, Any], name: str) -> dict[s
     return None
 
 
+def _is_probable_encoded_item_blob(text: str) -> bool:
+    """Heuristic guard to avoid treating undecodable b64 blobs as item names."""
+    if not isinstance(text, str):
+        return False
+    value = text.strip()
+    if len(value) < 24:
+        return False
+    if " " in value:
+        return False
+    return bool(_POSSIBLE_B64_PATTERN.fullmatch(value))
+
+
 def _fetch_pool_raw_v1(
     pool: str,
     token: str | None,
@@ -339,6 +355,7 @@ def _build_legacy_loot_payload(region_payloads: dict[str, dict]) -> dict:
 
             page_key = str(page.get("page", len(region_out) + 1))
             rarity_buckets = {rarity: [] for rarity in RARITY_ORDER_ITEM}
+            rarity_buckets["Misc"] = []
             shiny = None
 
             raw_items = page.get("items", [])
@@ -349,6 +366,9 @@ def _build_legacy_loot_payload(region_payloads: dict[str, dict]) -> dict:
                 if isinstance(raw_item, str):
                     decoded = _decode_wynn_item(raw_item)
                     if decoded is None:
+                        fallback_name = clean_item_name(raw_item)
+                        if fallback_name and not _is_probable_encoded_item_blob(fallback_name):
+                            rarity_buckets["Misc"].append(fallback_name)
                         continue
 
                     name = clean_item_name(decoded.name)
@@ -363,6 +383,8 @@ def _build_legacy_loot_payload(region_payloads: dict[str, dict]) -> dict:
                         rarity_label = proto_rarity_labels.get(decoded.rarity)
                         if rarity_label:
                             rarity_buckets[rarity_label].append(name)
+                        else:
+                            rarity_buckets["Misc"].append(name)
 
                     if shiny is None:
                         shiny_data = _extract_shiny(decoded)
@@ -386,6 +408,8 @@ def _build_legacy_loot_payload(region_payloads: dict[str, dict]) -> dict:
                     rarity_label = _rarity_label_from_json_item(raw_item)
                     if rarity_label:
                         rarity_buckets[rarity_label].append(name)
+                    else:
+                        rarity_buckets["Misc"].append(name)
 
                 if shiny is None:
                     shiny_data = _extract_shiny_from_json_item(raw_item, name)

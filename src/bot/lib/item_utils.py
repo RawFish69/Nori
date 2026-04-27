@@ -7,6 +7,8 @@ import re
 import random
 import json
 from typing import Optional, Dict, Tuple, Any, List
+import lib.config as config
+from lib.item_db_compat import items_response_to_dict, looks_like_item_database
 
 STAT_MAPPING = {
     # Load it from whatever your source is
@@ -22,6 +24,10 @@ class ItemUtils:
         """
         :param item_map: A dictionary of item data, typically loaded from items.json.
         """
+        if isinstance(item_map, list):
+            item_map, _ = items_response_to_dict(item_map)
+        if not looks_like_item_database(item_map):
+            item_map = {}
         self.item_map = item_map
         self.name_lookup = {k.lower(): k for k in item_map.keys()}
 
@@ -51,9 +57,9 @@ class ItemUtils:
         icon_id = None
         if "icon" in data:
             icon_data = data["icon"]
-            if icon_data["format"] == "legacy":
+            if isinstance(icon_data, dict) and icon_data.get("format") == "legacy":
                 icon_id = icon_data["value"].replace(":", "_")
-            elif icon_data["format"] == "attribute":
+            elif isinstance(icon_data, dict) and icon_data.get("format") == "attribute":
                 icon_id = icon_data["value"]["name"]
 
         icon_link = f"https://cdn.wynncraft.com/nextgen/itemguide/3.3/{icon_id}.webp" if icon_id else None
@@ -86,43 +92,63 @@ class ItemUtils:
             return None
 
         try:
-            base_display = []
+            base_display = ""
+            id_display = ""
             IDs = {}
             
             # Add item name
-            base_display.append(real_name)
+            base_display += f"{real_name}\n"
 
             # Add requirements
             if "requirements" in found_data:
                 level_req = found_data["requirements"].get("level", 0)
                 tier = found_data.get("tier", "")
                 sub_type = found_data.get("subType", "")
-                base_display.append(f"Lv. {level_req} {tier} {sub_type}")
+                base_display += f"Lv. {level_req} {tier} {sub_type}\n"
 
             # Add base stats
             base_stats = found_data.get("base", {})
-            base_display.extend(
-                f"{stat}: {value['min']} - {value['max']}" if isinstance(value, dict) 
-                else f"{stat}: {value}"
-                for stat, value in base_stats.items()
-            )
+            for stat, value in base_stats.items():
+                if isinstance(value, dict):
+                    base_display += f"{stat}: {value.get('min')} - {value.get('max')}\n"
+                else:
+                    base_display += f"{stat}: {value}\n"
 
             # Add attack speed
             if "attackSpeed" in found_data:
-                base_display.append(f"Attack speed: {found_data['attackSpeed']}")
+                base_display += f"Attack speed: {found_data['attackSpeed']}\n"
 
             # Process identifications
             for stat, value in found_data.get("identifications", {}).items():
                 if isinstance(value, dict) and "min" in value and "max" in value:
                     IDs[stat] = value.get("raw", 0)
+                    id_display += f"{stat}: {value.get('raw', 0)} [{value.get('min')}, {value.get('max')}]\n"
+                else:
+                    id_display += f"{stat}: {value}\n"
+
+            if "majorIds" in found_data:
+                major_id = found_data["majorIds"]
+                if isinstance(major_id, dict) and major_id:
+                    name = next(iter(major_id.keys()))
+                    cleaned_string = re.sub(r"&[a-zA-Z0-9+](?![a-zA-Z0-9])", "", name)
+                    parts = cleaned_string.split(":", 1)
+                    cleaned_description = parts[1].strip() if len(parts) > 1 else cleaned_string.strip()
+                    cleaned = re.sub("&3", "", cleaned_description)
+                    id_display += f"Major ID: {cleaned}\n"
+
+            if "dropMeta" in found_data:
+                drop_meta = found_data["dropMeta"]
+                if isinstance(drop_meta, dict):
+                    id_display += f"Drop: {drop_meta.get('name')} ({drop_meta.get('type')})\n"
+                    id_display += f"Coordinates: {drop_meta.get('coordinates')}"
 
             # Get icon_id
             icon_id = None
             if "icon" in found_data:
                 icon_data = found_data["icon"]
-                if icon_data["format"] == "legacy":
+                if isinstance(icon_data, dict) and icon_data.get("format") == "legacy":
                     icon_id = icon_data["value"].replace(":", "_")
-                elif icon_data["format"] == "attribute":
+                elif isinstance(icon_data, dict) and icon_data.get("format") == "attribute":
                     icon_id = icon_data["value"]["name"]
 
             # Get item_type
@@ -131,13 +157,14 @@ class ItemUtils:
             raw_lore = found_data.get("lore")
             lore = re.sub(r'<[^>]+>', '', raw_lore) if raw_lore else None
 
-            return ("\n".join(base_display), IDs, icon_id, lore, final_type)
+            display = {"base": base_display, "id": id_display}
+            return (display, IDs, icon_id, lore, final_type)
 
         except Exception as error:
             print(f"Error in item_search: {error}")
             return None
 
-    def item_amp(self, name: str, tier: int) -> Tuple[str, str, Dict[str, int], Optional[str], Optional[str]]:
+    def item_amp(self, name: str, tier: int) -> Optional[Tuple[str, str, Dict[str, int], Optional[str], Optional[str]]]:
         """
         Applies a random "amplification" to item IDs based on a tier factor.
         This simulates rolling the stats with some random variation.
@@ -150,10 +177,11 @@ class ItemUtils:
         amp = 0.05 * int(tier)
         item_data = self.item_search(name)
         if not item_data:
-            return ("", "", {}, None, None)
+            return None
         
-        base_display_str = item_data[0]
         IDs = item_data[1]
+        if not IDs:
+            return None
         icon_id = item_data[2]
         item_type = item_data[4]
 
@@ -168,6 +196,7 @@ class ItemUtils:
         result = {}
         overall = 0.0
         stat_count = 0
+        base_display = f"{round(amp * 100)}% Increase to IDs\n"
         rr_display = f"{round(amp * 100)}% Increase to IDs\n"
         stat_display = ""
 
@@ -197,7 +226,7 @@ class ItemUtils:
                 overall += percentage
                 stat_count += 1
                 result[stat] = id_rolled
-                stat_display += f"{id_rolled}{star} {STAT_MAPPING.get(stat, stat)} [{abs(percentage):.1f}%]\n"
+                stat_display += f"{id_rolled}{star} {config.stat_mapping.get(stat, stat)} [{abs(percentage):.1f}%]\n"
 
             elif raw_val < 0:
                 negative_roll = round(random.uniform(0.7, 1.3), 2)
@@ -223,13 +252,16 @@ class ItemUtils:
                 overall += percentage
                 stat_count += 1
                 result[stat] = id_rolled
-                stat_display += f"{id_rolled}{star} {STAT_MAPPING.get(stat, stat)} [{abs(percentage):.1f}%]\n"
+                stat_display += f"{id_rolled}{star} {config.stat_mapping.get(stat, stat)} [{abs(percentage):.1f}%]\n"
 
-        rr_display += f"{display_name} [{abs(overall / stat_count) if stat_count else 0:.1f}%]\n"
+        if stat_count == 0:
+            return None
+
+        rr_display += f"{display_name} [{abs(overall / stat_count):.1f}%]\n"
         rr_display += stat_display
 
         print(f"{display_name}: {result}")
-        return (base_display_str, rr_display, result, icon_id, item_type)
+        return (base_display, rr_display, result, icon_id, item_type)
 
     def _roll_star(self, roll_val: float, is_spellcost: bool = False) -> str:
         """
