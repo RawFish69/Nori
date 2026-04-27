@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../../fish_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori-Wynn Mount Material Calculator" />
+    <meta property="og:description" content="Plan Wynncraft mount upgrades and material shopping lists." />
+    <meta property="og:url" content="https://nori.fish/wynn/mount" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
+    <title>Nori-Wynn Mount Material Calculator</title>
+    <link rel="stylesheet" href="../../css_global/default.css">
+    <link rel="stylesheet" href="../../css_global/sidebar.css">
+    <link rel="stylesheet" href="../../css_global/dark_theme.css" id="dark-theme-css" disabled>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="../../js_global/sidebar.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../../js_global/analytics.js"></script>
+    <script src="../../js_global/config.js"></script>
+    <script src="../../js_global/layout.js"></script>
+    <script src="../../js_global/mount_planner.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="mount-brand">
+            <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo">
+            <div>
+                <h1>Nori-Wynn</h1>
+                <p>Mount Material Calculator</p>
+            </div>
+        </div>
+        <nav>
+            <!-- Navigation links will be inserted by layout.js -->
+        </nav>
+    </header>
+
+    <div id="menu-button" onclick="toggleSidebar()">&#9776;</div>
+    <div id="sidebar"></div>
+
+    <main class="mount-shell">
+        <section class="planner-title">
+            <div>
+                <p class="eyebrow">Wynncraft utility</p>
+                <h2>Mount Material Calculator</h2>
+                <p class="lede">Build a material shopping list from your mount's current Level, Limit, and target Limit values.</p>
+            </div>
+            <div class="title-actions">
+                <button id="resetPlanner" type="button" class="quiet-button">Reset</button>
+                <button id="copyPlannerLink" type="button" class="quiet-button">Copy Link</button>
+            </div>
+        </section>
+
+        <section class="planner-workspace">
+            <div class="input-panel">
+                <div class="panel-heading">
+                    <h3>Mount Stats</h3>
+                    <p>Set Target to the limit you want to reach. Use Max for a full upgrade plan.</p>
+                </div>
+                <form id="mountStatsGrid" class="stats-grid" aria-label="Mount stats">
+                    <div class="grid-head">Stat</div>
+                    <div class="grid-head">Level</div>
+                    <div class="grid-head">Limit</div>
+                    <div class="grid-head">Target</div>
+                </form>
+            </div>
+
+            <aside class="strategy-panel">
+                <div class="panel-heading">
+                    <h3>Strategy</h3>
+                    <p>Control which material tiers are allowed in the calculation.</p>
+                </div>
+
+                <label for="tierStrategy">Tier choice</label>
+                <select id="tierStrategy">
+                    <option value="best">Best count across usable tiers</option>
+                    <option value="highest">Highest usable tier</option>
+                    <option value="exact">Exact tier</option>
+                </select>
+                <p class="field-note">Best count compares usable tiers and picks the smallest shopping list.</p>
+
+                <label for="exactTier">Exact tier</label>
+                <select id="exactTier"></select>
+                <p class="field-note">Exact tier is only used when Tier choice is set to Exact.</p>
+
+                <label for="materialCap">Max per material</label>
+                <input id="materialCap" type="number" min="1" max="20" step="1" value="5">
+                <p class="field-note">Raise this if no plan is found with the default cap.</p>
+
+                <p id="tierHint" class="hint"></p>
+                <button id="calculatePlan" type="button" class="primary-action">Calculate</button>
+            </aside>
+        </section>
+
+        <section id="plannerResult" class="result-panel" hidden>
+            <div class="panel-heading">
+                <h3>Plan</h3>
+                <p id="resultMeta"></p>
+            </div>
+
+            <div class="summary-strip">
+                <div>
+                    <span class="summary-label">Materials</span>
+                    <strong id="totalMaterials">0</strong>
+                </div>
+                <div>
+                    <span class="summary-label">Tier</span>
+                    <strong id="chosenTier">-</strong>
+                </div>
+                <div>
+                    <span class="summary-label">Estimated Time</span>
+                    <strong id="estimatedTime">-</strong>
+                </div>
+            </div>
+
+            <div class="result-columns">
+                <div>
+                    <h4>Shopping List</h4>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Material</th>
+                                    <th>Count</th>
+                                </tr>
+                            </thead>
+                            <tbody id="shoppingList"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <h4>Final Limits</h4>
+                    <div id="finalStats" class="final-stats"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="docs-panel">
+            <div class="panel-heading">
+                <h3>How it works</h3>
+            </div>
+            <div class="docs-tooltips" aria-label="Mount planner notes">
+                <button class="info-chip" type="button" aria-describedby="tip-inputs">Inputs</button>
+                <span id="tip-inputs" class="tooltip-text" role="tooltip">Level controls usable material tiers. Limit is the current cap. Target is the cap you want to reach.</span>
+
+                <button class="info-chip" type="button" aria-describedby="tip-tiers">Material Tiers</button>
+                <span id="tip-tiers" class="tooltip-text" role="tooltip">The planner considers tiers at or below your highest entered stat level, unless Exact tier is selected.</span>
+
+                <button class="info-chip" type="button" aria-describedby="tip-result">Result</button>
+                <span id="tip-result" class="tooltip-text" role="tooltip">Shopping List is the smallest material count found under the max-per-material cap. Final Limits show expected caps after feeding.</span>
+
+                <button class="info-chip" type="button" aria-describedby="tip-time">Feeding Time</button>
+                <span id="tip-time" class="tooltip-text" role="tooltip">The estimate uses average Limit breakpoints and assumes listed materials are fed from lower total gain to higher total gain.</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024-2026 Nori, All rights reserved. Web URL: nori.fish</p>
+    </footer>
+</body>
+</html>

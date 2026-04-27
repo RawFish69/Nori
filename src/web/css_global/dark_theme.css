@@ -140,11 +140,12 @@ button:active, .online-button:active, .centered-button:active, #uptimeButton:act
 }
 
 .panel h2 {
-    background-color: #0077B6 !important; 
-    color: white !important;
+    background-color: transparent !important; 
+    color: #d7dadc !important;
     border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
     box-shadow: none !important;
-    border-radius: 12px !important;
+    border-radius: 0 !important;
 }
 
 .card h4,
@@ -196,9 +197,10 @@ tr:nth-child(even),
 }
 
 th {
-    background-color: #0077B6 !important;
-    color: white !important;
-    border-radius: 8px !important;
+    background-color: transparent !important;
+    color: #cbd5e1 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-radius: 0 !important;
 }
 
 a {
