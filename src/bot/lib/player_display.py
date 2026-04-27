@@ -110,8 +110,9 @@ class PlayerManager:
         If not needed, you can remove or adapt it.
         """
         import requests
+        from lib.config import WYNN_AUTH_HEADER
         url = "https://api.wynncraft.com/v3/player"
-        response = requests.get(url)
+        response = requests.get(url, headers=WYNN_AUTH_HEADER)
         if response.status_code != 200:
             print("Error fetching server data.")
             return {}

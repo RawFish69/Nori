@@ -4,22 +4,20 @@ import os
 import time
 import hikari
 import lightbulb
+import lib.config as config
 from lib.utils import check_user_access
-from lib.config import BOT_PATH, RESOURCES_PATH, CHANGELOG_PATH, USER_IMG_PATH, DATA_PATH, item_map, stat_mapping
+from lib.config import RESOURCES_PATH, CHANGELOG_PATH, DATA_PATH
 from lib.item_utils import ItemUtils
-from lib.item_weight import WeightManager
-from lib.price_estimator import PriceEstimator
-from lib.manager_registry import get_managers
+
+
+def _item_utils() -> ItemUtils:
+    """Build ItemUtils from the live item map loaded during startup/refresh."""
+    return ItemUtils(config.item_map or {})
 
 
 def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     """Load all item-related commands."""
 
-    managers = get_managers()
-    item_utils = managers.get("item_utils", ItemUtils(item_map))
-    weight_manager = managers.get("weight_manager")
-    price_estimator = managers.get("price_estimator", PriceEstimator(output_path=USER_IMG_PATH / "pricecheck"))
-    
     @bot.command()
     @lightbulb.command('item', 'Items for wynn')
     @lightbulb.implements(lightbulb.SlashCommandGroup)
@@ -32,6 +30,7 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     @lightbulb.implements(lightbulb.SlashSubCommand)
     async def item_find(ctx: lightbulb.Context):
         await check_user_access(ctx, blocked_users)
+        item_utils = _item_utils()
         item_name = ctx.options.item
         result = item_utils.item_search(item_name)
         if result:
@@ -68,6 +67,7 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     @lightbulb.implements(lightbulb.SlashSubCommand)
     async def item_reroll_amp(ctx: lightbulb.Context):
         await check_user_access(ctx, blocked_users)
+        item_utils = _item_utils()
         from lib.config import item_amp_data
         user = await bot.rest.fetch_user(ctx.user.id)
         item_name = ctx.options.item
@@ -81,6 +81,10 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         item_amp_data.update({user: temp_data})
         try:
             amp_result = item_utils.item_amp(item_name, amp_tier)
+            if not amp_result:
+                item_embed = hikari.Embed(title=f"Item {item_name} has no rerollable ID")
+                await ctx.respond(embed=item_embed)
+                return
             rr_display = amp_result[1]
             try:
                 icon_id = amp_result[3]
@@ -140,6 +144,7 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         await check_user_access(ctx, blocked_users)
         from lib.item_weight import mythic_weigh, weigh_scale
         from lib.config import DATA_PATH
+        item_utils = _item_utils()
         stat_1 = ctx.options.stat_1
         stat_2 = ctx.options.stat_2
         stat_3 = ctx.options.stat_3
@@ -156,6 +161,9 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
             weight = weight_data[1]
             scale_display = ""
             scale_data = weigh_scale(item_name, str(DATA_PATH / "mythic_weights.json"))
+            if not scale_data:
+                await ctx.respond(f"No available scale for {item_name}")
+                return
             scale = scale_data[2]
             timestamp = scale_data[1]
             display_name = scale_data[3]
@@ -218,6 +226,7 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         await ctx.respond(embed=disabled_embed)
 
     @items.child()
+    @lightbulb.option("item", "In game item from Wynntils F3")
     @lightbulb.command("pricecheck", "Auto price-checker with Encoded item (Mythic)")
     @lightbulb.implements(lightbulb.SlashSubCommand)
     async def item_pricecheck(ctx: lightbulb.Context):
@@ -244,27 +253,36 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     @lightbulb.implements(lightbulb.SlashSubCommand)
     async def item_auto_weigh(ctx: lightbulb.Context):
         await check_user_access(ctx, blocked_users)
-        from lib.decoders import ItemDecoder
-        from lib.config import item_map
-        from lib.item_weight import item_weight_output, weigh_scale
         user = await bot.rest.fetch_user(ctx.user.id)
         initial_embed = hikari.Embed(title=f"Mythic weighing requested by {user}", description="Processing...",
                                     color="#9823F9")
         await ctx.respond(embed=initial_embed)
+        try:
+            from lib.decoders import ItemDecoder
+            from lib.item_weight import item_weight_output, weigh_scale
+        except Exception as error:
+            error_embed = hikari.Embed(
+                title="Item decoder is not ready",
+                description=f"{type(error).__name__}: {error}",
+                color="#9823F9",
+            )
+            await ctx.edit_last_response(embed=error_embed)
+            return
+        item_utils = _item_utils()
         item_string = ctx.options.item
         decoder = ItemDecoder()
-        result = decoder.decode_item_string(item_string, item_map)
+        result = decoder.decode_item_string(item_string, config.item_map)
         if result:
-            item_output = item_weight_output(item_string, item_map)
+            item_output = item_weight_output(item_string, config.item_map)
             if item_output:
                 item_name = str(list(item_output.keys())[0])
                 scales = item_output[item_name]
-                max_scale = max(scales, key=scales.get)
-                overall = scales[max_scale]
-                scale_data = weigh_scale(item_name)
-                scale = scale_data[2]
-                timestamp = scale_data[1]
-                display_name = scale_data[3]
+                if not scales:
+                    error_embed = hikari.Embed(title=f"No available scale for {item_string}",
+                                               description="Currently only support mythic-tier items",
+                                               color="#9823F9")
+                    await ctx.edit_last_response(embed=error_embed)
+                    return
                 item_data = item_utils.item_search(item_name)
                 try:
                     icon_id = item_data[2] if item_data else None
@@ -277,19 +295,20 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
                 rates = result.rates
                 for stat_id, value in stats.items():
                     rate = rates.get(stat_id, 0)
-                    stat_name = stat_mapping.get(stat_id, stat_id)
+                    stat_name = config.stat_mapping.get(stat_id, stat_id)
                     display += f"{value} {stat_name} [{rate}%]\n"
-                user_input = f"Weight % Based on {max_scale} Scale."
-                response = f"**{display_name}** Weighted Overall: **{overall}**%"
-                scale_display = ""
-                for stat in scale.items():
-                    scale_display += f"{str(stat[0])} {float(stat[1])}%\n"
-                weigh_embed = hikari.Embed(title=f"Mythic Item Weighing", description=user_input, color="#9823F9")
+                web_page = f"**[Item Analysis](https://nori.fish/wynn/item/analysis/) & [#1 Ranked Mythics](https://nori.fish/wynn/item/mythic/)**"
+                display_line = display
+                weigh_embed = hikari.Embed(title=f"Auto Weight Evaluation", description=web_page, color="#9823F9")
                 if result.shiny:
-                    display = f"*{result.shiny}*\n" + display
-                weigh_embed.add_field(f"{display_name} (Main Scale)", f"```json\n{scale_display}```\n{response}")
-                weigh_embed.add_field("Item Stats", f"```json\n{display}```")
-                weigh_embed.add_field("Latest data update", f"<t:{timestamp}>")
+                    item_name = f"Shiny {item_name}"
+                    display_line = f"*{result.shiny}*\n" + display_line
+                weigh_embed.add_field(f"{item_name}", display_line)
+                sorted_scales = dict(sorted(scales.items(), key=lambda item: item[1], reverse=True))
+                for weight in sorted_scales:
+                    overall = sorted_scales[weight]
+                    weight_display = f"```json\nWeight: {overall}%```\n"
+                    weigh_embed.add_field(f"{weight} Scale", weight_display)
                 try:
                     if item_type in ["helmet", "chestplate", "leggings", "boots"]:
                         item_url = hikari.files.File(str(RESOURCES_PATH / f"{item_type}.png"))
@@ -300,7 +319,7 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
                 except Exception as error:
                     print(error)
                     pass
-                weigh_embed.set_footer("Nori Bot - Mythic weighing")
+                weigh_embed.set_footer("Nori Bot - Auto Mythic Weighing")
                 await ctx.edit_last_response(embed=weigh_embed)
             else:
                 error_embed = hikari.Embed(title=f"No available scale for {item_string}",
@@ -308,7 +327,7 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
                                            color="#9823F9")
                 await ctx.edit_last_response(embed=error_embed)
         else:
-            error_embed = hikari.Embed(title=f"Error while decoding {item_string}",
+            error_embed = hikari.Embed(title=f"Failed to decode {item_string}",
                                        description="Contact support server for any issue.",
                                        color="#9823F9")
             await ctx.edit_last_response(embed=error_embed)
@@ -319,24 +338,43 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     @lightbulb.implements(lightbulb.SlashSubCommand)
     async def item_scale(ctx: lightbulb.Context):
         await check_user_access(ctx, blocked_users)
+        await ctx.respond("Loading mythic scale...", flags=hikari.MessageFlag.LOADING)
         from lib.item_weight import weigh_scale
         from lib.config import DATA_PATH
         item_name = ctx.options.item
         scale_data = weigh_scale(item_name, str(DATA_PATH / "mythic_weights.json"))
         if scale_data:
-            scale = scale_data[2]
+            scales = scale_data[0]
             timestamp = scale_data[1]
-            display_name = scale_data[3]
-            scale_display = ""
-            for stat in scale.items():
-                scale_display += f"{str(stat[0])} {float(stat[1])}%\n"
-            scale_embed = hikari.Embed(title=f"Mythic Item Scale", description=f"**{display_name}**", color="#9823F9")
-            scale_embed.add_field("Weighing Scale (Main)", f"```json\n{scale_display}```")
+            item_data = _item_utils().item_search(item_name)
+            try:
+                icon_id = item_data[2] if item_data else None
+            except Exception as error:
+                icon_id = None
+                print(error)
+            item_type = item_data[4] if item_data else None
+            item = str(list(scales.keys())[0])
+            all_scales = scales[item]
+            web_page = f"[#1 Mythic & Scales on Nori-Web](https://nori.fish/wynn/item/mythic/)"
+            scale_embed = hikari.Embed(title="Mythic Weight Scale", description=f"{web_page}\n### Result for {item}: {len(all_scales)} ###", color="#A300F0")
+            for scale in all_scales:
+                scale_embed.add_field(f"{scale}", all_scales[scale])
+            try:
+                if item_type in ["helmet", "chestplate", "leggings", "boots"]:
+                    item_url = hikari.files.File(str(RESOURCES_PATH / f"{item_type}.png"))
+                    scale_embed.set_thumbnail(item_url)
+                elif icon_id:
+                    item_url = f"https://cdn.wynncraft.com/nextgen/itemguide/3.3/{icon_id}.webp"
+                    scale_embed.set_thumbnail(item_url)
+            except Exception as error:
+                print(error)
+                pass
             scale_embed.add_field("Latest data update", f"<t:{timestamp}>")
             scale_embed.set_footer("Nori Bot - Mythic scale")
-            await ctx.respond(embed=scale_embed)
+            await ctx.edit_last_response(embed=scale_embed, content="")
         else:
-            await ctx.respond(f"No available scale for {item_name}")
+            scale_embed = hikari.Embed(title=f"No available scale for {item_name}", color="#AEB1B1")
+            await ctx.edit_last_response(embed=scale_embed, content="")
 
     @items.child()
     @lightbulb.option("item", "In game item from Wynntils F3")
@@ -344,30 +382,61 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     @lightbulb.implements(lightbulb.SlashSubCommand)
     async def item_check(ctx: lightbulb.Context):
         await check_user_access(ctx, blocked_users)
-        from lib.decoders import ItemDecoder
-        from lib.config import item_map, stat_mapping
+        await ctx.respond("Decoding item...", flags=hikari.MessageFlag.LOADING)
+        try:
+            from lib.decoders import ItemDecoder
+        except Exception as error:
+            error_embed = hikari.Embed(
+                title="Item decoder is not ready",
+                description=f"{type(error).__name__}: {error}",
+                color="#ACFFF2",
+            )
+            await ctx.edit_last_response(embed=error_embed, content="")
+            return
         item_string = ctx.options.item
         decoder = ItemDecoder()
-        result = decoder.decode_item_string(item_string, item_map)
+        result = decoder.decode_item_string(item_string, config.item_map)
         if result:
-            display = ""
+            name = result.name
+            item_data = _item_utils().item_search(name)
+            try:
+                icon_id = item_data[2] if item_data else None
+            except Exception as error:
+                icon_id = None
+                print(error)
+            item_type = item_data[4] if item_data else None
             stats = result.stats
             rates = result.rates
+            display = ""
+            sum_rate = 0
             for stat_id, value in stats.items():
                 rate = rates.get(stat_id, 0)
-                stat_name = stat_mapping.get(stat_id, stat_id)
-                display += f"{value} {stat_name} [{rate}%]\n"
-            check_embed = hikari.Embed(title="Item Decode", description="Item stats from Wynntils", color="#ACFFF2")
+                display += f"{value} {config.stat_mapping.get(stat_id, stat_id)} [{rate}%]\n"
+                sum_rate += float(rate)
+            if not rates:
+                await ctx.edit_last_response("Invalid input, please copy the item in game properly.")
+                return
+            overall = round(sum_rate / len(rates), 1)
+            web_page = f"[Item Analysis on Nori-Web](https://nori.fish/wynn/item/analysis/)"
+            stats_embed = hikari.Embed(title="Item Stats", description=f"IDs decoded from Wynntils\n{web_page}", color="#C0FD5D")
             if result.shiny:
+                name = f"Shiny {name}"
                 display = f"*{result.shiny}*\n" + display
-            check_embed.add_field("Identifications", f"```json\n{display}```")
-            check_embed.set_footer("Nori Bot - Item Decode")
-            await ctx.respond(embed=check_embed)
+            stats_embed.add_field(f"{name} [{overall}%]\n", f"{display}")
+            try:
+                if item_type in ["helmet", "chestplate", "leggings", "boots"]:
+                    item_url = hikari.files.File(str(RESOURCES_PATH / f"{item_type}.png"))
+                    stats_embed.set_thumbnail(item_url)
+                elif icon_id:
+                    item_url = f"https://cdn.wynncraft.com/nextgen/itemguide/3.3/{icon_id}.webp"
+                    stats_embed.set_thumbnail(item_url)
+            except Exception as error:
+                print(error)
+                pass
+            stats_embed.set_footer("Nori Bot - Item decoder")
+            await ctx.edit_last_response(embed=stats_embed, content="")
         else:
-            error_embed = hikari.Embed(title=f"Error while decoding {item_string}",
-                                       description="Contact support server for any issue.",
-                                       color="#ACFFF2")
-            await ctx.respond(embed=error_embed)
+            await ctx.edit_last_response("Invalid input, please copy the item in game properly.")
 
     @items.child()
     @lightbulb.add_checks(lightbulb.owner_only)
@@ -410,9 +479,12 @@ def load_item_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     @lightbulb.implements(lightbulb.SlashSubCommand)
     async def item_lootpool(ctx: lightbulb.Context):
         await check_user_access(ctx, blocked_users)
-        from lib.views.items import lootView
+        from lib.views.items import build_lootpool_embed, lootView
+        from lib.config import lootpool_user
+
+        lootpool_user[ctx.user.username] = "Mythic"
         view = lootView(timeout=120)
-        message = await ctx.respond(f"Select a week", components=view.build())
+        message = await ctx.respond(embed=build_lootpool_embed("Mythic"), components=view.build())
         message = await message
         await view.start(message)
         await view.wait()

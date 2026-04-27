@@ -2,6 +2,7 @@
 
 import asyncio
 import time
+from datetime import datetime
 
 import hikari
 import lightbulb
@@ -12,6 +13,8 @@ import lib.config as config
 from lib.config import (
     AI_API_KEY,
     MODELS,
+    FLIGHT_USER_NAME,
+    FLIGHT_PASSWORD,
     BOT_OWNER_ID,
     GPT_LOG_CHANNEL_ID,
 )
@@ -109,6 +112,93 @@ def gpt_vision(user_name: str, prompt: str, image_url: str):
     config.bot_responses[user_name]["messages"].append(generated_text)
     config.bot_responses[user_name]["response_timestamps"].append(int(current_time))
     return generated_text
+
+
+def get_flights():
+    if not FLIGHT_USER_NAME or not FLIGHT_PASSWORD:
+        return []
+    try:
+        response = requests.get(
+            f"https://{FLIGHT_USER_NAME}:{FLIGHT_PASSWORD}@opensky-network.org/api/states/all",
+            timeout=30,
+        )
+        response.raise_for_status()
+        flight_json = response.json()
+        airlines = flight_json.get("states") or []
+
+        flights = []
+        for flight in airlines:
+            flights.append(
+                {
+                    "icao": flight[0],
+                    "flight_number": flight[1] if flight[1] else "N/A",
+                    "country": flight[2] if flight[2] else "N/A",
+                    "ground_status": flight[8],
+                }
+            )
+        return flights
+    except requests.exceptions.RequestException as error:
+        print(f"Flight API error: {error}")
+        return []
+
+
+def find_flight(callsign: str):
+    flights = get_flights()
+    flight_icao = None
+    country = None
+    ground_status = None
+
+    for flight in flights:
+        if callsign in str(flight["flight_number"]):
+            flight_icao = flight["icao"]
+            country = flight["country"]
+            ground_status = flight["ground_status"]
+            break
+
+    if not flight_icao:
+        return None
+
+    begin = int(time.time() - 100000)
+    end = int(time.time())
+    try:
+        response = requests.get(
+            (
+                f"https://{FLIGHT_USER_NAME}:{FLIGHT_PASSWORD}@opensky-network.org/api/flights/aircraft"
+                f"?icao24={flight_icao}&begin={begin}&end={end}"
+            ),
+            timeout=30,
+        )
+        response.raise_for_status()
+        flight_list = response.json()
+        if not flight_list:
+            return "No historical data available for this flight."
+        airline_info = flight_list[0]
+    except requests.exceptions.RequestException as error:
+        print(f"Flight detail API error: {error}")
+        return None
+
+    first_seen = datetime.fromtimestamp(airline_info.get("firstSeen"))
+    last_seen = datetime.fromtimestamp(airline_info.get("lastSeen"))
+    departure_airport = airline_info.get("estDepartureAirport")
+    arrival_airport = airline_info.get("estArrivalAirport")
+    vert_distance = airline_info.get("estDepartureAirportVertDistance")
+    horiz_distance = airline_info.get("estDepartureAirportHorizDistance")
+
+    display = f"""```json
+                Flight: {callsign}
+                From: {country}, On Ground Status = {ground_status}
+                First seen: {first_seen}, Last seen: {last_seen}
+                Departure Airport: {departure_airport}
+                Arrival Airport: {arrival_airport if arrival_airport else "Unknown"}
+                Departure Vertical Distance: {vert_distance}
+                Departure Horizontal Distance: {horiz_distance}
+                ```"""
+    return display
+
+
+def flight_data():
+    flights = get_flights()
+    return [flights[index:index + 20] for index in range(0, len(flights), 20)]
 
 
 def load_ai_tools_commands(bot: lightbulb.BotApp, blocked_users: list = None):
@@ -362,3 +452,52 @@ def load_ai_tools_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         display_weather += "```"
         await ctx.respond(display_weather)
 
+    @bot.command
+    @lightbulb.command("flight", "Flight tracker")
+    @lightbulb.implements(lightbulb.SlashCommandGroup)
+    async def flight(ctx: lightbulb.Context):
+        pass
+
+    @flight.child()
+    @lightbulb.option("flight_id", "Flight number (no space)")
+    @lightbulb.command("find", "Find a flight")
+    @lightbulb.implements(lightbulb.SlashSubCommand)
+    async def cmd_find_flight(ctx: lightbulb.Context):
+        await check_user_access(ctx, blocked_users)
+        await ctx.respond("Processing request, hold on")
+        call_sign = ctx.options.flight_id
+        flight_info = find_flight(call_sign)
+        if not flight_info:
+            await ctx.respond("Could not find this flight")
+            return
+        await ctx.respond(flight_info)
+
+    @flight.child()
+    @lightbulb.option("page", "Page number", type=int)
+    @lightbulb.command("show", "Show all flights (global)")
+    @lightbulb.implements(lightbulb.SlashSubCommand)
+    async def show_all_flights(ctx: lightbulb.Context):
+        await check_user_access(ctx, blocked_users)
+        await ctx.respond("Processing request, hold on")
+        flights = flight_data()
+        if not flights:
+            await ctx.respond("No flight data available.")
+            return
+
+        page = int(ctx.options.page)
+        if page < 1 or page > len(flights):
+            await ctx.respond("Invalid page number")
+            return
+
+        selected_flights = flights[page - 1]
+        display = "```json\n"
+        display += "Flight # |   Departure Country   | On Ground   | ICAO24 ID\n"
+        for flight_item in selected_flights:
+            display += "{0:9s}|   {1:19s} | {2:10s}  | {3:9s}\n".format(
+                str(flight_item["flight_number"]),
+                str(flight_item["country"]),
+                str(flight_item["ground_status"]),
+                str(flight_item["icao"]),
+            )
+        display += "```"
+        await ctx.respond(display)

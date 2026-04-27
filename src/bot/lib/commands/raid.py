@@ -16,6 +16,7 @@ from lib.config import (
 )
 from lib.raid_pool_utils import (
     _normalize_gambit_loot_shape,
+    current_gambit_refresh_interval,
     load_aspect_lootpool,
     load_gambit_pool,
     load_weekly_raid_pool,
@@ -71,10 +72,12 @@ def load_raid_commands(bot: lightbulb.BotApp, blocked_users: list = None):
 
         rotation_expired = isinstance(rotation_end, int) and current_time >= rotation_end
         if rotation_expired:
+            next_interval = current_gambit_refresh_interval(now_ts=current_time)
             gambit_embed.add_field(
                 "Rotation Refreshing",
-                "The current rotation window has ended. Awaiting the next data refresh.\n"
-                "If entries still do not change, data may be outdated - please remind a maintainer to verify it.",
+                "The current rotation window has ended. A fresh refresh should land within "
+                f"{max(1, next_interval // 60)} minutes.\n"
+                "If entries still do not change after this window, data may be outdated - please remind a maintainer to verify it.",
             )
         elif gambits_all:
             lines = []

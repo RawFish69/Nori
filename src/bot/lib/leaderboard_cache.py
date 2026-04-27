@@ -40,6 +40,7 @@ def load_leaderboard_in_guild():
 
     print(
         "Leaderboard in-guild data unavailable. "
+        f"Set NORI_LEADERBOARD_IN_GUILD_FILE or NORI_LEADERBOARD_IN_GUILD_API_URL. "
         f"Tried file: {LEADERBOARD_IN_GUILD_FILE}"
     )
     return {}

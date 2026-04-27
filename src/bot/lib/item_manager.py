@@ -5,7 +5,7 @@ Description: Core item management and data handling functionality
 
 import json
 from .item_wrapper import Items
-from .item_db_compat import items_response_to_dict
+from .item_db_compat import items_response_to_dict, looks_like_item_database
 
 
 class ItemManager:
@@ -28,9 +28,13 @@ class ItemManager:
         :return: The number of items updated (0 if error/failure).
         """
         self.items_path = path
-        raw = Items().get_all_items()
-        if not raw:
-            print("Invalid API response")
+        raw = Items().get_all_items_raw()
+        if not looks_like_item_database(raw):
+            print(f"Invalid item API response; refusing to overwrite {path}.")
+            beta_raw = Items().get_beta_items_raw()
+            if looks_like_item_database(beta_raw):
+                print("Beta API Item DB valid, updating from beta fallback.")
+                return self._save_item_data(beta_raw, path)
             return 0
 
         data, summary = items_response_to_dict(raw)
@@ -38,33 +42,13 @@ class ItemManager:
             print(f"v3.7 array response converted: {summary['total']} keys, "
                   f"{len(summary['collisions'])} displayName collisions")
 
-        # If API returned an error (only possible for legacy dict response)
-        if isinstance(data, dict) and "Error" in data:
-            print(f"Error in item API response: {data['Error']}")
-            beta_raw = Items().get_beta_items()
-            if beta_raw:
-                beta_data, beta_summary = items_response_to_dict(beta_raw)
-                if isinstance(beta_data, dict) and "Error" not in beta_data:
-                    print("Beta API Item DB Valid, updating")
-                    if beta_summary is not None:
-                        print(f"Beta converted: {beta_summary['total']} keys, "
-                              f"{len(beta_summary['collisions'])} collisions")
-                    return self._save_item_data(beta_data, path)
+        if not looks_like_item_database(data):
+            print(f"Normalized item data is invalid; refusing to overwrite {path}.")
             return 0
 
-        # Check for rate limit
-        if isinstance(data, dict) and "message" in data and data["message"] == "API rate limit exceeded":
-            print("Item Update - Exceeded API Rate limit") 
-            return 0
+        return self._save_item_data(raw, path)
 
-        # Check for authentication/down
-        if isinstance(data, dict) and "detail" in data and data["detail"] == "Authentication credentials were not provided.":
-            print("Error fetching item data, is it down?")
-            return 0
-
-        return self._save_item_data(data, path)
-
-    def _save_item_data(self, data: dict, path: str) -> int:
+    def _save_item_data(self, data, path: str) -> int:
         """
         Saves the provided `data` into `path` as JSON.
         Updates `self.item_map` in memory.
@@ -74,11 +58,18 @@ class ItemManager:
         :return: Number of items saved, 0 on error.
         """
         try:
-            with open(path, "w") as file:
+            if not looks_like_item_database(data):
+                print(f"Refusing to save invalid item database to {path}.")
+                return 0
+            item_map, _ = items_response_to_dict(data)
+            if not looks_like_item_database(item_map):
+                print(f"Refusing to save invalid normalized item map from {path}.")
+                return 0
+            with open(path, "w", encoding="utf-8") as file:
                 json.dump(data, file, indent=3)
-            self.item_map = data  # Store in memory
-            print(f"{len(data)} items updated")
-            return len(data)
+            self.item_map = item_map  # Store runtime lookup map in memory.
+            print(f"{len(item_map)} items updated")
+            return len(item_map)
         except Exception as error:
             print(f"File update error: {error}")
             return 0
@@ -92,8 +83,8 @@ class ItemManager:
         """
         try:
             self.items_path = path
-            with open(path, "r") as file:
-                self.item_map = json.load(file)
+            with open(path, "r", encoding="utf-8") as file:
+                self.item_map, _ = items_response_to_dict(json.load(file))
         except Exception as error:
             print(f"Error loading items from file: {error}")
 

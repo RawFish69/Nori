@@ -1,25 +1,44 @@
 """Raid aspect, raid item, and gambit pool helpers.
 
-Local-file loaders and tier normalization helpers used by the runtime views.
-External pool sync has been removed from the open-source build; the bot now
-reads weekly pool data from disk only.
+These are the reusable pieces behind the modular `/raid` commands. They are
+ported from the working `bot.py` flows while keeping runtime state in
+`lib.config`.
 """
 
 from __future__ import annotations
 
+import asyncio
 import json
 import time
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+
+import requests
 
 import lib.config as config
 from lib.config import (
     ASPECT_TIERS,
     GAMBIT_POOL_FILE,
+    GAMBIT_REFRESH_BASE_INTERVAL,
+    GAMBIT_REFRESH_FAST_INTERVAL,
+    GAMBIT_REFRESH_FAST_WINDOW_AFTER,
+    GAMBIT_REFRESH_FAST_WINDOW_BEFORE,
     GAMBIT_REGIONS,
+    GAMBIT_ROTATION_HOUR_ET,
     RAID_ITEM_TIERS,
     RAID_NAMES,
     WEEKLY_ASPECT_POOL_FILE,
     WEEKLY_RAID_POOL_FILE,
+    WCS_POOL_BETA_BASE_URL,
+    WCS_POOL_PRIMARY_BASE_URL,
+    WCS_POOL_TIMEOUT,
+    WYNN_SOURCE_TOKEN,
 )
+from lib.wynnsource_pool import format_attempt_log
+
+V2_GAMBIT_BASE_PATH = "/api/v2/raid/gambit"
+SECONDS_PER_DAY = 86400
+SECONDS_PER_WEEK = 604800
 
 
 def _load_json(path, default):
@@ -149,3 +168,188 @@ def _normalize_gambit_loot_shape(raw_loot) -> list:
 
 def normalize_gambit_pool_cache() -> None:
     config.gambit_pool_data = _normalize_gambit_loot_shape(config.gambit_pool_data)
+
+
+def _fetch_gambits_v2(token: str | None, base_url: str, timeout: int) -> dict:
+    headers = {"Accept": "application/json"}
+    if token:
+        headers["X-API-KEY"] = token
+
+    response = requests.get(f"{base_url}{V2_GAMBIT_BASE_PATH}", headers=headers, timeout=timeout)
+    response.raise_for_status()
+    payload = response.json() if response.content else {}
+    data = payload.get("data", {}) if isinstance(payload, dict) else {}
+    return data if isinstance(data, dict) else {}
+
+
+def fetch_gambits_with_failover(
+    token: str | None,
+    primary_base_url: str,
+    beta_base_url: str,
+    timeout: int,
+) -> dict:
+    attempts: list[str] = []
+    for source_key in ("v2_primary", "v2_beta"):
+        try:
+            base_url = primary_base_url if source_key == "v2_primary" else beta_base_url
+            payload = _fetch_gambits_v2(token, base_url=base_url, timeout=timeout)
+        except Exception as exc:
+            attempts.append(f"{source_key}: request error ({type(exc).__name__}: {exc})")
+            continue
+
+        if payload:
+            gambit_count = len(payload.get("gambits", [])) if isinstance(payload.get("gambits"), list) else 0
+            attempts.append(f"{source_key}: ok (gambits={gambit_count})")
+            return {"payload": payload, "source": source_key, "attempts": attempts}
+        attempts.append(f"{source_key}: empty payload")
+
+    return {"payload": None, "source": None, "attempts": attempts}
+
+
+async def get_gambits_from_source(token: str | None) -> dict:
+    result = await asyncio.to_thread(
+        lambda: fetch_gambits_with_failover(
+            token,
+            primary_base_url=WCS_POOL_PRIMARY_BASE_URL,
+            beta_base_url=WCS_POOL_BETA_BASE_URL,
+            timeout=WCS_POOL_TIMEOUT,
+        )
+    )
+    if result.get("payload") is None:
+        return {
+            "error": "All configured WynnSource gambit sources were unusable.",
+            "attempts": result.get("attempts", []),
+        }
+    print(f"[GambitFetch] source={result.get('source')} attempts={format_attempt_log(result.get('attempts', []))}")
+    return result
+
+
+def _parse_rotation_ts(value) -> int | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    text = value.strip()
+    try:
+        return int(datetime.fromisoformat(text).timestamp())
+    except ValueError:
+        pass
+    try:
+        if text.endswith("Z"):
+            return int(datetime.fromisoformat(text[:-1] + "+00:00").timestamp())
+    except ValueError:
+        pass
+    return None
+
+
+def convert_gambit_format(raw_payload: dict) -> dict:
+    source = raw_payload if isinstance(raw_payload, dict) else {}
+    if "gambits" not in source and any(isinstance(source.get(raid), dict) for raid in GAMBIT_REGIONS):
+        candidate = {}
+        for raid in GAMBIT_REGIONS:
+            raid_payload = source.get(raid)
+            if not isinstance(raid_payload, dict):
+                continue
+            if not candidate:
+                candidate = raid_payload
+            if isinstance(raid_payload.get("gambits"), list) and raid_payload.get("gambits"):
+                candidate = raid_payload
+                break
+        source = candidate if isinstance(candidate, dict) else {}
+
+    entries: list = []
+    raw_entries = source.get("gambits", [])
+    if isinstance(raw_entries, list):
+        for entry in raw_entries:
+            if not isinstance(entry, dict):
+                continue
+            name = entry.get("name")
+            if not isinstance(name, str) or not name.strip():
+                continue
+            description = entry.get("description")
+            confidence = entry.get("confidence")
+            try:
+                confidence_value = float(confidence) if confidence is not None else None
+            except (TypeError, ValueError):
+                confidence_value = None
+            entries.append({
+                "name": name.strip(),
+                "description": description.strip() if isinstance(description, str) else "",
+                "confidence": confidence_value,
+            })
+
+    rotation_start = _parse_rotation_ts(source.get("rotation_start"))
+    rotation_end = _parse_rotation_ts(source.get("rotation_end"))
+    return {
+        "Loot": entries,
+        "Rotation": {"rotation_start": rotation_start, "rotation_end": rotation_end},
+        "RotationStart": rotation_start,
+        "RotationEnd": rotation_end,
+    }
+
+
+async def sync_gambits() -> dict:
+    fetch_result = await get_gambits_from_source(WYNN_SOURCE_TOKEN)
+    attempts = format_attempt_log(fetch_result.get("attempts", []))
+    if "error" in fetch_result:
+        print(f"[Gambit sync] unusable; keeping existing cache. Attempts: {attempts}")
+        return {"error": fetch_result["error"], "attempts": attempts}
+
+    converted = convert_gambit_format(fetch_result.get("payload", {}) or {})
+    config.gambit_pool_data = converted.get("Loot", [])
+    normalize_gambit_pool_cache()
+    return converted
+
+
+async def update_gambit_pool(gambit_pool: dict) -> None:
+    with open(GAMBIT_POOL_FILE, "w", encoding="utf-8") as file:
+        json.dump(gambit_pool, file, indent=3)
+    print(f"[Gambit update] wrote {GAMBIT_POOL_FILE} timestamp={gambit_pool.get('Timestamp')}")
+
+
+async def refresh_gambits() -> dict:
+    converted = await sync_gambits()
+    if "error" in converted:
+        return converted
+
+    now_ts = int(time.time())
+    file_payload = {
+        "Loot": converted.get("Loot", []),
+        "Rotation": converted.get("Rotation", {}),
+        "RotationStart": converted.get("RotationStart"),
+        "RotationEnd": converted.get("RotationEnd"),
+        "Timestamp": converted.get("RotationStart") or now_ts,
+        "RefreshedAt": now_ts,
+    }
+    try:
+        await update_gambit_pool(file_payload)
+    except Exception as error:
+        return {"error": f"write_failed: {type(error).__name__}: {error}"}
+
+    return {
+        "ok": True,
+        "gambits": len(converted.get("Loot", [])) if isinstance(converted.get("Loot"), list) else 0,
+        "rotation_start": converted.get("RotationStart"),
+        "rotation_end": converted.get("RotationEnd"),
+        "refreshed_at": now_ts,
+    }
+
+
+def _next_gambit_rotation_ts(now_ts: int | None = None) -> int:
+    et = ZoneInfo("America/New_York")
+    now = datetime.fromtimestamp(now_ts if isinstance(now_ts, int) else int(time.time()), tz=et)
+    target = now.replace(hour=GAMBIT_ROTATION_HOUR_ET, minute=0, second=0, microsecond=0)
+    if now >= target:
+        target += timedelta(days=1)
+    return int(target.timestamp())
+
+
+def current_gambit_refresh_interval(now_ts: int | None = None, **_kwargs) -> int:
+    now_ts = now_ts if isinstance(now_ts, int) else int(time.time())
+    next_rotation = _next_gambit_rotation_ts(now_ts)
+    previous_rotation = next_rotation - SECONDS_PER_DAY
+    time_until_next = next_rotation - now_ts
+    time_since_previous = now_ts - previous_rotation
+    if time_until_next <= GAMBIT_REFRESH_FAST_WINDOW_BEFORE:
+        return GAMBIT_REFRESH_FAST_INTERVAL
+    if time_since_previous <= GAMBIT_REFRESH_FAST_WINDOW_AFTER:
+        return GAMBIT_REFRESH_FAST_INTERVAL
+    return GAMBIT_REFRESH_BASE_INTERVAL

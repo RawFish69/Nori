@@ -1,6 +1,7 @@
 import aiohttp
 import asyncio
 from lib.item_db_compat import items_response_to_dict
+from lib.config import WYNN_AUTH_HEADER
 
 class AsyncPlayer:
     """Async wrapper for Wynncraft Player"""
@@ -17,12 +18,13 @@ class AsyncPlayer:
         objects = response.get("objects")
         if "uuid" in response or not isinstance(objects, dict) or not objects:
             return response
-        suffix = "?fullResult=True" if use_full else ""
+        suffix = "?fullResult" if use_full else ""
         candidates = []
         for uuid in objects:
             try:
                 async with session.get(
-                    f"https://api.wynncraft.com/v3/player/{uuid}{suffix}"
+                    f"https://api.wynncraft.com/v3/player/{uuid}{suffix}",
+                    headers=WYNN_AUTH_HEADER,
                 ) as per_resp:
                     per = await per_resp.json()
             except Exception:
@@ -37,14 +39,14 @@ class AsyncPlayer:
     async def get_player_main(self, ign):
         async with aiohttp.ClientSession() as session:
             api_url = f"https://api.wynncraft.com/v3/player/{ign}"
-            async with session.get(api_url) as response:
+            async with session.get(api_url, headers=WYNN_AUTH_HEADER) as response:
                 data = await response.json()
             return await self._resolve_latest_player(session, data, use_full=False)
 
     async def get_player_full(self, ign):
         async with aiohttp.ClientSession() as session:
-            api_url = f"https://api.wynncraft.com/v3/player/{ign}?fullResult=True"
-            async with session.get(api_url) as response:
+            api_url = f"https://api.wynncraft.com/v3/player/{ign}?fullResult"
+            async with session.get(api_url, headers=WYNN_AUTH_HEADER) as response:
                 data = await response.json()
             return await self._resolve_latest_player(session, data, use_full=True)
 
@@ -90,12 +92,12 @@ class AsyncGuild:
 
     async def get_prefix_guild(self, prefix):
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"https://api.wynncraft.com/v3/guild/prefix/{prefix}") as response:
+            async with session.get(f"https://api.wynncraft.com/v3/guild/prefix/{prefix}", headers=WYNN_AUTH_HEADER) as response:
                 return await response.json()
 
     async def get_name_guild(self, name):
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"https://api.wynncraft.com/v3/guild/{name}") as response:
+            async with session.get(f"https://api.wynncraft.com/v3/guild/{name}", headers=WYNN_AUTH_HEADER) as response:
                 return await response.json()
 
     async def get_guild_members(self, user_input):
@@ -121,7 +123,7 @@ class AsyncGuild:
 
     async def guild_list(self):
         async with aiohttp.ClientSession() as session:
-            async with session.get("https://api.wynncraft.com/v3/guild/list/guild") as response:
+            async with session.get("https://api.wynncraft.com/v3/guild/list/guild", headers=WYNN_AUTH_HEADER) as response:
                 return await response.json()
 
     async def get_guild_data(self, user_input):
@@ -153,23 +155,23 @@ class AsyncItems:
 
     async def fetch(self, url, headers=None):
         async with aiohttp.ClientSession() as session:
-            async with session.get(url, headers=headers) as response:
+            async with session.get(url, headers=headers if headers is not None else WYNN_AUTH_HEADER) as response:
                 return await response.json(content_type=None)
 
     async def post(self, url, data=None):
         async with aiohttp.ClientSession() as session:
-            async with session.post(url, json=data) as response:
+            async with session.post(url, json=data, headers=WYNN_AUTH_HEADER) as response:
                 return await response.json(content_type=None)
 
     async def get_all_items(self):
-        api_url = "https://api.wynncraft.com/v3/item/database?fullResult=True"
+        api_url = "https://api.wynncraft.com/v3/item/database?fullResult"
         raw = await self.fetch(api_url)
         result, _ = items_response_to_dict(raw)
         return result
 
     async def get_beta_items(self):
         """Beta endpoint requires no auth header."""
-        api_url = "https://beta-api.wynncraft.com/v3/item/database?fullResult=True"
+        api_url = "https://beta-api.wynncraft.com/v3/item/database?fullResult"
         try:
             raw = await self.fetch(api_url, headers={})
             if not isinstance(raw, (dict, list)):
@@ -185,7 +187,7 @@ class AsyncItems:
         return await self.fetch(url)
 
     async def item_query(self, data=None):
-        api_url = "https://api.wynncraft.com/v3/item/search?fullResult=True"
+        api_url = "https://api.wynncraft.com/v3/item/search?fullResult"
         raw = await self.post(api_url, data)
         result, _ = items_response_to_dict(raw)
         return result
