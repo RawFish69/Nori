@@ -19,22 +19,14 @@ VERSION = "2.0.0"
 DISPLAY_STATUS = "/nori"
 MODE = "Production"
 MODE_LIST = ["Development", "Testing", "Staging", "Production"]
-ENGINE = "gpt-4-turbo"
 
 # Runtime variables
 deploy_time = time.time()
 mode = MODE
-engine = ENGINE
-MODELS = [
-    "gpt-4-turbo", "gpt-4", "gpt-4o", "gpt-3.5-turbo",
-    "text-davinci-003", "text-babbage-001", "text-curie-001",
-    "text-cushing-001", "text-edison-002", "gpt-4-vision-preview"
-]
 
 # ============================================================================
 # API Keys and Tokens
 # ============================================================================
-AI_API_KEY = os.getenv('NORI_GPT_KEY')
 BOT_TOKEN = os.getenv('NORI_TOKEN')
 WYNN_SOURCE_TOKEN = os.getenv('WYNN_SOURCE_TOKEN')
 WYNN_API_TOKEN = os.getenv("WYNN_BOT_TOKEN")
@@ -57,10 +49,6 @@ WCS_POOL_TIMEOUT = int(os.getenv("WCS_POOL_TIMEOUT", "30"))
 # Wynncraft API Headers
 WYNN_AUTH_HEADER = {"Authorization": f"Bearer {WYNN_API_TOKEN}"} if WYNN_API_TOKEN else {}
 
-# Flight Tracker Credentials
-FLIGHT_USER_NAME = os.getenv('FLIGHT_USER_NAME', '')
-FLIGHT_PASSWORD = os.getenv('FLIGHT_PASSWORD', '')
-
 # ============================================================================
 # Path Configuration
 # ============================================================================
@@ -75,7 +63,7 @@ DATA_SCRIPTS_PATH = Path(os.getenv("NORI_DATA_SCRIPTS_PATH", str(BASE_PATH.paren
 DATA_SCRIPTS_GRAPHS_PATH = Path(os.getenv("NORI_DATA_SCRIPTS_GRAPHS_PATH", str(DATA_SCRIPTS_PATH / "graphs"))).expanduser()
 DATA_SCRIPTS_DATABASE_PATH = Path(os.getenv("NORI_DATA_SCRIPTS_DATABASE_PATH", str(DATA_SCRIPTS_PATH / "database"))).expanduser()
 DATA_SCRIPTS_FILES_PATH = Path(os.getenv("NORI_DATA_SCRIPTS_FILES_PATH", str(DATA_SCRIPTS_PATH / "files"))).expanduser()
-SITE_DATA_PATH = Path(os.getenv("NORI_SITE_DATA_PATH", "/home/ubuntu/site-data")).expanduser()
+SITE_DATA_PATH = Path(os.getenv("NORI_SITE_DATA_PATH", "")).expanduser() if os.getenv("NORI_SITE_DATA_PATH") else None
 LEADERBOARD_IN_GUILD_FILE = Path(
     os.getenv(
         "NORI_LEADERBOARD_IN_GUILD_FILE",
@@ -226,8 +214,6 @@ lootpool_history = {}
 lootpool_user = {}
 item_map = {}
 stat_mapping = {}
-user_chat_histories = {}
-bot_responses = {}
 item_amp_data = {}
 guild_prefix_data = {}
 all_tasks = {}
@@ -265,9 +251,8 @@ user_lb_in_guild = {}
 # Sensitive data - loaded from files at runtime
 blocked_users = []
 CONTRIBUTOR_ROLE_ID = os.getenv('CONTRIBUTOR_ROLE_ID')
-LOG_CHANNEL_ID = os.getenv('LOG_CHANNEL_ID', '1167675251547717662')
-COMMAND_LOG_CHANNEL_ID = int(os.getenv('COMMAND_LOG_CHANNEL_ID', '1109761057926426664'))
-ITEM_DB_LOG_CHANNEL_ID = int(os.getenv('ITEM_DB_LOG_CHANNEL_ID', '1240536972007706686'))
-BOT_OWNER_ID = int(os.getenv('BOT_OWNER_ID', '322231571786629120'))
-GPT_LOG_CHANNEL_ID = int(os.getenv('GPT_LOG_CHANNEL_ID', '1115061504283267123'))
-DATA_MANAGER_ROLE_ID = int(os.getenv('DATA_MANAGER_ROLE_ID', '1160073663123570718'))
+LOG_CHANNEL_ID = os.getenv('LOG_CHANNEL_ID')
+COMMAND_LOG_CHANNEL_ID = int(os.getenv('COMMAND_LOG_CHANNEL_ID', '0'))
+ITEM_DB_LOG_CHANNEL_ID = int(os.getenv('ITEM_DB_LOG_CHANNEL_ID', '0'))
+BOT_OWNER_ID = int(os.getenv('BOT_OWNER_ID', '0'))
+DATA_MANAGER_ROLE_ID = int(os.getenv('DATA_MANAGER_ROLE_ID', '0'))

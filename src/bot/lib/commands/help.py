@@ -1,12 +1,10 @@
 """Nori bot information and help commands."""
 
-import json
-
 import hikari
 import lightbulb
 
 import lib.config as config
-from lib.config import MODE, NORI_API_BASE_URL, SITE_DATA_PATH, VERSION
+from lib.config import MODE, NORI_API_BASE_URL, VERSION
 from lib.utils import check_user_access, get_uptime
 
 HELP_SECTIONS = [
@@ -76,19 +74,6 @@ def _command_list(commands: list[tuple[str, str]]) -> str:
     return "\n".join(f"`/{name}` - {summary}" for name, summary in commands)
 
 
-def _nori_api_stats() -> str:
-    api_usage_path = SITE_DATA_PATH / "api_usage_today.json"
-    try:
-        with open(api_usage_path, "r", encoding="utf-8") as file:
-            data = json.load(file)
-    except Exception:
-        return "**Unavailable**"
-
-    endpoints = data.get("endpoints", {})
-    if isinstance(endpoints, dict) and endpoints:
-        return "**Online**"
-    return "**Unavailable**"
-
 
 def load_help_commands(bot: lightbulb.BotApp, blocked_users: list = None):
     """Load top-level `/nori` and `/help` commands."""
@@ -117,7 +102,6 @@ def load_help_commands(bot: lightbulb.BotApp, blocked_users: list = None):
             "[GitHub](https://github.com/RawFish69/Nori)",
             inline=False,
         )
-        nori_embed.add_field("Nori API", _nori_api_stats(), inline=True)
         nori_embed.add_field("Version", VERSION, inline=True)
         nori_embed.add_field("Developer", "[RawFish](https://github.com/RawFish69)", inline=True)
         nori_embed.add_field("Maintainer", "[RawFish](https://github.com/RawFish69)", inline=True)
