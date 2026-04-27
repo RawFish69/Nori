@@ -4,11 +4,10 @@
 [![Bot](https://img.shields.io/badge/discord%20bot-verified-5865F2?logo=discord&logoColor=white)](https://discord.com/discovery/applications/873677970928193568)
 [![License](https://img.shields.io/badge/license-AGPL--3.0-green)](LICENSE)
 
-> Nori is a community-built **Wynncraft toolkit**. This repository contains the **Discord bot source** alongside separate web-facing files and public documentation.
+### Discord bot, Web app, and APIs for Wynncraft.
 
-Nori started as a simple Discord bot and grew into a larger toolkit for the Wynncraft community. The **Discord bot** and the **web app** are **separate projects** with **separate runtimes**; this repository is primarily for contributors who want to study, run, and improve the bot source.
-
-As of early 2026, Nori is the **largest Wynncraft Discord bot**, serving **more than 3,000 servers**.
+Nori started as a Discord bot in 2022. Today it includes the bot, Nori-Web, public docs, and APIs used by Wynncraft community developers.
+>  As of early 2026, Nori is the **largest Wynncraft Discord bot**, serving **more than 3,000 servers**.
 
 ## Quick Start
 

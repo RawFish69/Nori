@@ -1,6 +1,6 @@
 # Nori Bot Development
 
-This directory contains the **Source code for Nori discord bot**. It is the best place to start if you want to **add commands**, **fix Wynncraft data handling**, or **use it for your own project*.
+This directory contains the **Source code for Nori discord bot**. It is the best place to start if you want to **add commands**, **fix Wynncraft data handling**, or **use it for your own project**.
 
 As of early 2026, Nori is the **largest Wynncraft Discord bot**, serving **more than 3,000 servers**.
 
