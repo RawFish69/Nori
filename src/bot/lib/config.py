@@ -57,10 +57,6 @@ WYNN_AUTH_HEADER = {
     "Authorization": f"Bearer {WYNN_API_TOKEN}"
 }
 
-# Flight Tracker Credentials
-FLIGHT_USER_NAME = os.getenv('FLIGHT_USER_NAME', '')
-FLIGHT_PASSWORD = os.getenv('FLIGHT_PASSWORD', '')
-
 # ============================================================================
 # Path Configuration
 # ============================================================================

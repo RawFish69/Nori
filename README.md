@@ -1,86 +1,89 @@
 # Nori
 
 [![Status](https://img.shields.io/badge/status-active-success)](https://nori.fish)
-[![Bot](https://img.shields.io/badge/discord%20bot-verified-5865F2?logo=discord&logoColor=white)](https://discord.com/application-directory/873677970928193568)
-[![License](https://img.shields.io/badge/license-proprietary-orange)](https://nori.fish/license)
+[![Bot](https://img.shields.io/badge/discord%20bot-verified-5865F2?logo=discord&logoColor=white)](https://discord.com/discovery/applications/873677970928193568)
+[![License](https://img.shields.io/badge/license-AGPL--3.0-green)](LICENSE)
 
-> A comprehensive suite of tools and services for Wynncraft, featuring Discord/Kook bot integration, modern web interfaces, and public APIs.
+> Nori is a community-built **Wynncraft toolkit**. This repository contains the **Discord bot source** alongside separate web-facing files and public documentation.
 
-Nori started as a simple Discord bot and evolved into a full-featured ecosystem of tools for the Wynncraft MMORPG community. Built with passion and driven by community feedback, Nori provides everything from real-time game statistics to advanced item analysis and leaderboard tracking.
+Nori started as a simple Discord bot and grew into a larger toolkit for the Wynncraft community. The **Discord bot** and the **web app** are **separate projects** with **separate runtimes**; this repository is primarily for contributors who want to study, run, and improve the bot source.
+
+As of early 2026, Nori is the **largest Wynncraft Discord bot**, serving **more than 3,000 servers**.
 
 ## Quick Start
 
-- [Add Bot to Discord](https://discord.com/api/oauth2/authorize?client_id=873677970928193568&permissions=277028662336&scope=bot)
-- [Visit Web Interface](https://nori.fish)
-- [View API Documentation](https://nori.fish/docs/)
-- [Join Community Discord](https://discord.gg/eDssA6Jbwd)
+- [Add Nori to Discord](https://discord.com/discovery/applications/873677970928193568)
+- [Visit Nori Web](https://nori.fish)
+- [Read API Docs](https://nori.fish/docs/)
+- [Join the Community Discord](https://discord.gg/eDssA6Jbwd)
 
-## Features
+## Code Development
 
-### Player & Guild Statistics
-- Real-time player statistics and tracking
-- Comprehensive guild information and rankings
-- Historical data and progress tracking
-- [Player Stats](https://nori.fish/wynn/player) | [Guild Stats](https://nori.fish/wynn/guild)
+The repository keeps the **Discord bot** and **web-facing files** in separate directories:
 
-### Leaderboards
-- **Guild Leaderboards** - Track top guilds across various categories
-- **Raid Statistics** - Individual and guild raid performance
-- **Player Rankings** - Stats, chests, and profession leaderboards
-- **Profession Rankings** - Global profession leaderboards
-- [View All Leaderboards](https://nori.fish/wynn/leaderboard)
+```text
+src/
+  bot/  Python Discord bot and command implementation
+  web/  Separate static web interface and public docs
+  db/   Backend notes and development/test utilities
+```
 
-### Item Systems
-- **Item Analysis** - Decode and analyze Wynncraft items
-- **Price Estimation** - ML-powered price checking for mythic items
-- **Item Weights** - Calculate item value and quality
-- **Lootpool Tracking** - Weekly lootrun camp reward pools
-- **Item Changelog** - Track item changes over time
-- **Mythic Items** - Browse and search mythic item database
-- **Item Simulation** - Simulate item rerolls and modifications
-- [Item Tools](https://nori.fish/wynn/item)
+The bot lives in `src/bot`. It uses **Hikari**, **Lightbulb**, and **Miru** for Discord commands and interactive components. Shared Wynncraft logic lives in `src/bot/lib`, command modules live in `src/bot/lib/commands`, and command registration is handled by `src/bot/lib/commands/loader.py`.
 
-### Build Systems
-- **Class Build Search** - Find optimal builds for your class
-- **Recipe Search** - Search crafting recipes and ingredients
-- **Build Showcase** - Share and discover community builds
-- [Build Tools](https://nori.fish/wynn/build)
+To run the bot locally:
 
-### Utilities
-- **Server Uptime** - Real-time server status and uptime tracking
-- **Soul Point Timer** - Track soul point regeneration
-- **Guild Tower Stats** - Calculate and analyze guild tower statistics
-- **Online Players** - View current online player activity
-- **Aspects** - Browse and search aspect information
-- [All Utilities](https://nori.fish/wynn)
+```powershell
+cd src/bot
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python nori_bot.py
+```
 
-## Architecture
+Configuration is loaded from `~/.env` by `src/bot/lib/config.py`. **At minimum**, a local bot needs a Discord token:
 
-Nori is built with a modular architecture consisting of three main components:
+```env
+NORI_TOKEN=your_discord_bot_token
+```
 
-- **Bot** (`src/bot/`) - Discord/Kook bot implementation with command handlers
-- **Web** (`src/web/`) - Frontend web application with interactive interfaces
-- **Database** (`src/db/`) - Backend services, APIs, and data management
+**Optional integrations** use additional variables such as `NORI_GPT_KEY`, `WYNN_BOT_TOKEN`, `WYNN_SOURCE_TOKEN`, `LOG_CHANNEL_ID`, and `BOT_OWNER_ID`. Some **production data files are not committed**, so data-heavy commands may need local fixtures, public API calls, or maintainer-provided data before they behave exactly like the hosted bot.
 
-See [src/README.md](src/README.md) for detailed information about each component.
+For more bot contributor notes, see [src/README.md](src/README.md) and [src/bot/README.md](src/bot/README.md).
 
-## Documentation
+## Working on Commands
 
-- [API Documentation](https://nori.fish/docs/api.md) - Complete API reference
-- [Command Guide](https://nori.fish/docs/commands.md) - Bot command documentation
-- [Tower Guide](https://nori.fish/docs/tower.md) - Guild tower mechanics
+Most bot work follows this path:
+
+1. Add or update command behavior in `src/bot/lib/commands`.
+2. Reuse shared helpers from `src/bot/lib` instead of duplicating API, rendering, or parsing logic.
+3. Register new command modules in `src/bot/lib/commands/loader.py`.
+4. Update `src/web/docs/commands.md` when a public slash command documented on the website changes.
+5. Keep **secrets**, **deployment data**, **generated caches**, and **private API tokens** out of commits.
+
+The web app is static and can be previewed with any local static server:
+
+```powershell
+python -m http.server 8000 -d src/web
+```
+
+Then open `http://localhost:8000`.
 
 ## Links
 
 - **Web Interface**: [nori.fish](https://nori.fish)
-- **Discord Bot**: [Add to Server](https://discord.com/application-directory/873677970928193568)
+- **Discord Bot**: [Add to Server](https://discord.com/discovery/applications/873677970928193568)
 - **Kook Bot** (China): [Bot Market](https://www.botmarket.cn/bot/28)
+- **API Documentation**: [nori.fish/docs](https://nori.fish/docs/)
 - **Community Discord**: [Join Server](https://discord.gg/eDssA6Jbwd)
-- **GitHub**: [RawFish69](https://github.com/RawFish69)
+- **GitHub**: [RawFish69/Nori](https://github.com/RawFish69/Nori)
 
 ## Source Code Notice
 
-The core services (Discord bot implementation, API backend) are currently closed-source. Public documentation and API access are available for community developers. Development utilities and testing tools are available in the repository.
+Nori's **bot source** is published for community development under the repository license. The web files in this repository are **separate from the Discord bot runtime**. **Production credentials**, **private deployment configuration**, **generated runtime data**, and infrastructure-specific files are intentionally not included. Please do not commit secrets or data pulled from private services.
+
+## Contributing
+
+Pull requests should be focused, include a short summary and testing notes, and avoid mixing **Discord bot** changes with **Nori-Web** changes unless needed. Do not commit **secrets**, **generated caches**, production config, or private runtime data.
 
 ## Contact
 
@@ -89,7 +92,7 @@ The core services (Discord bot implementation, API backend) are currently closed
 
 ## License
 
-See [Website License](https://nori.fish/license) for terms and conditions.
+Nori is licensed under the [GNU Affero General Public License v3.0](LICENSE).
 
 ---
 
