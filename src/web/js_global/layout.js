@@ -43,7 +43,7 @@ function replaceHardcodedURLs() {
         link.setAttribute('href', NoriConfig.links.discord);
     });
     
-    document.querySelectorAll('a[href^="https://discord.com/discovery/applications/"]').forEach(link => {
+    document.querySelectorAll('a[href^="https://discord.com/application-directory/"]').forEach(link => {
         link.setAttribute('href', NoriConfig.links.discordBot);
     });
 }
