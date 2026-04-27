@@ -98,7 +98,7 @@ function createSidebar() {
             id: 'utility-sub',
             subItems: [
                 { name: 'Server Uptime', url: 'https://nori.fish/wynn/uptime' },
-                { name: 'Guild Tower Stats', url: 'https://nori.fish/wynn' },
+                { name: 'Guild Tower Stats', url: 'https://nori.fish/wynn/tower' },
                 { name: 'Mount Material Calculator', url: 'https://nori.fish/wynn/mount' },
             ],
         },

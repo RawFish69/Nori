@@ -67,27 +67,34 @@
 
             <aside class="strategy-panel">
                 <div class="panel-heading">
-                    <h3>Strategy</h3>
-                    <p>Control which material tiers are allowed in the calculation.</p>
+                    <h3>Material Rule</h3>
+                    <p>Material tier follows the highest entered Level.</p>
                 </div>
 
-                <label for="tierStrategy">Tier choice</label>
-                <select id="tierStrategy">
-                    <option value="best">Best count across usable tiers</option>
-                    <option value="highest">Highest usable tier</option>
-                    <option value="exact">Exact tier</option>
-                </select>
-                <p class="field-note">Best count compares usable tiers and picks the smallest shopping list.</p>
+                <div class="tier-readout">
+                    <span>Selected tier</span>
+                    <strong id="tierHint">-</strong>
+                </div>
+                <p class="field-note">The calculator uses the highest material tier at or below the highest Level in the table. Training is not simulated.</p>
 
-                <label for="exactTier">Exact tier</label>
-                <select id="exactTier"></select>
-                <p class="field-note">Exact tier is only used when Tier choice is set to Exact.</p>
+                <details class="advanced-options">
+                    <summary>Advanced tier strategy</summary>
+                    <label for="tierStrategy">Strategy</label>
+                    <select id="tierStrategy">
+                        <option value="highest">Highest Level tier</option>
+                        <option value="best">Fewest materials across usable tiers</option>
+                        <option value="exact">Exact tier</option>
+                    </select>
+                    <p class="field-note">Use this if you want to compare lower tiers or force a specific material level.</p>
+
+                    <label for="exactTier">Exact tier</label>
+                    <select id="exactTier"></select>
+                </details>
 
                 <label for="materialCap">Max per material</label>
                 <input id="materialCap" type="number" min="1" max="20" step="1" value="5">
                 <p class="field-note">Raise this if no plan is found with the default cap.</p>
 
-                <p id="tierHint" class="hint"></p>
                 <button id="calculatePlan" type="button" class="primary-action">Calculate</button>
             </aside>
         </section>
@@ -141,13 +148,13 @@
             </div>
             <div class="docs-tooltips" aria-label="Mount planner notes">
                 <button class="info-chip" type="button" aria-describedby="tip-inputs">Inputs</button>
-                <span id="tip-inputs" class="tooltip-text" role="tooltip">Level controls usable material tiers. Limit is the current cap. Target is the cap you want to reach.</span>
+                <span id="tip-inputs" class="tooltip-text" role="tooltip">Level controls usable material tiers. Limit is the current cap. Target is the cap you want to reach. If you train first, update Level manually.</span>
 
                 <button class="info-chip" type="button" aria-describedby="tip-tiers">Material Tiers</button>
-                <span id="tip-tiers" class="tooltip-text" role="tooltip">The planner considers tiers at or below your highest entered stat level, unless Exact tier is selected.</span>
+                <span id="tip-tiers" class="tooltip-text" role="tooltip">The selected tier is the highest known material tier that does not exceed the highest entered Level.</span>
 
                 <button class="info-chip" type="button" aria-describedby="tip-result">Result</button>
-                <span id="tip-result" class="tooltip-text" role="tooltip">Shopping List is the smallest material count found under the max-per-material cap. Final Limits show expected caps after feeding.</span>
+                <span id="tip-result" class="tooltip-text" role="tooltip">Shopping List is the smallest material count found under the cap. Final Limits are capped at Target; extra gain is shown as unused overflow.</span>
 
                 <button class="info-chip" type="button" aria-describedby="tip-time">Feeding Time</button>
                 <span id="tip-time" class="tooltip-text" role="tooltip">The estimate uses average Limit breakpoints and assumes listed materials are fed from lower total gain to higher total gain.</span>

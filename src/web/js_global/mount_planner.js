@@ -81,6 +81,11 @@ function usableTiersFromRows(rows) {
     return MOUNT_TIERS.filter((tier) => tier <= highestStatLevel);
 }
 
+function selectedTierFromRows(rows) {
+    const usable = usableTiersFromRows(rows);
+    return usable.length ? usable[usable.length - 1] : null;
+}
+
 function inputRowsToNeeds(rows) {
     return rows.map((row) => Math.max(0, row.target - row.limit));
 }
@@ -104,15 +109,22 @@ function isCovered(current, needed) {
     return current.every((value, idx) => value >= needed[idx]);
 }
 
+function overflowAmount(current, needed) {
+    return current.reduce((sum, value, idx) => sum + Math.max(0, value - needed[idx]), 0);
+}
+
 function solveTier(tier, needed, cap) {
     const matrix = MOUNT_GAIN_TABLE[tier];
     let best = null;
     const counts = Array(matrix.length).fill(0);
 
     function search(materialIndex, used, gained) {
-        if (best && used >= best.total) return;
+        if (best && used > best.total) return;
         if (isCovered(gained, needed)) {
-            best = { tier, total: used, counts: counts.slice(), gained: gained.slice() };
+            const waste = overflowAmount(gained, needed);
+            if (!best || used < best.total || (used === best.total && waste < best.waste)) {
+                best = { tier, total: used, counts: counts.slice(), gained: gained.slice(), waste };
+            }
             return;
         }
         if (materialIndex >= matrix.length) return;
@@ -129,10 +141,14 @@ function solveTier(tier, needed, cap) {
     return best;
 }
 
-function chooseTierPlan(rows, strategy, exactTier, cap) {
+function chooseTierPlan(rows, cap) {
+    return chooseTierPlanWithStrategy(rows, cap, "highest", null);
+}
+
+function chooseTierPlanWithStrategy(rows, cap, strategy, exactTier) {
     const needed = inputRowsToNeeds(rows);
     if (needed.every((value) => value === 0)) {
-        return { tier: null, total: 0, counts: Array(8).fill(0), gained: Array(8).fill(0), alreadyDone: true };
+        return { tier: null, total: 0, counts: Array(8).fill(0), gained: Array(8).fill(0), waste: 0, alreadyDone: true };
     }
 
     const usable = usableTiersFromRows(rows);
@@ -142,21 +158,25 @@ function chooseTierPlan(rows, strategy, exactTier, cap) {
     if (strategy === "exact") {
         if (!usable.includes(exactTier)) return null;
         candidates = [exactTier];
-    } else if (strategy === "highest") {
-        candidates = [usable[usable.length - 1]];
-    } else {
+    } else if (strategy === "best") {
         candidates = usable.slice().reverse();
+    } else {
+        candidates = [usable[usable.length - 1]];
     }
 
     let best = null;
     candidates.forEach((tier) => {
         const plan = solveTier(tier, needed, cap);
         if (!plan) return;
-        if (!best || plan.total < best.total || (plan.total === best.total && plan.tier > best.tier)) {
+        if (
+            !best ||
+            plan.total < best.total ||
+            (plan.total === best.total && plan.waste < best.waste) ||
+            (plan.total === best.total && plan.waste === best.waste && plan.tier > best.tier)
+        ) {
             best = plan;
         }
     });
-
     return best;
 }
 
@@ -251,11 +271,11 @@ function mountPlannerMain() {
 
     function refreshTierHint() {
         const rows = rowsFromInputs();
-        const usable = usableTiersFromRows(rows);
-        tierHint.textContent = usable.length
-            ? `Usable tiers from current stat levels: ${usable.join(", ")}`
-            : "Raise at least one stat level to unlock a known material tier.";
+        const defaultTier = selectedTierFromRows(rows);
         exactTier.disabled = tierStrategy.value !== "exact";
+        tierHint.textContent = defaultTier === null
+            ? "No tier available"
+            : `Level ${defaultTier}`;
     }
 
     function validateRows(rows) {
@@ -273,12 +293,12 @@ function mountPlannerMain() {
         finalStats.innerHTML = "";
 
         if (!plan) {
-            resultMeta.textContent = "No plan found for the current strategy.";
+            resultMeta.textContent = "No plan found for the selected material tier.";
             totalMaterials.textContent = "-";
             chosenTier.textContent = "-";
             estimatedTime.textContent = "-";
             shoppingList.innerHTML = "<tr><td>No matching set</td><td>-</td></tr>";
-            finalStats.textContent = "Try increasing the max per material or choosing another tier strategy.";
+            finalStats.textContent = "Try increasing the max per material or checking the target gaps.";
             return;
         }
 
@@ -288,7 +308,12 @@ function mountPlannerMain() {
             chosenTier.textContent = "-";
             estimatedTime.textContent = "0 min";
         } else {
-            resultMeta.textContent = `Using up to ${cap} of each material.`;
+            const strategyLabel = tierStrategy.value === "best"
+                ? "fewest-material strategy"
+                : tierStrategy.value === "exact"
+                    ? "exact-tier strategy"
+                    : "highest-Level tier";
+            resultMeta.textContent = `Using ${strategyLabel}, up to ${cap} of each material.`;
             totalMaterials.textContent = String(plan.total);
             chosenTier.textContent = `Level ${plan.tier}`;
             estimatedTime.textContent = formatDuration(estimateFeedingTime(rows, plan));
@@ -310,7 +335,14 @@ function mountPlannerMain() {
         rows.forEach((row, idx) => {
             const card = document.createElement("div");
             card.className = "final-stat";
-            card.innerHTML = `<span>${MOUNT_STATS[idx]}</span><strong>${row.limit + plan.gained[idx]} / ${row.target}</strong>`;
+            const rawFinal = row.limit + plan.gained[idx];
+            const finalLimit = Math.min(row.target, rawFinal);
+            const overflow = Math.max(0, rawFinal - row.target);
+            card.innerHTML = `
+                <span>${MOUNT_STATS[idx]}</span>
+                <strong>${finalLimit} / ${row.target}</strong>
+                ${overflow ? `<em class="overflow-note">${overflow} unused</em>` : ""}
+            `;
             finalStats.appendChild(card);
         });
     }
@@ -325,25 +357,25 @@ function mountPlannerMain() {
 
         const cap = Math.min(20, Math.max(1, readInt(materialCap.value, 5)));
         materialCap.value = cap;
-        const plan = chooseTierPlan(rows, tierStrategy.value, readInt(exactTier.value, MOUNT_TIERS[0]), cap);
+        const plan = chooseTierPlanWithStrategy(rows, cap, tierStrategy.value, readInt(exactTier.value, MOUNT_TIERS[0]));
         renderPlan(rows, plan, cap);
     }
 
     function syncUrl() {
         const url = new URL(window.location.href);
         url.searchParams.set("stats", encodeRows(rowsFromInputs()));
+        url.searchParams.set("cap", materialCap.value);
         url.searchParams.set("strategy", tierStrategy.value);
         url.searchParams.set("tier", exactTier.value);
-        url.searchParams.set("cap", materialCap.value);
         window.history.replaceState({}, "", url);
         return url.toString();
     }
 
     const params = new URLSearchParams(window.location.search);
     setRows(decodeRows(params.get("stats")) || blankMountRows());
-    tierStrategy.value = params.get("strategy") || "best";
-    exactTier.value = params.get("tier") || "10";
     materialCap.value = params.get("cap") || "5";
+    tierStrategy.value = params.get("strategy") || "highest";
+    exactTier.value = params.get("tier") || "10";
     refreshTierHint();
 
     inputs.forEach((group) => {
@@ -358,9 +390,9 @@ function mountPlannerMain() {
 
     resetPlanner.addEventListener("click", () => {
         setRows(blankMountRows());
-        tierStrategy.value = "best";
-        exactTier.value = "10";
         materialCap.value = "5";
+        tierStrategy.value = "highest";
+        exactTier.value = "10";
         plannerResult.hidden = true;
         syncUrl();
     });
