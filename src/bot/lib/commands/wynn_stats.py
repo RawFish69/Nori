@@ -1,4 +1,5 @@
 """Wynncraft stats commands."""
+import asyncio
 import re
 import hikari
 import lightbulb
@@ -100,7 +101,7 @@ class GuildCmd(lightbulb.SlashCommand, name='guild', description="Search a Guild
         default_embed = hikari.Embed(title=f'Loading guild stats for `{user_input}`...', color='#AEB1B1')
         await ctx.respond(embed=default_embed)
         try:
-            guild_data = guild_stats(user_input)
+            guild_data = await asyncio.to_thread(guild_stats, user_input)
             display = guild_data[0]
             guild_name = guild_data[1]
             guild_prefix = guild_data[2]
@@ -134,7 +135,7 @@ class PlayerCmd(lightbulb.SlashCommand, name='player', description="Search a Pla
         await ctx.respond(embed=default_embed)
         try:
             from lib.player_utils import player_stats
-            stats = player_stats(self.name)
+            stats = await asyncio.to_thread(player_stats, self.name)
             player_stats_display = stats[0]
             online_status = stats[1]
             player_uuid = stats[2]
@@ -172,8 +173,10 @@ class ServerList(lightbulb.SlashCommand, name='uptime', description='List of Wyn
     @lightbulb.invoke
     async def invoke(self, ctx: lightbulb.Context) -> None:
         await ctx.respond('Loading Wynncraft uptime...', flags=hikari.MessageFlag.LOADING)
-        serverList = get_server()
-        serverTime = get_uptime()
+        serverList, serverTime = await asyncio.gather(
+            asyncio.to_thread(get_server),
+            asyncio.to_thread(get_uptime),
+        )
         grouped = _build_uptime_rows(serverList, serverTime)
         uptime_embed = _build_uptime_embed(grouped, 'NA')
         view = UptimeRegionView(grouped)

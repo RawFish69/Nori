@@ -6,6 +6,8 @@ import requests
 from lib.config import WYNN_AUTH_HEADER
 from lib.item_db_compat import items_response_to_dict
 
+REQUEST_TIMEOUT = 20
+
 
 class Player:
     """Wrapper for Wynncraft Player API"""
@@ -33,6 +35,7 @@ class Player:
                 per = requests.get(
                     f"https://api.wynncraft.com/v3/player/{uuid}{suffix}",
                     headers=WYNN_AUTH_HEADER,
+                    timeout=REQUEST_TIMEOUT,
                 ).json()
             except Exception:
                 continue
@@ -46,14 +49,14 @@ class Player:
     def get_player_main(self, ign):
         """Get basic player data."""
         api_url = f"https://api.wynncraft.com/v3/player/{ign}"
-        stat_request = requests.get(api_url, headers=WYNN_AUTH_HEADER)
+        stat_request = requests.get(api_url, headers=WYNN_AUTH_HEADER, timeout=REQUEST_TIMEOUT)
         player_data = stat_request.json()
         return self._resolve_latest_player(player_data, use_full=False)
 
     def get_player_full(self, ign):
         """Get full player data."""
         api_url = f"https://api.wynncraft.com/v3/player/{ign}?fullResult"
-        stat_request = requests.get(api_url, headers=WYNN_AUTH_HEADER)
+        stat_request = requests.get(api_url, headers=WYNN_AUTH_HEADER, timeout=REQUEST_TIMEOUT)
         player_data = stat_request.json()
         return self._resolve_latest_player(player_data, use_full=True)
 
@@ -103,7 +106,8 @@ class Guild:
         """Get guild data by prefix."""
         guild_request = requests.get(
             f"https://api.wynncraft.com/v3/guild/prefix/{prefix}", 
-            headers=WYNN_AUTH_HEADER
+            headers=WYNN_AUTH_HEADER,
+            timeout=REQUEST_TIMEOUT,
         )
         prefix_guild_data = guild_request.json()
         return prefix_guild_data
@@ -112,7 +116,8 @@ class Guild:
         """Get guild data by name."""
         guild_request = requests.get(
             f"https://api.wynncraft.com/v3/guild/{name}", 
-            headers=WYNN_AUTH_HEADER
+            headers=WYNN_AUTH_HEADER,
+            timeout=REQUEST_TIMEOUT,
         )
         name_guild_data = guild_request.json()
         return name_guild_data
@@ -144,7 +149,8 @@ class Guild:
         """Get list of all guilds."""
         guild_request = requests.get(
             "https://api.wynncraft.com/v3/guild/list/guild", 
-            headers=WYNN_AUTH_HEADER
+            headers=WYNN_AUTH_HEADER,
+            timeout=REQUEST_TIMEOUT,
         )
         all_guilds = guild_request.json()
         return all_guilds
@@ -181,12 +187,12 @@ class Items:
 
     def fetch(self, url, headers=None):
         """Fetch data from URL."""
-        response = requests.get(url, headers=headers if headers is not None else WYNN_AUTH_HEADER)
+        response = requests.get(url, headers=headers if headers is not None else WYNN_AUTH_HEADER, timeout=REQUEST_TIMEOUT)
         return response.json()
 
     def post(self, url, data=None):
         """POST data to URL."""
-        response = requests.post(url, json=data, headers=WYNN_AUTH_HEADER)
+        response = requests.post(url, json=data, headers=WYNN_AUTH_HEADER, timeout=REQUEST_TIMEOUT)
         return response.json()
 
     def get_all_items(self):
