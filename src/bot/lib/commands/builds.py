@@ -22,11 +22,12 @@ def _build_embed(page_results, tags, page, total_pages, builds_found):
         build_tags = build_entry.get('tag', '')
         build_link = build_entry.get('link', '')
         build_credit = build_entry.get('credit', 'N/A')
+        build_weapon = build_entry.get('weapon', 'N/A')
         build_icon = CLASS_ICONS.get(build_entry.get('class', ''), '')
         for tag in tags:
             if tag and tag.lower() in build_tags.lower():
                 build_tags = build_tags.replace(tag, f'__{tag}__')
-        embed.add_field(f'{index}. {build_icon} {build_title}', f'[Build Link]({build_link})\n{build_tags}\nCredit: *{build_credit}*')
+        embed.add_field(f'{index}. {build_icon} {build_title}', f'[Build Link]({build_link})\n{build_tags}\nWeapon: *{build_weapon}*\nCredit: *{build_credit}*')
     web_page = '[Build Search on Nori-Web](https://nori.fish/wynn/build/)'
     embed.add_field(f'[{page}/{total_pages}]', web_page)
     embed.set_footer('Nori Bot - Wynn Builds')
