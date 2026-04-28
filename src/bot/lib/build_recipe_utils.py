@@ -111,24 +111,20 @@ async def recipe_file_search(keywords: List[str]) -> Dict[str, List[Dict[str, An
         data = json.load(file)["Recipes"]
     
     result = {"Result": []}
-    keywords = [keyword.lower() for keyword in keywords]
+    keywords = [keyword.lower().strip() for keyword in keywords if keyword and keyword.strip()]
     
-    for recipe in data:
-        tags = data[recipe]["tag"]
-        
-        if len(keywords) == 3:
-            if (keywords[0] in tags.lower() and keywords[1] in tags.lower() and keywords[2] in tags.lower()) or \
-               (keywords[0] in recipe.lower() and keywords[1] in recipe.lower() and keywords[2] in recipe.lower()):
-                result["Result"].insert(0, {recipe: data[recipe]})
-        elif len(keywords) == 2:
-            if (keywords[0] in tags.lower() and keywords[1] in tags.lower()) or \
-               (keywords[0] in recipe.lower() and keywords[1] in recipe.lower()):
-                result["Result"].append({recipe: data[recipe]})
-        else:
-            for keyword in keywords:
-                if keyword in recipe.lower() or keyword in tags.lower():
-                    result["Result"].append({recipe: data[recipe]})
-                    break
+    for recipe, recipe_data in data.items():
+        searchable_text = " ".join(
+            str(value or "")
+            for value in (
+                recipe,
+                recipe_data.get("tag", ""),
+                recipe_data.get("type", ""),
+            )
+        ).lower()
+
+        if keywords and all(keyword in searchable_text for keyword in keywords):
+            result["Result"].append({recipe: recipe_data})
     
     return result
 
@@ -173,7 +169,7 @@ async def recipe_file_remove(recipe_name: str) -> bool:
     actual_name = None
     
     for recipe in data:
-        if recipe_name.lower() == recipe.lower():
+        if str(recipe_name).casefold() == str(recipe).casefold():
             found = True
             actual_name = recipe
             break

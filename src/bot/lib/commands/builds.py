@@ -3,8 +3,10 @@ import json
 import hikari
 import lightbulb
 import miru
+import lib.config as config
 from lib.build_recipe_utils import build_file_remove, build_file_search, build_file_updater
 from lib.config import BOT_PATH, build_data
+from lib.item_db_compat import items_response_to_dict
 from lib.permissions import build_contributor_only
 loader = lightbulb.Loader()
 CLASS_ICONS = {'Warrior': '<:spear:1330019288165122099>', 'Mage': '<:wand:1330019445791391744>', 'Archer': '<:bow:1330019516503167068>', 'Assassin': '<:dagger:1330019458466713641>', 'Shaman': '<:relik:1330019531929681920>'}
@@ -34,13 +36,24 @@ def _build_embed(page_results, tags, page, total_pages, builds_found):
     return embed
 
 def _load_items():
+    if config.item_map:
+        return config.item_map
     with open(BOT_PATH / 'items.json', 'r', encoding='utf-8') as file:
-        return json.load(file)
+        item_map, _ = items_response_to_dict(json.load(file))
+        config.item_map = item_map
+        return item_map
 
 def _item_match(name, item_data):
+    query = str(name or '').casefold()
     data = None
-    for item_name in item_data:
-        if name.lower() == item_name.lower():
+    for item_name, item_value in item_data.items():
+        if query == str(item_name).casefold():
+            data = item_value
+            break
+        if isinstance(item_value, dict) and query in {
+            str(item_value.get('displayName') or '').casefold(),
+            str(item_value.get('internalName') or '').casefold(),
+        }:
             data = item_data[item_name]
             break
     if not data:
