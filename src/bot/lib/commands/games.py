@@ -221,8 +221,8 @@ def load_game_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         if not found_any:
             record_embed.add_field("No record this session", "Play a game with `/game tictactoe`")
 
-        if target_user.avatar_url:
-            record_embed.set_thumbnail(target_user.avatar_url)
+        if target_user.make_avatar_url():
+            record_embed.set_thumbnail(target_user.make_avatar_url())
         record_embed.set_footer("Nori Bot - Mini Game")
         await ctx.respond(record_embed)
 
