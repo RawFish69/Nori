@@ -23,24 +23,21 @@ async def build_file_search(keywords: List[str]) -> Dict[str, List[Dict[str, Any
         data = json.load(file)["Builds"]
     
     result = {"Result": []}
-    keywords = [keyword.lower() for keyword in keywords]
+    keywords = [keyword.lower().strip() for keyword in keywords if keyword and keyword.strip()]
     
-    for build in data:
-        tags = data[build]["tag"]
-        
-        if len(keywords) == 3:
-            if (keywords[0] in tags.lower() and keywords[1] in tags.lower() and keywords[2] in tags.lower()) or \
-               (keywords[0] in build.lower() and keywords[1] in build.lower() and keywords[2] in build.lower()):
-                result["Result"].insert(0, {build: data[build]})
-        elif len(keywords) == 2:
-            if (keywords[0] in tags.lower() and keywords[1] in tags.lower()) or \
-               (keywords[0] in build.lower() and keywords[1] in build.lower()):
-                result["Result"].append({build: data[build]})
-        else:
-            for keyword in keywords:
-                if keyword in build.lower() or keyword in tags.lower():
-                    result["Result"].append({build: data[build]})
-                    break
+    for build, build_data in data.items():
+        searchable_text = " ".join(
+            str(value or "")
+            for value in (
+                build,
+                build_data.get("tag", ""),
+                build_data.get("credit", ""),
+                build_data.get("weapon", ""),
+            )
+        ).lower()
+
+        if keywords and all(keyword in searchable_text for keyword in keywords):
+            result["Result"].append({build: build_data})
     
     return result
 
