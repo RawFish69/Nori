@@ -1,0 +1,63 @@
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  bot:
+    name: Bot dependency and syntax checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: src/bot/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r src/bot/requirements.txt
+
+      - name: Compile bot sources
+        run: python -m compileall -q src/bot
+
+      - name: Import public command extensions
+        working-directory: src/bot
+        run: |
+          python - <<'PY'
+          import importlib
+
+          modules = [
+              "lib.commands.ping",
+              "lib.commands.wynn_stats",
+              "lib.commands.tower",
+              "lib.commands.items",
+              "lib.commands.ingredients",
+              "lib.commands.aspects",
+              "lib.commands.raid",
+              "lib.commands.builds",
+              "lib.commands.recipes",
+              "lib.commands.utility",
+              "lib.commands.portal",
+              "lib.commands.games",
+              "lib.commands.tasks",
+              "lib.commands.social",
+              "lib.commands.server",
+              "lib.commands.math_tools",
+              "lib.commands.help",
+          ]
+
+          for module in modules:
+              importlib.import_module(module)
+              print(f"OK {module}")
+          PY
