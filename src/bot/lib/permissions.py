@@ -2,9 +2,20 @@ import os
 
 import lightbulb
 
-CONTRIBUTOR_ROLE_ID = int(os.getenv('CONTRIBUTOR_ROLE_ID', '0')) if os.getenv('CONTRIBUTOR_ROLE_ID') else None
-BUILD_CONTRIBUTOR_ROLE_ID = int(os.getenv('BUILD_CONTRIBUTOR_ROLE_ID', '0')) if os.getenv('BUILD_CONTRIBUTOR_ROLE_ID') else None
-SALES_CONTRIBUTOR_ROLE_ID = int(os.getenv('SALES_CONTRIBUTOR_ROLE_ID', '0')) if os.getenv('SALES_CONTRIBUTOR_ROLE_ID') else None
+
+def _role_id_from_env(name: str) -> int | None:
+    raw_value = os.getenv(name)
+    if not raw_value:
+        return None
+    try:
+        return int(raw_value)
+    except ValueError:
+        return None
+
+
+CONTRIBUTOR_ROLE_ID = _role_id_from_env('CONTRIBUTOR_ROLE_ID')
+BUILD_CONTRIBUTOR_ROLE_ID = _role_id_from_env('BUILD_CONTRIBUTOR_ROLE_ID') or CONTRIBUTOR_ROLE_ID
+SALES_CONTRIBUTOR_ROLE_ID = _role_id_from_env('SALES_CONTRIBUTOR_ROLE_ID') or CONTRIBUTOR_ROLE_ID
 
 
 def _role_or_owner(role_id: int | None, name: str):
@@ -17,7 +28,7 @@ def _role_or_owner(role_id: int | None, name: str):
             pass
         if role_id and ctx.member and role_id in ctx.member.role_ids:
             return
-        raise lightbulb.prefab.NotOwner
+        raise lightbulb.prefab.MissingRequiredRoles([role_id] if role_id else [])
 
     return check_role_or_owner
 

@@ -7,6 +7,7 @@ import lightbulb
 import lib.config as config
 from lib.config import RESOURCES_PATH, CHANGELOG_PATH, DATA_PATH
 from lib.item_utils import ItemUtils
+from lib.permissions import sales_contributor_only
 loader = lightbulb.Loader()
 
 def _item_utils() -> ItemUtils:
@@ -433,7 +434,7 @@ class ItemCheck(lightbulb.SlashCommand, name='check', description='Decode an ite
             await ctx.edit_response(-1, 'Invalid input, please copy the item in game properly.')
 
 @items.register
-class ItemSales(lightbulb.SlashCommand, name='sales', description='Submit item sales', hooks=[lightbulb.prefab.owner_only]):
+class ItemSales(lightbulb.SlashCommand, name='sales', description='Submit item sales', hooks=[sales_contributor_only()]):
     item = lightbulb.string('item', 'Item name (Mythic only)')
     price = lightbulb.number('price', 'Price in stacks')
 
