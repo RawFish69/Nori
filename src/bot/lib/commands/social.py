@@ -86,7 +86,7 @@ def load_social_commands(bot: lightbulb.BotApp, blocked_users: list = None):
             username = ctx.options.user_id
             if not isinstance(username, hikari.User):
                 username = await bot.rest.fetch_user(ctx.options.user_id)
-            user_pfp = username.avatar_url
+            user_pfp = username.make_avatar_url()
             username_display = username.username
             user_created = datetime.strptime(str(username.created_at).split(".")[0], "%Y-%m-%d %H:%M:%S")
             user_flags = [flag for flag in username.flags]
@@ -100,7 +100,7 @@ def load_social_commands(bot: lightbulb.BotApp, blocked_users: list = None):
             try:
                 roles = ""
                 guild = await bot.rest.fetch_guild(ctx.guild_id)
-                guild_icon = guild.icon_url
+                guild_icon = guild.make_icon_url()
                 user_in_server = await bot.rest.fetch_member(guild, username)
                 user_joined = datetime.strptime(str(user_in_server.joined_at).split(".")[0], "%Y-%m-%d %H:%M:%S")
                 user_roles = user_in_server.get_roles()

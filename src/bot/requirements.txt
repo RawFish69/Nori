@@ -8,7 +8,7 @@ click>=8.1.7,<9
 colorama==0.4.6
 colorlog==6.7.0
 frozenlist==1.3.3
-hikari==2.0.0dev118
+hikari==2.5.0  # previously 2.0.0dev118
 hikari-lightbulb==2.3.3
 hikari-miru==3.1.1
 python-weather==1.0.1

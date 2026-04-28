@@ -107,7 +107,7 @@ def load_help_commands(bot: lightbulb.BotApp, blocked_users: list = None):
         nori_embed.add_field("Maintainer", "[RawFish](https://github.com/RawFish69)", inline=True)
         try:
             nori_user = await bot.rest.fetch_user(873677970928193568)
-            nori_embed.set_thumbnail(nori_user.avatar_url)
+            nori_embed.set_thumbnail(nori_user.make_avatar_url())
         except Exception:
             pass
         nori_embed.set_footer("Nori Bot - Wynncraft Utility Bot")
