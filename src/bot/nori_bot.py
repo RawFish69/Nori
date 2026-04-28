@@ -65,6 +65,9 @@ async def on_command_error(exc: lightbulb.exceptions.ExecutionPipelineFailedExce
     if isinstance(cause, lightbulb.prefab.NotOwner):
         await ctx.respond("You are not permitted to use this command.", flags=hikari.MessageFlag.EPHEMERAL)
         return True
+    if isinstance(cause, lightbulb.prefab.MissingRequiredRoles):
+        await ctx.respond("You need the required contributor role to use this command.", flags=hikari.MessageFlag.EPHEMERAL)
+        return True
     await ctx.respond(f"An error occurred: {cause}", flags=hikari.MessageFlag.EPHEMERAL)
     return True
 
