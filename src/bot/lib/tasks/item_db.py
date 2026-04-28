@@ -5,7 +5,6 @@ import json
 from datetime import datetime
 
 import hikari
-import lightbulb
 
 import lib.config as config
 from lib.aspect_utils import update_aspects
@@ -39,7 +38,7 @@ def _normalize_item_map(raw_items) -> dict:
         return {}
 
 
-async def item_db_refresh_task(bot: lightbulb.BotApp, interval: int = 7200):
+async def item_db_refresh_task(bot: hikari.GatewayBot, interval: int = 7200):
     """Refresh item/aspect static data and guild leaderboard cache every 2 hours."""
     print(f"Repeat Task interval: {interval} seconds")
     while True:

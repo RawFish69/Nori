@@ -2,7 +2,7 @@
 
 import json
 import asyncio
-import lightbulb
+import hikari
 from datetime import datetime, timezone, timedelta
 
 from lib.config import (
@@ -33,7 +33,7 @@ def _load_item_map_from_disk():
     return loaded_items, summary
 
 
-async def load_startup_data(bot: lightbulb.BotApp):
+async def load_startup_data(bot: hikari.GatewayBot):
     """Load all data files on bot startup."""
     import lib.config as config
     

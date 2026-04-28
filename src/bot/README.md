@@ -19,26 +19,7 @@ python nori_bot.py
 
 The bot reads **environment variables** from `~/.env` through `lib/config.py`.
 
-**Required** for a basic local bot:
-
-```env
-NORI_TOKEN=your_discord_bot_token
-```
-
-Common **optional values**:
-
-```env
-NORI_GPT_KEY=optional_openai_or_compatible_key
-WYNN_BOT_TOKEN=optional_wynncraft_api_token
-WYNN_SOURCE_TOKEN=optional_wynnsource_token
-LOG_CHANNEL_ID=optional_discord_channel_id
-BOT_OWNER_ID=optional_discord_user_id
-DATA_MANAGER_ROLE_ID=optional_discord_role_id
-CONTRIBUTOR_ROLE_ID=optional_discord_role_id
-LB_IN_GUILD_PATH=optional_path_to_local_leaderboard_json
-```
-
-Some startup files are loaded from local data paths, such as **lootpool data**, **item maps**, **stat maps**, and **blocked users**. Missing files are handled with fallback empty data, but commands that depend on those files may be limited until local fixtures or maintainer-provided data are available.
+For a local bot, provide your Discord bot token and any optional public API credentials your test commands need. Some startup files are loaded from local data paths, such as **lootpool data**, **item maps**, and **stat maps**. Missing files are handled with fallback empty data, but commands that depend on those files may be limited until local fixtures are available.
 
 ## Directory Map
 
@@ -61,12 +42,43 @@ src/bot/
 ## Adding or Updating Commands
 
 1. Put command code in the closest existing module under `lib/commands`.
-2. If a new module is needed, expose a `load_*_commands(bot, blocked_users)` function.
-3. Register that loader in `lib/commands/loader.py`.
-4. Put shared parsing, API, or rendering behavior in `lib/` so other commands can reuse it.
-5. Update `../web/docs/commands.md` when a public command documented on the website changes.
+2. If a new module is needed, create a Lightbulb 3 extension with `loader = lightbulb.Loader()`.
+3. Register command classes with `@loader.command`.
+4. Add the module path to `client.load_extensions(...)` in `nori_bot.py`.
+5. Put shared parsing, API, or rendering behavior in `lib/` so other commands can reuse it.
+6. Update `../web/docs/commands.md` when a public command documented on the website changes.
 
-Commands generally receive **shared services** through `bot.managers`, which is built in `nori_bot.py`. Add new managers there only when the state or helper needs to be shared across command modules.
+Example command module:
+
+```python
+"""Example public command."""
+import lightbulb
+
+loader = lightbulb.Loader()
+
+
+@loader.command
+class Example(lightbulb.SlashCommand, name="example", description="Run an example command"):
+    topic = lightbulb.string("topic", "What to echo", default="Nori")
+
+    @lightbulb.invoke
+    async def invoke(self, ctx: lightbulb.Context) -> None:
+        await ctx.respond(f"Example command received: {self.topic}")
+```
+
+Then load it in `nori_bot.py`:
+
+```python
+async def load_commands(event: hikari.StartingEvent) -> None:
+    await client.load_extensions(
+        "lib.commands.ping",
+        "lib.commands.example",
+    )
+```
+
+Use `self.<option_name>` for command options. If a command needs the Hikari app or REST client, use `ctx.client.app`, for example `await ctx.client.app.rest.fetch_user(ctx.user.id)`.
+
+Shared services are registered in `lib/manager_registry.py` by `nori_bot.py`. Add new managers only when state or helpers need to be shared across command modules.
 
 ## Data and Secrets
 

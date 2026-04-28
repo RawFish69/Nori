@@ -6,12 +6,12 @@ chardet
 charset-normalizer
 click>=8.1.7,<9
 colorama==0.4.6
-colorlog==6.7.0
+colorlog>=6.9
 frozenlist
 hikari==2.5.0
-hikari-lightbulb==2.3.3
-hikari-miru==3.1.1
-python-weather==1.0.1
+hikari-lightbulb==3.2.3
+hikari-miru==4.2.0
+python-weather==2.2.0
 pandas==2.0.3
 requests==2.28.1
 idna==3.4

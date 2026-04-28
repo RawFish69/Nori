@@ -72,8 +72,8 @@ class ampView(miru.View):
     """View for item amplifier/reroll interactions."""
 
     @miru.button(label="Refresh", style=hikari.ButtonStyle.SECONDARY)
-    async def button_amp(self, button: miru.Button, ctx: miru.Context):
-        user = await ctx.bot.rest.fetch_user(ctx.user.id)
+    async def button_amp(self, ctx: miru.ViewContext, button: miru.Button):
+        user = await ctx.client.app.rest.fetch_user(ctx.user.id)
         item_data = config.item_amp_data.get(user)
         if not item_data:
             await ctx.edit_response("No active item roll session.")
@@ -128,34 +128,34 @@ class lootView(miru.View):
     """Tier selector for the weekly lootrun camp pool."""
 
     @miru.button(emoji=hikari.Emoji.parse("<:mythic:1185349344182935603>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_mythic(self, button: miru.Button, ctx: miru.Context):
+    async def button_mythic(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Mythic")
 
     @miru.button(emoji=hikari.Emoji.parse("<:fabled:1185349372490285224>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_fabled(self, button: miru.Button, ctx: miru.Context):
+    async def button_fabled(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Fabled")
 
     @miru.button(emoji=hikari.Emoji.parse("<:legendary:1185349392786534461>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_legendary(self, button: miru.Button, ctx: miru.Context):
+    async def button_legendary(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Legendary")
 
     @miru.button(emoji=hikari.Emoji.parse("<:rare:1185349423279120514>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_rare(self, button: miru.Button, ctx: miru.Context):
+    async def button_rare(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Rare")
 
     @miru.button(emoji=hikari.Emoji.parse("<:unique:1185349447639646258>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_unique(self, button: miru.Button, ctx: miru.Context):
+    async def button_unique(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Unique")
 
     @miru.button(label="Misc", style=hikari.ButtonStyle.SECONDARY, row=1)
-    async def button_misc(self, button: miru.Button, ctx: miru.Context):
+    async def button_misc(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Misc")
 
-    async def lootpool_display(self, ctx: miru.Context, loot_type: str):
+    async def lootpool_display(self, ctx: miru.ViewContext, loot_type: str):
         if loot_type not in LOOT_TIERS:
             loot_type = "Mythic"
 
-        user = await ctx.bot.rest.fetch_user(ctx.user.id)
+        user = await ctx.client.app.rest.fetch_user(ctx.user.id)
         config.lootpool_user[user.username] = loot_type
         print(f"[Lootpool] {loot_type} Items requested by {user.username}")
 

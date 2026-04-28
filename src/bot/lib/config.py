@@ -15,7 +15,7 @@ load_dotenv(os.path.expanduser('~/.env'))
 # ============================================================================
 # Bot Configuration
 # ============================================================================
-VERSION = "2.0.0"
+VERSION = "2.1.0"
 DISPLAY_STATUS = "/nori"
 MODE = "Production"
 MODE_LIST = ["Development", "Testing", "Staging", "Production"]
