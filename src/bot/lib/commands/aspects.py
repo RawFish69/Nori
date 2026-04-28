@@ -1,30 +1,14 @@
 """Deprecated aspect command aliases."""
-
 import hikari
 import lightbulb
+loader = lightbulb.Loader()
+aspect = lightbulb.Group('aspect', 'Deprecated raid alias')
 
-from lib.utils import check_user_access
+@aspect.register
+class ShowAspectLootpoolDeprecated(lightbulb.SlashCommand, name='lootpool', description='Deprecated command alias'):
 
-
-def load_aspect_commands(bot: lightbulb.BotApp, blocked_users: list = None):
-    """Load deprecated aspect aliases that point users at `/raid`."""
-
-    @bot.command()
-    @lightbulb.command("aspect", "Deprecated raid alias")
-    @lightbulb.implements(lightbulb.SlashCommandGroup)
-    async def aspect(ctx: lightbulb.Context):
-        pass
-
-    @aspect.child()
-    @lightbulb.command("lootpool", "Deprecated command alias")
-    @lightbulb.implements(lightbulb.SlashSubCommand)
-    async def show_aspect_lootpool_deprecated(ctx: lightbulb.Context):
-        await check_user_access(ctx, blocked_users)
-        deprecation_msg = (
-            "`/aspect lootpool` is deprecated.\n"
-            "Use one of these commands instead:\n"
-            "- `/raid aspect`\n"
-            "- `/raid gambit`\n"
-            "- `/raid item`"
-        )
+    @lightbulb.invoke
+    async def invoke(self, ctx: lightbulb.Context) -> None:
+        deprecation_msg = '`/aspect lootpool` is deprecated.\nUse one of these commands instead:\n- `/raid aspect`\n- `/raid gambit`\n- `/raid item`'
         await ctx.respond(deprecation_msg, flags=hikari.MessageFlag.EPHEMERAL)
+loader.command(aspect)

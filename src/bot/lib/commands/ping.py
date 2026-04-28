@@ -1,23 +1,16 @@
 """Basic utility commands."""
-
 import time
 import hikari
 import lightbulb
+loader = lightbulb.Loader()
 
+@loader.command
+class Ping(lightbulb.SlashCommand, name='ping', description='Checks the command response latency'):
 
-def load_ping_commands(bot: lightbulb.BotApp, blocked_users: list = None):
-    """Load ping-related commands."""
-    
-    @bot.command()
-    @lightbulb.command('ping', 'Checks the command response latency')
-    @lightbulb.implements(lightbulb.SlashCommand)
-    async def ping(ctx):
-        from lib.utils import check_user_access
-        await check_user_access(ctx, blocked_users)
+    @lightbulb.invoke
+    async def invoke(self, ctx: lightbulb.Context) -> None:
         start_time = time.time()
-        await ctx.respond("Calculating latency in real time...", flags=hikari.MessageFlag.LOADING)
+        await ctx.respond('Calculating latency in real time...', flags=hikari.MessageFlag.LOADING)
         end_time = time.time()
         latency = (end_time - start_time) * 1000
-        
-        await ctx.edit_last_response(f"Command response latency: {latency:.2f} ms")
-
+        await ctx.edit_response(-1, f'Command response latency: {latency:.2f} ms')

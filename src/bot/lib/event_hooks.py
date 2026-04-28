@@ -1,16 +1,13 @@
-"""Runtime event hooks shared by the modular bot.
-
-Command audit events are recorded for data collection and statistics purposes.
-"""
+"""Runtime event hooks shared by the modular bot."""
 
 import logging
 
 import hikari
-import lightbulb
 
 import lib.config as config
 
 _GUILD_NAME_CACHE: dict[int, str] = {}
+_CHANNEL_NAME_CACHE: dict[int, str] = {}
 
 
 def _format_raw_options(raw_options) -> str:
@@ -67,7 +64,7 @@ def _snowflake_key(snowflake) -> int | None:
         return None
 
 
-async def _guild_name(bot: lightbulb.BotApp, guild_id) -> str:
+async def _guild_name(bot: hikari.GatewayBot, guild_id) -> str:
     guild_key = _snowflake_key(guild_id)
     if guild_key is not None and guild_key in _GUILD_NAME_CACHE:
         return _GUILD_NAME_CACHE[guild_key]
@@ -85,8 +82,26 @@ async def _guild_name(bot: lightbulb.BotApp, guild_id) -> str:
     return guild_name
 
 
-def load_event_hooks(bot: lightbulb.BotApp):
-    """Register startup presence and local command audit hooks."""
+async def _channel_name(bot: hikari.GatewayBot, channel_id) -> str:
+    channel_key = _snowflake_key(channel_id)
+    if channel_key is not None and channel_key in _CHANNEL_NAME_CACHE:
+        return _CHANNEL_NAME_CACHE[channel_key]
+
+    channel = _cache_get(getattr(bot, "cache", None), "get_guild_channel", channel_id)
+    channel_name = getattr(channel, "name", None)
+    if not channel_name:
+        try:
+            channel_name = getattr(await bot.rest.fetch_channel(channel_id), "name", None)
+        except Exception:
+            channel_name = None
+    channel_name = channel_name or str(channel_id)
+    if channel_key is not None:
+        _CHANNEL_NAME_CACHE[channel_key] = channel_name
+    return channel_name
+
+
+def load_event_hooks(bot: hikari.GatewayBot):
+    """Register startup presence and command log hooks."""
 
     @bot.listen(hikari.StartedEvent)
     async def _set_startup_presence(event: hikari.StartedEvent):
@@ -97,6 +112,9 @@ def load_event_hooks(bot: lightbulb.BotApp):
 
     @bot.listen()
     async def _command_log(event: hikari.InteractionCreateEvent):
+        if not config.COMMAND_LOG_CHANNEL_ID:
+            return
+
         interaction = event.interaction
         interaction_type = getattr(interaction, "type", None)
         application_command_type = getattr(hikari.InteractionType, "APPLICATION_COMMAND", None)
@@ -111,14 +129,27 @@ def load_event_hooks(bot: lightbulb.BotApp):
             author = getattr(interaction.member, "user", None)
         author = author or "Unknown user"
         guild_id = getattr(interaction, "guild_id", None)
+        channel_id = getattr(interaction, "channel_id", None)
 
         if guild_id:
             guild_name = await _guild_name(bot, guild_id)
+            channel_name = await _channel_name(bot, channel_id)
+            message = (
+                f"{guild_name} #{channel_name} "
+                f"**{author}**: `{command_display}`"
+            )
             logging.info(
-                "Guild %s %s: %s",
+                "Guild %s channel %s %s: %s",
                 guild_name,
+                channel_name,
                 author,
                 command_display,
             )
         else:
+            message = f"<DM> **{author}**: `{command_display}`"
             logging.info("<DM> %s: %s", author, command_display)
+
+        try:
+            await bot.rest.create_message(channel=config.COMMAND_LOG_CHANNEL_ID, content=message)
+        except Exception as error:
+            print(f"Unable to write command log message: {error}")

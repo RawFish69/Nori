@@ -2,6 +2,12 @@
 Author: RawFish
 Description: 5x5 tic tac toe logic
 """
+import random
+
+import hikari
+import miru
+
+from lib.config import game_record, mini_game
 
 class GameViewFive(miru.View):
     def __init__(self, *args, **kwargs):
@@ -10,12 +16,17 @@ class GameViewFive(miru.View):
             style = hikari.ButtonStyle.SECONDARY
             row = (position - 1) // 5
             button = miru.Button(label=str(position), style=style, row=row)
-            button.callback = functools.partial(self.button_callback, position, miru.Context)
+            button.callback = self._button_callback_factory(position)
             self.add_item(button)
 
-    async def button_callback(self, position, button: miru.Button, ctx: miru.Context):
+    def _button_callback_factory(self, position: int):
+        async def callback(ctx: miru.ViewContext) -> None:
+            await self.button_callback(position, ctx)
+        return callback
+
+    async def button_callback(self, position: int, ctx: miru.ViewContext):
         username = ctx.user.username
-        result = await self.button_handler(position=position, username=username)
+        result = await self.button_handler(position=position, username=username, app=ctx.client.app)
         feedback_embed = hikari.Embed(title=result[0], color="#FFDB99")
         feedback_embed.add_field("Game Board", result[1])
         feedback_embed.set_footer("Nori Bot - Mini Game")
@@ -25,12 +36,13 @@ class GameViewFive(miru.View):
         else:
             await ctx.edit_response(embed=feedback_embed)
 
-    async def button_handler(self, position: int, username: str):
-        game_record[username].append(position)
+    async def button_handler(self, position: int, username: str, app):
+        game_record["5x5"].setdefault(username, []).append(position)
         position -= 1
 
         if username not in mini_game:
             mini_game[username] = [' '] * 25
+        mini_game.setdefault("logic", {}).setdefault(username, [])
 
         if self.is_illegal_move(position, username):
             feedback = "Choose an empty spot.\n"
@@ -40,20 +52,20 @@ class GameViewFive(miru.View):
         # Player's move
         mini_game[username][position] = "O"
         if self.check_win('O', username):
-            return await self.handle_end_game(username, "Win")
+            return await self.handle_end_game(username, "Win", app)
 
         if all(spot != ' ' for spot in mini_game[username]) or self.is_forced_draw(mini_game[username]):
-            return await self.handle_end_game(username, "Draw")
+            return await self.handle_end_game(username, "Draw", app)
 
         # Computer's move
         computer_move_position = self.computer_move(username)
         if computer_move_position is not None:
             mini_game[username][computer_move_position] = 'X'
             if self.check_win('X', username):
-                return await self.handle_end_game(username, "Loss")
+                return await self.handle_end_game(username, "Loss", app)
 
         if all(spot != ' ' for spot in mini_game[username]) or self.is_forced_draw(mini_game[username]):
-            return await self.handle_end_game(username, "Draw")
+            return await self.handle_end_game(username, "Draw", app)
 
         return "Make your move", self.render_game_board(username)
 
@@ -333,7 +345,7 @@ class GameViewFive(miru.View):
         opponent_mark = 'O' if mark == 'X' else 'X'
         return not any(board[pos] == opponent_mark for pos in condition)
 
-    async def handle_end_game(self, username, outcome):
+    async def handle_end_game(self, username, outcome, app):
         if outcome == "Win":
             feedback = f"You won the game"
         elif outcome == "Loss":
@@ -341,11 +353,10 @@ class GameViewFive(miru.View):
         else:
             feedback = f"It's a draw"
         game_board_str = self.render_game_board(username)
-        game_record[username].append(outcome)
-        game_record["5x5"][username].append(game_record[username])
-        result = f"`{username}`: {game_record['5x5'][username][-1]}\n{mini_game[username]}\n{mini_game['logic'][username]}"
+        game_record["5x5"].setdefault(username, []).append(outcome)
+        result = f"`{username}`: {game_record['5x5'][username]}\n{mini_game[username]}\n{mini_game['logic'][username]}"
         print(result)
-        await bot.rest.create_message(channel=1174901561282023424, content=result)
+        await app.rest.create_message(channel=1174901561282023424, content=result)
         self.stop()
         return feedback, game_board_str
 

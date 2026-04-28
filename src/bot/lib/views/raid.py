@@ -22,18 +22,18 @@ SECONDS_PER_WEEK = 604800
 
 class aspectView(miru.View):
     @miru.button(emoji=hikari.Emoji.parse("<a:aspect_assassin:1274305350102945814>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_mythic(self, button: miru.Button, ctx: miru.Context):
+    async def button_mythic(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Mythic")
 
     @miru.button(emoji=hikari.Emoji.parse("<a:aspect_warrior:1274305374417063956>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_fabled(self, button: miru.Button, ctx: miru.Context):
+    async def button_fabled(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Fabled")
 
     @miru.button(emoji=hikari.Emoji.parse("<a:aspect_shaman:1274305366011678793>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_legendary(self, button: miru.Button, ctx: miru.Context):
+    async def button_legendary(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Legendary")
 
-    async def lootpool_display(self, ctx: miru.Context, loot_type: str):
+    async def lootpool_display(self, ctx: miru.ViewContext, loot_type: str):
         if loot_type not in ASPECT_TIERS:
             loot_type = "Mythic"
 
@@ -43,7 +43,7 @@ class aspectView(miru.View):
         timestamp = data.get("Timestamp", int(time.time()))
         next_update = timestamp + SECONDS_PER_WEEK
 
-        user = await ctx.bot.rest.fetch_user(ctx.user.id)
+        user = await ctx.client.app.rest.fetch_user(ctx.user.id)
         config.aspect_user[user.username] = loot_type
 
         description = (
@@ -78,30 +78,30 @@ class aspectView(miru.View):
 
 class raidItemView(miru.View):
     @miru.button(emoji=hikari.Emoji.parse("<:mythic:1185349344182935603>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_mythic(self, button: miru.Button, ctx: miru.Context):
+    async def button_mythic(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Mythic")
 
     @miru.button(emoji=hikari.Emoji.parse("<:fabled:1185349372490285224>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_fabled(self, button: miru.Button, ctx: miru.Context):
+    async def button_fabled(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Fabled")
 
     @miru.button(emoji=hikari.Emoji.parse("<:legendary:1185349392786534461>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_legendary(self, button: miru.Button, ctx: miru.Context):
+    async def button_legendary(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Legendary")
 
     @miru.button(emoji=hikari.Emoji.parse("<:rare:1185349423279120514>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_rare(self, button: miru.Button, ctx: miru.Context):
+    async def button_rare(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Rare")
 
     @miru.button(emoji=hikari.Emoji.parse("<:unique:1185349447639646258>"), style=hikari.ButtonStyle.SECONDARY)
-    async def button_unique(self, button: miru.Button, ctx: miru.Context):
+    async def button_unique(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Unique")
 
     @miru.button(label="Misc", style=hikari.ButtonStyle.SECONDARY, row=1)
-    async def button_misc(self, button: miru.Button, ctx: miru.Context):
+    async def button_misc(self, ctx: miru.ViewContext, button: miru.Button):
         await self.lootpool_display(ctx, "Misc")
 
-    async def lootpool_display(self, ctx: miru.Context, loot_type: str):
+    async def lootpool_display(self, ctx: miru.ViewContext, loot_type: str):
         if loot_type not in RAID_ITEM_TIERS:
             loot_type = "Mythic"
 

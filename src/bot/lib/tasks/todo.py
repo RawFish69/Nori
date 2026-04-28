@@ -3,12 +3,12 @@
 import asyncio
 import time
 
-import lightbulb
+import hikari
 
 import lib.config as config
 
 
-async def reminder_task(bot: lightbulb.BotApp, interval: int = 60):
+async def reminder_task(bot: hikari.GatewayBot, interval: int = 60):
     """Send due reminders created by `/do`."""
     print(f"Bot deployed in {config.MODE} mode\nReminder task interval: {interval} seconds")
     while True:

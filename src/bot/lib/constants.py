@@ -4,7 +4,7 @@ Description: Constants and configuration values
 If you would rather load these from other sources, feel free to ignore this file.
 """
 
-VERSION = "1.0.0"
+VERSION = "2.1.0"
 
 # Straight from stat_mapping.json
 

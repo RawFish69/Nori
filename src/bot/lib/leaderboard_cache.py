@@ -18,7 +18,7 @@ def _read_json_url(url: str, default):
     if not url:
         return default
     try:
-        request = Request(url, headers={"Accept": "application/json", "User-Agent": "nori-bot/2.0"})
+        request = Request(url, headers={"Accept": "application/json", "User-Agent": "nori-bot/2.1.0"})
         with urlopen(request, timeout=10) as response:
             return json.loads(response.read().decode("utf-8"))
     except Exception as error:

@@ -22,7 +22,7 @@ class Items:
 
     def __init__(self):
         self.base_url = "https://api.wynncraft.com/v3"
-        self.headers = {"User-Agent": "NoriBot/2.0.0 (+https://nori.fish)"}
+        self.headers = {"User-Agent": "NoriBot/2.1.0 (+https://nori.fish)"}
 
     def fetch(self, url, headers=None):
         request_headers = self.headers.copy()
