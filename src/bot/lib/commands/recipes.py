@@ -17,11 +17,12 @@ def _recipe_embed(page_results, tags, page, total_pages, recipes_found):
     for index, recipe in enumerate(page_results, start=1):
         recipe_name = list(recipe.keys())[0]
         recipe_entry = recipe[recipe_name]
-        recipe_tags = recipe_entry.get('tag', '')
+        recipe_tags = str(recipe_entry.get('tag', '') or '')
         recipe_link = recipe_entry.get('link', '')
         for tag in tags:
-            if tag and tag.lower() in recipe_tags.lower():
-                recipe_tags = recipe_tags.replace(tag, f'__{tag}__')
+            tag_text = str(tag or '')
+            if tag_text and tag_text.lower() in recipe_tags.lower():
+                recipe_tags = recipe_tags.replace(tag_text, f'__{tag_text}__')
         embed.add_field(f'{index}. **{recipe_name}**', f'{recipe_tags}\n[Click to view recipe]({recipe_link})')
     web_page = '[Recipe Search on Nori-Web](https://nori.fish/wynn/recipe/)'
     embed.add_field(f'[{page}/{total_pages}]', web_page)
