@@ -5,7 +5,7 @@ import lightbulb
 
 from lib.utils import check_user_access
 
-UTILS_URL = "https://nori.fish/utils/"
+UTILS_URL = "https://nori.fish/utils"
 DEMO_URL = "https://nori.fish/demo/"
 ROBOTICS_URL = "https://nori.fish/robotics/"
 
@@ -13,62 +13,62 @@ APP_CATEGORIES = [
     (
         "Games & Simulators",
         [
-            ("Space Orbs", DEMO_URL),
-            ("FPV Drone Simulator", DEMO_URL),
-            ("PID Controller Visualizer", DEMO_URL),
+            ("Space Orbs", "https://game.nori.fish"),
+            ("FPV Drone Simulator", "https://nori.fish/demo/fpv"),
+            ("PID Controller Visualizer", "https://nori.fish/demo/pid"),
         ],
     ),
     (
         "Developer Tools",
         [
-            ("System Analyzer", UTILS_URL),
-            ("JSON Formatter", UTILS_URL),
-            ("Timestamp Converter", UTILS_URL),
-            ("Regex Tester", UTILS_URL),
+            ("System Analyzer", f"{UTILS_URL}#system-analyzer"),
+            ("JSON Formatter", f"{UTILS_URL}#json-tool"),
+            ("Timestamp Converter", f"{UTILS_URL}#timestamp"),
+            ("Regex Tester", f"{UTILS_URL}#regex-tester"),
         ],
     ),
     (
         "Media & Design",
         [
-            ("3D Model Converter", UTILS_URL),
-            ("Image Converter", UTILS_URL),
-            ("QR Generator", UTILS_URL),
-            ("Color Picker", UTILS_URL),
+            ("3D Model Converter", f"{UTILS_URL}#model-viewer"),
+            ("Image Converter", f"{UTILS_URL}#image-converter"),
+            ("QR Generator", f"{UTILS_URL}#qr-code"),
+            ("Color Picker", f"{UTILS_URL}#color-picker"),
         ],
     ),
     (
         "Converters",
         [
-            ("HTML Minifier", UTILS_URL),
-            ("CSS Minifier", UTILS_URL),
-            ("MP4 to GIF", UTILS_URL),
-            ("Video Compressor", UTILS_URL),
+            ("HTML Minifier", f"{UTILS_URL}#html-minifier"),
+            ("CSS Minifier", f"{UTILS_URL}#css-minifier"),
+            ("MP4 to GIF", f"{UTILS_URL}#mp4-to-gif"),
+            ("Video Compressor", f"{UTILS_URL}#video-compressor"),
         ],
     ),
     (
         "Web & Productivity",
         [
-            ("Crypto Tracker", UTILS_URL),
-            ("World Clock", UTILS_URL),
-            ("YouTube Helper", UTILS_URL),
+            ("Crypto Tracker", f"{UTILS_URL}#crypto-tracker"),
+            ("World Clock", f"{UTILS_URL}#world-clock"),
+            ("YouTube Helper", f"{UTILS_URL}#youtube-helper"),
         ],
     ),
     (
         "Security & Encoding",
         [
-            ("Password Generator", UTILS_URL),
-            ("Hash & Encode", UTILS_URL),
-            ("UUID Generator", UTILS_URL),
-            ("URL Encoder", UTILS_URL),
+            ("Password Generator", f"{UTILS_URL}#password-gen"),
+            ("Hash & Encode", f"{UTILS_URL}#hash-tool"),
+            ("UUID Generator", f"{UTILS_URL}#uuid-gen"),
+            ("URL Encoder", f"{UTILS_URL}#url-encoder"),
         ],
     ),
     (
         "Text & Notes",
         [
-            ("Quick Notes", UTILS_URL),
-            ("Markdown Preview", UTILS_URL),
-            ("Text Toolkit", UTILS_URL),
-            ("Lorem Ipsum", UTILS_URL),
+            ("Quick Notes", f"{UTILS_URL}#notes"),
+            ("Markdown Preview", f"{UTILS_URL}#markdown-preview"),
+            ("Text Toolkit", f"{UTILS_URL}#text-toolkit"),
+            ("Lorem Ipsum", f"{UTILS_URL}#lorem"),
         ],
     ),
 ]
@@ -84,7 +84,7 @@ def _portal_embed() -> hikari.Embed:
         color="#FFFFFF",
     )
 
-    embed.add_field("Apps", f"[nori.fish/demo]({DEMO_URL})", inline=True)
+    embed.add_field("Demos", f"[nori.fish/demo]({DEMO_URL})", inline=True)
     embed.add_field("Robotics", f"[nori.fish/robotics]({ROBOTICS_URL})", inline=True)
     embed.add_field("Utilities", f"[nori.fish/utils]({UTILS_URL})", inline=True)
 
