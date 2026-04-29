@@ -245,6 +245,8 @@ gambit_refresh_started = False
 item_db_refresh_started = False
 lootpool_refresh_started = False
 raid_pool_refresh_started = False
+item_db_last_updated: int = 0
+command_count: int = 0
 lb_in_guild = {}
 user_lb_in_guild = {}
 

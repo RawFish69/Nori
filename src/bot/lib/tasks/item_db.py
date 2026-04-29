@@ -2,6 +2,7 @@
 
 import asyncio
 import json
+import time
 from datetime import datetime
 
 import hikari
@@ -85,7 +86,8 @@ async def item_db_refresh_task(bot: hikari.GatewayBot, interval: int = 7200):
                         attachment=hikari.files.File(str(changelog_path)),
                     )
 
-            await asyncio.to_thread(update_aspects, config.BOT_PATH / "aspects.json")
+        config.item_db_last_updated = int(time.time())
+        await asyncio.to_thread(update_aspects, config.BOT_PATH / "aspects.json")
         except Exception as error:
             print(f"[ItemDB refresh] unexpected error: {type(error).__name__}: {error}")
 
