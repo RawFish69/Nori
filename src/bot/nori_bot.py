@@ -135,6 +135,11 @@ bot.subscribe(hikari.StartingEvent, load_commands)
 bot.subscribe(hikari.StartingEvent, client.start)
 bot.subscribe(hikari.StoppingEvent, client.stop)
 
+@bot.listen(hikari.InteractionCreateEvent)
+async def on_interaction(event: hikari.InteractionCreateEvent) -> None:
+    if isinstance(event.interaction, hikari.CommandInteraction):
+        config.command_count += 1
+
 @bot.listen(hikari.StartedEvent)
 async def bot_start(event):
     global deploy_time

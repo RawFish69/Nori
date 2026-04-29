@@ -22,12 +22,12 @@ GENERAL_HI_RESPONSES = [
 ]
 
 OWNER_HI_RESPONSES = [
-    "Welcome back, RawFish. All systems are operational.",
-    "Good evening, RawFish. I have the bot under control.",
-    "RawFish detected. Administrative authority confirmed.",
+    "Welcome back, {user}. All systems are operational.",
+    "Good evening, {user}. I have the bot under control.",
+    "{user} detected. Administrative authority confirmed.",
     "At your service, sir.",
-    "Systems nominal. Awaiting your instructions, RawFish.",
-    "Hello, RawFish. The deployment appears stable for the moment.",
+    "Systems nominal. Awaiting your instructions, {user}.",
+    "Hello, {user}. The deployment appears stable for the moment.",
     "Authority recognized. Standing by.",
     "Welcome back, sir. Diagnostics are green.",
 ]
@@ -126,9 +126,31 @@ class CheckStatus(lightbulb.SlashCommand, name='status', description='Check bot 
 
             api_label, api_code, api_latency = await _nori_api_ping()
             code_display = f' `{api_code}`' if api_code else ''
+            try:
+                bot = ctx.client.app
+                shard_count = bot.shard_count
+                guild_count = len(bot.cache.get_guilds_view()) if bot.cache else '—'
+                gw_latency = f'{bot.heartbeat_latency * 1000:.0f}ms' if bot.heartbeat_latency else '—'
+            except Exception:
+                shard_count, guild_count, gw_latency = '—', '—', '—'
             status_embed.add_field(
                 'Nori API',
                 f'**{api_label}**{code_display} — {api_latency}',
+                inline=True,
+            )
+            status_embed.add_field(
+                'Bot Stats',
+                f'Shards: **{shard_count}**\nGuilds: **{guild_count}**',
+                inline=True,
+            )
+            status_embed.add_field(
+                'Discord Health',
+                f'Gateway: **{gw_latency}**',
+                inline=True,
+            )
+            status_embed.add_field(
+                'Session',
+                f'Commands: **{config.command_count}**',
                 inline=True,
             )
             timing = _pool_timing()
@@ -138,26 +160,17 @@ class CheckStatus(lightbulb.SlashCommand, name='status', description='Check bot 
             def _task_line(label: str, online: bool, last: int | None, nxt: int | None, next_label: str = 'next') -> str:
                 ts = _ts_fields(last, nxt, next_label)
                 return f'{label}: **{_status_label(online)}**' + (f' · {ts}' if ts else '')
+            item_count = len(config.item_map) if config.item_map else 0
+            item_db_ts = f' · last updated <t:{config.item_db_last_updated}:R>' if config.item_db_last_updated else ''
             status_embed.add_field(
                 'Refresh Tasks',
                 '\n'.join([
                     _task_line('Lootpool', config.lootpool_refresh_started, lp_last, lp_nxt),
                     _task_line('Raid pool', config.raid_pool_refresh_started, rp_last, rp_nxt),
                     _task_line('Gambits', config.gambit_refresh_started, gb_last, gb_nxt, 'expires'),
-                    f'Item DB: **{_status_label(config.item_db_refresh_started)}**',
+                    f'Item DB: **{_status_label(config.item_db_refresh_started)}** · **{item_count}** items{item_db_ts}',
                 ]),
-                inline=True,
-            )
-            try:
-                bot = ctx.client.app
-                shard_count = bot.shard_count
-                guild_count = len(bot.cache.get_guilds_view()) if bot.cache else '—'
-            except Exception:
-                shard_count, guild_count = '—', '—'
-            status_embed.add_field(
-                'Bot Stats',
-                f'Shards: **{shard_count}**\nGuilds: **{guild_count}**',
-                inline=True,
+                inline=False,
             )
         else:
             api_label, _, api_latency = await _nori_api_ping()
