@@ -49,16 +49,15 @@ def _process_rss() -> str:
         return 'Unavailable'
 
 async def _nori_api_ping() -> tuple[str, int, str]:
-    """Live HTTP check. Returns (label, status_code, latency_str)."""
+    """Live HTTP check against site root. Returns (label, status_code, latency_str)."""
     import httpx
-    url = f'{config.NORI_API_BASE_URL}/api/usage'
-    headers = {'Authorization': config.NORI_API_USAGE_TOKEN} if config.NORI_API_USAGE_TOKEN else {}
+    url = config.NORI_API_BASE_URL
     try:
         t0 = time.monotonic()
         async with httpx.AsyncClient(timeout=5.0) as http:
-            resp = await http.get(url, headers=headers)
+            resp = await http.get(url)
         latency = int((time.monotonic() - t0) * 1000)
-        label = 'Online' if resp.status_code == 200 else 'Degraded'
+        label = 'Online' if resp.status_code < 400 else 'Degraded'
         return label, resp.status_code, f'{latency}ms'
     except Exception:
         return 'Unavailable', 0, '—'
@@ -172,10 +171,6 @@ class CheckStatus(lightbulb.SlashCommand, name='status', description='Check bot 
                 ]),
                 inline=False,
             )
-        else:
-            api_label, _, api_latency = await _nori_api_ping()
-            status_embed.add_field('Nori API', f'**{api_label}** — {api_latency}', inline=True)
-
         status_embed.set_footer('Nori Bot - Status')
         await ctx.respond(embed=status_embed)
 
