@@ -1,5 +1,4 @@
 """Social and status commands."""
-import json
 import os
 import random
 import time
@@ -49,32 +48,121 @@ def _process_rss() -> str:
     except Exception:
         return 'Unavailable'
 
-def _nori_api_status() -> str:
+async def _nori_api_ping() -> tuple[str, int, str]:
+    """Live HTTP check. Returns (label, status_code, latency_str)."""
+    import httpx
+    url = f'{config.NORI_API_BASE_URL}/api/usage'
+    headers = {'Authorization': config.NORI_API_USAGE_TOKEN} if config.NORI_API_USAGE_TOKEN else {}
     try:
-        with open(config.SITE_DATA_PATH / 'api_usage_today.json', 'r', encoding='utf-8') as file:
-            data = json.load(file)
-        endpoints = data.get('endpoints', {})
-        return 'Online' if isinstance(endpoints, dict) and endpoints else 'Unavailable'
+        t0 = time.monotonic()
+        async with httpx.AsyncClient(timeout=5.0) as http:
+            resp = await http.get(url, headers=headers)
+        latency = int((time.monotonic() - t0) * 1000)
+        label = 'Online' if resp.status_code == 200 else 'Degraded'
+        return label, resp.status_code, f'{latency}ms'
     except Exception:
-        return 'Unavailable'
+        return 'Unavailable', 0, '—'
 
 def _status_label(value: bool) -> str:
     return 'Online' if value else 'Unavailable'
+
+def _pool_timing() -> dict:
+    import json as _json
+    out = {}
+    for key, path in (
+        ('lootpool', config.WEEKLY_LOOTPOOL_FILE),
+        ('raid_pool', config.WEEKLY_RAID_POOL_FILE),
+        ('gambit',   config.GAMBIT_POOL_FILE),
+    ):
+        try:
+            with open(path, encoding='utf-8') as f:
+                d = _json.load(f)
+            last = d.get('RefreshedAt') or d.get('Timestamp')
+            if key == 'gambit':
+                nxt = d.get('RotationEnd')
+            else:
+                ts = d.get('Timestamp')
+                nxt = (ts + config.SECONDS_PER_WEEK) if ts else None
+            out[key] = (int(last) if last else None, int(nxt) if nxt else None)
+        except Exception:
+            out[key] = (None, None)
+    return out
+
+def _ts_fields(last: int | None, nxt: int | None, next_label: str = 'next') -> str:
+    parts = []
+    if last:
+        parts.append(f'last <t:{last}:R>')
+    if nxt:
+        parts.append(f'{next_label} <t:{nxt}:R>')
+    return ' · '.join(parts) if parts else ''
 
 @loader.command
 class CheckStatus(lightbulb.SlashCommand, name='status', description='Check bot status'):
 
     @lightbulb.invoke
     async def invoke(self, ctx: lightbulb.Context) -> None:
-        if not tracemalloc.is_tracing():
-            tracemalloc.start()
-        current, peak = tracemalloc.get_traced_memory()
         restart_ts = int(config.deploy_time) if config.deploy_time else int(time.time())
-        status_embed = hikari.Embed(title='Nori Status', color='#FFFFFF', timestamp=datetime.now().astimezone())
-        status_embed.add_field('Runtime', f'Status: **Online**\nMode: **{config.MODE}**\nVersion: **{config.VERSION}**\nLast restarted: <t:{restart_ts}:R>\nUptime: {get_uptime(config.deploy_time)}', inline=False)
-        status_embed.add_field('Memory', f'Process RSS: **{_process_rss()}**\nPython allocated: **{_format_size(float(current))}**\nPython peak: **{_format_size(float(peak))}**', inline=False)
-        status_embed.add_field('Nori API', f'**{_nori_api_status()}**', inline=True)
-        status_embed.add_field('Refresh Tasks', '\n'.join([f'Lootpool: **{_status_label(config.lootpool_refresh_started)}**', f'Raid pool: **{_status_label(config.raid_pool_refresh_started)}**', f'Gambits: **{_status_label(config.gambit_refresh_started)}**', f'Item DB: **{_status_label(config.item_db_refresh_started)}**']), inline=True)
+        is_owner = int(ctx.user.id) == config.BOT_OWNER_ID
+
+        status_embed = hikari.Embed(title='Nori Status', color='#FFFFFF')
+        status_embed.add_field(
+            'Runtime',
+            f'Status: **Online**\nMode: **{config.MODE}**\nVersion: **{config.VERSION}**\n'
+            f'Last restarted: <t:{restart_ts}:R>\nUptime: {get_uptime(config.deploy_time)}',
+            inline=False,
+        )
+
+        if is_owner:
+            if not tracemalloc.is_tracing():
+                tracemalloc.start()
+            current, peak = tracemalloc.get_traced_memory()
+            status_embed.add_field(
+                'Memory',
+                f'Process RSS: **{_process_rss()}**\n'
+                f'Python allocated: **{_format_size(float(current))}**\n'
+                f'Python peak: **{_format_size(float(peak))}**',
+                inline=False,
+            )
+
+            api_label, api_code, api_latency = await _nori_api_ping()
+            code_display = f' `{api_code}`' if api_code else ''
+            status_embed.add_field(
+                'Nori API',
+                f'**{api_label}**{code_display} — {api_latency}',
+                inline=True,
+            )
+            timing = _pool_timing()
+            lp_last, lp_nxt = timing.get('lootpool', (None, None))
+            rp_last, rp_nxt = timing.get('raid_pool', (None, None))
+            gb_last, gb_nxt = timing.get('gambit', (None, None))
+            def _task_line(label: str, online: bool, last: int | None, nxt: int | None, next_label: str = 'next') -> str:
+                ts = _ts_fields(last, nxt, next_label)
+                return f'{label}: **{_status_label(online)}**' + (f' · {ts}' if ts else '')
+            status_embed.add_field(
+                'Refresh Tasks',
+                '\n'.join([
+                    _task_line('Lootpool', config.lootpool_refresh_started, lp_last, lp_nxt),
+                    _task_line('Raid pool', config.raid_pool_refresh_started, rp_last, rp_nxt),
+                    _task_line('Gambits', config.gambit_refresh_started, gb_last, gb_nxt, 'expires'),
+                    f'Item DB: **{_status_label(config.item_db_refresh_started)}**',
+                ]),
+                inline=True,
+            )
+            try:
+                bot = ctx.client.app
+                shard_count = bot.shard_count
+                guild_count = len(bot.cache.get_guilds_view()) if bot.cache else '—'
+            except Exception:
+                shard_count, guild_count = '—', '—'
+            status_embed.add_field(
+                'Bot Stats',
+                f'Shards: **{shard_count}**\nGuilds: **{guild_count}**',
+                inline=True,
+            )
+        else:
+            api_label, _, api_latency = await _nori_api_ping()
+            status_embed.add_field('Nori API', f'**{api_label}** — {api_latency}', inline=True)
+
         status_embed.set_footer('Nori Bot - Status')
         await ctx.respond(embed=status_embed)
 

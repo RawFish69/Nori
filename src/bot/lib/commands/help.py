@@ -6,7 +6,54 @@ import lib.config as config
 from lib.config import MODE, NORI_API_BASE_URL, SITE_DATA_PATH, VERSION
 from lib.utils import get_uptime
 loader = lightbulb.Loader()
-HELP_SECTIONS = [('Wynncraft Stats', [('player', 'Player stats'), ('guild', 'Guild stats'), ('lb raid', 'Raid leaderboard'), ('lb stat', 'Stat leaderboard'), ('online', 'Player activity')]), ('Items', [('item search', 'Find item data'), ('item roll', 'ID simulator'), ('item weigh', 'Auto mythic weigh'), ('item evaluate', 'Manual mythic weigh'), ('item lootpool', 'Weekly lootpool')]), ('Loot & Raids', [('raid gambit', 'Daily gambits'), ('raid aspect', 'Weekly aspects'), ('raid item', 'Weekly raid items')]), ('Builds & Recipes', [('build search', 'Find builds'), ('build submit', 'Submit build'), ('recipe search', 'Find recipes'), ('recipe submit', 'Submit recipe'), ('ingredient search', 'Find ingredients')]), ('Utilities', [('portal', 'Nori web apps'), ('gxp', 'Guild XP graph'), ('hq', 'HQ tower stats'), ('tower', 'Tower stats'), ('pingme', 'Reminder ping'), ('weather', 'City weather')]), ('Bot', [('nori', 'Bot info'), ('help', 'Command menu'), ('status', 'Runtime status'), ('profile', 'User profile'), ('ping', 'Latency check')])]
+HELP_SECTIONS = [
+    ('Wynncraft Stats', [
+        ('player', 'Player stats'),
+        ('guild', 'Guild stats'),
+        ('lb raid', 'Raid leaderboard'),
+        ('lb stat', 'Stat leaderboard'),
+        ('online', 'Player activity'),
+    ]),
+    ('Items', [
+        ('item search', 'Find item data'),
+        ('item roll', 'ID simulator'),
+        ('item weigh', 'Auto mythic weigh'),
+        ('item evaluate', 'Manual mythic weigh'),
+        ('item scale', 'Mythic weighing scale'),
+    ]),
+    ('Loot Pool', [
+        ('item lootpool', 'Weekly lootpool'),
+        ('raid gambit', 'Daily gambits'),
+        ('raid aspect', 'Weekly aspects'),
+        ('raid item', 'Weekly raid items'),
+    ]),
+    ('Builds & Recipes', [
+        ('build search', 'Find builds'),
+        ('recipe search', 'Find recipes'),
+        ('ingredient search', 'Find ingredients'),
+    ]),
+    ('Utilities', [
+        ('portal', 'Nori web apps'),
+        ('gxp', 'Guild XP graph'),
+        ('hq', 'HQ tower stats'),
+        ('tower', 'Tower stats'),
+        ('pingme', 'Reminder ping'),
+        ('weather', 'City weather'),
+    ]),
+    ('Maintenance', [
+        ('build submit', 'Submit build'),
+        ('build remove', 'Remove build'),
+        ('recipe submit', 'Submit recipe'),
+        ('recipe remove', 'Remove recipe'),
+    ]),
+    ('Bot', [
+        ('nori', 'Bot info'),
+        ('help', 'Command menu'),
+        ('status', 'Runtime status'),
+        ('profile', 'User profile'),
+        ('ping', 'Latency check'),
+    ]),
+]
 
 def _command_list(commands: list[tuple[str, str]]) -> str:
     return '\n'.join((f'`/{name}` - {summary}' for name, summary in commands))
@@ -52,7 +99,6 @@ class HelpCmd(lightbulb.SlashCommand, name='help', description="Shows this bot's
     async def invoke(self, ctx: lightbulb.Context) -> None:
         help_embed = hikari.Embed(title='Help Menu', color='#FFFFFF')
         help_embed.add_field('Info', '`/nori`\nBot status and links', inline=True)
-        help_embed.add_field('Portal', '`/portal`\nApps and utilities', inline=True)
         help_embed.add_field('Search', 'Type `/` in Discord\nBrowse command list', inline=True)
         for section, commands in HELP_SECTIONS:
             help_embed.add_field(section, _command_list(commands), inline=True)
