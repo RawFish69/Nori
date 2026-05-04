@@ -142,7 +142,7 @@ class PlayerCmd(lightbulb.SlashCommand, name='player', description="Search a Pla
             embed_color = '#FF0000'
             if online_status is True:
                 embed_color = '#5EFB6E'
-            link = f'[All character stats on Nori-Web](https://nori.fish/wynn/player/?player={self.name})'
+            link = f'[All character stats on Nori-Web](https://nori.fish/wynn/player/?name={self.name})'
             player_embed = hikari.Embed(title=f'{self.name}', description=link, color=embed_color)
             player_embed.add_field('Profile', player_stats_display['profile'], inline=False)
             player_embed.add_field('Progress', player_stats_display['progress'], inline=True)
