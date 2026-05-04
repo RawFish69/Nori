@@ -102,7 +102,17 @@ async def _extract_raid_wards_by_region() -> dict:
                     continue
                 seen.add(name)
                 bucket.append(name)
-        wards_by_region[raid] = bucket
+        # WCS keys Nest of the Grootslangs as NOTG; canonical short code is NOG.
+        target = "NOG" if raid == "NOTG" else raid
+        if target == "NOG" and wards_by_region.get("NOG"):
+            existing = set(wards_by_region["NOG"])
+            for ward in bucket:
+                if ward not in existing:
+                    wards_by_region["NOG"].append(ward)
+                    existing.add(ward)
+        else:
+            wards_by_region[target] = bucket
+    wards_by_region.pop("NOTG", None)
     return wards_by_region
 
 
