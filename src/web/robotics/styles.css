@@ -99,6 +99,12 @@
   text-decoration: none;
 }
 
+/* If the last row has just one orphan, place it centered without stretching the link */
+.robotics-quicknav a:nth-child(5n+1):nth-last-child(1) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
 
 .robotics-grid {
   display: flex;
@@ -226,6 +232,25 @@
   border-radius: 6px;
   object-fit: contain;
   /* No min-height, max-height — let image display at natural size */
+}
+
+
+/* ===== ESP32 RC Car: vertically center text against the side video, cap video size ===== */
+#proj-esp32-rc-car .robotics-project-body.media-side {
+  align-items: center;
+}
+
+#proj-esp32-rc-car .robotics-media video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 600px;
+  min-height: 0;
+  margin: 0 auto;
+  display: block;
+  border-radius: 6px;
+  background: #0a0a0a;
+  object-fit: contain;
 }
 
 /* ===== UAV Controller: side image + wide image below ===== */
