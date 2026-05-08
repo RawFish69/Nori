@@ -12,6 +12,7 @@ from lib.config import (
     LOOT_TIERS,
     RESOURCES_PATH,
     WEEKLY_LOOTPOOL_FILE,
+    format_ward_display,
 )
 
 SHINY_EMOJI = "<:shiny:1233489508956115116>"
@@ -52,7 +53,7 @@ def build_lootpool_embed(loot_type: str = "Mythic") -> hikari.Embed:
     for region in LOOTPOOL_REGIONS:
         pool_data = lootpool_all.get(region, {}) if isinstance(lootpool_all, dict) else {}
         tier_items = pool_data.get(loot_type, []) if isinstance(pool_data, dict) else []
-        item_text = "".join(f"\n- {item}" for item in tier_items) if tier_items else "\nN/A"
+        item_text = "".join(f"\n- {format_ward_display(item)}" for item in tier_items) if tier_items else "\nN/A"
 
         if loot_type == "Mythic":
             shiny = pool_data.get("Shiny", {}) if isinstance(pool_data, dict) else {}

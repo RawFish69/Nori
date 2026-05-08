@@ -128,13 +128,18 @@ button:active, .online-button:active, .centered-button:active, #uptimeButton:act
     color: #e400e4;
 }
 
-.container,
 .card,
 .item-card,
-.panel,
 .lootpool-card,
 .build-card {
-    background-color: #1c1c1c !important;  
+    background-color: #1c1c1c !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.container,
+.panel {
+    background: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
@@ -173,15 +178,12 @@ button:active, .online-button:active, .centered-button:active, #uptimeButton:act
     font-size: 16px !important; 
 }
 
-.container,
 .card,
 .item-card,
-.panel,
 .lootpool-card,
 .build-card,
 .main-panel,
-.panel-content,
-body > div:not(#sidebar):not(#menu-button) {
+.panel-content {
     background-color: #1c1c1c !important;
     border: none !important;
     box-shadow: none !important;

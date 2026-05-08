@@ -1,5 +1,27 @@
 /* Home page styles */
 
+/* Container fills viewport height; timer banner grows to absorb leftover space.
+   footer margin-top: 20px in default.css (line 184) creates the gap — override it. */
+.container {
+    flex: 1 0 auto !important;
+    display: flex;
+    flex-direction: column;
+}
+
+#Home.panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.time-banner {
+    flex: 1;
+}
+
+footer {
+    margin-top: 0 !important;
+}
+
 /* Light mode default colors */
 :root {
     --card-bg: #ffffff;
@@ -32,31 +54,34 @@
 
 /* Time Banner */
 .time-banner {
-    text-align: center;
-    padding: 30px 20px;
-    border-radius: 12px;
-    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border-radius: 10px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
     transition: background 0.5s ease, color 0.5s ease;
     position: relative;
     overflow: visible;
 }
 
 .time-gear-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 36px;
-    height: 36px;
+    width: 22px;
+    height: 22px;
     padding: 0;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     background: rgba(255, 255, 255, 0.15);
     color: inherit;
-    font-size: 1.2rem;
+    font-size: 0.75rem;
     cursor: pointer;
     opacity: 0.6;
     transition: opacity 0.2s, background 0.2s;
-    z-index: 10;
+    flex-shrink: 0;
 }
 
 .time-gear-btn:hover {
@@ -66,9 +91,9 @@
 
 .time-controls-dropdown {
     position: absolute;
-    top: 52px;
-    right: 12px;
-    min-width: 180px;
+    bottom: calc(100% + 8px);
+    right: 0;
+    min-width: 200px;
     padding: 0.75rem;
     background: rgba(28, 33, 40, 0.98);
     backdrop-filter: blur(12px);
@@ -76,21 +101,16 @@
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     display: none;
-    z-index: 10;
-}
-
-.time-controls-dropdown.open {
-    display: block;
-}
-
-.time-controls-dropdown .time-controls {
-    display: flex;
+    z-index: 100;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.time-controls-dropdown .time-format-btn,
-.time-controls-dropdown .timezone-btn {
+.time-controls-dropdown.open {
+    display: flex;
+}
+
+.time-controls-dropdown .time-format-btn {
     padding: 0.5rem 0.75rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
@@ -101,15 +121,8 @@
     text-align: center;
 }
 
-.time-controls-dropdown .time-format-btn:hover,
-.time-controls-dropdown .timezone-btn:hover {
+.time-controls-dropdown .time-format-btn:hover {
     background: rgba(255, 255, 255, 0.2);
-}
-
-.time-controls-dropdown .timezone-picker {
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .time-controls-dropdown .timezone-picker select {
@@ -119,7 +132,7 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
     background: rgba(0, 0, 0, 0.4);
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
 }
 
@@ -130,21 +143,36 @@
 }
 
 .time-content {
-    position: relative;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.lunar-display {
+    font-size: 1.2rem;
+    opacity: 0.85;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.time-gear-wrapper {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .time-display {
-    font-size: 4rem;
-    font-weight: 300;
+    font-size: 2.6rem;
+    font-weight: 400;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
     font-variant-numeric: tabular-nums;
 }
 
 .timezone-display {
-    font-size: 1.8rem;
-    opacity: 0.9;
+    font-size: 1.4rem;
+    opacity: 0.75;
     font-weight: 500;
 }
 
@@ -153,7 +181,7 @@
     background: var(--card-bg);
     border-radius: 12px;
     padding: 30px;
-    margin: 20px 0 30px 0;
+    margin: 16px 0 12px 0;
     box-shadow: var(--card-shadow);
     border: 1px solid var(--card-border);
 }
@@ -244,8 +272,9 @@
     
     /* Better width utilization for desktop */
     .container {
-        max-width: 1400px;
-        padding: 20px 40px;
+        width: 96%;
+        max-width: 1600px;
+        padding: 12px 32px 0 32px;
     }
     
     .project-showcase,
@@ -785,4 +814,12 @@
         padding: 15px 10px;
         margin: 10px 0 15px 0;
     }
+}
+
+/* Dark mode: dissolve the container/panel boxes into the page background */
+html.site-dark .container,
+html.site-dark .panel {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
 }

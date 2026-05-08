@@ -58,6 +58,7 @@ function updateTime() {
     const now = new Date();
     const opts = {
         timeZone: userTimezone,
+        weekday: 'long',
         year: 'numeric',
         month: '2-digit',
         day: '2-digit',
@@ -70,11 +71,35 @@ function updateTime() {
     const parts = formatter.formatToParts(now);
     const get = (type) => parts.find(p => p.type === type)?.value || '';
     const ampm = !use24Hour ? ` ${get('dayPeriod')}` : '';
-    const timeString = `${get('year')}/${get('month')}/${get('day')} ${get('hour')}:${get('minute')}:${get('second')}${ampm}`;
+    const timeString = `${get('weekday')}  ${get('year')}/${get('month')}/${get('day')} ${get('hour')}:${get('minute')}:${get('second')}${ampm}`;
 
     const timeDisplay = document.getElementById('timeDisplay');
     if (timeDisplay) {
         timeDisplay.textContent = timeString;
+    }
+
+    updateLunarDisplay();
+}
+
+let _lunarFormatter = null;
+let _lunarFormatterTz = null;
+
+function updateLunarDisplay() {
+    const lunarDisplay = document.getElementById('lunarDisplay');
+    if (!lunarDisplay) return;
+    try {
+        if (!_lunarFormatter || _lunarFormatterTz !== userTimezone) {
+            _lunarFormatter = new Intl.DateTimeFormat('zh-u-ca-chinese', {
+                timeZone: userTimezone,
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            _lunarFormatterTz = userTimezone;
+        }
+        lunarDisplay.textContent = '农历 ' + _lunarFormatter.format(new Date());
+    } catch (e) {
+        lunarDisplay.textContent = '';
     }
 }
 
@@ -173,12 +198,13 @@ function initTimeControls() {
     const gearBtn = document.getElementById('timeGearBtn');
     const dropdown = document.getElementById('timeControlsDropdown');
     const formatBtn = document.getElementById('timeFormatBtn');
-    const tzBtn = document.getElementById('timezoneBtn');
-    const tzPicker = document.getElementById('timezonePicker');
     const tzSelect = document.getElementById('timezoneSelect');
 
     function toggleDropdown() {
-        if (dropdown) dropdown.classList.toggle('open');
+        if (!dropdown) return;
+        const opening = !dropdown.classList.contains('open');
+        dropdown.classList.toggle('open');
+        if (opening) populateTimezonePicker();
     }
 
     function closeDropdown(e) {
@@ -201,13 +227,10 @@ function initTimeControls() {
         formatBtn.addEventListener('click', toggleTimeFormat);
     }
 
-    if (tzBtn && tzPicker && tzSelect) {
-        tzBtn.addEventListener('click', () => {
-            tzPicker.style.display = tzPicker.style.display === 'none' ? 'block' : 'none';
-            if (tzPicker.style.display === 'block') populateTimezonePicker();
-        });
+    if (tzSelect) {
         tzSelect.addEventListener('change', () => {
             userTimezone = tzSelect.value;
+            _lunarFormatter = null;
             updateTimezoneDisplay();
             updateTime();
         });
