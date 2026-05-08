@@ -807,6 +807,9 @@ class DataUpdateLootpool(lightbulb.SlashCommand, name='loot', description='Lootp
             await ctx.respond(feedback_embed)
             return
         if action == 'Sync':
+            pending_embed = hikari.Embed(title='Syncing...', description='Fetching lootpool data from Wynn Source API.', color='#83FFDB')
+            pending_embed.set_footer('Nori Bot - Maintainer Tools')
+            await ctx.respond(embed=pending_embed)
             try:
                 sync_status = await _sync_item_lootpool()
                 sync_embed = hikari.Embed(title='Lootpool Sync Complete', description='Lootpool data has been synchronized from Wynn Source API.', color='#83FFDB')
@@ -814,10 +817,10 @@ class DataUpdateLootpool(lightbulb.SlashCommand, name='loot', description='Lootp
                 sync_embed.add_field('Result', f"Cached regions updated: {sync_status.get('regions', 0)}")
                 sync_embed.add_field('Source', str(sync_status.get('source', 'unknown')))
                 sync_embed.add_field('Next', 'Preview pool with `/data loot Preview`, Run `/data loot Update` to generate lootpool data.')
-                await ctx.respond(embed=sync_embed)
+                await ctx.edit_response(-1, embed=sync_embed)
             except Exception as error:
                 error_embed = hikari.Embed(title='Sync Error', description=f'Failed to sync lootpool data: {error}', color='#FF0000')
-                await ctx.respond(embed=error_embed)
+                await ctx.edit_response(-1, embed=error_embed)
             return
         if action == 'Update':
             current_date = datetime.now().strftime('%Y-%m-%d')
@@ -904,6 +907,9 @@ class DataUpdateAspects(lightbulb.SlashCommand, name='aspect', description='Aspe
             await ctx.respond(feedback_embed)
             return
         if action == 'Sync':
+            pending_embed = hikari.Embed(title='Syncing...', description='Fetching raid aspect and item data from Wynn Source API.', color='#c0aaff')
+            pending_embed.set_footer('Nori Bot - Maintainer Tools')
+            await ctx.respond(embed=pending_embed)
             try:
                 sync_status = await _sync_aspect_lootpool()
                 from lib.tasks.raid_pool import _sync_raid_item_lootpool
@@ -915,10 +921,10 @@ class DataUpdateAspects(lightbulb.SlashCommand, name='aspect', description='Aspe
                 sync_embed.add_field('Aspect Source', str(sync_status.get('source', 'unknown')))
                 sync_embed.add_field('Raid Item Source', str(raid_item_status.get('source', 'unknown')))
                 sync_embed.add_field('Next', 'Use Preview to verify inputs, then use Update to publish weekly raid data.')
-                await ctx.respond(embed=sync_embed)
+                await ctx.edit_response(-1, embed=sync_embed)
             except Exception as error:
                 error_embed = hikari.Embed(title='Sync Error', description=f'Failed to sync aspect data: {error}', color='#FF0000')
-                await ctx.respond(embed=error_embed)
+                await ctx.edit_response(-1, embed=error_embed)
             return
         if action == 'Update':
             from lib.tasks.raid_pool import _create_weekly_raid_pool, _raid_item_post_process, _update_weekly_raid_pool

@@ -362,11 +362,11 @@ function displayUpdatingMessage() {
     const lootpoolTitle = document.getElementById('lootpool-title');
     const updatingMessage = document.createElement('div');
     updatingMessage.style.textAlign = 'center';
-    updatingMessage.style.fontSize = '1.2em'; 
+    updatingMessage.style.fontSize = '1.2em';
     updatingMessage.innerHTML = `
         <p>We are updating this week's new lootpool, <a href="https://discord.gg/eDssA6Jbwd">Join support server</a> to follow updates.</p>
     `;
-    lootpoolTitle.appendChild(updatingMessage);
+    lootpoolTitle.parentNode.insertBefore(updatingMessage, lootpoolTitle.nextSibling);
 }
 
 function startCountdown(seconds) {
