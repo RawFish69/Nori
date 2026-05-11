@@ -12,3 +12,7 @@ env/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
+# Robotics media (lives in nori-web private repo only)
+src/web/robotics/images/
+src/web/robotics/videos/
