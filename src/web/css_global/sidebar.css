@@ -249,3 +249,14 @@ body.dark-mode .sidebar-category {
 .theme-button.dark-mode:active {
     background-color: #333333;
 }
+
+@media (max-width: 768px) {
+    #theme-switch {
+        font-size: 11px !important;
+        padding: 5px 8px !important;
+    }
+
+    header {
+        padding-right: 90px;
+    }
+}
