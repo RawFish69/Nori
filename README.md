@@ -1,4 +1,8 @@
-# Nori
+<h1>
+  <img src="documents/logo/nori_logo.png" alt="Nori Logo" width="45" valign="middle">
+  Nori
+</h1>
+
 
 [![Status](https://img.shields.io/badge/status-active-success)](https://nori.fish)
 [![Bot](https://img.shields.io/badge/discord%20bot-verified-5865F2?logo=discord&logoColor=white)](https://discord.com/discovery/applications/873677970928193568)
