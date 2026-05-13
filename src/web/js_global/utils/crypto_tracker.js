@@ -42,7 +42,7 @@ window.UtilsTools['crypto-tracker'] = {
     var refreshBtn = container.querySelector('#crypto-refresh');
     var cooldownEl = container.querySelector('#crypto-cooldown');
     var cachedCoins = [];
-    var sortBy = 'rank';
+    var sortBy = 'cap';
     var sortAsc = false;
 
     function sortCoins(coins) {
