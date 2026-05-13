@@ -465,6 +465,12 @@ footer {
 /* Link-only cards (no expand) */
 .category-card-link {
     display: block;
+    text-decoration: none;
+}
+
+.category-card-link:hover,
+.category-card-link:focus {
+    text-decoration: none;
 }
 
 
