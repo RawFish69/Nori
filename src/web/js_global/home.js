@@ -331,6 +331,72 @@ function rotateQuote() {
     }, 250); // Half of transition duration (500ms / 2)
 }
 
+function initQuoteRefresh() {
+    const btn = document.getElementById('quoteRefreshBtn');
+    const fill = document.getElementById('quoteProgressFill');
+    if (!btn || !fill) return;
+
+    let holdTimer = null;
+    let resetTimer = null;
+    let fired = false;
+
+    function clearResetTimer() {
+        if (resetTimer) { clearTimeout(resetTimer); resetTimer = null; }
+    }
+
+    function resetBar() {
+        fill.classList.remove('filling', 'complete');
+        void fill.offsetWidth;
+        btn.classList.remove('pressing');
+        fired = false;
+    }
+
+    function startHold() {
+        clearResetTimer();
+        if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+        fired = false;
+        btn.classList.add('pressing');
+        fill.classList.remove('filling', 'complete');
+        void fill.offsetWidth;
+        fill.classList.add('filling');
+
+        holdTimer = setTimeout(() => {
+            fired = true;
+            fill.classList.remove('filling');
+            fill.classList.add('complete');
+
+            const quoteEl = document.getElementById('nori-quote');
+            if (quoteEl) {
+                quoteEl.style.transition = 'opacity 0.12s ease';
+                quoteEl.style.opacity = '0';
+                setTimeout(() => {
+                    let newIndex;
+                    do { newIndex = Math.floor(Math.random() * noriQuotes.length); }
+                    while (newIndex === currentQuoteIndex && noriQuotes.length > 1);
+                    currentQuoteIndex = newIndex;
+                    quoteEl.textContent = noriQuotes[currentQuoteIndex];
+                    quoteEl.style.opacity = '1';
+                    setTimeout(() => { quoteEl.style.transition = ''; }, 200);
+                }, 120);
+            }
+
+            resetTimer = setTimeout(resetBar, 500);
+        }, 500);
+    }
+
+    function cancelHold() {
+        if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+        if (!fired) resetBar();
+    }
+
+    btn.addEventListener('mousedown', startHold);
+    btn.addEventListener('touchstart', (e) => { e.preventDefault(); startHold(); }, { passive: false });
+    btn.addEventListener('mouseup', cancelHold);
+    btn.addEventListener('mouseleave', cancelHold);
+    btn.addEventListener('touchend', cancelHold);
+    btn.addEventListener('touchcancel', cancelHold);
+}
+
 function initializeQuoteRotation() {
     // Set initial random quote on page load
     currentQuoteIndex = Math.floor(Math.random() * noriQuotes.length);
@@ -361,4 +427,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize quote rotation
     initializeQuoteRotation();
+    initQuoteRefresh();
 });
