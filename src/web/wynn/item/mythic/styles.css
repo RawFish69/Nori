@@ -283,6 +283,33 @@ body.dark-mode .mythic-container .item-card:hover {
     border-color: #7cc0ff !important;
 }
 
+/* Dark Theme Guardrails */
+:root.site-dark body {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+:root.site-dark main.container.mythic-container {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+:root.site-dark .page-title {
+    color: #f0abfc;
+}
+
+:root.site-dark .selector-subtitle {
+    color: #cbd5e1;
+}
+
+:root.site-dark .info-link p {
+    color: #e5e7eb !important;
+}
+
+:root.site-dark .info-link a {
+    color: #67d5ff !important;
+}
+
 /* Light Theme Refinements */
 :root:not(.site-dark) body {
     background: linear-gradient(180deg, #f3f7fd 0%, #edf3fb 60%, #e8eef8 100%);
