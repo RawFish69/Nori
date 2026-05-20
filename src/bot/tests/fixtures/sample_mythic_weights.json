@@ -1,0 +1,9 @@
+{
+    "latest": {"Timestamp": "2024-01-01"},
+    "Data": {
+        "Gale's Force": {
+            "Main": {"airDamage": "50", "rawStrength": "30", "walkSpeed": "20"},
+            "Alt": {"airDamage": "40", "rawStrength": "40", "walkSpeed": "20"}
+        }
+    }
+}

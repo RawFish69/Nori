@@ -1,0 +1,29 @@
+{
+    "name": "TestGuild",
+    "prefix": "TG",
+    "level": 25,
+    "xpPercent": 45,
+    "territories": 3,
+    "wars": 100,
+    "created": "2021-06-15T00:00:00.000Z",
+    "banner": {
+        "tier": 3,
+        "structure": "CROSS",
+        "layers": []
+    },
+    "members": {
+        "total": 3,
+        "owner": {
+            "OwnerPlayer": {"uuid": "aaa", "online": false, "server": null, "contributed": 1000000, "contributionRank": 1, "joined": "2021-06-15T00:00:00.000Z"}
+        },
+        "chief": {},
+        "strategist": {},
+        "captain": {},
+        "recruiter": {},
+        "recruit": {
+            "RecruitA": {"uuid": "bbb", "online": true, "server": "WC1", "contributed": 50000, "contributionRank": 2, "joined": "2022-01-01T00:00:00.000Z"},
+            "RecruitB": {"uuid": "ccc", "online": false, "server": null, "contributed": 30000, "contributionRank": 3, "joined": "2022-03-01T00:00:00.000Z"}
+        }
+    },
+    "seasonRanks": {}
+}

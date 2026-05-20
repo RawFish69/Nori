@@ -1,0 +1,10 @@
+{
+    "Loot": {
+        "TNA": {"Mythic": ["Idol"], "Fabled": ["Item X"], "Legendary": [], "Rare": [], "Unique": [], "Misc": []},
+        "TCC": {"Mythic": [], "Fabled": ["Item Y"], "Legendary": ["Item Z"], "Rare": [], "Unique": [], "Misc": []},
+        "NOL": {"Mythic": [], "Fabled": [], "Legendary": [], "Rare": [], "Unique": [], "Misc": []},
+        "NOG": {"Mythic": [], "Fabled": [], "Legendary": [], "Rare": [], "Unique": [], "Misc": []},
+        "TWP": {"Mythic": [], "Fabled": [], "Legendary": [], "Rare": [], "Unique": [], "Misc": []}
+    },
+    "Timestamp": 1700000000
+}
