@@ -1,0 +1,16 @@
+{
+    "SE": {
+        "Mythic": ["Gale's Force"],
+        "Fabled": ["Item A", "Item B"],
+        "Legendary": ["Item C"],
+        "Rare": [],
+        "Unique": [],
+        "Misc": []
+    },
+    "Corkus": {"Mythic": [], "Fabled": ["Item D"], "Legendary": [], "Rare": [], "Unique": [], "Misc": []},
+    "Molten": {"Mythic": [], "Fabled": [], "Legendary": ["Item E"], "Rare": [], "Unique": [], "Misc": []},
+    "Sky": {"Mythic": [], "Fabled": [], "Legendary": [], "Rare": ["Item F"], "Unique": [], "Misc": []},
+    "Canyon": {"Mythic": [], "Fabled": [], "Legendary": [], "Rare": [], "Unique": ["Item G"], "Misc": []},
+    "FrumaEast": {"Mythic": [], "Fabled": [], "Legendary": [], "Rare": [], "Unique": [], "Misc": ["Item H"]},
+    "FrumaWest": {"Mythic": [], "Fabled": [], "Legendary": [], "Rare": [], "Unique": [], "Misc": []}
+}

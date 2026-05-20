@@ -1,0 +1,34 @@
+{
+    "username": "TestPlayer",
+    "online": false,
+    "server": null,
+    "uuid": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+    "rank": "Player",
+    "rankBadge": null,
+    "legacyRankColour": null,
+    "shortenedRank": null,
+    "supportRank": null,
+    "firstJoin": "2020-01-01T00:00:00.000Z",
+    "lastJoin": "2024-06-01T12:00:00.000Z",
+    "playtime": 1234,
+    "guild": {"name": "TestGuild", "prefix": "TG", "rank": "Recruit", "rankStars": ""},
+    "globalData": {
+        "wars": 10,
+        "mobsKilled": 500000,
+        "chestsFound": 2000,
+        "dungeons": {"total": 150, "list": {}},
+        "raids": {
+            "total": 42,
+            "list": {
+                "Nest of the Grootslangs": 10,
+                "The Nameless Anomaly": 8,
+                "The Canyon Colossus": 12,
+                "Orphion's Nexus of Light": 7,
+                "The Wartorn Palace": 5
+            }
+        },
+        "completedQuests": 200,
+        "pvp": {"kills": 0, "deaths": 0}
+    },
+    "characters": {}
+}

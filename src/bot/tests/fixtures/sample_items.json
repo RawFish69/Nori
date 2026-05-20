@@ -1,0 +1,35 @@
+{
+    "Gale's Force": {
+        "internalName": "gales_force",
+        "displayName": "Gale's Force",
+        "tier": "Mythic",
+        "type": "weapon",
+        "subType": "bow",
+        "requirements": {"level": 100},
+        "base": {"baseDamage": {"min": 150, "max": 300}},
+        "attackSpeed": "FAST",
+        "icon": {"format": "legacy", "value": "261:0"},
+        "identifications": {"rawStrength": {"min": 5, "max": 15}}
+    },
+    "Weathered": {
+        "internalName": "weathered",
+        "displayName": "Weathered",
+        "tier": "Legendary",
+        "type": "weapon",
+        "subType": "wand",
+        "requirements": {"level": 85},
+        "base": {"baseAirDamage": {"min": 50, "max": 100}},
+        "icon": {"format": "attribute", "value": {"name": "minecraft:blaze_rod"}},
+        "identifications": {"airDamage": {"min": 3, "max": 9}}
+    },
+    "Bing": {
+        "internalName": "bing",
+        "displayName": "Bing",
+        "tier": "Unique",
+        "type": "armour",
+        "subType": "helmet",
+        "requirements": {"level": 30},
+        "base": {"baseHealth": 200},
+        "icon": {"format": "legacy", "value": "298:0"}
+    }
+}
