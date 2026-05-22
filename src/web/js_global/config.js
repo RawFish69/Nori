@@ -17,7 +17,7 @@ const NoriConfig = {
     
     text: {
         siteName: "Nori-Web",
-        footerText: "© 2024-2026 Nori, All rights reserved. Web URL: nori.fish",
+        footerText: "© 2024-2026 Nori, All rights reserved. Contact: dev@nori.fish",
         wynncraftName: "Nori-Wynn"
     },
     

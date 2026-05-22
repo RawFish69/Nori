@@ -198,9 +198,18 @@ document.addEventListener("DOMContentLoaded", function() {
             if (document.getElementById("menu-button")) document.getElementById("menu-button").classList.remove("dark-mode");
             document.documentElement.classList.remove("site-dark");
             document.documentElement.classList.add("site-light");
+        } else {
+            document.getElementById("dark-theme-css").disabled = false;
+            themeButton.textContent = "Light Theme";
+            themeButton.classList.add("dark-mode");
+            if (document.getElementById("sidebar")) document.getElementById("sidebar").classList.add("dark-mode");
+            if (document.getElementById("menu-button")) document.getElementById("menu-button").classList.add("dark-mode");
+            document.documentElement.classList.add("site-dark");
+            document.documentElement.classList.remove("site-light");
         }
     } else {
-        document.getElementById("dark-theme-css").disabled = true;
+        document.getElementById("dark-theme-css").disabled = false;
+        document.documentElement.classList.add("site-dark");
     }
     
     createSidebar();
