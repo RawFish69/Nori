@@ -109,6 +109,10 @@
   text-decoration: underline;
 }
 
+.robotics-quicknav-toggle {
+  display: none;
+}
+
 .robotics-quicknav {
   display: flex;
   flex-wrap: wrap;
@@ -703,6 +707,41 @@ header:has(.lang-toggle) {
 
 /* Responsive */
 @media (max-width: 768px) {
+  /* Hide header email — contact line in main is enough */
+  .robotics-contact-email { display: none; }
+
+  /* Collapsible quick nav */
+  .robotics-quicknav-toggle {
+    display: block;
+    margin: 0.5rem auto 0;
+    background: transparent;
+    border: 1.5px solid var(--link-color, #0077B6);
+    color: var(--link-color, #0077B6);
+    border-radius: 8px;
+    padding: 6px 18px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .robotics-quicknav-toggle:hover {
+    background: rgba(0,119,182,0.08);
+  }
+
+  .robotics-quicknav {
+    display: none;
+    margin-top: 0.5rem;
+  }
+
+  .robotics-quicknav.nav-open {
+    display: flex;
+  }
+
+  .robotics-quicknav a {
+    flex: 0 0 50% !important;
+  }
+
   .robotics-container {
     padding: 2rem 1.25rem 3rem;
   }

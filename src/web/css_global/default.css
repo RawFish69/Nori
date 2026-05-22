@@ -50,6 +50,26 @@ button, .button {
     font-family: 'Roboto', sans-serif !important;
 }
 
+/* Theme toggle button — desktop */
+#theme-switch {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+/* Theme toggle button — mobile: compact square icon (content set by JS) */
+@media (max-width: 768px) {
+    #theme-switch {
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        font-size: 28px;
+        border-radius: 8px;
+        line-height: 42px;
+        text-align: center;
+    }
+}
+
 button:hover, .button:hover {
     box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
 }

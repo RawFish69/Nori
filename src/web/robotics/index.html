@@ -39,7 +39,8 @@
         <div class="robotics-header-row">
             <p class="robotics-intro" data-i18n="page_intro"></p>
             <p class="robotics-contact-line"><span data-i18n="contact_label"></span> <a href="mailto:dev@nori.fish">dev@nori.fish</a></p>
-            <nav class="robotics-quicknav" aria-label="Project quick navigation">
+            <button class="robotics-quicknav-toggle" onclick="toggleQuickNav()" id="quicknav-toggle"></button>
+            <nav class="robotics-quicknav" id="robotics-quicknav" aria-label="Project quick navigation">
                 <a href="#proj-mk3" data-i18n="nav_mk3"></a>
                 <a href="#proj-nori-f411" data-i18n="nav_nori_f411"></a>
                 <a href="#proj-mk2" data-i18n="nav_long_range"></a>

@@ -18,6 +18,7 @@ const NoriConfig = {
     text: {
         siteName: "Nori-Web",
         footerText: "© 2024-2026 Nori, All rights reserved. Contact: dev@nori.fish",
+        footerHTML: "© 2024-2026 Nori, All rights reserved. Contact: <a href=\"mailto:dev@nori.fish\" style=\"color:inherit;\">dev@nori.fish</a>",
         wynncraftName: "Nori-Wynn"
     },
     

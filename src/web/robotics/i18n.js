@@ -2,6 +2,8 @@ const en = {
   "page_title": "Personal Projects",
   "page_intro": "Autonomous Systems · Mechatronics · Full-Stack Engineering",
   "contact_label": "Contact:",
+  "nav_toggle_show": "▼ Project Overview",
+  "nav_toggle_hide": "▲ Project Overview",
   "nav_mk3": "Wyvern MK3 — FPV Quadcopter",
   "nav_long_range": "Wyvern MK2 — Long Range Drone",
   "nav_nori_f411": "Nori F411 (PCB)",
@@ -81,6 +83,8 @@ const zh = {
   "page_title": "个人项目集",
   "page_intro": "无人系统 · 机电一体化 · 全栈工程",
   "contact_label": "联系邮箱:",
+  "nav_toggle_show": "▼ 项目目录",
+  "nav_toggle_hide": "▲ 项目目录",
   "nav_mk3": "Wyvern MK3 — FPV四旋翼",
   "nav_long_range": "Wyvern MK2 — 远航无人机",
   "nav_nori_f411": "Nori F411 飞控板",
@@ -158,6 +162,16 @@ const zh = {
 
 const translations = { en, zh };
 
+function toggleQuickNav() {
+  const nav = document.getElementById('robotics-quicknav');
+  const btn = document.getElementById('quicknav-toggle');
+  if (!nav || !btn) return;
+  const isOpen = nav.classList.toggle('nav-open');
+  const lang = localStorage.getItem('nori-lang') || 'en';
+  const data = translations[lang] || translations.en;
+  btn.textContent = data[isOpen ? 'nav_toggle_hide' : 'nav_toggle_show'];
+}
+
 function layoutQuickNav() {
   const nav = document.querySelector('.robotics-quicknav');
   if (!nav) return;
@@ -183,6 +197,12 @@ function setLang(lang) {
   localStorage.setItem('nori-lang', lang);
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
   layoutQuickNav();
+  const btn = document.getElementById('quicknav-toggle');
+  if (btn) {
+    const nav = document.getElementById('robotics-quicknav');
+    const isOpen = nav && nav.classList.contains('nav-open');
+    btn.textContent = data[isOpen ? 'nav_toggle_hide' : 'nav_toggle_show'];
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
