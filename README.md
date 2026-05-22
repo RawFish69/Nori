@@ -90,7 +90,7 @@ Pull requests should be focused, include a short summary and testing notes, and 
 
 ## Contact
 
-- **Discord**: rawfish69
+- **Email**: [dev@nori.fish](mailto:dev@nori.fish)
 - **GitHub**: [@RawFish69](https://github.com/RawFish69)
 
 ## License

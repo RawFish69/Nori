@@ -713,33 +713,37 @@ footer {
         font-size: 1.5rem;
     }
     
-    /* Header improvements */
+    /* Header: symmetric padding so content stays centered */
     header {
-        padding: 15px 10px;
-        padding-right: 120px; /* Make room for theme button */
+        padding: 15px 55px;
         position: relative;
     }
-    
+
     header h1 {
         font-size: 1.5rem;
     }
-    
+
     header img {
         width: 40px !important;
         margin-right: 8px;
     }
-    
-    /* Theme button positioning on mobile */
+
+    /* Theme toggle: compact square icon on mobile */
     #theme-switch {
         position: absolute !important;
         top: 10px !important;
         right: 10px !important;
-        padding: 8px 12px !important;
-        font-size: 0.8rem !important;
+        width: 42px !important;
+        height: 42px !important;
+        padding: 0 !important;
+        font-size: 28px !important;
+        line-height: 42px !important;
+        border-radius: 8px !important;
+        text-align: center !important;
         z-index: 10;
     }
-    
-    /* Menu button positioning on mobile */
+
+    /* Menu button */
     #menu-button {
         position: absolute !important;
         top: 10px !important;
@@ -748,11 +752,8 @@ footer {
         font-size: 24px !important;
         z-index: 1001 !important;
     }
-    
-    /* Navigation spacing to avoid menu button */
+
     nav {
-        padding-left: 80px;
-        padding-right: 120px;
         margin-top: 10px;
     }
     
@@ -840,29 +841,34 @@ footer {
 @media (max-width: 480px) {
     /* Even smaller text and spacing */
     header {
-        padding-right: 100px; /* Slightly less room for smaller theme button */
+        padding: 15px 55px;
     }
-    
+
     header h1 {
         font-size: 1.3rem;
     }
-    
+
     #theme-switch {
-        padding: 6px 10px !important;
-        font-size: 0.7rem !important;
+        width: 44px !important;
+        height: 44px !important;
+        padding: 0 !important;
+        font-size: 32px !important;
+        line-height: 44px !important;
+        border-radius: 8px !important;
+        text-align: center !important;
     }
-    
+
     /* Menu button for smaller screens */
     #menu-button {
         padding: 6px 10px !important;
         font-size: 20px !important;
         z-index: 1001 !important;
     }
-    
+
     /* Navigation spacing for smaller screens */
     nav {
-        padding-left: 70px;
-        padding-right: 100px;
+        padding-left: 0;
+        padding-right: 0;
     }
     
     .category-card h3 {

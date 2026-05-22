@@ -18,7 +18,7 @@ function applyFooterText() {
         // Replace only the copyright text (usually the first or only paragraph)
         const copyrightText = footers[0];
         if (copyrightText && copyrightText.textContent.includes("©")) {
-            copyrightText.textContent = NoriConfig.text.footerText;
+            copyrightText.innerHTML = NoriConfig.text.footerHTML || NoriConfig.text.footerText;
         }
     }
 }

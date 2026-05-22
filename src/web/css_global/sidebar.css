@@ -252,11 +252,16 @@ body.dark-mode .sidebar-category {
 
 @media (max-width: 768px) {
     #theme-switch {
-        font-size: 11px !important;
-        padding: 5px 8px !important;
+        width: 42px !important;
+        height: 42px !important;
+        padding: 0 !important;
+        font-size: 28px !important;
+        line-height: 42px !important;
+        border-radius: 8px !important;
+        text-align: center !important;
     }
 
     header {
-        padding-right: 90px;
+        padding: 20px !important;
     }
 }

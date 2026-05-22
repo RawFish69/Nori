@@ -137,6 +137,12 @@ function createSidebar() {
     });
 }
 
+function setThemeButtonContent(btn, isDark) {
+    const isMobile = window.innerWidth <= 768;
+    btn.textContent = isMobile ? (isDark ? '☀️' : '🌙') : (isDark ? 'Light Theme' : 'Dark Theme');
+    btn.dataset.theme = isDark ? 'dark' : 'light';
+}
+
 function toggleTheme() {
     const themeButton = document.getElementById("theme-switch");
     const darkThemeLink = document.getElementById("dark-theme-css");
@@ -146,7 +152,7 @@ function toggleTheme() {
 
     if (darkThemeLink.disabled) {
         darkThemeLink.disabled = false;
-        themeButton.textContent = "Light Theme";
+        setThemeButtonContent(themeButton, true);
         themeButton.classList.add("dark-mode");
         sidebar.classList.add("dark-mode");
         menuButton.classList.add("dark-mode");
@@ -155,7 +161,7 @@ function toggleTheme() {
         localStorage.setItem('theme', 'dark');
     } else {
         darkThemeLink.disabled = true;
-        themeButton.textContent = "Dark Theme";
+        setThemeButtonContent(themeButton, false);
         themeButton.classList.remove("dark-mode");
         sidebar.classList.remove("dark-mode");
         menuButton.classList.remove("dark-mode");
@@ -171,42 +177,41 @@ document.addEventListener("DOMContentLoaded", function() {
     if (!isDocsPage) {
         const themeButton = document.createElement("button");
         themeButton.id = "theme-switch";
-        themeButton.textContent = "Dark Theme";
-        themeButton.className = "theme-button"; 
+        themeButton.className = "theme-button";
         themeButton.style.position = "absolute";
         themeButton.style.top = "10px";
         themeButton.style.right = "10px";
-        themeButton.style.padding = "10px 20px";
-        themeButton.style.fontSize = "16px"; 
-        themeButton.style.borderRadius = "8px";  
         themeButton.onclick = toggleTheme;
-        document.querySelector("header").appendChild(themeButton);
+        const header = document.querySelector("header");
+        if (header) {
+            if (getComputedStyle(header).position === 'static') {
+                header.style.position = 'relative';
+            }
+            header.appendChild(themeButton);
+        }
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
+        const isDarkInit = savedTheme === 'dark' || (!savedTheme && savedTheme !== 'light');
+        if (isDarkInit) {
             document.getElementById("dark-theme-css").disabled = false;
-            themeButton.textContent = "Light Theme";
-            themeButton.classList.add("dark-mode");
-            document.getElementById("sidebar").classList.add("dark-mode");
-            document.getElementById("menu-button").classList.add("dark-mode");
-            document.documentElement.classList.add("site-dark");
-            document.documentElement.classList.remove("site-light");
-        } else if (savedTheme === 'light') {
-            document.getElementById("dark-theme-css").disabled = true;
-            themeButton.textContent = "Dark Theme";
-            themeButton.classList.remove("dark-mode");
-            if (document.getElementById("sidebar")) document.getElementById("sidebar").classList.remove("dark-mode");
-            if (document.getElementById("menu-button")) document.getElementById("menu-button").classList.remove("dark-mode");
-            document.documentElement.classList.remove("site-dark");
-            document.documentElement.classList.add("site-light");
-        } else {
-            document.getElementById("dark-theme-css").disabled = false;
-            themeButton.textContent = "Light Theme";
+            setThemeButtonContent(themeButton, true);
             themeButton.classList.add("dark-mode");
             if (document.getElementById("sidebar")) document.getElementById("sidebar").classList.add("dark-mode");
             if (document.getElementById("menu-button")) document.getElementById("menu-button").classList.add("dark-mode");
             document.documentElement.classList.add("site-dark");
             document.documentElement.classList.remove("site-light");
+        } else {
+            document.getElementById("dark-theme-css").disabled = true;
+            setThemeButtonContent(themeButton, false);
+            themeButton.classList.remove("dark-mode");
+            if (document.getElementById("sidebar")) document.getElementById("sidebar").classList.remove("dark-mode");
+            if (document.getElementById("menu-button")) document.getElementById("menu-button").classList.remove("dark-mode");
+            document.documentElement.classList.remove("site-dark");
+            document.documentElement.classList.add("site-light");
         }
+        window.addEventListener('resize', () => {
+            const btn = document.getElementById("theme-switch");
+            if (btn) setThemeButtonContent(btn, btn.dataset.theme === 'dark');
+        });
     } else {
         document.getElementById("dark-theme-css").disabled = false;
         document.documentElement.classList.add("site-dark");
