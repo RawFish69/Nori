@@ -127,22 +127,8 @@ function getTimezoneAbbreviation(timezone) {
 }
 
 // Get location and time
-async function getLocationAndTime() {
-    try {
-        // Try to get timezone from IP
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        
-        if (data.timezone) {
-            userTimezone = data.timezone;
-        } else {
-            userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
-        }
-    } catch (error) {
-        console.log('Could not fetch location, using local timezone');
-        userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
-    }
-    
+function getLocationAndTime() {
+    userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
     updateTimezoneDisplay();
     updateTime();
 }
