@@ -708,7 +708,7 @@ header:has(.lang-toggle) {
 /* Responsive */
 @media (max-width: 768px) {
   /* Hide header email — contact line in main is enough */
-  .robotics-contact-email { display: none; }
+  .robotics-contact-email { display: none !important; }
 
   /* Collapsible quick nav */
   .robotics-quicknav-toggle {
@@ -828,8 +828,8 @@ header:has(.lang-toggle) {
     font-size: 1.2rem;
   }
 
+  /* Pill-style layout for nav items; nav itself stays hidden until .nav-open */
   .robotics-quicknav {
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 100%;
