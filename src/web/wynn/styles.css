@@ -73,6 +73,10 @@ header .brand div {
     color: var(--muted) !important;
 }
 
+:root:not(.site-dark) header .brand div {
+    color: rgba(255, 255, 255, 0.82) !important;
+}
+
 nav {
     display: flex;
     justify-content: center;
