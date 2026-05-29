@@ -42,6 +42,9 @@ const WARD_ICON_BY_NAME = {
 const MISC_ICON_BY_NAME = {
     "liquid emerald": "liquid_emerald.png",
     "emerald block": "emerald_block.png",
+    "ingredient bag 1": "crafter_varied.png",
+    "ingredient bag 2": "crafter_packed.png",
+    "ingredient bag 3": "crafter_stuffed.png",
     "emerald": "emerald.png",
     "packed crafter bag [1/1]": "crafter_packed.png",
     "stuffed crafter bag [1/1]": "crafter_stuffed.png",
@@ -740,6 +743,7 @@ function resolveSpecialItemIcon(itemName) {
         if (lowered.includes("stuffed")) return "crafter_stuffed.png";
         if (lowered.includes("varied")) return "crafter_varied.png";
     }
+    if (lowered === "ability shard") return "scroll.png";
     const powderParts = lowered.split(" powder ");
     if (powderParts.length === 2 && ["earth", "thunder", "water", "fire", "air"].includes(powderParts[0])) {
         return "powder.png";

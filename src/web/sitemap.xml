@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://nori.fish/</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/index.html</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Wynncraft Pages -->
+  <url>
+    <loc>https://nori.fish/wynn/build</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/credit</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/guild</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Item Pages -->
+  <url>
+    <loc>https://nori.fish/wynn/item/index.html</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/item/analysis</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/item/changelog</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/item/lootpool</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/raids</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/events</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/item/simulation</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/item/mythic</loc>
+    <lastmod>2024-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Leaderboard Pages -->
+  <url>
+    <loc>https://nori.fish/wynn/leaderboard</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/leaderboard/?type=raids&amp;category=raids_total&amp;page=1</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/leaderboard/?type=stats&amp;category=chests&amp;page=1</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/leaderboard/?type=professions&amp;category=professionsGlobal&amp;page=1</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/leaderboard/?type=guilds&amp;category=guildLevel&amp;page=1</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Other Pages -->
+  <url>
+    <loc>https://nori.fish/wynn/online</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/player</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/recipe</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/showcase</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/uptime</loc>
+    <lastmod>2024-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nori.fish/wynn/mount</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Utils SPA -->
+  <url>
+    <loc>https://nori.fish/utils</loc>
+    <lastmod>2025-02-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

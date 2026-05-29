@@ -128,6 +128,7 @@ async def load_commands(event: hikari.StartingEvent) -> None:
         "lib.commands.server",
         "lib.commands.math_tools",
         "lib.commands.help",
+        "lib.commands.world_events",
     )
 
 

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../../fish_logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Nori-Wynn World Events" />
+    <meta property="og:description" content="Live Wynncraft world events — countdowns, requirements, rewards, and locations." />
+    <meta property="og:url" content="https://nori.fish/wynn/events" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
+    <title>Nori-Wynn World Events</title>
+    <link rel="stylesheet" href="styles.css?v=1">
+    <link rel="stylesheet" href="../../css_global/default.css?v=1">
+    <link rel="stylesheet" href="../../css_global/sidebar.css?v=1">
+    <link rel="stylesheet" href="../../css_global/dark_theme.css?v=1" id="dark-theme-css" disabled>
+    <script src="../../js_global/sidebar.js?v=1"></script>
+    <script src="../../js_global/fetch_events.js?v=1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
+    <script src="../../js_global/analytics.js?v=1"></script>
+    <script src="../../js_global/config.js?v=1"></script>
+    <script src="../../js_global/layout.js?v=1"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="brand">
+                <img src="https://nori.fish/resources/nori_logo.png" alt="Nori Logo">
+                <div>
+                    <h1>Nori-Wynn</h1>
+                    <div class="subtitle">World Events</div>
+                </div>
+            </div>
+            <nav aria-label="Main navigation">
+                <!-- Navigation links will be inserted by layout.js -->
+            </nav>
+        </div>
+    </header>
+
+    <div id="menu-button" onclick="toggleSidebar()">&#9776;</div>
+    <div id="sidebar"></div>
+
+    <main class="container">
+        <div class="page-header">
+            <h2 class="page-title">Wynncraft World Events</h2>
+            <p class="page-subtitle">All upcoming events · auto-refreshes every 60s</p>
+        </div>
+
+        <div class="controls-row">
+            <div class="controls-left">
+                <label class="control-label" for="sort-select">Sort</label>
+                <select id="sort-select" class="control-select">
+                    <option value="level" selected>Level range (high → low), then timer</option>
+                    <option value="time">Time to next run</option>
+                    <option value="name">Name (A → Z)</option>
+                </select>
+
+                <label class="control-label" for="filter-select">Show</label>
+                <select id="filter-select" class="control-select">
+                    <option value="all">All</option>
+                    <option value="scheduled">Scheduled only</option>
+                    <option value="lv80">Lv 80+</option>
+                    <option value="lv60">Lv 60+</option>
+                </select>
+
+                <input
+                    id="search-input"
+                    class="control-search"
+                    type="search"
+                    placeholder="Search events..."
+                    aria-label="Search events by name"
+                >
+            </div>
+            <div class="controls-right">
+                <button id="refresh-btn" class="refresh-btn">Refresh</button>
+                <span id="last-updated" class="last-updated"></span>
+            </div>
+        </div>
+
+        <div id="events-loading" class="events-loading">Loading world events...</div>
+        <div id="events-empty" class="events-empty" style="display:none">No events match your filters.</div>
+        <div id="events-grid" class="events-grid"></div>
+
+        <div class="post-notes">
+            <p>Join <a href="https://discord.gg/eDssA6Jbwd" target="_blank" class="discord-link">Community Discord</a> to follow Nori updates and post feedback</p>
+            <p class="cache-hint">Events outside a 15-minute window show "Next run unknown" — that's a Wynncraft API limitation, not a bug.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024-2026 Nori, All rights reserved. Contact: dev@nori.fish</p>
+    </footer>
+</body>
+</html>
