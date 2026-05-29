@@ -96,7 +96,15 @@ def clean_item_name(value: str) -> str:
     if not isinstance(value, str):
         return ""
     cleaned: list[str] = []
+    skip_next = False
     for ch in value:
+        if skip_next:
+            skip_next = False
+            continue
+        # Strip Minecraft color/format codes: \u00a7 (\u00a7) followed by one char.
+        if ch == "\u00a7":
+            skip_next = True
+            continue
         cp = ord(ch)
         if not ch.isprintable():
             continue

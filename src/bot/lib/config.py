@@ -46,6 +46,16 @@ WCS_POOL_ALLOW_MISSING_REGIONS = os.getenv("WCS_POOL_ALLOW_MISSING_REGIONS", "tr
 }
 WCS_POOL_TIMEOUT = int(os.getenv("WCS_POOL_TIMEOUT", "30"))
 
+# Official Wynncraft API (public, no auth needed for /map/*)
+OFFICIAL_API_BASE_URL = "https://api.wynncraft.com/v3"
+OFFICIAL_API_TIMEOUT = 20
+OFFICIAL_API_RETRY_SLEEP = 5
+OFFICIAL_API_RETRY_AFTER_CAP = 60
+
+# Lootpool source routing (flip + restart for emergency rollback)
+LOOTPOOL_USE_OFFICIAL_PRIMARY = True
+LOOTPOOL_ENRICH_WITH_WYNNSOURCE = True
+
 # Wynncraft API Headers
 WYNN_AUTH_HEADER = {"Authorization": f"Bearer {WYNN_API_TOKEN}"} if WYNN_API_TOKEN else {}
 
@@ -92,8 +102,13 @@ GAMBIT_REFRESH_FAST_WINDOW_BEFORE = 300
 GAMBIT_REFRESH_FAST_WINDOW_AFTER = 600
 GAMBIT_REFRESH_INTERVAL = GAMBIT_REFRESH_BASE_INTERVAL
 
+LOOTPOOL_REFRESH_HYPER_BURST_1_INTERVAL = 10   # 0–60s after reset
+LOOTPOOL_REFRESH_HYPER_BURST_1_DURATION = 60
+LOOTPOOL_REFRESH_HYPER_BURST_2_INTERVAL = 20   # 60–180s after reset
+LOOTPOOL_REFRESH_HYPER_BURST_DURATION = 180
 LOOTPOOL_REFRESH_BURST_INTERVAL = 30
 LOOTPOOL_REFRESH_BURST_DURATION = 600
+LOOTPOOL_REFRESH_FILLED_BURST_INTERVAL = 300
 LOOTPOOL_REFRESH_BASE_INTERVAL = 1800
 
 RAID_POOL_REFRESH_BURST_INTERVAL = 30
@@ -149,6 +164,14 @@ MISC_ITEM_ICON_FILES = {
     "Packed Crafter Bag [1/1]": "crafter_packed.png",
     "Stuffed Crafter Bag [1/1]": "crafter_stuffed.png",
     "Varied Crafter Bag [1/1]": "crafter_varied.png",
+    "Broken Infested Pit Key": "dungeon_key.png",
+    "Broken Undergrowth Ruins Key": "dungeon_key.png",
+    "Broken Galleon's Graveyard Key": "dungeon_key.png",
+    "Broken Ice Barrows Key": "dungeon_key.png",
+    "Broken Sand-Swept Tomb Key": "dungeon_key.png",
+    "Broken Corrupted Lost Sanctuary Key": "dungeon_key.png",
+    "Broken Decrepit Sewers Key": "dungeon_key.png",
+    "Broken Underworld Crypt Key": "dungeon_key.png",
     "Corkian Insulator": "insulator.png",
     "Corkian Simulator": "simulator.png",
     "Tol Rune": "tol.png",
