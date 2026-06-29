@@ -55,6 +55,62 @@ RARITY_LABELS_BY_TOKEN = {
 }
 
 
+def _load_aspect_icon_db() -> dict:
+    """Return the aspect-name -> icon map maintained in ``bot/aspects.json``.
+
+    That file is kept current by the bot's ``update_aspects`` loop. Best-effort:
+    returns an empty dict if it is missing or malformed.
+    """
+    try:
+        with open(config.BOT_PATH / "aspects.json", "r", encoding="utf-8") as fh:
+            data = json.load(fh)
+    except Exception:  # noqa: BLE001 — icon fill must never crash the refresh
+        return {}
+    icons = data.get("icons") if isinstance(data, dict) else None
+    return icons if isinstance(icons, dict) else {}
+
+
+def _fill_pool_icons(weekly_raid_pool: dict) -> None:
+    """Backfill ``weekly_raid_pool['Icon']`` for the live rotation.
+
+    The auto-refresh only carries ``config.aspect_icon`` forward, so aspects
+    introduced in a new rotation arrive icon-less (this is why the website and
+    Discord showed missing aspect icons until a maintainer ran ``/manage
+    Update``). Here we look every current aspect up in the auto-maintained
+    aspect icon DB (``bot/aspects.json``) and every raid item up in
+    ``config.raid_item_icon``, filling only names that lack a non-empty icon.
+
+    Mutates in place; best-effort (never raises).
+    """
+    if not isinstance(weekly_raid_pool, dict):
+        return
+    icon_map = weekly_raid_pool.get("Icon")
+    if not isinstance(icon_map, dict):
+        icon_map = {}
+        weekly_raid_pool["Icon"] = icon_map
+
+    aspect_icon_db = _load_aspect_icon_db()
+    raid_item_icon = config.raid_item_icon if isinstance(config.raid_item_icon, dict) else {}
+
+    def _backfill(section, source) -> None:
+        if not isinstance(section, dict) or not isinstance(source, dict):
+            return
+        for raid_block in section.values():
+            if not isinstance(raid_block, dict):
+                continue
+            for names in raid_block.values():
+                if not isinstance(names, list):
+                    continue
+                for name in names:
+                    if isinstance(name, str) and not icon_map.get(name):
+                        candidate = source.get(name)
+                        if candidate:
+                            icon_map[name] = candidate
+
+    _backfill(weekly_raid_pool.get("Aspects", {}), aspect_icon_db)
+    _backfill(weekly_raid_pool.get("Loot", {}), raid_item_icon)
+
+
 def _normalize_raid_item_tier(raw_tier) -> str:
     if not isinstance(raw_tier, str) or not raw_tier.strip():
         return "Misc"
@@ -491,6 +547,7 @@ async def _wynnsource_only_raid_refresh() -> dict:
 
     _mirror_wards_into_aspects(weekly_raid_pool)
 
+    _fill_pool_icons(weekly_raid_pool)
     await _write_raid_pool_to_disk(weekly_raid_pool)
 
     all_filled = _all_raids_pool_filled(weekly_raid_pool)
@@ -566,8 +623,14 @@ async def refresh_raid_pools() -> dict:
         primary_error = _failure_detail(primary)
         return await _legacy_refresh_with_tag(primary_error=primary_error)
 
-    # Official succeeded -> translate to on-disk shape.
-    weekly_raid_pool: dict[str, Any] = translate_raid_pool(primary.get("data") or [])
+    # Official succeeded -> translate to on-disk shape. Stamp the current
+    # rotation start (not the wall-clock refresh moment) so the web/Discord
+    # `Timestamp + SECONDS_PER_WEEK` next-update math lands on the real reset,
+    # matching the WynnSource fallback path below.
+    rotation_ts = _next_raid_pool_rotation_ts() - config.SECONDS_PER_WEEK
+    weekly_raid_pool: dict[str, Any] = translate_raid_pool(
+        primary.get("data") or [], now_ts=rotation_ts
+    )
     _mirror_wards_into_aspects(weekly_raid_pool)
     # Carry the icon cache forward; downstream renderers expect the key.
     merged_icon: dict[str, Any] = {}
@@ -609,6 +672,7 @@ async def refresh_raid_pools() -> dict:
                 attempts = getattr(wynn_result, "attempts", None)
                 enrichment_error = f"wynnsource_unusable attempts={attempts}"
 
+    _fill_pool_icons(weekly_raid_pool)
     await _write_raid_pool_to_disk(weekly_raid_pool)
 
     regions = len(weekly_raid_pool.get("Aspects", {}) or {})

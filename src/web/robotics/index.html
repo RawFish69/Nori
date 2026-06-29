@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css_global/default.css?v=1">
     <link rel="stylesheet" href="../css_global/sidebar.css?v=1">
     <link rel="stylesheet" href="../css_global/dark_theme.css?v=1" id="dark-theme-css" disabled>
-    <link rel="stylesheet" href="styles.css?v=1">
+    <link rel="stylesheet" href="styles.css?v=1.4">
     <script type="text/javascript" src="../js_global/sidebar.js?v=1"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
     <script src="../js_global/analytics.js?v=1"></script>
@@ -43,12 +43,12 @@
             <nav class="robotics-quicknav" id="robotics-quicknav" aria-label="Project quick navigation">
                 <a href="#proj-mk3" data-i18n="nav_mk3"></a>
                 <a href="#proj-nori-f411" data-i18n="nav_nori_f411"></a>
+                <a href="#proj-uav-controller" data-i18n="nav_uav_controller"></a>
+                <a href="#proj-mk1" data-i18n="nav_manual_racer"></a>
                 <a href="#proj-mk2" data-i18n="nav_long_range"></a>
                 <a href="#proj-micro-fpv" data-i18n="nav_micro_fpv"></a>
-                <a href="#proj-uav-controller" data-i18n="nav_uav_controller"></a>
-                <a href="#proj-esp32-rc-car" data-i18n="nav_esp32_lidar"></a>
                 <a href="#proj-gearbox" data-i18n="nav_gearbox"></a>
-                <a href="#proj-mk1" data-i18n="nav_manual_racer"></a>
+                <a href="#proj-esp32-rc-car" data-i18n="nav_esp32_lidar"></a>
                 <a href="#proj-7dof" data-i18n="nav_7dof"></a>
                 <a href="#proj-diff-drive" data-i18n="nav_diff_drive"></a>
                 <a href="#proj-rl-drone" data-i18n="nav_rl_drone"></a>
@@ -61,9 +61,20 @@
         <article class="robotics-project" id="proj-mk3">
             <h2 data-i18n="mk3_title"></h2>
             <div class="robotics-project-body long-range-layout">
-                <div class="robotics-media">
-                    <img src="images/mk3_rendering_1.png" alt="Wyvern MK3 (rendering)">
-                    <img src="images/mk3_cad_2.png" alt="Wyvern MK3 (CAD view 2)">
+                <div class="rcarousel">
+                    <div class="rcarousel-viewport">
+                        <div class="rcarousel-track">
+                            <figure class="rcarousel-slide"><img src="images/mk3_build_1.png" alt="Wyvern MK3 build" loading="lazy"><figcaption data-i18n="mk3_build2_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/mk3_rendering_1.png" alt="Wyvern MK3 CAD rendering" loading="lazy"><figcaption data-i18n="mk3_render_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/mk3_proto_1.jpg" alt="Wyvern MK3 prototype" loading="lazy"><figcaption data-i18n="mk3_proto1_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/mk3_cad_2.png" alt="Wyvern MK3 CAD" loading="lazy"><figcaption data-i18n="mk3_cad_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/mk3_proto_2.jpg" alt="Wyvern MK3 prototype" loading="lazy"><figcaption data-i18n="mk3_proto2_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/mk3_auto_1.png" alt="Wyvern MK3 build" loading="lazy"><figcaption data-i18n="mk3_auto1_caption"></figcaption></figure>  
+                            <figure class="rcarousel-slide"><img src="images/mk3_build_2.png" alt="Wyvern MK3 build" loading="lazy"><figcaption data-i18n="mk3_build1_caption"></figcaption></figure>  
+                        </div>
+                    </div>
+                    <button class="rcarousel-arr rcarousel-prev" aria-label="Previous">&#8249;</button>
+                    <button class="rcarousel-arr rcarousel-next" aria-label="Next">&#8250;</button>
                 </div>
                 <div class="long-range-bottom">
                     <div class="robotics-project-content">
@@ -71,8 +82,26 @@
                         <p data-i18n="mk3_p2"></p>
                     </div>
                     <div class="robotics-video-section">
-                        <video src="videos/o4_vtx.mp4" autoplay loop muted playsinline controls></video>
-                        <p class="robotics-video-caption" data-i18n="mk3_video_caption"></p>
+                        <div class="vcarousel" aria-label="Wyvern MK3 video carousel">
+                            <div class="vcarousel-viewport">
+                                <div class="vcarousel-track">
+                                    <figure class="vcarousel-slide is-active">
+                                        <video src="videos/o4_vtx.mp4" autoplay muted playsinline controls preload="auto"></video>
+                                        <figcaption class="robotics-video-caption" data-i18n="mk3_o4_video_caption"></figcaption>
+                                    </figure>
+                                    <figure class="vcarousel-slide">
+                                        <video src="videos/mk3_rescue.mp4" muted playsinline controls preload="auto"></video>
+                                        <figcaption class="robotics-video-caption" data-i18n="mk3_rescue_video_caption"></figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <button class="vcarousel-arr vcarousel-prev" type="button" aria-label="Previous video">&#8249;</button>
+                            <button class="vcarousel-arr vcarousel-next" type="button" aria-label="Next video">&#8250;</button>
+                            <div class="vcarousel-dots">
+                                <button class="vcarousel-dot is-active" type="button" aria-label="Show O4 VTX video"></button>
+                                <button class="vcarousel-dot" type="button" aria-label="Show MK3 rescue video"></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,8 +115,71 @@
                     <p data-i18n="norif411_p2"></p>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/nori_f411_2d.png" alt="Nori F411 PCB (2D layout)">
-                    <img src="images/nori_f411_3d.png" alt="Nori F411 PCB (3D render)">
+                    <img src="images/nori_f411_2d.png" alt="Nori F411 PCB (2D layout)" loading="lazy">
+                    <img src="images/nori_f411_3d.png" alt="Nori F411 PCB (3D render)" loading="lazy">
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project" id="proj-uav-controller">
+            <h2 data-i18n="uavcontroller_title"></h2>
+            <div class="robotics-project-body uav-layout">
+                <div class="uav-intro">
+                    <div class="robotics-media uav-intro-video">
+                        <video src="videos/hovering_landing.mp4" class="lazy-video" preload="none" loop muted playsinline controls></video>
+                        <p class="robotics-video-caption" data-i18n="uavcontroller_video_caption"></p>
+                    </div>
+                    <div class="robotics-project-content">
+                        <p data-i18n="uavcontroller_p1"></p>
+                        <ul class="robotics-features">
+                            <li data-i18n="uavcontroller_li1"></li>
+                            <li data-i18n="uavcontroller_li2"></li>
+                            <li data-i18n="uavcontroller_li3"></li>
+                            <li data-i18n="uavcontroller_li4"></li>
+                            <li data-i18n="uavcontroller_li5"></li>
+                            <li data-i18n="uavcontroller_li6"></li>
+                        </ul>
+                        <a href="https://github.com/RawFish69/UAV-Controller" target="_blank" rel="noopener" class="project-link" data-i18n="link_github"></a>
+                    </div>
+                </div>
+                <div class="rcarousel">
+                    <div class="rcarousel-viewport">
+                        <div class="rcarousel-track">
+                            <figure class="rcarousel-slide"><img src="images/forest_rotor.png" alt="UAV Controller forest terrain simulation" loading="lazy"><figcaption data-i18n="uavcontroller_forest_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/uav_gazebo.png" alt="UAV Controller Gazebo simulation view" loading="lazy"><figcaption data-i18n="uavcontroller_gazebo_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/uav_controller_1.png" alt="UAV Controller standalone Python path planner" loading="lazy"><figcaption data-i18n="uavcontroller_planner_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/5inch.png" alt="5-inch drone used for TX/RX testing" loading="lazy"><figcaption data-i18n="uavcontroller_drone_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/mountain_rotor.png" alt="UAV Controller mountain terrain simulation with RotorPy" loading="lazy"><figcaption data-i18n="uavcontroller_mountain_caption"></figcaption></figure>
+                        </div>
+                    </div>
+                    <button class="rcarousel-arr rcarousel-prev" aria-label="Previous">&#8249;</button>
+                    <button class="rcarousel-arr rcarousel-next" aria-label="Next">&#8250;</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="robotics-project" id="proj-mk1">
+            <h2 data-i18n="manualracer_title"></h2>
+            <div class="robotics-project-body media-below">
+                <div class="robotics-project-content">
+                    <p data-i18n="manualracer_p1"></p>
+                    <p data-i18n="manualracer_p2"></p>
+                </div>
+                <div class="rcarousel">
+                    <div class="rcarousel-viewport">
+                        <div class="rcarousel-track">
+                            <div class="rcarousel-slide rcarousel-slide--stacked">
+                                <figure><img src="images/manual_racer_cad.png" alt="Wyvern MK1 prototype CAD" loading="lazy"><figcaption data-i18n="mk1_protocad_caption"></figcaption></figure>
+                                <figure><img src="images/mk1_cad_1.png" alt="Wyvern MK1 CAD" loading="lazy"><figcaption data-i18n="mk1_cad_caption"></figcaption></figure>
+                            </div>
+                            <figure class="rcarousel-slide"><img src="images/mk1_build_1.png" alt="Wyvern MK1 build" loading="lazy"><figcaption data-i18n="mk1_build1_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/mk1_build_2.png" alt="Wyvern MK1 build" loading="lazy"><figcaption data-i18n="mk1_build2_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/manual_racer_real.png" alt="Wyvern MK1 prototype" loading="lazy"><figcaption data-i18n="mk1_protobuild_caption"></figcaption></figure>
+                            <figure class="rcarousel-slide"><img src="images/mk1_build_3.png" alt="Wyvern MK1 build" loading="lazy"><figcaption data-i18n="mk1_build2_caption"></figcaption></figure>
+                        </div>
+                    </div>
+                    <button class="rcarousel-arr rcarousel-prev" aria-label="Previous">&#8249;</button>
+                    <button class="rcarousel-arr rcarousel-next" aria-label="Next">&#8250;</button>
                 </div>
             </div>
         </article>
@@ -96,8 +188,8 @@
             <h2 data-i18n="longrange_title"></h2>
             <div class="robotics-project-body long-range-layout">
                 <div class="robotics-media">
-                    <img src="images/long_range_render.png" alt="Long Range FPV Drone (CAD render)">
-                    <img src="images/long_range_real.jpg" alt="Long Range FPV Drone (real)">
+                    <img src="images/long_range_render.png" alt="Long Range FPV Drone (CAD render)" loading="lazy">
+                    <img src="images/long_range_real.jpg" alt="Long Range FPV Drone (real)" loading="lazy">
                 </div>
                 <div class="long-range-bottom">
                     <div class="robotics-project-content">
@@ -105,7 +197,7 @@
                         <p data-i18n="longrange_p2"></p>
                     </div>
                     <div class="robotics-video-section">
-                        <video src="videos/mk2.mp4" autoplay loop muted playsinline controls></video>
+                        <video src="videos/mk2.mp4" class="lazy-video" preload="none" loop muted playsinline controls></video>
                         <p class="robotics-video-caption" data-i18n="longrange_video_caption"></p>
                     </div>
                 </div>
@@ -117,41 +209,24 @@
             <div class="robotics-project-body media-side media-right">
                 <div class="robotics-project-content">
                     <p data-i18n="microfpv_p1"></p>
-                    <video src="videos/drone_demo.mp4" autoplay loop muted playsinline controls></video>
+                    <video src="videos/drone_demo.mp4" class="lazy-video" preload="none" loop muted playsinline controls></video>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/micro_drone.png" alt="Micro FPV Drone">
+                    <img src="images/micro_drone.png" alt="Micro FPV Drone" loading="lazy">
                 </div>
             </div>
         </article>
 
-        <article class="robotics-project" id="proj-uav-controller">
-            <h2 data-i18n="uavcontroller_title"></h2>
-            <div class="robotics-project-body uav-controller-layout">
+        <article class="robotics-project" id="proj-gearbox">
+            <h2 data-i18n="gearbox_title"></h2>
+            <div class="robotics-project-body media-below">
                 <div class="robotics-project-content">
-                    <p data-i18n="uavcontroller_p1"></p>
-                    <ul class="robotics-features">
-                        <li data-i18n="uavcontroller_li1"></li>
-                        <li data-i18n="uavcontroller_li2"></li>
-                        <li data-i18n="uavcontroller_li3"></li>
-                        <li data-i18n="uavcontroller_li4"></li>
-                        <li data-i18n="uavcontroller_li5"></li>
-                        <li data-i18n="uavcontroller_li6"></li>
-                    </ul>
-                    <a href="https://github.com/RawFish69/UAV-Controller" target="_blank" rel="noopener" class="project-link" data-i18n="link_github"></a>
+                    <p data-i18n="gearbox_p1"></p>
+                    <p data-i18n="gearbox_p2"></p>
                 </div>
-                <div class="robotics-media uav-controller-forest-media">
-                    <img src="images/forest_rotor.png" alt="UAV Controller forest terrain simulation">
-                </div>
-                <div class="uav-controller-gazebo-media">
-                    <figure class="uav-paired-image">
-                        <img src="images/uav_gazebo.png" alt="UAV Controller Gazebo simulation view">
-                        <figcaption data-i18n="uavcontroller_gazebo_caption"></figcaption>
-                    </figure>
-                    <figure class="uav-paired-image">
-                        <img src="images/5inch.png" alt="5-inch drone used for TX/RX testing">
-                        <figcaption data-i18n="uavcontroller_drone_caption"></figcaption>
-                    </figure>
+                <div class="robotics-media">
+                    <img src="images/BO22_1.png" alt="Wolfrom Bilateral Gearbox Actuator" loading="lazy">
+                    <img src="images/BO22_2.png" alt="Wolfrom Bilateral Gearbox Actuator" loading="lazy">
                 </div>
             </div>
         </article>
@@ -166,35 +241,7 @@
                     <a href="https://github.com/RawFish69/ESP32-RC-Car" target="_blank" rel="noopener" class="project-link" data-i18n="link_github"></a>
                 </div>
                 <div class="robotics-media">
-                    <video src="videos/lidar_bot.mp4" autoplay loop muted playsinline controls></video>
-                </div>
-            </div>
-        </article>
-
-        <article class="robotics-project" id="proj-gearbox">
-            <h2 data-i18n="gearbox_title"></h2>
-            <div class="robotics-project-body media-below">
-                <div class="robotics-project-content">
-                    <p data-i18n="gearbox_p1"></p>
-                    <p data-i18n="gearbox_p2"></p>
-                </div>
-                <div class="robotics-media">
-                    <img src="images/BO22_1.png" alt="Wolfrom Bilateral Gearbox Actuator">
-                    <img src="images/BO22_2.png" alt="Wolfrom Bilateral Gearbox Actuator">
-                </div>
-            </div>
-        </article>
-
-        <article class="robotics-project" id="proj-mk1">
-            <h2 data-i18n="manualracer_title"></h2>
-            <div class="robotics-project-body media-below">
-                <div class="robotics-project-content">
-                    <p data-i18n="manualracer_p1"></p>
-                    <p data-i18n="manualracer_p2"></p>
-                </div>
-                <div class="robotics-media">
-                    <img src="images/manual_racer_cad.png" alt="Manual Racing FPV Drone (CAD)">
-                    <img src="images/manual_racer_real.png" alt="Manual Racing FPV Drone (real)">
+                    <video src="videos/lidar_bot.mp4" class="lazy-video" preload="none" loop muted playsinline controls></video>
                 </div>
             </div>
         </article>
@@ -207,7 +254,7 @@
                     <a href="https://github.com/c-y-i/7-DoF-Arm-Manipulation" target="_blank" rel="noopener" class="project-link" data-i18n="link_github"></a>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/7dof_arm.png" alt="7 DOF Robot Arm">
+                    <img src="images/7dof_arm.png" alt="7 DOF Robot Arm" loading="lazy">
                 </div>
             </div>
         </article>
@@ -219,8 +266,8 @@
                     <p data-i18n="diffdrive_p1"></p>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/mechatronics_1.png" alt="Differential-Drive Mobile Robot">
-                    <img src="images/mechatronics_2.png" alt="Differential-Drive Mobile Robot">
+                    <img src="images/mechatronics_1.png" alt="Differential-Drive Mobile Robot" loading="lazy">
+                    <img src="images/mechatronics_2.png" alt="Differential-Drive Mobile Robot" loading="lazy">
                 </div>
             </div>
         </article>
@@ -233,7 +280,7 @@
                     <a href="https://github.com/virmani11kartik/Integrated-UAV-Stack/tree/yc" target="_blank" rel="noopener" class="project-link" id="rl-drone-repo" data-i18n="link_github"></a>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/rl_drones.png" alt="RL Racing Drone">
+                    <img src="images/rl_drones.png" alt="RL Racing Drone" loading="lazy">
                 </div>
             </div>
         </article>
@@ -245,8 +292,8 @@
                     <p data-i18n="esp32fc_p1"></p>
                 </div>
                 <div class="robotics-media">
-                    <img src="images/Nori_AIO_Altium.png" alt="Nori AIO PCB (Altium design)">
-                    <img src="images/nori_aio_real.jpg" alt="Nori AIO PCB (real)">
+                    <img src="images/Nori_AIO_Altium.png" alt="Nori AIO PCB (Altium design)" loading="lazy">
+                    <img src="images/nori_aio_real.jpg" alt="Nori AIO PCB (real)" loading="lazy">
                 </div>
             </div>
         </article>
@@ -271,12 +318,12 @@
                     <section class="robotics-note-card">
                         <h3 data-i18n="note_earlystage_title"></h3>
                         <p data-i18n="note_earlystage_p"></p>
-                        <img src="images/proto_drone.png" alt="Prototype Quadcopter">
+                        <img src="images/proto_drone.png" alt="Prototype Quadcopter" loading="lazy">
                     </section>
                     <section class="robotics-note-card">
                         <h3 data-i18n="note_uavtools_title"></h3>
                         <p data-i18n="note_uavtools_p"></p>
-                        <img src="images/test_rig.png" alt="UAV Test Rig">
+                        <img src="images/test_rig.png" alt="UAV Test Rig" loading="lazy">
                     </section>
                     <section class="robotics-note-card">
                         <h3 data-i18n="note_gripper_title"></h3>
@@ -303,6 +350,7 @@
         <p style="margin:0;color:var(--card-text-secondary, #666);">&copy; 2024-2026 Nori, All rights reserved. Contact: <a href="mailto:dev@nori.fish" style="color:inherit;">dev@nori.fish</a></p>
     </footer>
 
-    <script src="i18n.js?v=1"></script>
+    <script src="i18n.js?v=1.45"></script>
+    <script src="carousel.js?v=1.45"></script>
 </body>
 </html>
