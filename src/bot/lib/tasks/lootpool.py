@@ -345,8 +345,14 @@ async def refresh_item_lootpool() -> dict:
         primary_error = _failure_detail(primary)
         return await _legacy_refresh_with_tag(primary_error=primary_error)
 
-    # Official succeeded -> translate to on-disk shape.
-    weekly_lootpool: dict[str, Any] = translate_item_lootpool(primary.get("data") or [])
+    # Official succeeded -> translate to on-disk shape. Stamp the current
+    # rotation start (not the wall-clock refresh moment) so the web/Discord
+    # `Timestamp + SECONDS_PER_WEEK` next-update math lands on the real reset,
+    # matching the WynnSource fallback path.
+    rotation_ts = _next_lootpool_rotation_ts() - config.SECONDS_PER_WEEK
+    weekly_lootpool: dict[str, Any] = translate_item_lootpool(
+        primary.get("data") or [], now_ts=rotation_ts
+    )
     # Carry the icon cache forward; downstream renderers expect the key.
     weekly_lootpool.setdefault("Icon", config.lootpool_icon)
 

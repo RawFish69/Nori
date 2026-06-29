@@ -91,6 +91,25 @@ _normalize_raid_loot = normalize_raid_loot
 
 
 async def load_aspect_lootpool() -> dict:
+    # Aspects publish automatically (like item lootpools): the source of truth is
+    # the auto-refreshed weekly_raid_pool.json, where aspect data lives under
+    # "Aspects". The legacy manually-published weekly_aspects.json (aspect data
+    # under "Loot") is kept only as a fallback when the raid pool has no aspects.
+    raid_data = _load_json(WEEKLY_RAID_POOL_FILE, {})
+    raid_data = raid_data if isinstance(raid_data, dict) else {}
+    aspects_section = raid_data.get("Aspects")
+    if isinstance(aspects_section, dict):
+        source_aspects = aspects_section.get("Loot", aspects_section)
+        if isinstance(source_aspects, dict) and source_aspects:
+            icon = raid_data.get("Icon", {})
+            timestamp = raid_data.get("Timestamp")
+            return {
+                "Loot": _normalize_raid_loot(source_aspects, ASPECT_TIERS),
+                "Icon": icon if isinstance(icon, dict) else {},
+                "Timestamp": timestamp if isinstance(timestamp, int) else int(time.time()),
+            }
+
+    # Legacy fallback: manually-published aspect file (aspect data under "Loot").
     data = _load_json(WEEKLY_ASPECT_POOL_FILE, {})
     if not isinstance(data, dict):
         data = {}

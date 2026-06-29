@@ -296,67 +296,6 @@
   object-fit: contain;
 }
 
-/* ===== UAV Controller: side image + wide image below ===== */
-.uav-controller-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.uav-controller-layout .robotics-project-content {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.uav-controller-layout .uav-controller-forest-media {
-  grid-column: 1;
-  grid-row: 1;
-  margin-top: 0;
-  justify-self: start;
-}
-
-.uav-controller-layout .uav-controller-forest-media img {
-  width: 94%;
-  height: auto;
-  display: block;
-  border-radius: 6px;
-  object-fit: contain;
-}
-
-.uav-controller-layout .uav-controller-gazebo-media {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  margin-top: 0.25rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  align-items: start;
-}
-
-.uav-paired-image {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.uav-paired-image img {
-  width: 100%;
-  height: 500px;
-  display: block;
-  border-radius: 6px;
-  object-fit: contain;
-  background: rgba(0,0,0,0.03);
-}
-
-.uav-paired-image figcaption {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--card-text-secondary, #666);
-  text-align: center;
-  line-height: 1.4;
-}
-
 /* Video under text in left column (e.g. Micro FPV Drone) */
 .robotics-project-content video {
   width: 100%;
@@ -536,15 +475,6 @@
 }
 
 /* MK3 top-row images: stretch both to the taller image's height, keep full width */
-#proj-mk3 .long-range-layout > .robotics-media {
-  align-items: stretch;
-}
-
-#proj-mk3 .long-range-layout > .robotics-media img {
-  height: 100%;
-  object-fit: contain;
-}
-
 /* Image used in the video slot (e.g. MK3 rendering before a real video is available) */
 .robotics-video-section img {
   width: 100%;
@@ -581,6 +511,113 @@
   background: #0a0a0a;
   object-fit: contain;
   display: block;
+}
+
+.vcarousel {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+}
+
+.vcarousel-viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.vcarousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.45s ease;
+}
+
+.vcarousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.vcarousel-slide.is-active {
+  opacity: 1;
+}
+
+.vcarousel-slide video {
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 16 / 9;
+}
+
+.vcarousel-arr {
+  position: absolute;
+  top: 0;
+  bottom: 2.35rem;
+  width: 4.25rem;
+  background: linear-gradient(to right, rgba(0,0,0,0.48), rgba(0,0,0,0.12), transparent);
+  border: none;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0.65rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.75);
+  transition: background 0.2s, color 0.2s, width 0.2s;
+  z-index: 2;
+  user-select: none;
+  border-radius: 6px 0 0 6px;
+}
+
+.vcarousel-arr.vcarousel-next {
+  left: auto;
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,0.48), rgba(0,0,0,0.12), transparent);
+  justify-content: flex-end;
+  padding-left: 0;
+  padding-right: 0.65rem;
+  border-radius: 0 6px 6px 0;
+}
+
+.vcarousel-arr.vcarousel-prev {
+  left: 0;
+}
+
+.vcarousel-arr:hover {
+  width: 4.75rem;
+  background: linear-gradient(to right, rgba(0,0,0,0.68), rgba(0,0,0,0.22), transparent);
+  color: #fff;
+}
+
+.vcarousel-arr.vcarousel-next:hover {
+  background: linear-gradient(to left, rgba(0,0,0,0.68), rgba(0,0,0,0.22), transparent);
+}
+
+.vcarousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.vcarousel-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--card-text-secondary, #666);
+  opacity: 0.35;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.vcarousel-dot.is-active {
+  opacity: 0.9;
+  transform: scale(1.15);
 }
 
 .robotics-video-caption {
@@ -705,6 +742,152 @@ header:has(.lang-toggle) {
   background: rgba(0,119,182,0.18);
 }
 
+/* ===== MK3 image carousel ===== */
+/* ===== Reusable image carousel (any project with 3+ images) =====
+   Shows two images at once on desktop (one on mobile) with a translucent
+   peek of the neighbours, looping arrows, and optional per-image captions. */
+.rcarousel {
+  position: relative;
+  width: 100%;
+  /* Size width from the parent, NOT from the (very wide) image track inside.
+     Without this the non-shrinking slides force the whole column-flex layout
+     wider than the screen, causing horizontal scroll on mobile. */
+  contain: inline-size;
+}
+
+.rcarousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.rcarousel-track {
+  display: flex;
+  gap: 2%;
+  align-items: center;
+  transform: translateX(0);
+}
+
+.rcarousel-slide {
+  flex: 0 0 42%;
+  width: 42%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+
+.rcarousel-slide.is-active {
+  opacity: 1;
+  cursor: default;
+}
+
+/* A slide holding two images stacked vertically (e.g. prototype + final CAD) */
+.rcarousel-slide--stacked {
+  gap: 1.25rem;
+}
+
+.rcarousel-slide--stacked > figure {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rcarousel-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+}
+
+.rcarousel-slide figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--card-text-secondary, #666);
+  text-align: center;
+  line-height: 1.45;
+}
+
+/* overlay arrows on left/right edges */
+.rcarousel-arr {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3.5rem;
+  background: linear-gradient(to right, rgba(0,0,0,0.22), transparent);
+  border: none;
+  color: rgba(255,255,255,0.85);
+  font-size: 2.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0.4rem;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  z-index: 2;
+  user-select: none;
+  border-radius: 6px 0 0 6px;
+}
+
+.rcarousel-arr.rcarousel-next {
+  left: auto;
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,0.22), transparent);
+  justify-content: flex-end;
+  padding-left: 0;
+  padding-right: 0.4rem;
+  border-radius: 0 6px 6px 0;
+}
+
+.rcarousel-arr.rcarousel-prev { left: 0; }
+
+.rcarousel-arr:hover {
+  background: linear-gradient(to right, rgba(0,0,0,0.45), transparent);
+  color: #fff;
+}
+
+.rcarousel-arr.rcarousel-next:hover {
+  background: linear-gradient(to left, rgba(0,0,0,0.45), transparent);
+}
+
+/* Carousel sitting under a text block (e.g. media-below projects) */
+.media-below > .rcarousel {
+  margin-top: 2.5rem;
+}
+
+/* ===== UAV Controller: video beside text on top, carousel below ===== */
+.uav-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.uav-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.uav-intro .robotics-project-content {
+  max-width: none;
+}
+
+.uav-intro-video video {
+  width: 100%;
+  max-height: 520px;
+  border-radius: 6px;
+  background: #0a0a0a;
+  object-fit: contain;
+  display: block;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   /* Hide header email — contact line in main is enough */
@@ -762,39 +945,26 @@ header:has(.lang-toggle) {
     grid-template-columns: 1fr;
   }
 
-  .robotics-project-body.media-side {
-    grid-template-columns: 1fr !important;
-    gap: 2rem;
-  }
-
-  .uav-controller-layout {
+  .uav-intro {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  .uav-controller-layout .robotics-project-content,
-  .uav-controller-layout .uav-controller-forest-media,
-  .uav-controller-layout .uav-controller-gazebo-media {
-    grid-column: 1;
-    grid-row: auto;
+  /* Carousel: the default two-up layout makes each image tiny on a narrow
+     screen. Show one image at a time, nearly full-width. The JS centers a
+     single slide on mobile (see index.html). */
+  .rcarousel-slide {
+    flex: 0 0 90%;
+    width: 90%;
   }
 
-  .uav-controller-layout .uav-controller-forest-media {
-    order: -1;
+  .rcarousel-track {
+    gap: 4%;
   }
 
-  .uav-controller-layout .uav-controller-gazebo-media {
-    margin-top: 0;
-    grid-template-columns: 1fr;
-  }
-
-  .uav-paired-image img {
-    height: auto;
-    min-height: unset;
-  }
-
-  .uav-controller-layout .uav-controller-forest-media img {
-    width: 100%;
+  .robotics-project-body.media-side {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
   }
 
   .robotics-project-body.media-side.media-right .robotics-project-content,
