@@ -143,7 +143,7 @@ class WeightManager:
             id_range = data.get("identifications", {})
             if item.shiny:
                 stats_output["shiny"] = f"{item.shiny.display_name}: {item.shiny.value}"
-            for stat in ids:
+            for stat in ids or []:
                 if stat.roll >= 0 and stat.id in id_range:
                     stat_data = id_range[stat.id]
                     if not isinstance(stat_data, dict):
@@ -152,18 +152,18 @@ class WeightManager:
                         continue
                     id_min = stat_data.get("min", 0)
                     id_max = stat_data.get("max", 0)
-                    id_base = stat_data.get("raw", 0)
-                    if stat.roll > 0:
-                        id_rolled = round((stat.roll / 100) * id_base, 2)
-                        if abs(abs(id_rolled) - abs(int(id_rolled))) == 0.5:
-                            if id_base > 0:
-                                id_rolled = int(id_rolled) + 1
-                            else:
-                                id_rolled = int(id_rolled)
-                        else:
-                            id_rolled = round(id_rolled)
+                    if getattr(getattr(item, "start", None), "version", 0) >= 2:
+                        id_rolled = stat.value
                     else:
-                        id_rolled = stat.roll
+                        id_base = stat_data.get("raw", 0)
+                        if stat.roll > 0:
+                            id_rolled = round((stat.roll / 100) * id_base, 2)
+                            if abs(abs(id_rolled) - abs(int(id_rolled))) == 0.5:
+                                id_rolled = int(id_rolled) + 1 if id_base > 0 else int(id_rolled)
+                            else:
+                                id_rolled = round(id_rolled)
+                        else:
+                            id_rolled = stat.roll
                     if stat.base > 0:
                         if id_min != id_max:
                             percentage = (id_rolled - id_min) / (id_max - id_min) * 100
@@ -333,4 +333,3 @@ def item_weight_output(item_string: str, item_map: Dict, weight_data_path: str =
     if not item_IDs.get(item_name):
         return None
     return item_IDs
-

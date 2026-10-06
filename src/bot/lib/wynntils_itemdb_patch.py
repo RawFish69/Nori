@@ -1,5 +1,5 @@
 """
-Compatibility patch for wynntilsresolver 1.5.0 with the nori local item database.
+Compatibility patch for wynntilsresolver 1.5/1.6 with the nori local item database.
 
 Three issues fixed:
 
@@ -97,8 +97,8 @@ def apply_wynntils_itemdb_identification_coercion() -> None:
             return _orig_get(name)
 
         # Replicate DataStore._get caching logic, but handle dict-format itemdb.
-        # The initial sentinel in _cache is an object(), not a dict — use isinstance
-        # to distinguish a real loaded itemdb from the sentinel.
+        # 1.5 used object() and 1.6 uses None as the initial cache value. A loaded
+        # local item database is always a dict, so this works with both versions.
         cache = data_store._cache["itemdb"]
         cache_loaded = isinstance(cache, dict)
         now = _time.monotonic()
