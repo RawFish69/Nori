@@ -5,9 +5,31 @@ import lightbulb
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
+from sympy.parsing.sympy_parser import (
+    parse_expr,
+    standard_transformations,
+    convert_xor,
+)
 from lib.config import USER_IMG_PATH
 from lib.lightbulb_compat import lb_choices
 loader = lightbulb.Loader()
+
+# These commands evaluate user-supplied expressions. SymPy's default
+# ``sympify`` runs input through Python's ``eval``, so a crafted expression
+# such as ``__import__('os').system(...)`` can execute code as the bot process.
+# A character filter alone is not enough: ``eval(chr(95)+chr(95)+...)`` lets an
+# attacker rebuild banned characters at runtime. We therefore parse with an
+# explicit namespace that contains SymPy only - no Python builtins - so
+# ``eval``, ``chr``, ``open``, ``__import__``, etc. are never reachable.
+_MATH_GLOBAL_DICT = {}
+exec("from sympy import *", _MATH_GLOBAL_DICT)
+for _blocked_name in ("preview", "test", "doctest", "__version__"):
+    _MATH_GLOBAL_DICT.pop(_blocked_name, None)
+for _dunder in [key for key in _MATH_GLOBAL_DICT if key.startswith("_")]:
+    _MATH_GLOBAL_DICT.pop(_dunder, None)
+_MATH_GLOBAL_DICT["__builtins__"] = {}
+_MATH_TRANSFORMATIONS = standard_transformations + (convert_xor,)
+
 
 def safe_math_expr(expr_str: str):
     """Pre-process and safely handle the math expression for better user input."""
@@ -21,6 +43,22 @@ def safe_math_expr(expr_str: str):
     if any((char not in valid_chars for char in expr_str)):
         raise ValueError('Invalid characters in input!')
     return expr_str
+
+
+def parse_math_expr(expr_str: str):
+    """Parse a user-supplied math expression into a SymPy object, safely.
+
+    Runs the expression through ``safe_math_expr`` for a first-pass character
+    filter and then evaluates it against a locked-down SymPy-only namespace
+    that has no Python builtins, preventing arbitrary code execution.
+    """
+    cleaned = safe_math_expr(expr_str)
+    return parse_expr(
+        cleaned,
+        global_dict=_MATH_GLOBAL_DICT,
+        transformations=_MATH_TRANSFORMATIONS,
+    )
+
 
 def plot_function(expr, x_range, user_name):
     """Plot a function and return the generated file path."""
@@ -70,7 +108,7 @@ class PlotMake(lightbulb.SlashCommand, name='plot', description='Generate plot')
         param_x = self.expr
         x = sp.symbols('x')
         try:
-            expr = sp.sympify(safe_math_expr(param_x))
+            expr = parse_math_expr(param_x)
         except Exception as error:
             await ctx.respond(f'Error processing expression: {error}')
             return
@@ -111,7 +149,7 @@ class Calculate(lightbulb.SlashCommand, name='calculate', description='Evaluate 
     async def invoke(self, ctx: lightbulb.Context) -> None:
         expr_str = self.expr
         try:
-            solution = sp.sympify(safe_math_expr(expr_str)).evalf()
+            solution = parse_math_expr(expr_str).evalf()
             result = str(solution)
             await ctx.respond(f'`{expr_str} = {result}`')
         except Exception as error:
@@ -133,7 +171,7 @@ class Solve(lightbulb.SlashCommand, name='solve', description='Solve an equation
                 await ctx.edit_response(-1, embed=solve_embed)
                 return
             lhs, rhs = equation_str.split('=')
-            equation = sp.Eq(sp.sympify(safe_math_expr(lhs)), sp.sympify(safe_math_expr(rhs)))
+            equation = sp.Eq(parse_math_expr(lhs), parse_math_expr(rhs))
             solution = sp.nsolve(equation, x, 0)
             result = str(solution)
             solve_embed = hikari.Embed(title='Equation Solver', color='#3384FF')
@@ -157,10 +195,7 @@ class Integrate(lightbulb.SlashCommand, name='integral', description='Integrate 
         await ctx.respond(embed=integral_embed)
         x = sp.symbols('x')
         try:
-            formatted_function = re.sub('(\\d*)x\\^(\\d+)', '\\1x**\\2', function_str)
-            formatted_function = re.sub('(\\d+)x', '\\1*x', formatted_function)
-            formatted_function = re.sub('x\\^(\\d+)', 'x**\\1', formatted_function)
-            expr = sp.sympify(formatted_function)
+            expr = parse_math_expr(function_str)
             result = sp.integrate(expr, x)
             if isinstance(result, sp.Integral):
                 integral_embed = hikari.Embed(title=f'Unable to evaluate the integral of `{function_str}`.', color='#3384FF')
@@ -201,7 +236,7 @@ class Derivative(lightbulb.SlashCommand, name='derivative', description='Differe
         await ctx.respond(embed=derivative_embed)
         x = sp.symbols('x')
         try:
-            expr = sp.sympify(safe_math_expr(function_str))
+            expr = parse_math_expr(function_str)
             result = sp.diff(expr, x)
             result_str = sp.pretty(result, use_unicode=True)
             response = f'Derivative of `{function_str}`'
