@@ -11,13 +11,13 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://nori.fish/resources/nori_logo.png" />
     <title>Nori Hub</title>
-    <link rel="stylesheet" href="styles.css?v=1">
+    <link rel="stylesheet" href="styles.css?v=20261026-map">
     <link rel="stylesheet" href="css_global/default.css?v=1">
     <link rel="stylesheet" href="css_global/sidebar.css?v=1">
     <link rel="stylesheet" href="css_global/dark_theme.css?v=1" id="dark-theme-css" disabled>
     <script type="text/javascript" src="js_global/sidebar.js?v=1"></script>
     <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@latest/dist/zero-md.min.js?v=1"></script>
-    <script src="js_global/home.js?v=1"></script>
+    <script src="js_global/home.js?v=20261026-map"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D8GME84PS"></script>
     <script src="js_global/analytics.js?v=1"></script>
     <!-- Temporarily disabled Google Ads -->
@@ -26,7 +26,7 @@
     <script src="js_global/config.js?v=1"></script>
     <script src="js_global/layout.js?v=1"></script>
 </head>
-<body>
+<body class="home-page">
     <header>
         <div style="display: flex; align-items: center; justify-content: center;">
             <img src="resources/nori_logo.png" alt="Nori Logo" style="width: 50px; height: auto; margin-right: 10px;">
@@ -76,7 +76,7 @@
                     <div class="category-card card-games" onclick="toggleSection('gamedevSection', this)">
                         <h3>Software Development</h3>
                         <p>Apps & interactive demos</p>
-                        <p class="card-disciplines">Space Orbs · RotorBench · FPV Sim · PID Visualizer · Local LLM Agents</p>
+                        <p class="card-disciplines">Nori Map · Space Orbs · RotorBench · FPV Sim · PID Visualizer · Local LLM Agents</p>
                     </div>
                     <div id="gamedevSection" class="category-content" style="display: none;">
                         <div class="project-showcase">
@@ -86,6 +86,7 @@
                             <p>Software applications and interactive demos</p>
 
                             <ul class="project-list">
+                                <li><strong>Nori Map</strong> - World time, weather, natural events and airspace <span class="tech-tags">JavaScript, MapLibre GL JS, OpenStreetMap</span> <a href="https://nori.fish/map/" target="_blank" rel="noopener noreferrer" class="project-link">Open Map</a></li>
                                 <li><strong>Space Orbs</strong> - Multiplayer web game <span class="tech-tags">WebGL, Flask</span> <a href="https://game.nori.fish" target="_blank" class="project-link">Play Now</a></li>
                                 <li><strong>RotorBench Web App</strong> - Web-based tool for building drones with 3D rendering and performance metrics <span class="tech-tags">React, Node.js, FastAPI, UX/UI Design</span> <a href="https://rotor.nori.fish" target="_blank" rel="noopener noreferrer" class="project-link">Open App</a></li>
                                 <li><strong>FPV Drone Simulator</strong> - Browser FPV trainer with twin-stick controls and first-person drone simulation <span class="tech-tags">Three.js, JavaScript</span> <a href="https://nori.fish/demo/fpv" target="_blank" rel="noopener noreferrer" class="project-link">Open Demo</a></li>
@@ -122,23 +123,11 @@
                 </div>
             </div>
 
-            <!-- Time Banner -->
-            <div class="time-banner" id="timeBanner">
-                <div class="time-content">
-                    <div class="time-display" id="timeDisplay">Loading...</div>
-                    <div class="lunar-display" id="lunarDisplay"></div>
-                    <div class="timezone-display" id="timezoneDisplay"></div>
-                </div>
-                <div class="time-gear-wrapper">
-                    <button type="button" class="time-gear-btn" id="timeGearBtn" title="Time settings" aria-label="Time settings">⚙</button>
-                    <div class="time-controls-dropdown" id="timeControlsDropdown">
-                        <button type="button" class="time-format-btn" id="timeFormatBtn" title="Toggle 12h/24h">24h</button>
-                        <div class="timezone-picker">
-                            <select id="timezoneSelect"></select>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <section class="home-map-preview" aria-label="Nori Map preview">
+                <iframe id="home-map-frame" src="map/index.html?embed=home" title="Interactive Nori Map preview" loading="lazy" allow="geolocation"></iframe>
+                <a class="home-map-heading" href="map/" aria-label="Open Nori Map"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m3 8 8-4 10 4 8-4v20l-8 4-10-4-8 4Z"/><path d="M11 4v20M21 8v20"/><circle cx="16" cy="13" r="3"/><path d="m16 16-3 5h6Z"/></svg><strong>Nori Map</strong></a>
+                <a class="home-map-open" href="map/">Open Nori Map ↗</a>
+            </section>
         </div>
     </div>
     <footer>

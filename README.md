@@ -17,6 +17,7 @@ Nori started as a Discord bot in 2022. Today it includes the bot, Nori-Web, publ
 
 - [Add Nori to Discord](https://discord.com/discovery/applications/873677970928193568)
 - [Visit Nori Web](https://nori.fish)
+- [Explore Nori Map](https://nori.fish/map/)
 - [Read API Docs](https://nori.fish/docs/)
 - [Join the Community Discord](https://discord.gg/eDssA6Jbwd)
 

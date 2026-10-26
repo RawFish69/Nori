@@ -40,6 +40,7 @@ Important paths:
 
 - `index.html` is the main web entry point.
 - `wynn/` contains Wynncraft tool pages.
+- `map/` contains Nori Map browser code, assets and license notices. Its China report layer calls the hosted public API; backend source and deployment configuration are not included. See [map setup and coverage](web/map/README.md).
 - `docs/` contains public API, command, and tower documentation.
 - `js_global/config.js` contains public site links and frontend configuration.
 - `resources/` contains shared item, aspect, and UI assets.

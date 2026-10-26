@@ -913,3 +913,99 @@ html.site-dark .panel {
     box-shadow: none !important;
     border: none !important;
 }
+
+/* Keep homepage chrome inside the viewport; do not hide overflowing content. */
+body.home-page > .container {
+    box-sizing: border-box;
+    width: min(calc(90% + 40px), 100%);
+    max-width: 1240px;
+    min-width: 0;
+}
+html body.home-page > footer:not(#nori-x) {
+    box-sizing: border-box;
+    margin-top: 0 !important;
+    max-width: 100%;
+}
+body.home-page .project-categories { min-width: 0; }
+body.home-page .project-categories > * { min-width: 0; }
+body.home-page .project-list li { overflow-wrap: anywhere; }
+@media (min-width: 769px) and (max-height: 950px) {
+    body.home-page > .container { padding-top: 12px; padding-bottom: 12px; }
+    body.home-page .project-categories { gap: 16px; margin-bottom: 8px; }
+    body.home-page .category-card { padding: 12px 16px; }
+    body.home-page .category-card h3 { margin-bottom: 8px; }
+    body.home-page .about-nori-section { padding: 14px 24px; margin-top: 8px; margin-bottom: 4px; }
+    body.home-page .about-nori-content h2 { margin: 0 0 8px; }
+    body.home-page .about-nori-content h3 { margin: 12px 0 6px; }
+    body.home-page .about-nori-content .about-bio { line-height: 1.6; }
+    body.home-page .quote-row { margin: 8px 0 12px; }
+    body.home-page #nori-quote { padding: 6px 12px; line-height: 1.5; }
+    body.home-page .quote-progress-track { margin: -8px 0 12px; }
+    body.home-page .contact-links { margin-top: 8px; }
+    body.home-page .time-banner { padding: 10px 24px; margin-top: 8px; }
+    body.home-page .time-display { font-size: 2rem; }
+    body.home-page .lunar-display { font-size: 1.05rem; }
+    body.home-page .timezone-display { font-size: 1.1rem; }
+}
+
+@media (min-width: 769px) and (max-height: 780px) {
+    body.home-page > .container { padding-top: 10px; padding-bottom: 10px; }
+    body.home-page .category-card { padding: 10px 14px; }
+    body.home-page .category-card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    body.home-page .category-card p { font-size: .9rem; }
+    body.home-page .category-card .card-disciplines { font-size: .74rem; line-height: 1.4; }
+    body.home-page .about-nori-section { padding: 10px 20px; }
+    body.home-page .about-nori-content .about-bio { font-size: 1rem; line-height: 1.5; }
+    body.home-page .about-nori-content h3 { margin-top: 8px; }
+    body.home-page .quote-row { margin: 6px 0 10px; }
+    body.home-page #nori-quote { font-size: .95rem; padding: 4px 10px; }
+    body.home-page .quote-progress-track { margin-bottom: 8px; }
+    body.home-page .time-banner { padding: 8px 24px; }
+    body.home-page .time-display { font-size: 1.8rem; }
+    body.home-page .lunar-display { font-size: 1rem; }
+    body.home-page .timezone-display { font-size: 1rem; }
+}
+@media (min-width: 769px) and (max-width: 1199px) and (max-height: 850px) {
+    body.home-page > .container { padding-top: 6px; padding-bottom: 6px; }
+    body.home-page .project-categories { gap: 10px; }
+    body.home-page .about-nori-section { padding: 8px 20px; margin-top: 6px; margin-bottom: 2px; }
+    body.home-page .about-nori-content h2 { font-size: 1.35rem; }
+    body.home-page .about-nori-content .about-bio { font-size: .95rem; line-height: 1.45; }
+    body.home-page .contact-links { margin-top: 4px; }
+    body.home-page .time-content { gap: 2px; }
+    body.home-page .lunar-display, body.home-page .timezone-display { font-size: .9rem; }
+}
+
+/* Live preview has its own controls and never stretches to fill empty space. */
+body.home-page .home-map-preview { position:relative; flex:0 0 auto; height:clamp(160px, calc(100svh - 700px), 240px); min-width:0; margin-top:12px; overflow:hidden; border:1px solid var(--card-border); border-radius:8px; background:var(--card-bg); }
+#home-map-frame { display:block; width:100%; height:100%; border:0; }
+.home-map-heading,.home-map-open { position:absolute; z-index:1; top:10px; border:1px solid var(--card-border); border-radius:5px; padding:8px 12px; background:var(--card-bg); color:var(--card-text); box-shadow:0 1px 5px #0002; }
+.home-map-heading { left:10px; display:flex; align-items:center; gap:12px; font-size:.95rem; }
+.home-map-heading span { font-size:.75rem; color:var(--card-text-secondary); }
+.home-map-open { right:10px; font-size:.8rem; font-weight:600; }
+@media (min-width:769px) and (min-height:851px) {
+ body.home-page .category-card { padding:18px 20px; }
+ body.home-page .about-nori-section { padding:20px 24px; margin-top:12px; margin-bottom:8px; }
+ body.home-page .about-nori-content .about-bio { line-height:1.8; }
+ body.home-page .quote-row { margin:12px 0 16px; }
+ body.home-page .project-categories { margin-bottom:12px; }
+}
+@media (min-width:769px) and (max-height:800px) { body.home-page .home-map-preview { height:112px; margin-top:8px; } .home-map-heading span { display:none; } }
+@media (min-width:769px) and (max-width:1100px) and (max-height:800px) { body.home-page .home-map-preview { height:88px; } }
+@media(max-width:600px) { body.home-page .home-map-preview { height:220px; } .home-map-heading span { display:none; } .home-map-heading,.home-map-open { padding:6px 8px; } }
+
+/* Keep the preview heading clear of the live city labels. */
+.home-map-heading span { display:none; }
+
+.home-map-heading { text-decoration:none;gap:7px; }
+.home-map-heading svg { width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round; }
+.home-map-heading:hover,.home-map-open:hover { color:var(--card-text);text-decoration:underline; }
+
+/* Transparent links over the map, independent of the homepage theme. */
+.home-map-heading,.home-map-open { background:transparent; border-color:transparent; box-shadow:none; color:#203139; text-shadow:0 1px 2px #fff,0 0 4px #fff; }
+.home-map-heading svg { filter:drop-shadow(0 0 2px #fff); }
+.home-map-heading:hover,.home-map-open:hover { background:rgba(255,255,255,.55); color:#203139; }
+.home-map-heading:focus-visible,.home-map-open:focus-visible { outline:2px solid #203139; outline-offset:2px; background:rgba(255,255,255,.8); }
+
+/* Fit the preview alongside the public homepage's existing centered header. */
+@media(min-width:769px){body.home-page > header {padding:10px 20px;}body.home-page > header h1 {margin:0;}body.home-page > header nav {padding:6px 0;}body.home-page > footer {padding:12px 16px;}}

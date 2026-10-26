@@ -16,3 +16,25 @@ env/
 # Robotics media (lives in nori-web private repo only)
 src/web/robotics/images/
 src/web/robotics/videos/
+
+# Credentials and runtime output
+.env
+.env.*
+!.env.example
+*.log
+.ssh/
+id_rsa
+id_ed25519
+*.key
+*.pem
+
+# Production web backend and deployment files are never part of the public frontend.
+/src/web/main.py
+/src/web/server/
+/src/web/gunicorn_config.py
+/src/web/requirements.txt
+/src/web/.htaccess
+/src/web/AGENTS.md
+/src/web/.claude/
+/src/web/.superpowers/
+/src/web/docs/superpowers/

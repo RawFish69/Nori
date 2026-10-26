@@ -15,6 +15,13 @@
     <priority>1.0</priority>
   </url>
   
+  <url>
+    <loc>https://nori.fish/map/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Wynncraft Pages -->
   <url>
     <loc>https://nori.fish/wynn/build</loc>

@@ -405,13 +405,18 @@ document.addEventListener('DOMContentLoaded', function() {
         banner.addEventListener('mouseleave', () => isHovered = false);
     }
 
-    // Initialize time and location
-    getLocationAndTime();
-    initTimeControls();
-    setInterval(updateTime, 1000);
-    setInterval(smoothColorTransition, 16); // ~60fps for smooth transitions
+    // Only run clock work on pages that contain the clock.
+    if (banner) {
+        getLocationAndTime();
+        initTimeControls();
+        setInterval(updateTime, 1000);
+        setInterval(smoothColorTransition, 16);
+    }
 
     // Initialize quote rotation
     initializeQuoteRotation();
     initQuoteRefresh();
 });
+
+// Pause provider refreshes when the embedded map leaves the viewport.
+document.addEventListener('DOMContentLoaded',()=>{const frame=document.getElementById('home-map-frame');if(!frame)return;let visible=false;const notify=()=>frame.contentWindow?.postMessage({type:'nori-preview-visibility',visible:visible&&!document.hidden},'*');new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;notify()},{threshold:0}).observe(frame);frame.addEventListener('load',notify);document.addEventListener('visibilitychange',notify)});
